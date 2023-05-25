@@ -1,3 +1,0 @@
-jupyter
-metpx-sr3
-GTStoWIS2

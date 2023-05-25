@@ -1,8 +1,0 @@
-.httpdocroot
-.httpserverpid
-.ftpserverpid
-.flowpostpid
-flow_save/
-__pycache__/
-on_*.py
-^sender/

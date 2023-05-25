@@ -1,0 +1,236 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "informative-conservation",
+   "metadata": {},
+   "source": [
+    "# flow API Example\n",
+    "\n",
+    "The [sarracenia.flow class](../Reference/code.html#module-sarracenia.flow) provides built in accept/reject filtering for messages, supports built-in downloading in several protocols, retries on failure, and allows the creation of callbacks, to customize processing.\n",
+    "\n",
+    "You need to provide a configuration as an argument when instantiating a subscriber.\n",
+    "the _sarracenia.config.no_file_config()_ returns an empty configuration without consulting\n",
+    "any of the sr3 configuration file tree.\n",
+    "\n",
+    "After adding the modifications needed to the configuration, the subscriber is then initiated and run."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "weekly-terminology",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!mkdir /tmp/flow_demo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "exterior-folks",
+   "metadata": {},
+   "source": [
+    "make a directory for the files you are going to download.\n",
+    "the root of the directory tree to must exist."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "aggregate-election",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import re\n",
+    "import sarracenia.config\n",
+    "from sarracenia.flow.subscribe import Subscribe\n",
+    "import sarracenia.flowcb\n",
+    "import sarracenia.credentials\n",
+    "\n",
+    "cfg = sarracenia.config.no_file_config()\n",
+    "\n",
+    "cfg.broker = sarracenia.credentials.Credential('amqps://anonymous:anonymous@hpfx.collab.science.gc.ca')\n",
+    "cfg.topicPrefix = [ 'v02', 'post']\n",
+    "cfg.component = 'subscribe'\n",
+    "cfg.config = 'flow_demo'\n",
+    "cfg.bindings = [ ('xpublic', ['v02', 'post'], ['*', 'WXO-DD', 'observations', 'swob-ml', '#' ]) ]\n",
+    "cfg.queueName='q_anonymous.subscriber_test2'\n",
+    "cfg.download=True\n",
+    "cfg.batch=1\n",
+    "cfg.messageCountMax=5\n",
+    "\n",
+    "# set the instance number for the flow class.\n",
+    "cfg.no=0\n",
+    "\n",
+    "# set flow class to put working files in ~/.cache/sr3/subscrribe/flow_demo directory.\n",
+    "cfg.pid_filename = sarracenia.config.get_pid_filename( None, cfg.component, cfg.config, 0)\n",
+    "\n",
+    "# accept/reject patterns:\n",
+    "pattern=\".*\"\n",
+    "#              to_match, write_to_dir, DESTFN, regex_to_match, accept=True,mirror,strip, pstrip,flatten\n",
+    "cfg.masks= [ ( pattern, \"/tmp/flow_demo\", None, re.compile(pattern), True, False, False, False, '/' ) ]\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "legitimate-necessity",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## starters.\n",
+    "the broker, bindings, and queueName settings are explained in the moth notebook.\n",
+    "\n",
+    "## cfg.download\n",
+    "\n",
+    "Whether you want the flow to download the files corresponding to the messages.\n",
+    "If true, then it will download the files.\n",
+    "\n",
+    "## cfg.batch\n",
+    "\n",
+    "Messages are processed in batches. The number of messages to retrieve per call to newMessages()\n",
+    "is limited by the _batch_ setting.  We set it to 1 here so you can see each file being downloaded immediately when the corresponding message is downloaded.  you can leave this blank, and it defaults to 25. Settings are matter of taste and use case.\n",
+    "\n",
+    "## cfg.messageCountMax\n",
+    "\n",
+    "Normally we just leave this setting at it's default (0) which has no effect on processing.\n",
+    "for demonstration purposes, we limit the number of messages the subscriber will process with this setting.\n",
+    "after _messageCountMax_ messages have been received, stop processing.\n",
+    "\n",
+    "\n",
+    "## cfg.masks\n",
+    "masks are a compiled form of accept/reject directives.  a relPath is compared to the regex in the mask.\n",
+    "If the regex matches, and accept is true, then the message is accepted for further processing.\n",
+    "If the regex matches, but accept is False, then processing of the message is stopped (the message is rejected.)\n",
+    "\n",
+    "masks are a tuple. the meaning can be looked up in the sr3(1) man page.\n",
+    "\n",
+    "*  pattern_string,      the input regular expression string, to be compiled by re routines.\n",
+    "*  directory,           where to put the files downloaded (root of the tree, when mirroring)\n",
+    "*  fn,                  transformation of filename to do. None is the 99% use case.\n",
+    "*  regex,               compiled regex version of the pattern_string\n",
+    "*  accept(True/False),  if pattern matches then accept message for further processing.\n",
+    "*  mirror(True/False),  when downloading build a complete tree to mirror the source, or just dump in directory\n",
+    "*  strip(True/False),   modify the relpath by stripping entries from the left.\n",
+    "*  pstrip(True/False),  strip entries based on patterm\n",
+    "*  flatten(char ... '/' means do not flatten.) )\n",
+    "\n",
+    "## cfg.no, cfg.pid_filename\n",
+    "\n",
+    "These settings are needed because they would ordinarily be set by the sarracenia.instance class which is\n",
+    "normally used to launch flows. They allow setting up of run-time paths for retry_queues, and statefiles,\n",
+    "to remember settings if need be between runs.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "musical-discrimination",
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2023-01-06 12:58:25,789 [INFO] sarracenia.flow loadCallbacks flowCallback plugins to load: ['sarracenia.flowcb.gather.message.Message', 'sarracenia.flowcb.retry.Retry', 'sarracenia.flowcb.housekeeping.resources.Resources']\n",
+      "2023-01-06 12:58:25,896 [DEBUG] amqp _on_start Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@hpfx2.collab.science.gc.ca', 'copyright': 'Copyright (C) 2007-2019 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 21.3', 'product': 'RabbitMQ', 'version': '3.7.13'}, mechanisms: [b'AMQPLAIN', b'PLAIN'], locales: ['en_US']\n",
+      "2023-01-06 12:58:25,934 [DEBUG] amqp __init__ using channel_id: 1\n",
+      "2023-01-06 12:58:25,952 [DEBUG] amqp _on_open_ok Channel open\n",
+      "2023-01-06 12:58:26,008 [INFO] sarracenia.moth.amqp __getSetup queue declared q_anonymous.subscriber_test2 (as: amqps://anonymous@hpfx.collab.science.gc.ca) \n",
+      "2023-01-06 12:58:26,008 [INFO] sarracenia.moth.amqp __getSetup binding q_anonymous.subscriber_test2 with v02.post.*.WXO-DD.observations.swob-ml.# to xpublic (as: amqps://anonymous@hpfx.collab.science.gc.ca)\n",
+      "2023-01-06 12:58:26,029 [DEBUG] sarracenia.moth.amqp __getSetup getSetup ... Done!\n",
+      "2023-01-06 12:58:26,033 [DEBUG] sarracenia.flowcb.retry __init__ sr_retry __init__\n",
+      "2023-01-06 12:58:26,034 [DEBUG] sarracenia.diskqueue __init__  work_retry_00 __init__\n",
+      "2023-01-06 12:58:26,035 [DEBUG] sarracenia.config add_option MemoryMax declared as type:<class 'int'> value:0\n",
+      "2023-01-06 12:58:26,036 [DEBUG] sarracenia.config add_option MemoryBaseLineFile declared as type:<class 'int'> value:100\n",
+      "2023-01-06 12:58:26,036 [DEBUG] sarracenia.config add_option MemoryMultiplier declared as type:<class 'float'> value:3\n",
+      "2023-01-06 12:58:26,036 [DEBUG] sarracenia.config check_undeclared_options missing defaults: {'nodupe_basis', 'post_exchangeSuffix', 'MemoryBaseLineFile', 'header', 'integrity', 'inplace', 'blocksize', 'retry_mode', 'retry_ttl', 'reconnect', 'cluster', 'set_passwords', 'MemoryMax', 'post_on_start', 'pump_flag', 'notify_only', 'force_polling', 'post_exchange', 'save', 'restore', 'exchangeSplit', 'pollUrl', 'MemoryMultiplier', 'sendTo', 'exchange_suffix', 'sanity_log_dead', 'post_exchangeSplit', 'report_exchange', 'cache_stat', 'realpathFilter', 'follow_symlinks', 'feeder', 'source'}\n",
+      "2023-01-06 12:58:26,036 [INFO] sarracenia.flow run callbacks loaded: ['sarracenia.flowcb.gather.message.Message', 'sarracenia.flowcb.retry.Retry', 'sarracenia.flowcb.housekeeping.resources.Resources']\n",
+      "2023-01-06 12:58:26,037 [INFO] sarracenia.flow run pid: 1851720 subscribe/flow_demo instance: 0\n",
+      "2023-01-06 12:58:26,051 [INFO] sarracenia.flow run now active on vip None\n",
+      "2023-01-06 12:58:27,071 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {'sundew_extension': 'DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'from_cluster': 'DDSR.CMC', 'to_clusters': 'DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM', 'filename': 'msg_ddsr-WXO-DD_2f05f6181d347aa3150ad05c0ba520df:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'source': 'WXO-DD', 'mtime': '20230106T175825.880', 'atime': '20230106T175825.880', 'subtopic': ['20230106', 'WXO-DD', 'observations', 'swob-ml', '20230106', 'CXBL'], '_deleteOnPost': {'ack_id', 'subtopic', 'version', 'exchange', 'local_offset'}, 'pubTime': '20230106T175825.880', 'baseUrl': 'https://hpfx.collab.science.gc.ca', 'relPath': '/20230106/WXO-DD/observations/swob-ml/20230106/CXBL/2023-01-06-1757-CXBL-AUTO-minute-swob.xml', 'integrity': {'method': 'md5', 'value': 'WGdF41ExchcZQKS3aInj0Q=='}, 'size': 9131, 'version': 'v02', 'exchange': 'xpublic', 'ack_id': 1, 'local_offset': 0}\n",
+      "2023-01-06 12:58:27,072 [DEBUG] sarracenia.config add_option accelWgetCommand declared as type:<class 'str'> value:/usr/bin/wget %s -o - -O %d\n",
+      "2023-01-06 12:58:27,184 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {'sundew_extension': 'DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'from_cluster': 'DDSR.CMC', 'to_clusters': 'DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM', 'filename': 'msg_ddsr-WXO-DD_43dca9c7707182800deee1da98027bdf:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'source': 'WXO-DD', 'mtime': '20230106T175825.881', 'atime': '20230106T175825.881', 'subtopic': ['20230106', 'WXO-DD', 'observations', 'swob-ml', '20230106', 'CWQH'], '_deleteOnPost': {'ack_id', 'subtopic', 'version', 'exchange', 'local_offset'}, 'pubTime': '20230106T175825.881', 'baseUrl': 'https://hpfx.collab.science.gc.ca', 'relPath': '/20230106/WXO-DD/observations/swob-ml/20230106/CWQH/2023-01-06-1757-CWQH-AUTO-minute-swob.xml', 'integrity': {'method': 'md5', 'value': 'K7GS7uFCCU+Mo8Woxzv37g=='}, 'size': 9408, 'version': 'v02', 'exchange': 'xpublic', 'ack_id': 2, 'local_offset': 0}\n",
+      "2023-01-06 12:58:27,305 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {'sundew_extension': 'DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'from_cluster': 'DDSR.CMC', 'to_clusters': 'DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM', 'filename': 'msg_ddsr-WXO-DD_5425482ce3d2e8b33f8da04187984c91:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'source': 'WXO-DD', 'mtime': '20230106T175825.882', 'atime': '20230106T175825.882', 'subtopic': ['20230106', 'WXO-DD', 'observations', 'swob-ml', '20230106', 'CXAR'], '_deleteOnPost': {'ack_id', 'subtopic', 'version', 'exchange', 'local_offset'}, 'pubTime': '20230106T175825.882', 'baseUrl': 'https://hpfx.collab.science.gc.ca', 'relPath': '/20230106/WXO-DD/observations/swob-ml/20230106/CXAR/2023-01-06-1757-CXAR-AUTO-minute-swob.xml', 'integrity': {'method': 'md5', 'value': 'FmeON9WCu94yU9w3zi7tRg=='}, 'size': 9449, 'version': 'v02', 'exchange': 'xpublic', 'ack_id': 3, 'local_offset': 0}\n",
+      "2023-01-06 12:58:27,426 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {'sundew_extension': 'DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'from_cluster': 'DDSR.CMC', 'to_clusters': 'DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM', 'filename': 'msg_ddsr-WXO-DD_6724d6cb6454f417eed3c81f285a4dc5:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824', 'source': 'WXO-DD', 'mtime': '20230106T175825.882', 'atime': '20230106T175825.882', 'subtopic': ['20230106', 'WXO-DD', 'observations', 'swob-ml', '20230106', 'CWOY'], '_deleteOnPost': {'ack_id', 'subtopic', 'version', 'exchange', 'local_offset'}, 'pubTime': '20230106T175825.882', 'baseUrl': 'https://hpfx.collab.science.gc.ca', 'relPath': '/20230106/WXO-DD/observations/swob-ml/20230106/CWOY/2023-01-06-1757-CWOY-AUTO-minute-swob.xml', 'integrity': {'method': 'md5', 'value': 'E+GXZzZKQI+qzqGWcVwnRA=='}, 'size': 9355, 'version': 'v02', 'exchange': 'xpublic', 'ack_id': 4, 'local_offset': 0}\n",
+      "2023-01-06 12:58:27,513 [INFO] sarracenia.flow please_stop ok, telling 3 callbacks about it.\n",
+      "2023-01-06 12:58:27,514 [INFO] sarracenia.flow run starting last pass (without gather) through loop for cleanup.\n",
+      "2023-01-06 12:58:27,514 [INFO] sarracenia.flow please_stop ok, telling 3 callbacks about it.\n",
+      "2023-01-06 12:58:27,514 [INFO] sarracenia.flow run on_housekeeping pid: 1851720 subscribe/flow_demo instance: 0\n",
+      "2023-01-06 12:58:27,515 [INFO] sarracenia.flowcb.gather.message on_housekeeping messages: good: 4 bad: 0 bytes: 584 Bytes average: 146 Bytes\n",
+      "2023-01-06 12:58:27,515 [INFO] sarracenia.flowcb.retry on_housekeeping on_housekeeping\n",
+      "2023-01-06 12:58:27,515 [INFO] sarracenia.diskqueue on_housekeeping work_retry_00 on_housekeeping\n",
+      "2023-01-06 12:58:27,516 [ERROR] sarracenia.diskqueue on_housekeeping something went wrong\n",
+      "2023-01-06 12:58:27,516 [INFO] sarracenia.diskqueue on_housekeeping No retry in list\n",
+      "2023-01-06 12:58:27,516 [INFO] sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000601\n",
+      "2023-01-06 12:58:27,517 [INFO] sarracenia.diskqueue on_housekeeping post_retry_000 on_housekeeping\n",
+      "2023-01-06 12:58:27,517 [ERROR] sarracenia.diskqueue on_housekeeping something went wrong\n",
+      "2023-01-06 12:58:27,517 [INFO] sarracenia.diskqueue on_housekeeping No retry in list\n",
+      "2023-01-06 12:58:27,518 [INFO] sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000580\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2023-01-06 12:58:27,519 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current Memory cpu_times: user=0.4 system=0.06\n",
+      "2023-01-06 12:58:27,519 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current mem usage: 758.9 MiB, accumulating count (4 or 4/100 so far) before self-setting threshold\n",
+      "2023-01-06 12:58:27,519 [INFO] sarracenia.flow run clean stop from run loop\n",
+      "2023-01-06 12:58:27,537 [DEBUG] amqp collect Closed channel #1\n",
+      "2023-01-06 12:58:27,538 [INFO] sarracenia.flowcb.gather.message on_stop closing\n",
+      "2023-01-06 12:58:27,538 [INFO] sarracenia.flow close flow/close completed cleanly pid: 1851720 subscribe/flow_demo instance: 0\n"
+     ]
+    }
+   ],
+   "source": [
+    "subscriber = sarracenia.flow.subscribe.Subscribe( cfg )\n",
+    "\n",
+    "subscriber.run()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "passive-biotechnology",
+   "metadata": {},
+   "source": [
+    "## Conclusion:\n",
+    "\n",
+    "With the sarracenia.flow class, an async method of operation is supported, it can be customized using flowcb (flow callback) class to introduce specific processing at specific times. It is just like invocation of a single instance from the command line, except all configuration is done within python by setting cfg fields, rather than using the configuration language.\n",
+    "\n",
+    "What is lost vs. using the command line tool: \n",
+    "\n",
+    "* ability to use the configuration language (slightly simpler than assigning values to the cfg object) \n",
+    "* easy running of multiple instances, \n",
+    "* co-ordinated monitoring of the instances (restarts on failure, and a programmable number of subscribers started per configuration.) \n",
+    "* log file management.\n",
+    "\n",
+    "The command line tool provides those additional features."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

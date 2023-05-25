@@ -1,7 +1,0 @@
-appdirs
-humanfriendly
-humanize
-jsonpickle
-paramiko
-psutil>=5.3.0
-watchdog

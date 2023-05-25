@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exemple d’API de flux &mdash; Sarracenia 3.00.40 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Un premier exemple utilisant l’API Sarracenia Moth" href="4_api_moth_sub_demo.html" />
+    <link rel="prev" title="Personnalisez la gestion des fichiers avec les rappels." href="2_CLI_with_flowcb_demo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Sarracenia
+          </a>
+              <div class="version">
+                3.00.40
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Explanation/Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../How2Guides/index.html">HOWTOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Explanation/index.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api-documentation.html">API Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">En français</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Reference/index.html">Référence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Explication/index.html">Explication</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutoriel</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="1_CLI_introduction.html">Téléchargement en utilisant la console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2_CLI_with_flowcb_demo.html">Personnalisez la gestion des fichiers avec les rappels.</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Exemple d’API de flux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#démareurs.">démareurs.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.download">cfg.download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.batch">cfg.batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.messageCountMax">cfg.messageCountMax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.masks">cfg.masks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.no,-cfg.pid_filename">cfg.no, cfg.pid_filename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Conclusion:">Conclusion:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="4_api_moth_sub_demo.html">Un premier exemple utilisant l’API Sarracenia Moth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_api_moth_post_demo.html">Publication à partir du code Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Installer.html">Installation de MetPX Sarracenia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mettre_en_place_un_subscriber_distant.html">Comment configurer un abonné distant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mettre_en_place_un_subscriber_local.html">Administrateur du serveur : un abonné local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Windows.html">Manuel de l’utilisateur Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../CommentFaire/index.html">Comment Faire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Contribution/index.html">Contribuer à Sarracenia</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Sarracenia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">S´abonner et répliquer</a> &raquo;</li>
+          <li><a href="index.html">Tutoriel</a> &raquo;</li>
+      <li>Exemple d’API de flux</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/fr/Tutoriel/3_api_flow_demo.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Exemple-d’API-de-flux">
+<h1>Exemple d’API de flux<a class="headerlink" href="#Exemple-d’API-de-flux" title="Permalink to this heading"></a></h1>
+<p>La <a class="reference external" href="../Reference/code.html#module-sarracenia.flow">classe sarracenia.flow</a> fournit un filtrage d’acceptation/rejet intégré pour les messages, prend en charge le téléchargement intégré dans plusieurs protocoles, réessaye en cas d’échec et permet la création de rappels pour personnaliser le traitement.</p>
+<p>Vous devez fournir une configuration comme argument lors de l’instanciation d’un abonné. La <em>sarracenia.config.no_file_config()</em> renvoie une configuration vide sans consulter l’arborescence des fichiers de configuration sr3.</p>
+<p>Après avoir apporté les modifications nécessaires à la configuration, l’abonné est alors initié et exécuté.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>mkdir<span class="w"> </span>/tmp/flow_demo
+</pre></div>
+</div>
+</div>
+<p>Créer un répertoire pour les fichiers que vous allez télécharger. La racine de l’arborescence de répertoires doit exister.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sarracenia.config</span>
+<span class="kn">from</span> <span class="nn">sarracenia.flow.subscribe</span> <span class="kn">import</span> <span class="n">Subscribe</span>
+<span class="kn">import</span> <span class="nn">sarracenia.flowcb</span>
+<span class="kn">import</span> <span class="nn">sarracenia.credentials</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">no_file_config</span><span class="p">()</span>
+
+<span class="n">cfg</span><span class="o">.</span><span class="n">broker</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">Credential</span><span class="p">(</span><span class="s1">&#39;amqps://anonymous:anonymous@hpfx.collab.science.gc.ca&#39;</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">topicPrefix</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;v02&#39;</span><span class="p">,</span> <span class="s1">&#39;post&#39;</span><span class="p">]</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">component</span> <span class="o">=</span> <span class="s1">&#39;subscribe&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="s1">&#39;flow_demo&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">bindings</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s1">&#39;xpublic&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;v02&#39;</span><span class="p">,</span> <span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;WXO-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;observations&#39;</span><span class="p">,</span> <span class="s1">&#39;swob-ml&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span> <span class="p">])</span> <span class="p">]</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">queueName</span><span class="o">=</span><span class="s1">&#39;q_anonymous.subscriber_test2&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">download</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">batch</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">messageCountMax</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="c1"># set the instance number for the flow class.</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">no</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># set flow class to put working files in ~/.cache/sr3/subscrribe/flow_demo directory.</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">pid_filename</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_pid_filename</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">component</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># accept/reject patterns:</span>
+<span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;.*&quot;</span>
+<span class="c1">#              to_match, write_to_dir, DESTFN, regex_to_match, accept=True,mirror,strip, pstrip,flatten</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">masks</span><span class="o">=</span> <span class="p">[</span> <span class="p">(</span> <span class="n">pattern</span><span class="p">,</span> <span class="s2">&quot;/tmp/flow_demo&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span> <span class="p">)</span> <span class="p">]</span>
+
+
+
+</pre></div>
+</div>
+</div>
+<section id="démareurs.">
+<h2>démareurs.<a class="headerlink" href="#démareurs." title="Permalink to this heading"></a></h2>
+<p>les paramètres du courtier, des liaisons et du nom de la file d’attente sont expliqués dans le bloc-notes de moth.</p>
+</section>
+<section id="cfg.download">
+<h2>cfg.download<a class="headerlink" href="#cfg.download" title="Permalink to this heading"></a></h2>
+<p>Si vous souhaitez que le flux télécharge les fichiers correspondant aux messages. Si vrai, il téléchargera les fichiers.</p>
+</section>
+<section id="cfg.batch">
+<h2>cfg.batch<a class="headerlink" href="#cfg.batch" title="Permalink to this heading"></a></h2>
+<p>Les messages sont traités par lots. Le nombre de messages à récupérer par appel à newMessages() est limité par le paramètre <em>batch</em>. Nous le définissons ici sur 1 afin que vous puissiez voir chaque fichier téléchargé immédiatement lorsque le message correspondant est téléchargé. vous pouvez laisser ce champ vide et la valeur par défaut est 25. Les paramètres sont une question de goût et de cas d’utilisation.</p>
+</section>
+<section id="cfg.messageCountMax">
+<h2>cfg.messageCountMax<a class="headerlink" href="#cfg.messageCountMax" title="Permalink to this heading"></a></h2>
+<p>Normalement, nous laissons ce paramètre à sa valeur par défaut (0) qui n’a aucun effet sur le traitement. à des fins de démonstration, nous limitons le nombre de messages que l’abonné traitera avec ce paramètre. après la réception de <em>messageCountMax</em> messages, arrêtez le traitement.</p>
+</section>
+<section id="cfg.masks">
+<h2>cfg.masks<a class="headerlink" href="#cfg.masks" title="Permalink to this heading"></a></h2>
+<p>Les masques sont une forme compilée de directives d’acceptation/rejet. un relPath est comparé à la regex dans le masque. Si l’expression régulière correspond et que accept est True, le message est accepté pour un traitement ultérieur. Si l’expression régulière correspond, mais accept vaut False, le traitement du message est arrêté (le message est rejeté.)</p>
+<p>les masques sont un tuple. la signification peut être recherchée dans la page de manuel sr3(1).</p>
+<ul class="simple">
+<li><p>pattern_string, la chaîne d’expression régulière d’entrée, à compiler par les routines.</p></li>
+<li><p>directory, où mettre les fichiers téléchargés (racine de l’arborescence, lors de la mise en miroir)</p></li>
+<li><p>fn, transformation du filename à faire. NONE est utilisé 99% des cas d’utilisation.</p></li>
+<li><p>regex, version regex compilée de pattern_string</p></li>
+<li><p>accept(True/False), si le modèle correspond, acceptez le message pour un traitement ultérieur.</p></li>
+<li><p>mirror(True/False), lors du téléchargement, créez une arborescence complète pour refléter la source, ou videz-la simplement dans le répertoire</p></li>
+<li><p>strip(True/False), modifier le relpath en supprimant les entrées de la gauche.</p></li>
+<li><p>pstrip(True/False), entrées de bande basées sur le modèle</p></li>
+<li><p>flatten(char … ‘/’ signifie ne pas aplatir.) )</p></li>
+</ul>
+</section>
+<section id="cfg.no,-cfg.pid_filename">
+<h2>cfg.no, cfg.pid_filename<a class="headerlink" href="#cfg.no,-cfg.pid_filename" title="Permalink to this heading"></a></h2>
+<p>Ces paramètres sont nécessaires car ils seraient normalement définis par la classe sarracenia.instance qui est normalement utilisée pour lancer des flux. Ils permettent de configurer des chemins d’exécution pour retry_queues et des fichiers d’état, afin de mémoriser les paramètres si nécessaire entre les exécutions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">subscriber</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flow</span><span class="o">.</span><span class="n">subscribe</span><span class="o">.</span><span class="n">Subscribe</span><span class="p">(</span> <span class="n">cfg</span> <span class="p">)</span>
+
+<span class="n">subscriber</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-03-19 13:21:09,354 [INFO] sarracenia.flow loadCallbacks plugins to load: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;]
+2022-03-19 13:21:09,586 [DEBUG] amqp _on_start Start from server, version: 0.9, properties: {&#39;capabilities&#39;: {&#39;publisher_confirms&#39;: True, &#39;exchange_exchange_bindings&#39;: True, &#39;basic.nack&#39;: True, &#39;consumer_cancel_notify&#39;: True, &#39;connection.blocked&#39;: True, &#39;consumer_priorities&#39;: True, &#39;authentication_failure_close&#39;: True, &#39;per_consumer_qos&#39;: True, &#39;direct_reply_to&#39;: True}, &#39;cluster_name&#39;: &#39;rabbit@hpfx2.collab.science.gc.ca&#39;, &#39;copyright&#39;: &#39;Copyright (C) 2007-2019 Pivotal Software, Inc.&#39;, &#39;information&#39;: &#39;Licensed under the MPL.  See http://www.rabbitmq.com/&#39;, &#39;platform&#39;: &#39;Erlang/OTP 21.3&#39;, &#39;product&#39;: &#39;RabbitMQ&#39;, &#39;version&#39;: &#39;3.7.13&#39;}, mechanisms: [b&#39;AMQPLAIN&#39;, b&#39;PLAIN&#39;], locales: [&#39;en_US&#39;]
+2022-03-19 13:21:09,640 [DEBUG] amqp __init__ using channel_id: 1
+2022-03-19 13:21:09,661 [DEBUG] amqp _on_open_ok Channel open
+2022-03-19 13:21:09,751 [DEBUG] sarracenia.flowcb.retry __init__ sr_retry __init__
+2022-03-19 13:21:09,751 [DEBUG] sarracenia.diskqueue __init__  work_retry_00 __init__
+2022-03-19 13:21:09,759 [DEBUG] sarracenia.config add_option MemoryMax declared as type:&lt;class &#39;int&#39;&gt; value:0
+2022-03-19 13:21:09,759 [DEBUG] sarracenia.config add_option MemoryBaseLineFile declared as type:&lt;class &#39;int&#39;&gt; value:100
+2022-03-19 13:21:09,759 [DEBUG] sarracenia.config add_option MemoryMultiplier declared as type:&lt;class &#39;float&#39;&gt; value:3
+2022-03-19 13:21:09,760 [DEBUG] sarracenia.config check_undeclared_options missing defaults: {&#39;notify_only&#39;, &#39;retry_mode&#39;, &#39;dry_run&#39;, &#39;restore&#39;, &#39;header&#39;, &#39;nodupe_basis&#39;, &#39;realpathFilter&#39;, &#39;MemoryMax&#39;, &#39;MemoryBaseLineFile&#39;, &#39;force_polling&#39;, &#39;pipe&#39;, &#39;exchange_suffix&#39;, &#39;post_exchange_split&#39;, &#39;set_passwords&#39;, &#39;cache_stat&#39;, &#39;reconnect&#39;, &#39;source_from_exchange&#39;, &#39;sanity_log_dead&#39;, &#39;follow_symlinks&#39;, &#39;exchange_split&#39;, &#39;feeder&#39;, &#39;post_on_start&#39;, &#39;save&#39;, &#39;report_daemons&#39;, &#39;MemoryMultiplier&#39;, &#39;destination&#39;, &#39;inplace&#39;, &#39;pump_flag&#39;, &#39;retry_ttl&#39;, &#39;post_exchange&#39;, &#39;report_exchange&#39;, &#39;blocksize&#39;, &#39;post_exchange_suffix&#39;, &#39;path&#39;}
+2022-03-19 13:21:09,760 [INFO] sarracenia.flow run options:
+2022-03-19 13:21:09,770 [INFO] sarracenia.flow run callbacks loaded: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;]
+2022-03-19 13:21:09,770 [INFO] sarracenia.flow run pid: 2725204 subscribe/flow_demo instance: 0
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+_Config__admin=None, _Config__broker=&#34;...ymous:anonymous@hpfx.collab.science.gc.ca None True True False False None None&#34;, _Config__post_broker=None,
+accel_threshold=0, acceptSizeWrong=False, acceptUnmatched=False, attempts=3, auto_delete=False, baseDir=None, baseUrl_relPath=False, batch=1,
+bindings=&#34;...(&#39;xpublic&#39;, [&#39;v02&#39;, &#39;post&#39;], [&#39;*&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;#&#39;])]&#34;, bufsize=1048576, bytes_per_second=None, bytes_ps=0,
+cfg_run_dir=&#39;.&#39;, component=&#39;subscribe&#39;, config=&#39;flow_demo&#39;, currentDir=None, debug=False, declared_exchanges=[], declared_users={}, delete=False,
+destfn_script=None, directory=None, discard=False, documentRoot=None, download=True, durable=True, env_declared=[], exchange=None, exchangeDeclare=True,
+expire=300, fileEvents={&#39;modify&#39;, &#39;delete&#39;, &#39;create&#39;, &#39;link&#39;}, filename=&#39;WHATFN&#39;, fixed_headers={}, flatten=&#39;/&#39;, hostdir=&#39;fractal&#39;, hostname=&#39;fractal&#39;,
+housekeeping=300, imports=[], inflight=None, inline=False, inline_encoding=&#39;guess&#39;, inline_max=4096, inline_only=False, instances=1,
+integrity_arbitrary_value=None, integrity_method=&#39;sha512&#39;, logEvents={&#39;after_work&#39;, &#39;after_accept&#39;, &#39;on_housekeeping&#39;},
+logFormat=&#39;%(asctime)s [%(levelname)s] %(name)s %(funcName)s %(message)s&#39;, logLevel=&#39;info&#39;, logStdout=False, log_flowcb_needed=False, log_reject=False,
+lr_backupCount=5, lr_interval=1, lr_when=&#39;midnight&#39;, masks=&#34;...*&#39;, &#39;/tmp/flow_demo&#39;, None, re.compile(&#39;.*&#39;), True, False, False, False, &#39;/&#39;)]&#34;,
+messageAgeMax=0, messageCountMax=5, messageDebugDump=False, messageRateMax=0, messageRateMin=0,
+message_strategy={&#39;reset&#39;: True, &#39;stubborn&#39;: True, &#39;failure_duration&#39;: &#39;5m&#39;}, message_ttl=0, mirror=True, no=0, nodupe_fileAgeMax=0, nodupe_ttl=0,
+overwrite=True, permCopy=True, permDefault=0, permDirDefault=509, permLog=384,
+pid_filename=&#39;/home/peter/.cache/sr3/subscribe/flow_demo//subscribe_flow_demo_00.pid&#39;, plugins_early=[], plugins_late=[], post_baseDir=None,
+post_baseUrl=None, post_documentRoot=None, post_exchanges=[], post_topicPrefix=[&#39;v02&#39;, &#39;post&#39;], prefetch=25, pstrip=False, queueBind=True, queueDeclare=True,
+queueName=&#39;q_anonymous.subscriber_test2&#39;, randid=&#39;f32a&#39;, randomize=False, realpathPost=False, rename=None, report_back=False, reset=False, retry_path=&#39;.&#39;,
+settings={}, sleep=0.1, statehost=False, strip=0, subtopic=[], timeCopy=True, timeout=300, timezone=&#39;UTC&#39;, tls_rigour=&#39;normal&#39;, topicPrefix=[&#39;v02&#39;, &#39;post&#39;],
+undeclared=[], users=False, v2plugin_options=[], v2plugins={}, vhost=&#39;/&#39;, vip=None
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-03-19 13:21:10,792 [DEBUG] sarracenia.config add_option accel_wget_command declared as type:&lt;class &#39;str&#39;&gt; value:/usr/bin/wget %s -O %d
+2022-03-19 13:21:11,380 [DEBUG] amqp collect Closed channel #1
+2022-03-19 13:21:11,380 [INFO] sarracenia.flowcb.gather.message on_stop closing
+2022-03-19 13:21:11,381 [INFO] sarracenia.flow close flow/close completed cleanly pid: 2725204 subscribe/flow_demo instance: 0
+</pre></div></div>
+</div>
+</section>
+<section id="Conclusion:">
+<h2>Conclusion:<a class="headerlink" href="#Conclusion:" title="Permalink to this heading"></a></h2>
+<p>Avec la classe sarracenia.flow, une méthode de fonctionnement asynchrone est prise en charge, elle peut être personnalisée à l’aide de la classe flowcb (rappel de flux) pour introduire un traitement spécifique à des moments spécifiques. C’est comme l’invocation d’une seule instance à partir de la ligne de commande, sauf que toute la configuration est effectuée dans python en définissant des champs cfg, plutôt qu’en utilisant le langage de configuration.</p>
+<p>Qu’est-ce qui est perdu par rapport à l’utilisation de l’outil de ligne de commande :</p>
+<ul class="simple">
+<li><p>possibilité d’utiliser le langage de configuration (légèrement plus simple que d’attribuer des valeurs à l’objet cfg)</p></li>
+<li><p>exécution facile de plusieurs instances,</p></li>
+<li><p>surveillance coordonnée des instances (redémarrages en cas d’échec, et nombre programmable d’abonnés démarrés par configuration.)</p></li>
+<li><p>gestion des fichiers journaux.</p></li>
+</ul>
+<p>L’outil de ligne de commande fournit ces fonctionnalités supplémentaires.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="2_CLI_with_flowcb_demo.html" class="btn btn-neutral float-left" title="Personnalisez la gestion des fichiers avec les rappels." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4_api_moth_sub_demo.html" class="btn btn-neutral float-right" title="Un premier exemple utilisant l’API Sarracenia Moth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Shared Services Canada, Government of Canada, GPLv2.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

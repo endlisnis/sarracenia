@@ -158,20 +158,31 @@
 
 <span class="sd">        * subTopic  </span>
 
-<span class="sd">        * id   (queue for amqp, id for mqtt)</span>
+<span class="sd">        * queueName   (for amqp, used as client-id for mqtt)</span>
 
 <span class="sd">        this library knows nothing about Sarracenia, the only code used from sarracenia is to interpret</span>
 <span class="sd">        duration properties, from the root sarracenia/__init__.py, the broker argument from sarracenia.credentials</span>
 <span class="sd">  </span>
 <span class="sd">        usage::</span>
 
-<span class="sd">           c= Moth( broker, True, &#39;5m&#39;, { &#39;batch&#39;:1 } )</span>
+<span class="sd">           import sarracenia.moth</span>
+<span class="sd">           import sarracenia.credentials</span>
 
-<span class="sd">           c.newMessages()</span>
+
+<span class="sd">           props = sarracenia.moth.default_options</span>
+<span class="sd">           props[&#39;broker&#39;] = sarracenia.credentials.Credential(&#39;amqps://anonymous:anonymous@hpfx.collab.science.gc.ca&#39;)</span>
+<span class="sd">           props[&#39;expire&#39;] = 300</span>
+<span class="sd">           props[&#39;batch&#39;] = 1</span>
+<span class="sd">           is_subscriber=True</span>
+
+<span class="sd">           c= Moth( props, is_subscriber  )</span>
+
+<span class="sd">           messages = c.newMessages()</span>
+
 <span class="sd">           # if there are new messages from a publisher, return them, otherwise return</span>
 <span class="sd">           # an empty list []].</span>
 <span class="sd">             </span>
-<span class="sd">           p=Moth( broker, True, &#39;5m&#39;, { &#39;batch&#39;:1 }, True )</span>
+<span class="sd">           p=Moth( { &#39;batch&#39;:1 }, False )</span>
 
 <span class="sd">           p.putNewMessage()</span>
 
@@ -249,7 +260,7 @@
 
 <span class="sd">       *  &#39;broker&#39; : an sr_broker ?</span>
 
-<span class="sd">       *  &#39;Queue&#39;  : Mandatory, name of a queue. (only in AMQP... hmm...)</span>
+<span class="sd">       *  &#39;queueName&#39;  : Mandatory, name of a queue. (only in AMQP... hmm...)</span>
 
 <span class="sd">       *  &#39;bindings&#39; : [ list of bindings ]</span>
 
@@ -266,53 +277,53 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">subFactory</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Moth&#39;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">subFactory</span><span class="p">(</span><span class="n">props</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Moth&#39;</span><span class="p">:</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">broker</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span> <span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;no broker specified&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span><span class="s1">&#39;url&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">],</span><span class="s1">&#39;url&#39;</span><span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;invalid broker url&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">ProtocolPresent</span><span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ProtocolPresent</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">):</span>
            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;unknown broker scheme/protocol specified&#39;</span><span class="p">)</span>
            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">Moth</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">():</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span>
-                <span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">and</span>
-                <span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">)):</span>
-                <span class="k">return</span> <span class="n">sc</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span>
+                <span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">and</span>
+                <span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="n">sc</span><span class="p">(</span><span class="n">props</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;broker intialization failure&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">pubFactory</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Moth&#39;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">broker</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">pubFactory</span><span class="p">(</span><span class="n">props</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Moth&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;no broker specified&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span><span class="s1">&#39;url&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">],</span><span class="s1">&#39;url&#39;</span><span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;invalid broker url&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">ProtocolPresent</span><span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ProtocolPresent</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">):</span>
            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;unknown broker scheme/protocol specified&#39;</span><span class="p">)</span>
            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">Moth</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">():</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span>
-                <span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">and</span>
-                <span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">)):</span>
-                <span class="k">return</span> <span class="n">sc</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span>
+                <span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">and</span>
+                <span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="n">sc</span><span class="p">(</span><span class="n">props</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
         <span class="c1"># ProtocolPresent test should ensure that we never get here...</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;broker intialization failure&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="Moth.__init__"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">broker</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Moth.__init__"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           If is_subscriber=True, then this is a consuming instance.</span>
 <span class="sd">           expect calls to get* routines.</span>
@@ -337,8 +348,6 @@
 
         <span class="k">if</span> <span class="n">props</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">broker</span> <span class="o">=</span> <span class="n">broker</span>
 
         <span class="n">me</span> <span class="o">=</span> <span class="s1">&#39;sarracenia.moth.Moth&#39;</span>
 

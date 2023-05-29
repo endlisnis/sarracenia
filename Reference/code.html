@@ -569,6 +569,35 @@ pipe</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.Config" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The option parser to produce a single configuration.</p>
+<p>it can be instantiated with one of:</p>
+<ul class="simple">
+<li><p>one_config(component, config, isPost=False) – read the options  for
+a given component an configuration,  (all in one call.)</p></li>
+</ul>
+<p>On the other hand, a configu can be built up from the following constructors:</p>
+<ul class="simple">
+<li><p>default_config() – returns an empty configuration, given a config file tree.</p></li>
+<li><p>no_file_config() – returns an empty config without any config file tree.</p></li>
+</ul>
+<p>Then just add settings manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">no_file_config</span><span class="p">()</span>
+
+<span class="n">cfg</span><span class="o">.</span><span class="n">broker</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">Credential</span><span class="p">(</span><span class="s1">&#39;amqps://anonymous:anonymous@hpfx.collab.science.gc.ca&#39;</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">topicPrefix</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;v02&#39;</span><span class="p">,</span> <span class="s1">&#39;post&#39;</span><span class="p">]</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">component</span> <span class="o">=</span> <span class="s1">&#39;subscribe&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="s1">&#39;flow_demo&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">bindings</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s1">&#39;xpublic&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;v02&#39;</span><span class="p">,</span> <span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;WXO-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;observations&#39;</span><span class="p">,</span> <span class="s1">&#39;swob-ml&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span> <span class="p">])</span> <span class="p">]</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">queueName</span><span class="o">=</span><span class="s1">&#39;q_anonymous.subscriber_test2&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">download</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">batch</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">messageCountMax</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="c1"># set the instance number for the flow class.</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">no</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p># and at the end call finalize</p>
+<p>cfg.finalize()</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.config.Config.__deepcopy__">
 <span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Configuration</span></span></span><a class="reference internal" href="../_modules/sarracenia/config.html#Config.__deepcopy__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.Config.__deepcopy__" title="Permalink to this definition"></a></dt>
@@ -580,7 +609,7 @@ ok on ubuntu 20.04</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.config.Config.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Configuration</span></span></span><a class="reference internal" href="../_modules/sarracenia/config.html#Config.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.Config.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sarracenia.config.Config" title="sarracenia.config.Config"><span class="pre">Config</span></a></span></span><a class="reference internal" href="../_modules/sarracenia/config.html#Config.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.Config.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>instantiate an empty Configuration</p>
 </dd></dl>
 
@@ -720,9 +749,11 @@ the added necessary authentication details from sarracenia.Credentials.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.config.Config.fill_missing_options">
-<span class="sig-name descname"><span class="pre">fill_missing_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/config.html#Config.fill_missing_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.Config.fill_missing_options" title="Permalink to this definition"></a></dt>
-<dd><p>There are default options that apply only if they are not overridden…</p>
+<dt class="sig sig-object py" id="sarracenia.config.Config.finalize">
+<span class="sig-name descname"><span class="pre">finalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/config.html#Config.finalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.Config.finalize" title="Permalink to this definition"></a></dt>
+<dd><p>Before final use, take the existing settings, and infer any missing needed defaults from what is provided.
+Should be called prior to using a configuration.</p>
+<p>There are default options that apply only if they are not overridden…</p>
 </dd></dl>
 
 <dl class="py method">
@@ -979,6 +1010,12 @@ AMQPLAIN, EXTERNAL or GSSAPI)</p>
 </dl>
 </dd></dl>
 
+<p>Usage:</p>
+<blockquote>
+<div><p># build a credential from a url string:</p>
+<p>from sarracenia.credentials import Credential</p>
+<p>broker = Credential(‘amqps://anonymous:anonymous&#64;hpfx.collab.science.gc.ca’)</p>
+</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.credentials.Credential.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urlstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/credentials.html#Credential.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.credentials.Credential.__init__" title="Permalink to this definition"></a></dt>
@@ -1020,6 +1057,15 @@ AMQPLAIN, EXTERNAL or GSSAPI)</p>
 </dl>
 </dd></dl>
 
+<dl>
+<dt>Usage:</dt><dd><p># build a credential via lookup in the normal files:
+import CredentialDB from sarracenia.credentials</p>
+<p>credentials = CredentialDB.read( “/the/path/to/the/credentials.conf” )</p>
+<p># if there are corresponding passwords or modulation of login information look it up.</p>
+<p>broker = credentials.get( “amqps://hpfx.collab.science.gc.ca” )
+remote = credentials.get( “sftp://hoho&#64;theserver” )</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.credentials.CredentialDB.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Unused_logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/credentials.html#CredentialDB.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.credentials.CredentialDB.__init__" title="Permalink to this definition"></a></dt>
@@ -1035,6 +1081,43 @@ AMQPLAIN, EXTERNAL or GSSAPI)</p>
 <dt class="sig sig-object py" id="sarracenia.credentials.CredentialDB.__weakref__">
 <span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#sarracenia.credentials.CredentialDB.__weakref__" title="Permalink to this definition"></a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sarracenia.credentials.CredentialDB._parse">
+<span class="sig-name descname"><span class="pre">_parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/credentials.html#CredentialDB._parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.credentials.CredentialDB._parse" title="Permalink to this definition"></a></dt>
+<dd><p>Parse a line of a credentials file, add it to the CredentialDB.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<em>str</em>) – line to be parsed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sarracenia.credentials.CredentialDB._resolve">
+<span class="sig-name descname"><span class="pre">_resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urlstr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/credentials.html#CredentialDB._resolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.credentials.CredentialDB._resolve" title="Permalink to this definition"></a></dt>
+<dd><p>Resolve credentials for AMQP vhost from ones passed as a string, and optionally a urllib.parse.ParseResult
+object, into a sarracenia.credentials.Credential object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>urlstr</strong> (<em>str</em>) – credentials in a URL string.</p></li>
+<li><p><strong>url</strong> (<em>urllib.parse.ParseResult</em>) – ParseResult object with creds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>containing</dt><dd><p>result (bool): <code class="docutils literal notranslate"><span class="pre">False</span></code> if the creds were not in the CredentialDB. <code class="docutils literal notranslate"><span class="pre">True</span></code> if they were.
+details (sarracenia.credentials.Credential): the updated Credential object, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1124,17 +1207,6 @@ the URL.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.credentials.CredentialDB.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/credentials.html#CredentialDB.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.credentials.CredentialDB.parse" title="Permalink to this definition"></a></dt>
-<dd><p>Parse a line of a credentials file, add it to the CredentialDB.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>line</strong> (<em>str</em>) – line to be parsed.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.credentials.CredentialDB.read">
 <span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/credentials.html#CredentialDB.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.credentials.CredentialDB.read" title="Permalink to this definition"></a></dt>
 <dd><p>Read in a file containing credentials (e.g. credentials.conf). All credentials are parsed and added to the
@@ -1142,32 +1214,6 @@ CredentialDB.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path of file to be read.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.credentials.CredentialDB.resolve">
-<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urlstr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/credentials.html#CredentialDB.resolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.credentials.CredentialDB.resolve" title="Permalink to this definition"></a></dt>
-<dd><p>Resolve credentials for AMQP vhost from ones passed as a string, and optionally a urllib.parse.ParseResult
-object, into a sarracenia.credentials.Credential object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>urlstr</strong> (<em>str</em>) – credentials in a URL string.</p></li>
-<li><p><strong>url</strong> (<em>urllib.parse.ParseResult</em>) – ParseResult object with creds.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>containing</dt><dd><p>result (bool): <code class="docutils literal notranslate"><span class="pre">False</span></code> if the creds were not in the CredentialDB. <code class="docutils literal notranslate"><span class="pre">True</span></code> if they were.
-details (sarracenia.credentials.Credential): the updated Credential object, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1948,7 +1994,7 @@ of a file, to generate an integrity signature.</p>
 <span id="sarracenia-moth"></span><h2><a class="toc-backref" href="#id24" role="doc-backlink">sarracenia.moth</a><a class="headerlink" href="#module-sarracenia.moth" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="sarracenia.moth.Moth">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.moth.</span></span><span class="sig-name descname"><span class="pre">Moth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">broker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/moth.html#Moth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.Moth" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.moth.</span></span><span class="sig-name descname"><span class="pre">Moth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/moth.html#Moth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.Moth" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <blockquote>
 <div><p>Moth … Messages Organized by Topic Headers
@@ -1981,18 +2027,29 @@ API to allow pass-through of protocol specific properties, but apply templates f
 <li><p>broker</p></li>
 <li><p>topicPrefix</p></li>
 <li><p>subTopic</p></li>
-<li><p>id   (queue for amqp, id for mqtt)</p></li>
+<li><p>queueName   (for amqp, used as client-id for mqtt)</p></li>
 </ul>
 <p>this library knows nothing about Sarracenia, the only code used from sarracenia is to interpret
 duration properties, from the root sarracenia/__init__.py, the broker argument from sarracenia.credentials</p>
 <p>usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span> <span class="n">Moth</span><span class="p">(</span> <span class="n">broker</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;5m&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span><span class="mi">1</span> <span class="p">}</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sarracenia.moth</span>
+<span class="kn">import</span> <span class="nn">sarracenia.credentials</span>
 
-<span class="n">c</span><span class="o">.</span><span class="n">newMessages</span><span class="p">()</span>
+
+<span class="n">props</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">moth</span><span class="o">.</span><span class="n">default_options</span>
+<span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">Credential</span><span class="p">(</span><span class="s1">&#39;amqps://anonymous:anonymous@hpfx.collab.science.gc.ca&#39;</span><span class="p">)</span>
+<span class="n">props</span><span class="p">[</span><span class="s1">&#39;expire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">props</span><span class="p">[</span><span class="s1">&#39;batch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">is_subscriber</span><span class="o">=</span><span class="kc">True</span>
+
+<span class="n">c</span><span class="o">=</span> <span class="n">Moth</span><span class="p">(</span> <span class="n">props</span><span class="p">,</span> <span class="n">is_subscriber</span>  <span class="p">)</span>
+
+<span class="n">messages</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">newMessages</span><span class="p">()</span>
+
 <span class="c1"># if there are new messages from a publisher, return them, otherwise return</span>
 <span class="c1"># an empty list []].</span>
 
-<span class="n">p</span><span class="o">=</span><span class="n">Moth</span><span class="p">(</span> <span class="n">broker</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;5m&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span><span class="mi">1</span> <span class="p">},</span> <span class="kc">True</span> <span class="p">)</span>
+<span class="n">p</span><span class="o">=</span><span class="n">Moth</span><span class="p">(</span> <span class="p">{</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span><span class="mi">1</span> <span class="p">},</span> <span class="kc">False</span> <span class="p">)</span>
 
 <span class="n">p</span><span class="o">.</span><span class="n">putNewMessage</span><span class="p">()</span>
 
@@ -2056,7 +2113,7 @@ consumer queues (AMQP.)</p>
 <ul class="simple">
 <li><p>‘batch’  : 100  # how many messages to get at once</p></li>
 <li><p>‘broker’ : an sr_broker ?</p></li>
-<li><p>‘Queue’  : Mandatory, name of a queue. (only in AMQP… hmm…)</p></li>
+<li><p>‘queueName’  : Mandatory, name of a queue. (only in AMQP… hmm…)</p></li>
 <li><p>‘bindings’ : [ list of bindings ]</p></li>
 <li><p>‘loop’</p></li>
 </ul>
@@ -2070,7 +2127,7 @@ consumer queues (AMQP.)</p>
 </ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.moth.Moth.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">broker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/sarracenia/moth.html#Moth.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.Moth.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/sarracenia/moth.html#Moth.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.Moth.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>If is_subscriber=True, then this is a consuming instance.
 expect calls to get* routines.</p>
 <p>if is_subscriber=False, then expect/permit only calls to put*</p>
@@ -2148,7 +2205,7 @@ self.metrics[‘TxBadCount’] should be incremented by 1 if an invalid message 
 <span id="sarracenia-moth-amqp"></span><h2><a class="toc-backref" href="#id25" role="doc-backlink">sarracenia.moth.amqp</a><a class="headerlink" href="#module-sarracenia.moth.amqp" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="sarracenia.moth.amqp.AMQP">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.moth.amqp.</span></span><span class="sig-name descname"><span class="pre">AMQP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">broker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/moth/amqp.html#AMQP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.amqp.AMQP" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.moth.amqp.</span></span><span class="sig-name descname"><span class="pre">AMQP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/moth/amqp.html#AMQP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.amqp.AMQP" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#sarracenia.moth.Moth" title="sarracenia.moth.Moth"><code class="xref py py-class docutils literal notranslate"><span class="pre">Moth</span></code></a></p>
 <p>implementation of the Moth API for the amqp library, which is built to talk to rabbitmq brokers in 0.8 and 0.9
 AMQP dialects.</p>
@@ -2180,7 +2237,7 @@ returns True if connected, false otherwise.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.moth.amqp.AMQP.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">broker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/sarracenia/moth/amqp.html#AMQP.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.amqp.AMQP.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/sarracenia/moth/amqp.html#AMQP.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.amqp.AMQP.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>connect to broker, depending on message_strategy stubborness, remain connected.</p>
 </dd></dl>
 

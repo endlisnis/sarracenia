@@ -371,7 +371,7 @@ div.rendered_html tbody tr:hover {
 <p>The <a class="reference external" href="../Reference/code.html#module-sarracenia.flow">sarracenia.flow class</a> provides built in accept/reject filtering for messages, supports built-in downloading in several protocols, retries on failure, and allows the creation of callbacks, to customize processing.</p>
 <p>You need to provide a configuration as an argument when instantiating a subscriber. the <em>sarracenia.config.no_file_config()</em> returns an empty configuration without consulting any of the sr3 configuration file tree.</p>
 <p>After adding the modifications needed to the configuration, the subscriber is then initiated and run.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -379,6 +379,14 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="o">!</span>mkdir<span class="w"> </span>/tmp/flow_demo
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+mkdir: cannot create directory ‘/tmp/flow_demo’: File exists
+</pre></div></div>
 </div>
 <p>make a directory for the files you are going to download. the root of the directory tree to must exist.</p>
 <div class="nbinput nblast docutils container">
@@ -407,8 +415,9 @@ div.rendered_html tbody tr:hover {
 <span class="c1"># set the instance number for the flow class.</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">no</span><span class="o">=</span><span class="mi">0</span>
 
-<span class="c1"># set flow class to put working files in ~/.cache/sr3/subscrribe/flow_demo directory.</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">pid_filename</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_pid_filename</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">component</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># set other settings based on provided ones, so it is ready for use.</span>
+
+<span class="n">cfg</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
 
 <span class="c1"># accept/reject patterns:</span>
 <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;.*&quot;</span>
@@ -471,47 +480,62 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2023-01-06 12:58:25,789 [INFO] sarracenia.flow loadCallbacks flowCallback plugins to load: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;]
-2023-01-06 12:58:25,896 [DEBUG] amqp _on_start Start from server, version: 0.9, properties: {&#39;capabilities&#39;: {&#39;publisher_confirms&#39;: True, &#39;exchange_exchange_bindings&#39;: True, &#39;basic.nack&#39;: True, &#39;consumer_cancel_notify&#39;: True, &#39;connection.blocked&#39;: True, &#39;consumer_priorities&#39;: True, &#39;authentication_failure_close&#39;: True, &#39;per_consumer_qos&#39;: True, &#39;direct_reply_to&#39;: True}, &#39;cluster_name&#39;: &#39;rabbit@hpfx2.collab.science.gc.ca&#39;, &#39;copyright&#39;: &#39;Copyright (C) 2007-2019 Pivotal Software, Inc.&#39;, &#39;information&#39;: &#39;Licensed under the MPL.  See http://www.rabbitmq.com/&#39;, &#39;platform&#39;: &#39;Erlang/OTP 21.3&#39;, &#39;product&#39;: &#39;RabbitMQ&#39;, &#39;version&#39;: &#39;3.7.13&#39;}, mechanisms: [b&#39;AMQPLAIN&#39;, b&#39;PLAIN&#39;], locales: [&#39;en_US&#39;]
-2023-01-06 12:58:25,934 [DEBUG] amqp __init__ using channel_id: 1
-2023-01-06 12:58:25,952 [DEBUG] amqp _on_open_ok Channel open
-2023-01-06 12:58:26,008 [INFO] sarracenia.moth.amqp __getSetup queue declared q_anonymous.subscriber_test2 (as: amqps://anonymous@hpfx.collab.science.gc.ca)
-2023-01-06 12:58:26,008 [INFO] sarracenia.moth.amqp __getSetup binding q_anonymous.subscriber_test2 with v02.post.*.WXO-DD.observations.swob-ml.# to xpublic (as: amqps://anonymous@hpfx.collab.science.gc.ca)
-2023-01-06 12:58:26,029 [DEBUG] sarracenia.moth.amqp __getSetup getSetup ... Done!
-2023-01-06 12:58:26,033 [DEBUG] sarracenia.flowcb.retry __init__ sr_retry __init__
-2023-01-06 12:58:26,034 [DEBUG] sarracenia.diskqueue __init__  work_retry_00 __init__
-2023-01-06 12:58:26,035 [DEBUG] sarracenia.config add_option MemoryMax declared as type:&lt;class &#39;int&#39;&gt; value:0
-2023-01-06 12:58:26,036 [DEBUG] sarracenia.config add_option MemoryBaseLineFile declared as type:&lt;class &#39;int&#39;&gt; value:100
-2023-01-06 12:58:26,036 [DEBUG] sarracenia.config add_option MemoryMultiplier declared as type:&lt;class &#39;float&#39;&gt; value:3
-2023-01-06 12:58:26,036 [DEBUG] sarracenia.config check_undeclared_options missing defaults: {&#39;nodupe_basis&#39;, &#39;post_exchangeSuffix&#39;, &#39;MemoryBaseLineFile&#39;, &#39;header&#39;, &#39;integrity&#39;, &#39;inplace&#39;, &#39;blocksize&#39;, &#39;retry_mode&#39;, &#39;retry_ttl&#39;, &#39;reconnect&#39;, &#39;cluster&#39;, &#39;set_passwords&#39;, &#39;MemoryMax&#39;, &#39;post_on_start&#39;, &#39;pump_flag&#39;, &#39;notify_only&#39;, &#39;force_polling&#39;, &#39;post_exchange&#39;, &#39;save&#39;, &#39;restore&#39;, &#39;exchangeSplit&#39;, &#39;pollUrl&#39;, &#39;MemoryMultiplier&#39;, &#39;sendTo&#39;, &#39;exchange_suffix&#39;, &#39;sanity_log_dead&#39;, &#39;post_exchangeSplit&#39;, &#39;report_exchange&#39;, &#39;cache_stat&#39;, &#39;realpathFilter&#39;, &#39;follow_symlinks&#39;, &#39;feeder&#39;, &#39;source&#39;}
-2023-01-06 12:58:26,036 [INFO] sarracenia.flow run callbacks loaded: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;]
-2023-01-06 12:58:26,037 [INFO] sarracenia.flow run pid: 1851720 subscribe/flow_demo instance: 0
-2023-01-06 12:58:26,051 [INFO] sarracenia.flow run now active on vip None
-2023-01-06 12:58:27,071 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_2f05f6181d347aa3150ad05c0ba520df:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230106T175825.880&#39;, &#39;atime&#39;: &#39;20230106T175825.880&#39;, &#39;subtopic&#39;: [&#39;20230106&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230106&#39;, &#39;CXBL&#39;], &#39;_deleteOnPost&#39;: {&#39;ack_id&#39;, &#39;subtopic&#39;, &#39;version&#39;, &#39;exchange&#39;, &#39;local_offset&#39;}, &#39;pubTime&#39;: &#39;20230106T175825.880&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230106/WXO-DD/observations/swob-ml/20230106/CXBL/2023-01-06-1757-CXBL-AUTO-minute-swob.xml&#39;, &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;WGdF41ExchcZQKS3aInj0Q==&#39;}, &#39;size&#39;: 9131, &#39;version&#39;: &#39;v02&#39;, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 1, &#39;local_offset&#39;: 0}
-2023-01-06 12:58:27,072 [DEBUG] sarracenia.config add_option accelWgetCommand declared as type:&lt;class &#39;str&#39;&gt; value:/usr/bin/wget %s -o - -O %d
-2023-01-06 12:58:27,184 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_43dca9c7707182800deee1da98027bdf:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230106T175825.881&#39;, &#39;atime&#39;: &#39;20230106T175825.881&#39;, &#39;subtopic&#39;: [&#39;20230106&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230106&#39;, &#39;CWQH&#39;], &#39;_deleteOnPost&#39;: {&#39;ack_id&#39;, &#39;subtopic&#39;, &#39;version&#39;, &#39;exchange&#39;, &#39;local_offset&#39;}, &#39;pubTime&#39;: &#39;20230106T175825.881&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230106/WXO-DD/observations/swob-ml/20230106/CWQH/2023-01-06-1757-CWQH-AUTO-minute-swob.xml&#39;, &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;K7GS7uFCCU+Mo8Woxzv37g==&#39;}, &#39;size&#39;: 9408, &#39;version&#39;: &#39;v02&#39;, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 2, &#39;local_offset&#39;: 0}
-2023-01-06 12:58:27,305 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_5425482ce3d2e8b33f8da04187984c91:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230106T175825.882&#39;, &#39;atime&#39;: &#39;20230106T175825.882&#39;, &#39;subtopic&#39;: [&#39;20230106&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230106&#39;, &#39;CXAR&#39;], &#39;_deleteOnPost&#39;: {&#39;ack_id&#39;, &#39;subtopic&#39;, &#39;version&#39;, &#39;exchange&#39;, &#39;local_offset&#39;}, &#39;pubTime&#39;: &#39;20230106T175825.882&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230106/WXO-DD/observations/swob-ml/20230106/CXAR/2023-01-06-1757-CXAR-AUTO-minute-swob.xml&#39;, &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;FmeON9WCu94yU9w3zi7tRg==&#39;}, &#39;size&#39;: 9449, &#39;version&#39;: &#39;v02&#39;, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 3, &#39;local_offset&#39;: 0}
-2023-01-06 12:58:27,426 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;DDSR.CMC,DDI.CMC,CMC,SCIENCE,EDM&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_6724d6cb6454f417eed3c81f285a4dc5:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230106175824&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230106T175825.882&#39;, &#39;atime&#39;: &#39;20230106T175825.882&#39;, &#39;subtopic&#39;: [&#39;20230106&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230106&#39;, &#39;CWOY&#39;], &#39;_deleteOnPost&#39;: {&#39;ack_id&#39;, &#39;subtopic&#39;, &#39;version&#39;, &#39;exchange&#39;, &#39;local_offset&#39;}, &#39;pubTime&#39;: &#39;20230106T175825.882&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230106/WXO-DD/observations/swob-ml/20230106/CWOY/2023-01-06-1757-CWOY-AUTO-minute-swob.xml&#39;, &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;E+GXZzZKQI+qzqGWcVwnRA==&#39;}, &#39;size&#39;: 9355, &#39;version&#39;: &#39;v02&#39;, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 4, &#39;local_offset&#39;: 0}
-2023-01-06 12:58:27,513 [INFO] sarracenia.flow please_stop ok, telling 3 callbacks about it.
-2023-01-06 12:58:27,514 [INFO] sarracenia.flow run starting last pass (without gather) through loop for cleanup.
-2023-01-06 12:58:27,514 [INFO] sarracenia.flow please_stop ok, telling 3 callbacks about it.
-2023-01-06 12:58:27,514 [INFO] sarracenia.flow run on_housekeeping pid: 1851720 subscribe/flow_demo instance: 0
-2023-01-06 12:58:27,515 [INFO] sarracenia.flowcb.gather.message on_housekeeping messages: good: 4 bad: 0 bytes: 584 Bytes average: 146 Bytes
-2023-01-06 12:58:27,515 [INFO] sarracenia.flowcb.retry on_housekeeping on_housekeeping
-2023-01-06 12:58:27,515 [INFO] sarracenia.diskqueue on_housekeeping work_retry_00 on_housekeeping
-2023-01-06 12:58:27,516 [ERROR] sarracenia.diskqueue on_housekeeping something went wrong
-2023-01-06 12:58:27,516 [INFO] sarracenia.diskqueue on_housekeeping No retry in list
-2023-01-06 12:58:27,516 [INFO] sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000601
-2023-01-06 12:58:27,517 [INFO] sarracenia.diskqueue on_housekeeping post_retry_000 on_housekeeping
-2023-01-06 12:58:27,517 [ERROR] sarracenia.diskqueue on_housekeeping something went wrong
-2023-01-06 12:58:27,517 [INFO] sarracenia.diskqueue on_housekeeping No retry in list
-2023-01-06 12:58:27,518 [INFO] sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000580
-2023-01-06 12:58:27,519 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current Memory cpu_times: user=0.4 system=0.06
-2023-01-06 12:58:27,519 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current mem usage: 758.9 MiB, accumulating count (4 or 4/100 so far) before self-setting threshold
-2023-01-06 12:58:27,519 [INFO] sarracenia.flow run clean stop from run loop
-2023-01-06 12:58:27,537 [DEBUG] amqp collect Closed channel #1
-2023-01-06 12:58:27,538 [INFO] sarracenia.flowcb.gather.message on_stop closing
-2023-01-06 12:58:27,538 [INFO] sarracenia.flow close flow/close completed cleanly pid: 1851720 subscribe/flow_demo instance: 0
+2023-05-27 12:03:19,949 [INFO] sarracenia.flow loadCallbacks flowCallback plugins to load: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;log&#39;]
+2023-05-27 12:03:20,031 [DEBUG] amqp _on_start Start from server, version: 0.9, properties: {&#39;capabilities&#39;: {&#39;publisher_confirms&#39;: True, &#39;exchange_exchange_bindings&#39;: True, &#39;basic.nack&#39;: True, &#39;consumer_cancel_notify&#39;: True, &#39;connection.blocked&#39;: True, &#39;consumer_priorities&#39;: True, &#39;authentication_failure_close&#39;: True, &#39;per_consumer_qos&#39;: True, &#39;direct_reply_to&#39;: True}, &#39;cluster_name&#39;: &#39;rabbit@hpfx2.collab.science.gc.ca&#39;, &#39;copyright&#39;: &#39;Copyright (c) 2007-2022 VMware, Inc. or its affiliates.&#39;, &#39;information&#39;: &#39;Licensed under the MPL 2.0. Website: https://rabbitmq.com&#39;, &#39;platform&#39;: &#39;Erlang/OTP 24.2.1&#39;, &#39;product&#39;: &#39;RabbitMQ&#39;, &#39;version&#39;: &#39;3.9.13&#39;}, mechanisms: [b&#39;AMQPLAIN&#39;, b&#39;PLAIN&#39;], locales: [&#39;en_US&#39;]
+2023-05-27 12:03:20,066 [DEBUG] amqp __init__ using channel_id: 1
+2023-05-27 12:03:20,084 [DEBUG] amqp _on_open_ok Channel open
+2023-05-27 12:03:20,126 [INFO] sarracenia.moth.amqp __getSetup queue declared q_anonymous.subscriber_test2 (as: amqps://anonymous@hpfx.collab.science.gc.ca)
+2023-05-27 12:03:20,126 [INFO] sarracenia.moth.amqp __getSetup binding q_anonymous.subscriber_test2 with v02.post.*.WXO-DD.observations.swob-ml.# to xpublic (as: amqps://anonymous@hpfx.collab.science.gc.ca)
+2023-05-27 12:03:20,148 [DEBUG] sarracenia.moth.amqp __getSetup getSetup ... Done!
+2023-05-27 12:03:20,149 [DEBUG] sarracenia.flowcb.retry __init__ sr_retry __init__
+2023-05-27 12:03:20,149 [DEBUG] sarracenia.config add_option retry_driver declared as type:&lt;class &#39;str&#39;&gt; value:disk
+2023-05-27 12:03:20,179 [DEBUG] sarracenia.diskqueue __init__  work_retry_00 __init__
+2023-05-27 12:03:20,180 [DEBUG] sarracenia.config add_option MemoryMax declared as type:&lt;class &#39;int&#39;&gt; value:0
+2023-05-27 12:03:20,180 [DEBUG] sarracenia.config add_option MemoryBaseLineFile declared as type:&lt;class &#39;int&#39;&gt; value:100
+2023-05-27 12:03:20,180 [DEBUG] sarracenia.config add_option MemoryMultiplier declared as type:&lt;class &#39;float&#39;&gt; value:3
+2023-05-27 12:03:20,181 [DEBUG] sarracenia.config add_option logEvents declared as type:&lt;class &#39;set&#39;&gt; value:{&#39;after_work&#39;, &#39;after_accept&#39;, &#39;on_housekeeping&#39;}
+2023-05-27 12:03:20,181 [DEBUG] sarracenia.config add_option logMessageDump declared as type:&lt;class &#39;bool&#39;&gt; value:False
+2023-05-27 12:03:20,181 [INFO] sarracenia.flowcb.log __init__ subscribe initialized with: {&#39;after_work&#39;, &#39;after_accept&#39;, &#39;on_housekeeping&#39;}
+2023-05-27 12:03:20,182 [DEBUG] sarracenia.config check_undeclared_options missing defaults: {&#39;reconnect&#39;, &#39;MemoryMultiplier&#39;, &#39;blocksize&#39;, &#39;cluster&#39;, &#39;source&#39;, &#39;post_exchange&#39;, &#39;post_exchangeSplit&#39;, &#39;action&#39;, &#39;realpathFilter&#39;, &#39;follow_symlinks&#39;, &#39;inplace&#39;, &#39;sendTo&#39;, &#39;force_polling&#39;, &#39;notify_only&#39;, &#39;pollUrl&#39;, &#39;exchange_suffix&#39;, &#39;retry_driver&#39;, &#39;MemoryBaseLineFile&#39;, &#39;count&#39;, &#39;MemoryMax&#39;, &#39;header&#39;, &#39;post_exchangeSuffix&#39;, &#39;nodupe_basis&#39;, &#39;restore&#39;, &#39;logMessageDump&#39;, &#39;report_exchange&#39;, &#39;feeder&#39;, &#39;post_on_start&#39;, &#39;save&#39;, &#39;integrity&#39;, &#39;exchangeSplit&#39;}
+2023-05-27 12:03:20,182 [INFO] sarracenia.flow run callbacks loaded: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;log&#39;]
+2023-05-27 12:03:20,182 [INFO] sarracenia.flow run pid: 1682497 subscribe/flow_demo instance: 0
+2023-05-27 12:03:20,199 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;_format&#39;: &#39;v02&#39;, &#39;_deleteOnPost&#39;: {&#39;local_offset&#39;, &#39;_format&#39;, &#39;exchange&#39;, &#39;ack_id&#39;, &#39;subtopic&#39;}, &#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;ALL&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_553d269d71c2c2d52a9b4968e509fef5:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230527T153759.475&#39;, &#39;atime&#39;: &#39;20230527T153759.475&#39;, &#39;pubTime&#39;: &#39;20230527T153759.475&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230527/WXO-DD/observations/swob-ml/20230527/CTNK/2023-05-27-1537-CTNK-AUTO-minute-swob.xml&#39;, &#39;subtopic&#39;: [&#39;20230527&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230527&#39;, &#39;CTNK&#39;], &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;YkkEEWfkyty+UOIP7fEUag==&#39;}, &#39;size&#39;: 9597, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 1, &#39;local_offset&#39;: 0}
+2023-05-27 12:03:20,199 [INFO] sarracenia.flowcb.log after_accept accepted: (lag: 1520.72 ) https://hpfx.collab.science.gc.ca /20230527/WXO-DD/observations/swob-ml/20230527/CTNK/2023-05-27-1537-CTNK-AUTO-minute-swob.xml
+2023-05-27 12:03:20,199 [INFO] sarracenia.flow run now active on vip None
+2023-05-27 12:03:20,200 [DEBUG] sarracenia.config add_option accelWgetCommand declared as type:&lt;class &#39;str&#39;&gt; value:/usr/bin/wget %s -o - -O %d
+2023-05-27 12:03:20,277 [INFO] sarracenia.flowcb.log after_work downloaded ok: /tmp/flow_demo/2023-05-27-1537-CTNK-AUTO-minute-swob.xml
+2023-05-27 12:03:20,304 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;_format&#39;: &#39;v02&#39;, &#39;_deleteOnPost&#39;: {&#39;local_offset&#39;, &#39;_format&#39;, &#39;exchange&#39;, &#39;ack_id&#39;, &#39;subtopic&#39;}, &#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;ALL&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_4e7603f7cb74d0193e5456a61042fca5:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230527T153759.474&#39;, &#39;atime&#39;: &#39;20230527T153759.474&#39;, &#39;pubTime&#39;: &#39;20230527T153759.474&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230527/WXO-DD/observations/swob-ml/20230527/CWST/2023-05-27-1537-CWST-AUTO-minute-swob.xml&#39;, &#39;subtopic&#39;: [&#39;20230527&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230527&#39;, &#39;CWST&#39;], &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;kaitX64I5bxPNIpELUQ7/A==&#39;}, &#39;size&#39;: 9824, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 2, &#39;local_offset&#39;: 0}
+2023-05-27 12:03:20,305 [INFO] sarracenia.flowcb.log after_accept accepted: (lag: 1520.83 ) https://hpfx.collab.science.gc.ca /20230527/WXO-DD/observations/swob-ml/20230527/CWST/2023-05-27-1537-CWST-AUTO-minute-swob.xml
+2023-05-27 12:03:20,390 [INFO] sarracenia.flowcb.log after_work downloaded ok: /tmp/flow_demo/2023-05-27-1537-CWST-AUTO-minute-swob.xml
+2023-05-27 12:03:20,416 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;_format&#39;: &#39;v02&#39;, &#39;_deleteOnPost&#39;: {&#39;local_offset&#39;, &#39;_format&#39;, &#39;exchange&#39;, &#39;ack_id&#39;, &#39;subtopic&#39;}, &#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;ALL&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_4ab40f078eb13197b272abb84cac6888:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230527T153759.474&#39;, &#39;atime&#39;: &#39;20230527T153759.474&#39;, &#39;pubTime&#39;: &#39;20230527T153759.474&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230527/WXO-DD/observations/swob-ml/20230527/CWKH/2023-05-27-1537-CWKH-AUTO-minute-swob.xml&#39;, &#39;subtopic&#39;: [&#39;20230527&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230527&#39;, &#39;CWKH&#39;], &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;r1E+zSg4n8PaB81Mnq6POw==&#39;}, &#39;size&#39;: 6125, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 3, &#39;local_offset&#39;: 0}
+2023-05-27 12:03:20,417 [INFO] sarracenia.flowcb.log after_accept accepted: (lag: 1520.94 ) https://hpfx.collab.science.gc.ca /20230527/WXO-DD/observations/swob-ml/20230527/CWKH/2023-05-27-1537-CWKH-AUTO-minute-swob.xml
+2023-05-27 12:03:20,507 [INFO] sarracenia.flowcb.log after_work downloaded ok: /tmp/flow_demo/2023-05-27-1537-CWKH-AUTO-minute-swob.xml
+2023-05-27 12:03:20,530 [DEBUG] sarracenia.moth.amqp getNewMessage new msg: {&#39;_format&#39;: &#39;v02&#39;, &#39;_deleteOnPost&#39;: {&#39;local_offset&#39;, &#39;_format&#39;, &#39;exchange&#39;, &#39;ack_id&#39;, &#39;subtopic&#39;}, &#39;sundew_extension&#39;: &#39;DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;from_cluster&#39;: &#39;DDSR.CMC&#39;, &#39;to_clusters&#39;: &#39;ALL&#39;, &#39;filename&#39;: &#39;msg_ddsr-WXO-DD_575c5ec63a2fe354c27ff82f3cf9181f:DMS:WXO_RENAMED_SWOB2:MSC:XML::20230527153757&#39;, &#39;source&#39;: &#39;WXO-DD&#39;, &#39;mtime&#39;: &#39;20230527T153759.476&#39;, &#39;atime&#39;: &#39;20230527T153759.476&#39;, &#39;pubTime&#39;: &#39;20230527T153759.476&#39;, &#39;baseUrl&#39;: &#39;https://hpfx.collab.science.gc.ca&#39;, &#39;relPath&#39;: &#39;/20230527/WXO-DD/observations/swob-ml/20230527/CVSJ/2023-05-27-1537-CVSJ-AUTO-minute-swob.xml&#39;, &#39;subtopic&#39;: [&#39;20230527&#39;, &#39;WXO-DD&#39;, &#39;observations&#39;, &#39;swob-ml&#39;, &#39;20230527&#39;, &#39;CVSJ&#39;], &#39;integrity&#39;: {&#39;method&#39;: &#39;md5&#39;, &#39;value&#39;: &#39;H2iMpFuVhCmP39IeGNwx9g==&#39;}, &#39;size&#39;: 9440, &#39;exchange&#39;: &#39;xpublic&#39;, &#39;ack_id&#39;: 4, &#39;local_offset&#39;: 0}
+2023-05-27 12:03:20,530 [INFO] sarracenia.flowcb.log after_accept accepted: (lag: 1521.05 ) https://hpfx.collab.science.gc.ca /20230527/WXO-DD/observations/swob-ml/20230527/CVSJ/2023-05-27-1537-CVSJ-AUTO-minute-swob.xml
+2023-05-27 12:03:20,630 [INFO] sarracenia.flowcb.log after_work downloaded ok: /tmp/flow_demo/2023-05-27-1537-CVSJ-AUTO-minute-swob.xml
+2023-05-27 12:03:20,630 [INFO] sarracenia.flow please_stop ok, telling 4 callbacks about it.
+2023-05-27 12:03:20,631 [INFO] sarracenia.flow run starting last pass (without gather) through loop for cleanup.
+2023-05-27 12:03:20,631 [INFO] sarracenia.flow please_stop ok, telling 4 callbacks about it.
+2023-05-27 12:03:20,632 [INFO] sarracenia.flow run on_housekeeping pid: 1682497 subscribe/flow_demo instance: 0
+2023-05-27 12:03:20,632 [INFO] sarracenia.flowcb.gather.message on_housekeeping messages: good: 4 bad: 0 bytes: 584 Bytes average: 146 Bytes
+2023-05-27 12:03:20,632 [INFO] sarracenia.flowcb.retry on_housekeeping on_housekeeping
+2023-05-27 12:03:20,633 [INFO] sarracenia.diskqueue on_housekeeping work_retry_00 on_housekeeping
+2023-05-27 12:03:20,633 [INFO] sarracenia.diskqueue on_housekeeping No retry in list
+2023-05-27 12:03:20,634 [INFO] sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000592
+2023-05-27 12:03:20,634 [INFO] sarracenia.diskqueue on_housekeeping post_retry_000 on_housekeeping
+2023-05-27 12:03:20,635 [INFO] sarracenia.diskqueue on_housekeeping No retry in list
+2023-05-27 12:03:20,635 [INFO] sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000487
+2023-05-27 12:03:20,636 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current Memory cpu_times: user=0.49 system=0.04
+2023-05-27 12:03:20,636 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current mem usage: 759.0 MiB, accumulating count (4 or 4/100 so far) before self-setting threshold
+2023-05-27 12:03:20,636 [INFO] sarracenia.flowcb.log stats version: 3.00.40, started: now, last_housekeeping:  0.5 seconds ago
+2023-05-27 12:03:20,637 [INFO] sarracenia.flowcb.log stats messages received: 4, accepted: 4, rejected: 0   rate accepted: 100.0% or 8.8 m/s
+2023-05-27 12:03:20,637 [INFO] sarracenia.flowcb.log stats files transferred: 4 bytes: 34.2 KiB rate: 75.2 KiB/sec
+2023-05-27 12:03:20,637 [INFO] sarracenia.flowcb.log stats lag: average: 1520.89, maximum: 1521.05
+2023-05-27 12:03:20,638 [INFO] sarracenia.flowcb.log on_housekeeping housekeeping
+2023-05-27 12:03:20,638 [INFO] sarracenia.flow run clean stop from run loop
+2023-05-27 12:03:20,663 [DEBUG] amqp collect Closed channel #1
+2023-05-27 12:03:20,664 [INFO] sarracenia.flowcb.gather.message on_stop closing
+2023-05-27 12:03:20,664 [INFO] sarracenia.flow close flow/close completed cleanly pid: 1682497 subscribe/flow_demo instance: 0
 </pre></div></div>
 </div>
 </section>

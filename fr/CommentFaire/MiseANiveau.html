@@ -160,6 +160,30 @@ qui peut générer des messages.</p>
 </section>
 <section id="git">
 <h2>git<a class="headerlink" href="#git" title="Permalink to this heading"></a></h2>
+<p><em>CHANGEMENT</em>:  l’interface de programmation (API) python a subit un changement de rupture</p>
+<blockquote>
+<div><p>pour la classe sarracenia.moth, il faut maintenant specifier l’options[‘broker’] au lieu
+de le fournir commen argument séparé.</p>
+<p>avant:</p>
+<ul class="simple">
+<li><p>Moth(broker: url, options: dict, is_subsubscriber: bool) -&gt; Config</p></li>
+<li><p>pubFactory( broker, options ) -&gt; Config</p></li>
+<li><p>subFactory( broker, options ) -&gt; Config</p></li>
+</ul>
+<p>après:</p>
+<ul class="simple">
+<li><p>Moth( options: dict, is_subscribe: bool) -&gt; Config</p></li>
+<li><p>pubFactory( options ) -&gt; Config</p></li>
+<li><p>subFactory( options ) -&gt; Config</p></li>
+</ul>
+<p>sarracenia.config API:</p>
+<blockquote>
+<div><p>Il est recommandé d´appeller <strong>sarracenia.config.finalize()</strong>
+après avoir fourni les options.  Celui-ci interpole et complète
+les valeurs d´options pou qu´ils soient utilisable par les
+composantes.</p>
+</div></blockquote>
+</div></blockquote>
 </section>
 <section id="id1">
 <h2>3.0.26<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>

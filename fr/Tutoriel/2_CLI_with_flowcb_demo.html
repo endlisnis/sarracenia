@@ -428,10 +428,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-03-19 13:19:27,886 2724830 [INFO] sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-2022-03-19 13:19:27,887 2724830 [INFO] root remove removing subscribe/hpfx_amis
+2023-05-28 16:35:16,492 1919860 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+2023-05-28 16:35:16,493 1919860 [INFO] root remove removing subscribe/hpfx_amis
 
-add: 2022-03-19 13:19:28,372 2724832 [INFO] sarracenia.sr add copying: /home/peter/Sarracenia/sr3/sarracenia/examples/subscribe/hpfx_amis.conf to /home/peter/.config/sr3/subscribe/hpfx_amis.conf
+add: 2023-05-28 16:35:17,637 1919863 [INFO] sarracenia.sr add copying: /home/peter/Sarracenia/sr3/sarracenia/examples/subscribe/hpfx_amis.conf to /home/peter/.config/sr3/subscribe/hpfx_amis.conf
 
 </pre></div></div>
 </div>
@@ -459,11 +459,12 @@ add: 2022-03-19 13:19:28,372 2724832 [INFO] sarracenia.sr add copying: /home/pet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-03-19 13:19:36,284 2724838 [INFO] sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
+2023-05-28 16:35:26,803 1919870 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
 Provided callback classes: ( /home/peter/Sarracenia/sr3/sarracenia )
-flowcb/accept/delete.py          flowcb/accept/downloadbaseurl.py
-flowcb/accept/hourtree.py        flowcb/accept/httptohttps.py
-flowcb/accept/longflow.py        flowcb/accept/posthourtree.py
+flowcb/accept/dateappend.py      flowcb/accept/delete.py
+flowcb/accept/downloadbaseurl.py flowcb/accept/hourtree.py
+flowcb/accept/httptohttps.py     flowcb/accept/longflow.py
+flowcb/accept/pathreplace.py     flowcb/accept/posthourtree.py
 flowcb/accept/postoverride.py    flowcb/accept/printlag.py
 flowcb/accept/rename4jicc.py     flowcb/accept/renamedmf.py
 flowcb/accept/renamewhatfn.py    flowcb/accept/save.py
@@ -471,7 +472,9 @@ flowcb/accept/speedo.py          flowcb/accept/sundewpxroute.py
 flowcb/accept/testretry.py       flowcb/accept/toclusters.py
 flowcb/accept/tohttp.py          flowcb/accept/tolocal.py
 flowcb/accept/tolocalfile.py     flowcb/accept/wmotypesuffix.py
-flowcb/clamav.py                 flowcb/filter/deleteflowfiles.py
+flowcb/amserver.py               flowcb/clamav.py
+flowcb/destfn/replace.py         flowcb/destfn/sample.py
+flowcb/download/mail_ingest.py   flowcb/filter/deleteflowfiles.py
 flowcb/filter/fdelay.py          flowcb/filter/pclean_f90.py
 flowcb/filter/pclean_f92.py      flowcb/filter/wmo2msc.py
 flowcb/gather/file.py            flowcb/gather/message.py
@@ -480,12 +483,17 @@ flowcb/mdelaylatest.py           flowcb/nodupe/data.py
 flowcb/nodupe/name.py            flowcb/pclean.py
 flowcb/poll/airnow.py            flowcb/poll/mail.py
 flowcb/poll/nasa_mls_nrt.py      flowcb/poll/nexrad.py
-flowcb/poll/noaa_hydrometric.py  flowcb/poll/usgs.py
-flowcb/post/message.py           flowcb/retry.py
-flowcb/sample.py                 flowcb/script.py
+flowcb/poll/noaa_hydrometric.py  flowcb/poll/s3bucket.py
+flowcb/poll/usgs.py              flowcb/post/message.py
+flowcb/retry.py                  flowcb/rootchown.py
+flowcb/run.py                    flowcb/rxqueue_gzip.py
+flowcb/sample.py                 flowcb/send/am.py
 flowcb/send/email.py             flowcb/shiftdir2baseurl.py
-flowcb/v2wrapper.py              flowcb/wistree.py
+flowcb/trace_on_stop.py          flowcb/v2wrapper.py
+flowcb/wistree.py                flowcb/work/age.py
+flowcb/work/check.py             flowcb/work/citypage_check.py
 flowcb/work/delete.py            flowcb/work/rxpipe.py
+flowcb/work/send_egc_les.py
 </pre></div></div>
 </div>
 <p>L’ajout de cette ligne à la configuration signifie que la sous-classe wistree flowcb (source ci-dessus) sera ajoutée au flux et modifier le traitement en faisant appeler ses routines… la principale étant <em>after_accept</em></p>
@@ -494,7 +502,7 @@ flowcb/work/delete.py            flowcb/work/rxpipe.py
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span><span class="nb">echo</span><span class="w"> </span>callback<span class="w"> </span>wistree<span class="w"> </span>&gt;&gt;~/.config/sr3/subscribe/hpfx_amis.conf
+<span></span><span class="o">!</span><span class="nb">echo</span><span class="w"> </span>callback<span class="w"> </span>accept.posthourtree<span class="w">  </span>&gt;&gt;~/.config/sr3/subscribe/hpfx_amis.conf
 </pre></div>
 </div>
 </div>
@@ -512,76 +520,74 @@ flowcb/work/delete.py            flowcb/work/rxpipe.py
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-03-19 13:19:48,073 2724872 [INFO] sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-.2022-03-19 13:19:48,285 [INFO] 2724874 sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-2022-03-19 13:19:48,287 [INFO] 2724874 sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-2022-03-19 13:19:48,287 [INFO] 2724874 sarracenia.flow loadCallbacks plugins to load: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;sarracenia.flowcb.wistree.Wistree&#39;, &#39;sarracenia.flowcb.log.Log&#39;]
-2022-03-19 13:19:48,690 [INFO] 2724874 sarracenia.flowcb.log __init__ subscribe initialized with: {&#39;after_work&#39;, &#39;after_accept&#39;, &#39;on_housekeeping&#39;}
-2022-03-19 13:19:48,690 [INFO] 2724874 sarracenia.flow run options:
-_Config__admin=&#34;...st/ None True True False False None None&#34;,
-_Config__broker=&#34;...ca/ None True True False False None None&#34;,
-_Config__post_broker=None, accel_threshold=0, acceptSizeWrong=False,
-acceptUnmatched=False, action=&#39;foreground&#39;, attempts=3, auto_delete=False,
-baseDir=None, baseUrl_relPath=False, batch=10,
-bindings=&#34;... [&#39;*.WXO-DD.bulletins.alphanumeric.#&#39;])]&#34;, bufsize=1048576,
-bytes_per_second=None, bytes_ps=0,
-cfg_run_dir=&#34;...me/peter/.cache/sr3/subscribe/hpfx_amis&#39;&#34;,
-component=&#39;subscribe&#39;, config=&#39;hpfx_amis.conf&#39;,
-configurations=[&#39;subscribe/hpfx_amis.conf&#39;], currentDir=None,
-dangerWillRobinson=False, debug=False, declared_exchanges=[],
-declared_users=&#34;...&#39;: &#39;source&#39;, &#39;eggmeister&#39;: &#39;subscriber&#39;}&#34;, delete=False,
-destfn_script=None, directory=&#39;/tmp/hpfx_amis/&#39;, discard=False,
-documentRoot=None, download=True, durable=True,
-env_declared=&#34;...OKER&#39;, &#39;MQP&#39;, &#39;SFTPUSER&#39;, &#39;TESTDOCROOT&#39;]&#34;, exchange=&#39;xpublic&#39;,
-exchangeDeclare=True, expire=600.0, feeder=amqp://tfeed@localhost,
-fileEvents={&#39;modify&#39;, &#39;link&#39;, &#39;delete&#39;, &#39;create&#39;}, filename=&#39;WHATFN&#39;,
-fixed_headers={}, flatten=&#39;/&#39;, hostdir=&#39;fractal&#39;, hostname=&#39;fractal&#39;,
-housekeeping=300, imports=[], inflight=None, inline=False,
-inline_encoding=&#39;guess&#39;, inline_max=4096, inline_only=False, instances=5,
-integrity_arbitrary_value=None, integrity_method=&#39;sha512&#39;,
-logEvents=&#34;...ork&#39;, &#39;after_accept&#39;, &#39;on_housekeeping&#39;}&#34;,
-logFormat=&#34;...me)s] %(name)s %(funcName)s %(message)s&#39;&#34;, logLevel=&#39;info&#39;,
-logStdout=False, log_flowcb_needed=False, lr_backupCount=5, lr_interval=1,
-lr_when=&#39;midnight&#39;, masks=&#34;...pile(&#39;.*&#39;), True, False, 0, False, &#39;/&#39;)]&#34;,
-messageAgeMax=0, messageCountMax=10, messageDebugDump=False, messageRateMax=0,
-messageRateMin=0,
-message_strategy=&#34;...ubborn&#39;: True, &#39;failure_duration&#39;: &#39;5m&#39;}&#34;, message_ttl=0,
-mirror=False, no=0, nodupe_fileAgeMax=0, nodupe_ttl=0, overwrite=True,
-permCopy=True, permDefault=0, permDirDefault=509, permLog=384,
-pid_filename=&#34;...e/hpfx_amis//subscribe_hpfx_amis_00.pid&#39;&#34;, plugins_early=[],
-plugins_late=&#34;...e.Wistree&#39;, &#39;sarracenia.flowcb.log.Log&#39;]&#34;, post_baseDir=None,
-post_baseUrl=None, post_documentRoot=None, post_exchanges=[],
-post_topicPrefix=[&#39;v02&#39;, &#39;post&#39;], prefetch=25, pstrip=False, queueBind=True,
-queueDeclare=True, queueName=&#34;...s_subscribe.hpfx_amis.73590194.51440323&#39;&#34;,
-queue_filename=&#34;...mis/subscribe.hpfx_amis.anonymous.qname&#39;&#34;, randid=&#39;4529&#39;,
-randomize=False, realpathPost=False, rename=None, report_back=False,
-reset=False, retry_path=&#34;...hpfx_amis//subscribe_hpfx_amis_00.retry&#39;&#34;,
-retry_ttl=600.0, settings={}, sleep=0.1, statehost=False, strip=0, subtopic=[],
-timeCopy=True, timeout=300, timezone=&#39;UTC&#39;, tls_rigour=&#39;normal&#39;,
-topicPrefix=[&#39;v02&#39;, &#39;post&#39;], undeclared=[], users=False, v2plugin_options=[],
-v2plugins={}, vhost=&#39;/&#39;, vip=None
-2022-03-19 13:19:48,691 [INFO] 2724874 sarracenia.flow run callbacks loaded: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;sarracenia.flowcb.wistree.Wistree&#39;, &#39;sarracenia.flowcb.log.Log&#39;]
-2022-03-19 13:19:48,691 [INFO] 2724874 sarracenia.flow run pid: 2724874 subscribe/hpfx_amis.conf instance: 0
-2022-03-19 13:19:50,780 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 3.37 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SX/KWAL/17/SXCN40_KWAL_191719___37614
-2022-03-19 13:19:50,780 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 3.37 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SX/KWAL/17/SXCN40_KWAL_191719___24613
-2022-03-19 13:19:51,013 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/miscellaneous/ca/SXCN40_KWAL_191719___37614.txt
-2022-03-19 13:19:51,013 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/miscellaneous/ca/SXCN40_KWAL_191719___24613.txt
-2022-03-19 13:19:52,058 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 1.72 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SR/KWAL/17/SRCN40_KWAL_191719___9404
-2022-03-19 13:19:52,167 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/hydrological/river/ca/SRCN40_KWAL_191719___9404.txt
-2022-03-19 13:19:53,236 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 0.63 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SR/KWAL/17/SRCN40_KWAL_191719___24050
-2022-03-19 13:19:53,236 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 0.62 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SX/KWAL/17/SXCN40_KWAL_191719___20524
-2022-03-19 13:19:53,476 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/hydrological/river/ca/SRCN40_KWAL_191719___24050.txt
-2022-03-19 13:19:53,476 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/miscellaneous/ca/SXCN40_KWAL_191719___20524.txt
-2022-03-19 13:19:53,715 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 1.03 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SR/KWAL/17/SRND20_KWAL_191719___45279
-2022-03-19 13:19:53,839 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/hydrological/river/SRND20_KWAL_191719___45279.txt
-2022-03-19 13:19:54,094 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 0.41 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SR/KWAL/17/SRCN40_KWAL_191719___64176
-2022-03-19 13:19:54,094 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 0.74 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SR/KWAL/17/SRCN40_KWAL_191719___58640
-2022-03-19 13:19:54,346 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/hydrological/river/ca/SRCN40_KWAL_191719___64176.txt
-2022-03-19 13:19:54,346 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/hydrological/river/ca/SRCN40_KWAL_191719___58640.txt
-2022-03-19 13:19:54,384 [INFO] 2724874 sarracenia.flowcb.log after_accept accepted: (lag: 1.04 ) https://hpfx.collab.science.gc.ca /20220319/WXO-DD/bulletins/alphanumeric/20220319/SX/KWAL/17/SXCN40_KWAL_191719___16476
-2022-03-19 13:19:54,492 [INFO] 2724874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20220319T17/WIS/us/wallops_i__wallops_station_va/surface/miscellaneous/ca/SXCN40_KWAL_191719___16476.txt
-2022-03-19 13:19:54,510 [INFO] 2724874 sarracenia.flowcb.gather.message on_stop closing
-2022-03-19 13:19:54,510 [INFO] 2724874 sarracenia.flow close flow/close completed cleanly pid: 2724874 subscribe/hpfx_amis.conf instance: 0
+2023-05-28 16:35:34,235 1919873 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+.2023-05-28 16:35:34,349 [INFO] 1919874 sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+2023-05-28 16:35:34,355 [INFO] 1919874 sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+2023-05-28 16:35:34,355 [INFO] 1919874 sarracenia.flow loadCallbacks flowCallback plugins to load: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;accept.posthourtree&#39;, &#39;log&#39;]
+2023-05-28 16:35:34,670 [INFO] 1919874 sarracenia.moth.amqp __getSetup queue declared q_anonymous_subscribe.hpfx_amis.33557703.14415188 (as: amqps://anonymous@hpfx.collab.science.gc.ca/)
+2023-05-28 16:35:34,670 [INFO] 1919874 sarracenia.moth.amqp __getSetup binding q_anonymous_subscribe.hpfx_amis.33557703.14415188 with v02.post.*.WXO-DD.bulletins.alphanumeric.# to xpublic (as: amqps://anonymous@hpfx.collab.science.gc.ca/)
+2023-05-28 16:35:34,723 [INFO] 1919874 sarracenia.flowcb.log __init__ subscribe initialized with: {&#39;on_housekeeping&#39;, &#39;post&#39;, &#39;after_post&#39;, &#39;after_work&#39;, &#39;after_accept&#39;}
+2023-05-28 16:35:34,723 [INFO] 1919874 sarracenia.flow run callbacks loaded: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;accept.posthourtree&#39;, &#39;log&#39;]
+2023-05-28 16:35:34,723 [INFO] 1919874 sarracenia.flow run pid: 1919874 subscribe/hpfx_amis.conf instance: 0
+2023-05-28 16:35:34,764 [INFO] 1919874 sarracenia.flow run now active on vip None
+2023-05-28 16:35:35,009 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:35,009 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 0.80 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/CA/CWAO/20/CACN45_CWAO_281300__OBQ_20965
+2023-05-28 16:35:35,154 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/CACN45_CWAO_281300__OBQ_20965
+2023-05-28 16:35:35,677 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:35,677 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 0.56 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/20/SRCN40_KWAL_282035___1729
+2023-05-28 16:35:35,796 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SRCN40_KWAL_282035___1729
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 0.55 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/20/SRWA20_KWAL_282035___43515
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 0.53 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SN/KWNB/20/SNVD15_KWNB_282000_RRO__50372
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 0.53 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SX/KWAL/20/SXAK50_KWAL_282035___51354
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 1.81 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/20/SRCN40_KWAL_282035___32251
+2023-05-28 16:35:36,314 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 1.80 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/20/SRCN40_KWAL_282035___62598
+2023-05-28 16:35:36,951 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SRWA20_KWAL_282035___43515
+2023-05-28 16:35:36,951 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SNVD15_KWNB_282000_RRO__50372
+2023-05-28 16:35:36,951 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SXAK50_KWAL_282035___51354
+2023-05-28 16:35:36,951 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SRCN40_KWAL_282035___32251
+2023-05-28 16:35:36,951 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SRCN40_KWAL_282035___62598
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.accept.posthourtree after_accept post_hour_tree: new_dir: /tmp/hpfx_amis/20
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 3.26 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/WA/KKCI/20/WAUS41_KKCI_282045___14468
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 3.26 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/20/SRCN40_KWAL_282035___20765
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 3.26 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/WA/KKCI/20/WAUS46_KKCI_282045___65023
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 3.26 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/WA/KKCI/20/WAUS44_KKCI_282045___40622
+2023-05-28 16:35:37,133 [INFO] 1919874 sarracenia.flowcb.log after_accept accepted: (lag: 3.25 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/20/SRCN40_KWAL_282035___41115
+2023-05-28 16:35:37,636 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/WAUS41_KKCI_282045___14468
+2023-05-28 16:35:37,636 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SRCN40_KWAL_282035___20765
+2023-05-28 16:35:37,636 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/WAUS46_KKCI_282045___65023
+2023-05-28 16:35:37,636 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/WAUS44_KKCI_282045___40622
+2023-05-28 16:35:37,636 [INFO] 1919874 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/20/SRCN40_KWAL_282035___41115
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flow please_stop ok, telling 5 callbacks about it.
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flow run starting last pass (without gather) through loop for cleanup.
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flow please_stop ok, telling 5 callbacks about it.
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flow run on_housekeeping pid: 1919874 subscribe/hpfx_amis.conf instance: 0
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flowcb.gather.message on_housekeeping messages: good: 12 bad: 0 bytes: 1.6 KiB average: 139 Bytes
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flowcb.retry on_housekeeping on_housekeeping
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.diskqueue on_housekeeping work_retry_00 on_housekeeping
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.diskqueue on_housekeeping No retry in list
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000117
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.diskqueue on_housekeeping post_retry_000 on_housekeeping
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.diskqueue on_housekeeping No retry in list
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000081
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flowcb.housekeeping.resources on_housekeeping Current Memory cpu_times: user=0.18 system=0.01
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flowcb.housekeeping.resources on_housekeeping Current mem usage: 54.8 MiB, accumulating count (12 or 12/100 so far) before self-setting threshold
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flowcb.log stats version: 3.00.40, started: 2 seconds ago, last_housekeeping:  2.9 seconds ago
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flowcb.log stats messages received: 12, accepted: 12, rejected: 0   rate accepted: 100.0% or 4.1 m/s
+2023-05-28 16:35:37,637 [INFO] 1919874 sarracenia.flowcb.log stats files transferred: 12 bytes: 4.5 KiB rate: 1.5 KiB/sec
+2023-05-28 16:35:37,638 [INFO] 1919874 sarracenia.flowcb.log stats lag: average: 1.91, maximum: 3.26
+2023-05-28 16:35:37,638 [INFO] 1919874 sarracenia.flowcb.log on_housekeeping housekeeping
+2023-05-28 16:35:37,638 [INFO] 1919874 sarracenia.flow run clean stop from run loop
+2023-05-28 16:35:37,669 [INFO] 1919874 sarracenia.flowcb.gather.message on_stop closing
+2023-05-28 16:35:37,669 [INFO] 1919874 sarracenia.flow close flow/close completed cleanly pid: 1919874 subscribe/hpfx_amis.conf instance: 0
 
 </pre></div></div>
 </div>
@@ -680,7 +686,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 <section id="Exemple-de-sous-classe-Flowcb">
 <h2>Exemple de sous-classe Flowcb<a class="headerlink" href="#Exemple-de-sous-classe-Flowcb" title="Permalink to this heading"></a></h2>
 <p>Avec les informations ci-dessus sur la gestion des options, les listes de travail et la journalisation, nous sommes prêts à comprendre le module wistree que nous venons d’utiliser. Cette classe wistree.py accepte les fichiers dont les noms commencent par AHL et renomme l’arborescence de répertoires dans un standard différent, celui en évolution pour le WMO WIS 2.0 (pour plus d’informations sur ce module: <a class="reference external" href="https://github.com/wmo-im/GTStoWIS2">https://github.com/wmo-im/GTStoWIS2</a>)</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
@@ -743,6 +749,23 @@ worklist.directories_ok --&gt; list of directories created during processing.
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[6], line 3</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">sarracenia</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">flowcb</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> FlowCB
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">logging</span>
+<span class="ansi-green-fg">----&gt; 3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">GTStoWIS2</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> logger <span style="color: rgb(98,98,98)">=</span> logging<span style="color: rgb(98,98,98)">.</span>getLogger(<span style="color: rgb(0,0,135)">__name__</span>)
+<span class="ansi-green-intense-fg ansi-bold">      8</span> <span class="ansi-bold" style="color: rgb(0,135,0)">class</span> <span class="ansi-bold" style="color: rgb(0,0,255)">Wistree</span>(FlowCB):
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;GTStoWIS2&#39;
+</pre></div></div>
+</div>
 </section>
 <section id="Plugins-qui-changent-la-façon-dont-un-fichier-est-téléchargé">
 <h2>Plugins qui changent la façon dont un fichier est téléchargé<a class="headerlink" href="#Plugins-qui-changent-la-façon-dont-un-fichier-est-téléchargé" title="Permalink to this heading"></a></h2>
@@ -759,7 +782,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 <h2>Plugins qui Traitent un Fichier après son Téléchargement<a class="headerlink" href="#Plugins-qui-Traitent-un-Fichier-après-son-Téléchargement" title="Permalink to this heading"></a></h2>
 <p>Un cas d’utilisation courant est pour les plugins avec un point d’entrée <em>after_work</em> pour lire le fichier après son téléchargement et le transformer en un produit dérivé avec un nom différent. Ainsi, le nouveau fichier est créé comme dans la section précédente. Le message pour le fichier téléchargé doit encore être déplacé sur une liste pour s’assurer qu’il est reconnu par le courtier. Un tel point d’entrée ressemblerait à ceci:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

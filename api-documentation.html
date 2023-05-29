@@ -120,6 +120,35 @@ pipe</p>
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>The option parser to produce a single configuration.</p>
+<p>it can be instantiated with one of:</p>
+<ul class="simple">
+<li><p>one_config(component, config, isPost=False) – read the options  for
+a given component an configuration,  (all in one call.)</p></li>
+</ul>
+<p>On the other hand, a configu can be built up from the following constructors:</p>
+<ul class="simple">
+<li><p>default_config() – returns an empty configuration, given a config file tree.</p></li>
+<li><p>no_file_config() – returns an empty config without any config file tree.</p></li>
+</ul>
+<p>Then just add settings manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span> <span class="o">=</span> <span class="n">no_file_config</span><span class="p">()</span>
+
+<span class="n">cfg</span><span class="o">.</span><span class="n">broker</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">Credential</span><span class="p">(</span><span class="s1">&#39;amqps://anonymous:anonymous@hpfx.collab.science.gc.ca&#39;</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">topicPrefix</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;v02&#39;</span><span class="p">,</span> <span class="s1">&#39;post&#39;</span><span class="p">]</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">component</span> <span class="o">=</span> <span class="s1">&#39;subscribe&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="s1">&#39;flow_demo&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">bindings</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s1">&#39;xpublic&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;v02&#39;</span><span class="p">,</span> <span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;WXO-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;observations&#39;</span><span class="p">,</span> <span class="s1">&#39;swob-ml&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span> <span class="p">])</span> <span class="p">]</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">queueName</span><span class="o">=</span><span class="s1">&#39;q_anonymous.subscriber_test2&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">download</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">batch</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">messageCountMax</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="c1"># set the instance number for the flow class.</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">no</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p># and at the end call finalize</p>
+<p>cfg.finalize()</p>
 <dl class="py class">
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">addBinding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option_strings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">const</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">help</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metavar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/config.html#Config.addBinding"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
@@ -178,8 +207,10 @@ pipe</p>
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">fill_missing_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/config.html#Config.fill_missing_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>There are default options that apply only if they are not overridden…</p>
+<span class="sig-name descname"><span class="pre">finalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/config.html#Config.finalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Before final use, take the existing settings, and infer any missing needed defaults from what is provided.
+Should be called prior to using a configuration.</p>
+<p>There are default options that apply only if they are not overridden…</p>
 </dd></dl>
 
 <dl class="py method">
@@ -758,7 +789,7 @@ sarracenia.flowcb.foo.bar</p>
 <h2>Sarracenia.Moth<a class="headerlink" href="#sarracenia-moth" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.moth.</span></span><span class="sig-name descname"><span class="pre">Moth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">broker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/moth.html#Moth"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.moth.</span></span><span class="sig-name descname"><span class="pre">Moth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/moth.html#Moth"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <blockquote>
 <div><p>Moth … Messages Organized by Topic Headers
@@ -791,18 +822,29 @@ API to allow pass-through of protocol specific properties, but apply templates f
 <li><p>broker</p></li>
 <li><p>topicPrefix</p></li>
 <li><p>subTopic</p></li>
-<li><p>id   (queue for amqp, id for mqtt)</p></li>
+<li><p>queueName   (for amqp, used as client-id for mqtt)</p></li>
 </ul>
 <p>this library knows nothing about Sarracenia, the only code used from sarracenia is to interpret
 duration properties, from the root sarracenia/__init__.py, the broker argument from sarracenia.credentials</p>
 <p>usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span> <span class="n">Moth</span><span class="p">(</span> <span class="n">broker</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;5m&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span><span class="mi">1</span> <span class="p">}</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sarracenia.moth</span>
+<span class="kn">import</span> <span class="nn">sarracenia.credentials</span>
 
-<span class="n">c</span><span class="o">.</span><span class="n">newMessages</span><span class="p">()</span>
+
+<span class="n">props</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">moth</span><span class="o">.</span><span class="n">default_options</span>
+<span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">Credential</span><span class="p">(</span><span class="s1">&#39;amqps://anonymous:anonymous@hpfx.collab.science.gc.ca&#39;</span><span class="p">)</span>
+<span class="n">props</span><span class="p">[</span><span class="s1">&#39;expire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">props</span><span class="p">[</span><span class="s1">&#39;batch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">is_subscriber</span><span class="o">=</span><span class="kc">True</span>
+
+<span class="n">c</span><span class="o">=</span> <span class="n">Moth</span><span class="p">(</span> <span class="n">props</span><span class="p">,</span> <span class="n">is_subscriber</span>  <span class="p">)</span>
+
+<span class="n">messages</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">newMessages</span><span class="p">()</span>
+
 <span class="c1"># if there are new messages from a publisher, return them, otherwise return</span>
 <span class="c1"># an empty list []].</span>
 
-<span class="n">p</span><span class="o">=</span><span class="n">Moth</span><span class="p">(</span> <span class="n">broker</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;5m&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span><span class="mi">1</span> <span class="p">},</span> <span class="kc">True</span> <span class="p">)</span>
+<span class="n">p</span><span class="o">=</span><span class="n">Moth</span><span class="p">(</span> <span class="p">{</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span><span class="mi">1</span> <span class="p">},</span> <span class="kc">False</span> <span class="p">)</span>
 
 <span class="n">p</span><span class="o">.</span><span class="n">putNewMessage</span><span class="p">()</span>
 
@@ -866,7 +908,7 @@ consumer queues (AMQP.)</p>
 <ul class="simple">
 <li><p>‘batch’  : 100  # how many messages to get at once</p></li>
 <li><p>‘broker’ : an sr_broker ?</p></li>
-<li><p>‘Queue’  : Mandatory, name of a queue. (only in AMQP… hmm…)</p></li>
+<li><p>‘queueName’  : Mandatory, name of a queue. (only in AMQP… hmm…)</p></li>
 <li><p>‘bindings’ : [ list of bindings ]</p></li>
 <li><p>‘loop’</p></li>
 </ul>
@@ -880,7 +922,7 @@ consumer queues (AMQP.)</p>
 </ul>
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">broker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/sarracenia/moth.html#Moth.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/sarracenia/moth.html#Moth.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>If is_subscriber=True, then this is a consuming instance.
 expect calls to get* routines.</p>
 <p>if is_subscriber=False, then expect/permit only calls to put*</p>

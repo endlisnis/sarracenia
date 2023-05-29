@@ -398,6 +398,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+2023-05-28 15:24:06,526 1914254 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
 Sample Configurations: (from: /home/peter/Sarracenia/sr3/sarracenia/examples )
 cpump/cno_trouble_f00.inc        flow/amserver.conf
 flow/poll.inc                    flow/post.inc
@@ -443,7 +444,9 @@ watch/pitcher_server.conf        watch/sci2ec.conf
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-add: 2023-01-06 12:55:05,331 1851367 [INFO] sarracenia.sr add copying: /home/peter/Sarracenia/sr3/sarracenia/examples/subscribe/hpfx_amis.conf to /home/peter/.config/sr3/subscribe/hpfx_amis.conf
+2023-05-28 15:24:08,749 1914255 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+add: 2023-05-28 15:24:08,750 1914255 [INFO] root add matched existing [&#39;subscribe/hpfx_amis&#39;]
+2023-05-28 15:24:08,750 1914255 [ERROR] root add nothing specified to add
 
 </pre></div></div>
 </div>
@@ -492,56 +495,68 @@ directory /tmp/amis/
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-06 12:55:44,998 1851452 [INFO] sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-.2023-01-06 12:55:45,099 [INFO] 1851453 sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-2023-01-06 12:55:45,100 [INFO] 1851453 sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-2023-01-06 12:55:45,101 [INFO] 1851453 sarracenia.flow loadCallbacks flowCallback plugins to load: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;log&#39;]
-2023-01-06 12:55:45,328 [INFO] 1851453 sarracenia.moth.amqp __getSetup queue declared q_anonymous_subscribe.hpfx_amis.59644358.14662781 (as: amqps://anonymous@hpfx.collab.science.gc.ca/)
-2023-01-06 12:55:45,328 [INFO] 1851453 sarracenia.moth.amqp __getSetup binding q_anonymous_subscribe.hpfx_amis.59644358.14662781 with v02.post.*.WXO-DD.bulletins.alphanumeric.# to xpublic (as: amqps://anonymous@hpfx.collab.science.gc.ca/)
-2023-01-06 12:55:45,368 [INFO] 1851453 sarracenia.flowcb.log __init__ subscribe initialized with: {&#39;on_housekeeping&#39;, &#39;after_work&#39;, &#39;after_accept&#39;, &#39;post&#39;, &#39;after_post&#39;}
-2023-01-06 12:55:45,368 [INFO] 1851453 sarracenia.flow run callbacks loaded: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;log&#39;]
-2023-01-06 12:55:45,369 [INFO] 1851453 sarracenia.flow run pid: 1851453 subscribe/hpfx_amis.conf instance: 0
-2023-01-06 12:55:45,384 [INFO] 1851453 sarracenia.flow run now active on vip None
-2023-01-06 12:55:46,443 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 1.82 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SA/KNKA/17/SAAK41_KNKA_061755___23760
-2023-01-06 12:55:46,443 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 1.81 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SA/KNKA/17/SAAK41_KNKA_061755___41902
-2023-01-06 12:55:46,647 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SAAK41_KNKA_061755___23760
-2023-01-06 12:55:46,647 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SAAK41_KNKA_061755___41902
-2023-01-06 12:55:50,979 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 3.04 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SR/KWAL/17/SRCN40_KWAL_061755___7226
-2023-01-06 12:55:50,979 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 1.23 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SX/KWAL/17/SXAK50_KWAL_061755___52204
-2023-01-06 12:55:50,979 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 1.23 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SR/KWAL/17/SRCN40_KWAL_061755___57048
-2023-01-06 12:55:50,979 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 9.22 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SM/KWNB/17/SMVD17_KWNB_061800_RRB__52306
-2023-01-06 12:55:51,332 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_061755___7226
-2023-01-06 12:55:51,332 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SXAK50_KWAL_061755___52204
-2023-01-06 12:55:51,332 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_061755___57048
-2023-01-06 12:55:51,332 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SMVD17_KWNB_061800_RRB__52306
-2023-01-06 12:55:51,824 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 1.07 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SR/KWAL/17/SRCN40_KWAL_061755___29000
-2023-01-06 12:55:51,824 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 1.07 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SR/KWAL/17/SRCN40_KWAL_061755___49784
-2023-01-06 12:55:51,824 [INFO] 1851453 sarracenia.flowcb.log after_accept accepted: (lag: 1.07 ) https://hpfx.collab.science.gc.ca /20230106/WXO-DD/bulletins/alphanumeric/20230106/SR/KWAL/17/SRCN40_KWAL_061755___18710
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_061755___29000
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_061755___49784
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_061755___18710
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flow please_stop ok, telling 4 callbacks about it.
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flow run starting last pass (without gather) through loop for cleanup.
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flow please_stop ok, telling 4 callbacks about it.
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flow run on_housekeeping pid: 1851453 subscribe/hpfx_amis.conf instance: 0
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flowcb.gather.message on_housekeeping messages: good: 9 bad: 0 bytes: 1.2 KiB average: 139 Bytes
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.flowcb.retry on_housekeeping on_housekeeping
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.diskqueue on_housekeeping work_retry_00 on_housekeeping
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.diskqueue on_housekeeping No retry in list
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000123
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.diskqueue on_housekeeping post_retry_000 on_housekeeping
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.diskqueue on_housekeeping No retry in list
-2023-01-06 12:55:52,072 [INFO] 1851453 sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000092
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flowcb.housekeeping.resources on_housekeeping Current Memory cpu_times: user=0.13 system=0.02
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flowcb.housekeeping.resources on_housekeeping Current mem usage: 54.7 MiB, accumulating count (9 or 9/100 so far) before self-setting threshold
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flowcb.log stats version: 3.00.25, started: 6 seconds ago, last_housekeeping:  6.7 seconds ago
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flowcb.log stats messages received: 9, accepted: 9, rejected: 0   rate accepted: 100.0% or 1.3 m/s
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flowcb.log stats files transferred: 9 bytes: 5.7 KiB rate: 863 Bytes/sec
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flowcb.log stats lag: average: 2.40, maximum: 9.22
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flowcb.log on_housekeeping housekeeping
-2023-01-06 12:55:52,073 [INFO] 1851453 sarracenia.flow run clean stop from run loop
-2023-01-06 12:55:52,098 [INFO] 1851453 sarracenia.flowcb.gather.message on_stop closing
-2023-01-06 12:55:52,098 [INFO] 1851453 sarracenia.flow close flow/close completed cleanly pid: 1851453 subscribe/hpfx_amis.conf instance: 0
+2023-05-28 15:24:16,821 1914260 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+.2023-05-28 15:24:16,928 [INFO] 1914261 sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+2023-05-28 15:24:16,934 [INFO] 1914261 sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+2023-05-28 15:24:16,934 [INFO] 1914261 sarracenia.flow loadCallbacks flowCallback plugins to load: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;log&#39;]
+2023-05-28 15:24:17,111 [INFO] 1914261 sarracenia.moth.amqp __getSetup queue declared q_anonymous_subscribe.hpfx_amis.69643324.61538382 (as: amqps://anonymous@hpfx.collab.science.gc.ca/)
+2023-05-28 15:24:17,111 [INFO] 1914261 sarracenia.moth.amqp __getSetup binding q_anonymous_subscribe.hpfx_amis.69643324.61538382 with v02.post.*.WXO-DD.bulletins.alphanumeric.# to xpublic (as: amqps://anonymous@hpfx.collab.science.gc.ca/)
+2023-05-28 15:24:17,147 [INFO] 1914261 sarracenia.flowcb.log __init__ subscribe initialized with: {&#39;post&#39;, &#39;after_post&#39;, &#39;after_accept&#39;, &#39;after_work&#39;, &#39;on_housekeeping&#39;}
+2023-05-28 15:24:17,147 [INFO] 1914261 sarracenia.flow run callbacks loaded: [&#39;sarracenia.flowcb.gather.message.Message&#39;, &#39;sarracenia.flowcb.retry.Retry&#39;, &#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;, &#39;log&#39;]
+2023-05-28 15:24:17,147 [INFO] 1914261 sarracenia.flow run pid: 1914261 subscribe/hpfx_amis.conf instance: 0
+2023-05-28 15:24:17,168 [INFO] 1914261 sarracenia.flow run now active on vip None
+2023-05-28 15:24:18,332 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 1.11 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SA/CWAO/19/SAZZ40_CWAO_281900_RRW_EFOU_64642
+2023-05-28 15:24:18,333 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 1.62 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SX/KWAL/19/SXVX40_KWAL_281923___12624
+2023-05-28 15:24:18,333 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 1.62 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SN/KWNB/19/SNVD20_KWNB_281900_RRL__24342
+2023-05-28 15:24:18,333 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.61 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SA/KWBC/19/SAUS70_KWBC_281924_RRA__30100
+2023-05-28 15:24:18,333 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.61 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/19/SRCN40_KWAL_281923___8005
+2023-05-28 15:24:18,333 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.61 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/19/SRND20_KWAL_281923___24712
+2023-05-28 15:24:18,333 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.60 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/UA/CWAO/19/UANT01_CWAO_281924___00310
+2023-05-28 15:24:18,333 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.20 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SA/KWBC/19/SAUS80_KWBC_281924___64946
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SAZZ40_CWAO_281900_RRW_EFOU_64642
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SXVX40_KWAL_281923___12624
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SNVD20_KWNB_281900_RRL__24342
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SAUS70_KWBC_281924_RRA__30100
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_281923___8005
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRND20_KWAL_281923___24712
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/UANT01_CWAO_281924___00310
+2023-05-28 15:24:18,949 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SAUS80_KWBC_281924___64946
+2023-05-28 15:24:19,118 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.99 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SX/KWNB/19/SXUS23_KWNB_281900_RRX__36309
+2023-05-28 15:24:19,119 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.99 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SP/KWBC/19/SPUS80_KWBC_281924___40647
+2023-05-28 15:24:19,119 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 0.99 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/19/SRCN40_KWAL_281923___38440
+2023-05-28 15:24:19,119 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 1.64 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SO/KWNB/19/SOVD83_KWNB_281800_RRX__64658
+2023-05-28 15:24:19,119 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 1.63 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/FZ/KCAR/19/FZUS51_KCAR_281923___54451
+2023-05-28 15:24:19,119 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 1.62 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SR/KWAL/19/SRCN40_KWAL_281923___2520
+2023-05-28 15:24:19,119 [INFO] 1914261 sarracenia.flowcb.log after_accept accepted: (lag: 1.61 ) https://hpfx.collab.science.gc.ca /20230528/WXO-DD/bulletins/alphanumeric/20230528/SN/KWNB/19/SNVD20_KWNB_281900_RRM__27859
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SXUS23_KWNB_281900_RRX__36309
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SPUS80_KWBC_281924___40647
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_281923___38440
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SOVD83_KWNB_281800_RRX__64658
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/FZUS51_KCAR_281923___54451
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SRCN40_KWAL_281923___2520
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flowcb.log after_work downloaded ok: /tmp/hpfx_amis/SNVD20_KWNB_281900_RRM__27859
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flow please_stop ok, telling 4 callbacks about it.
+2023-05-28 15:24:19,790 [INFO] 1914261 sarracenia.flow run starting last pass (without gather) through loop for cleanup.
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flow please_stop ok, telling 4 callbacks about it.
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flow run on_housekeeping pid: 1914261 subscribe/hpfx_amis.conf instance: 0
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.gather.message on_housekeeping messages: good: 15 bad: 0 bytes: 2.1 KiB average: 140 Bytes
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.retry on_housekeeping on_housekeeping
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.diskqueue on_housekeeping work_retry_00 on_housekeeping
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.diskqueue on_housekeeping No retry in list
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000105
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.diskqueue on_housekeeping post_retry_000 on_housekeeping
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.diskqueue on_housekeeping No retry in list
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.diskqueue on_housekeeping on_housekeeping elapse 0.000077
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.housekeeping.resources on_housekeeping Current Memory cpu_times: user=0.13 system=0.05
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.housekeeping.resources on_housekeeping Current mem usage: 54.6 MiB, accumulating count (15 or 15/100 so far) before self-setting threshold
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.log stats version: 3.00.40, started: 2 seconds ago, last_housekeeping:  2.6 seconds ago
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.log stats messages received: 15, accepted: 15, rejected: 0   rate accepted: 100.0% or 5.7 m/s
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.log stats files transferred: 15 bytes: 12.2 KiB rate: 4.6 KiB/sec
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.log stats lag: average: 1.09, maximum: 1.64
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flowcb.log on_housekeeping housekeeping
+2023-05-28 15:24:19,791 [INFO] 1914261 sarracenia.flow run clean stop from run loop
+2023-05-28 15:24:19,816 [INFO] 1914261 sarracenia.flowcb.gather.message on_stop closing
+2023-05-28 15:24:19,816 [INFO] 1914261 sarracenia.flow close flow/close completed cleanly pid: 1914261 subscribe/hpfx_amis.conf instance: 0
 
 </pre></div></div>
 </div>
@@ -560,17 +575,22 @@ directory /tmp/amis/
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-06 12:56:00,794 1851467 [INFO] sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
+2023-05-28 15:24:25,480 1914273 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
 status:
-Component/Config                         State             Run  Miss   Exp Retry
-----------------                         -----             ---  ----   --- -----
-subscribe/hpfx_amis                      stopped             0     0     0     0
-      total running configs:   0 ( processes: 0 missing: 0 stray: 0 )
+Component/Config                         Processes   Connection        Lag                Rates
+                                         State   Run Retry  msg data   LagMax  LagAvg  %rej     pubsub   messages     RxData     TxData
+                                         -----   --- -----  --- ----   ------  ------  ----   --------       ----     ------     ------
+subscribe/hpfx_amis                      stop    0/0     0 100%  17%    1.64s    1.09s  0.0% 252 Bytes/s   1 msgs/s  1.5 KiB/s  0 Bytes/s
+      Total Running Configs:   0 ( Processes: 0 missing: 0 stray: 0 )
+                     Memory: uss:0 Bytes rss:0 Bytes vms:0 Bytes
+                   CPU Time: User:0.00s System:0.00s
+           Pub/Sub Received: 252 msgs/s (252 Bytes/s), Sent:  0 msgs/s (0 Bytes/s)
+              Data Received: 1 Files/s (1.5 KiB/s), Sent: 0 Files/s (0 Bytes/s)
 </pre></div></div>
 </div>
 <p>There is 1 configuration in your list. You can have hundreds. The columns on the right refer to how many instances you have for each configuration. In the example above <em>instances</em> is set to 5, so one would expect to see 5 running instances when it would be running. You can start specifc configuration with _sr3 start subscribe/<em>_ or start all active instances with: *sr3 start</em></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -583,17 +603,11 @@ subscribe/hpfx_amis                      stopped             0     0     0     0
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-06 12:56:52,775 1851567 [INFO] sarracenia.config fill_missing_options overriding batch for consistency with messageCountMax: 10
-2023-01-06 12:56:41,334 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current Memory cpu_times: user=0.13 system=0.03
-2023-01-06 12:56:41,334 [INFO] sarracenia.flowcb.housekeeping.resources on_housekeeping Current mem usage: 54.6 MiB, accumulating count (10 or 10/100 so far) before self-setting threshold
-2023-01-06 12:56:41,334 [INFO] sarracenia.flowcb.log stats version: 3.00.25, started: now, last_housekeeping:  1.0 seconds ago
-2023-01-06 12:56:41,334 [INFO] sarracenia.flowcb.log stats messages received: 10, accepted: 10, rejected: 0   rate accepted: 100.0% or 10.2 m/s
-2023-01-06 12:56:41,334 [INFO] sarracenia.flowcb.log stats files transferred: 10 bytes: 10.3 KiB rate: 10.6 KiB/sec
-2023-01-06 12:56:41,334 [INFO] sarracenia.flowcb.log stats lag: average: 48.08, maximum: 48.76
-2023-01-06 12:56:41,334 [INFO] sarracenia.flowcb.log on_housekeeping housekeeping
-2023-01-06 12:56:41,334 [INFO] sarracenia.flow run clean stop from run loop
-2023-01-06 12:56:41,368 [INFO] sarracenia.flowcb.gather.message on_stop closing
-2023-01-06 12:56:41,368 [INFO] sarracenia.flow close flow/close completed cleanly pid: 1851552 subscribe/hpfx_amis instance: 1
+2023-05-28 15:24:34,478 1914274 [INFO] sarracenia.config finalize overriding batch for consistency with messageCountMax: 10
+tail: cannot open &#39;/home/peter/.cache/sr3/log/subscribe_hpfx_amis_01.log&#39; for reading: No such file or directory
+tail: no files remaining
+2023-05-28 15:24:34,479 1914274 [CRITICAL] root run_command subprocess.run failed err=Command &#39;[&#39;tail&#39;, &#39;-f&#39;, &#39;/home/peter/.cache/sr3/log/subscribe_hpfx_amis_01.log&#39;]&#39; returned non-zero exit status 1.
+
 </pre></div></div>
 </div>
 <p>When running in the background, output needs to go a log file. As we have only run this configuration file in the foreground, asking to see the log prints an error about the log being missing. This tells you that the logs are in the <em>~/.cache/sr3/log</em> directory. Logs can be monitored in real-time with traditional tools such as <em>tail -f</em> or <em>grep</em>.</p>

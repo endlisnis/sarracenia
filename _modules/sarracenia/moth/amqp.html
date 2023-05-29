@@ -222,13 +222,13 @@
     <span class="c1"># length of an AMQP short string (used for headers and many properties)</span>
     <span class="n">amqp_ss_maxlen</span> <span class="o">=</span> <span class="mi">255</span>
 
-<div class="viewcode-block" id="AMQP.__init__"><a class="viewcode-back" href="../../../Reference/code.html#sarracenia.moth.amqp.AMQP.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">broker</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="AMQP.__init__"><a class="viewcode-back" href="../../../Reference/code.html#sarracenia.moth.amqp.AMQP.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           connect to broker, depending on message_strategy stubborness, remain connected.</span>
 <span class="sd">           </span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">props</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="p">)</span>
 
         <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
             <span class="nb">format</span><span class="o">=</span>
@@ -328,7 +328,7 @@
             <span class="c1"># tear the whole thing down, and start over.</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="c1"># from sr_consumer.build_connection...</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]):</span>
                     <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;could not connect&#39;</span><span class="p">)</span>
                     <span class="k">break</span>
 
@@ -338,8 +338,8 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">basic_qos</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;prefetch&#39;</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
 
                 <span class="c1">#FIXME: test self.first_setup and props[&#39;reset&#39;]... delete queue...</span>
-                <span class="n">broker_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                    <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">password</span> <span class="o">+</span> <span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
+                <span class="n">broker_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">password</span> <span class="o">+</span> <span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
 
                 <span class="c1"># from Queue declare</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;queueDeclare&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;queueName&#39;</span><span class="p">]:</span>
@@ -392,7 +392,7 @@
                     <span class="sa">f</span><span class="s1">&#39;connecting to: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s2">&quot;queueName&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">, durable: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s2">&quot;durable&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">, expire: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s2">&quot;expire&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">, auto_delete=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s2">&quot;auto_delete&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;AMQP getSetup failed to </span><span class="si">{}</span><span class="s2"> with </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Exception details: &#39;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;message_strategy&#39;</span><span class="p">][</span><span class="s1">&#39;stubborn&#39;</span><span class="p">]:</span> <span class="k">return</span>
@@ -433,8 +433,8 @@
 
                 <span class="c1"># transaction mode... confirms would be better...</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">tx_select</span><span class="p">()</span>
-                <span class="n">broker_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                    <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">password</span> <span class="o">+</span> <span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
+                <span class="n">broker_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">password</span> <span class="o">+</span> <span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">)</span>
 
                 <span class="c1">#logger.debug(&#39;putSetup ... 1. connected to {}&#39;.format(broker_str ) )</span>
 

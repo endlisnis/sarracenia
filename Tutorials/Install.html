@@ -134,7 +134,7 @@
 <dd class="field-odd"><p>3.00.40</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>May 25, 2023</p>
+<dd class="field-even"><p>May 29, 2023</p>
 </dd>
 </dl>
 </section>
@@ -181,6 +181,18 @@ Currently, only the debian packages include man pages. The guides are only
 available in the source repository. For earlier ubuntu versions, install
 via pip is required because of missing dependencies in the python environment
 shipped with earlier operating systems.</p>
+<p>One can create a bulletin ingest configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/.</span><span class="n">config</span><span class="o">/</span><span class="n">sr3</span><span class="o">/</span><span class="n">subscribe</span>
+<span class="n">cat</span> <span class="o">&lt;&lt;</span><span class="n">EOT</span> <span class="o">&gt;~/.</span><span class="n">config</span><span class="o">/</span><span class="n">sr3</span><span class="o">/</span><span class="n">subscribe</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">ingest</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">broker</span> <span class="n">amqps</span><span class="p">:</span><span class="o">//</span><span class="n">hpfx</span><span class="o">.</span><span class="n">collab</span><span class="o">.</span><span class="n">science</span><span class="o">.</span><span class="n">gc</span><span class="o">.</span><span class="n">ca</span>
+
+<span class="n">topicPrefix</span> <span class="n">v02</span><span class="o">.</span><span class="n">post</span>
+<span class="n">subtopic</span> <span class="o">*.</span><span class="n">WXO</span><span class="o">-</span><span class="n">DD</span><span class="o">.</span><span class="n">bulletins</span><span class="o">.</span><span class="n">alphanumeric</span><span class="o">.</span><span class="c1">#</span>
+
+<span class="n">directory</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">ingest</span>
+<span class="n">EOT</span>
+</pre></div>
+</div>
 <p>If an option is not installed, but is needed for a given configuration, then sr3 will
 detect it and complain, and one needs to install the missing support:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="n">foreground</span> <span class="n">subscribe</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">ingest</span>

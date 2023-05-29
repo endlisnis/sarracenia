@@ -752,7 +752,9 @@
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;missing post_baseUrl setting&#39;</span><span class="p">)</span>
                 <span class="k">return</span>
 
-        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">post_topicPrefix</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">post_format</span><span class="p">:</span>
+            <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;post_format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">post_format</span>
+        <span class="k">elif</span> <span class="n">options</span><span class="o">.</span><span class="n">post_topicPrefix</span><span class="p">:</span>
             <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;post_format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">post_topicPrefix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">elif</span> <span class="n">options</span><span class="o">.</span><span class="n">topicPrefix</span> <span class="o">!=</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;_format&#39;</span><span class="p">]:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;received message in </span><span class="si">{</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;_format&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> format, expected </span><span class="si">{</span><span class="n">options</span><span class="o">.</span><span class="n">post_topicPrefix</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="p">)</span>

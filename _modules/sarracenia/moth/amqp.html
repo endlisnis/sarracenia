@@ -198,7 +198,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">content_type</span> <span class="o">=</span> <span class="kc">None</span>
 
-            <span class="n">msg</span> <span class="o">=</span> <span class="n">PostFormat</span><span class="o">.</span><span class="n">importAny</span><span class="p">(</span> <span class="n">body</span><span class="p">,</span> <span class="n">raw_msg</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">content_type</span> <span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">PostFormat</span><span class="o">.</span><span class="n">importAny</span><span class="p">(</span> <span class="n">body</span><span class="p">,</span> <span class="n">raw_msg</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">content_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">msg</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Decode failed, discarding message&#39;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">None</span>
@@ -680,7 +680,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ttl</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
 
-        <span class="n">raw_body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content_type</span> <span class="o">=</span> <span class="n">PostFormat</span><span class="o">.</span><span class="n">exportAny</span><span class="p">(</span> <span class="n">body</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;topicPrefix&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">raw_body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content_type</span> <span class="o">=</span> <span class="n">PostFormat</span><span class="o">.</span><span class="n">exportAny</span><span class="p">(</span> <span class="n">body</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;topicPrefix&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="p">)</span>
 
         <span class="n">topic</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;topic&#39;</span><span class="p">])</span>
         <span class="n">topic</span> <span class="o">=</span> <span class="n">topic</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;%23&#39;</span><span class="p">)</span>

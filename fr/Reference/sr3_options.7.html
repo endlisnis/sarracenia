@@ -1268,10 +1268,27 @@ qui ne peuvent pas être instancié de la manière normale.  Exemple:</p>
 xwinnow02, xwinnow03 et xwinnow04, où chaque échange ne recevra qu’un cinquième
 du flux total.</p>
 </section>
+<section id="post-format-name-defaut-v03">
+<h4>post_format &lt;name&gt; (défaut: v03)<a class="headerlink" href="#post-format-name-defaut-v03" title="Permalink to this heading"></a></h4>
+<p>Définit le format de message pour les messages publiés. les valeurs actuellement incluses sont :</p>
+<ul class="simple">
+<li><p>v02 … utilisé par toutes les pompes de données existantes dans la plupart des cas.</p></li>
+<li><p>v03 … par défaut au format sr3 JSON plus facile à utiliser.</p></li>
+<li><p>wis … un format expérimental geoJSON en flux pour l’Organisation météorologique mondiale</p></li>
+</ul>
+<p>Lorsqu’elle est fournie, cette valeur remplace tout ce qui peut être déduit de post_topicPrefix.</p>
+</section>
 <section id="post-on-start">
 <h4>post_on_start<a class="headerlink" href="#post-on-start" title="Permalink to this heading"></a></h4>
 <p>Lors du démarrage de watch, on peut soit demander au programme de publier tous les fichiers dans les répertoires
 surveillés, ou pas. (pas implanté en sr3_cpost)</p>
+</section>
+<section id="post-topic-chaine">
+<h4>post_topic &lt;chaine&gt;<a class="headerlink" href="#post-topic-chaine" title="Permalink to this heading"></a></h4>
+<p>Définissez explicitement une chaîne de sujet de publication, en remplaçant l’habituel
+groupe de paramètres. Pour les pompes de données Sarracenia, cela ne devrait jamais être nécessaire,
+car l’utilisation de <em>post_exchange</em>, <em>post_topicPrefix</em> et le <em>relPath</em> construit normalement le bon
+valeur pour les sujets à la fois pour la publication et la liaison.</p>
 </section>
 <section id="post-topicprefix-defaut-topicprefix">
 <h4>post_topicPrefix (défaut: topicPrefix)<a class="headerlink" href="#post-topicprefix-defaut-topicprefix" title="Permalink to this heading"></a></h4>
@@ -1595,6 +1612,13 @@ niveaux de conformité par rapport à ce qui est couramment défini comme un cry
 <p>Par exemple, si on se connecte à un site et que son certificat est expiré, et
 qu’il est quand même nécessaire de l’utiliser, alors définir tlsRigour a <em>lax</em> pourra
 permettre la connexion de réussir.</p>
+</section>
+<section id="topic-chaine">
+<h4>topic &lt;chaine&gt;<a class="headerlink" href="#topic-chaine" title="Permalink to this heading"></a></h4>
+<p>Définissez explicitement une chaîne de sujet d’abonnement ou de publication, en remplaçant la valeur
+dériver à partir de l’habituel groupe de paramètres. Pour les pompes de données Sarracenia, cela ne
+devrait jamais être nécessaire, car l’utilisation de l’<em>exchange</em>, <em>topicPrefix</em> et <em>subtopic</em>
+construit normalement le bon valeur.</p>
 </section>
 <section id="topicprefix-defaut-v03">
 <h4>topicPrefix (défaut: v03)<a class="headerlink" href="#topicprefix-defaut-v03" title="Permalink to this heading"></a></h4>

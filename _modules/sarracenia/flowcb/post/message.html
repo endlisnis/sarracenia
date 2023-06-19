@@ -97,15 +97,17 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;post_broker&#39;</span><span class="p">):</span>
             <span class="n">props</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">moth</span><span class="o">.</span><span class="n">default_options</span>
             <span class="n">props</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">dictify</span><span class="p">())</span>
-            <span class="n">props</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
-                <span class="s1">&#39;broker&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">post_broker</span><span class="p">,</span>
-                <span class="s1">&#39;exchange&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">post_exchange</span><span class="p">,</span>
-                <span class="s1">&#39;topicPrefix&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">post_topicPrefix</span><span class="p">,</span>
-            <span class="p">})</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;post_exchangeSplit&#39;</span><span class="p">):</span>
-                <span class="n">props</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
-                    <span class="s1">&#39;exchangeSplit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">post_exchangeSplit</span><span class="p">,</span>
-                <span class="p">})</span>
+
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;topic&#39;</span> <span class="p">):</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;topic&#39;</span><span class="p">]</span>
+
+            <span class="c1"># adjust settings post_xxx to be xxx, as Moth does not use post_ ones.</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;broker&#39;</span><span class="p">,</span> <span class="s1">&#39;exchange&#39;</span><span class="p">,</span> <span class="s1">&#39;topicPrefix&#39;</span><span class="p">,</span> <span class="s1">&#39;exchangeSplit&#39;</span><span class="p">,</span> <span class="s1">&#39;topic&#39;</span> <span class="p">]:</span>
+                <span class="n">post_one</span><span class="o">=</span><span class="s1">&#39;post_&#39;</span><span class="o">+</span><span class="n">k</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="n">post_one</span> <span class="p">):</span> 
+                    <span class="c1">#props.update({ k: getattr(self.o,post_one) } )</span>
+                    <span class="n">props</span><span class="p">[</span> <span class="n">k</span> <span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span><span class="n">post_one</span><span class="p">)</span>
+
             <span class="bp">self</span><span class="o">.</span><span class="n">poster</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">moth</span><span class="o">.</span><span class="n">Moth</span><span class="o">.</span><span class="n">pubFactory</span><span class="p">(</span><span class="n">props</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worklist</span><span class="p">):</span>

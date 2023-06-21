@@ -194,18 +194,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.flowcb.mdelaylatest.MDelayLatest"><code class="docutils literal notranslate"><span class="pre">MDelayLatest</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.flowcb.nodupe">sarracenia.flowcb.nodupe</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.flowcb.nodupe.NoDupe"><code class="docutils literal notranslate"><span class="pre">NoDupe</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.flowcb.nodupe.data">sarracenia.flowcb.nodupe.data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.flowcb.nodupe.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.flowcb.nodupe.name">sarracenia.flowcb.nodupe.name</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.flowcb.nodupe.name.Name"><code class="docutils literal notranslate"><span class="pre">Name</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#sarracenia-flowcb-nodupe">sarracenia.flowcb.nodupe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sarracenia-flowcb-nodupe-data">sarracenia.flowcb.nodupe.data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sarracenia-flowcb-nodupe-name">sarracenia.flowcb.nodupe.name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.flowcb.retry">sarracenia.flowcb.retry</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.flowcb.retry.Retry"><code class="docutils literal notranslate"><span class="pre">Retry</span></code></a></li>
 </ul>
@@ -383,9 +374,9 @@ with sr3.</p>
 <li><p><a class="reference internal" href="#module-sarracenia.flowcb.housekeeping.resources" id="id37">sarracenia.flowcb.housekeeping.resources</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.flowcb.log" id="id38">sarracenia.flowcb.log</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.flowcb.mdelaylatest" id="id39">sarracenia.flowcb.mdelaylatest</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.flowcb.nodupe" id="id40">sarracenia.flowcb.nodupe</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.flowcb.nodupe.data" id="id41">sarracenia.flowcb.nodupe.data</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.flowcb.nodupe.name" id="id42">sarracenia.flowcb.nodupe.name</a></p></li>
+<li><p><a class="reference internal" href="#sarracenia-flowcb-nodupe" id="id40">sarracenia.flowcb.nodupe</a></p></li>
+<li><p><a class="reference internal" href="#sarracenia-flowcb-nodupe-data" id="id41">sarracenia.flowcb.nodupe.data</a></p></li>
+<li><p><a class="reference internal" href="#sarracenia-flowcb-nodupe-name" id="id42">sarracenia.flowcb.nodupe.name</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.flowcb.retry" id="id43">sarracenia.flowcb.retry</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.flowcb.pclean" id="id44">sarracenia.flowcb.pclean</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.flowcb.sample" id="id45">sarracenia.flowcb.sample</a></p></li>
@@ -1664,92 +1655,14 @@ In the meantime, the message is placed on the retry queue by marking it as faile
 </dd></dl>
 
 </section>
-<section id="module-sarracenia.flowcb.nodupe">
-<span id="sarracenia-flowcb-nodupe"></span><h2><a class="toc-backref" href="#id40" role="doc-backlink">sarracenia.flowcb.nodupe</a><a class="headerlink" href="#module-sarracenia.flowcb.nodupe" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.flowcb.nodupe.NoDupe">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.flowcb.nodupe.</span></span><span class="sig-name descname"><span class="pre">NoDupe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/flowcb/nodupe.html#NoDupe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.nodupe.NoDupe" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sarracenia.flowcb.FlowCB" title="sarracenia.flowcb.FlowCB"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowCB</span></code></a></p>
-<p>generalised duplicate suppression for sr3 programs. It is used as a
-time based buffer that prevents, when activated, identical files (of some kinds)
-from being processed more than once, by rejecting files identified as duplicates.</p>
-<p>options:</p>
-<dl class="simple">
-<dt>nodupe_ttl - duration in seconds (floating point.)</dt><dd><p>The time horizon of the receiption cache.
-how long to remember files, so they are rejected as duplicates.</p>
-</dd>
-</dl>
-<p>The expiry based on nodupe_ttl is applied every housekeeping interval.</p>
-<dl class="simple">
-<dt>nodupe_fileAgeMax - the oldest file that will be considered for processing.</dt><dd><p>files older than this threshold will be rejected.</p>
-</dd>
-<dt>nodupe_fileAgeMin - the newest file that can be considered for processing.</dt><dd><p>files newer than this threshold will be rejected.
-if not specified, the value of option <em>inflight</em>
-may be referenced if it is an integer value.</p>
-</dd>
-</dl>
-<p>NoDupe supports/uses:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cache_file</span> <span class="p">:</span> <span class="n">default</span> <span class="o">~/.</span><span class="n">cache</span><span class="o">/</span><span class="n">sarra</span><span class="o">/</span><span class="s1">&#39;pgm&#39;</span><span class="o">/</span><span class="s1">&#39;cfg&#39;</span><span class="o">/</span><span class="n">recent_files_0001</span><span class="o">.</span><span class="n">cache</span>
-             <span class="n">each</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span> <span class="ow">is</span>
-             <span class="nb">sum</span> <span class="n">time</span> <span class="n">path</span> <span class="n">part</span>
-
-<span class="n">cache_dict</span> <span class="p">:</span> <span class="p">{}</span>
-             <span class="n">cache_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">path1</span><span class="p">:</span> <span class="n">time1</span><span class="p">,</span> <span class="n">path2</span><span class="p">:</span> <span class="n">time2</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
-</pre></div>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.flowcb.nodupe.NoDupe.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/flowcb/nodupe.html#NoDupe.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.nodupe.NoDupe.__init__" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.flowcb.nodupe.NoDupe._not_in_cache">
-<span class="sig-name descname"><span class="pre">_not_in_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relpath</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/sarracenia/flowcb/nodupe.html#NoDupe._not_in_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.nodupe.NoDupe._not_in_cache" title="Permalink to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>return False if the given key=relpath value is already in the cache,</dt><dd><p>True otherwise</p>
-</dd>
-</dl>
-<p>side effect: add it to the cache if it isn’t there.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.flowcb.nodupe.NoDupe.check_message">
-<span class="sig-name descname"><span class="pre">check_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/sarracenia/flowcb/nodupe.html#NoDupe.check_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.nodupe.NoDupe.check_message" title="Permalink to this definition"></a></dt>
-<dd><p>derive keys to be looked up in cache of messages already seen.
-then look them up in the cache,</p>
-<dl class="simple">
-<dt>return False if message is a dupe.</dt><dd><p>True if it is new.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="sarracenia-flowcb-nodupe">
+<h2><a class="toc-backref" href="#id40" role="doc-backlink">sarracenia.flowcb.nodupe</a><a class="headerlink" href="#sarracenia-flowcb-nodupe" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-sarracenia.flowcb.nodupe.data">
-<span id="sarracenia-flowcb-nodupe-data"></span><h2><a class="toc-backref" href="#id41" role="doc-backlink">sarracenia.flowcb.nodupe.data</a><a class="headerlink" href="#module-sarracenia.flowcb.nodupe.data" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.flowcb.nodupe.data.Data">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.flowcb.nodupe.data.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/flowcb/nodupe/data.html#Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.nodupe.data.Data" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sarracenia.flowcb.FlowCB" title="sarracenia.flowcb.FlowCB"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowCB</span></code></a></p>
-<p>duplicate suppression based on data alone. Overrides the path used for lookups
-in the cache so that all files have the same name, and so if the checksum
-is the same, regardless of file name, it is considered a duplicate.</p>
-</dd></dl>
-
+<section id="sarracenia-flowcb-nodupe-data">
+<h2><a class="toc-backref" href="#id41" role="doc-backlink">sarracenia.flowcb.nodupe.data</a><a class="headerlink" href="#sarracenia-flowcb-nodupe-data" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-sarracenia.flowcb.nodupe.name">
-<span id="sarracenia-flowcb-nodupe-name"></span><h2><a class="toc-backref" href="#id42" role="doc-backlink">sarracenia.flowcb.nodupe.name</a><a class="headerlink" href="#module-sarracenia.flowcb.nodupe.name" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.flowcb.nodupe.name.Name">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.flowcb.nodupe.name.</span></span><span class="sig-name descname"><span class="pre">Name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/flowcb/nodupe/name.html#Name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.nodupe.name.Name" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sarracenia.flowcb.FlowCB" title="sarracenia.flowcb.FlowCB"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowCB</span></code></a></p>
-<p>Override the the comparison so that files with the same name,
-regardless of what directory they are in, are considered the same.
-This is useful when receiving data from two different sources (two different trees)
-and winnowing between them.</p>
-</dd></dl>
-
+<section id="sarracenia-flowcb-nodupe-name">
+<h2><a class="toc-backref" href="#id42" role="doc-backlink">sarracenia.flowcb.nodupe.name</a><a class="headerlink" href="#sarracenia-flowcb-nodupe-name" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-sarracenia.flowcb.retry">
 <span id="sarracenia-flowcb-retry"></span><h2><a class="toc-backref" href="#id43" role="doc-backlink">sarracenia.flowcb.retry</a><a class="headerlink" href="#module-sarracenia.flowcb.retry" title="Permalink to this heading"></a></h2>

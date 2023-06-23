@@ -101,7 +101,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#instances">INSTANCES</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#remote-configurations">Remote Configurations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extensions">Extensions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#integrity">Integrity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#identity">Identity</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#transfer">Transfer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#roles-feeder-admin-declare">ROLES - feeder/admin/declare</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configuration-files">CONFIGURATION FILES</a></li>
@@ -468,8 +468,8 @@ the <strong>start</strong>, <strong>foreground</strong>, or <strong>restart</str
  <span class="s1">&#39;inlineEncoding&#39;</span><span class="p">:</span> <span class="s1">&#39;guess&#39;</span><span class="p">,</span>
  <span class="s1">&#39;inlineOnly&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
  <span class="s1">&#39;instances&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
- <span class="s1">&#39;integrity_arbitrary_value&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
- <span class="s1">&#39;integrity_method&#39;</span><span class="p">:</span> <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;identity_arbitrary_value&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;identity_method&#39;</span><span class="p">:</span> <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
  <span class="s1">&#39;logEvents&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;after_work&#39;</span><span class="p">,</span> <span class="s1">&#39;after_accept&#39;</span><span class="p">,</span> <span class="s1">&#39;on_housekeeping&#39;</span><span class="p">},</span>
  <span class="s1">&#39;logFormat&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> [</span><span class="si">%(levelname)s</span><span class="s1">] </span><span class="si">%(name)s</span><span class="s1"> </span><span class="si">%(funcName)s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
  <span class="s1">&#39;logLevel&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span>
@@ -1082,8 +1082,8 @@ by re-announcing it on the xpublic exchange.</p>
 In the case of a poll, the post will have its url built from the <em>pollUrl</em>
 option, with the product’s path (<em>directory</em>/”matched file”).  There is one
 post per file.  The file’s size is taken from the directory “ls”… but its
-checksum cannot be determined, so the default integrity method is “cod”, asking
-clients to calculate the integrity Checksum On Download.</p>
+checksum cannot be determined, so the default identity method is “cod”, asking
+clients to calculate the identity Checksum On Download.</p>
 <p>By default, sr_poll sends its post notification message to the broker with default exchange
 (the prefix <em>xs_</em> followed by the broker username). The <em>post_broker</em> is mandatory.
 It can be given incomplete if it is well defined in the credentials.conf file.</p>
@@ -1590,7 +1590,7 @@ without authentication on dd.weather.gc.ca.</p>
 <h3>WINNOW<a class="headerlink" href="#winnow" title="Permalink to this heading"></a></h3>
 <p>the <strong>winnow</strong> component subscribes to file notification messages and reposts them, suppressing redundant
 ones. How to decide which ones are redundant varies by use case. In the most straight-forward case,
-the messages have <strong>Integrity</strong> header stores a file’s fingerprint as described in the <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a> man page,
+the messages have <strong>Identity</strong> header stores a file’s fingerprint as described in the <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a> man page,
 and header is used exclusively. There are many other use cases, though. discussed in the following section
 on <a class="reference external" href="DuplicateSuppresion.html">Duplicate Suppression</a></p>
 <p><strong>winnow</strong> has the following options forced:</p>
@@ -2327,10 +2327,10 @@ the directory will be checked for new files.  Here is part of the Script callbac
 </div>
 </section>
 </section>
-<section id="integrity">
-<h3>Integrity<a class="headerlink" href="#integrity" title="Permalink to this heading"></a></h3>
+<section id="identity">
+<h3>Identity<a class="headerlink" href="#identity" title="Permalink to this heading"></a></h3>
 <p>One can use the <em>import</em> directive to add new checksum algorithms by sub-classing
-sarracenia.integrity.Integrity.</p>
+sarracenia.identity.Identity.</p>
 </section>
 <section id="transfer">
 <h3>Transfer<a class="headerlink" href="#transfer" title="Permalink to this heading"></a></h3>

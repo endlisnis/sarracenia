@@ -151,7 +151,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Jun 21, 2023</p>
+<dd class="field-even"><p>Jun 23, 2023</p>
 </dd>
 </dl>
 </section>
@@ -172,7 +172,7 @@ build new ones in a copy/paste manner, with many samples being available to read
 <p>There are other ways to extend Sarracenia v3 by subclassing of:</p>
 <ul class="simple">
 <li><p>Sarracenia.transfer.Transfer to add more data transfer protocols</p></li>
-<li><p>Sarracenia.integrity.Integrity to add more checksumming methods.</p></li>
+<li><p>Sarracenia.identity.Identity to add more checksumming methods.</p></li>
 <li><p>Sarracenia.moth.Moth to add support for more messaging protocols.</p></li>
 <li><p>Sarracenia.flow.Flow to create new flows.</p></li>
 <li><p>Sarracenia.flowcb.FlowCB to add custom callback routines to flows.</p></li>
@@ -440,7 +440,7 @@ need to add it:</p>
 <p>One can add additional functionality to Sarracenia by creating subclassing.</p>
 <ul class="simple">
 <li><p>sarra.moth - Messages Organized into Topic Hierarchies. (existing ones: rabbitmq-amqp)</p></li>
-<li><p>sarra.integrity - checksum algorithms ( existing ones: md5, sha512, arbitrary, random )</p></li>
+<li><p>sarra.identity - checksum algorithms ( existing ones: md5, sha512, arbitrary, random )</p></li>
 <li><p>sarra.transfer - additional transport protocols  (https, ftp, sftp )</p></li>
 <li><p>sarra.flow - creation of new components beyond the built-in ones. (post, sarra, shovel, etc…)</p></li>
 <li><p>sarra.flowcb - customization of component flows using callbacks.</p></li>
@@ -533,7 +533,7 @@ concatenating the two gives the complete URL.</p>
 <dt><em>msg[‘fileOp’]</em></dt><dd><p>for non data download file operations, such as creation of symbolic links, file renames and removals.
 content described in <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a></p>
 </dd>
-<dt><em>msg[‘integrity’]</em></dt><dd><p>The checksum structure, a python dictionary with ‘method’ and ‘value’ fields.</p>
+<dt><em>msg[‘identity’]</em></dt><dd><p>The checksum structure, a python dictionary with ‘method’ and ‘value’ fields.</p>
 </dd>
 <dt><em>msg[‘subtopic’], msg[‘new_subtopic’]</em></dt><dd><p>list of strings (with the topic prefix stripped off)
 do not use, as it will be generated from msg[‘new_relPath’] when the message is published.</p>
@@ -547,7 +547,7 @@ this set valued field is used:</p>
 </div>
 <p>For example, all of the <em>new_</em> fields are in the <em>_deleteOnPost</em> by default.</p>
 </dd>
-<dt><em>msg[‘onfly_checksum’], msg[‘data_checksum’]</em></dt><dd><p>the value of an <em>Integrity</em> checksum field calculated as data is downloaded.
+<dt><em>msg[‘onfly_checksum’], msg[‘data_checksum’]</em></dt><dd><p>the value of an <em>Identity</em> checksum field calculated as data is downloaded.
 In the case where data is modified while downloading, the <em>onfly_checksum</em>
 is to verify that the upstream data was correctly received, while the
 <em>data_checksum</em> is calculated for downstream consumers.</p>
@@ -971,7 +971,7 @@ subscribers with an after_accept plugin to compare a file that has been locally
 uncompressed to an upstream file offered in compressed form.</p></li>
 <li><p>add Bittorrent, S3, IPFS as transfer protocols (sub-classing Transfer)</p></li>
 <li><p>add additional message protocols (sub-classing Moth)</p></li>
-<li><p>additional checksums, subclassing Integrity. For example, to get GOES DCP
+<li><p>additional checksums, subclassing Identity. For example, to get GOES DCP
 data from sources such as USGS Sioux Falls, the reports have a trailer
 that shows some antenna statistics from the reception site.  So if one
 receives GOES DCP from Wallops, for example, the trailer will be different

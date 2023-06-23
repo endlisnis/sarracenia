@@ -649,9 +649,9 @@ is defined for use by the download routing: msg[‘new_inflight_path’]</p>
 </div></blockquote>
 <p>This replaces built-in download functionality, providing an override.
 for individual file transfers. ideally you set checksums as you download.</p>
-<p>looking at self.o.integrity_method to establish download checksum algorithm.
+<p>looking at self.o.identity_method to establish download checksum algorithm.
 might have to allow for cod… say it is checksum_method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">checksum</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">integrity</span><span class="o">.</span><span class="n">Integrity</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">checksum_method</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">checksum</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">identity</span><span class="o">.</span><span class="n">Identity</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">checksum_method</span><span class="p">)</span>
 <span class="k">while</span> <span class="n">downloading</span><span class="p">:</span>
     <span class="n">checksum</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
 </pre></div>
@@ -662,7 +662,7 @@ during the download.</p>
 it is imperative, to avoid looping, to apply the actual checksum of the
 data to the message:</p>
 <blockquote>
-<div><p>msg[‘integrity’] =  { ‘method’: checksum_method, ‘value’: checksum.get_sumstr() }</p>
+<div><p>msg[‘identity’] =  { ‘method’: checksum_method, ‘value’: checksum.get_sumstr() }</p>
 </div></blockquote>
 <p>return Boolean success indicator.  if False, download  will be attempted again and/or
 appended to retry queue.</p>
@@ -1903,7 +1903,7 @@ entire directories are listed at this point.</p></li>
 (as per <a class="reference external" href="pypi.org/project/pytz">pytz</a></p></li>
 <li><p>chmod - used to identify the minimum permissions to accept for a file to
 be included in a polling result.</p></li>
-<li><p>integrity_method - parameter for how to build integrity checksum for messages.
+<li><p>identity_method - parameter for how to build identity checksum for messages.
 as these are usually remote files, the default is typically “cod” (calculate on download)</p></li>
 <li><p>rename - parameter used to to put in messages built to specify the rename field contents.</p></li>
 <li><p>options are passed to sarracenia.Transfer classes for their use as well.</p></li>

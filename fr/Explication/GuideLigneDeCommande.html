@@ -425,8 +425,8 @@ les actions <strong>start</strong>, <strong>foreground</strong> ou <strong>resta
  <span class="s1">&#39;inlineEncoding&#39;</span><span class="p">:</span> <span class="s1">&#39;guess&#39;</span><span class="p">,</span>
  <span class="s1">&#39;inlineOnly&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
  <span class="s1">&#39;instances&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
- <span class="s1">&#39;integrity_arbitrary_value&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
- <span class="s1">&#39;integrity_method&#39;</span><span class="p">:</span> <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;identity_arbitrary_value&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;identity_method&#39;</span><span class="p">:</span> <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
  <span class="s1">&#39;logEvents&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;after_work&#39;</span><span class="p">,</span> <span class="s1">&#39;after_accept&#39;</span><span class="p">,</span> <span class="s1">&#39;on_housekeeping&#39;</span><span class="p">},</span>
  <span class="s1">&#39;logFormat&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> [</span><span class="si">%(levelname)s</span><span class="s1">] </span><span class="si">%(name)s</span><span class="s1"> </span><span class="si">%(funcName)s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
  <span class="s1">&#39;logLevel&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span>
@@ -1542,7 +1542,7 @@ sans authentification sur dd.weather.gc.ca.</p>
 <p><strong>winnow</strong> est un programme qui s’abonne aux notifications de fichiers,
 et réenregistre les notifications, en supprimant les notifications redondantes.</p>
 <p>La méthode de décider quels messages d´annonce sont redondants varient selon le cas d´usage.
-Normalement, les messages comprenned un champs <em>Integrity</em> qui avec une somme de contrôle
+Normalement, les messages comprenned un champs <em>Identity</em> qui avec une somme de contrôle
 du ficher, tel que décrit dans <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a>
 Il y bien d´autres cas d´usage discutés dans <a class="reference external" href="SupprimerLesDoublons.html">Supprimer les doublons</a></p>
 <p><strong>winnow</strong> a les options suivante forcés:</p>
@@ -2289,10 +2289,10 @@ le répertoire sera vérifié pour les nouveaux fichiers.  Voici une partie de l
 </div>
 </section>
 </section>
-<section id="integrity">
-<h3>Integrity<a class="headerlink" href="#integrity" title="Permalink to this heading"></a></h3>
+<section id="identity">
+<h3>Identity<a class="headerlink" href="#identity" title="Permalink to this heading"></a></h3>
 <p>On peut utiliser la directive <em>import</em> pour ajouter de nouveaux algorithmes de somme de contrôle en sous-classant
-sarracenia.integrity.Integrity.</p>
+sarracenia.identity.Identity.</p>
 </section>
 <section id="transfer">
 <h3>Transfer<a class="headerlink" href="#transfer" title="Permalink to this heading"></a></h3>

@@ -101,7 +101,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="Reference/code.html#sarracenia.config.Config.addBinding.__call__">__call__() (sarracenia.config.Config.addBinding method)</a>
 </li>
-      <li><a href="Reference/code.html#sarracenia.Message.__computeIntegrity">__computeIntegrity() (sarracenia.Message method)</a>
+      <li><a href="Reference/code.html#sarracenia.Message.__computeIdentity">__computeIdentity() (sarracenia.Message method)</a>
 </li>
       <li><a href="Reference/code.html#sarracenia.moth.amqp.AMQP.__connect">__connect() (sarracenia.moth.amqp.AMQP method)</a>
 </li>
@@ -202,9 +202,9 @@
 </li>
         <li><a href="Reference/flowcb.html#sarracenia.flowcb.work.rxpipe.Rxpipe.__init__">(sarracenia.flowcb.work.rxpipe.Rxpipe method)</a>
 </li>
-        <li><a href="Reference/code.html#sarracenia.instance.instance.__init__">(sarracenia.instance.instance method)</a>
+        <li><a href="Reference/code.html#sarracenia.identity.arbitrary.Arbitrary.__init__">(sarracenia.identity.arbitrary.Arbitrary method)</a>
 </li>
-        <li><a href="Reference/code.html#sarracenia.integrity.arbitrary.Arbitrary.__init__">(sarracenia.integrity.arbitrary.Arbitrary method)</a>
+        <li><a href="Reference/code.html#sarracenia.instance.instance.__init__">(sarracenia.instance.instance method)</a>
 </li>
         <li><a href="Reference/code.html#sarracenia.Message.__init__">(sarracenia.Message method)</a>
 </li>
@@ -248,9 +248,9 @@
 </li>
         <li><a href="Reference/flowcb.html#sarracenia.flowcb.FlowCB.__weakref__">(sarracenia.flowcb.FlowCB attribute)</a>
 </li>
-        <li><a href="Reference/code.html#sarracenia.instance.instance.__weakref__">(sarracenia.instance.instance attribute)</a>
+        <li><a href="Reference/code.html#sarracenia.identity.Identity.__weakref__">(sarracenia.identity.Identity attribute)</a>
 </li>
-        <li><a href="Reference/code.html#sarracenia.integrity.Integrity.__weakref__">(sarracenia.integrity.Integrity attribute)</a>
+        <li><a href="Reference/code.html#sarracenia.instance.instance.__weakref__">(sarracenia.instance.instance attribute)</a>
 </li>
         <li><a href="Reference/code.html#sarracenia.Message.__weakref__">(sarracenia.Message attribute)</a>
 </li>
@@ -327,7 +327,7 @@
 </li>
       <li><a href="Reference/code.html#sarracenia.config.Config.applyComponentDefaults">applyComponentDefaults() (sarracenia.config.Config method)</a>
 </li>
-      <li><a href="Reference/code.html#sarracenia.integrity.arbitrary.Arbitrary">Arbitrary (class in sarracenia.integrity.arbitrary)</a>
+      <li><a href="Reference/code.html#sarracenia.identity.arbitrary.Arbitrary">Arbitrary (class in sarracenia.identity.arbitrary)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -547,11 +547,11 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="Reference/code.html#sarracenia.identity.Identity">Identity (class in sarracenia.identity)</a>
+</li>
       <li><a href="Reference/code.html#sarracenia.diskqueue.DiskQueue.in_cache">in_cache() (sarracenia.diskqueue.DiskQueue method)</a>
 </li>
       <li><a href="Reference/code.html#sarracenia.instance.instance">instance (class in sarracenia.instance)</a>
-</li>
-      <li><a href="Reference/code.html#sarracenia.integrity.Integrity">Integrity (class in sarracenia.integrity)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -599,7 +599,7 @@
 </li>
       <li><a href="Reference/code.html#sarracenia.config.Config.mask_ppstr">mask_ppstr() (sarracenia.config.Config method)</a>
 </li>
-      <li><a href="Reference/code.html#sarracenia.integrity.md5.Md5">Md5 (class in sarracenia.integrity.md5)</a>
+      <li><a href="Reference/code.html#sarracenia.identity.md5.Md5">Md5 (class in sarracenia.identity.md5)</a>
 </li>
       <li><a href="Reference/flowcb.html#sarracenia.flowcb.mdelaylatest.MDelayLatest">MDelayLatest (class in sarracenia.flowcb.mdelaylatest)</a>
 </li>
@@ -767,17 +767,17 @@
 </li>
         <li><a href="Reference/flowcb.html#module-sarracenia.flowcb.work.rxpipe">sarracenia.flowcb.work.rxpipe</a>
 </li>
+        <li><a href="Reference/code.html#module-sarracenia.identity">sarracenia.identity</a>
+</li>
+        <li><a href="Reference/code.html#module-sarracenia.identity.arbitrary">sarracenia.identity.arbitrary</a>
+</li>
+        <li><a href="Reference/code.html#module-sarracenia.identity.md5">sarracenia.identity.md5</a>
+</li>
+        <li><a href="Reference/code.html#module-sarracenia.identity.random">sarracenia.identity.random</a>
+</li>
+        <li><a href="Reference/code.html#module-sarracenia.identity.sha512">sarracenia.identity.sha512</a>
+</li>
         <li><a href="Reference/code.html#module-sarracenia.instance">sarracenia.instance</a>
-</li>
-        <li><a href="Reference/code.html#module-sarracenia.integrity">sarracenia.integrity</a>
-</li>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.arbitrary">sarracenia.integrity.arbitrary</a>
-</li>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.md5">sarracenia.integrity.md5</a>
-</li>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.random">sarracenia.integrity.random</a>
-</li>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.sha512">sarracenia.integrity.sha512</a>
 </li>
         <li><a href="Reference/code.html#module-sarracenia.moth">sarracenia.moth</a>
 </li>
@@ -912,13 +912,13 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="Reference/code.html#sarracenia.integrity.random.Random">Random (class in sarracenia.integrity.random)</a>
+      <li><a href="Reference/code.html#sarracenia.identity.random.Random">Random (class in sarracenia.identity.random)</a>
 </li>
       <li><a href="Reference/code.html#sarracenia.credentials.CredentialDB.read">read() (sarracenia.credentials.CredentialDB method)</a>
 </li>
       <li><a href="Reference/code.html#sarracenia.instance.RedirectedTimedRotatingFileHandler">RedirectedTimedRotatingFileHandler (class in sarracenia.instance)</a>
 </li>
-      <li><a href="Reference/code.html#sarracenia.integrity.md5.Md5.registered_as">registered_as() (sarracenia.integrity.md5.Md5 static method)</a>
+      <li><a href="Reference/code.html#sarracenia.identity.md5.Md5.registered_as">registered_as() (sarracenia.identity.md5.Md5 static method)</a>
 </li>
       <li><a href="Reference/code.html#sarracenia.flow.Flow.reject">reject() (sarracenia.flow.Flow method)</a>
 </li>
@@ -1475,45 +1475,45 @@
 </li>
       </ul></li>
       <li>
+    sarracenia.identity
+
+      <ul>
+        <li><a href="Reference/code.html#module-sarracenia.identity">module</a>
+</li>
+      </ul></li>
+      <li>
+    sarracenia.identity.arbitrary
+
+      <ul>
+        <li><a href="Reference/code.html#module-sarracenia.identity.arbitrary">module</a>
+</li>
+      </ul></li>
+      <li>
+    sarracenia.identity.md5
+
+      <ul>
+        <li><a href="Reference/code.html#module-sarracenia.identity.md5">module</a>
+</li>
+      </ul></li>
+      <li>
+    sarracenia.identity.random
+
+      <ul>
+        <li><a href="Reference/code.html#module-sarracenia.identity.random">module</a>
+</li>
+      </ul></li>
+      <li>
+    sarracenia.identity.sha512
+
+      <ul>
+        <li><a href="Reference/code.html#module-sarracenia.identity.sha512">module</a>
+</li>
+      </ul></li>
+      <li>
     sarracenia.instance
 
       <ul>
         <li><a href="Reference/code.html#module-sarracenia.instance">module</a>
-</li>
-      </ul></li>
-      <li>
-    sarracenia.integrity
-
-      <ul>
-        <li><a href="Reference/code.html#module-sarracenia.integrity">module</a>
-</li>
-      </ul></li>
-      <li>
-    sarracenia.integrity.arbitrary
-
-      <ul>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.arbitrary">module</a>
-</li>
-      </ul></li>
-      <li>
-    sarracenia.integrity.md5
-
-      <ul>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.md5">module</a>
-</li>
-      </ul></li>
-      <li>
-    sarracenia.integrity.random
-
-      <ul>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.random">module</a>
-</li>
-      </ul></li>
-      <li>
-    sarracenia.integrity.sha512
-
-      <ul>
-        <li><a href="Reference/code.html#module-sarracenia.integrity.sha512">module</a>
 </li>
       </ul></li>
       <li>
@@ -1600,7 +1600,7 @@
 </li>
       <li><a href="Reference/code.html#sarracenia.transfer.sftp.Sftp">Sftp (class in sarracenia.transfer.sftp)</a>
 </li>
-      <li><a href="Reference/code.html#sarracenia.integrity.sha512.Sha512">Sha512 (class in sarracenia.integrity.sha512)</a>
+      <li><a href="Reference/code.html#sarracenia.identity.sha512.Sha512">Sha512 (class in sarracenia.identity.sha512)</a>
 </li>
       <li><a href="Reference/flowcb.html#sarracenia.flowcb.shiftdir2baseurl.ShiftDir2baseUrl">ShiftDir2baseUrl (class in sarracenia.flowcb.shiftdir2baseurl)</a>
 </li>
@@ -1664,7 +1664,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="Reference/code.html#sarracenia.integrity.Integrity.update_file">update_file() (sarracenia.integrity.Integrity method)</a>
+      <li><a href="Reference/code.html#sarracenia.identity.Identity.update_file">update_file() (sarracenia.identity.Identity method)</a>
 </li>
       <li><a href="Reference/code.html#sarracenia.flow.Flow.updateFieldsAccepted">updateFieldsAccepted() (sarracenia.flow.Flow method)</a>
 </li>
@@ -1688,12 +1688,12 @@
 </li>
       <li><a href="Reference/code.html#sarracenia.Message.validate">validate() (sarracenia.Message method)</a>
 </li>
-      <li><a href="Reference/code.html#sarracenia.integrity.arbitrary.Arbitrary.value">value (sarracenia.integrity.arbitrary.Arbitrary property)</a>
+      <li><a href="Reference/code.html#sarracenia.identity.arbitrary.Arbitrary.value">value (sarracenia.identity.arbitrary.Arbitrary property)</a>
 
       <ul>
-        <li><a href="Reference/code.html#sarracenia.integrity.Integrity.value">(sarracenia.integrity.Integrity property)</a>
+        <li><a href="Reference/code.html#sarracenia.identity.Identity.value">(sarracenia.identity.Identity property)</a>
 </li>
-        <li><a href="Reference/code.html#sarracenia.integrity.random.Random.value">(sarracenia.integrity.random.Random property)</a>
+        <li><a href="Reference/code.html#sarracenia.identity.random.Random.value">(sarracenia.identity.random.Random property)</a>
 </li>
       </ul></li>
   </ul></td>

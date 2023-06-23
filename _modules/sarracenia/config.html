@@ -131,10 +131,10 @@
 
 <span class="kn">from</span> <span class="nn">sarracenia.flow.sarra</span> <span class="kn">import</span> <span class="n">default_options</span> <span class="k">as</span> <span class="n">sarradefopts</span>
 
-<span class="kn">import</span> <span class="nn">sarracenia.integrity.arbitrary</span>
+<span class="kn">import</span> <span class="nn">sarracenia.identity.arbitrary</span>
 
 <span class="kn">import</span> <span class="nn">sarracenia.moth</span>
-<span class="kn">import</span> <span class="nn">sarracenia.integrity</span>
+<span class="kn">import</span> <span class="nn">sarracenia.identity</span>
 <span class="kn">import</span> <span class="nn">sarracenia.instance</span>
 
 <span class="n">default_options</span> <span class="o">=</span> <span class="p">{</span>
@@ -153,7 +153,7 @@
     <span class="s1">&#39;inflight&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
     <span class="s1">&#39;inline&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;inlineOnly&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s1">&#39;integrity_method&#39;</span><span class="p">:</span> <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;identity_method&#39;</span><span class="p">:</span> <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
     <span class="s1">&#39;logMetrics&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;logStdout&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;nodupe_driver&#39;</span><span class="p">:</span> <span class="s1">&#39;disk&#39;</span><span class="p">,</span>
@@ -217,7 +217,7 @@
 
 <span class="n">str_options</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;baseDir&#39;</span><span class="p">,</span> <span class="s1">&#39;broker&#39;</span><span class="p">,</span> <span class="s1">&#39;cluster&#39;</span><span class="p">,</span> <span class="s1">&#39;directory&#39;</span><span class="p">,</span> <span class="s1">&#39;exchange&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;exchange_suffix&#39;</span><span class="p">,</span> <span class="s1">&#39;feeder&#39;</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;flatten&#39;</span><span class="p">,</span> <span class="s1">&#39;flowMain&#39;</span><span class="p">,</span> <span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;logLevel&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;exchange_suffix&#39;</span><span class="p">,</span> <span class="s1">&#39;feeder&#39;</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;flatten&#39;</span><span class="p">,</span> <span class="s1">&#39;flowMain&#39;</span><span class="p">,</span> <span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;logLevel&#39;</span><span class="p">,</span> 
     <span class="s1">&#39;pollUrl&#39;</span><span class="p">,</span> <span class="s1">&#39;post_baseUrl&#39;</span><span class="p">,</span> <span class="s1">&#39;post_baseDir&#39;</span><span class="p">,</span> <span class="s1">&#39;post_broker&#39;</span><span class="p">,</span> <span class="s1">&#39;post_exchange&#39;</span><span class="p">,</span>
     <span class="s1">&#39;post_exchangeSuffix&#39;</span><span class="p">,</span> <span class="s1">&#39;post_format&#39;</span><span class="p">,</span> <span class="s1">&#39;post_topic&#39;</span><span class="p">,</span> <span class="s1">&#39;queueName&#39;</span><span class="p">,</span> <span class="s1">&#39;sendTo&#39;</span><span class="p">,</span> <span class="s1">&#39;rename&#39;</span><span class="p">,</span>
     <span class="s1">&#39;report_exchange&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;strip&#39;</span><span class="p">,</span> <span class="s1">&#39;timezone&#39;</span><span class="p">,</span> <span class="s1">&#39;nodupe_ttl&#39;</span><span class="p">,</span> <span class="s1">&#39;nodupe_driver&#39;</span><span class="p">,</span> 
@@ -241,15 +241,15 @@
     <span class="s1">&#39;discard&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;delete_destination&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span> <span class="p">],</span> 
     <span class="s1">&#39;from_cluster&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;continue&#39;</span> <span class="p">],</span>
     <span class="s1">&#39;to_clusters&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;continue&#39;</span> <span class="p">],</span>
-    <span class="s1">&#39;integrity&#39;</span> <span class="p">:</span> <span class="p">{</span>
-       <span class="s1">&#39;n&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span> <span class="p">],</span>
-       <span class="s1">&#39;s&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;sha512&#39;</span> <span class="p">],</span>
-       <span class="s1">&#39;d&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;md5&#39;</span> <span class="p">],</span>
-       <span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;arbitrary&#39;</span> <span class="p">],</span>
-       <span class="s1">&#39;r&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span> <span class="p">],</span>
-       <span class="s1">&#39;z,d&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;cod,md5&#39;</span> <span class="p">],</span>
-       <span class="s1">&#39;z,s&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;cod,sha512&#39;</span> <span class="p">],</span>
-       <span class="s1">&#39;z,n&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span> <span class="p">]</span>
+    <span class="s1">&#39;identity&#39;</span> <span class="p">:</span> <span class="p">{</span>
+       <span class="s1">&#39;n&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span> <span class="p">],</span>
+       <span class="s1">&#39;s&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;sha512&#39;</span> <span class="p">],</span>
+       <span class="s1">&#39;d&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;md5&#39;</span> <span class="p">],</span>
+       <span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;arbitrary&#39;</span> <span class="p">],</span>
+       <span class="s1">&#39;r&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span> <span class="p">],</span>
+       <span class="s1">&#39;z,d&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;cod,md5&#39;</span> <span class="p">],</span>
+       <span class="s1">&#39;z,s&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;cod,sha512&#39;</span> <span class="p">],</span>
+       <span class="s1">&#39;z,n&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span> <span class="p">]</span>
     <span class="p">},</span>
     <span class="s1">&#39;ls_file_index&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;continue&#39;</span> <span class="p">],</span>
     <span class="s1">&#39;plugin&#39;</span><span class="p">:</span> <span class="p">{</span>
@@ -762,7 +762,7 @@
         <span class="s1">&#39;simulate&#39;</span><span class="p">:</span> <span class="s1">&#39;dry_run&#39;</span><span class="p">,</span>
         <span class="s1">&#39;simulation&#39;</span><span class="p">:</span> <span class="s1">&#39;dry_run&#39;</span><span class="p">,</span>
         <span class="s1">&#39;source_from_exchange&#39;</span><span class="p">:</span> <span class="s1">&#39;sourceFromExchange&#39;</span><span class="p">,</span> 
-        <span class="s1">&#39;sum&#39;</span> <span class="p">:</span> <span class="s1">&#39;integrity&#39;</span><span class="p">,</span>  
+        <span class="s1">&#39;sum&#39;</span> <span class="p">:</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span>  
         <span class="s1">&#39;suppress_duplicates&#39;</span> <span class="p">:</span> <span class="s1">&#39;nodupe_ttl&#39;</span><span class="p">,</span>
         <span class="s1">&#39;suppress_duplicates_basis&#39;</span> <span class="p">:</span> <span class="s1">&#39;nodupe_basis&#39;</span><span class="p">,</span> 
         <span class="s1">&#39;tls_rigour&#39;</span> <span class="p">:</span> <span class="s1">&#39;tlsRigour&#39;</span><span class="p">,</span> 
@@ -829,7 +829,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">inline</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inlineByteMax</span> <span class="o">=</span> <span class="mi">4096</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inlineEncoding</span> <span class="o">=</span> <span class="s1">&#39;guess&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">integrity_arbitrary_value</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">identity_arbitrary_value</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logReject</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logRotateCount</span> <span class="o">=</span> <span class="mi">5</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logRotateInterval</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1352,54 +1352,54 @@
         <span class="c1">#logger.error(&#39;FIXME! input value: %s&#39; % value)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span><span class="p">:</span>
                <span class="k">return</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="ow">in</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">integrity</span><span class="o">.</span><span class="n">known_methods</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="ow">in</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">identity</span><span class="o">.</span><span class="n">known_methods</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
                 <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;cod,&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="n">value</span>
             <span class="c1">#logger.error(&#39;returning 1: %s&#39; % value)</span>
             <span class="k">return</span>
 
-        <span class="c1">#logger.error( f&#39;1 value: {value} self.integrity_method={self.integrity_method}&#39; )</span>
+        <span class="c1">#logger.error( f&#39;1 value: {value} self.identity_method={self.identity_method}&#39; )</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;z,&#39;</span><span class="p">):</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="s1">&#39;cod,&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="s1">&#39;cod,&#39;</span>
         <span class="k">elif</span> <span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;a,&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="s1">&#39;arbitrary&#39;</span> 
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrity_arbitrary_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="s1">&#39;arbitrary&#39;</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">identity_arbitrary_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="c1">#logger.error( f&#39;2 value: {value} self.integrity_method={self.integrity_method}&#39; )</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="c1">#logger.error( f&#39;2 value: {value} self.identity_method={self.identity_method}&#39; )</span>
 
         <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span> <span class="p">]:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="c1">#logger.error(&#39;returning 1.1: %s&#39; % &#39;none&#39;)</span>
             <span class="k">return</span> 
-        <span class="c1">#logger.error( f&#39;3 value: {value} self.integrity_method={self.integrity_method}&#39; )</span>
+        <span class="c1">#logger.error( f&#39;3 value: {value} self.identity_method={self.identity_method}&#39; )</span>
 
-        <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">integrity</span><span class="o">.</span><span class="n">Integrity</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">identity</span><span class="o">.</span><span class="n">Identity</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">():</span>
             <span class="c1">#logger.error(&#39;against 1.8: %s&#39; % sc.__name__.lower() )</span>
             <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
                 <span class="c1">#logger.error(&#39;returning 2: %s&#39; % value )</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">==</span> <span class="s1">&#39;cod,&#39;</span><span class="p">:</span>
-                      <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">+=</span> <span class="n">value</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">==</span> <span class="s1">&#39;cod,&#39;</span><span class="p">:</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">+=</span> <span class="n">value</span>
                 <span class="k">else</span><span class="p">:</span>
-                      <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="n">value</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="n">value</span>
                 <span class="k">return</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s1">&#39;registered_as&#39;</span><span class="p">):</span>
                 <span class="c1">#logger.error(&#39;against 3: %s&#39; % sc.registered_as() )</span>
 
                 <span class="k">if</span> <span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">registered_as</span><span class="p">()</span> <span class="o">==</span> <span class="n">value</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">==</span> <span class="s1">&#39;cod,&#39;</span><span class="p">:</span>
-                          <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">+=</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">==</span> <span class="s1">&#39;cod,&#39;</span><span class="p">:</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">+=</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
                     <span class="k">else</span><span class="p">:</span>
-                          <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-                    <span class="c1">#logger.error(&#39;returning 3: %s&#39; % self.integrity_method)</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="c1">#logger.error(&#39;returning 3: %s&#39; % self.identity_method)</span>
                     <span class="k">return</span>
         <span class="c1"># FIXME this is an error return case, how to designate an invalid checksum?</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span> <span class="o">=</span> <span class="s1">&#39;invalid&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span> <span class="o">=</span> <span class="s1">&#39;invalid&#39;</span>
         <span class="c1">#logger.error(&#39;returning 4: invalid&#39; )</span>
 
 <div class="viewcode-block" id="Config.parse_file"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.config.Config.parse_file">[docs]</a>    <span class="k">def</span> <span class="nf">parse_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1545,7 +1545,7 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">plugins_early</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;setting&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parse_setting</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
-            <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;integrity&#39;</span><span class="p">]:</span>
+            <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;integrity&#39;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parse_sum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">Config</span><span class="o">.</span><span class="n">port_required</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39; </span><span class="si">{</span><span class="n">cfname</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">lineno</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> not supported in v3, consult porting guide. Option ignored.&#39;</span> <span class="p">)</span>
@@ -2400,9 +2400,9 @@
             <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s1">&#39;number of processes to run per configuration&#39;</span><span class="p">)</span>
 
-        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--integrity_method&#39;</span><span class="p">,</span> <span class="s1">&#39;--integrity&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--sum&#39;</span><span class="p">,</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--identity_method&#39;</span><span class="p">,</span> <span class="s1">&#39;--identity&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--sum&#39;</span><span class="p">,</span>
                             <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
-                            <span class="n">default</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">integrity_method</span><span class="p">,</span>
+                            <span class="n">default</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">identity_method</span><span class="p">,</span>
                             <span class="n">help</span><span class="o">=</span><span class="s1">&#39;choose a different checksumming method for the files posted&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;bindings&#39;</span><span class="p">):</span>
             <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">bindings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bindings</span><span class="p">)</span>

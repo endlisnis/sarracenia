@@ -277,12 +277,12 @@ natural to work with multiple API levels that can be learned by consulting jupyt
   <span class="mi">16</span> <span class="o">./</span><span class="n">flow</span><span class="o">/</span><span class="n">winnow</span><span class="o">.</span><span class="n">py</span>
  <span class="mi">793</span> <span class="o">./</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
  <span class="mi">226</span> <span class="o">./</span><span class="n">instance</span><span class="o">.</span><span class="n">py</span>
-  <span class="mi">36</span> <span class="o">./</span><span class="n">integrity</span><span class="o">/</span><span class="n">arbitrary</span><span class="o">.</span><span class="n">py</span>
-  <span class="mi">93</span> <span class="o">./</span><span class="n">integrity</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-  <span class="mi">33</span> <span class="o">./</span><span class="n">integrity</span><span class="o">/</span><span class="n">md5name</span><span class="o">.</span><span class="n">py</span>
-  <span class="mi">24</span> <span class="o">./</span><span class="n">integrity</span><span class="o">/</span><span class="n">md5</span><span class="o">.</span><span class="n">py</span>
-  <span class="mi">17</span> <span class="o">./</span><span class="n">integrity</span><span class="o">/</span><span class="n">random</span><span class="o">.</span><span class="n">py</span>
-  <span class="mi">24</span> <span class="o">./</span><span class="n">integrity</span><span class="o">/</span><span class="n">sha512</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">36</span> <span class="o">./</span><span class="n">identity</span><span class="o">/</span><span class="n">arbitrary</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">93</span> <span class="o">./</span><span class="n">identity</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">33</span> <span class="o">./</span><span class="n">identity</span><span class="o">/</span><span class="n">md5name</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">24</span> <span class="o">./</span><span class="n">identity</span><span class="o">/</span><span class="n">md5</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">17</span> <span class="o">./</span><span class="n">identity</span><span class="o">/</span><span class="n">random</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">24</span> <span class="o">./</span><span class="n">identity</span><span class="o">/</span><span class="n">sha512</span><span class="o">.</span><span class="n">py</span>
   <span class="mi">17</span> <span class="o">./</span><span class="n">moth</span><span class="o">/</span><span class="n">amq1</span><span class="o">.</span><span class="n">py</span>
  <span class="mi">585</span> <span class="o">./</span><span class="n">moth</span><span class="o">/</span><span class="n">amqp</span><span class="o">.</span><span class="n">py</span>
  <span class="mi">313</span> <span class="o">./</span><span class="n">moth</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
@@ -379,106 +379,6 @@ might be a feature.</p>
 <p>Now that we are a good way throught the process, a
 mapping of source code transcriptions between
 the two versions, is clear:</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Version 2 file</p></td>
-<td><p>Version 3 file</p></td>
-</tr>
-<tr class="row-even"><td><p>sr_config.py</p></td>
-<td><p>config.py</p></td>
-</tr>
-<tr class="row-odd"><td><p>sr_instances.py</p></td>
-<td><p>sr.py for most mgmt.
-instance.py single proc</p></td>
-</tr>
-<tr class="row-even"><td><p>sr_consumer.py</p>
-<p>sr_amqp.py</p>
-<p>sr_message.py</p>
-</td>
-<td><p>moth/__init__.py</p>
-<p>moth/amqp.py</p>
-</td>
-</tr>
-<tr class="row-odd"><td><p>sr_checksum.py</p>
-<p>sum/*</p>
-</td>
-<td><dl class="simple">
-<dt>integrity/</dt><dd><p>__init__.py
-*</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="row-even"><td><p>sr_cache.py</p></td>
-<td><p>flowcb/nodupe.py</p></td>
-</tr>
-<tr class="row-odd"><td><p>sr_retry.py</p></td>
-<td><p>flowcb/retry.py</p>
-<p>diskqueue.py</p>
-</td>
-</tr>
-<tr class="row-even"><td><p>sr_post.py</p></td>
-<td><p>flowcb/gather/file.py</p>
-<p>flow/post.py</p>
-</td>
-</tr>
-<tr class="row-odd"><td><p>sr_poll.py</p></td>
-<td><dl class="simple">
-<dt>flowcb/poll/</dt><dd><p>__init__.py</p>
-</dd>
-</dl>
-<p>flow/poll.py</p>
-</td>
-</tr>
-<tr class="row-even"><td><p>sr_util.py/sr_proto</p>
-<p>sr_util.py/sr_transport</p>
-<p>sr_file.py</p>
-<p>sr_ftp.py</p>
-<p>sr_http.py</p>
-<p>sr_sftp.py</p>
-</td>
-<td><dl class="simple">
-<dt>transfer/__init__.py</dt><dd><ul class="simple">
-<li><p>transfer.Protocol</p></li>
-</ul>
-</dd>
-</dl>
-<p>flow/__init__.py</p>
-<p>transfer/file.py</p>
-<p>transfer/ftp.py</p>
-<p>transfer/http.py</p>
-<p>transfer/sftp.py</p>
-</td>
-</tr>
-<tr class="row-odd"><td><p>plugins/</p></td>
-<td><p>flowcb/  (sr3 ones)
-plugins/ still there</p>
-<blockquote>
-<div><p>for v2 ones.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="row-even"><td><p>overall flow</p></td>
-<td><p>flow/__init__.py</p></td>
-</tr>
-<tr class="row-odd"><td><p>sr_poll.py</p>
-<p>sr_post.py</p>
-<p>sr_subscribe.py</p>
-<p>sr_shovel.py</p>
-<p>sr_report.py</p>
-<p>sr_sarra.py</p>
-<p>sr_sender.py</p>
-<p>sr_watch.py</p>
-<p>sr_winnow.py</p>
-</td>
-<td><p>sr_flow.py
-as entry point…</p>
-<p>but generally just use
-sr.py as single one.</p>
-</td>
-</tr>
-</tbody>
-</table>
 <section id="mappings">
 <h3>Mappings<a class="headerlink" href="#mappings" title="Permalink to this heading"></a></h3>
 <p>v2-&gt;sr3 instance variables:</p>
@@ -534,7 +434,7 @@ it but it broke parsing of checksums… sigh… have to spend time
 on specifically that problem. On new modules ( sarra.config,
 sarra.tmpc.*, sr.py ) using normal imports. likely need to
 refactor how checksum plugin mechanism works then try again.</p>
-<p>totally refactored now. Integrity class is normal, and separate from flowcb.</p>
+<p>totally refactored now. Identity class is normal, and separate from flowcb.</p>
 </li>
 </ul>
 </section>
@@ -688,7 +588,7 @@ now called metpx-sr3</p></li>
 so Plugin becomes a class instantiated in sarra/__init__.py… puts
 plugins and built-in code on a more even level… for example how
 do plugin transfer protocols work?  thinking… This is sort of done
-now: plugin became flowcb. Integrity is removed from the hierarchy.
+now: plugin became flowcb. Identity is removed from the hierarchy.
 Class extension is now a separate kind of plugin (via import)</p></li>
 <li><p>change default topic_prefix to v03.post done 2021/02</p></li>
 <li><p>change default topic_prefix to v03 done 2021/03</p></li>
@@ -906,7 +806,7 @@ it could be fixed, if we decide the old behaviour is right.</p></li>
 designed as the basis of v2, but never implemented as such.</p></li>
 <li><p>The extension API is now vanilla python with no magic settings. just standard classes, using standard import mechanism.
 debugging should be much simpler now as the interpreter will provide much better error messages on startup.
-The v2 style plugins are now called <em>flow callbacks</em>, and there are a number of classes (integrity, moth,
+The v2 style plugins are now called <em>flow callbacks</em>, and there are a number of classes (identity, moth,
 transfer, perhaps flow) that permit extension by straightforward sub-classing. This should make it much
 easier to add additional protocols for transport and messages, as well checksum algorithms for new data types.</p></li>
 <li><p>sarra.moth class abstracts away AMQP, so messaging protocol becomes pluggable.</p></li>
@@ -919,7 +819,7 @@ easier to add additional protocols for transport and messages, as well checksum 
 <li><p>notification messages are acknowledged more quickly, should help with throughput.</p></li>
 <li><p>FlowCB plugin entry_points are now based on groups of notification messages, rather than individual ones, allowing people
 to organize concurrent work.</p></li>
-<li><p>integrity (checksums) are now plugins.</p></li>
+<li><p>identity (checksums) are now plugins.</p></li>
 <li><p>gather (inlet? sources of notification messages) are now plugins.</p></li>
 <li><p>added typing to options settings, so plugins can declare: size, duration, string, or list.</p></li>
 </ul>

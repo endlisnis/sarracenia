@@ -516,86 +516,8 @@ specific functionalities.</p>
 untouched.</p>
 <p>Each v3 notification message acts like a python dictionary.  Below is a table mapping
 fields from the v2 sarra representation to the one in sr3:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>v2</p></th>
-<th class="head"><p>sr3</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>msg.pubtime</p></td>
-<td><p>msg[‘pubTime’]</p></td>
-<td><p>when the message was originally published (standard field)</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.baseurl</p></td>
-<td><p>msg[‘baseUrl’]</p></td>
-<td><p>root of the url tree of posted file (standard field)</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.relpath</p></td>
-<td><p>msg[‘relPath’]</p></td>
-<td><p>relative path concatenated to baseUrl for canonical path</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>no equivalent</em></p></td>
-<td><p>msg[‘retrievePath’]</p></td>
-<td><p>opaque retrieval path to override canonical one.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.notice</p></td>
-<td><p>no equivalent</p></td>
-<td><p>calculated from other field on v2 write</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.new_subtopic</p></td>
-<td><p>msg[‘new_subtopic’]</p></td>
-<td><p>avoid in sr3… calculated from relPath</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.new_dir</p></td>
-<td><p>msg[‘new_dir’]</p></td>
-<td><p>name of the directory where files will be written</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.new_file</p></td>
-<td><p>msg[‘new_file’]</p></td>
-<td><p>name of the file to be writen in new_dir</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.headers</p></td>
-<td><p>msg</p></td>
-<td><p>the in memory sr3 message is a dict, includes headers</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.headers[‘x’]</p></td>
-<td><p>msg[‘x’]</p></td>
-<td><p>headers are dict items.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.message_ttl</p></td>
-<td><p>msg[‘message_ttl’]</p></td>
-<td><p>same setting.</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.exchange</p></td>
-<td><p>msg[‘exchange’]</p></td>
-<td><p>the channel on which the message was received.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.logger</p></td>
-<td><p>logger</p></td>
-<td><p>pythonic logging setup describe above.</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.parts</p></td>
-<td><p>msg[‘size’]</p></td>
-<td><p>just omit, use sarracenia.Message constructor.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.sumflg</p></td>
-<td><p>msg[‘integrity’]</p></td>
-<td><p>just omit, use sarracenia.Message constructor.</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.sumstr</p></td>
-<td><p>v2wrapper.sumstrFromMessage(msg)</p></td>
-<td><p>the literal string for a v2 checksum field.</p></td>
-</tr>
-<tr class="row-even"><td><p>parent.msg</p></td>
-<td><p>worklist.incoming</p></td>
-<td><p>v2 is 1 message at a time, sr3 has lists or messages.</p></td>
-</tr>
-</tbody>
-</table>
 </li>
-<li><p>the pubTime, baseUrl, relPath, retrievePath, size, integrity, are all standard message fields
+<li><p>the pubTime, baseUrl, relPath, retrievePath, size, identity, are all standard message fields
 better described in <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a></p></li>
 <li><p>if one needs to store per message state, then one can declare temporary fields in the message,
 that will not be forwarded when the message is published. There is a set field <em>msg[‘_deleteOnPost’]</em></p>

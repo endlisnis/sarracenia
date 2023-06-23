@@ -131,24 +131,24 @@
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.instance.instance"><code class="docutils literal notranslate"><span class="pre">instance</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.integrity">sarracenia.integrity</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.integrity.Integrity"><code class="docutils literal notranslate"><span class="pre">Integrity</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.identity">sarracenia.identity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sarracenia.identity.Identity"><code class="docutils literal notranslate"><span class="pre">Identity</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.integrity.arbitrary">sarracenia.integrity.arbitrary</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.integrity.arbitrary.Arbitrary"><code class="docutils literal notranslate"><span class="pre">Arbitrary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.identity.arbitrary">sarracenia.identity.arbitrary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sarracenia.identity.arbitrary.Arbitrary"><code class="docutils literal notranslate"><span class="pre">Arbitrary</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.integrity.sha512">sarracenia.integrity.sha512</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.integrity.sha512.Sha512"><code class="docutils literal notranslate"><span class="pre">Sha512</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.identity.sha512">sarracenia.identity.sha512</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sarracenia.identity.sha512.Sha512"><code class="docutils literal notranslate"><span class="pre">Sha512</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.integrity.md5">sarracenia.integrity.md5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.integrity.md5.Md5"><code class="docutils literal notranslate"><span class="pre">Md5</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.identity.md5">sarracenia.identity.md5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sarracenia.identity.md5.Md5"><code class="docutils literal notranslate"><span class="pre">Md5</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.integrity.random">sarracenia.integrity.random</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sarracenia.integrity.random.Random"><code class="docutils literal notranslate"><span class="pre">Random</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.identity.random">sarracenia.identity.random</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sarracenia.identity.random.Random"><code class="docutils literal notranslate"><span class="pre">Random</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-sarracenia.moth">sarracenia.moth</a><ul>
@@ -291,11 +291,11 @@ What is missing:</p>
 <li><p><a class="reference internal" href="#module-sarracenia.flow.watch" id="id16">sarracenia.flow.watch</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.flow.winnow" id="id17">sarracenia.flow.winnow</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.instance" id="id18">sarracenia.instance</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.integrity" id="id19">sarracenia.integrity</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.integrity.arbitrary" id="id20">sarracenia.integrity.arbitrary</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.integrity.sha512" id="id21">sarracenia.integrity.sha512</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.integrity.md5" id="id22">sarracenia.integrity.md5</a></p></li>
-<li><p><a class="reference internal" href="#module-sarracenia.integrity.random" id="id23">sarracenia.integrity.random</a></p></li>
+<li><p><a class="reference internal" href="#module-sarracenia.identity" id="id19">sarracenia.identity</a></p></li>
+<li><p><a class="reference internal" href="#module-sarracenia.identity.arbitrary" id="id20">sarracenia.identity.arbitrary</a></p></li>
+<li><p><a class="reference internal" href="#module-sarracenia.identity.sha512" id="id21">sarracenia.identity.sha512</a></p></li>
+<li><p><a class="reference internal" href="#module-sarracenia.identity.md5" id="id22">sarracenia.identity.md5</a></p></li>
+<li><p><a class="reference internal" href="#module-sarracenia.identity.random" id="id23">sarracenia.identity.random</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.moth" id="id24">sarracenia.moth</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.moth.amqp" id="id25">sarracenia.moth.amqp</a></p></li>
 <li><p><a class="reference internal" href="#module-sarracenia.moth.pika" id="id26">sarracenia.moth.pika</a></p></li>
@@ -322,17 +322,17 @@ What is missing:</p>
 <p>Unfortunately, sub-classing of dict means that to copy it from a dict will mean losing the type,
 and hence the need for the copyDict member.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.Message.__computeIntegrity">
-<span class="sig-name descname"><span class="pre">__computeIntegrity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sarracenia.Message.__computeIntegrity" title="Permalink to this definition"></a></dt>
-<dd><p>check extended attributes for a cached integrity sum calculation.
+<dt class="sig sig-object py" id="sarracenia.Message.__computeIdentity">
+<span class="sig-name descname"><span class="pre">__computeIdentity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sarracenia.Message.__computeIdentity" title="Permalink to this definition"></a></dt>
+<dd><p>check extended attributes for a cached identity sum calculation.
 if extended attributes are present, and
 * the file mtime is not too new, and
 * the cached sum us using the same method
 then use the cached value.</p>
 <p>otherwise, calculate a checksum.
 set the file’s extended attributes for the new value.
-the method of checksum calculation is from options.integrity_method.</p>
-<p>sets the message ‘integrity’ field if appropriate.</p>
+the method of checksum calculation is from options.identity.</p>
+<p>sets the message ‘identity’ field if appropriate.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -471,9 +471,9 @@ lstat.st_size= size_in_bytes</p>
 lstat.filename= “nameOfTheFile”
 lstat.longname= ‘lrwxrwxrwx    1 peter    peter          20 Oct 11 20:28 nameOfTheFile’</p>
 <p>that you can then provide as an <em>lstat</em> argument to the above <em>fromFileInfo()</em>
-call. However the notification message returned will lack an integrity checksum field.
-once you get the file, you can add the Integrity field with:</p>
-<p>m.__computeIntegrity(path, o):</p>
+call. However the notification message returned will lack an identity checksum field.
+once you get the file, you can add the Identity field with:</p>
+<p>m.__computeIdentity(path, o):</p>
 <p>In terms of consuming notification messages, the fields in the dictionary provide metadata
 for the announced resource. The anounced data could be embedded in the notification message itself,
 or available by a URL.</p>
@@ -894,7 +894,7 @@ return config instance item.</p>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="sarracenia.config.str_options">
-<span class="sig-prename descclassname"><span class="pre">sarracenia.config.</span></span><span class="sig-name descname"><span class="pre">str_options</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['action',</span> <span class="pre">'admin',</span> <span class="pre">'baseDir',</span> <span class="pre">'broker',</span> <span class="pre">'cluster',</span> <span class="pre">'directory',</span> <span class="pre">'exchange',</span> <span class="pre">'exchange_suffix',</span> <span class="pre">'feeder',</span> <span class="pre">'filename',</span> <span class="pre">'flatten',</span> <span class="pre">'flowMain',</span> <span class="pre">'header',</span> <span class="pre">'integrity',</span> <span class="pre">'logLevel',</span> <span class="pre">'pollUrl',</span> <span class="pre">'post_baseUrl',</span> <span class="pre">'post_baseDir',</span> <span class="pre">'post_broker',</span> <span class="pre">'post_exchange',</span> <span class="pre">'post_exchangeSuffix',</span> <span class="pre">'post_format',</span> <span class="pre">'post_topic',</span> <span class="pre">'queueName',</span> <span class="pre">'sendTo',</span> <span class="pre">'rename',</span> <span class="pre">'report_exchange',</span> <span class="pre">'source',</span> <span class="pre">'strip',</span> <span class="pre">'timezone',</span> <span class="pre">'nodupe_ttl',</span> <span class="pre">'nodupe_driver',</span> <span class="pre">'nodupe_basis',</span> <span class="pre">'tlsRigour',</span> <span class="pre">'topic',</span> <span class="pre">'vip']</span></em><a class="headerlink" href="#sarracenia.config.str_options" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">sarracenia.config.</span></span><span class="sig-name descname"><span class="pre">str_options</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['action',</span> <span class="pre">'admin',</span> <span class="pre">'baseDir',</span> <span class="pre">'broker',</span> <span class="pre">'cluster',</span> <span class="pre">'directory',</span> <span class="pre">'exchange',</span> <span class="pre">'exchange_suffix',</span> <span class="pre">'feeder',</span> <span class="pre">'filename',</span> <span class="pre">'flatten',</span> <span class="pre">'flowMain',</span> <span class="pre">'header',</span> <span class="pre">'identity',</span> <span class="pre">'logLevel',</span> <span class="pre">'pollUrl',</span> <span class="pre">'post_baseUrl',</span> <span class="pre">'post_baseDir',</span> <span class="pre">'post_broker',</span> <span class="pre">'post_exchange',</span> <span class="pre">'post_exchangeSuffix',</span> <span class="pre">'post_format',</span> <span class="pre">'post_topic',</span> <span class="pre">'queueName',</span> <span class="pre">'sendTo',</span> <span class="pre">'rename',</span> <span class="pre">'report_exchange',</span> <span class="pre">'source',</span> <span class="pre">'strip',</span> <span class="pre">'timezone',</span> <span class="pre">'nodupe_ttl',</span> <span class="pre">'nodupe_driver',</span> <span class="pre">'nodupe_basis',</span> <span class="pre">'tlsRigour',</span> <span class="pre">'topic',</span> <span class="pre">'vip']</span></em><a class="headerlink" href="#sarracenia.config.str_options" title="Permalink to this definition"></a></dt>
 <dd><p>for backward compatibility,</p>
 <p>convert some old plugins that are hard to get working with
 v2wrapper, into v3 plugin.</p>
@@ -1883,18 +1883,18 @@ as overrides to the configuration file content.</p>
 </dd></dl>
 
 </section>
-<section id="module-sarracenia.integrity">
-<span id="sarracenia-integrity"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink">sarracenia.integrity</a><a class="headerlink" href="#module-sarracenia.integrity" title="Permalink to this heading"></a></h2>
+<section id="module-sarracenia.identity">
+<span id="sarracenia-identity"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink">sarracenia.identity</a><a class="headerlink" href="#module-sarracenia.identity" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.integrity.Integrity">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.integrity.</span></span><span class="sig-name descname"><span class="pre">Integrity</span></span><a class="reference internal" href="../_modules/sarracenia/integrity.html#Integrity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.Integrity" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.Identity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.identity.</span></span><span class="sig-name descname"><span class="pre">Identity</span></span><a class="reference internal" href="../_modules/sarracenia/identity.html#Identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.Identity" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A class for algorithms to get a fingerprint for a file being announced.
 Appropriate fingerprinting algorithms vary according to file type.</p>
 <p>required methods in subclasses:</p>
 <dl class="simple">
 <dt>def registered_as(self):</dt><dd><p>return a one letter string identifying the algorithm (mostly for v2.)
-in v3, the registration comes from the integrity sub-class name in lower case.</p>
+in v3, the registration comes from the identity sub-class name in lower case.</p>
 </dd>
 <dt>def set_path(self,path):</dt><dd><p>start a checksum for the given path… initialize.</p>
 </dd>
@@ -1902,88 +1902,88 @@ in v3, the registration comes from the integrity sub-class name in lower case.</
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sarracenia.integrity.Integrity.__weakref__">
-<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#sarracenia.integrity.Integrity.__weakref__" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.Identity.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#sarracenia.identity.Identity.__weakref__" title="Permalink to this definition"></a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.integrity.Integrity.update_file">
-<span class="sig-name descname"><span class="pre">update_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/integrity.html#Integrity.update_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.Integrity.update_file" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.Identity.update_file">
+<span class="sig-name descname"><span class="pre">update_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/identity.html#Identity.update_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.Identity.update_file" title="Permalink to this definition"></a></dt>
 <dd><p>read the entire file, check sum it.
 this is kind of last resort as it cost an extra file read.
 It is better to call update( as the file is being read for other reasons.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="sarracenia.integrity.Integrity.value">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#sarracenia.integrity.Integrity.value" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.Identity.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#sarracenia.identity.Identity.value" title="Permalink to this definition"></a></dt>
 <dd><p>return the current value of the checksum calculation.</p>
 </dd></dl>
 
 </dd></dl>
 
 </section>
-<section id="module-sarracenia.integrity.arbitrary">
-<span id="sarracenia-integrity-arbitrary"></span><h2><a class="toc-backref" href="#id20" role="doc-backlink">sarracenia.integrity.arbitrary</a><a class="headerlink" href="#module-sarracenia.integrity.arbitrary" title="Permalink to this heading"></a></h2>
+<section id="module-sarracenia.identity.arbitrary">
+<span id="sarracenia-identity-arbitrary"></span><h2><a class="toc-backref" href="#id20" role="doc-backlink">sarracenia.identity.arbitrary</a><a class="headerlink" href="#module-sarracenia.identity.arbitrary" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.integrity.arbitrary.Arbitrary">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.integrity.arbitrary.</span></span><span class="sig-name descname"><span class="pre">Arbitrary</span></span><a class="reference internal" href="../_modules/sarracenia/integrity/arbitrary.html#Arbitrary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.arbitrary.Arbitrary" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sarracenia.integrity.Integrity" title="sarracenia.integrity.Integrity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integrity</span></code></a></p>
+<dt class="sig sig-object py" id="sarracenia.identity.arbitrary.Arbitrary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.identity.arbitrary.</span></span><span class="sig-name descname"><span class="pre">Arbitrary</span></span><a class="reference internal" href="../_modules/sarracenia/identity/arbitrary.html#Arbitrary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.arbitrary.Arbitrary" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sarracenia.identity.Identity" title="sarracenia.identity.Identity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identity</span></code></a></p>
 <p>For applications where there is no known way of determining equivalence, allow them to supply
 an arbitrary tag, that can be used to compare products for duplicate suppression purposes.</p>
 <p>use setter to set the value… some sort of external checksum algorithm that cannot be reproduced.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.integrity.arbitrary.Arbitrary.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/integrity/arbitrary.html#Arbitrary.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.arbitrary.Arbitrary.__init__" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.arbitrary.Arbitrary.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/identity/arbitrary.html#Arbitrary.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.arbitrary.Arbitrary.__init__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="sarracenia.integrity.arbitrary.Arbitrary.value">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#sarracenia.integrity.arbitrary.Arbitrary.value" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.arbitrary.Arbitrary.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#sarracenia.identity.arbitrary.Arbitrary.value" title="Permalink to this definition"></a></dt>
 <dd><p>return the current value of the checksum calculation.</p>
 </dd></dl>
 
 </dd></dl>
 
 </section>
-<section id="module-sarracenia.integrity.sha512">
-<span id="sarracenia-integrity-sha512"></span><h2><a class="toc-backref" href="#id21" role="doc-backlink">sarracenia.integrity.sha512</a><a class="headerlink" href="#module-sarracenia.integrity.sha512" title="Permalink to this heading"></a></h2>
+<section id="module-sarracenia.identity.sha512">
+<span id="sarracenia-identity-sha512"></span><h2><a class="toc-backref" href="#id21" role="doc-backlink">sarracenia.identity.sha512</a><a class="headerlink" href="#module-sarracenia.identity.sha512" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.integrity.sha512.Sha512">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.integrity.sha512.</span></span><span class="sig-name descname"><span class="pre">Sha512</span></span><a class="reference internal" href="../_modules/sarracenia/integrity/sha512.html#Sha512"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.sha512.Sha512" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sarracenia.integrity.Integrity" title="sarracenia.integrity.Integrity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integrity</span></code></a></p>
+<dt class="sig sig-object py" id="sarracenia.identity.sha512.Sha512">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.identity.sha512.</span></span><span class="sig-name descname"><span class="pre">Sha512</span></span><a class="reference internal" href="../_modules/sarracenia/identity/sha512.html#Sha512"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.sha512.Sha512" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sarracenia.identity.Identity" title="sarracenia.identity.Identity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identity</span></code></a></p>
 <p>The SHA512 algorithm to checksum the entire file, which is called ‘s’.</p>
 </dd></dl>
 
 </section>
-<section id="module-sarracenia.integrity.md5">
-<span id="sarracenia-integrity-md5"></span><h2><a class="toc-backref" href="#id22" role="doc-backlink">sarracenia.integrity.md5</a><a class="headerlink" href="#module-sarracenia.integrity.md5" title="Permalink to this heading"></a></h2>
+<section id="module-sarracenia.identity.md5">
+<span id="sarracenia-identity-md5"></span><h2><a class="toc-backref" href="#id22" role="doc-backlink">sarracenia.identity.md5</a><a class="headerlink" href="#module-sarracenia.identity.md5" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.integrity.md5.Md5">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.integrity.md5.</span></span><span class="sig-name descname"><span class="pre">Md5</span></span><a class="reference internal" href="../_modules/sarracenia/integrity/md5.html#Md5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.md5.Md5" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sarracenia.integrity.Integrity" title="sarracenia.integrity.Integrity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integrity</span></code></a></p>
+<dt class="sig sig-object py" id="sarracenia.identity.md5.Md5">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.identity.md5.</span></span><span class="sig-name descname"><span class="pre">Md5</span></span><a class="reference internal" href="../_modules/sarracenia/identity/md5.html#Md5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.md5.Md5" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sarracenia.identity.Identity" title="sarracenia.identity.Identity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identity</span></code></a></p>
 <p>use the (obsolete) Message Digest 5 (MD5) algorithm, applied on the content
-of a file, to generate an integrity signature.</p>
+of a file, to generate an identity signature.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.integrity.md5.Md5.registered_as">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">registered_as</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/integrity/md5.html#Md5.registered_as"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.md5.Md5.registered_as" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.md5.Md5.registered_as">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">registered_as</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/identity/md5.html#Md5.registered_as"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.md5.Md5.registered_as" title="Permalink to this definition"></a></dt>
 <dd><p>v2name.</p>
 </dd></dl>
 
 </dd></dl>
 
 </section>
-<section id="module-sarracenia.integrity.random">
-<span id="sarracenia-integrity-random"></span><h2><a class="toc-backref" href="#id23" role="doc-backlink">sarracenia.integrity.random</a><a class="headerlink" href="#module-sarracenia.integrity.random" title="Permalink to this heading"></a></h2>
+<section id="module-sarracenia.identity.random">
+<span id="sarracenia-identity-random"></span><h2><a class="toc-backref" href="#id23" role="doc-backlink">sarracenia.identity.random</a><a class="headerlink" href="#module-sarracenia.identity.random" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="sarracenia.integrity.random.Random">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.integrity.random.</span></span><span class="sig-name descname"><span class="pre">Random</span></span><a class="reference internal" href="../_modules/sarracenia/integrity/random.html#Random"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.integrity.random.Random" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sarracenia.integrity.Integrity" title="sarracenia.integrity.Integrity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integrity</span></code></a></p>
+<dt class="sig sig-object py" id="sarracenia.identity.random.Random">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.identity.random.</span></span><span class="sig-name descname"><span class="pre">Random</span></span><a class="reference internal" href="../_modules/sarracenia/identity/random.html#Random"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.identity.random.Random" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sarracenia.identity.Identity" title="sarracenia.identity.Identity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identity</span></code></a></p>
 <p>Trivial minimalist checksumming algorithm, returns random number for any file.</p>
 <dl class="py property">
-<dt class="sig sig-object py" id="sarracenia.integrity.random.Random.value">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#sarracenia.integrity.random.Random.value" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="sarracenia.identity.random.Random.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#sarracenia.identity.random.Random.value" title="Permalink to this definition"></a></dt>
 <dd><p>return the current value of the checksum calculation.</p>
 </dd></dl>
 

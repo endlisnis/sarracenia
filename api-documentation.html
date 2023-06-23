@@ -351,7 +351,7 @@ return config instance item.</p>
 
 <dl class="py data">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">sarracenia.config.</span></span><span class="sig-name descname"><span class="pre">str_options</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['action',</span> <span class="pre">'admin',</span> <span class="pre">'baseDir',</span> <span class="pre">'broker',</span> <span class="pre">'cluster',</span> <span class="pre">'directory',</span> <span class="pre">'exchange',</span> <span class="pre">'exchange_suffix',</span> <span class="pre">'feeder',</span> <span class="pre">'filename',</span> <span class="pre">'flatten',</span> <span class="pre">'flowMain',</span> <span class="pre">'header',</span> <span class="pre">'integrity',</span> <span class="pre">'logLevel',</span> <span class="pre">'pollUrl',</span> <span class="pre">'post_baseUrl',</span> <span class="pre">'post_baseDir',</span> <span class="pre">'post_broker',</span> <span class="pre">'post_exchange',</span> <span class="pre">'post_exchangeSuffix',</span> <span class="pre">'post_format',</span> <span class="pre">'post_topic',</span> <span class="pre">'queueName',</span> <span class="pre">'sendTo',</span> <span class="pre">'rename',</span> <span class="pre">'report_exchange',</span> <span class="pre">'source',</span> <span class="pre">'strip',</span> <span class="pre">'timezone',</span> <span class="pre">'nodupe_ttl',</span> <span class="pre">'nodupe_driver',</span> <span class="pre">'nodupe_basis',</span> <span class="pre">'tlsRigour',</span> <span class="pre">'topic',</span> <span class="pre">'vip']</span></em></dt>
+<span class="sig-prename descclassname"><span class="pre">sarracenia.config.</span></span><span class="sig-name descname"><span class="pre">str_options</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['action',</span> <span class="pre">'admin',</span> <span class="pre">'baseDir',</span> <span class="pre">'broker',</span> <span class="pre">'cluster',</span> <span class="pre">'directory',</span> <span class="pre">'exchange',</span> <span class="pre">'exchange_suffix',</span> <span class="pre">'feeder',</span> <span class="pre">'filename',</span> <span class="pre">'flatten',</span> <span class="pre">'flowMain',</span> <span class="pre">'header',</span> <span class="pre">'identity',</span> <span class="pre">'logLevel',</span> <span class="pre">'pollUrl',</span> <span class="pre">'post_baseUrl',</span> <span class="pre">'post_baseDir',</span> <span class="pre">'post_broker',</span> <span class="pre">'post_exchange',</span> <span class="pre">'post_exchangeSuffix',</span> <span class="pre">'post_format',</span> <span class="pre">'post_topic',</span> <span class="pre">'queueName',</span> <span class="pre">'sendTo',</span> <span class="pre">'rename',</span> <span class="pre">'report_exchange',</span> <span class="pre">'source',</span> <span class="pre">'strip',</span> <span class="pre">'timezone',</span> <span class="pre">'nodupe_ttl',</span> <span class="pre">'nodupe_driver',</span> <span class="pre">'nodupe_basis',</span> <span class="pre">'tlsRigour',</span> <span class="pre">'topic',</span> <span class="pre">'vip']</span></em></dt>
 <dd><p>for backward compatibility,</p>
 <p>convert some old plugins that are hard to get working with
 v2wrapper, into v3 plugin.</p>
@@ -505,9 +505,9 @@ lstat.st_size= size_in_bytes</p>
 lstat.filename= “nameOfTheFile”
 lstat.longname= ‘lrwxrwxrwx    1 peter    peter          20 Oct 11 20:28 nameOfTheFile’</p>
 <p>that you can then provide as an <em>lstat</em> argument to the above <em>fromFileInfo()</em>
-call. However the notification message returned will lack an integrity checksum field.
-once you get the file, you can add the Integrity field with:</p>
-<p>m.__computeIntegrity(path, o):</p>
+call. However the notification message returned will lack an identity checksum field.
+once you get the file, you can add the Identity field with:</p>
+<p>m.__computeIdentity(path, o):</p>
 <p>In terms of consuming notification messages, the fields in the dictionary provide metadata
 for the announced resource. The anounced data could be embedded in the notification message itself,
 or available by a URL.</p>
@@ -1074,14 +1074,14 @@ a post transformation value as well.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.integrity.</span></span><span class="sig-name descname"><span class="pre">Integrity</span></span><a class="reference internal" href="_modules/sarracenia/integrity.html#Integrity"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.identity.</span></span><span class="sig-name descname"><span class="pre">Identity</span></span><a class="reference internal" href="_modules/sarracenia/identity.html#Identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A class for algorithms to get a fingerprint for a file being announced.
 Appropriate fingerprinting algorithms vary according to file type.</p>
 <p>required methods in subclasses:</p>
 <dl class="simple">
 <dt>def registered_as(self):</dt><dd><p>return a one letter string identifying the algorithm (mostly for v2.)
-in v3, the registration comes from the integrity sub-class name in lower case.</p>
+in v3, the registration comes from the identity sub-class name in lower case.</p>
 </dd>
 <dt>def set_path(self,path):</dt><dd><p>start a checksum for the given path… initialize.</p>
 </dd>
@@ -1096,7 +1096,7 @@ in v3, the registration comes from the integrity sub-class name in lower case.</
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">update_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/integrity.html#Integrity.update_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-name descname"><span class="pre">update_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sarracenia/identity.html#Identity.update_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>read the entire file, check sum it.
 this is kind of last resort as it cost an extra file read.
 It is better to call update( as the file is being read for other reasons.</p>

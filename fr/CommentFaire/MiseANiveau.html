@@ -63,12 +63,13 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">GUIDE DE MISE A NIVEAU</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#instructions-dinstallation">Instructions d’installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#git">git</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">3.0.26</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">3.0.25</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">3.0.22</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">3.0.17</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">3.0.15</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">3.0.14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">3.0.40</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">3.0.26</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.0.25</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.0.22</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3.0.17</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.0.15</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">3.0.14</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#v2-to-sr3">V2 to Sr3</a></li>
 </ul>
 </li>
@@ -160,6 +161,17 @@ qui peut générer des messages.</p>
 </section>
 <section id="git">
 <h2>git<a class="headerlink" href="#git" title="Permalink to this heading"></a></h2>
+<p><em>CHANGE</em>: v03 postformat field renamded: “integrity” is now “identity”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>current version will read messsages with integrity and map them to identity.</p></li>
+<li><p>current version will post with “Identity”, so older versions will miss them.</p></li>
+<li><p><a class="reference external" href="https://github.com/MetPX/sarracenia/issues/703">https://github.com/MetPX/sarracenia/issues/703</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id1">
+<h2>3.0.40<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p><em>CHANGEMENT</em>:  l’interface de programmation (API) python a subit un changement de rupture</p>
 <blockquote>
 <div><p>pour la classe sarracenia.moth, il faut maintenant specifier l’options[‘broker’] au lieu
@@ -185,8 +197,8 @@ composantes.</p>
 </div></blockquote>
 </div></blockquote>
 </section>
-<section id="id1">
-<h2>3.0.26<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h2>3.0.26<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <dl>
 <dt><em>CHANGEMENT</em><span class="classifier">les options d’événement (logEvents et fileEvents) remplacent désormais la valeur précédente.</span></dt><dd><p>Avant ils etaient être uni (ou’d) avec la valeur précédente. Peut maintenant préfacer
 les éléments set avec + pour obtenir le comportement précédent.
@@ -197,37 +209,37 @@ les éléments set avec + pour obtenir le comportement précédent.
 </dd>
 </dl>
 </section>
-<section id="id2">
-<h2>3.0.25<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h2>3.0.25<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt><em>CHANGEMENT</em><span class="classifier">la valeur par défaut pour acceptUnmatched est maintenant True pour tous les composants.</span></dt><dd><p>avant cette version, la valeur par défaut était False dans le composant <em>subscribe</em>
 mais Vrai pour tous les autres.</p>
 </dd>
 </dl>
 </section>
-<section id="id3">
-<h2>3.0.22<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<section id="id4">
+<h2>3.0.22<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <p><em>CHANGEMENTMENT</em>: option <em>destination</em> dans une configuration de poll est remplacé par <em>pollUrl</em></p>
 <p><em>CHANGEMENTMENT</em>: option <em>destination</em> dans une configuration de sender est remplacé par <em>sendTo</em></p>
 <p><em>ACTION</em>: remplacer les <em>destination</em> dans les configurations affectés (traité automatiquement
 dans le cas de conversion à partir de v2.)</p>
 </section>
-<section id="id4">
-<h2>3.0.17<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<section id="id5">
+<h2>3.0.17<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt><em>CHANGEMENT</em>: La chaine de charactères “Vendor” est changé de “science.gc.ca” à “MetPX”.</dt><dd><p>Ce changement modifie le placement des fichiers sur la platteforme <em>Windows</em>.</p>
 </dd>
 </dl>
-<p><em>CHANGEMENT</em>: l´encodage des messages d´annonce v03 est changé: <em>Integrity</em> est rendu optionnel.</p>
+<p><em>CHANGEMENT</em>: l´encodage des messages d´annonce v03 est changé: <em>Identity</em> est rendu optionnel.</p>
 <dl class="simple">
 <dt><em>CHANGEMENT</em>: l’encodage des messages d’annonce v03 est changé: le champs <em>fileOp</em> est rajouté</dt><dd><p>pour séparer les operations sur des fichiers qui ne comprennent pas des transmissions
 de données: créations de liens symboliques, renommage de fichier, suppression de fichiers.
-Le champs <em>Integrity</em> est maintenant dédié au sommes de contrôle pour les données.</p>
+Le champs <em>Identity</em> est maintenant dédié au sommes de contrôle pour les données.</p>
 </dd>
 </dl>
 </section>
-<section id="id5">
-<h2>3.0.15<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h2>3.0.15<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt><em>NOTICE</em>: rétablir les paquets Debian et Windows en supprimant les exigences matérielles pour les modules python</dt><dd><p>qui sont difficiles à satisfaire. À partir de la version 3.0.15, les dépendances sont modulaires.</p>
 </dd>
@@ -262,8 +274,8 @@ d’activités.</p>
 </dd>
 </dl>
 </section>
-<section id="id6">
-<h2>3.0.14<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<section id="id7">
+<h2>3.0.14<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
 <p>bêta initiale.</p>
 <dl class="simple">
 <dt><em>NOTICE</em><span class="classifier">seuls les paquets pip fonctionnent actuellement. Pas de paquets Debian sur launchpad.net</span></dt><dd><p>ni aucun package Windows.</p>
@@ -471,7 +483,7 @@ démarrage. Le trait de soulignement est toujours utilisé à des fins de regrou
 <td><p>sourceFromExchange</p></td>
 </tr>
 <tr class="row-even"><td><p>sum</p></td>
-<td><p>integrity</p></td>
+<td><p>identity</p></td>
 </tr>
 <tr class="row-odd"><td><p>suppress_duplicates</p></td>
 <td><p>nodupe_ttl</p></td>

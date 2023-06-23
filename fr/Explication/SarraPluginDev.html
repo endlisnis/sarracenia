@@ -137,7 +137,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Jun 21, 2023</p>
+<dd class="field-even"><p>Jun 23, 2023</p>
 </dd>
 </dl>
 </section>
@@ -158,7 +158,7 @@ en construire de nouveaux de manière copier/coller, avec de nombreux exemples d
 <p>Il existe d’autres façons d’étendre Sarracenia v3 en sous-classant :</p>
 <ul class="simple">
 <li><p>Sarracenia.transfer.Transfer pour ajouter plus de protocoles de transfert de données</p></li>
-<li><p>Sarracenia.integrity.Integrity pour ajouter plus de méthodes de somme de contrôle.</p></li>
+<li><p>Sarracenia.identity.Identity pour ajouter plus de méthodes de somme de contrôle.</p></li>
 <li><p>Sarracenia.moth.Moth pour ajouter la prise en charge de plus de protocoles de messagerie.</p></li>
 <li><p>Sarracenia.flow.Flow pour créer de nouveaux flux.</p></li>
 <li><p>Sarracenia.flowcb.FlowCB pour personnaliser les flux.</p></li>
@@ -405,7 +405,7 @@ pour le protocole MQP utilisé.</p>
 <p>On peut ajouter des fonctionnalités supplémentaires à Sarracenia en créant des sous-classes.</p>
 <ul class="simple">
 <li><p>sarra.moth - Messages organisés en hiérarchies de thèmes. (existants : rabbitmq-amqp)</p></li>
-<li><p>sarra.integrity - algorithmes de somme de contrôle (existants: md5, sha512, arbitraires, aléatoires)</p></li>
+<li><p>sarra.identity - algorithmes de somme de contrôle (existants: md5, sha512, arbitraires, aléatoires)</p></li>
 <li><p>sarra.transfer - protocoles de transport supplémentaires (https, ftp, sftp )</p></li>
 <li><p>sarra.flow - création de nouveaux composants au-delà des composants intégrés. (post, sarra, shovel, etc…)</p></li>
 <li><p>sarra.flowcb - personnalisation des flux de composants à l’aide de rappels.</p></li>
@@ -503,7 +503,7 @@ un url pour chercher la ressource distant.</p>
 symboliques, les changements de nom et les suppressions de fichiers.
 Contenu décrit dans <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a></p>
 </dd>
-<dt><em>msg[‘integrity’]</em></dt><dd><p>La structure de somme de contrôle, un dictionnaire python avec les champs ‘méthode’ et ‘valeur’.</p>
+<dt><em>msg[‘identity’]</em></dt><dd><p>La structure de somme de contrôle, un dictionnaire python avec les champs ‘méthode’ et ‘valeur’.</p>
 </dd>
 <dt><em>msg[‘subtopic’], msg[‘new_subtopic’]</em></dt><dd><p>liste des chaînes (avec le préfixe de thème supprimé)
 généré automatiquement à partir dur msg[´relPath´] inutile de le modifié.</p>

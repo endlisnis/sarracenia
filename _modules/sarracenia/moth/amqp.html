@@ -661,7 +661,7 @@
                         <span class="c1"># FIXME: assert ( len(self.o[&#39;exchange&#39;]) == self.o[&#39;post_exchangeSplit&#39;] )</span>
                         <span class="c1">#        if that isn&#39;t true... then there is something wrong... should we check ?</span>
                         <span class="n">idx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
-                            <span class="nb">bytearray</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="s1">&#39;integrity&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">],</span>
+                            <span class="nb">bytearray</span><span class="p">(</span><span class="n">body</span><span class="p">[</span><span class="s1">&#39;identity&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">],</span>
                                       <span class="s1">&#39;ascii&#39;</span><span class="p">))</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;exchange&#39;</span><span class="p">])</span>
                         <span class="n">exchange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;exchange&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
                     <span class="k">else</span><span class="p">:</span>

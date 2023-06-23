@@ -127,7 +127,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Jun 21, 2023</p>
+<dd class="field-even"><p>Jun 23, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -975,12 +975,12 @@ perte de notifications. Une fil d’attente qu’on n’accède pas pendant une 
 (dépendant de l’implémentation) sera détruite.</p>
 </div>
 </section>
-<section id="integrity-string">
-<h4>integrity &lt;string&gt;<a class="headerlink" href="#integrity-string" title="Permalink to this heading"></a></h4>
+<section id="identity-string">
+<h4>identity &lt;string&gt;<a class="headerlink" href="#identity-string" title="Permalink to this heading"></a></h4>
 <p>Tous les postes de fichiers incluent une somme de contrôle. Elle est placée dans l’en-tête du message amqp
 et aura comme entrée <em>sum</em> avec la valeur de défaut ‘d,md5_checksum_on_data’.
 L’option <em>sum</em> indique au programme comment calculer la somme de contrôle.
-Dans la v3, elles sont appelées Integrity methods (méthodes d’intégrité)</p>
+Dans la v3, elles sont appelées Identity methods (méthodes d’intégrité)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cod</span><span class="p">,</span><span class="n">x</span>      <span class="o">-</span> <span class="n">Calculer</span> <span class="n">On</span> <span class="n">Download</span> <span class="n">en</span> <span class="n">appliquant</span> <span class="n">x</span>
 <span class="n">sha512</span>     <span class="o">-</span> <span class="n">faire</span> <span class="n">SHA512</span> <span class="n">sur</span> <span class="n">le</span> <span class="n">contenu</span> <span class="n">du</span> <span class="n">fichier</span> <span class="p">(</span><span class="n">défaut</span><span class="p">)</span>
 <span class="n">md5</span>        <span class="o">-</span> <span class="n">faire</span> <span class="n">md5sum</span> <span class="n">sur</span> <span class="n">le</span> <span class="n">contenu</span> <span class="n">du</span> <span class="n">fichier</span>

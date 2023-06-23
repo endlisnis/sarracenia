@@ -149,8 +149,8 @@ for more flexible filtering.</p>
 </dd>
 </dl>
 <p>Duplicates are dropped to avoid further processing.</p>
-<p>A notification message key is preferably derived from the <em>Integrity</em> field of the notification
-message. If the producer does not provide an integrity checksum, algorithms may fall
+<p>A notification message key is preferably derived from the <em>Identity</em> field of the notification
+message. If the producer does not provide an identity checksum, algorithms may fall
 back on other metadata: <em>mtime</em>, <em>size</em>, <em>pubTime.</em> Since pubTime is a mandatory
 field, a key can always be derived, but it’s effectiveness in a particular use case
 is not assured. (the sarracenia.flowcb.nodupe.NoDupe.deriveKey(self,msg) helper routine
@@ -166,7 +166,7 @@ duplicate suppresion memory (e.g. 300 seconds == 5 minutes.)</p>
 <h2>Standard (path and data oriented)<a class="headerlink" href="#standard-path-and-data-oriented" title="Permalink to this heading"></a></h2>
 <p><strong>method</strong>: when products have the same key and path, they are duplicates.</p>
 <p>Two routes can receive the same product, with the same relative path. In normal processing,
-the products should be identical, and <em>Integrity</em> checksums for it should be the same,</p>
+the products should be identical, and <em>Identity</em> checksums for it should be the same,</p>
 <p>FIXME: the normal case when multiple intervening pumps.</p>
 </section>
 <section id="data-oriented">
@@ -201,7 +201,7 @@ usually important when this option is applied.)</p>
 </div>
 <p>Override the standard duplicate suppression key generation to use only the file name.</p>
 <p>When multiple sources produce a product, but the result is not binary identical, and no
-appropriate Integrity method is available, then then one needs a different approach.
+appropriate Identity method is available, then then one needs a different approach.
 Since the two sources are not, generally, synchronized,</p>
 <section id="urp">
 <h3>URP<a class="headerlink" href="#urp" title="Permalink to this heading"></a></h3>

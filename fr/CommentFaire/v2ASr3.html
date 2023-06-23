@@ -407,82 +407,8 @@ la liste de travail.incoming contient tous les messages qui ont passé le filtra
 section plus loin dans ce document</p>
 <p>Chaque message de notification v3 agit comme un dictionnaire python. Ci-dessous un mappage de table
 champs de la représentation sarra v2 à celle de sr3 :</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>v2</p></th>
-<th class="head"><p>sr3</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>msg.pubtime</p></td>
-<td><p>msg[‘pubTime’]</p></td>
-<td><p>quand le message a été initialement publié</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.baseurl</p></td>
-<td><p>msg[‘baseUrl’]</p></td>
-<td><p>racine de l’arborescence url du fichier annoncé.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.relpath</p></td>
-<td><p>msg[‘relPath’]</p></td>
-<td><p>chemin relatif concaténé à baseUrl pour le chemin canonique</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>no equivalent</em></p></td>
-<td><p>msg[‘retrievePath’]</p></td>
-<td><p>chemin opaque pour remplacer le chemin canonique.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.notice</p></td>
-<td><p>pas disponible</p></td>
-<td><p>calculé à partir d’un autre champ sur l’écriture v2</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.new_subtopic</p></td>
-<td><p>msg[‘new_subtopic’]</p></td>
-<td><p>à éviter en sr3, champ calculé à partir de relPath</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.new_dir</p></td>
-<td><p>msg[‘new_dir’]</p></td>
-<td><p>nom de répertoire où le fichier sera écrite.</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.new_file</p></td>
-<td><p>msg[‘new_file’]</p></td>
-<td><p>nom de fichier à écrire en new_dir.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.headers</p></td>
-<td><p>msg</p></td>
-<td><p>pour les champs variables/optionnels.</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.headers[‘x’]</p></td>
-<td><p>msg[‘x’]</p></td>
-<td><p>un message est un dict python</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.message_ttl</p></td>
-<td><p>msg[‘message_ttl’]</p></td>
-<td><p>le même option de réglage.</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.exchange</p></td>
-<td><p>msg[‘exchange’]</p></td>
-<td><p>le canal sur lequel le message à été reçu.</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.logger</p></td>
-<td><p>logger</p></td>
-<td><p>les journeaux fonctionnent ¨normalement” pour python</p></td>
-</tr>
-<tr class="row-odd"><td><p>msg.parts</p></td>
-<td><p>msg[‘size’]</p></td>
-<td><p>oublie ca, utilise une constructeur de sarracenia.Message</p></td>
-</tr>
-<tr class="row-even"><td><p>msg.sumflg</p></td>
-<td><p>msg[‘integrity’]</p></td>
-<td><p>oublie ca, utilise une constructeur de sarracenia.Message</p></td>
-</tr>
-<tr class="row-odd"><td><p>parent.msg</p></td>
-<td><p>worklist.incoming</p></td>
-<td><p>sr3 traite des groupe des messages, pas individuelement</p></td>
-</tr>
-</tbody>
-</table>
 </li>
-<li><p>pubTime, baseUrl, relPath, retrievePath, size, integrity, sont tous des champs de message standard
+<li><p>pubTime, baseUrl, relPath, retrievePath, size, identity, sont tous des champs de message standard
 mieux décrit dans <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a></p></li>
 <li><p>si l’on a besoin de stocker par état de message, alors on peut déclarer des champs temporaires dans le message,
 qui ne seront pas transmis lors de la publication du message. Il y a un champ défini <em>msg[‘_deleteOnPost’]</em></p>

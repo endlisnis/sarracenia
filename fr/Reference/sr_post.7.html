@@ -127,7 +127,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Jun 21, 2023</p>
+<dd class="field-even"><p>Jun 23, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -178,7 +178,7 @@ Voir <a class="reference external" href=".../Explications/History/messages_v03.h
         &quot;relPath&quot;       - Le chemin relatif peut être concaténé à &lt;base_url&gt;
 
  un de:
-        &quot;integrity&quot;     - Version WMO du champ de sum v02, en cours de développement.
+        &quot;identity&quot;     - Version WMO du champ de sum v02, en cours de développement.
         {
            &quot;method&quot; : &quot;md5&quot; | &quot;sha512&quot; | &quot;cod&quot; | &quot;arbitrary&quot; | &quot;random&quot; ,
            &quot;value&quot;  : &quot;base64 valeur de somme de contrôle encodée&quot;
@@ -280,7 +280,7 @@ critères de sélection pour le courtier de sorte que seulement un petit sous-en
 sont transmis au client.  Lorsqu’il y a beaucoup d’utilisateurs intéressés par seulement un
 petit sous-ensembles de données, les économies de trafic sont importantes.</p>
 </dd>
-<dt>Fingerprint Winnowing (utilisation de l’en-tête <a class="reference internal" href="#integrity">integrity</a>)</dt><dd><p>Chaque produit a une empreinte digitale d’intégrité et une taille destinée à l’identifier de manière unique,
+<dt>Fingerprint Winnowing (utilisation de l’en-tête <a class="reference internal" href="#identity">identity</a>)</dt><dd><p>Chaque produit a une empreinte digitale d’intégrité et une taille destinée à l’identifier de manière unique,
 appelée <em>fingerprint</em>. Si deux fichiers ont la même empreinte digitale, ils sont considérés comme équivalents.
 Dans les cas où plusieurs sources de données équivalentes sont disponibles, mais les consommateurs en aval
 préféreraient recevoir des annonces uniques des fichiers, les processus intermédiaires peuvent choisir de
@@ -472,11 +472,11 @@ dans un sous-champs appellé ‘rename’.</p>
 Les changements de noms de liens symboliques et répertoires sont representés pas la présences de sous champs “directory”
 (répertoire) et “link”  (lien) dans le champs “fileOp” qui contient également un <em>rename</em>.</p>
 </section>
-<section id="integrity">
-<h4><strong>integrity</strong><a class="headerlink" href="#integrity" title="Permalink to this heading"></a></h4>
+<section id="identity">
+<h4><strong>identity</strong><a class="headerlink" href="#identity" title="Permalink to this heading"></a></h4>
 <p>Le champ d’intégrité donne une somme de contrôle qui est utile pour identifier le contenu
 d’un fichier:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;integrity&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;method&quot;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">méthode</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">valeur</span><span class="o">&gt;</span> <span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;identity&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;method&quot;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">méthode</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">valeur</span><span class="o">&gt;</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>Le champ d’intégrité est une signature calculée pour permettre aux récepteurs de déterminer
@@ -662,7 +662,7 @@ mais ils ne devraient pas être dépouillés, car certains consommateurs peuvent
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AMQP</span> <span class="n">TOPIC</span><span class="p">:</span> <span class="n">v03</span><span class="o">.</span><span class="n">NRDPS</span><span class="o">.</span><span class="n">GIF</span>
 <span class="n">MQTT</span> <span class="n">TOPIC</span><span class="p">:</span> <span class="n">exchange</span><span class="o">/</span><span class="n">v03</span><span class="o">/</span><span class="n">NRDPS</span><span class="o">/</span><span class="n">GIF</span><span class="o">/</span>
 <span class="n">Body</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;pubTime&quot;</span><span class="p">:</span> <span class="s2">&quot;201506011357.345&quot;</span><span class="p">,</span> <span class="s2">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;sftp://afsiext@cmcdataserver&quot;</span><span class="p">,</span> <span class="s2">&quot;relPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/data/NRPDS/outputs/NRDPS_HiRes_000.gif&quot;</span><span class="p">,</span>
-   <span class="s2">&quot;rename&quot;</span><span class="p">:</span> <span class="s2">&quot;NRDPS/GIF/&quot;</span><span class="p">,</span> <span class="s2">&quot;parts&quot;</span><span class="p">:</span><span class="s2">&quot;p,457,1,0,0&quot;</span><span class="p">,</span> <span class="s2">&quot;integrity&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;md5&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;md5sum-base64&gt;&quot;</span> <span class="p">},</span> <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;ec_cmc&quot;</span> <span class="p">}</span>
+   <span class="s2">&quot;rename&quot;</span><span class="p">:</span> <span class="s2">&quot;NRDPS/GIF/&quot;</span><span class="p">,</span> <span class="s2">&quot;parts&quot;</span><span class="p">:</span><span class="s2">&quot;p,457,1,0,0&quot;</span><span class="p">,</span> <span class="s2">&quot;identity&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;md5&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;md5sum-base64&gt;&quot;</span> <span class="p">},</span> <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;ec_cmc&quot;</span> <span class="p">}</span>
 
        <span class="o">-</span> <span class="n">v03</span> <span class="o">-</span> <span class="n">version</span> <span class="n">du</span> <span class="n">protocole</span>
        <span class="o">-</span> <span class="n">la</span> <span class="n">version</span> <span class="n">et</span> <span class="n">le</span> <span class="nb">type</span> <span class="n">ensemble</span> <span class="n">determine</span> <span class="n">le</span> <span class="nb">format</span> <span class="n">des</span> <span class="n">thèmes</span> <span class="n">qui</span> <span class="n">suivent</span> <span class="n">et</span> <span class="n">du</span> <span class="n">corps</span> <span class="n">du</span> <span class="n">message</span> <span class="n">d</span><span class="s1">&#39;annonce.</span>

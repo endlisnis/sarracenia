@@ -155,6 +155,14 @@ may generate notification messages.</p>
 </section>
 <section id="git">
 <h2>git<a class="headerlink" href="#git" title="Permalink to this heading"></a></h2>
+<p><em>CHANGE</em>: v03 postformat field renamed: “integrity” is now “identity”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>current version will read messsages with <em>integrity</em> and map them to <em>identity</em>.</p></li>
+<li><p>current version will post with <em>identity</em>, so older versions will miss them.</p></li>
+<li><p><a class="reference external" href="https://github.com/MetPX/sarracenia/issues/703">https://github.com/MetPX/sarracenia/issues/703</a></p></li>
+</ul>
+</div></blockquote>
 </section>
 <section id="id1">
 <h2>3.0.40<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
@@ -237,13 +245,13 @@ when a file is renamed.  This is now the default behaviour.</p>
 <dl>
 <dt><em>CHANGE</em>: The “Vendor” string is now “MetPX” instead of “science.gc.ca”.</dt><dd><p>This affects some file placement particularly on Windows.</p>
 </dd>
-<dt><em>CHANGE</em>: v03 notification message encoding changed: <em>Integrity</em> checksum is now optional.</dt><dd><blockquote>
+<dt><em>CHANGE</em>: v03 notification message encoding changed: <em>Identity</em> checksum is now optional.</dt><dd><blockquote>
 <div><p>(details: <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/547">https://github.com/MetPX/sarracenia/issues/547</a> )</p>
 </div></blockquote>
 <p><em>md5sum</em> is no longer defined, replaced with <em>none</em> in sr3.</p>
 </dd>
 <dt><em>CHANGE</em>: v03 notification message encoding changed for symbolic links, and file renames</dt><dd><p>and removals. There is now a ‘fileOp’ field for these dataless file operations.
-The <em>Integrity</em> sum is now used exclusively for checksums.</p>
+The <em>Identity</em> sum is now used exclusively for checksums.</p>
 </dd>
 </dl>
 </section>
@@ -565,7 +573,7 @@ startup. Underscore is still use for grouping purposes. Options which have chang
 <td><p>sourceFromExchange</p></td>
 </tr>
 <tr class="row-even"><td><p>sum</p></td>
-<td><p>integrity</p></td>
+<td><p>identity</p></td>
 </tr>
 <tr class="row-odd"><td><p>suppress_duplicates</p></td>
 <td><p>nodupe_ttl</p></td>

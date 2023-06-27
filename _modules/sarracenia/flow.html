@@ -1909,13 +1909,6 @@
                 <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">dry_run</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">accelerated</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">proto</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">update_file</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">new_inflight_path</span> <span class="o">!=</span> <span class="n">new_file</span><span class="p">):</span>
-                        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">new_file</span><span class="p">):</span>
-                            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">new_file</span><span class="p">)</span>
-                        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">,</span> <span class="n">new_file</span><span class="p">)</span>
-                    <span class="c1"># older versions don&#39;t include the contentType, so patch it here.</span>
-                    <span class="k">if</span> <span class="s1">&#39;contentType&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
-                        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magic</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">new_file</span><span class="p">,</span><span class="n">mime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">len_written</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;failed to download </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">new_file</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span>
@@ -1939,8 +1932,18 @@
                             <span class="s1">&#39;incomplete download only </span><span class="si">%d</span><span class="s1"> of expected </span><span class="si">%d</span><span class="s1"> bytes for </span><span class="si">%s</span><span class="s1">&#39;</span>
                             <span class="o">%</span> <span class="p">(</span><span class="n">len_written</span><span class="p">,</span> <span class="n">block_length</span><span class="p">,</span> <span class="n">new_inflight_path</span><span class="p">))</span>
                         <span class="k">return</span> <span class="kc">False</span>
+                <span class="c1"># when len_written is different than block_length</span>
+                <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">len_written</span>
 
-                    <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">len_written</span>
+            <span class="c1"># if we haven&#39;t returned False by this point, assuming download was successful</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">new_inflight_path</span> <span class="o">!=</span> <span class="n">new_file</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">new_file</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">new_file</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">,</span> <span class="n">new_file</span><span class="p">)</span>
+            
+            <span class="c1"># older versions don&#39;t include the contentType, so patch it here.</span>
+            <span class="k">if</span> <span class="s1">&#39;contentType&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+                <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magic</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">new_file</span><span class="p">,</span><span class="n">mime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">][</span><span class="s1">&#39;transferRxBytes&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">len_written</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">][</span><span class="s1">&#39;transferRxFiles&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>

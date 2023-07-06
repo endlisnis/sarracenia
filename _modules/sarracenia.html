@@ -334,6 +334,9 @@
 
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">str_value</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">str_value</span>
+    
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">str_value</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
 
     <span class="k">if</span> <span class="n">str_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span> <span class="p">]:</span>
         <span class="k">return</span> <span class="mi">0</span>

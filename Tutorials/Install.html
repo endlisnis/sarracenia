@@ -169,6 +169,7 @@ will be installed by the package manager automatically.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">ssc</span><span class="o">-</span><span class="n">hpc</span><span class="o">-</span><span class="n">chp</span><span class="o">-</span><span class="n">spc</span><span class="o">/</span><span class="n">metpx</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span>  <span class="c1"># main python package.</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">magic</span> <span class="c1"># optional support putting file type content-type message headers.</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3c</span> <span class="c1"># optional C client.</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">amqp</span>  <span class="c1"># optionally support rabbitmq brokers</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">paho</span><span class="o">-</span><span class="n">mqtt</span>  <span class="c1"># optionally support MQTT brokers</span>
@@ -255,6 +256,7 @@ $ sudo dnf install python3-paramiko
 </div>
 <p>Optional ones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install python3-amqp      # optionally support rabbitmq brokers
+$ sudo dnf install python3-magic      # optionally support content-type header in messages.
 $ sudo dnf install python3-netifaces # optionally support vip directive for HA.
 $ sudo dnf install python3-paho-mqtt # optionally support mqtt brokers
 
@@ -285,6 +287,10 @@ from <a class="reference external" href="http://pypi.python.org/">http://pypi.py
 </div>
 <p>one could also add the extras:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install metpx-sr3[amqp,mqtt,vip]
+</pre></div>
+</div>
+<p>for all the extras, there is a shortcut:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install metpx-sr3[all]
 </pre></div>
 </div>
 <p>and to upgrade after the initial installation:</p>

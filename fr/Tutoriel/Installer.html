@@ -168,12 +168,13 @@ seront installé automatiquement par le gestionnaire de paquets.</p>
 <p>Sur Ubuntu 22.04 et dérivés du même:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">ssc</span><span class="o">-</span><span class="n">hpc</span><span class="o">-</span><span class="n">chp</span><span class="o">-</span><span class="n">spc</span><span class="o">/</span><span class="n">metpx</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span>  <span class="c1"># main python package.</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3c</span> <span class="c1"># optional C client.</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">amqp</span>  <span class="c1"># optionally support rabbitmq brokers</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">paho</span><span class="o">-</span><span class="n">mqtt</span>  <span class="c1"># optionally support MQTT brokers</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">netifaces</span> <span class="c1"># optionally support the vip directive (HA failover.)</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dateparser</span> <span class="n">python3</span><span class="o">-</span><span class="n">pytz</span> <span class="c1"># optionally support ftp polling.</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span>  <span class="c1"># pacquet principale.</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3c</span> <span class="c1"># client binaire (en C) .</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">amqp</span>  <span class="c1"># support optionnel pour les courtiers AMWP (rabbitmq)</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">magic</span>  <span class="c1"># support optionnel pour les entêtes &quot;content-type&quot; dans les messages</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">paho</span><span class="o">-</span><span class="n">mqtt</span>  <span class="c1"># support optionnel pour les courtiers MQTT</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">netifaces</span> <span class="c1"># support optionnel pour les vip (haut-disponibilité)</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dateparser</span> <span class="n">python3</span><span class="o">-</span><span class="n">pytz</span> <span class="c1"># support optionnel pour les sondages ftp.</span>
 </pre></div>
 </div>
 <p>Si les paquets ne sont pas disponibles, on peut les remplacer en utilisant python install package (pip)
@@ -243,6 +244,7 @@ $ sudo dnf install python3-paramiko
 </div>
 <p>Facultatifs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install python3-amqp   # optionally support rabbitmq brokers
+$ sudo dnf install python3-magic   # optionally support content-type headers in files.
 $ sudo dnf install python3-netifaces # optionally support vip directive for HA.
 $ sudo dnf install python3-paho-mqtt # optionally support mqtt brokers
 
@@ -273,6 +275,10 @@ de <a class="reference external" href="http://pypi.python.org/">http://pypi.pyth
 </div>
 <p>on pourrait aussi ajouter les extras:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install metpx-sr3[amqp,mqtt,vip]
+</pre></div>
+</div>
+<p>Si veut avoir tous les extras:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install metpx-sr3[all]
 </pre></div>
 </div>
 <p>et à mettre à niveau après l’installation initiale:</p>

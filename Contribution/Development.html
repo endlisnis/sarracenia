@@ -285,13 +285,16 @@ used to support all development in both versions….</p>
 <section id="local-installation">
 <h2>Local Installation<a class="headerlink" href="#local-installation" title="Permalink to this heading"></a></h2>
 <p>There are many different ways to install python packages on a computer. Different developers
-will prefer different methods, and all the methods need to be tested prior to each release.</p>
+will prefer different methods, and all the methods need to be tested prior to each release.
+Sarracenia can work with either mqtt or amqp (most mature and stable) message passing libraries.
+Install one of those first. in these examples, we use amqp.</p>
 <ul class="simple">
 <li><p><strong>Wheel</strong> when people are running different operating systems (non-ubuntu, non-debian) people will be installing wheels, typically that have been uploaded to pypi.python.org.  On the other hand, it is a bit of a pain/noise to upload every development version, so we only upload releases, so testing of wheels is done by building local wheels. Need to build a new wheel every time a change is made.</p></li>
-<li><p><strong>pip install (not -e)</strong> would pull a wheel down from pypi.python.org. Generally not used during development of Sarracenia itself.</p></li>
-<li><p><strong>pip install -e</strong> … lets you edit the source code of the installed package, ideal for debugging problems, because it allows live changes to the application without having to go through building and installing a new package.</p></li>
-<li><p><strong>apt install</strong> install debian package from repositories, similarly to pip install (not -e), normally dev snapshots are not uploaded to repositories, so while this would be the normal way for users of ubuntu servers, it is not available during development of the package itself.</p></li>
-<li><p><strong>dpkg -i</strong> builds a debian package for local installation. This is how packages are tested prior to upload to repositories.  It can also be used to support development (have to run dpkg -i for each package change.)</p></li>
+<li><p><strong>pip install metpx-sr3[amqp]</strong> would pull a wheel down from pypi.python.org. Generally not used during development of Sarracenia itself.
+one could also pull in all possible dependencies with <strong>pip install metpx-sr3[all]</strong></p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>pip install -e .[amqp] … lets you edit the source code of the installed package, ideal for debugging problems, because it allows live changes to the application without having to go through building and installing a new package.</p></li>
+<li><p><strong>apt install metpx-sr3</strong> install debian package from repositories, similarly to pip install (not -e), normally dev snapshots are not uploaded to repositories, so while this would be the normal way for users of ubuntu servers, it is not available during development of the package itself. Also need <strong>apt install python3-amqp</strong></p></li>
+<li><p><strong>dpkg -i</strong> builds a debian package for local installation. This is how packages are tested prior to upload to repositories.  It can also be used to support development (have to run dpkg -i for each package change.) also need <strong>apt install python3-amqp</strong></p></li>
 </ul>
 <p>The sr_insects tests invokes the version of metpx-sarracenia that is installed on the system,
 and not what is in the development tree.  It is necessary to install the package on
@@ -1133,7 +1136,7 @@ AttributeError: &#39;float&#39; object has no attribute &#39;encode&#39;
 maximum of the shovels is: 100008
 </pre></div>
 </div>
-<p>While it is runnig one can run flow_check.sh at any time:</p>
+<p>While it is running one can run flow_check.sh at any time:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NB retries for sr_subscribe t_f30 0
 NB retries for sr_sender 18
 

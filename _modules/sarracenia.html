@@ -104,7 +104,6 @@
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">importlib.util</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">magic</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">paramiko</span>
@@ -548,11 +547,15 @@
         <span class="k">if</span> <span class="n">lstat</span> <span class="p">:</span>
             <span class="k">if</span> <span class="n">os_stat</span><span class="o">.</span><span class="n">S_ISREG</span><span class="p">(</span><span class="n">lstat</span><span class="o">.</span><span class="n">st_mode</span><span class="p">):</span>
                 <span class="n">m</span><span class="o">.</span><span class="n">__computeIdentity</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="n">t</span> <span class="o">=</span> <span class="n">magic</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">mime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                    <span class="n">m</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
-                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
-                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;trying to determine mime-type. Exception details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">t</span> <span class="o">=</span> <span class="n">magic</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">mime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                        <span class="n">m</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;trying to determine mime-type. Exception details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="c1">#else:</span>
+                <span class="c1">#    m[&#39;contentType&#39;] = &#39;application/octet-stream&#39; # https://www.rfc-editor.org/rfc/rfc2046.txt (default when clueless)</span>
+                <span class="c1"># I think setting a bad value is worse than none, so just omitting.</span>
             <span class="k">elif</span> <span class="n">os_stat</span><span class="o">.</span><span class="n">S_ISDIR</span><span class="p">(</span><span class="n">lstat</span><span class="o">.</span><span class="n">st_mode</span><span class="p">):</span>
                 <span class="n">m</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;text/directory&#39;</span> <span class="c1"># source: https://www.w3.org/2002/12/cal/rfc2425.html</span>
             <span class="k">elif</span> <span class="n">os_stat</span><span class="o">.</span><span class="n">S_ISLNK</span><span class="p">(</span><span class="n">lstat</span><span class="o">.</span><span class="n">st_mode</span><span class="p">):</span>
@@ -877,6 +880,7 @@
 <span class="sd">  </span>
 <span class="sd">  amqp - ability to communicate with AMQP (rabbitmq) brokers</span>
 <span class="sd">  mqtt - ability to communicate with MQTT brokers</span>
+<span class="sd">  filetypes - ability to</span>
 <span class="sd">  ftppoll - ability to poll FTP servers</span>
 <span class="sd">  vip  - enable vip (Virtual IP) settings to implement singleton processing</span>
 <span class="sd">         for high availability support.</span>
@@ -889,6 +893,7 @@
    <span class="s1">&#39;ftppoll&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dateparser&#39;</span><span class="p">,</span> <span class="s1">&#39;pytz&#39;</span><span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span> <span class="p">:</span> <span class="s1">&#39;will not be able to poll with ftp&#39;</span> <span class="p">},</span>
    <span class="s1">&#39;humanize&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;humanize&#39;</span> <span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;humans will have to read larger, uglier numbers&#39;</span> <span class="p">},</span>
    <span class="s1">&#39;mqtt&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;paho.mqtt.client&#39;</span><span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;will not be able to connect to mqtt brokers&#39;</span> <span class="p">},</span>
+   <span class="s1">&#39;filetypes&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;magic&#39;</span><span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;will not be able to set content headers&#39;</span> <span class="p">},</span>
    <span class="s1">&#39;vip&#39;</span>  <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;netifaces&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;will not be able to use the vip option for high availability clustering&#39;</span> <span class="p">},</span>
    <span class="s1">&#39;watch&#39;</span>  <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;watchdog&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;cannot watch directories&#39;</span> <span class="p">}</span>
 <span class="p">}</span>
@@ -909,6 +914,9 @@
            <span class="n">extras</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
 
 <span class="c1"># Some sort of graceful fallback, or good messaging for when dependencies are missing.</span>
+
+<span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+   <span class="kn">import</span> <span class="nn">magic</span>
 
 <span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
    <span class="kn">import</span> <span class="nn">paho.mqtt.client</span>

@@ -247,25 +247,32 @@ utilisé pour prendre en charge tout le développement dans les deux versions…
 <section id="installation-locale">
 <h2>Installation locale<a class="headerlink" href="#installation-locale" title="Permalink to this heading"></a></h2>
 <p>Il existe de nombreuses façons d’installer des paquets python sur un ordinateur. Différents développeurs
-préféreront différentes méthodes, et toutes les méthodes doivent être testées avant chaque version.</p>
+préféreront différentes méthodes, et toutes les méthodes doivent être testées avant chaque version.
+Avant d´installer le paquet il faut généralement une librarie pour communiquer avec le courtier
+de messages (généralement rabbitmq/AMQP, mais ca peut être MQTT également)</p>
 <ul class="simple">
 <li><p><strong>Wheel</strong> Lorsque les gens utilisent différents systèmes d’exploitation (non-Ubuntu, non-Debian),
 les gens installent des wheel, généralement qui ont été téléchargées sur pypi.python.org.  D’un
 autre côté, c’est un peu pénible / bruyant de télécharger chaque version de développement, donc
 nous ne téléchargeons que des versions, donc les tests de wheel se font en construisant des roues
-locales. Besoin de construire une nouvelle wheel chaque fois qu’un changement est apporté.</p></li>
+locales. Besoin de construire une nouvelle wheel chaque fois qu’un changement est apporté.
+<em>pip install amqp</em> sera également nécessaire pour le support rabbitmq.</p></li>
 <li><p><strong>pip install (pas -e)</strong> tirerait une wheel vers le bas de pypi.python.org. Généralement pas utilisé
-pendant le développement de Sarracenia lui-même.</p></li>
+pendant le développement de Sarracenia lui-même.
+<em>pip install amqp</em> sera également nécessaire pour le support rabbitmq.</p></li>
 <li><p><strong>pip install -e</strong> … vous permet de modifier le code source du package installé, idéal pour les
 problèmes de débogage, car il permet des modifications en direct de l’application sans avoir à passer
-par la construction et l’installation d’un nouveau package.</p></li>
+par la construction et l’installation d’un nouveau package.
+<em>pip install amqp</em> sera également nécessaire pour le support rabbitmq.</p></li>
 <li><p><strong>apt install</strong> installer le paquet Debian à partir de dépôts, de la même manière que pip install (pas -e),
 normalement les instantanés de développement ne sont pas téléchargés vers des dépôts, donc bien que ce soit
 la manière normale pour les utilisateurs de serveurs Ubuntu, il n’est pas disponible pendant le développement
-du paquet lui-même.</p></li>
+du paquet lui-même.
+<em>apt install python3-amqp</em> sera également nécessaire pour le support rabbitmq.</p></li>
 <li><p><strong>dpkg -i</strong> construit un paquet Debian pour l’installation locale. C’est ainsi que les packages sont testés
 avant d’être téléchargés vers des référentiels.  Il peut également être utilisé pour soutenir le développement
-(il faut exécuter dpkg -i pour chaque changement de paquet).</p></li>
+(il faut exécuter dpkg -i pour chaque changement de paquet).
+<em>apt install python3-amqp</em> sera également nécessaire pour le support rabbitmq.</p></li>
 </ul>
 <p>Le test sr_insects appelle la version de metpx-sarracenia installée sur le système,
 et non ce qui est dans l’arbre de développement.  Il est nécessaire d’installer le paquet sur

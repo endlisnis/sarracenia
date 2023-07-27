@@ -240,6 +240,12 @@
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;lag: average: </span><span class="si">%.2f</span><span class="s2">, maximum: </span><span class="si">%.2f</span><span class="s2"> &quot;</span> <span class="o">%</span>
                         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lagTotal</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">msgCount</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lagMax</span><span class="p">))</span>
 
+    <span class="k">def</span> <span class="nf">on_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">on_declare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+    
     <span class="k">def</span> <span class="nf">on_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;on_stop&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">logEvents</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>

@@ -506,6 +506,14 @@ so they can be acknowledged as received. Messages can only removed after ack.</p
 <blockquote>
 <div><p>Return a dictionary of metrics. Example: number of messages remaining in retry queues.</p>
 </div></blockquote>
+<dl class="simple">
+<dt>def on_cleanup(self) -&gt; None::</dt><dd><p>allow plugins to perform additional work after broker resources are eliminated.
+local state files are still present when this runs.</p>
+</dd>
+<dt>def on_declare(self) -&gt; None::</dt><dd><p>local state files are still already present when this runs.
+allow plugins to perform additional work besides broker resource setup.</p>
+</dd>
+</dl>
 <p>def on_housekeeping(self) -&gt; None:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do</span> <span class="n">periodic</span> <span class="n">processing</span><span class="o">.</span>
 </pre></div>

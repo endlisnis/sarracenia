@@ -139,11 +139,6 @@
 
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;logLevel=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">logLevel</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;starting retry cleanup&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">download_retry</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">post_retry</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
-
 <div class="viewcode-block" id="Retry.after_accept"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.retry.Retry.after_accept">[docs]</a>    <span class="k">def</span> <span class="nf">after_accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worklist</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        If there are only a few new messages, get some from the download retry queue and put them into</span>
@@ -195,6 +190,11 @@
 <span class="sd">            dict: containing metrics: ``{&#39;msgs_in_download_retry&#39;: (int), &#39;msgs_in_post_retry&#39;: (int)}``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;msgs_in_download_retry&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">download_retry</span><span class="p">),</span> <span class="s1">&#39;msgs_in_post_retry&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">post_retry</span><span class="p">)}</span></div>
+
+    <span class="k">def</span> <span class="nf">on_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;starting retry cleanup&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">download_retry</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">post_retry</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_housekeeping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;on_housekeeping&quot;</span><span class="p">)</span>

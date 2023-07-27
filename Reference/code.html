@@ -2226,16 +2226,6 @@ returns True if connected, false otherwise.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sarracenia.moth.amqp.AMQP.__getSetup">
-<span class="sig-name descname"><span class="pre">__getSetup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sarracenia.moth.amqp.AMQP.__getSetup" title="Permalink to this definition"></a></dt>
-<dd><p>Setup so we can get messages.</p>
-<dl class="simple">
-<dt>if message_strategy is stubborn, will loop here forever.</dt><dd><p>connect, declare queue, apply bindings.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.moth.amqp.AMQP.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_subscriber</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/sarracenia/moth/amqp.html#AMQP.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.amqp.AMQP.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>connect to broker, depending on message_strategy stubborness, remain connected.</p>
@@ -2256,6 +2246,16 @@ returns True if connected, false otherwise.</p>
 self.metrics[‘RxByteCount’] should be incremented by size of payload.
 self.metrics[‘RxGoodCount’] should be incremented by 1 if a good message is received.
 self.metrics[‘RxBadCount’] should be incremented by 1 if an invalid message is received (&amp;discarded.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sarracenia.moth.amqp.AMQP.getSetup">
+<span class="sig-name descname"><span class="pre">getSetup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/sarracenia/moth/amqp.html#AMQP.getSetup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.moth.amqp.AMQP.getSetup" title="Permalink to this definition"></a></dt>
+<dd><p>Setup so we can get messages.</p>
+<dl class="simple">
+<dt>if message_strategy is stubborn, will loop here forever.</dt><dd><p>connect, declare queue, apply bindings.</p>
 </dd>
 </dl>
 </dd></dl>

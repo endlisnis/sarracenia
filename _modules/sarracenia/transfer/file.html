@@ -451,6 +451,7 @@
             <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
         <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;subtopic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;relPath&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;subtopic&#39;</span><span class="p">])</span>
         <span class="c1">#msg.set_topic(options.post_topicPrefix,msg.target_relpath)</span>
 
     <span class="k">except</span><span class="p">:</span>

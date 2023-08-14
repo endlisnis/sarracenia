@@ -41,7 +41,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fr/index.html">En français</a></li>
 </ul>
@@ -88,6 +88,7 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="kn">from</span> <span class="nn">sarracenia.flowcb</span> <span class="kn">import</span> <span class="n">FlowCB</span>
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
 
 
 <span class="c1"># class sarra/retry</span>
@@ -123,6 +124,10 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
 
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;missing retry pre-requsites, module disabled&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span> <span class="s1">&#39;retry_driver&#39;</span><span class="p">,</span> <span class="s1">&#39;str&#39;</span><span class="p">,</span> <span class="s1">&#39;disk&#39;</span><span class="p">)</span>
         <span class="c1">#queuedriver = os.getenv(&#39;SR3_QUEUEDRIVER&#39;, &#39;disk&#39;)</span>
 
@@ -144,6 +149,8 @@
 <span class="sd">        If there are only a few new messages, get some from the download retry queue and put them into</span>
 <span class="sd">        `worklist.incoming`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="k">return</span>
 
         <span class="n">qty</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">batch</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span><span class="p">)</span>
         <span class="c1">#logger.info(&#39;qty: %d len(worklist.incoming) %d&#39; % ( qty, len(worklist.incoming) ) )</span>
@@ -161,6 +168,9 @@
 <span class="sd">        Messages in `worklist.failed` should be put in the download retry queue. If there are only a few new</span>
 <span class="sd">        messages, get some from the post retry queue and put them into `worklist.ok`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="k">return</span>
+
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">worklist</span><span class="o">.</span><span class="n">failed</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1">#logger.debug(&quot;putting %d messages into %s&quot; % (len(worklist.failed),self.download_retry_name) )</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">download_retry</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">worklist</span><span class="o">.</span><span class="n">failed</span><span class="p">)</span>
@@ -180,6 +190,9 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Messages in `worklist.failed` should be put in the post retry queue.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="p">:</span>
+            <span class="k">return</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">post_retry</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">worklist</span><span class="o">.</span><span class="n">failed</span><span class="p">)</span>
         <span class="n">worklist</span><span class="o">.</span><span class="n">failed</span><span class="o">=</span><span class="p">[]</span></div>
 

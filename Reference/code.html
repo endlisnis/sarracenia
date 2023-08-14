@@ -15,7 +15,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contributing to Sarracenia" href="../Contribution/index.html" />
+    <link rel="next" title="Contributing" href="../Contribution/index.html" />
     <link rel="prev" title="FlowCallback Reference" href="flowcb.html" /> 
 </head>
 
@@ -207,7 +207,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fr/index.html">En français</a></li>
 </ul>
@@ -460,9 +460,12 @@ example called moth_api_consumer.py. often</p>
 <p>If you don’t have a local file, then build your notification message with:</p>
 <p>m = sarracenia.Message.fromFileInfo( path, options, lstat )</p>
 <p>where you can make up the lstat values to fill in some fields in the message.
-You can make a fake lstat structure to provide these values using paramiko.SFTPAttributes</p>
-<p>import paramiko</p>
-<p>lstat = paramiko.SFTPAttributes()
+You can make a fake lstat structure to provide these values using sarracenia.filemetadata
+class which is either an alias for paramiko.SFTPAttributes
+( <a class="reference external" href="https://docs.paramiko.org/en/latest/api/sftp.html#paramiko.sftp_attr.SFTPAttributes">https://docs.paramiko.org/en/latest/api/sftp.html#paramiko.sftp_attr.SFTPAttributes</a> )
+if paramiko is installed, or a simple emulation if not.</p>
+<p>from  sarracenia.filemetadata import FmdStat</p>
+<p>lstat = FmdStat()
 lstat.st_mtime= utcinteger second count in UTC (numeric version of a Sarracenia timestamp.)
 lstat.st_atime=
 lstat.st_mode=0o644
@@ -2564,7 +2567,7 @@ Sarracenia transfer protocol subclass supports/uses additional custom options:</
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="flowcb.html" class="btn btn-neutral float-left" title="FlowCallback Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../Contribution/index.html" class="btn btn-neutral float-right" title="Contributing to Sarracenia" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Contribution/index.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

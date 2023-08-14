@@ -44,7 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Reference/index.html">Reference</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing to Sarracenia</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="AMQPprimer.html">AMQP - Primer for Sarracenia</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Development.html">MetPX-Sarracenia Developer’s Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Documentation.html">Documentation Standards</a></li>
@@ -114,7 +114,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Contributing to Sarracenia</a> &raquo;</li>
+          <li><a href="index.html">Contributing</a> &raquo;</li>
       <li>Version 3 Refactor</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Contribution/v03.rst.txt" rel="nofollow"> View page source</a>
@@ -379,6 +379,106 @@ might be a feature.</p>
 <p>Now that we are a good way throught the process, a
 mapping of source code transcriptions between
 the two versions, is clear:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Version 2 file</p></td>
+<td><p>Version 3 file</p></td>
+</tr>
+<tr class="row-even"><td><p>sr_config.py</p></td>
+<td><p>config.py</p></td>
+</tr>
+<tr class="row-odd"><td><p>sr_instances.py</p></td>
+<td><p>sr.py for most mgmt.
+instance.py single proc</p></td>
+</tr>
+<tr class="row-even"><td><p>sr_consumer.py</p>
+<p>sr_amqp.py</p>
+<p>sr_message.py</p>
+</td>
+<td><p>moth/__init__.py</p>
+<p>moth/amqp.py</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>sr_checksum.py</p>
+<p>sum/*</p>
+</td>
+<td><dl class="simple">
+<dt>identity/</dt><dd><p>__init__.py
+*</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>sr_cache.py</p></td>
+<td><p>flowcb/nodupe.py</p></td>
+</tr>
+<tr class="row-odd"><td><p>sr_retry.py</p></td>
+<td><p>flowcb/retry.py</p>
+<p>diskqueue.py</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>sr_post.py</p></td>
+<td><p>flowcb/gather/file.py</p>
+<p>flow/post.py</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>sr_poll.py</p></td>
+<td><dl class="simple">
+<dt>flowcb/poll/</dt><dd><p>__init__.py</p>
+</dd>
+</dl>
+<p>flow/poll.py</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>sr_util.py/sr_proto</p>
+<p>sr_util.py/sr_transport</p>
+<p>sr_file.py</p>
+<p>sr_ftp.py</p>
+<p>sr_http.py</p>
+<p>sr_sftp.py</p>
+</td>
+<td><dl class="simple">
+<dt>transfer/__init__.py</dt><dd><ul class="simple">
+<li><p>transfer.Protocol</p></li>
+</ul>
+</dd>
+</dl>
+<p>flow/__init__.py</p>
+<p>transfer/file.py</p>
+<p>transfer/ftp.py</p>
+<p>transfer/http.py</p>
+<p>transfer/sftp.py</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>plugins/</p></td>
+<td><p>flowcb/  (sr3 ones)
+plugins/ still there</p>
+<blockquote>
+<div><p>for v2 ones.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>overall flow</p></td>
+<td><p>flow/__init__.py</p></td>
+</tr>
+<tr class="row-odd"><td><p>sr_poll.py</p>
+<p>sr_post.py</p>
+<p>sr_subscribe.py</p>
+<p>sr_shovel.py</p>
+<p>sr_report.py</p>
+<p>sr_sarra.py</p>
+<p>sr_sender.py</p>
+<p>sr_watch.py</p>
+<p>sr_winnow.py</p>
+</td>
+<td><p>sr_flow.py
+as entry point…</p>
+<p>but generally just use
+sr.py as single one.</p>
+</td>
+</tr>
+</tbody>
+</table>
 <section id="mappings">
 <h3>Mappings<a class="headerlink" href="#mappings" title="Permalink to this heading"></a></h3>
 <p>v2-&gt;sr3 instance variables:</p>

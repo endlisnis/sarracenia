@@ -41,7 +41,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../fr/index.html">En français</a></li>
 </ul>
@@ -113,6 +113,14 @@
 <span class="kn">import</span> <span class="nn">psutil</span>
 <span class="kn">from</span> <span class="nn">sarracenia.flowcb</span> <span class="kn">import</span> <span class="n">FlowCB</span>
 <span class="kn">from</span> <span class="nn">sarracenia</span> <span class="kn">import</span> <span class="n">naturalSize</span><span class="p">,</span> <span class="n">naturalTime</span>
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
+
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;process&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+    <span class="kn">import</span> <span class="nn">psutil</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;missing psutil class cannot monitor process memory usage&quot;</span><span class="p">)</span>
+
+
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -132,7 +140,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">msgCount</span> <span class="o">=</span> <span class="mi">0</span></div>
 
     <span class="k">def</span> <span class="nf">on_housekeeping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">mem</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">vms</span>
+        <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;process&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+            <span class="n">mem</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">vms</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mem</span> <span class="o">=</span> <span class="mi">0</span>
+
         <span class="n">ost</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">times</span><span class="p">()</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Current Memory cpu_times: user=</span><span class="si">{</span><span class="n">ost</span><span class="o">.</span><span class="n">user</span><span class="si">}</span><span class="s2"> system=</span><span class="si">{</span><span class="n">ost</span><span class="o">.</span><span class="n">system</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>

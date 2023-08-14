@@ -44,7 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">En français</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Reference/index.html">Référence</a></li>
@@ -130,17 +130,14 @@
 <h1>Guide de programmation Sarracenia<a class="headerlink" href="#guide-de-programmation-sarracenia" title="Permalink to this heading"></a></h1>
 <section id="travailler-avec-des-plugins">
 <h2>Travailler avec des plugins<a class="headerlink" href="#travailler-avec-des-plugins" title="Permalink to this heading"></a></h2>
-<section id="enregistrement-de-revision">
-<h3>Enregistrement de révision<a class="headerlink" href="#enregistrement-de-revision" title="Permalink to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 08, 2023</p>
+<dd class="field-even"><p>Aug 14, 2023</p>
 </dd>
 </dl>
-</section>
 <section id="audience">
 <h3>Audience<a class="headerlink" href="#audience" title="Permalink to this heading"></a></h3>
 <p>Les lecteurs de ce manuel doivent être à l’aise avec les scripts légers dans Python version 3.
@@ -166,9 +163,6 @@ en construire de nouveaux de manière copier/coller, avec de nombreux exemples d
 <li><p>Sarracenia.flowcb.scheduled.Scheduled pour personnaliser les flux cédulés.</p></li>
 </ul>
 <p>Cela sera discuté après que les rappels auront été traités.</p>
-</section>
-<section id="id1">
-<h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>Une pompe de données Sarracenia est un serveur Web avec des notifications pour les abonnés à
 savoir, rapidement, quand de nouvelles données sont arrivées. Pour savoir quelles données sont déjà
 disponible sur une pompe, visualisez l’arbre avec un navigateur web.  Pour de besoins simple et immédiats,
@@ -202,7 +196,6 @@ traitement personnalisé à différents points du flux.</p>
 </ul>
 </div></blockquote>
 <p>La liste de travail est transmise aux plugins <em>after_accept</em> et <em>after_work</em> comme détaillé dans la section suivante.</p>
-<hr class="docutils" />
 <p>Tous les composants (post, subscribe, sarra, sender, shovel, watch, winnow)
 partagent du code substantiel et ne diffèrent que par les paramètres de défaut.  L’algorithme de flux est :</p>
 <ul class="simple">
@@ -297,7 +290,7 @@ ou flowcb accepte comme paramètre _options_ dans leurs routines __init__()</p>
 </pre></div>
 </div>
 <p>L’exemple ci-dessus définit une option “accel_wget_command”
-comme étant de type chaîne, avec la valeur par défaut _/usr/bin/<a href="#id8"><span class="problematic" id="id9">wget_</span></a> .</p>
+comme étant de type chaîne, avec la valeur par défaut _/usr/bin/<a href="#id7"><span class="problematic" id="id8">wget_</span></a> .</p>
 <p>Autres méthodes utiles dans la classe sarracenia.config.Config :</p>
 <ul class="simple">
 <li><p>variableExpansion( value, Message=None) … pour que des modèles tels que ${YYYYMMDD-5m} soient évalué
@@ -644,7 +637,7 @@ Peut être utlisé pour lire l’état a partir d’un
 fichier.
 fichier d’état dans self.o.user_cache_dir</p>
 <p>valeur retourné ignoré</p>
-<p>exemple: file_total_save.py <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>exemple: file_total_save.py <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>on_stop(self)</p></td>
@@ -710,23 +703,23 @@ retourner True pour continuer</p>
 <p>Voir les classes intégrés <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/__init__.py">flowcb Poll</a>
 est utile.</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>voir <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/plugins/smc_download_cp.py">smc_download_cp</a></p>
 </aside>
-<aside class="footnote brackets" id="id4" role="doc-footnote">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <p>voir <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/74">Issue 74</a></p>
 </aside>
-<aside class="footnote brackets" id="id5" role="doc-footnote">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
 <p>voir <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/plugins/part_clanav_scan.py">part_clanav_scan.py</a></p>
 </aside>
-<aside class="footnote brackets" id="id6" role="doc-footnote">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
 <p>voir <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/plugins/file_total_save.py">file_total_save.py</a></p>
 </aside>
-<aside class="footnote brackets" id="id7" role="doc-footnote">
+<aside class="footnote brackets" id="id6" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
 <p>voir <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/plugins/poll_email_ingest.py">poll_email_ingest.py</a></p>
 </aside>
@@ -913,6 +906,57 @@ de messages.  Un message correspondra à un fichier.</p>
 avec une instruction afin d’agir uniquement sur le message de première partie
 pour les fichiers longs.</p>
 </div>
+<section id="ajout-de-dependance-python-dans-les-callbacks">
+<h3>Ajout de Dépendance Python dans les Callbacks<a class="headerlink" href="#ajout-de-dependance-python-dans-les-callbacks" title="Permalink to this heading"></a></h3>
+<p>Certains <em>callback</em> doivent utiliser d’autres modules Python. Alors que les
+importations normales sont bien, on peut mieux les intégrer pour les
+utilisateurs sr3 en prenant en se servant du mécanisme <em>features</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
+<span class="c1">#</span>
+<span class="c1"># Support for features inventory mechanism.</span>
+<span class="c1">#</span>
+<span class="n">features</span><span class="p">[</span><span class="s1">&#39;clamd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;pyclamd&#39;</span> <span class="p">],</span> <span class="s1">&#39;Needed&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;lament&#39;</span> <span class="p">:</span> <span class="s1">&#39;cannot use clamd to av scan files transferred&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rejoice&#39;</span> <span class="p">:</span> <span class="s1">&#39;can use clamd to av scan files transferred&#39;</span> <span class="p">}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pyclamd</span>
+    <span class="n">features</span><span class="p">[</span><span class="s1">&#39;clamd&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">features</span><span class="p">[</span><span class="s1">&#39;clamd&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Cela permet aux utilisateurs de savoir quelles <em>features</em> sont disponibles dans leur installation.
+Lorsqu’ils exécutent <em>sr3 features</em>, sr3 fournit une liste facile à comprendre des éléments manquants:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="n">features</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">219</span> <span class="mi">1993037</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flow</span> <span class="n">loadCallbacks</span> <span class="n">flowCallback</span> <span class="n">plugins</span> <span class="n">to</span> <span class="n">load</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sarracenia.flowcb.retry.Retry&#39;</span><span class="p">,</span> <span class="s1">&#39;sarracenia.flowcb.housekeeping.resources.Resources&#39;</span><span class="p">,</span> <span class="s1">&#39;dcpflow&#39;</span><span class="p">,</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;post.message&#39;</span><span class="p">,</span> <span class="s1">&#39;clamav&#39;</span><span class="p">]</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">224</span> <span class="mi">1993037</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">dcpflow</span> <span class="fm">__init__</span> <span class="n">really</span> <span class="n">I</span> <span class="n">mean</span> <span class="n">hi</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">224</span> <span class="mi">1993037</span> <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">config</span> <span class="n">add_option</span> <span class="n">multiple</span> <span class="n">declarations</span> <span class="n">of</span> <span class="n">lrgs_download_redundancy</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span><span class="p">]</span> <span class="n">choosing</span> <span class="n">last</span> <span class="n">one</span><span class="p">:</span> <span class="n">on</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">225</span> <span class="mi">1993037</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">dcpflow</span> <span class="fm">__init__</span>  <span class="n">lrgs_download_redundancy</span> <span class="ow">is</span> <span class="kc">True</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">225</span> <span class="mi">1993037</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flowcb</span><span class="o">.</span><span class="n">log</span> <span class="fm">__init__</span> <span class="n">flow</span> <span class="n">initialized</span> <span class="k">with</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="s1">&#39;on_housekeeping&#39;</span><span class="p">,</span> <span class="s1">&#39;after_work&#39;</span><span class="p">,</span> <span class="s1">&#39;after_accept&#39;</span><span class="p">,</span> <span class="s1">&#39;after_post&#39;</span><span class="p">}</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">226</span> <span class="mi">1993037</span> <span class="p">[</span><span class="n">CRITICAL</span><span class="p">]</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flow</span> <span class="n">loadCallbacks</span> <span class="n">flowCallback</span> <span class="n">plugin</span> <span class="n">clamav</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">load</span><span class="p">:</span> <span class="s1">&#39;pyclamd&#39;</span>
+
+<span class="n">Status</span><span class="p">:</span>    <span class="n">feature</span><span class="p">:</span>   <span class="n">python</span> <span class="n">imports</span><span class="p">:</span>      <span class="n">Description</span><span class="p">:</span>
+<span class="n">Installed</span>  <span class="n">amqp</span>       <span class="n">amqp</span>                 <span class="n">can</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">rabbitmq</span> <span class="n">brokers</span>
+<span class="n">Installed</span>  <span class="n">appdirs</span>    <span class="n">appdirs</span>              <span class="n">place</span> <span class="n">configuration</span> <span class="ow">and</span> <span class="n">state</span> <span class="n">files</span> <span class="n">appropriately</span> <span class="k">for</span> <span class="n">platform</span> <span class="p">(</span><span class="n">windows</span><span class="o">/</span><span class="n">mac</span><span class="o">/</span><span class="n">linux</span><span class="p">)</span>
+<span class="n">Installed</span>  <span class="n">filetypes</span>  <span class="n">magic</span>                <span class="n">able</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">content</span> <span class="n">headers</span>
+<span class="n">Installed</span>  <span class="n">ftppoll</span>    <span class="n">dateparser</span><span class="p">,</span><span class="n">pytz</span>      <span class="n">able</span> <span class="n">to</span> <span class="n">poll</span> <span class="k">with</span> <span class="n">ftp</span>
+<span class="n">Installed</span>  <span class="n">humanize</span>   <span class="n">humanize</span>             <span class="n">humans</span> <span class="n">numbers</span> <span class="n">that</span> <span class="n">are</span> <span class="n">easier</span> <span class="n">to</span> <span class="n">read</span><span class="o">.</span>
+<span class="n">Absent</span>     <span class="n">mqtt</span>       <span class="n">paho</span><span class="o">.</span><span class="n">mqtt</span><span class="o">.</span><span class="n">client</span>     <span class="n">cannot</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">mqtt</span> <span class="n">brokers</span>
+<span class="n">Installed</span>  <span class="n">redis</span>      <span class="n">redis</span><span class="p">,</span><span class="n">redis_lock</span>     <span class="n">can</span> <span class="n">use</span> <span class="n">redis</span> <span class="n">implementations</span> <span class="n">of</span> <span class="n">retry</span> <span class="ow">and</span> <span class="n">nodupe</span>
+<span class="n">Installed</span>  <span class="n">sftp</span>       <span class="n">paramiko</span>             <span class="n">can</span> <span class="n">use</span> <span class="n">sftp</span> <span class="ow">or</span> <span class="n">ssh</span> <span class="n">based</span> <span class="n">services</span>
+<span class="n">Installed</span>  <span class="n">vip</span>        <span class="n">netifaces</span>            <span class="n">able</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">vip</span> <span class="n">option</span> <span class="k">for</span> <span class="n">high</span> <span class="n">availability</span> <span class="n">clustering</span>
+<span class="n">Installed</span>  <span class="n">watch</span>      <span class="n">watchdog</span>             <span class="n">watch</span> <span class="n">directories</span>
+<span class="n">Installed</span>  <span class="n">xattr</span>      <span class="n">xattr</span>                <span class="n">on</span> <span class="n">linux</span><span class="p">,</span> <span class="n">will</span> <span class="n">store</span> <span class="n">file</span> <span class="n">metadata</span> <span class="ow">in</span> <span class="n">extended</span> <span class="n">attributes</span>
+<span class="n">MISSING</span>    <span class="n">clamd</span>      <span class="n">pyclamd</span>              <span class="n">cannot</span> <span class="n">use</span> <span class="n">clamd</span> <span class="n">to</span> <span class="n">av</span> <span class="n">scan</span> <span class="n">files</span> <span class="n">transferred</span>
+
+ <span class="n">state</span> <span class="nb">dir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/.</span><span class="n">cache</span><span class="o">/</span><span class="n">sr3</span>
+ <span class="n">config</span> <span class="nb">dir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/.</span><span class="n">config</span><span class="o">/</span><span class="n">sr3</span>
+</pre></div>
+</div>
+<p>On peut voir que le module Python <em>pyclamed</em> nécessary pour que le <em>callback</em> fonctionne n´est pas
+installé.</p>
+</section>
 <section id="idees-dextension">
 <h3>Idées d’extension<a class="headerlink" href="#idees-dextension" title="Permalink to this heading"></a></h3>
 <p>Exemples de choses qui seraient amusantes à faire avec les plugins:</p>

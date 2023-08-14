@@ -41,7 +41,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fr/index.html">En français</a></li>
 </ul>
@@ -89,12 +89,28 @@
 
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pyclamd</span>
 <span class="kn">import</span> <span class="nn">stat</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">from</span> <span class="nn">sarracenia</span> <span class="kn">import</span> <span class="n">nowflt</span>
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
+<span class="kn">import</span> <span class="nn">sarracenia</span>
 <span class="kn">from</span> <span class="nn">sarracenia.flowcb</span> <span class="kn">import</span> <span class="n">FlowCB</span>
+
+<span class="c1">#</span>
+<span class="c1"># Support for features inventory mechanism.</span>
+<span class="c1">#</span>
+<span class="n">features</span><span class="p">[</span><span class="s1">&#39;clamd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;pyclamd&#39;</span> <span class="p">],</span> <span class="s1">&#39;Needed&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;lament&#39;</span> <span class="p">:</span> <span class="s1">&#39;cannot use clamd to av scan files transferred&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rejoice&#39;</span> <span class="p">:</span> <span class="s1">&#39;can use clamd to av scan files transferred&#39;</span> <span class="p">}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pyclamd</span>
+    <span class="n">features</span><span class="p">[</span><span class="s1">&#39;clamd&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">features</span><span class="p">[</span><span class="s1">&#39;clamd&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -114,10 +130,14 @@
 <div class="viewcode-block" id="Clamav.__init__"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.clamav.Clamav.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">av</span> <span class="o">=</span> <span class="n">pyclamd</span><span class="o">.</span><span class="n">ClamdAgnostic</span><span class="p">()</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">metric_scanned</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metric_hits</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;clam_scan on_part plugin initialized&quot;</span><span class="p">)</span></div>
+       
+        <span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;pyclamd&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+            <span class="kn">import</span> <span class="nn">pyclamd</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">av</span> <span class="o">=</span> <span class="n">pyclamd</span><span class="o">.</span><span class="n">ClamdAgnostic</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;clam_scan on_part plugin initialized&quot;</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">avscan_hit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scanfn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 

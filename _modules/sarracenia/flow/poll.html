@@ -41,7 +41,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fr/index.html">En français</a></li>
 </ul>
@@ -82,6 +82,7 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">sarracenia</span>
 <span class="kn">from</span> <span class="nn">sarracenia.flow</span> <span class="kn">import</span> <span class="n">Flow</span>
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
 
@@ -141,9 +142,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;load&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
                                     <span class="s1">&#39;sarracenia.flowcb.post.message.Message&#39;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;ftppoll&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;ftppoll&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;pollUrl&#39;</span> <span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">pollUrl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;ftp&#39;</span><span class="p">)</span> <span class="p">):</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;attempting to configure an FTP poll pollUrl=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">pollUrl</span><span class="si">}</span><span class="s2">, but missing python modules: </span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;ftppoll&#39;</span><span class="p">][</span><span class="s1">&#39;modules_needed&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;attempting to configure an FTP poll pollUrl=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">pollUrl</span><span class="si">}</span><span class="s2">, but missing python modules: </span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;ftppoll&#39;</span><span class="p">][</span><span class="s1">&#39;modules_needed&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
                 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Poll.do"><a class="viewcode-back" href="../../../Reference/code.html#sarracenia.flow.poll.Poll.do">[docs]</a>    <span class="k">def</span> <span class="nf">do</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

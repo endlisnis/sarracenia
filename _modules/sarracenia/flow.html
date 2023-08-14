@@ -41,7 +41,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../fr/index.html">En français</a></li>
 </ul>
@@ -102,6 +102,8 @@
 
 <span class="c1"># end v2 subscriber</span>
 
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
+
 <span class="kn">from</span> <span class="nn">sarracenia</span> <span class="kn">import</span> <span class="n">nowflt</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -131,10 +133,10 @@
     <span class="s1">&#39;vip&#39;</span><span class="p">:</span> <span class="kc">None</span>
 <span class="p">}</span>
 
-<span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
     <span class="kn">import</span> <span class="nn">magic</span>
 
-<span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;vip&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;vip&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
     <span class="kn">import</span> <span class="nn">netifaces</span>
 
 
@@ -384,7 +386,7 @@
 
     <span class="k">def</span> <span class="nf">has_vip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;vip&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span> <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;vip&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span> <span class="k">return</span> <span class="kc">True</span>
 
         <span class="c1"># no vip given... standalone always has vip.</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">vip</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
@@ -1949,7 +1951,7 @@
                 <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">,</span> <span class="n">new_file</span><span class="p">)</span>
             
             <span class="c1"># older versions don&#39;t include the contentType, so patch it here.</span>
-            <span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;contentType&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;contentType&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
                 <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magic</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">new_file</span><span class="p">,</span><span class="n">mime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">][</span><span class="s1">&#39;transferRxBytes&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">len_written</span>
@@ -2038,7 +2040,7 @@
             <span class="n">local_path</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;relPath&#39;</span><span class="p">]</span>
 
         <span class="c1"># older versions don&#39;t include the contentType, so patch it here.</span>
-        <span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="ow">and</span> \
+        <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="ow">and</span> \
            <span class="p">(</span><span class="s1">&#39;contentType&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="s1">&#39;fileOp&#39;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">):</span>
             <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magic</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span><span class="n">mime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 

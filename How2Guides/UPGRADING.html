@@ -71,7 +71,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fr/index.html">En français</a></li>
 </ul>
@@ -276,12 +276,14 @@ The <em>Identity</em> sum is now used exclusively for checksums.</p>
 <li><p>vip  - enable vip (Virtual IP) settings to implement singleton processing for high availability support.</p></li>
 </ul>
 <p>with pip installation, one can include all the extras via:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="p">[</span><span class="n">amqp</span><span class="p">,</span><span class="n">mqtt</span><span class="p">,</span><span class="n">ftppoll</span><span class="p">,</span><span class="n">vip</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="p">[</span><span class="nb">all</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>with Linux packages, install the corresponding native packages to activate the corresponding features</p>
 <p>on Ubuntu, respectively:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">amqp</span>
+<span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">magic</span>
+<span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">paramiko</span>
 <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">paho</span><span class="o">-</span><span class="n">mqtt</span>
 <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dateparser</span> <span class="n">python3</span><span class="o">-</span><span class="n">tz</span>
 <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">netifaces</span>

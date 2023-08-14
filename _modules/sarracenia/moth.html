@@ -41,7 +41,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../fr/index.html">En français</a></li>
 </ul>
@@ -77,6 +77,8 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
+
 <span class="kn">import</span> <span class="nn">sarracenia</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -107,12 +109,12 @@
 <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">ProtocolPresent</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="ow">and</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="ow">and</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="ow">and</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="ow">and</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;support for </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> missing, please install python packages: </span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;modules_needed&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;support for </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> missing, please install python packages: </span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sarracenia</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;modules_needed&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;Protocol scheme </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> unsupported for communications with message brokers&quot;</span> <span class="p">)</span>
 
@@ -464,10 +466,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">putCleanUp</span><span class="p">()</span></div></div>
 
-<span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
     <span class="kn">import</span> <span class="nn">sarracenia.moth.amqp</span>
 
-<span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">extras</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
     <span class="kn">import</span> <span class="nn">sarracenia.moth.mqtt</span>
 </pre></div>
 

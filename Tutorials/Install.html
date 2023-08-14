@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fr/index.html">En français</a></li>
 </ul>
@@ -134,7 +134,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 08, 2023</p>
+<dd class="field-even"><p>Aug 14, 2023</p>
 </dd>
 </dl>
 </section>
@@ -155,6 +155,37 @@ giving access to sr3 any all libraries needed for programmatic access.</p>
 <p>For operational use, administrative access may be needed for package installation,
 and integration with systemd. Regardless of how it is installed, some periodic
 processing (on linux usually known as <em>cron jobs</em>) may also need to be configured.</p>
+<p>Some environments provide sarracenia, but the installation can be incomplete, in
+that, some environments do not provide for libraries that sarracenia depends on.
+To know what features your installation has, use the <em>features</em> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="n">features</span>
+
+<span class="n">Status</span><span class="p">:</span>    <span class="n">feature</span><span class="p">:</span>   <span class="n">python</span> <span class="n">imports</span><span class="p">:</span>      <span class="n">Description</span><span class="p">:</span>
+<span class="n">Installed</span>  <span class="n">amqp</span>       <span class="n">amqp</span>                 <span class="n">can</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">rabbitmq</span> <span class="n">brokers</span>
+<span class="n">Installed</span>  <span class="n">appdirs</span>    <span class="n">appdirs</span>              <span class="n">place</span> <span class="n">configuration</span> <span class="ow">and</span> <span class="n">state</span> <span class="n">files</span> <span class="n">appropriately</span> <span class="k">for</span> <span class="n">platform</span> <span class="p">(</span><span class="n">windows</span><span class="o">/</span><span class="n">mac</span><span class="o">/</span><span class="n">linux</span><span class="p">)</span>
+<span class="n">Installed</span>  <span class="n">filetypes</span>  <span class="n">magic</span>                <span class="n">able</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">content</span> <span class="n">headers</span>
+<span class="n">Installed</span>  <span class="n">ftppoll</span>    <span class="n">dateparser</span><span class="p">,</span><span class="n">pytz</span>      <span class="n">able</span> <span class="n">to</span> <span class="n">poll</span> <span class="k">with</span> <span class="n">ftp</span>
+<span class="n">Installed</span>  <span class="n">humanize</span>   <span class="n">humanize</span>             <span class="n">humans</span> <span class="n">numbers</span> <span class="n">that</span> <span class="n">are</span> <span class="n">easier</span> <span class="n">to</span> <span class="n">read</span><span class="o">.</span>
+<span class="n">Absent</span>     <span class="n">mqtt</span>       <span class="n">paho</span><span class="o">.</span><span class="n">mqtt</span><span class="o">.</span><span class="n">client</span>     <span class="n">cannot</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">mqtt</span> <span class="n">brokers</span>
+<span class="n">Installed</span>  <span class="n">redis</span>      <span class="n">redis</span><span class="p">,</span><span class="n">redis_lock</span>     <span class="n">can</span> <span class="n">use</span> <span class="n">redis</span> <span class="n">implementations</span> <span class="n">of</span> <span class="n">retry</span> <span class="ow">and</span> <span class="n">nodupe</span>
+<span class="n">Installed</span>  <span class="n">sftp</span>       <span class="n">paramiko</span>             <span class="n">can</span> <span class="n">use</span> <span class="n">sftp</span> <span class="ow">or</span> <span class="n">ssh</span> <span class="n">based</span> <span class="n">services</span>
+<span class="n">Installed</span>  <span class="n">vip</span>        <span class="n">netifaces</span>            <span class="n">able</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">vip</span> <span class="n">option</span> <span class="k">for</span> <span class="n">high</span> <span class="n">availability</span> <span class="n">clustering</span>
+<span class="n">Installed</span>  <span class="n">watch</span>      <span class="n">watchdog</span>             <span class="n">watch</span> <span class="n">directories</span>
+<span class="n">Installed</span>  <span class="n">xattr</span>      <span class="n">xattr</span>                <span class="n">on</span> <span class="n">linux</span><span class="p">,</span> <span class="n">will</span> <span class="n">store</span> <span class="n">file</span> <span class="n">metadata</span> <span class="ow">in</span> <span class="n">extended</span> <span class="n">attributes</span>
+<span class="n">MISSING</span>    <span class="n">clamd</span>      <span class="n">pyclamd</span>              <span class="n">cannot</span> <span class="n">use</span> <span class="n">clamd</span> <span class="n">to</span> <span class="n">av</span> <span class="n">scan</span> <span class="n">files</span> <span class="n">transferred</span>
+
+ <span class="n">state</span> <span class="nb">dir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/.</span><span class="n">cache</span><span class="o">/</span><span class="n">sr3</span>
+ <span class="n">config</span> <span class="nb">dir</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/.</span><span class="n">config</span><span class="o">/</span><span class="n">sr3</span>
+
+<span class="n">fractal</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>Each feature is explained, and the status is indicated. Note that plugins
+can also declare the extra libraries they need. Each feature depends on the python imports
+listed in the third column. Making those libraries available to the python environment
+will activate the given feature.</p>
+<p>For example, if “paramiko” is installed, support for SFTP polls and transfers will start
+working.</p>
 </section>
 <section id="client-installation">
 <h2>Client Installation<a class="headerlink" href="#client-installation" title="Permalink to this heading"></a></h2>
@@ -163,6 +194,11 @@ they are available, debian packages are recommended. These can be obtained from 
 launchpad repository. If you cannot use debian packages, then consider pip packages
 avialable from PyPI. In both cases, the other python packages (or dependencies) needed
 will be installed by the package manager automatically.</p>
+<p>Note that in some cases, the operating system does not provide all the required
+functionality for all features, so one can complement with pip packages, which
+can be installed system-wide, within a user’s environment or even within
+venv.  as long as <em>sr3 features</em> reports the feature as available, it will
+be used.</p>
 <section id="ubuntu-debian-apt-dpkg-recommended">
 <h3>Ubuntu/Debian (apt/dpkg) <strong>Recommended</strong><a class="headerlink" href="#ubuntu-debian-apt-dpkg-recommended" title="Permalink to this heading"></a></h3>
 <p>On Ubuntu 22.04 and derivatives:</p>
@@ -171,6 +207,7 @@ will be installed by the package manager automatically.</p>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span>  <span class="c1"># main python package.</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">magic</span> <span class="c1"># optional support putting file type content-type message headers.</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3c</span> <span class="c1"># optional C client.</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">paramiko</span>  <span class="c1"># support SFTP (polls and transfers.)</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">amqp</span>  <span class="c1"># optionally support rabbitmq brokers</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">paho</span><span class="o">-</span><span class="n">mqtt</span>  <span class="c1"># optionally support MQTT brokers</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">netifaces</span> <span class="c1"># optionally support the vip directive (HA failover.)</span>
@@ -301,7 +338,10 @@ from <a class="reference external" href="http://pypi.python.org/">http://pypi.py
 <li><p>To install server-wide on a linux server, prefix with <em>sudo</em></p></li>
 </ul>
 <p>NOTE:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">many</span> <span class="n">systems</span> <span class="n">where</span> <span class="n">both</span> <span class="n">pythons</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">3</span> <span class="n">are</span> <span class="n">installed</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span> <span class="n">need</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">pip3</span> <span class="n">rather</span> <span class="n">than</span> <span class="n">pip</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">On</span> <span class="n">many</span> <span class="n">systems</span> <span class="n">where</span> <span class="n">both</span> <span class="n">pythons</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">3</span> <span class="n">are</span> <span class="n">installed</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span> <span class="n">need</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">pip3</span> <span class="n">rather</span> <span class="n">than</span> <span class="n">pip</span><span class="o">.</span>
+
+<span class="o">*</span> <span class="n">on</span> <span class="n">Windows</span><span class="p">,</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">filetype</span> <span class="n">feature</span> <span class="n">working</span><span class="p">,</span> <span class="n">one</span> <span class="n">will</span> <span class="n">need</span> <span class="n">to</span> <span class="n">manually</span> <span class="o">*</span><span class="n">pip</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">magic</span><span class="o">-</span><span class="nb">bin</span><span class="o">*</span>
+  <span class="n">see</span> <span class="n">here</span> <span class="k">for</span> <span class="n">details</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">magic</span><span class="o">/</span>
 </pre></div>
 </div>
 </section>

@@ -44,7 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">En français</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Reference/index.html">Référence</a></li>
@@ -66,6 +66,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#github">github</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#environnement-de-developpement">Environnement de développement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conventions">Conventions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-new-dependency">Adding a New Dependency</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Documentation.html">Normes de documentation</a></li>
@@ -141,7 +142,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 08, 2023</p>
+<dd class="field-even"><p>Aug 14, 2023</p>
 </dd>
 </dl>
 <section id="outillage">
@@ -1591,10 +1592,23 @@ doit être rebasée à partir de <em>v03_wip</em></p>
 <p>On peut également construire un programme d’installation Windows avec cela
 <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/main/generate-win-installer.sh">script</a>.
 Il doit être exécuté à partir d’un système d’exploitation Linux (de préférence Ubuntu 18)
-dans le répertoire racine de git de Sarracenia. Ensuite, à partir du shell, exécutez</p>
+dans le répertoire racine de git de Sarracenia.</p>
+<p>déterminer la version de python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">python</span> <span class="o">-</span><span class="n">V</span>
+<span class="n">Python</span> <span class="mf">3.10.12</span>
+<span class="n">fractal</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>C’est donc python 3.10. Une seule version mineure aura le package intégré nécessaire
+par pynsist pour construire l’exécutable. On valide chez:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>afin to confirmer que la version avec un binaire <em>embedded</em> pour 3.10 et le 3.10.11
+Ensuite, à partir du shell, exécutez</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">nsis</span>
 <span class="n">pip3</span> <span class="n">install</span> <span class="n">pynsist</span> <span class="n">wheel</span>
-<span class="o">./</span><span class="n">generate</span><span class="o">-</span><span class="n">win</span><span class="o">-</span><span class="n">installer</span><span class="o">.</span><span class="n">sh</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="n">log</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">./</span><span class="n">generate</span><span class="o">-</span><span class="n">win</span><span class="o">-</span><span class="n">installer</span><span class="o">.</span><span class="n">sh</span> <span class="mf">3.10.11</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="n">log</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>Le paquet final doit être placé dans le répertoire build/nsis.</p>
@@ -1767,6 +1781,46 @@ de rapport, cela devient une boucle infinie!) Pour le débogage et d’autres in
 journal local est utilisé.  Par exemple, sr_shovel n’émet aucun message sr_report(7), car aucune
 donnée n’est transférée, seulement des messages.</p>
 </section>
+</section>
+<section id="adding-a-new-dependency">
+<h2>Adding a New Dependency<a class="headerlink" href="#adding-a-new-dependency" title="Permalink to this heading"></a></h2>
+<p>Dependency Management is a complicated topic, because python has many different installation methods into disparate environments, and Sarracenia is multi-platform.  Standard python practice for dependencies is to make
+them <em>required</em> by listing them in requirements.txt or setup.py, and require all users to install them.
+In most python applications, if a dependency is missing, it just crashes with a import failure message
+of some kind.</p>
+<p>In Sr3, we have found that there are many different environments being deployed into where satisfying
+dependencies can be more trouble than they are worth, so each of the dependencies in setup.py are also
+dealt with in sarracenia/featuredetection, and the feature detection code allows the application to
+keep working, just without the functionality provided by the missing module. This is called <em>degradation</em>
+or <em>degraded mode</em>. The idea being to help the user do as much as they can, in the environment they have,
+while telling them what is missing, and what would ideally be added.</p>
+<p>La gestion des dépendances est un sujet compliqué, car python a de nombreuses méthodes d’installation
+différentes dans des environnements disparates, et Sarracenia est multi-plateforme. La pratique standard
+de python pour les dépendances consiste à faire les <em>nécessaires</em> en les listant dans requirements.txt
+ou setup.py, et demandez à tous les utilisateurs de les installer.  Dans la plupart des applications
+python, si une dépendance est manquante, elle se bloque simplement avec un message d’échec d’importation
+de quelques sortes.</p>
+<p>Dans Sr3, nous avons constaté qu’il existe de nombreux environnements différents déployés dans lesquels
+les dépendances peuvent être plus gênantes qu’elles n’en valent la peine, donc chacune des dépendances
+dans setup.py est également traité dans sarracenia/featuredetection, et le code de détection de
+fonctionnalité permet à l’application de continuer à travailler, juste sans la fonctionnalité fournie
+par le module manquant. C’est ce qu’on appelle la <em>dégradation</em> ou <em>mode dégradé</em>. L’idée étant
+d’aider l’utilisateur à faire le maximum, dans l’environnement dont il dispose, tout en leur disant
+ce qui manque, et ce qu’il faudrait idéalement ajouter.</p>
+<p>pleine discussion (en anglais seulement):</p>
+<p><a class="reference external" href="https://github.com/MetPX/sarracenia/issues/741">Managing Dependencies (Discussion)</a></p>
+<p>version courte:</p>
+<p>En plus de requirements.dev/setup.py, si vous devez ajouter une nouvelle bibliothèque qui ne fait pas partie de
+<em>piles incluses</em>, généralement fournies par un package os ou pip séparé, alors vous voulez
+prévoir que sr3 fonctionne toujours dans le cas où le package n’est pas disponible (bien que
+sans la fonction que vous ajoutez) et pour ajouter un support pour expliquer ce qui manque en utilisant
+le module sarracenia/featuredetection.py.</p>
+<p>Dans ce module se trouve une structure de données <em>features</em>, où vous ajoutez une entrée expliquant
+l’importation nécessaire et les fonctionnalités qu’il apporte à Sr3. Vous ajoutez également les
+protections if feature[‘x’][‘present’] dans le code où vous utilisez la fonctionnalité, afin de
+permettre au code de se dégrader avec élégance.</p>
+<p>Si la dépendance est ajoutée dans un plugin, alors il y a aussi une méthode pour celle décrite ici :</p>
+<p><a href="#id6"><span class="problematic" id="id7">`Guide de Programmeur&lt;../Explication/SarraPluginDev.html#ajout-de-dependance-python-dans-les-callbacks&gt;`_</span></a></p>
 </section>
 </section>
 

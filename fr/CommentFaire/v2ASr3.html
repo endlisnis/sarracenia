@@ -44,7 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">En français</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Reference/index.html">Référence</a></li>
@@ -178,6 +178,16 @@ appelable par les programmeurs d’applications dans leur propre code, comme tou
 de notification ou un protocole de transport de fichier.</p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>Il existe également quelques vidéos pas à pas sur Youtube montrant des ports simples v2 -&gt; v3:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=rUazjoGzPac">Sender (10 min)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=P20M9ojn_Zw">Poll (20 min)</a></p></li>
+</ul>
+</dd>
+</dl>
+</div>
 <section id="placement-de-fichier">
 <h2>Placement de Fichier<a class="headerlink" href="#placement-de-fichier" title="Permalink to this heading"></a></h2>
 <p>v2 place les fichier de configuration sous ~/.config/sarra, et les fichiers d’état sous ~/.cache/sarra</p>
@@ -195,8 +205,8 @@ et est identique à celui de la v2, sauf qu’il utilise les emplacements de fic
 </div>
 <p>Dans sr3, on peut également utiliser des spécifications de style de globbing de fichier pour demander qu’une commande
 soit invoqué sur un groupe de configurations, alors que dans la v2, on ne pouvait fonctionner que sur une à la fois.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p><strong>sr3_post</strong> est une exception à ce changement parce qu’il fonctionne comme sr_post de la v2, étant
 un outil d’affichage interactif.</p>
 </div>
@@ -329,9 +339,18 @@ Dans la v2, vous avez besoin que la dernière ligne pour inclure quelque chose c
 </div>
 <p>Quoi qu’il en soit, une partie python naïve du fichier échouerait invariablement sans qu’une sorte de
 harnais de test ne soit enroulée autour d’elle.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans la v3, supprimez ces lignes (généralement situées au bas du fichier)</p>
+</div>
 <p>Dans la v2, il y avait des problèmes étranges avec les importations, ce qui a entraîné la mise en place
 d’importer des instructions à l’intérieur des fonctions. Ce problème est résolu dans la v3, vous pouvez
 vérifier votre syntaxe d’importation en faisant <em>import X</em> dans n’importe quel interpréteur python.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Placez les importations nécessaires au début du fichier, comme tout autre module python
+<strong>et supprimez les importations situées dans les fonctions lors du portage</strong>.</p>
+</div>
 </li>
 <li><p><strong>Les plugins v3 peuvent être utilisés par les programmeurs d’applications.</strong> Les plugins ne sont pas
 boulonné, mais un élément central, implémentant la suppression de doublon, réception et transmission de messages
@@ -358,6 +377,13 @@ voir les tutoriels jupyter.</p>
 </div>
 <p>Lors du portage des plugins v2 -&gt; v3 : <em>logger.x</em> remplace <em>parent.logger.x</em>.
 Parfois, il y a aussi self.logger x… je ne sais pas pourquoi… ne demandez pas.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans vi, vous pouvez utiliser le remplacement global pour effectuer un travail rapide lors du portage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span><span class="n">parent</span><span class="o">.</span><span class="n">logger</span><span class="o">/</span><span class="n">logger</span><span class="o">/</span><span class="n">g</span>
+</pre></div>
+</div>
+</div>
 </li>
 <li><p>En v2, <strong>parent</strong> est un gâchis. L’objet <em>self</em> variait en fonction des points d’entrée
 appelé. Par exemple, <em>self</em> dans __init__ n’est pas identique à <em>self</em> dans on_message. En conséquence, tous les
@@ -373,6 +399,13 @@ fonction __init__ comprend un:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s1">&#39;OptionName&#39;</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">DefaultValue</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans VI, vous pouvez utiliser le remplacement global:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span><span class="n">parent</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">/</span><span class="n">g</span>
+</pre></div>
+</div>
 </div>
 </li>
 <li><p><strong>vous pouvez voir quelles options sont actives en démarrant un composant avec la commande ‘show’</strong></p>
@@ -407,6 +440,80 @@ la liste de travail.incoming contient tous les messages qui ont passé le filtra
 section plus loin dans ce document</p>
 <p>Chaque message de notification v3 agit comme un dictionnaire python. Ci-dessous un mappage de table
 champs de la représentation sarra v2 à celle de sr3 :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>v2</p></th>
+<th class="head"><p>sr3</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>msg.pubtime</p></td>
+<td><p>msg[‘pubTime’]</p></td>
+<td><p>quand le message a été initialement publié</p></td>
+</tr>
+<tr class="row-odd"><td><p>msg.baseurl</p></td>
+<td><p>msg[‘baseUrl’]</p></td>
+<td><p>racine de l’arborescence url du fichier annoncé.</p></td>
+</tr>
+<tr class="row-even"><td><p>msg.relpath</p></td>
+<td><p>msg[‘relPath’]</p></td>
+<td><p>chemin relatif concaténé à baseUrl pour le chemin canonique</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>no equivalent</em></p></td>
+<td><p>msg[‘retrievePath’]</p></td>
+<td><p>chemin opaque pour remplacer le chemin canonique.</p></td>
+</tr>
+<tr class="row-even"><td><p>msg.notice</p></td>
+<td><p>pas disponible</p></td>
+<td><p>calculé à partir d’un autre champ sur l’écriture v2</p></td>
+</tr>
+<tr class="row-odd"><td><p>msg.new_subtopic</p></td>
+<td><p>msg[‘new_subtopic’]</p></td>
+<td><p>à éviter en sr3, champ calculé à partir de relPath</p></td>
+</tr>
+<tr class="row-even"><td><p>msg.new_dir</p></td>
+<td><p>msg[‘new_dir’]</p></td>
+<td><p>nom de répertoire où le fichier sera écrite.</p></td>
+</tr>
+<tr class="row-odd"><td><p>msg.new_file</p></td>
+<td><p>msg[‘new_file’]</p></td>
+<td><p>nom de fichier à écrire en new_dir.</p></td>
+</tr>
+<tr class="row-even"><td><p>msg.headers</p></td>
+<td><p>msg</p></td>
+<td><p>pour les champs variables/optionnels.</p></td>
+</tr>
+<tr class="row-odd"><td><p>msg.headers[‘x’]</p></td>
+<td><p>msg[‘x’]</p></td>
+<td><p>un message est un dict python</p></td>
+</tr>
+<tr class="row-even"><td><p>msg.message_ttl</p></td>
+<td><p>msg[‘message_ttl’]</p></td>
+<td><p>le même option de réglage.</p></td>
+</tr>
+<tr class="row-odd"><td><p>msg.exchange</p></td>
+<td><p>msg[‘exchange’]</p></td>
+<td><p>le canal sur lequel le message à été reçu.</p></td>
+</tr>
+<tr class="row-even"><td><p>msg.logger</p></td>
+<td><p>logger</p></td>
+<td><p>les journeaux fonctionnent ¨normalement” pour python</p></td>
+</tr>
+<tr class="row-odd"><td><p>msg.parts</p></td>
+<td><p>msg[‘size’]</p></td>
+<td><p>oublie ca, utilise une constructeur de sarracenia.Message</p></td>
+</tr>
+<tr class="row-even"><td><p>msg.sumflg</p></td>
+<td><p>msg[‘identity’]</p></td>
+<td><p>oublie ca, utilise une constructeur de sarracenia.Message</p></td>
+</tr>
+<tr class="row-odd"><td><p>parent.msg</p></td>
+<td><p>worklist.incoming</p></td>
+<td><p>sr3 traite des groupe des messages, pas individuelement</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li><p>pubTime, baseUrl, relPath, retrievePath, size, identity, sont tous des champs de message standard
 mieux décrit dans <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a></p></li>

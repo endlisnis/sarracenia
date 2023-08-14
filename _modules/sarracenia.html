@@ -41,7 +41,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../How2Guides/index.html">HOWTOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Explanation/index.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing to Sarracenia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contribution/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api-documentation.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fr/index.html">En français</a></li>
 </ul>
@@ -99,6 +99,7 @@
 <span class="c1">#</span>
 <span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">__version__</span>
 
+
 <span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64decode</span><span class="p">,</span> <span class="n">b64encode</span>
 <span class="kn">import</span> <span class="nn">calendar</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
@@ -106,10 +107,9 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
-<span class="kn">import</span> <span class="nn">paramiko</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">sarracenia.filemetadata</span>
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
 <span class="kn">import</span> <span class="nn">stat</span> <span class="k">as</span> <span class="nn">os_stat</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -133,6 +133,65 @@
             <span class="n">u</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">u</span>
 
+
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+   <span class="kn">import</span> <span class="nn">magic</span>
+
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+   <span class="kn">import</span> <span class="nn">paho.mqtt.client</span>
+   <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span> <span class="n">paho</span><span class="o">.</span><span class="n">mqtt</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="s1">&#39;MQTTv5&#39;</span> <span class="p">):</span>
+       <span class="c1"># without v5 support, mqtt is not useful.</span>
+       <span class="n">features</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># if humanize is not present, compensate...</span>
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;humanize&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+    <span class="kn">import</span> <span class="nn">humanize</span>
+
+    <span class="k">def</span> <span class="nf">naturalSize</span><span class="p">(</span> <span class="n">num</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">naturalTime</span><span class="p">(</span> <span class="n">dur</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="n">humanize</span><span class="o">.</span><span class="n">naturaltime</span><span class="p">(</span><span class="n">dur</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+  
+    <span class="k">def</span> <span class="nf">naturalSize</span><span class="p">(</span> <span class="n">num</span> <span class="p">):</span>
+       <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span>
+
+    <span class="k">def</span> <span class="nf">naturalTime</span><span class="p">(</span> <span class="n">dur</span> <span class="p">):</span>
+       <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dur</span>
+
+
+<span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;appdirs&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+    <span class="kn">import</span> <span class="nn">appdirs</span>
+
+    <span class="k">def</span> <span class="nf">site_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">site_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">user_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">user_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">user_cache_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">user_cache_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># if appdirs is missing, pretend we&#39;re on Linux.</span>
+    <span class="kn">import</span> <span class="nn">pathlib</span>
+
+    <span class="k">def</span> <span class="nf">site_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;/etc/xdg/xdg-ubuntu-xorg/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">app</span>
+
+    <span class="k">def</span> <span class="nf">user_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;/.config/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">app</span>
+ 
+    <span class="k">def</span> <span class="nf">user_cache_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;/.cache/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">app</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> end of extra feature scan. </span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sarracenia.filemetadata</span>
 
 <div class="viewcode-block" id="Sarracenia"><a class="viewcode-back" href="../api-documentation.html#sarracenia.Sarracenia">[docs]</a><span class="k">class</span> <span class="nc">Sarracenia</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -169,12 +228,15 @@
 <span class="sd">        m = sarracenia.Message.fromFileInfo( path, options, lstat )</span>
 <span class="sd">    </span>
 <span class="sd">        where you can make up the lstat values to fill in some fields in the message.</span>
-<span class="sd">        You can make a fake lstat structure to provide these values using paramiko.SFTPAttributes </span>
+<span class="sd">        You can make a fake lstat structure to provide these values using sarracenia.filemetadata</span>
+<span class="sd">        class which is either an alias for paramiko.SFTPAttributes </span>
+<span class="sd">        ( https://docs.paramiko.org/en/latest/api/sftp.html#paramiko.sftp_attr.SFTPAttributes )</span>
+<span class="sd">        if paramiko is installed, or a simple emulation if not.</span>
 <span class="sd">    </span>
 <span class="sd">    </span>
-<span class="sd">        import paramiko</span>
+<span class="sd">        from  sarracenia.filemetadata import FmdStat</span>
 <span class="sd">    </span>
-<span class="sd">        lstat = paramiko.SFTPAttributes()</span>
+<span class="sd">        lstat = FmdStat()</span>
 <span class="sd">        lstat.st_mtime= utcinteger second count in UTC (numeric version of a Sarracenia timestamp.)</span>
 <span class="sd">        lstat.st_atime=</span>
 <span class="sd">        lstat.st_mode=0o644</span>
@@ -242,7 +304,7 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="stat"><a class="viewcode-back" href="../api-documentation.html#sarracenia.stat">[docs]</a><span class="k">def</span> <span class="nf">stat</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SFTPAttributes</span><span class="p">:</span>
+<div class="viewcode-block" id="stat"><a class="viewcode-back" href="../api-documentation.html#sarracenia.stat">[docs]</a><span class="k">def</span> <span class="nf">stat</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">filemetadata</span><span class="o">.</span><span class="n">FmdStat</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       os.stat call replacement which improves on it by returning</span>
 <span class="sd">       and SFTPAttributes structure, in place of the OS stat one,</span>
@@ -254,17 +316,19 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">native_stat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span>
     
-    <span class="n">sa</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SFTPAttributes</span><span class="p">()</span>
+    <span class="n">sa</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">filemetadata</span><span class="o">.</span><span class="n">FmdStat</span><span class="p">()</span>
     <span class="n">sa</span><span class="o">.</span><span class="n">st_mode</span> <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_mode</span>
     <span class="n">sa</span><span class="o">.</span><span class="n">st_ino</span> <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_ino</span>
-    <span class="n">sa</span><span class="o">.</span><span class="n">st_dev</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_dev</span> 
-    <span class="n">sa</span><span class="o">.</span><span class="n">st_nlink</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_nlink</span> 
-    <span class="n">sa</span><span class="o">.</span><span class="n">st_uid</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_uid</span> 
-    <span class="n">sa</span><span class="o">.</span><span class="n">st_gid</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_gid</span> 
-    <span class="n">sa</span><span class="o">.</span><span class="n">st_size</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_size</span> 
+    <span class="n">sa</span><span class="o">.</span><span class="n">st_dev</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_dev</span>
+    <span class="c1"># st_nlink does not exist in paramiko.SFTPAttributes()</span>
+    <span class="c1">#  FmdStat comes from that type.</span>
+    <span class="c1">#sa.st_nlink  = native_stat.st_nlink</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">st_uid</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_uid</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">st_gid</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_gid</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">st_size</span>  <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_size</span>
 
-    <span class="n">sa</span><span class="o">.</span><span class="n">st_mtime</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>    
-    <span class="n">sa</span><span class="o">.</span><span class="n">st_atime</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>    
+    <span class="n">sa</span><span class="o">.</span><span class="n">st_mtime</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">st_atime</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">sa</span><span class="o">.</span><span class="n">st_ctime</span> <span class="o">=</span> <span class="n">native_stat</span><span class="o">.</span><span class="n">st_atime</span>
     <span class="k">return</span> <span class="n">sa</span></div>
 
@@ -547,7 +611,7 @@
         <span class="k">if</span> <span class="n">lstat</span> <span class="p">:</span>
             <span class="k">if</span> <span class="n">os_stat</span><span class="o">.</span><span class="n">S_ISREG</span><span class="p">(</span><span class="n">lstat</span><span class="o">.</span><span class="n">st_mode</span><span class="p">):</span>
                 <span class="n">m</span><span class="o">.</span><span class="n">__computeIdentity</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="n">t</span> <span class="o">=</span> <span class="n">magic</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">mime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                         <span class="n">m</span><span class="p">[</span><span class="s1">&#39;contentType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
@@ -865,108 +929,6 @@
         <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">retUrl</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div></div>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Extra Feature Scanning and Enablement.</span>
-
-<span class="sd">  checking for extra dependencies, not &quot;hard&quot; dependencies (&quot;requires&quot;)</span>
-<span class="sd">  listed as extras in setup.py and omitted entirely from debian packaging.</span>
-<span class="sd">  this allows installation with fewer dependencies ahead of time, and then</span>
-<span class="sd">  provide some messaging to users when they &quot;need&quot; an optional dependency.</span>
-<span class="sd"> </span>
-<span class="sd">  optional extras can be enabled using pip install metpx-sr3[extra]</span>
-<span class="sd">  where extra is one of the features listed below. Alternatively,</span>
-<span class="sd">  one can just install the modules that are needed and the functionality</span>
-<span class="sd">  will be enabled after a component restart.</span>
-<span class="sd">  </span>
-<span class="sd">  amqp - ability to communicate with AMQP (rabbitmq) brokers</span>
-<span class="sd">  mqtt - ability to communicate with MQTT brokers</span>
-<span class="sd">  filetypes - ability to</span>
-<span class="sd">  ftppoll - ability to poll FTP servers</span>
-<span class="sd">  vip  - enable vip (Virtual IP) settings to implement singleton processing</span>
-<span class="sd">         for high availability support.</span>
-<span class="sd">  watch - monitor files or directories for changes.</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">extras</span> <span class="o">=</span> <span class="p">{</span> 
-   <span class="s1">&#39;amqp&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;amqp&#39;</span> <span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span> <span class="p">:</span> <span class="s1">&#39;will not be able to connect to rabbitmq brokers&#39;</span> <span class="p">},</span>
-   <span class="s1">&#39;appdirs&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;appdirs&#39;</span> <span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span> <span class="p">:</span> <span class="s1">&#39;will assume linux file placement under home dir&#39;</span> <span class="p">},</span>
-   <span class="s1">&#39;ftppoll&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dateparser&#39;</span><span class="p">,</span> <span class="s1">&#39;pytz&#39;</span><span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span> <span class="p">:</span> <span class="s1">&#39;will not be able to poll with ftp&#39;</span> <span class="p">},</span>
-   <span class="s1">&#39;humanize&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;humanize&#39;</span> <span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;humans will have to read larger, uglier numbers&#39;</span> <span class="p">},</span>
-   <span class="s1">&#39;mqtt&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;paho.mqtt.client&#39;</span><span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;will not be able to connect to mqtt brokers&#39;</span> <span class="p">},</span>
-   <span class="s1">&#39;filetypes&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;magic&#39;</span><span class="p">],</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;will not be able to set content headers&#39;</span> <span class="p">},</span>
-   <span class="s1">&#39;vip&#39;</span>  <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;netifaces&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;will not be able to use the vip option for high availability clustering&#39;</span> <span class="p">},</span>
-   <span class="s1">&#39;watch&#39;</span>  <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;watchdog&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;lament&#39;</span><span class="p">:</span> <span class="s1">&#39;cannot watch directories&#39;</span> <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">extras</span><span class="p">:</span>
-   
-   <span class="n">extras</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
-   <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span>  <span class="n">extras</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;modules_needed&#39;</span><span class="p">]:</span>
-       <span class="k">try</span><span class="p">:</span>
-           <span class="k">if</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span><span class="p">(</span> <span class="n">y</span> <span class="p">):</span>
-               <span class="c1">#logger.debug( f&#39;found feature {y}, enabled&#39;) </span>
-               <span class="k">pass</span>
-           <span class="k">else</span><span class="p">:</span>
-               <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;extra feature </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> needs missing module </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">. Disabled&quot;</span> <span class="p">)</span> 
-               <span class="n">extras</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
-       <span class="k">except</span><span class="p">:</span>
-           <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;extra feature </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> needs missing module </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">. Disabled&quot;</span> <span class="p">)</span> 
-           <span class="n">extras</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
-
-<span class="c1"># Some sort of graceful fallback, or good messaging for when dependencies are missing.</span>
-
-<span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;filetypes&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
-   <span class="kn">import</span> <span class="nn">magic</span>
-
-<span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
-   <span class="kn">import</span> <span class="nn">paho.mqtt.client</span>
-   <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span> <span class="n">paho</span><span class="o">.</span><span class="n">mqtt</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="s1">&#39;MQTTv5&#39;</span> <span class="p">):</span>
-       <span class="c1"># without v5 support, mqtt is not useful.</span>
-       <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="c1"># if humanize is not present, compensate...</span>
-<span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;humanize&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
-    <span class="kn">import</span> <span class="nn">humanize</span>
-
-    <span class="k">def</span> <span class="nf">naturalSize</span><span class="p">(</span> <span class="n">num</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">naturalTime</span><span class="p">(</span> <span class="n">dur</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="n">humanize</span><span class="o">.</span><span class="n">naturaltime</span><span class="p">(</span><span class="n">dur</span><span class="p">)</span>
-
-<span class="k">else</span><span class="p">:</span>
-  
-    <span class="k">def</span> <span class="nf">naturalSize</span><span class="p">(</span> <span class="n">num</span> <span class="p">):</span>
-       <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span>
-
-    <span class="k">def</span> <span class="nf">naturalTime</span><span class="p">(</span> <span class="n">dur</span> <span class="p">):</span>
-       <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dur</span>
-
-
-<span class="k">if</span> <span class="n">extras</span><span class="p">[</span><span class="s1">&#39;appdirs&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
-    <span class="kn">import</span> <span class="nn">appdirs</span>
-
-    <span class="k">def</span> <span class="nf">site_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">site_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">user_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">user_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">user_cache_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">user_cache_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="c1"># if appdirs is missing, pretend we&#39;re on Linux.</span>
-    <span class="kn">import</span> <span class="nn">pathlib</span>
-
-    <span class="k">def</span> <span class="nf">site_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;/etc/xdg/xdg-ubuntu-xorg/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">app</span>
-
-    <span class="k">def</span> <span class="nf">user_config_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;/.config/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">app</span>
- 
-    <span class="k">def</span> <span class="nf">user_cache_dir</span><span class="p">(</span> <span class="n">app</span><span class="p">,</span> <span class="n">author</span> <span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;/.cache/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">app</span>
- 
 </pre></div>
 
            </div>

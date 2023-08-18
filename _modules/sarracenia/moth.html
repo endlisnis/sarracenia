@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -122,7 +122,9 @@
     <span class="k">return</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="Moth"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth">[docs]</a><span class="k">class</span> <span class="nc">Moth</span><span class="p">():</span>
+<div class="viewcode-block" id="Moth">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth">[docs]</a>
+<span class="k">class</span> <span class="nc">Moth</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Moth ... Messages Organized by Topic Headers</span>
 <span class="sd">        (en français: Messages organisés par thème hierarchique. )</span>
@@ -329,7 +331,9 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;broker intialization failure&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="Moth.__init__"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Moth.__init__">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_subscriber</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           If is_subscriber=True, then this is a consuming instance.</span>
 <span class="sd">           expect calls to get* routines.</span>
@@ -367,13 +371,17 @@
         <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;logFormat&#39;</span><span class="p">],</span>
                             <span class="n">level</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;logLevel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span></div>
 
-<div class="viewcode-block" id="Moth.ack"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.ack">[docs]</a>    <span class="k">def</span> <span class="nf">ack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Moth.ack">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.ack">[docs]</a>
+    <span class="k">def</span> <span class="nf">ack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">          tell broker that a given message has been received.</span>
 
 <span class="sd">          ack uses the &#39;ack_id&#39; property to send an acknowledgement back to the broker.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;ack unimplemented&quot;</span><span class="p">)</span></div>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">default_options</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
@@ -383,7 +391,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Moth</span><span class="o">.</span><span class="n">__default_options</span>
 
-<div class="viewcode-block" id="Moth.getNewMessage"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.getNewMessage">[docs]</a>    <span class="k">def</span> <span class="nf">getNewMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">Message</span><span class="p">:</span>
+<div class="viewcode-block" id="Moth.getNewMessage">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.getNewMessage">[docs]</a>
+    <span class="k">def</span> <span class="nf">getNewMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">Message</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        If there is one new message available, return it. Otherwise return None. Do not block.</span>
 
@@ -396,7 +406,10 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;getNewMessage unimplemented&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Moth.newMessages"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.newMessages">[docs]</a>    <span class="k">def</span> <span class="nf">newMessages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Moth.newMessages">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.newMessages">[docs]</a>
+    <span class="k">def</span> <span class="nf">newMessages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        If there are new messages available from the broker, return them, otherwise return None.</span>
 
@@ -408,7 +421,10 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;NewMessages unimplemented&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[]</span></div>
 
-<div class="viewcode-block" id="Moth.putNewMessage"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.putNewMessage">[docs]</a>    <span class="k">def</span> <span class="nf">putNewMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Moth.putNewMessage">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.putNewMessage">[docs]</a>
+    <span class="k">def</span> <span class="nf">putNewMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           publish a message as set up to the given topic.</span>
 
@@ -421,6 +437,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;implementation missing!&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span></div>
+
 
     <span class="k">def</span> <span class="nf">metricsReset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;disconnectLast&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -446,7 +463,9 @@
             <span class="n">down_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;disconnectLast&#39;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;disconnectTime&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">down_time</span>
 
-<div class="viewcode-block" id="Moth.metricsDisconnect"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.metricsDisconnect">[docs]</a>    <span class="k">def</span> <span class="nf">metricsDisconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Moth.metricsDisconnect">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.metricsDisconnect">[docs]</a>
+    <span class="k">def</span> <span class="nf">metricsDisconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           tear down an existing connection.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -454,17 +473,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;disconnectCount&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;disconnectLast&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span></div>
 
+
     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;implementation missing!&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Moth.cleanup"><a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.cleanup">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Moth.cleanup">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.cleanup">[docs]</a>
+    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">          get rid of server-side resources associated with a client. (queues/id&#39;s, etc...)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_subscriber</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">getCleanUp</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">putCleanUp</span><span class="p">()</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">putCleanUp</span><span class="p">()</span></div>
+</div>
+
 
 <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
     <span class="kn">import</span> <span class="nn">sarracenia.moth.amqp</span>

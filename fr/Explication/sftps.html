@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -130,7 +130,7 @@
 }
 </style>
 <section id="pourquoi-sftp-est-plus-souvent-choisi-que-ftps">
-<h1>Pourquoi SFTP est plus souvent choisi que FTPS<a class="headerlink" href="#pourquoi-sftp-est-plus-souvent-choisi-que-ftps" title="Permalink to this heading"></a></h1>
+<h1>Pourquoi SFTP est plus souvent choisi que FTPS<a class="headerlink" href="#pourquoi-sftp-est-plus-souvent-choisi-que-ftps" title="Link to this heading"></a></h1>
 <p>Il y a eu des discussions sur l’endroit où placer un S afin de
 transferts de fichiers sécurisés. Parmi une variété de technologies concurrentes, il y en
 a deux qui peuvent sembler assez équivalents : SFTP et FTPS. Les deux
@@ -145,7 +145,7 @@ Dans cette discussion, veuillez garder à l’esprit :</p>
 <p>S’il y a des malentendus, alors nous serions heureux d’apprendre
 à leur sujet.</p>
 <section id="ftp">
-<h2>FTP<a class="headerlink" href="#ftp" title="Permalink to this heading"></a></h2>
+<h2>FTP<a class="headerlink" href="#ftp" title="Link to this heading"></a></h2>
 <p>Dans les premiers jours d’Internet, avant même l’avènement
 du World Wide Web, l’une des premières applications était un
 transfert de fichiers, tel que défini pour la première fois par Internet Engineering Task
@@ -167,7 +167,7 @@ les firewall n’existaient pas. Trente ans plus tard, et la réalité est
 tout à fait différent.</p>
 </section>
 <section id="echangeurs-de-produits-prise-en-charge-dun-grand-nombre-de-transferts">
-<h2>Échangeurs de produits : prise en charge d’un grand nombre de transferts<a class="headerlink" href="#echangeurs-de-produits-prise-en-charge-dun-grand-nombre-de-transferts" title="Permalink to this heading"></a></h2>
+<h2>Échangeurs de produits : prise en charge d’un grand nombre de transferts<a class="headerlink" href="#echangeurs-de-produits-prise-en-charge-dun-grand-nombre-de-transferts" title="Link to this heading"></a></h2>
 <p>Dans les temps modernes, si l’on transfère des centaines de milliers ou des millions
 de fichiers, il y aura probablement un grand nombre d’appareils de réseau
 entre les serveurs d’Alice et bob.  Le diagramme suivant est un diagramme typique
@@ -237,7 +237,7 @@ est facilement inspecté, il y a juste un peu de code proxy couramment
 mis en œuvre sur les périphériques réseau pour couvrir ce cas particulier.</p>
 </section>
 <section id="ftps">
-<h2>FTPS<a class="headerlink" href="#ftps" title="Permalink to this heading"></a></h2>
+<h2>FTPS<a class="headerlink" href="#ftps" title="Link to this heading"></a></h2>
 <p>FTPS - est FTP avec la sécurité de niveau de transport ajoutée.
 Le chemin de contrôle est maintenant chiffré et n’est donc pas disponible
 aux proxys sur chacun des firewall et équilibreurs de charge (tels que
@@ -286,7 +286,7 @@ de que ce qui est offert lors de l’utilisation d’autres protocoles.</p>
 et auront du mal à le déployer. Il est rare de trouver une pair qui préfère FTPS.</p>
 </section>
 <section id="cout">
-<h2>Coût<a class="headerlink" href="#cout" title="Permalink to this heading"></a></h2>
+<h2>Coût<a class="headerlink" href="#cout" title="Link to this heading"></a></h2>
 <p>Si l’on suppose que le chemin de contrôle seul peut être intercepté, en laissant
 le chemin des données, alors du point de vue de la complexité computationnelle,
 le chemin de contrôle, plutôt que de simplement passer des paquets à travers chaque périphérique NAT/PAT
@@ -316,7 +316,7 @@ mais la charge de maintenance sera légèrement plus lourde (informations d’id
 mises à jour, besoin de maintenir des cartes statiques supplémentaires, plus de surveillance de firewall).</p>
 </section>
 <section id="fonctionnalite-plages-doctets">
-<h2>Fonctionnalité: Plages d’octets<a class="headerlink" href="#fonctionnalite-plages-doctets" title="Permalink to this heading"></a></h2>
+<h2>Fonctionnalité: Plages d’octets<a class="headerlink" href="#fonctionnalite-plages-doctets" title="Link to this heading"></a></h2>
 <p>En plus de la complexité beaucoup plus grande de la prise en charge du firewall pour
 FTPS, et la charge supplémentaire sur les firewall coûteux, il y a également uen fonctionnalité réduite
 disponible par rapport aux protocoles plus récents,
@@ -328,7 +328,7 @@ par HTTP et SFTP pour permettre le transfert de fichiers par plusieurs flux para
 ce qui n’est pas possible avec FTP ou FTPS.</p>
 </section>
 <section id="securite-vulnerabilite">
-<h2>Sécurité/Vulnérabilité<a class="headerlink" href="#securite-vulnerabilite" title="Permalink to this heading"></a></h2>
+<h2>Sécurité/Vulnérabilité<a class="headerlink" href="#securite-vulnerabilite" title="Link to this heading"></a></h2>
 <p>FTPS, comme FTP, est généralement authentifié à l’aide de mots de passe secrets.
 Si la pair dans un échange subit une intrusion, le hachage du mot de passe
 peut être utilisé pour obtenir le mot de passe lui-même en utilisant ce que l’on appelle la méthode brute
@@ -392,7 +392,7 @@ il faut désactiver diverses vérifications:</p>
 </aside>
 </section>
 <section id="fiabilite-complexite">
-<h2>Fiabilité/Complexité<a class="headerlink" href="#fiabilite-complexite" title="Permalink to this heading"></a></h2>
+<h2>Fiabilité/Complexité<a class="headerlink" href="#fiabilite-complexite" title="Link to this heading"></a></h2>
 <p>Il existe plusieurs modes de FTP: ascii / binaire, actif / passif, qui créent plus de cas.
 FTPS ajoute plus de cas: explicite / implicite au nombre à autoriser. Le cryptage peut être
 activé et désactivé à différents points de chemins de contrôle et de données.</p>
@@ -416,7 +416,7 @@ nom de fichier circule sur le chemin de contrôle et les données circulent sur 
 ont été migrés vers SFTP et les symptômes ont disparu.</p>
 </section>
 <section id="resume">
-<h2>Résumé<a class="headerlink" href="#resume" title="Permalink to this heading"></a></h2>
+<h2>Résumé<a class="headerlink" href="#resume" title="Link to this heading"></a></h2>
 <p>Soit le proxy FTPS est effectué de manière entièrement générale :</p>
 <ul class="simple">
 <li><p>les dispositifs intervenants doivent effectuer un décryptage de l’homme du milieu

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -344,7 +344,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="PDS-Algorithmic-Design">
-<h1>PDS Algorithmic Design<a class="headerlink" href="#PDS-Algorithmic-Design" title="Permalink to this heading"></a></h1>
+<h1>PDS Algorithmic Design<a class="headerlink" href="#PDS-Algorithmic-Design" title="Link to this heading"></a></h1>
 <p>The PDS (Product Distribution System) is an obsolete data transfer engine gradually being replaced, but still deployed in a few Storm Prediction Centres (offices of Environment and Climate Change Canada.) other systems place files in input directories, and PDS has an array of configurations identifying which other destinations files need to be sent to.</p>
 <p>It is a sort of inspiration for Sundew. The lack of source code meant that it’s functionality was deduced and reverse engineered to to produce later products. It is a design of it’s time, the 1980’s for use on large UNIX servers.</p>
 <ul class="simple">
@@ -433,11 +433,11 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <section id="Receiver">
-<h2>Receiver<a class="headerlink" href="#Receiver" title="Permalink to this heading"></a></h2>
+<h2>Receiver<a class="headerlink" href="#Receiver" title="Link to this heading"></a></h2>
 <p>Scans an input directory, uses IPC to tell the dispatcher about it. Log activities.</p>
 </section>
 <section id="Dispatcher">
-<h2>Dispatcher<a class="headerlink" href="#Dispatcher" title="Permalink to this heading"></a></h2>
+<h2>Dispatcher<a class="headerlink" href="#Dispatcher" title="Link to this heading"></a></h2>
 <p>Processes the files arriving as notified by the dispatcher using IPC.</p>
 <p>For each file:</p>
 <ul class="simple">
@@ -447,11 +447,11 @@ div.rendered_html tbody tr:hover {
 <p>place a file in the directory each sender uses. Log activities.</p>
 </section>
 <section id="Sender">
-<h2>Sender<a class="headerlink" href="#Sender" title="Permalink to this heading"></a></h2>
+<h2>Sender<a class="headerlink" href="#Sender" title="Link to this heading"></a></h2>
 <p>Scan the sending directory, send files, remove them. Log activities.</p>
 </section>
 <section id="Design-Decisions/Assumptions">
-<h2>Design Decisions/Assumptions<a class="headerlink" href="#Design-Decisions/Assumptions" title="Permalink to this heading"></a></h2>
+<h2>Design Decisions/Assumptions<a class="headerlink" href="#Design-Decisions/Assumptions" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Developers were asked to provide a single log for the entire system.</p></li>
 <li><p>on the order of 10 receivers.</p></li>
@@ -461,7 +461,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </section>
 <section id="Routing-1-Product">
-<h2>Routing 1 Product<a class="headerlink" href="#Routing-1-Product" title="Permalink to this heading"></a></h2>
+<h2>Routing 1 Product<a class="headerlink" href="#Routing-1-Product" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>PDS dispatcher routing for all receivers at once.)</p></li>
 <li><p>represents a scale out vs. previous deployments.</p></li>
@@ -503,7 +503,7 @@ Then add client-side second evaluation of RE&#39;s by sender: 50000.0
 </div>
 </section>
 <section id="Observations:">
-<h2>Observations:<a class="headerlink" href="#Observations:" title="Permalink to this heading"></a></h2>
+<h2>Observations:<a class="headerlink" href="#Observations:" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>modern systems have many more cores (16 is common on single servers… ) but also clustering is common. Clustering is scaling with multiple servers, rather than more powerful individual servers.</p></li>
 <li><p>In order to ensure log entries were not corrupted by different processes writing to the log at once, a locking mechanism was used to mediate access.</p></li>

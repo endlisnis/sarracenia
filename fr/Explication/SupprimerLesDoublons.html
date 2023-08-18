@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -128,7 +128,7 @@
 }
 </style>
 <section id="suppression-de-doublons">
-<h1>Suppression de Doublons<a class="headerlink" href="#suppression-de-doublons" title="Permalink to this heading"></a></h1>
+<h1>Suppression de Doublons<a class="headerlink" href="#suppression-de-doublons" title="Link to this heading"></a></h1>
 <p>Lors qu’on achemine les données à travers de réseaux, il faut se préoccuper des “orages” de données
 causé par des boucles de transfert (un serveur A envoit à B, qui renvoit à C, qui renvoit à A.  Si A
 ne sait pas qu´il l´a déjà vu, on a un boucle infini, qui peut etre décrit comme un orage le volume
@@ -160,13 +160,13 @@ ligne suivante dans le fichier de configuraation:</p>
 quand on y fournit un chiffre c´est l´intervalle, en secondes, dont on se souvient
 d´un messages.</p>
 <section id="standard-base-sur-le-chemin-et-contenu">
-<h2>Standard (basé sur le chemin et contenu)<a class="headerlink" href="#standard-base-sur-le-chemin-et-contenu" title="Permalink to this heading"></a></h2>
+<h2>Standard (basé sur le chemin et contenu)<a class="headerlink" href="#standard-base-sur-le-chemin-et-contenu" title="Link to this heading"></a></h2>
 <p><strong>méthode</strong>: Quand les produits on le même clé et chemin, ils sont des doublons.</p>
 <p>Deux serveur peuvent envoyer le même produit, aven le même <em>relPath</em> à un serveur plus
 loin.</p>
 </section>
 <section id="data-base-uniquement-sur-le-contenu">
-<h2>Data (basé uniquement sur le contenu)<a class="headerlink" href="#data-base-uniquement-sur-le-contenu" title="Permalink to this heading"></a></h2>
+<h2>Data (basé uniquement sur le contenu)<a class="headerlink" href="#data-base-uniquement-sur-le-contenu" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: Quand les produits on le même clé, ils sont des doublons.</p>
 <p>dans le ficher de configuration on devrait voir:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodupe_basis</span> <span class="n">data</span>
@@ -184,7 +184,7 @@ est appelée avant la traitement de doublons integrée.</p>
 génèrent le même produit.</p>
 </section>
 <section id="name-base-uniquement-sur-le-nom">
-<h2>Name (basé uniquement sur le nom)<a class="headerlink" href="#name-base-uniquement-sur-le-nom" title="Permalink to this heading"></a></h2>
+<h2>Name (basé uniquement sur le nom)<a class="headerlink" href="#name-base-uniquement-sur-le-nom" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: Quand les fichiers ont le même nom, ils sont identiques.</p>
 <p>dans le fichier de configuration, soit:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodupe_basis</span> <span class="n">data</span>
@@ -199,7 +199,7 @@ le nom de fichier.</p>
 <p>Quand plusieurs source génèrent un produit, mais les résultats ne sont pas identique
 au niveau binaire, il faut une autre approche.</p>
 <section id="urp">
-<h3>URP<a class="headerlink" href="#urp" title="Permalink to this heading"></a></h3>
+<h3>URP<a class="headerlink" href="#urp" title="Link to this heading"></a></h3>
 <p>Dans le cas des systèmes de traitement de données RADAR, il y 6 serveurs qui génèrent
 les mêmes produits (bien qu´il ne soient pas exactement le même séquence d´octets.)
 Les produit sont les même parce qu´ils sont dérivé de les même données en amont,
@@ -211,7 +211,7 @@ alors on peut utiliser le nom dans ce cas.</p>
 </section>
 </section>
 <section id="le-fichiers-trop-changeant-mdelaylatest">
-<h2>Le fichiers trop changeant (mdelaylatest)<a class="headerlink" href="#le-fichiers-trop-changeant-mdelaylatest" title="Permalink to this heading"></a></h2>
+<h2>Le fichiers trop changeant (mdelaylatest)<a class="headerlink" href="#le-fichiers-trop-changeant-mdelaylatest" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: retard les fichiers x secondes pour assurer qu´il n´y a pas de nouvelle version.</p>
 <p>NB:
 Il s’agit d’un filtre supplémentaire à la suppression des doublons, et ce qui précède
@@ -226,7 +226,7 @@ appliqué avant la suppression des doublons pour réduire la taille de la base d
 Si plusieurs versions sont produites avant que le fichier a 30 secondes d´age,
 on envoie uniquement la dernière version lorsqu´il aura 30 secondes d´age.</p>
 <section id="cas-d-usage">
-<h3>cas d´usage<a class="headerlink" href="#cas-d-usage" title="Permalink to this heading"></a></h3>
+<h3>cas d´usage<a class="headerlink" href="#cas-d-usage" title="Link to this heading"></a></h3>
 <p>Dans certains cas, certaines sources de données re-écrivent très souvent les fichiers.
 Si les fichiers sont volumineux (la copie prend beaucoup de temps) ou s’il y a une fil d’attente (l’abonné
 a un certain temps de retard sur le producteur.), un algorithme pourrait écraser un fichier, ou
@@ -237,7 +237,7 @@ des incompatibilités de somme de contrôle.) ou, si c’est assez rapide, copie
 ne durera pas plus de quelques secondes pourrait être un gaspillage de bande passante et de traitement.</p>
 </section>
 <section id="les-citypages-du-site-meteo-gc-ca">
-<h3>les citypages du site météo.gc.ca<a class="headerlink" href="#les-citypages-du-site-meteo-gc-ca" title="Permalink to this heading"></a></h3>
+<h3>les citypages du site météo.gc.ca<a class="headerlink" href="#les-citypages-du-site-meteo-gc-ca" title="Link to this heading"></a></h3>
 <p>( <a class="reference external" href="https://hpfx.collab.science.gc.ca/YYYYMMDD/WXO-DD/citypage_weather/">https://hpfx.collab.science.gc.ca/YYYYMMDD/WXO-DD/citypage_weather/</a> )</p>
 <p>là, les citypages sont un produit composé (dérivé de nombreux produits en amont distincts.)
 le script qui crée les produits citypage semble écrire un en-tête, puis un enregistrement,
@@ -246,7 +246,7 @@ comme <em>xml invalide</em> parce que la bande-annonce était manquante. Il faut
 fini d’écrire le fichier</p>
 </section>
 <section id="miroitage-chp">
-<h3>Miroitage CHP<a class="headerlink" href="#miroitage-chp" title="Permalink to this heading"></a></h3>
+<h3>Miroitage CHP<a class="headerlink" href="#miroitage-chp" title="Link to this heading"></a></h3>
 <p>Dans la miroitage à grande vitesse des données entre des grappes de calcul haute performance, les programmes
 passent souvent du temps à ajouter des enregistrements aux fichiers, peut-être des centaines de fois par seconde.
 Une fois le script terminé, le fichier devient en lecture seule pour les consommateurs. Ce n’est pas utile
@@ -257,7 +257,7 @@ pour que le fichier soit inactif, avant de poster un message d´annonce.</p>
 </section>
 </section>
 <section id="fichiers-trop-vieux">
-<h2>Fichiers trop vieux<a class="headerlink" href="#fichiers-trop-vieux" title="Permalink to this heading"></a></h2>
+<h2>Fichiers trop vieux<a class="headerlink" href="#fichiers-trop-vieux" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: les messages à propos des fichiers trop vieux sont supprimés.</p>
 <p>dans les fichiers de configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodupe_fileAgeMax</span> <span class="mi">600</span>
@@ -270,7 +270,7 @@ Exemple : un serveur distant dispose d’une base de données permanente de fich
 de reexaminer de fichiers vieux de deux ans.</p>
 </section>
 <section id="a-votre-gout">
-<h2>A votre gout!<a class="headerlink" href="#a-votre-gout" title="Permalink to this heading"></a></h2>
+<h2>A votre gout!<a class="headerlink" href="#a-votre-gout" title="Link to this heading"></a></h2>
 <p>Dans le fichier de configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vos_parametres</span>
 <span class="n">flowcb_prepend</span> <span class="n">votre_class</span><span class="o">.</span><span class="n">VotreClass</span>

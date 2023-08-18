@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -122,15 +122,15 @@
 }
 </style>
 <section id="sr3">
-<h1>SR3<a class="headerlink" href="#sr3" title="Permalink to this heading"></a></h1>
+<h1>SR3<a class="headerlink" href="#sr3" title="Link to this heading"></a></h1>
 <section id="sr3-sarracenia-cli">
-<h2>sr3 Sarracenia CLI<a class="headerlink" href="#sr3-sarracenia-cli" title="Permalink to this heading"></a></h2>
+<h2>sr3 Sarracenia CLI<a class="headerlink" href="#sr3-sarracenia-cli" title="Link to this heading"></a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Manual section<span class="colon">:</span></dt>
 <dd class="field-odd"><p>1</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -140,11 +140,11 @@
 </dd>
 </dl>
 <section id="synopsis">
-<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h3>
+<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <p><strong>sr3</strong> <em>options</em> <em>action</em> [ <em>component/config</em> … ]</p>
 </section>
 <section id="description">
-<h3>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this heading"></a></h3>
+<h3>DESCRIPTION<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
 <p>Sr3 is a tool to manage a fleet of daemons, whose output is mostly
 in log files. Sr3 allows one to start, stop, and inquire the status of configured
 Sarracenia flows. It is the primary command line entry point to
@@ -165,7 +165,7 @@ specific options or directives, best to look at <a class="reference external" hr
 <p>A flow is a group of processes running using a common component/config.</p>
 </section>
 <section id="options">
-<h3>OPTIONS<a class="headerlink" href="#options" title="Permalink to this heading"></a></h3>
+<h3>OPTIONS<a class="headerlink" href="#options" title="Link to this heading"></a></h3>
 <p>Most options are stored in configuration files referred to by the <em>component/config</em> indicated
 by the listing file, but on occasion, one may wish to use command line to override
 values in the configuration file.  Options are defined in <a class="reference external" href="sr3_options.7.html">Sr3 Options (7)</a>
@@ -177,7 +177,7 @@ Refer to that manual page for a full discussion. There is one exception:</p>
 describing the subset of options available to override config file values.</p>
 </section>
 <section id="actions">
-<h3>ACTIONS<a class="headerlink" href="#actions" title="Permalink to this heading"></a></h3>
+<h3>ACTIONS<a class="headerlink" href="#actions" title="Link to this heading"></a></h3>
 <p>The type of action to take. One of:</p>
 <blockquote>
 <div><ul class="simple">
@@ -206,7 +206,7 @@ describing the subset of options available to override config file values.</p>
 </div></blockquote>
 </section>
 <section id="components">
-<h3>COMPONENTS<a class="headerlink" href="#components" title="Permalink to this heading"></a></h3>
+<h3>COMPONENTS<a class="headerlink" href="#components" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="../Explanation/Concepts.html#the-flow-algorithm">The Flow Algorithm</a> is what is
 run by all sr3 processes. The flow algorithm’s behaviour is customized by options,
 some of which control optional modules (flowcallbacks) Each component has a
@@ -224,7 +224,7 @@ different set of default option settings to cover a common use case.</p>
 </ul>
 </section>
 <section id="configurations">
-<h3>CONFIGURATIONS<a class="headerlink" href="#configurations" title="Permalink to this heading"></a></h3>
+<h3>CONFIGURATIONS<a class="headerlink" href="#configurations" title="Link to this heading"></a></h3>
 <p>When a <em>component/configuration</em> pair is specified on the command line,
 It is actually building the effective configuration from:</p>
 <blockquote>
@@ -272,7 +272,7 @@ be interpreted and executed within sarracenia components.  Components will first
 look in the <em>plugins</em> directory in the users config tree, then in the site
 directory, then in the sarracenia package itself, and finally it will look remotely.</p>
 <section id="remote-configurations">
-<h4>Remote Configurations<a class="headerlink" href="#remote-configurations" title="Permalink to this heading"></a></h4>
+<h4>Remote Configurations<a class="headerlink" href="#remote-configurations" title="Link to this heading"></a></h4>
 <p>One can specify URI’s as configuration files, rather than local files. Example:</p>
 <blockquote>
 <div><ul class="simple">
@@ -295,7 +295,7 @@ and the remote_config_url line will be prepended to it, so that it will continue
 to self-update in future.</p>
 </section>
 <section id="logs">
-<h4>Logs<a class="headerlink" href="#logs" title="Permalink to this heading"></a></h4>
+<h4>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h4>
 <p>for the logs, look in ~/.cache/sr3/logs (on linux. Other platforms, will vary.)
 To find them on any platform:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="nb">list</span>
@@ -308,7 +308,7 @@ To find them on any platform:</p>
 </section>
 </section>
 <section id="examples">
-<h3>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
+<h3>EXAMPLES<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <p>Here is a short complete example configuration file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">broker</span> <span class="n">amqps</span><span class="p">:</span><span class="o">//</span><span class="n">dd</span><span class="o">.</span><span class="n">weather</span><span class="o">.</span><span class="n">gc</span><span class="o">.</span><span class="n">ca</span><span class="o">/</span>
 
@@ -328,7 +328,7 @@ was specified.)</p>
 </div></blockquote>
 </section>
 <section id="see-also">
-<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h3>
+<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Link to this heading"></a></h3>
 <p><strong>User Commands:</strong></p>
 <p><a class="reference external" href="sr3_post.1.html">sr3_post(1)</a> - post file notification messages (python implementation.)</p>
 <p><a class="reference external" href="sr3_cpost.1.html">sr3_cpost(1)</a> - post file announcemensts (C implementation.)</p>

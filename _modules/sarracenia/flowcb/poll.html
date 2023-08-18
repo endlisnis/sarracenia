@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -161,7 +161,9 @@
         <span class="k">return</span> <span class="kc">None</span>
 
 
-<div class="viewcode-block" id="Poll"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll">[docs]</a><span class="k">class</span> <span class="nc">Poll</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
+<div class="viewcode-block" id="Poll">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll">[docs]</a>
+<span class="k">class</span> <span class="nc">Poll</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      The Poll flow callback class implements the main logic for polling remote resources.</span>
 <span class="sd">      the *poll* routine returns a list of messages for new files to be filtered. </span>
@@ -232,7 +234,9 @@
                 <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;href&quot;</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">myfname</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Poll.handle_data"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.handle_data">[docs]</a>    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="Poll.handle_data">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.handle_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           routine called from html.parser to deal with a single line.</span>
 <span class="sd">           if the line is about a file, then create a new entry for it</span>
@@ -304,7 +308,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">entries</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">myfname</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">myfname</span> <span class="o">=</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Poll.on_html_page"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.on_html_page">[docs]</a>    <span class="k">def</span> <span class="nf">on_html_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Poll.on_html_page">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.on_html_page">[docs]</a>
+    <span class="k">def</span> <span class="nf">on_html_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           called once per directory or page of HTML, invokes html.parser, returns</span>
 <span class="sd">           a dictionary of file entries.</span>
@@ -319,6 +326,7 @@
         
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">entries</span></div>
 
+
     <span class="k">def</span> <span class="nf">on_html_parser_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># HTML Parsing stuff.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">HTMLParser</span><span class="p">()</span>
@@ -330,7 +338,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Poll.__init__"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span><span class="n">class_logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Poll.__init__">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span><span class="n">class_logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">class_logger</span><span class="p">)</span>
 
@@ -376,6 +386,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">metricsReset</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">on_html_parser_init</span><span class="p">()</span></div>
 
+
     <span class="k">def</span> <span class="nf">metricsReset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;transferRxBytes&#39;</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
 
@@ -416,7 +427,9 @@
         <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(</span><span class="n">standard_date_format</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">timestamp</span>
 
-<div class="viewcode-block" id="Poll.on_line"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.on_line">[docs]</a>    <span class="k">def</span> <span class="nf">on_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SFTPAttributes</span><span class="p">:</span>
+<div class="viewcode-block" id="Poll.on_line">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.poll.Poll.on_line">[docs]</a>
+    <span class="k">def</span> <span class="nf">on_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SFTPAttributes</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           default line processing, converts a file listing into an SFTPAttributes.</span>
 <span class="sd">           does nothing if input is already an SFTPAttributes item, returning it unchanged.</span>
@@ -460,6 +473,7 @@
             <span class="k">return</span> <span class="n">sftp_obj</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span></div>
+
 
     <span class="k">def</span> <span class="nf">lsdir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -698,6 +712,7 @@
             <span class="k">pass</span>
 
         <span class="k">return</span> <span class="n">msgs</span></div>
+
 </pre></div>
 
            </div>

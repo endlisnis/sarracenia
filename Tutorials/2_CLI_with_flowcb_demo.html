@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -371,7 +371,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Customize-File-handling-with-Callbacks.">
-<h1>Customize File handling with Callbacks.<a class="headerlink" href="#Customize-File-handling-with-Callbacks." title="Permalink to this heading"></a></h1>
+<h1>Customize File handling with Callbacks.<a class="headerlink" href="#Customize-File-handling-with-Callbacks." title="Link to this heading"></a></h1>
 <p>All Sarracenia components implement <em>the Flow</em> algorithm, with different callbacks, in the Python programming language. Sarracenia’s main (Python) class is <a class="reference external" href="../Reference/code.html#module-sarracenia.flow">sarracenia.flow</a> and the a great deal of core functionality is implemented using the class created to add custom processing to a flow, the flowcb (flow callback) class.</p>
 <p>For a detailed discussion of the flow algorithm itself, have a look at <a class="reference external" href="../Explanation/Concepts.html">Concepts</a> manual. For any flow, one can add custom processing at a variety of times during processing by sub-classing the <a class="reference external" href="../Reference/flowcb.html">sarracenia.flowcb</a> class.</p>
 <p>Briefly, the algorithm has the following steps:</p>
@@ -592,7 +592,7 @@ flowcb/work/send_egc_les.py
 </div>
 <p>Without the plugin, the download would put all files directly the reception directory. with the addition of the wistree callback, it puts places the file in /tmp/hpfx_amis. With the change it puts it in the WIS tree of directories, and adds a file type suffix.</p>
 <section id="Config-File-Entries-and-Callbacks">
-<h2>Config File Entries and Callbacks<a class="headerlink" href="#Config-File-Entries-and-Callbacks" title="Permalink to this heading"></a></h2>
+<h2>Config File Entries and Callbacks<a class="headerlink" href="#Config-File-Entries-and-Callbacks" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="../Reference/flowcb.html#module-sarracenia.flowcb.log">flowcb.log</a></p>
 <p>To add a callback to a a flow, a line is added to the flows’s configuration file:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>flowcb sarracenia.flowcb.log.Log
@@ -618,7 +618,7 @@ flowcb/work/send_egc_les.py
 <p>Beyond this point, we find advice for people who want to write their own callbacks in Python. Callbacks are ordinary Python, with a few wrinkles:</p>
 </section>
 <section id="Writing-Your-Own-Callbacks">
-<h2>Writing Your Own Callbacks<a class="headerlink" href="#Writing-Your-Own-Callbacks" title="Permalink to this heading"></a></h2>
+<h2>Writing Your Own Callbacks<a class="headerlink" href="#Writing-Your-Own-Callbacks" title="Link to this heading"></a></h2>
 <p>A flow callback, is a python class built with routines named to indicate when the programmer wants them to be called. To do that, create a routine which subclasses <em>sarracenia.flowcb.FlowCB</em> so the class will normally have:</p>
 <p>from sarracenia.flowcb import FlowCB</p>
 <p>in among the imports near the top of the file. In the main part of the file, there will be the custom callback classes:</p>
@@ -653,7 +653,7 @@ flowcb/work/send_egc_les.py
 </div>
 </section>
 <section id="Worklists">
-<h2>Worklists<a class="headerlink" href="#Worklists" title="Permalink to this heading"></a></h2>
+<h2>Worklists<a class="headerlink" href="#Worklists" title="Link to this heading"></a></h2>
 <p>Besides <em>options</em>, the other main argument to after_accept and after_work callback routines is the worklist. The worklist is given to entry points occurring during message processing, and is a number of worklists of messages:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>worklist.incoming --&gt; messages to process (either new or retries.)
 worklist.ok       --&gt; successfully processed
@@ -672,7 +672,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 <p>Do not remove from all lists, only move messages between the worklists. it is necessary to put rejected messages in the appropriate worklist so that they are acknowledged as received. Messages can only removed after the acknowledgement has been taken care of.</p>
 </section>
 <section id="Logging">
-<h2>Logging<a class="headerlink" href="#Logging" title="Permalink to this heading"></a></h2>
+<h2>Logging<a class="headerlink" href="#Logging" title="Link to this heading"></a></h2>
 <p>Python has great built-in logging, and once has to just use the module in a normal, pythonic way, with:</p>
 <p>import logging</p>
 <p>After all imports in your python source file, then define a logger for the source file:</p>
@@ -682,7 +682,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 <p>Each message in the log will be prefixed with the class and routine emitting the log message, as well as the date/time.</p>
 </section>
 <section id="Sample-Flow-Callback-Class">
-<h2>Sample Flow Callback Class<a class="headerlink" href="#Sample-Flow-Callback-Class" title="Permalink to this heading"></a></h2>
+<h2>Sample Flow Callback Class<a class="headerlink" href="#Sample-Flow-Callback-Class" title="Link to this heading"></a></h2>
 <p>With the above information about option handling, worklists, and logging, we are ready to understand the wistree module we just used. As a very simple example, here is the source code of the callback used above is given below:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -720,7 +720,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 </div>
 </section>
 <section id="Sample-Flowcb-Sub-Class">
-<h2>Sample Flowcb Sub-Class<a class="headerlink" href="#Sample-Flowcb-Sub-Class" title="Permalink to this heading"></a></h2>
+<h2>Sample Flowcb Sub-Class<a class="headerlink" href="#Sample-Flowcb-Sub-Class" title="Link to this heading"></a></h2>
 <p>This wistree.py class, shows more aspects of the callback API, with an <strong>init</strong>.py as well as bringing in an externam python module, as well as adding fields to the messages. The Wistree class accepts files whose names begin with AHL’s (World Meteorological Organization Abbreviated Header Lines for meteorological products), and renames the directory tree to a different standard, the evolving one for the WMO WIS 2.0 (for more information on that module: <a class="reference external" href="https://github.com/wmo-im/GTStoWIS2">https://github.com/wmo-im/GTStoWIS2</a>)</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -787,7 +787,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 </div>
 </section>
 <section id="Plugins-That-Change-How-a-File-is-Downloaded">
-<h2>Plugins That Change How a File is Downloaded<a class="headerlink" href="#Plugins-That-Change-How-a-File-is-Downloaded" title="Permalink to this heading"></a></h2>
+<h2>Plugins That Change How a File is Downloaded<a class="headerlink" href="#Plugins-That-Change-How-a-File-is-Downloaded" title="Link to this heading"></a></h2>
 <p>The <em>after_accept</em> routine is one of the two most common ones in use. It is used to change processing prior to a file being downloaded or sent. To process the file after it has been downloaded, the <em>after_work</em> entry point is used to process the worklist.ok (files that were successfully downloaded) list.</p>
 <p>The after_accept routine has an outer loop that cycles through the entire list of incoming messages. It builds a new list of incoming messages from the ones it accepts, while appending all the rejected ones to <em>worklist.failed.</em> The list is just a list of messages, where each message is a python dictionary with all the fields stored in a v03 format message. In the message there are, for example, <em>baseURL</em> and <em>relPath</em> fields:</p>
 <ul class="simple">
@@ -797,7 +797,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 <p>This is happenning before transfer (download or sent, or processing) of the file has occurred, so one can change the behaviour by modifying fields in the message. Normally, the download paths (called new_dir, and new_file) will reflect the intent to mirror the original source tree. so if you have <em>a/b/c.txt</em> on the source tree, and are downloading in to directory <em>mine</em> on the local system, the new_dir would be <em>mine/a/b</em> and new_file would be <em>c.txt</em>.</p>
 </section>
 <section id="Plugins-that-Process-a-file-after-it-is-Downloaded">
-<h2>Plugins that Process a file after it is Downloaded<a class="headerlink" href="#Plugins-that-Process-a-file-after-it-is-Downloaded" title="Permalink to this heading"></a></h2>
+<h2>Plugins that Process a file after it is Downloaded<a class="headerlink" href="#Plugins-that-Process-a-file-after-it-is-Downloaded" title="Link to this heading"></a></h2>
 <p>A common use case is for plugins with an <em>after_work</em> entry point to read the file after it is downloaded and transform it into some derived product with a different name. So the new file is created as in the previous section. The message for the downloaded file still needs to be moved onto a list to ensure that it is acknowledged to the broker. Such an entry point would look like this:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -822,14 +822,14 @@ worklist.directories_ok --&gt; list of directories created during processing.
 </div>
 </section>
 <section id="Plugins-that-Rename-Files">
-<h2>Plugins that Rename Files<a class="headerlink" href="#Plugins-that-Rename-Files" title="Permalink to this heading"></a></h2>
+<h2>Plugins that Rename Files<a class="headerlink" href="#Plugins-that-Rename-Files" title="Link to this heading"></a></h2>
 <p>The plugin above changes the layout of the files that are to be downloaded, based on the <a class="reference external" href="https://github.com/wmo-im/GTStoWIS">GTStoWIS</a> class, which prescribes a different directory tree on output. There are a lot of fields to update when changing file placement, so best to use:</p>
 <p>msg.updatePaths( self.o, new_dir, new_file )</p>
 <p>to update all necessary fields in the message properly. It will update ‘new_baseURL’, ‘new_relPath’, ‘new_subtopic’ for use when posting.</p>
 <p>The try/except part of the routine deals with the case that, should a file arrive with a name from which a topic tree cannot be built, then a python exception may occur, and the message is added to the failed worklist, and will not be processed by later plugins.</p>
 </section>
 <section id="Plugins-That-Create-New-Files">
-<h2>Plugins That Create New Files<a class="headerlink" href="#Plugins-That-Create-New-Files" title="Permalink to this heading"></a></h2>
+<h2>Plugins That Create New Files<a class="headerlink" href="#Plugins-That-Create-New-Files" title="Link to this heading"></a></h2>
 <p>The routine above is perfect when a file is just renamed. If a plugin needs to create new files only vaguely derived from the input file, then you want to create new messages for these files from scratch:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import sarracenia
 
@@ -851,7 +851,7 @@ fake_stat.st_size = ... again will vary by context.
 <p>Either way, once you have the message, it can be appended to the incoming list.</p>
 </section>
 <section id="Other-Examples">
-<h2>Other Examples<a class="headerlink" href="#Other-Examples" title="Permalink to this heading"></a></h2>
+<h2>Other Examples<a class="headerlink" href="#Other-Examples" title="Link to this heading"></a></h2>
 <p>Subclassing of <a class="reference external" href="../Reference/flowcb.html">Sarracenia.flowcb</a> is used internally to do a lot of core work. It’s a good idea to look at the sarracenia source code itself. For example:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/MetPX/Sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py">sarracenia.flowcb</a> have a look at the <strong>init</strong>.py file in there, which provides this information on a more programmatically succinct format.</p></li>

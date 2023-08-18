@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -130,27 +130,27 @@
 }
 </style>
 <section id="administration-des-pompes-de-donnees-amqp">
-<h1>Administration des pompes de données AMQP<a class="headerlink" href="#administration-des-pompes-de-donnees-amqp" title="Permalink to this heading"></a></h1>
+<h1>Administration des pompes de données AMQP<a class="headerlink" href="#administration-des-pompes-de-donnees-amqp" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>FIXME</strong>: Les sections manquantes sont mises en évidence par <strong>FIXME</strong>. Ce qui est ici est exact.</p>
 </div>
 <section id="apercu">
-<h2>Aperçu<a class="headerlink" href="#apercu" title="Permalink to this heading"></a></h2>
+<h2>Aperçu<a class="headerlink" href="#apercu" title="Link to this heading"></a></h2>
 <p>Décrit la configuration et le fonctionnement d’une pompe de données MetPX-Sarracenia à l’aide de
 Rabbitmq en tant que courtier de protocole de mise en fil d’attente de messages. Pour l’administration,
 la plupart des tâches sont différentes, selon le courtier utilisé. Si vous utilisez
 un autre courtier, il doit y avoir un autre guide d’administration.</p>
 </section>
 <section id="pre-requis">
-<h2>Pré-requis<a class="headerlink" href="#pre-requis" title="Permalink to this heading"></a></h2>
+<h2>Pré-requis<a class="headerlink" href="#pre-requis" title="Link to this heading"></a></h2>
 <p>Idéalement, il faut être familier avec l’accès au niveau de l’utilisateur aux pompes existantes comme un
 <a class="reference external" href="../How2Guides/subscriber.rst">subscriber</a> or a <a class="reference external" href="../How2Guides/source.rst">source</a>
 avant de passer à l’administration. Ce manuel se veut prescriptif plutôt qu’explicatif.
 Pour les raisons pour lesquelles les choses sont construites comme elles sont vues
 <a class="reference external" href="../Explanation/Concepts.rst">Concepts.rst</a></p>
 <section id="exigences-minimales">
-<h3>Exigences minimales<a class="headerlink" href="#exigences-minimales" title="Permalink to this heading"></a></h3>
+<h3>Exigences minimales<a class="headerlink" href="#exigences-minimales" title="Link to this heading"></a></h3>
 <p>Le courtier AMQP est extrêmement léger sur les serveurs d’aujourd’hui. Les
 exemples dans ce manuel a été implémenté sur un serveur privé virtuel
 commercial (VPS) avec 256 Mo de RAM, et 700 Mo de swap à partir d’un disque
@@ -179,7 +179,7 @@ pour de nombreux cas utiles.</p>
 </section>
 </section>
 <section id="operations">
-<h2>Opérations<a class="headerlink" href="#operations" title="Permalink to this heading"></a></h2>
+<h2>Opérations<a class="headerlink" href="#operations" title="Link to this heading"></a></h2>
 <p>Pour faire fonctionner une pompe, un utilisateur doit être désigné comme
 administrateur. L’administrateur est différent des autres usagers, surtout en
 ce qui concerne l’autorisation accordée de créer des échanges arbitraires, et
@@ -233,7 +233,7 @@ Normalement, on place les informations d’identification dans
 ~/.config/sarra/credentials.conf et les tâches ponctuels tel la
 création d´un l’échange ou un utilisateurs, sont effectuées par l’administrateur.</p>
 <section id="entretien-menager-sr-audit">
-<h3>Entretien ménager - sr_audit<a class="headerlink" href="#entretien-menager-sr-audit" title="Permalink to this heading"></a></h3>
+<h3>Entretien ménager - sr_audit<a class="headerlink" href="#entretien-menager-sr-audit" title="Link to this heading"></a></h3>
 <p>Lorsqu’un client se connecte à un courtier, il crée une fil d’attente qui est
 ensuite liée à une bourse. L’utilisateur peut choisir d’avoir
 l’autodestruction du client lorsqu’il est déconnecté (<em>auto-delete</em>), ou il
@@ -249,7 +249,7 @@ ayant plus de 25000 messages sera supprimée.  On peut changer cette limite
 en ayant l’option <em>max_queue_size 50000</em> dans default.conf.</p>
 </section>
 <section id="exces-de-fil-d-attente-performance">
-<h3>Excès de fil d’attente/performance<a class="headerlink" href="#exces-de-fil-d-attente-performance" title="Permalink to this heading"></a></h3>
+<h3>Excès de fil d’attente/performance<a class="headerlink" href="#exces-de-fil-d-attente-performance" title="Link to this heading"></a></h3>
 <p>Lorsque rabbitmq a des centaines de milliers de messages en fil d’attente, la
 performance du courtier peut en souffrir. Un tel accumulation peuvent se
 produire lorsque la destination d’un expéditeur est en panne pour une période
@@ -286,7 +286,7 @@ route les messages par checksum jusqu’à une
 </section>
 </section>
 <section id="routage">
-<h2>Routage<a class="headerlink" href="#routage" title="Permalink to this heading"></a></h2>
+<h2>Routage<a class="headerlink" href="#routage" title="Link to this heading"></a></h2>
 <p>L’interconnexion de plusieurs pompes se fait, côté données, par chaînage en guirlande.
 sr_sarra et/ou sr_sender d’une pompe à l’autre.</p>
 <p>les en-têtes <em>to_clusters</em> et <em>source</em> sont utilisés pour les décisions de routage.
@@ -304,7 +304,7 @@ des configurations shovel créées par sr_audit.</p>
 pelles configurées manuellement. Voir la section <a class="reference internal" href="#rapports">Rapports</a> pour plus de détails.</p>
 </section>
 <section id="que-se-passe-t-il">
-<h2>Que se passe-t-il ?<a class="headerlink" href="#que-se-passe-t-il" title="Permalink to this heading"></a></h2>
+<h2>Que se passe-t-il ?<a class="headerlink" href="#que-se-passe-t-il" title="Link to this heading"></a></h2>
 <p>La commande sr_report peut être invoquée pour lier à ‘xreport’ au lieu de
 l’échange d’utilisateurs par défaut pour obtenir des informations de
 rapport pour l’ensemble d’un courtier.</p>
@@ -320,7 +320,7 @@ avant les opérations, nous devons trouver comment Nagios va le surveiller.</p>
 graphique du lapin est suffisante ?</p>
 </div>
 <section id="integration-init">
-<h3>Intégration Init<a class="headerlink" href="#integration-init" title="Permalink to this heading"></a></h3>
+<h3>Intégration Init<a class="headerlink" href="#integration-init" title="Link to this heading"></a></h3>
 <p>Par défaut, lorsque sarracenia est installé, il s’agit d’un outil utilisateur
 et non d’une ressource à l’échelle du système. Le répertoire
 tools/sous-répertoire permet l’intégration avec des outils pour différents
@@ -355,13 +355,13 @@ dans les sessions via:</p>
 </section>
 </section>
 <section id="installation-rabbitmq">
-<h2>Installation Rabbitmq<a class="headerlink" href="#installation-rabbitmq" title="Permalink to this heading"></a></h2>
+<h2>Installation Rabbitmq<a class="headerlink" href="#installation-rabbitmq" title="Link to this heading"></a></h2>
 <p>Exemple d’information sur l´implantation d’un courtier rabbitmq pour Sarracenia. Le
 courtier n’est pas tenu de être sur le même hôte que n’importe quoi d’autre,
 mais il doit y être accessible à partir d’au moins l’un de ces hôtes
 moteurs de transport.</p>
 <section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
 <p>D’une manière générale, nous voulons rester au-dessus de la version 3.x.</p>
 <p><a class="reference external" href="https://www.rabbitmq.com/install-debian.html">https://www.rabbitmq.com/install-debian.html</a></p>
 <p>Brièvement:</p>
@@ -373,7 +373,7 @@ moteurs de transport.</p>
 <p>Dans les distributions à jour, vous pouvez probablement simplement prendre la version de distribution.</p>
 </section>
 <section id="webui">
-<h3>WebUI<a class="headerlink" href="#webui" title="Permalink to this heading"></a></h3>
+<h3>WebUI<a class="headerlink" href="#webui" title="Link to this heading"></a></h3>
 <p>Fondamentalement, à partir d’un shell administrative, il faut:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rabbitmq</span><span class="o">-</span><span class="n">plugins</span> <span class="n">enable</span> <span class="n">rabbitmq_management</span>
 </pre></div>
@@ -384,7 +384,7 @@ pare-feu, ou l’écoute uniquement de localhost interface pour
 la gestion ui est suggérée.</p>
 </section>
 <section id="tls">
-<h3>TLS<a class="headerlink" href="#tls" title="Permalink to this heading"></a></h3>
+<h3>TLS<a class="headerlink" href="#tls" title="Link to this heading"></a></h3>
 <p>Il faut crypter le trafic des courtiers. L’obtention de certificats
 n’entre pas dans le champ d’application de ces instructions, de
 sorte qu’il n’est pas discuté en détail. Aux fins de l’exemple,
@@ -471,7 +471,7 @@ port brisera sr_audit. <strong>FIXME</strong>.</p>
 </div>
 </section>
 <section id="modifier-les-valeurs-par-defaut">
-<h3>Modifier les valeurs par défaut<a class="headerlink" href="#modifier-les-valeurs-par-defaut" title="Permalink to this heading"></a></h3>
+<h3>Modifier les valeurs par défaut<a class="headerlink" href="#modifier-les-valeurs-par-defaut" title="Link to this heading"></a></h3>
 <p>Afin d’effectuer des changements de configuration, le courtier doit être en
 cours d’exécution. Il faut démarrer le courtier rabbitmq. Sur les systèmes
 ubuntu plus anciens, cela serait fait par:</p>
@@ -564,7 +564,7 @@ Grâce à cela, l’ensemble du système peut être administré sans accès admi
 </div>
 </section>
 <section id="gestion-des-utilisateurs-d-une-pompe-a-l-aide-de-sr-audit">
-<h3>Gestion des utilisateurs d’une pompe à l’aide de Sr_audit<a class="headerlink" href="#gestion-des-utilisateurs-d-une-pompe-a-l-aide-de-sr-audit" title="Permalink to this heading"></a></h3>
+<h3>Gestion des utilisateurs d’une pompe à l’aide de Sr_audit<a class="headerlink" href="#gestion-des-utilisateurs-d-une-pompe-a-l-aide-de-sr-audit" title="Link to this heading"></a></h3>
 <p>Pour configurer une pompe, on a besoin d’un utilisateur administratif courtier
 (dans les exemples : sarra.). et un utilisateur de feeder (dans les exemples:
 feeder.) La gestion des autres utilisateurs se fait à l’aide de le programme
@@ -710,7 +710,7 @@ du fichier admin.conf, et d’exécuter:</p>
 La création est automatisée car les modèles de lecture/écriture/configuration sont lourds à faire manuellement.</p>
 </section>
 <section id="premier-abonnement">
-<h3>Premier abonnement<a class="headerlink" href="#premier-abonnement" title="Permalink to this heading"></a></h3>
+<h3>Premier abonnement<a class="headerlink" href="#premier-abonnement" title="Link to this heading"></a></h3>
 <p>Lors de la configuration d’une pompe, le but est normalement de la connecter à une autre pompe. Pour régler
 le paramétrage d’un abonnement nous aide à paramétrer les paramètres pour sarra plus tard. Donc d’abord
 essayer un abonnement à une pompe amont:</p>
@@ -771,7 +771,7 @@ alors on veut que le serveur supprime la fil d’attente:</p>
 <p>et se tourner vers une application de sarra.</p>
 </section>
 <section id="sarra-d-une-autre-pompe">
-<h3>Sarra d’une autre pompe<a class="headerlink" href="#sarra-d-une-autre-pompe" title="Permalink to this heading"></a></h3>
+<h3>Sarra d’une autre pompe<a class="headerlink" href="#sarra-d-une-autre-pompe" title="Link to this heading"></a></h3>
 <p>Sarra est utilisé pour permettre à une pompe en aval de ré-annoncer des
 produits à partir d’une pompe en amont. Sarra a besoin de toute la
 configuration d’un abonnement, mais a aussi besoin de la configuration pour
@@ -861,7 +861,7 @@ sarra@boule:~/.config/sarra/sarra$
 </div>
 </section>
 <section id="rapports">
-<h3>Rapports<a class="headerlink" href="#rapports" title="Permalink to this heading"></a></h3>
+<h3>Rapports<a class="headerlink" href="#rapports" title="Link to this heading"></a></h3>
 <p>Maintenant que les données circulent, nous devons jeter un coup d’oeil au
 flux des messages de rapport, qui sont essentiellement utilisés par chaque
 pompe pour indiquer en amont que les données ont été téléchargées. Sr_audit
@@ -969,7 +969,7 @@ les messages entre les groupes. C’est juste une variation de routage des
 rapports intra-cluster.</p>
 </section>
 <section id="sarra-d-une-source">
-<h3>Sarra D’une source<a class="headerlink" href="#sarra-d-une-source" title="Permalink to this heading"></a></h3>
+<h3>Sarra D’une source<a class="headerlink" href="#sarra-d-une-source" title="Link to this heading"></a></h3>
 <p>Lorsque l’on lit les messages directement depuis une source, il faut activer
 la validation. FIXME : exemple de la façon dont les messages des utilisateurs
 sont traités.</p>
@@ -983,7 +983,7 @@ sont traités.</p>
 <p>autre chose ?</p>
 </section>
 <section id="nettoyage">
-<h3>Nettoyage<a class="headerlink" href="#nettoyage" title="Permalink to this heading"></a></h3>
+<h3>Nettoyage<a class="headerlink" href="#nettoyage" title="Link to this heading"></a></h3>
 <p>Ce sont des exemples, la mise en œuvre du nettoyage n’est pas couverte par
 Sarracenia. Étant donné qu’un arbre raisonnablement petit comme donné
 ci-dessus, il peut être pratique de scanner l’arbre et d’élaguer les anciens
@@ -1023,7 +1023,7 @@ depuis la première rotation. Il est possible de racourcir ce nombre en ajoutant
 à default.conf.</p>
 </section>
 <section id="sassurer-que-les-choses-sont-en-place">
-<h3>S’assurer que les choses sont en place<a class="headerlink" href="#sassurer-que-les-choses-sont-en-place" title="Permalink to this heading"></a></h3>
+<h3>S’assurer que les choses sont en place<a class="headerlink" href="#sassurer-que-les-choses-sont-en-place" title="Link to this heading"></a></h3>
 <p>Les processus peuvent planter. On peut avoir un redémarrage automatisé
 en exécutant <em>sr3 sanity</em> périodiquement:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@boule</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">d</span><span class="c1"># more sanity</span>
@@ -1035,25 +1035,25 @@ en exécutant <em>sr3 sanity</em> périodiquement:</p>
 </div>
 </section>
 <section id="demarrage">
-<h3>Démarrage<a class="headerlink" href="#demarrage" title="Permalink to this heading"></a></h3>
+<h3>Démarrage<a class="headerlink" href="#demarrage" title="Link to this heading"></a></h3>
 <p>Le paquet Debian installe une unité systemd, mais l’installation de python3 ne s’en occupe pas.</p>
 </section>
 <section id="sr-poll">
-<h3>Sr_Poll<a class="headerlink" href="#sr-poll" title="Permalink to this heading"></a></h3>
+<h3>Sr_Poll<a class="headerlink" href="#sr-poll" title="Link to this heading"></a></h3>
 <p>FIXME: alimenter la sarra à partir de la source configurée avec un sr_poll. configuré.</p>
 </section>
 <section id="sr-winnow">
-<h3>Sr_winnow<a class="headerlink" href="#sr-winnow" title="Permalink to this heading"></a></h3>
+<h3>Sr_winnow<a class="headerlink" href="#sr-winnow" title="Link to this heading"></a></h3>
 <p>FIXME: exemple de configuration sr_winnow expliqué, avec quelques pelles aussi.</p>
 </section>
 <section id="sr-sender">
-<h3>Sr_sender<a class="headerlink" href="#sr-sender" title="Permalink to this heading"></a></h3>
+<h3>Sr_sender<a class="headerlink" href="#sr-sender" title="Link to this heading"></a></h3>
 <p>Lorsque les pare-feu empêchent l’utilisation de sarra pour tirer d’une pompe comme le ferait un abonné, on peut inverser l’alimentation en ayant la commande
 la pompe amont alimente explicitement la pompe aval.</p>
 <p>FIXME : configuration élaborée de l’échantillon sr_sender.</p>
 </section>
 <section id="ajout-manuel-d-utilisateurs">
-<h3>Ajout manuel d’utilisateurs<a class="headerlink" href="#ajout-manuel-d-utilisateurs" title="Permalink to this heading"></a></h3>
+<h3>Ajout manuel d’utilisateurs<a class="headerlink" href="#ajout-manuel-d-utilisateurs" title="Link to this heading"></a></h3>
 <p>Pour éviter l’utilisation de sr_admin, ou pour contourner les problèmes,
 on peut ajuster les paramètres utilisateur manuellement:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span>
@@ -1082,7 +1082,7 @@ utile (SFTP, FTP ou HTTP(S)) est gérée séparément.</p>
 </section>
 </section>
 <section id="installations-avancees">
-<h2>Installations avancées<a class="headerlink" href="#installations-avancees" title="Permalink to this heading"></a></h2>
+<h2>Installations avancées<a class="headerlink" href="#installations-avancees" title="Link to this heading"></a></h2>
 <p>Sur certaines configurations (nous les appelons généralement <em>bunny</em>),
 nous utilisons un rabbitmq clustered, comme ceci:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">/.</span><span class="n">erlang</span><span class="o">.</span><span class="n">cookie</span>  <span class="n">same</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">nodes</span>
@@ -1104,7 +1104,7 @@ nous utilisons un rabbitmq clustered, comme ceci:</p>
 </pre></div>
 </div>
 <section id="configuration-keepalived-d-un-courtier-clustered">
-<h3>Configuration keepalived d’un courtier Clustered<a class="headerlink" href="#configuration-keepalived-d-un-courtier-clustered" title="Permalink to this heading"></a></h3>
+<h3>Configuration keepalived d’un courtier Clustered<a class="headerlink" href="#configuration-keepalived-d-un-courtier-clustered" title="Link to this heading"></a></h3>
 <p>Dans cet exemple, bunny-op est un vip qui migre entre bunny1-op et bunny2-op.
 Keepalived déplace le vip entre les deux:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#=============================================</span>
@@ -1142,7 +1142,7 @@ Keepalived déplace le vip entre les deux:</p>
 </div>
 </section>
 <section id="integration-ldap">
-<h3>Intégration LDAP<a class="headerlink" href="#integration-ldap" title="Permalink to this heading"></a></h3>
+<h3>Intégration LDAP<a class="headerlink" href="#integration-ldap" title="Link to this heading"></a></h3>
 <p>Pour activer l’authentification LDAP pour rabbitmq:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rabbitmq</span><span class="o">-</span><span class="n">plugins</span> <span class="n">enable</span> <span class="n">rabbitmq_auth_backend_ldap</span>
 
@@ -1185,7 +1185,7 @@ Keepalived déplace le vip entre les deux:</p>
 </div>
 </section>
 <section id="necessite-rabbitmq-3-3-3-x">
-<h3>Nécessite RABBITMQ &gt; 3.3.3.x<a class="headerlink" href="#necessite-rabbitmq-3-3-3-x" title="Permalink to this heading"></a></h3>
+<h3>Nécessite RABBITMQ &gt; 3.3.3.x<a class="headerlink" href="#necessite-rabbitmq-3-3-3-x" title="Link to this heading"></a></h3>
 <p>Cherchait à savoir comment utiliser LDAP strictement pour l’authentification par mot de passe.
 La réponse que j’ai eue des gourous de Rabbitmq:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>On 07/08/14 20:51, michel.grenier@ec.gc.ca wrote:
@@ -1217,7 +1217,7 @@ Cheers, Simon
 </div>
 </section>
 <section id="support">
-<h3>Support<a class="headerlink" href="#support" title="Permalink to this heading"></a></h3>
+<h3>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h3>
 <p>Il est maintenant possible d’activer MQTT dans Sarracenia via le plugin RabbitMQ MQTT.
 Voici un guide pratique minimal pour notre support RabbitMQTT:</p>
 <ul>
@@ -1293,7 +1293,7 @@ l’échange de sources au (post_)topicPrefix, qui mappe l’échange source et 
 </section>
 </section>
 <section id="crochets-de-sundew">
-<h2>Crochets de Sundew<a class="headerlink" href="#crochets-de-sundew" title="Permalink to this heading"></a></h2>
+<h2>Crochets de Sundew<a class="headerlink" href="#crochets-de-sundew" title="Link to this heading"></a></h2>
 <p>Cette information n’est très probablement pas pertinente pour presque tous les utilisateurs. Sundew est un autre module de MetPX qui est essentiellement en cours de développement.
 remplacé par Sarracénie. Cette information n’est utile qu’à ceux qui ont une base installée de Sundew souhaitant faire le pont
 à la sarracénie. Les premiers travaux sur la sarracénie n’ont utilisé que le client d’abonnement comme téléchargeur, et le module de commutation de l’OMM existant.
@@ -1302,7 +1302,7 @@ et outil de routage. Cette section décrit les types de <em>colle</em> utilisés
 Il suppose une compréhension profonde de MetPX-Sundew. Actuellement, le script dd_notify.py crée des messages pour le fichier
 protocole exp., v00. et v02 (dernière version du protocole de sarracénie)</p>
 <section id="notifications-sur-dd">
-<h3>Notifications sur DD<a class="headerlink" href="#notifications-sur-dd" title="Permalink to this heading"></a></h3>
+<h3>Notifications sur DD<a class="headerlink" href="#notifications-sur-dd" title="Link to this heading"></a></h3>
 <p>En remplacement des flux Atom/RSS qui indiquent aux abonnés quand de nouvelles données sont disponibles, nous mettons un courtier en ligne
 sur notre serveur de diffusion de données (dd.weather.gc.ca.) Les clients peuvent s’y abonner. Pour créer les notifications, nous avons
 un Sundew Sender (nommé wxo-b1-oper-dd.conf) avec un script d’envoi:</p>

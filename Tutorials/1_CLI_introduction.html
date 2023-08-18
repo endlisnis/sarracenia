@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -363,7 +363,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Downloading-Using-the-Command-Line">
-<h1>Downloading Using the Command Line<a class="headerlink" href="#Downloading-Using-the-Command-Line" title="Permalink to this heading"></a></h1>
+<h1>Downloading Using the Command Line<a class="headerlink" href="#Downloading-Using-the-Command-Line" title="Link to this heading"></a></h1>
 <p>This <a class="reference external" href="https://jupyter.org">jupyter notebook</a> introduces <a class="reference external" href="https://metpx.github.io/sarracenia">Sarracenia version 3</a> usage from the command line (mostly on Linux, but should be similar on Windows and Mac also, main difference being different conventions for where preferences and logs are stored. This is probably the easiest way to work with Sarracenia. You configure a flow to download files into a directory, and you can read the directory to process the files there.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -377,12 +377,12 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <section id="Prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#Prerequisites" title="Permalink to this heading"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#Prerequisites" title="Link to this heading"></a></h2>
 <p>The above is just a way to get jupyter notebooks to install metpx-sr3 on a server. Creating some directories in case people use API access without running things through the API. The basic pre-requisite is to have metpx-sr3 installed somehow, either as a .deb package, or using pip (or pip3) available to the environment used by jupyter.</p>
 <p>The rest of this notebook assumes <a class="reference external" href="https://metpx.github.io/sarracenia">metpx-sr3</a> is installed.</p>
 </section>
 <section id="SR3">
-<h2>SR3<a class="headerlink" href="#SR3" title="Permalink to this heading"></a></h2>
+<h2>SR3<a class="headerlink" href="#SR3" title="Link to this heading"></a></h2>
 <p>The command line interface is called <a class="reference external" href="../Reference/sr3.1.html">sr3</a> (short for Sarracenia version 3). One defines flows to run using configuration files in a simple format: <em>keyword</em> <em>value</em> format. there are example configurations to get you started:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -617,7 +617,7 @@ tail: no files remaining
 <p>So that’s it, an introduction to running configurations in Sarracenia from the command line.</p>
 </section>
 <section id="Conclusion">
-<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this heading"></a></h2>
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading"></a></h2>
 <p>If all you want to do is obtain data from a data pump in real-time, using the command line interface to control some processes that run all the time, so that they dump files in a certain directory is the easiest way to go.</p>
 <p>It isn’t very efficient though. When you have large numbers of files to work with, and you want high speed processing, it is better, in the sense of lower cpu and i/o overhead, and in terms of speed of processing, to have your own application informed of the arrival of files, rather than scanning a directory.</p>
 <p>The easiest way to do that is to add some callbacks to your flows. We’ll cover that next.</p>

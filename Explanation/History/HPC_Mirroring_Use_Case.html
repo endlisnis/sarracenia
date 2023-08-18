@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -127,11 +127,11 @@
 }
 </style>
 <section id="case-study-hpc-mirroring">
-<h1>Case Study: HPC Mirroring<a class="headerlink" href="#case-study-hpc-mirroring" title="Permalink to this heading"></a></h1>
+<h1>Case Study: HPC Mirroring<a class="headerlink" href="#case-study-hpc-mirroring" title="Link to this heading"></a></h1>
 <section id="continuously-mirror-27-million-file-tree-very-quickly">
-<h2>Continuously Mirror 27 Million File Tree Very Quickly<a class="headerlink" href="#continuously-mirror-27-million-file-tree-very-quickly" title="Permalink to this heading"></a></h2>
+<h2>Continuously Mirror 27 Million File Tree Very Quickly<a class="headerlink" href="#continuously-mirror-27-million-file-tree-very-quickly" title="Link to this heading"></a></h2>
 <section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h3>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h3>
 <p>This project has taken longer than expected, over three years, as the problem space was explored with the
 help of a very patient client while the tool to design and implement the efficient solution was eventually
 settled on. The client asked for a solution to make files available on the backup cluster within five
@@ -156,7 +156,7 @@ is programmable and scalable, and the techniques and topology to do the transfer
 controlled to optimize transfers for whatever criteria are deemed most important.</p>
 </section>
 <section id="problem-statement">
-<h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading"></a></h3>
+<h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading"></a></h3>
 <p>In November 2016, Environment and Climate Change Canada’s (ECCC) Meteorological Service of Canada (MSC),
 as part of the High Performance Computing Replacement (HPCR) project asked for very large directory
 trees to be mirrored in real-time. Shared Services Canada (SSC) had primary responsibility for deployment
@@ -174,7 +174,7 @@ into one another, so delays ripple, and considerable effort is expended to avoid
 maintain schedule.</p>
 </section>
 <section id="hpcr-solution-overview">
-<h3>HPCR Solution Overview<a class="headerlink" href="#hpcr-solution-overview" title="Permalink to this heading"></a></h3>
+<h3>HPCR Solution Overview<a class="headerlink" href="#hpcr-solution-overview" title="Link to this heading"></a></h3>
 <a class="reference internal image-reference" href="../../_images/HPC-XC_High_Availability.png"><img alt="../../_images/HPC-XC_High_Availability.png" src="../../_images/HPC-XC_High_Availability.png" style="width: 1078.44px; height: 846.7800000000001px;" /></a>
 <p>In the diagram above, if operations are in Data Hall 1 (left of centre) and they fail, then the goal is to resume
 operations promptly from Data Hall 2 (on the right). For this to be realistic, production data must be available
@@ -183,7 +183,7 @@ subset of data between site store 1 and site store 2. For monitoring purposes, a
 subset to must be mirrored to data hall 0.</p>
 </section>
 <section id="continuous-mirroring">
-<h3>Continuous Mirroring<a class="headerlink" href="#continuous-mirroring" title="Permalink to this heading"></a></h3>
+<h3>Continuous Mirroring<a class="headerlink" href="#continuous-mirroring" title="Link to this heading"></a></h3>
 <p>There is a pair of clusters running these simulations, one normally mostly working on operations,
 and the other as a <em>spare</em> (running only research and development loads).  When the primary fails,
 the intent is to run operations on the other supercomputer, using a <em>spare</em> disk to which all the
@@ -222,7 +222,7 @@ not feasible, so the method used to obtain the list of files to copy had to be i
 system without active user involvement).</p>
 </section>
 <section id="reading-the-tree-takes-too-long">
-<h3>Reading the Tree Takes Too Long<a class="headerlink" href="#reading-the-tree-takes-too-long" title="Permalink to this heading"></a></h3>
+<h3>Reading the Tree Takes Too Long<a class="headerlink" href="#reading-the-tree-takes-too-long" title="Link to this heading"></a></h3>
 <p>One could just scan at a higher level in order to scan a single parent directory, but the half-dozen
 sub-trees trees were picked in order to have smaller ones which worked more quickly, regardless of the
 method being used to obtain lists of new files. What do we mean when we say these trees are too large?
@@ -246,7 +246,7 @@ be significantly quicker than rsync. We need a faster method of knowing which fi
 so that they can be copied.</p>
 </section>
 <section id="detection-methods-inotify-policy-shim">
-<h3>Detection Methods: Inotify, Policy, SHIM<a class="headerlink" href="#detection-methods-inotify-policy-shim" title="Permalink to this heading"></a></h3>
+<h3>Detection Methods: Inotify, Policy, SHIM<a class="headerlink" href="#detection-methods-inotify-policy-shim" title="Link to this heading"></a></h3>
 <p>There is a Linux kernel feature known as INOTIFY, which can trigger an event when a file is modified. By
 setting an INOTIFY trigger on every directory in the tree, we can be notified when any file is modified
 in the tree. This was the initial approach taken. It turns out (in January 2017), that INOTIFY is indeed a
@@ -286,7 +286,7 @@ like to get rid of it. Performance has stabilized in the past year, but it does 
 as the size of the file tree grows. Many optimisations were implemented to obtain adequate
 performance.</p>
 <section id="shim-library">
-<h4>Shim Library<a class="headerlink" href="#shim-library" title="Permalink to this heading"></a></h4>
+<h4>Shim Library<a class="headerlink" href="#shim-library" title="Link to this heading"></a></h4>
 <p>The method settled on for notification is a <a class="reference external" href="https://en.wikipedia.org/wiki/Shim_(computing)">shim library</a>
 When a running application makes calls to API entry points that are provided by
 libraries or the kernel, there is a search process (resolved at application
@@ -303,7 +303,7 @@ without any application modification.</p>
 </section>
 </section>
 <section id="copying-files">
-<h3>Copying Files<a class="headerlink" href="#copying-files" title="Permalink to this heading"></a></h3>
+<h3>Copying Files<a class="headerlink" href="#copying-files" title="Link to this heading"></a></h3>
 <p>It needs to be noted that while all of this work was progressing on the ‘obtain the list of
 files to be copied’ part of the problem, we were also working on the ‘copy the files to the
 other side’ part of the problem. Over the summer, results of performance tests and other
@@ -342,7 +342,7 @@ of the problem was stable by the end of the summer of 2017, and the impact on sy
 is minimized.</p>
 </section>
 <section id="shim-library-necessary">
-<h3>Shim Library Necessary<a class="headerlink" href="#shim-library-necessary" title="Permalink to this heading"></a></h3>
+<h3>Shim Library Necessary<a class="headerlink" href="#shim-library-necessary" title="Link to this heading"></a></h3>
 <p>Unfortunately, the mirroring between sites was running with about a 10-minute lag on the source files
 system (about 30 times faster than a naive rsync approach), and was only working in principle, with
 many files missing in practice, it wasn’t usable for its intended purpose. The operational commissioning of the
@@ -362,7 +362,7 @@ the application, including a second implementation in C for environments where a
 where efficiency was paramount (the libsrshim case).</p>
 </section>
 <section id="does-it-work">
-<h3>Does it Work?<a class="headerlink" href="#does-it-work" title="Permalink to this heading"></a></h3>
+<h3>Does it Work?<a class="headerlink" href="#does-it-work" title="Link to this heading"></a></h3>
 <p>In December 2017, the software for the libsrshim approach looked ready, it was deployed in some small parallel (non-operational runs). Testing
 in parallel runs started in January 2018. There were many edge cases, and testing continued for two years, until finally being
 ready for deployment in December 2019. I</p>
@@ -393,7 +393,7 @@ on the destination. Over a large number of samples, we get a quantification of h
 is still in development.</p>
 </section>
 <section id="is-it-fast">
-<h3>Is it Fast?<a class="headerlink" href="#is-it-fast" title="Permalink to this heading"></a></h3>
+<h3>Is it Fast?<a class="headerlink" href="#is-it-fast" title="Link to this heading"></a></h3>
 <p>The GPFS-policy runs are the still the method in use operationally as this is written (2018/01). The performance numbers given in
 the summary are taken from the logs of one day of GPFS-policy runs.</p>
 <blockquote>
@@ -524,7 +524,7 @@ Files<span class="w"> </span>over<span class="w"> </span>600s:<span class="w"> <
 </div>
 </section>
 <section id="overheads">
-<h3>Overheads<a class="headerlink" href="#overheads" title="Permalink to this heading"></a></h3>
+<h3>Overheads<a class="headerlink" href="#overheads" title="Link to this heading"></a></h3>
 <p>What is the effect on user jobs of putting the shim library in service?
 When used in large models with good i/o patterns necessary for high
 performance, the overhead added by the shim library can be negligeable.
@@ -543,7 +543,7 @@ library, but the accelleration available by re-formulating to more efficient
 methods can have much larger benefits as well.</p>
 </section>
 <section id="contributions">
-<h3>Contributions<a class="headerlink" href="#contributions" title="Permalink to this heading"></a></h3>
+<h3>Contributions<a class="headerlink" href="#contributions" title="Link to this heading"></a></h3>
 <p><strong>Dominic Racette</strong> - ECCC CMC Operations Implementation</p>
 <blockquote>
 <div><p>Client lead on the mirroring project. A lot of auditing and running of tests.

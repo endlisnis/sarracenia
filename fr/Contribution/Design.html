@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -130,7 +130,7 @@
 </style>
 <p>Status: Draft</p>
 <section id="conception-strawman">
-<h1><a class="toc-backref" href="#id1" role="doc-backlink"><span class="sectnum">1 </span>Conception Strawman</a><a class="headerlink" href="#conception-strawman" title="Permalink to this heading"></a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink"><span class="sectnum">1 </span>Conception Strawman</a><a class="headerlink" href="#conception-strawman" title="Link to this heading"></a></h1>
 <p>Ce document reflète la conception actuelle résultant de discussions et de réflexions
 à un niveau plus détaillé que le document d’esquisse.  Voir <a class="reference external" href="Outline.html">Aperçu</a>
 pour une vue d’ensemble des exigences de conception.  Voir ‘cas d’utilisation <a class="reference external" href="use-cases.html.html">use-cases.html.html</a> pour
@@ -179,7 +179,7 @@ La manière de progresser vers une mise en œuvre fonctionnelle est décrite dan
 </ul>
 </nav>
 <section id="hypotheses-contraintes">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="sectnum">1.1 </span>Hypothèses/contraintes</a><a class="headerlink" href="#hypotheses-contraintes" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="sectnum">1.1 </span>Hypothèses/contraintes</a><a class="headerlink" href="#hypotheses-contraintes" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>Existe-t-il des systèmes de fichiers en cluster disponibles partout ? Non.</p></li>
@@ -215,7 +215,7 @@ Les charges internes et externes peuvent être mises à l’échelle indépendam
 </div></blockquote>
 </section>
 <section id="nombre-de-commutateurs">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="sectnum">1.2 </span>Nombre de commutateurs</a><a class="headerlink" href="#nombre-de-commutateurs" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="sectnum">1.2 </span>Nombre de commutateurs</a><a class="headerlink" href="#nombre-de-commutateurs" title="Link to this heading"></a></h2>
 <p>L’application est censée prendre en charge n’importe quel nombre de topologies, c’est-à-dire
 n’importe quel nombre de pompes S = 0,1,2,3
 peut exister entre l’origine et la livraison finale, et faire ce qu’il faut.</p>
@@ -247,7 +247,7 @@ se termine (presque instantanément), et à partir de ce moment-là, le réseau 
 </div></blockquote>
 </section>
 <section id="selection-des-fonctionnalites-amqp">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="sectnum">1.3 </span>Sélection des fonctionnalités AMQP</a><a class="headerlink" href="#selection-des-fonctionnalites-amqp" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="sectnum">1.3 </span>Sélection des fonctionnalités AMQP</a><a class="headerlink" href="#selection-des-fonctionnalites-amqp" title="Link to this heading"></a></h2>
 <p>AMQP est un protocole universel de transmission de messages avec de nombreuses options différentes pour prendre en charge de nombreuses
 différents modèles de messagerie.  MetPX-sarracenia spécifie et utilise un petit sous-ensemble de
 modèles AMQP.  En effet, un élément important du développement de la sarracenia a été de choisir parmi les
@@ -314,7 +314,7 @@ ils peuvent entrer en collision. triste. Accepté comme limitation.</p></li>
 </div></blockquote>
 </section>
 <section id="application">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="sectnum">1.4 </span>Application</a><a class="headerlink" href="#application" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="sectnum">1.4 </span>Application</a><a class="headerlink" href="#application" title="Link to this heading"></a></h2>
 <p>Description de la logique d’application pertinente pour la discussion. Il existe un “plan de contrôle”
 où les messages de notification concernant les nouvelles données disponibles sont mises en place et
 les messages de journal signalant l’état des transferts des mêmes données sont acheminés entre
@@ -377,7 +377,7 @@ de l’entité:</p>
 </dl>
 </section>
 <section id="routage">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="sectnum">1.5 </span>Routage</a><a class="headerlink" href="#routage" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="sectnum">1.5 </span>Routage</a><a class="headerlink" href="#routage" title="Link to this heading"></a></h2>
 <p>Il existe deux flux distincts à acheminer : les messages de notification et les journaux.
 L’en-tête suivant dans les messages concerne le routage, qui est défini dans tous les messages.</p>
 <blockquote>
@@ -397,7 +397,7 @@ doivent circuler correctement avec seules les commandes de routage initiées par
 Une configuration peut être nécessaire sur toutes les pompes chaque fois qu’une nouvelle
 pompe est ajoutée au réseau.</p>
 <section id="routage-des-publications">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink"><span class="sectnum">1.5.1 </span>Routage des publications</a><a class="headerlink" href="#routage-des-publications" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink"><span class="sectnum">1.5.1 </span>Routage des publications</a><a class="headerlink" href="#routage-des-publications" title="Link to this heading"></a></h3>
 <p>Le routage des publications est le routage des messages de notification annoncés par les données <em>sources</em>.
 Les données correspondant à la source qui suivent la même séquence de pompes que les messages de notification
 elles-mêmes.  Lorsqu’un message de notification est traité sur une pompe, il est téléchargé, puis le
@@ -433,7 +433,7 @@ pas autorisées à télécharger (problème moindre qu’avec xPublic, mais dép
 </div>
 </section>
 <section id="journaux-de-routage">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink"><span class="sectnum">1.5.2 </span>Journaux de routage</a><a class="headerlink" href="#journaux-de-routage" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink"><span class="sectnum">1.5.2 </span>Journaux de routage</a><a class="headerlink" href="#journaux-de-routage" title="Link to this heading"></a></h3>
 <p>Les messages de journal sont définis dans la page de manuel sr_log(7).  Ils sont émis par les <em>consommateurs</em> à la fin,
 ainsi que des <em>feeders</em> lorsque les messages traversent les pompes.  Les messages de journal sont publiés sur
 l’échange xl_&lt;user&gt; et après validation du journal mis en fil d’attente pour l’échange XLOG.</p>
@@ -452,9 +452,9 @@ Cela peut être fait en utilisant <em>sr_subscribe -n –topic_prefix=v02.log</e
 </section>
 </section>
 <section id="modele-de-securite">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="sectnum">1.6 </span>Modèle de sécurité</a><a class="headerlink" href="#modele-de-securite" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="sectnum">1.6 </span>Modèle de sécurité</a><a class="headerlink" href="#modele-de-securite" title="Link to this heading"></a></h2>
 <section id="utilisateurs-files-dattente-et-echanges">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="sectnum">1.6.1 </span>Utilisateurs, files d’attente et échanges</a><a class="headerlink" href="#utilisateurs-files-dattente-et-echanges" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="sectnum">1.6.1 </span>Utilisateurs, files d’attente et échanges</a><a class="headerlink" href="#utilisateurs-files-dattente-et-echanges" title="Link to this heading"></a></h3>
 <dl class="simple">
 <dt>Chaque utilisateur Alice, sur un courtier auquel elle a accès :</dt><dd><ul class="simple">
 <li><p>a un xs_Alice d’échange, où elle écrit ses messages de notification et lit ses journaux.</p></li>
@@ -479,7 +479,7 @@ dans cet exemple.</p>
 </div>
 </section>
 <section id="pre-validation">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="sectnum">1.6.2 </span>Pré-validation</a><a class="headerlink" href="#pre-validation" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="sectnum">1.6.2 </span>Pré-validation</a><a class="headerlink" href="#pre-validation" title="Link to this heading"></a></h3>
 <p>La pré-validation fait référence aux contrôles de sécurité et d’exactitude effectués sur
 les informations fournies par le message de notification avant le téléchargement des données elles-mêmes.
 Certains outils peuvent appeler cela <em>validation des messages</em></p>
@@ -528,7 +528,7 @@ et le traite simplement. Cela signifie qu’il récupérera les données de la s
 Une fois les données téléchargées, elles passent par la post-validation.</p>
 </section>
 <section id="post-validation">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="sectnum">1.6.3 </span>Post-Validation</a><a class="headerlink" href="#post-validation" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="sectnum">1.6.3 </span>Post-Validation</a><a class="headerlink" href="#post-validation" title="Link to this heading"></a></h3>
 <p>Lorsqu’un fichier est téléchargé, avant de l’annoncer à nouveau pour des sauts ultérieurs,
 il passe par une analyse.  Les outils peuvent appeler ceci <em>validation de fichier</em>:</p>
 <blockquote>
@@ -544,7 +544,7 @@ Essentiellement une <em>quarantaine</em></p></li>
 </div></blockquote>
 </section>
 <section id="validation-du-journal">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="sectnum">1.6.4 </span>Validation du journal</a><a class="headerlink" href="#validation-du-journal" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="sectnum">1.6.4 </span>Validation du journal</a><a class="headerlink" href="#validation-du-journal" title="Link to this heading"></a></h3>
 <p>Lorsqu’un client comme sarra ou subscribe termine une opération, il crée un message de journal
 correspondant au résultat de l’opération.  (C’est une granularité beaucoup plus faible qu’un
 fichier journal local.) Il est important qu’un client ne puisse pas usurper l’identité d’un autre
@@ -578,7 +578,7 @@ Cela entraînera l’abandon des messages.  Comment détecter une erreur de conf
 </div>
 </section>
 <section id="transfert-de-donnees-prive-vs-public">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="sectnum">1.6.5 </span>Transfert de données privé vs public</a><a class="headerlink" href="#transfert-de-donnees-prive-vs-public" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="sectnum">1.6.5 </span>Transfert de données privé vs public</a><a class="headerlink" href="#transfert-de-donnees-prive-vs-public" title="Link to this heading"></a></h3>
 <p>Dans le passé, les transferts ont été publics, il s’agissait simplement de partager des informations publiques.
 Une exigence cruciale du paquet est de prendre en charge les copies de données privées, lorsque les
 fins du transfert ne sont pas partagées avec d’autres personnes arbitraires.</p>
@@ -617,7 +617,7 @@ mais pas obtenir de données, sauf si xprivate se produit.</p></li>
 finaux peuvent simplement utiliser des bits de mode.</p>
 </section>
 <section id="acces-prive-https">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="sectnum">1.6.6 </span>Accès privé HTTPS</a><a class="headerlink" href="#acces-prive-https" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="sectnum">1.6.6 </span>Accès privé HTTPS</a><a class="headerlink" href="#acces-prive-https" title="Link to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FIXME: Pas encore conçu.
@@ -632,7 +632,7 @@ Besoin de parler avec les gars de l’équipe de messagerie Web.</p>
 </section>
 </section>
 <section id="topologies">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink"><span class="sectnum">1.7 </span>Topologies</a><a class="headerlink" href="#topologies" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink"><span class="sectnum">1.7 </span>Topologies</a><a class="headerlink" href="#topologies" title="Link to this heading"></a></h2>
 <p>Questions… Il existe de nombreux choix pour la disposition des clusters. On peut faire H/A
 simple sur une paire de nœuds, simple actif/passif ?  On peut aller à des conceptions évolutives
 sur un tableau de nœuds, ce qui nécessite une charge d’équilibreur avant les nœuds de traitement.
@@ -676,7 +676,7 @@ et/ou des impasses.</p>
 </dd>
 </dl>
 <section id="autonome">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="sectnum">1.7.1 </span>Autonome</a><a class="headerlink" href="#autonome" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="sectnum">1.7.1 </span>Autonome</a><a class="headerlink" href="#autonome" title="Link to this heading"></a></h3>
 <p>Dans une configuration autonome, il n’y a qu’un seul nœud dans la configuration.  J’exécute tous les composants
 et n’en partage aucun avec d’autres nœuds.  Cela signifie que le courtier et les services de données tels que sftp et
 Apache sont sur un nœud.</p>
@@ -684,7 +684,7 @@ Apache sont sur un nœud.</p>
 pour prendre la responsabilité de la fil d’attente des données et s’éloigner de l’instrument.</p>
 </section>
 <section id="ddsr-configuration-de-commutation-routage">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="sectnum">1.7.2 </span>DDSR : Configuration de commutation/routage</a><a class="headerlink" href="#ddsr-configuration-de-commutation-routage" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="sectnum">1.7.2 </span>DDSR : Configuration de commutation/routage</a><a class="headerlink" href="#ddsr-configuration-de-commutation-routage" title="Link to this heading"></a></h3>
 <p>Il s’agit d’une configuration plus évolutive impliquant plusieurs nœuds de Data Mover et
 potentiellement plusieurs brokers. Ces clusters ne sont pas des destinations de transferts
 de données, mais des intermédiaires.  Les données circulent à travers eux, mais les interroger
@@ -699,7 +699,7 @@ Lorsque le dernier confirmé, supprimez. (rend re-xmit difficile ;-)</p>
 <p>L’objectif visé comporte un certain nombre d’options de mise en œuvre, qui doivent être subdivisées aux fins d’analyse.</p>
 </section>
 <section id="ddsr-independant">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="sectnum">1.7.3 </span>DDSR indépendant</a><a class="headerlink" href="#ddsr-independant" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="sectnum">1.7.3 </span>DDSR indépendant</a><a class="headerlink" href="#ddsr-independant" title="Link to this heading"></a></h3>
 <p>Dans Independent DDSR, il existe un équilibreur de charge qui distribue chaque connexion entrante à
 un courtier individuel exécuté sur un seul nœud.</p>
 <p>DDSR - courtier</p>
@@ -719,7 +719,7 @@ fichiers volumineux le déclencheront.</p>
 <p>CONFIRMEZ : Les performances maximales pour un seul transfert sont limitées à un seul nœud.</p>
 </section>
 <section id="courtier-partage-ddsr">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="sectnum">1.7.4 </span>Courtier partagé DDSR</a><a class="headerlink" href="#courtier-partage-ddsr" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="sectnum">1.7.4 </span>Courtier partagé DDSR</a><a class="headerlink" href="#courtier-partage-ddsr" title="Link to this heading"></a></h3>
 <p>Bien que l’espace disque des nœuds de données reste indépendant, les courtiers sont regroupés pour
 former une entité logique unique.</p>
 <p>Sur tous les nœuds, les processus de déplacement utilisent des échanges et des files d’attente communs.</p>
@@ -744,7 +744,7 @@ est fait.</p>
 <p>Le regroupement de courtiers est considéré comme une technologie mature et donc relativement fiable.</p>
 </section>
 <section id="dd-configuration-de-la-diffusion-des-donnees-aka-data-mart">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="sectnum">1.7.5 </span>DD : Configuration de la diffusion des données (AKA : Data Mart)</a><a class="headerlink" href="#dd-configuration-de-la-diffusion-des-donnees-aka-data-mart" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="sectnum">1.7.5 </span>DD : Configuration de la diffusion des données (AKA : Data Mart)</a><a class="headerlink" href="#dd-configuration-de-la-diffusion-des-donnees-aka-data-mart" title="Link to this heading"></a></h3>
 <p>La configuration de déploiement sr est davantage une configuration de point de terminaison.  Chaque nœud est censé :
 Avoir une copie complète de toutes les données téléchargées par tous les nœuds.   Donner une vue unifiée rend
 ca beaucoup plus compatible avec une variété de méthodes d’accès, telles qu’un navigateur de fichiers (sur HTTP,
@@ -771,7 +771,7 @@ de connexion à un nœud pour le traitement.</p>
 <p>Le courtier sur le nœud SR a une connexion par la suite.</p>
 </section>
 <section id="dd-independant">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="sectnum">1.7.6 </span>DD indépendant</a><a class="headerlink" href="#dd-independant" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="sectnum">1.7.6 </span>DD indépendant</a><a class="headerlink" href="#dd-independant" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>L’équilibreur de charge transmet les demandes entrantes à plusieurs configurations <a href="#id26"><span class="problematic" id="id27">Standalone_</span></a>.</p></li>
@@ -797,7 +797,7 @@ Instance pour faire un téléchargement coopératif via le vannage Fingerprint.<
 </div>
 </section>
 <section id="shared-broker-dd">
-<h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="sectnum">1.7.7 </span>Shared-Broker DD</a><a class="headerlink" href="#shared-broker-dd" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="sectnum">1.7.7 </span>Shared-Broker DD</a><a class="headerlink" href="#shared-broker-dd" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>Un seul broker en cluster est partagé par tous les nœuds.</p></li>
@@ -828,7 +828,7 @@ démo des deux?</p></li>
 </div></blockquote>
 </section>
 <section id="dd-de-donnees-partagees">
-<h3><a class="toc-backref" href="#id24" role="doc-backlink"><span class="sectnum">1.7.8 </span>DD de données partagées</a><a class="headerlink" href="#dd-de-donnees-partagees" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink"><span class="sectnum">1.7.8 </span>DD de données partagées</a><a class="headerlink" href="#dd-de-donnees-partagees" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>L’équilibreur de charge transmet la requête entrante à plusieurs nœuds.</p></li>
@@ -842,7 +842,7 @@ démo des deux?</p></li>
 </div></blockquote>
 </section>
 <section id="sep-shared-end-point-configuration">
-<h3><a class="toc-backref" href="#id25" role="doc-backlink"><span class="sectnum">1.7.9 </span>SEP: Shared End-Point Configuration</a><a class="headerlink" href="#sep-shared-end-point-configuration" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink"><span class="sectnum">1.7.9 </span>SEP: Shared End-Point Configuration</a><a class="headerlink" href="#sep-shared-end-point-configuration" title="Link to this heading"></a></h3>
 <p>La configuration SEP, tous les nœuds de déplacement sont directement accessibles aux utilisateurs.
 Le courtier ne fournit pas de service de données, juste un pur courtier de messages. Peut être appelé
 <em>sans données</em>, ou un <em>bunny</em>.</p>

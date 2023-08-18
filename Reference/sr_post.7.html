@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -125,15 +125,15 @@
 }
 </style>
 <section id="sr-post">
-<h1>SR_post<a class="headerlink" href="#sr-post" title="Permalink to this heading"></a></h1>
+<h1>SR_post<a class="headerlink" href="#sr-post" title="Link to this heading"></a></h1>
 <section id="sarracenia-v03-notification-message-format-protocol">
-<h2>Sarracenia v03 Notification Message Format/Protocol<a class="headerlink" href="#sarracenia-v03-notification-message-format-protocol" title="Permalink to this heading"></a></h2>
+<h2>Sarracenia v03 Notification Message Format/Protocol<a class="headerlink" href="#sarracenia-v03-notification-message-format-protocol" title="Link to this heading"></a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Manual section<span class="colon">:</span></dt>
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -143,7 +143,7 @@
 </dd>
 </dl>
 <section id="status-stable-default">
-<h3>STATUS: Stable/Default<a class="headerlink" href="#status-stable-default" title="Permalink to this heading"></a></h3>
+<h3>STATUS: Stable/Default<a class="headerlink" href="#status-stable-default" title="Link to this heading"></a></h3>
 <p>Sarracenia version 2 notification messages are the previous standard, used for terabytes
 and millions of files per day of transfers. Version 3 is a proposal for a next
 iteration of Sarracenia notification messages.</p>
@@ -162,11 +162,11 @@ See <a class="reference external" href="../Explanations/History/messages_v03.htm
 </div>
 </section>
 <section id="synopsis">
-<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h3>
+<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <p>Version 03 format of file change notification messages for sr_post.</p>
 <p>An sr_post notification message consists of a topic, and the <em>BODY</em></p>
 <section id="amqp-topic-version-dir">
-<h4><strong>AMQP Topic:</strong> <em>&lt;version&gt;.{&lt;dir&gt;.}</em><a class="headerlink" href="#amqp-topic-version-dir" title="Permalink to this heading"></a></h4>
+<h4><strong>AMQP Topic:</strong> <em>&lt;version&gt;.{&lt;dir&gt;.}</em><a class="headerlink" href="#amqp-topic-version-dir" title="Link to this heading"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span> <span class="o">=</span> <span class="s2">&quot;v03&quot;</span> <span class="n">the</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">protocol</span> <span class="ow">or</span> <span class="nb">format</span><span class="o">.</span>
 <span class="s2">&quot;post&quot;</span> <span class="o">=</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">notification</span> <span class="n">message</span> <span class="n">within</span> <span class="n">the</span> <span class="n">protocol</span><span class="o">.</span>
 <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">a</span> <span class="n">sub</span><span class="o">-</span><span class="n">directory</span> <span class="n">leading</span> <span class="n">to</span> <span class="n">the</span> <span class="n">file</span> <span class="p">(</span><span class="n">perhaps</span> <span class="n">many</span> <span class="n">directories</span> <span class="n">deep</span><span class="p">)</span>
@@ -174,7 +174,7 @@ See <a class="reference external" href="../Explanations/History/messages_v03.htm
 </div>
 </section>
 <section id="body-headers-json-encoding">
-<h4><strong>BODY:</strong> <em>{ &lt;headers&gt; }</em> (JSON encoding.)<a class="headerlink" href="#body-headers-json-encoding" title="Permalink to this heading"></a></h4>
+<h4><strong>BODY:</strong> <em>{ &lt;headers&gt; }</em> (JSON encoding.)<a class="headerlink" href="#body-headers-json-encoding" title="Link to this heading"></a></h4>
 <p>The headers are an array of name:value pairs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MANDATORY:
 
@@ -261,7 +261,7 @@ but there was no conclusion.</p>
 </section>
 </section>
 <section id="description">
-<h3>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this heading"></a></h3>
+<h3>DESCRIPTION<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
 <p>Sources create notification messages in the <em>sr_post</em> format to announce file changes. Subscribers
 read the post to decide whether a download of the content being announced is warranted.  This
 manual page completely describes the format of those notification messages.  The notification messages are payloads
@@ -320,7 +320,7 @@ Multiple streams can provide an effective optimization over long links.</p>
 </dl>
 </section>
 <section id="topic">
-<h3>TOPIC<a class="headerlink" href="#topic" title="Permalink to this heading"></a></h3>
+<h3>TOPIC<a class="headerlink" href="#topic" title="Link to this heading"></a></h3>
 <p>In topic based AMQP exchanges, every notification message has a topic header. AMQP defines the ‘.’ character
 as a hierarchical separator (like ‘' in a windows path name, or ‘/’ on linux) there is also a
 pair of wildcards defined by the standard:  ‘*’ matches a single topic, ‘#’ matches the rest of
@@ -350,7 +350,7 @@ encoded, so actual length limit may be less than that.</p>
 </pre></div>
 </div>
 <section id="mapping-to-mqtt">
-<h4>Mapping to MQTT<a class="headerlink" href="#mapping-to-mqtt" title="Permalink to this heading"></a></h4>
+<h4>Mapping to MQTT<a class="headerlink" href="#mapping-to-mqtt" title="Link to this heading"></a></h4>
 <p>One goal of v03 format is to have a payload format that works with more than just AMQP.
 Message Queing Telemetry Transport (MQTT v3.11) is an iso standard ( <a class="reference external" href="https://www.iso.org/standard/69466.html">https://www.iso.org/standard/69466.html</a>
 protocol that can easily support the same pub/sub messaging pattern, but a few details
@@ -368,7 +368,7 @@ name at the root of the topic hierarchy to achieve the same effect:</p>
 </section>
 </section>
 <section id="the-fixed-headers">
-<h3>THE FIXED HEADERS<a class="headerlink" href="#the-fixed-headers" title="Permalink to this heading"></a></h3>
+<h3>THE FIXED HEADERS<a class="headerlink" href="#the-fixed-headers" title="Link to this heading"></a></h3>
 <p>The notification message is a single JSON encoded array, with a mandatory set of fields, while allowing
 for use of arbitrary other fields.  Mandatory fields must be present in every notification message, and</p>
 <blockquote>
@@ -387,7 +387,7 @@ for use of arbitrary other fields.  Mandatory fields must be present in every no
 </div>
 <p>Additional fields:</p>
 <section id="from-cluster-cluster-name">
-<h4><strong>from_cluster=&lt;cluster_name&gt;</strong><a class="headerlink" href="#from-cluster-cluster-name" title="Permalink to this heading"></a></h4>
+<h4><strong>from_cluster=&lt;cluster_name&gt;</strong><a class="headerlink" href="#from-cluster-cluster-name" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>The from_cluster header defines the name of the source cluster where the
 data was introduced into the network. It is used to return the logs back
@@ -395,14 +395,14 @@ to the cluster whenever its products are used.</p>
 </div></blockquote>
 </section>
 <section id="fileop-link-value-of-symbolic-link">
-<h4><strong>fileOp { ‘link’: &lt;value of symbolic link&gt;</strong><a class="headerlink" href="#fileop-link-value-of-symbolic-link" title="Permalink to this heading"></a></h4>
+<h4><strong>fileOp { ‘link’: &lt;value of symbolic link&gt;</strong><a class="headerlink" href="#fileop-link-value-of-symbolic-link" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>When file to transfer is a symbolic link, the ‘link’ header is created to
 contain its value.</p>
 </div></blockquote>
 </section>
 <section id="size-and-blocks">
-<h4><strong>size and blocks</strong><a class="headerlink" href="#size-and-blocks" title="Permalink to this heading"></a></h4>
+<h4><strong>size and blocks</strong><a class="headerlink" href="#size-and-blocks" title="Link to this heading"></a></h4>
 <blockquote id="parts">
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">sz</span><span class="o">&gt;</span> <span class="p">,</span>
 
@@ -470,13 +470,13 @@ to transfer.</p>
 </div></blockquote>
 </section>
 <section id="rename-relpath">
-<h4><strong>rename=&lt;relpath&gt;</strong><a class="headerlink" href="#rename-relpath" title="Permalink to this heading"></a></h4>
+<h4><strong>rename=&lt;relpath&gt;</strong><a class="headerlink" href="#rename-relpath" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>The relative path from the current directory in which to place the file.</p>
 </div></blockquote>
 </section>
 <section id="fileop-rename-path">
-<h4><strong>fileOp { ‘rename’:&lt;path&gt; … }</strong><a class="headerlink" href="#fileop-rename-path" title="Permalink to this heading"></a></h4>
+<h4><strong>fileOp { ‘rename’:&lt;path&gt; … }</strong><a class="headerlink" href="#fileop-rename-path" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>when a file is renamed at the source, to send it to subscribers, two notification messages
 result: one notification message is announced with the new name as the base_url,
@@ -493,7 +493,7 @@ will have ‘rename’ and ‘link’ or ‘directory’ elements in that case.<
 </div></blockquote>
 </section>
 <section id="identity">
-<h4><strong>identity</strong><a class="headerlink" href="#identity" title="Permalink to this heading"></a></h4>
+<h4><strong>identity</strong><a class="headerlink" href="#identity" title="Link to this heading"></a></h4>
 <p>The identity field gives a checksum useful for identifying the contents
 of a file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;identity&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;method&quot;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">method</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">}</span>
@@ -544,7 +544,7 @@ checksum based load balancing.</p>
 </section>
 </section>
 <section id="report-messages">
-<h3>Report Messages<a class="headerlink" href="#report-messages" title="Permalink to this heading"></a></h3>
+<h3>Report Messages<a class="headerlink" href="#report-messages" title="Link to this heading"></a></h3>
 <p>Some clients may return telemetry to the origin of downloaded data for troubleshooting
 and statistical purposes. Such notification messages, have the <em>v03.report</em> topic, and have a <em>report</em>
 header which is a JSON <em>object</em> with four fields:</p>
@@ -559,7 +559,7 @@ header which is a JSON <em>object</em> with four fields:</p>
 </div></blockquote>
 <p>Report messages should never include the <em>content</em> header (no file embedding in reports.)</p>
 <section id="report-code">
-<h4>Report_Code<a class="headerlink" href="#report-code" title="Permalink to this heading"></a></h4>
+<h4>Report_Code<a class="headerlink" href="#report-code" title="Link to this heading"></a></h4>
 <p>The report code is a three digit status code, adopted from the HTTP protocol (w3.org/IETF RFC 2616)
 encoded as text.  As per the RFC, any code returned should be interpreted as follows:</p>
 <blockquote>
@@ -635,15 +635,15 @@ during transfer) This only arises during multi-part transfers.</p></td>
 </table>
 </section>
 <section id="other-report-fields">
-<h4>Other Report Fields<a class="headerlink" href="#other-report-fields" title="Permalink to this heading"></a></h4>
+<h4>Other Report Fields<a class="headerlink" href="#other-report-fields" title="Link to this heading"></a></h4>
 <p><em>&lt;report_message&gt;</em> a string.</p>
 </section>
 </section>
 <section id="optional-headers">
-<h3>Optional Headers<a class="headerlink" href="#optional-headers" title="Permalink to this heading"></a></h3>
+<h3>Optional Headers<a class="headerlink" href="#optional-headers" title="Link to this heading"></a></h3>
 <p>for the file mirroring use case, additional headers will be present:</p>
 <section id="atime-mtime-mode">
-<h4><strong>atime,mtime,mode</strong><a class="headerlink" href="#atime-mtime-mode" title="Permalink to this heading"></a></h4>
+<h4><strong>atime,mtime,mode</strong><a class="headerlink" href="#atime-mtime-mode" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>man 2 stat - the linux/unix standard file metadata:
 access time, modification time, and permission (mode bits)
@@ -670,7 +670,7 @@ but they should not be stripped, as some consumers may understand and process th
 </section>
 </section>
 <section id="example">
-<h3>EXAMPLE<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
+<h3>EXAMPLE<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AMQP</span> <span class="n">TOPIC</span><span class="p">:</span> <span class="n">v03</span><span class="o">.</span><span class="n">NRDPS</span><span class="o">.</span><span class="n">GIF</span>
 <span class="n">MQTT</span> <span class="n">TOPIC</span><span class="p">:</span> <span class="n">exchange</span><span class="o">/</span><span class="n">v03</span><span class="o">/</span><span class="n">NRDPS</span><span class="o">/</span><span class="n">GIF</span><span class="o">/</span>
 <span class="n">Body</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;pubTime&quot;</span><span class="p">:</span> <span class="s2">&quot;201506011357.345&quot;</span><span class="p">,</span> <span class="s2">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;sftp://afsiext@cmcdataserver&quot;</span><span class="p">,</span> <span class="s2">&quot;relPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/data/NRPDS/outputs/NRDPS_HiRes_000.gif&quot;</span><span class="p">,</span>
@@ -700,7 +700,7 @@ but they should not be stripped, as some consumers may understand and process th
 </div>
 </section>
 <section id="another-example">
-<h3>Another example<a class="headerlink" href="#another-example" title="Permalink to this heading"></a></h3>
+<h3>Another example<a class="headerlink" href="#another-example" title="Link to this heading"></a></h3>
 <p>The post resulting from the following sr_watch command, noticing creation of the file ‘foo’:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sr_watch</span> <span class="o">-</span><span class="n">pbu</span> <span class="n">sftp</span><span class="p">:</span><span class="o">//</span><span class="n">stanley</span><span class="nd">@mysftpserver</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="o">-</span><span class="n">path</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">foo</span> <span class="o">-</span><span class="n">pb</span> <span class="n">amqp</span><span class="p">:</span><span class="o">//</span><span class="n">broker</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -726,7 +726,7 @@ the number of block of that size <em>1</em>, the remaining bytes <em>0</em>, the
 current block <em>0</em>, a flag <em>d</em> meaning the md5 checksum is
 performed on the data, and the checksum <em>25d231ec0ae3c569ba27ab7a74dd72ce</em>.</p>
 <section id="optimization-possibilities">
-<h4>Optimization Possibilities<a class="headerlink" href="#optimization-possibilities" title="Permalink to this heading"></a></h4>
+<h4>Optimization Possibilities<a class="headerlink" href="#optimization-possibilities" title="Link to this heading"></a></h4>
 <p>optimization goal is for readabilty and ease of implementation, much more
 than efficiency or performance. There are many optimizations to reduce
 overheads of various sorts, all of which will increase implementation
@@ -739,7 +739,7 @@ all the changes increase complexity, make notification messages more involved to
 </section>
 </section>
 <section id="standards">
-<h3>Standards<a class="headerlink" href="#standards" title="Permalink to this heading"></a></h3>
+<h3>Standards<a class="headerlink" href="#standards" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>Sarracenia relies on <a class="reference external" href="https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf">AMQP pre 1.0</a>
@@ -764,7 +764,7 @@ where appropriate.</p></li>
 </div></blockquote>
 </section>
 <section id="see-also">
-<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h3>
+<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="sr3.1.html">sr3(1)</a> - Sarracenia main command line interface.</p>
 <p><a class="reference external" href="sr3_post.1.html">sr3_post(1)</a> - post file notification messages (python implementation.)</p>
 <p><a class="reference external" href="sr3_cpost.1.html">sr3_cpost(1)</a> - post file announcemensts (C implementation.)</p>

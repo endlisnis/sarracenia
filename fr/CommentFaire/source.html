@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -123,9 +123,9 @@
 }
 </style>
 <section id="sources-de-donnees">
-<h1>Sources de données<a class="headerlink" href="#sources-de-donnees" title="Permalink to this heading"></a></h1>
+<h1>Sources de données<a class="headerlink" href="#sources-de-donnees" title="Link to this heading"></a></h1>
 <section id="injection-de-donnees-dans-un-reseau-de-pompes-metpx-sarracenia">
-<h2>Injection de données dans un réseau de pompes MetPX-Sarracenia<a class="headerlink" href="#injection-de-donnees-dans-un-reseau-de-pompes-metpx-sarracenia" title="Permalink to this heading"></a></h2>
+<h2>Injection de données dans un réseau de pompes MetPX-Sarracenia<a class="headerlink" href="#injection-de-donnees-dans-un-reseau-de-pompes-metpx-sarracenia" title="Link to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>FIXME</strong> : Les sections manquantes sont mises en surbrillance par <strong>FIXME</strong>.
@@ -138,13 +138,13 @@ Mise en garde sur les stratégies de mise à jour des fichiers. Cas d’utilisat
 plutôt que d’émettre de nouveaux fichiers.)</p>
 </div>
 <section id="enregistrement-de-revision">
-<h3>Enregistrement de révision<a class="headerlink" href="#enregistrement-de-revision" title="Permalink to this heading"></a></h3>
+<h3>Enregistrement de révision<a class="headerlink" href="#enregistrement-de-revision" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 </dl>
 <p>Une pompe de données Sarracenia est un serveur Web (ou sftp) avec des notifications pour que les
@@ -197,7 +197,7 @@ message de notifications, et ne sont donc pas affectés par cette limite.</p>
 </div>
 </section>
 <section id="injection-sftp">
-<h3>Injection SFTP<a class="headerlink" href="#injection-sftp" title="Permalink to this heading"></a></h3>
+<h3>Injection SFTP<a class="headerlink" href="#injection-sftp" title="Link to this heading"></a></h3>
 <p>L’utilisation directe de la commande sr_post(1) est le moyen le plus simple d’injecter des données
 dans le réseau de pompes. Pour utiliser sr_post, vous devez savoir:</p>
 <ul class="simple">
@@ -293,7 +293,7 @@ alors http fonctionnerait, ou si la pompe de données et le serveur source parta
 alors même une URL de fichier pourrait fonctionner.</p>
 </section>
 <section id="injection-http">
-<h3>Injection HTTP<a class="headerlink" href="#injection-http" title="Permalink to this heading"></a></h3>
+<h3>Injection HTTP<a class="headerlink" href="#injection-http" title="Link to this heading"></a></h3>
 <p>Si nous prenons un cas similaire, mais dans ce cas, il y a un espace accessible http,
 les étapes sont les mêmes ou même plus simples si aucune authentification n’est requise pour la pompe
 pour acquérir les données. Il faut installer un serveur Web d’une sorte ou d’une autre.</p>
@@ -340,7 +340,7 @@ donc la création d’une vraie démo est différée.</p>
 </div>
 </section>
 <section id="interrogation-de-sources-externes">
-<h3>Interrogation de sources externes<a class="headerlink" href="#interrogation-de-sources-externes" title="Permalink to this heading"></a></h3>
+<h3>Interrogation de sources externes<a class="headerlink" href="#interrogation-de-sources-externes" title="Link to this heading"></a></h3>
 <p>Certaines sources sont intrinsèquement éloignées, et nous sommes incapables de les intéresser ou de les affecter.
 On peut configurer sr_poll pour extraire des données de sources externes, généralement des sites Web.
 La commande sr_poll s’exécute généralement comme un singleton qui suit les nouveautés dans une arborescence de source
@@ -356,7 +356,7 @@ pour l’utiliser.</p>
 </div>
 </section>
 <section id="messages-de-rapport">
-<h3>Messages de rapport<a class="headerlink" href="#messages-de-rapport" title="Permalink to this heading"></a></h3>
+<h3>Messages de rapport<a class="headerlink" href="#messages-de-rapport" title="Link to this heading"></a></h3>
 <p>Si le sr_post a fonctionné, cela signifie que la pompe a accepté de jeter un coup d’œil sur votre dossier.
 Pour savoir où vont vos données par la suite, il faut examiner le fichiers de journalisation de la source.
 Il est également important de noter que la pompe initiale, ou toute autre pompe
@@ -377,7 +377,7 @@ post-traitement arbitraire des messages de rapport à l’aide de plugins on_mes
 </div>
 </section>
 <section id="fichiers-volumineux">
-<h3>Fichiers volumineux<a class="headerlink" href="#fichiers-volumineux" title="Permalink to this heading"></a></h3>
+<h3>Fichiers volumineux<a class="headerlink" href="#fichiers-volumineux" title="Link to this heading"></a></h3>
 <p>Les fichiers plus volumineux ne sont pas envoyés en tant que bloc unique. Ils sont envoyés en pièces et chaque pièce
 a une empreinte digitale, de sorte que lorsque les fichiers sont mis à jour, les parties inchangées
 ne pas pas envoyé à nouveau. Il existe un seuil par défaut intégré dans les commandes sr_,
@@ -392,7 +392,7 @@ chaque partie.  Cela permet aux expéditeurs de surveiller la progression de la 
 fichiers.</p>
 </section>
 <section id="fiabilite-et-sommes-de-controle">
-<h3>Fiabilité et sommes de contrôle<a class="headerlink" href="#fiabilite-et-sommes-de-controle" title="Permalink to this heading"></a></h3>
+<h3>Fiabilité et sommes de contrôle<a class="headerlink" href="#fiabilite-et-sommes-de-controle" title="Link to this heading"></a></h3>
 <p>Chaque donnée injectée dans le réseau de pompage doit avoir une empreinte digitale unique (ou somme de contrôle).
 Les données circuleront si elles sont nouvelles, et déterminer si les données sont nouvelles est basé sur l’empreinte digitale.
 Pour obtenir de la fiabilité dans un réseau sarracenia, plusieurs sources indépendantes sont provisionnées.
@@ -444,7 +444,7 @@ entraînera la réexpédition de l’intégralité du fichier lorsqu’ils seron
 </div>
 </section>
 <section id="en-tetes-d-utilisateur">
-<h3>En-têtes d’utilisateur<a class="headerlink" href="#en-tetes-d-utilisateur" title="Permalink to this heading"></a></h3>
+<h3>En-têtes d’utilisateur<a class="headerlink" href="#en-tetes-d-utilisateur" title="Link to this heading"></a></h3>
 <p>Que se passe-t-il s’il y a un élément de métadonnées qu’une source de données a choisi pour une raison quelconque de ne pas
 inclure dans la hiérarchie des noms de fichiers ? Comment les consommateurs de données peuvent-ils connaître ces informations sans avoir
 à télécharger le fichier afin de déterminer qu’il n’est pas intéressant. Un exemple serait les
@@ -470,7 +470,7 @@ aux cas simples. Dans ce cas précis, il est probablement plus approprié de met
 plugin on_post pour les fichiers Common Alerting Protocol pour extraire les informations d’en-tête ci-dessus et
 les placer dans les en-têtes de message de notification pour chaque alerte.</p>
 <section id="considerations-relatives-a-lefficacite">
-<h4>Considérations relatives à l’efficacité<a class="headerlink" href="#considerations-relatives-a-lefficacite" title="Permalink to this heading"></a></h4>
+<h4>Considérations relatives à l’efficacité<a class="headerlink" href="#considerations-relatives-a-lefficacite" title="Link to this heading"></a></h4>
 <p>Il n’est pas recommandé de mettre une logique trop complexe dans les scripts du plugin, car ils s’exécutent de manière synchrone avec
 les opérations post et receive. Notez que l’utilisation des installations intégrées d’AMQP (en-têtes) est faite pour
 être explicitement aussi efficace que possible. À titre d’exemple extrême, inclure du code XML codé dans les messages de notification
@@ -493,7 +493,7 @@ affectera le taux de traitement.</p>
 </section>
 </section>
 <section id="quickly-announcing-very-large-trees-on-linux">
-<h1>Quickly Announcing Very Large Trees On Linux<a class="headerlink" href="#quickly-announcing-very-large-trees-on-linux" title="Permalink to this heading"></a></h1>
+<h1>Quickly Announcing Very Large Trees On Linux<a class="headerlink" href="#quickly-announcing-very-large-trees-on-linux" title="Link to this heading"></a></h1>
 <p>Pour mettre en miroir de très grands arbres (millions de fichiers) en temps réel, il faut trop de temps pour des outils comme rsync
 ou trouvez pour parcourir et générer des listes de fichiers à copier. Sous Linux, on peut intercepter les appels pour des
 opérations de fichiers en utilisant la technique bien connue de la bibliothèque de shim. Cette technique fournit virtuellement des

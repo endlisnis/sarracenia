@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -126,7 +126,7 @@
 }
 </style>
 <section id="considerations-relatives-au-deploiement">
-<h1>Considérations relatives au déploiement<a class="headerlink" href="#considerations-relatives-au-deploiement" title="Permalink to this heading"></a></h1>
+<h1>Considérations relatives au déploiement<a class="headerlink" href="#considerations-relatives-au-deploiement" title="Link to this heading"></a></h1>
 <p>Les pompes de données Sarracenia sont souvent placées dans des réseaux de conceptions près des points de démarcation, pour fournir
 un point de démarcation au niveau de l’application pour permettre l’analyse de sécurité et limiter la visibilité
 dans différentes zones.  Les pompes peuvent avoir tous les services incorporés sur un seul serveur,
@@ -134,7 +134,7 @@ ou généralement le broker principal est sur un nœud dédié, et les nœuds qu
 sont appelés <em>Moteurs de transport</em> (Transport Engines). Dans les déploiements hautes performances, chaque moteur de transport
 peut avoir un courtier local pour s’occuper des transferts et des transformations locales.</p>
 <section id="engins-de-transport">
-<h2>Engins de transport<a class="headerlink" href="#engins-de-transport" title="Permalink to this heading"></a></h2>
+<h2>Engins de transport<a class="headerlink" href="#engins-de-transport" title="Link to this heading"></a></h2>
 <p>Les engins de transport sont les serveurs de données interrogés par les abonnés,
 par les utilisateurs finaux ou d’autres pompes. Les abonnés lisent les avis
 et récupèrent les données correspondantes, en utilisant le protocole indiqué.
@@ -144,7 +144,7 @@ des serveurs eux-mêmes. Notez également que les protocoles additionnels peuven
 être activés par l’utilisation des plugins do_ plugins, tels que décrit dans
 le Guide de programmation.</p>
 <section id="ipv6">
-<h3>IPv6<a class="headerlink" href="#ipv6" title="Permalink to this heading"></a></h3>
+<h3>IPv6<a class="headerlink" href="#ipv6" title="Link to this heading"></a></h3>
 <p>Une pompe d’échantillonnage a été implémentée sur un petit VPS avec IPv6 activé.
 Un client lointain connecté au courtier rabbitmq en utilisant IPv6, et
 l’abonnement au httpd apache httpd a travaillé sans problèmes. <em>It just works</em>.
@@ -157,7 +157,7 @@ l’une ou l’autre IP)) a été réalisée.</p>
 </section>
 </section>
 <section id="plans-de-pompes">
-<h2>Plans de Pompes<a class="headerlink" href="#plans-de-pompes" title="Permalink to this heading"></a></h2>
+<h2>Plans de Pompes<a class="headerlink" href="#plans-de-pompes" title="Link to this heading"></a></h2>
 <p>Il existe de nombreux arrangements différents dans lesquels la Sarracenia peut
 être utilisée.</p>
 <dl class="simple">
@@ -185,7 +185,7 @@ miroitent des données</p>
 </dd>
 </dl>
 <section id="dataless-ou-s-0">
-<h3>Dataless ou S=0<a class="headerlink" href="#dataless-ou-s-0" title="Permalink to this heading"></a></h3>
+<h3>Dataless ou S=0<a class="headerlink" href="#dataless-ou-s-0" title="Link to this heading"></a></h3>
 <p>Une configuration qui n’inclut que le courtier AMQP. Cette configuration peut
 être utilisée lorsque les utilisateurs ont accès à de l’espace disque aux
 deux extrémités et n’ont besoin que d’un médiateur. Voici la configuration
@@ -203,7 +203,7 @@ utiliser rabbitmq clustering pour les besoins de haute disponibilité
 (voir ci-dessous).</p>
 </section>
 <section id="dataless-vannee">
-<h3>Dataless vannée<a class="headerlink" href="#dataless-vannee" title="Permalink to this heading"></a></h3>
+<h3>Dataless vannée<a class="headerlink" href="#dataless-vannee" title="Link to this heading"></a></h3>
 <p>Un autre exemple de pompe sans données serait de fournir une sélection de
 produits à partir de deux pompes en amont en utilisant sr_winnow. Le sr_winnow
 est alimenté par des pelles provenant de sources en amont.  les clients locaux
@@ -217,7 +217,7 @@ des données à partir de n’importe quel centre national qui produit les
 données en premier.</p>
 </section>
 <section id="dataless-avec-sr-poll">
-<h3>Dataless Avec Sr_poll<a class="headerlink" href="#dataless-avec-sr-poll" title="Permalink to this heading"></a></h3>
+<h3>Dataless Avec Sr_poll<a class="headerlink" href="#dataless-avec-sr-poll" title="Link to this heading"></a></h3>
 <p>Le programme sr_poll peut sonder (vérifier si les produits sur un serveur
 distant sont prêts ou modifiés.)  Pour chaque produit, il émet une avis sur la
 pompe locale. On pourrait utiliser sr_subscribe n’importe où, écoutez les
@@ -225,7 +225,7 @@ annonces et obtenez les produits (à condition que l’option avoir les
 informations d’identification pour y accéder)</p>
 </section>
 <section id="autonome">
-<h3>Autonome<a class="headerlink" href="#autonome" title="Permalink to this heading"></a></h3>
+<h3>Autonome<a class="headerlink" href="#autonome" title="Link to this heading"></a></h3>
 <p>Dans une configuration autonome, il n’y a qu’un seul nœud dans la configuration.
 Il exécute tous les composants et n’en partage aucun avec d’autres nœuds.
 Cela signifie le courtier et les services de données tels que sftp et sftp.
@@ -239,7 +239,7 @@ sur un seul serveur. Les systèmes <em>ddi</em> sont généralement configurés 
 façon.</p>
 </section>
 <section id="commutateurs-routage">
-<h3>Commutateurs/Routage<a class="headerlink" href="#commutateurs-routage" title="Permalink to this heading"></a></h3>
+<h3>Commutateurs/Routage<a class="headerlink" href="#commutateurs-routage" title="Link to this heading"></a></h3>
 <p>Dans la configuration de commutation/routage, il y a une paire de machines
 qui font tourner un seul courtier pour un pool de moteurs de transfert. Ainsi,
 chaque transfert engine´s vue de l’espace fichier est local, mais les files
@@ -260,16 +260,16 @@ configurés.</p>
 </section>
 </section>
 <section id="considerations-de-securite">
-<h2>Considérations de sécurité<a class="headerlink" href="#considerations-de-securite" title="Permalink to this heading"></a></h2>
+<h2>Considérations de sécurité<a class="headerlink" href="#considerations-de-securite" title="Link to this heading"></a></h2>
 <p>Cette section a pour but de donner un aperçu à ceux qui ont besoin d’effectuer un examen de sécurité.
 de l’application avant la mise en œuvre.</p>
 <section id="client">
-<h3>Client<a class="headerlink" href="#client" title="Permalink to this heading"></a></h3>
+<h3>Client<a class="headerlink" href="#client" title="Link to this heading"></a></h3>
 <p>Toutes les informations d’identification utilisées par l’application sont stockées.
 dans le fichier ~/.config/sr3/credentials.conf, et ce fichier est forcé à 600 permissions.</p>
 </section>
 <section id="serveur-courtier">
-<h3>Serveur/courtier<a class="headerlink" href="#serveur-courtier" title="Permalink to this heading"></a></h3>
+<h3>Serveur/courtier<a class="headerlink" href="#serveur-courtier" title="Link to this heading"></a></h3>
 <p>L’authentification utilisée par les moteurs de transport est indépendante de celle utilisée pour les courtiers. Une sécurité
 l’évaluation des courtiers rabbitmq et des différents moteurs de transfert en service est nécessaire pour évaluer
 la sécurité globale d’un déploiement donné.</p>
@@ -301,7 +301,7 @@ Les files d’attente pour s’y lier, et établir un usage séparé du courtier
 invoqué régulièrement à la recherche de mauvaise utilisation et de le nettoyer.</p>
 </section>
 <section id="validation-des-entrees">
-<h3>Validation des entrées<a class="headerlink" href="#validation-des-entrees" title="Permalink to this heading"></a></h3>
+<h3>Validation des entrées<a class="headerlink" href="#validation-des-entrees" title="Link to this heading"></a></h3>
 <p>Les utilisateurs tels qu’Alice publient leurs messages sur leur propre échange
 (xs_Alice). Les processus qui lisent à partir de les échanges d’utilisateurs
 ont une responsabilité en matière de validation. Le processus qui lit xs_Alice
@@ -344,7 +344,7 @@ indique soit une boucle, une mauvaise utilisation).</p></li>
 </div>
 </section>
 <section id="acces-au-systeme-privilegie">
-<h3>Accès au système privilégié<a class="headerlink" href="#acces-au-systeme-privilegie" title="Permalink to this heading"></a></h3>
+<h3>Accès au système privilégié<a class="headerlink" href="#acces-au-systeme-privilegie" title="Link to this heading"></a></h3>
 <p>Les utilisateurs ordinaires (sources et abonnés) exploitent sarra dans le cadre
 de leurs propres permissions sur le système, comme une commande scp. Le compte
 administrateur de la pompe fonctionne également sous un compte utilisateur linux
@@ -360,7 +360,7 @@ nécessaire pour cela non plus.</p>
 </section>
 </section>
 <section id="glossaire">
-<h2>Glossaire<a class="headerlink" href="#glossaire" title="Permalink to this heading"></a></h2>
+<h2>Glossaire<a class="headerlink" href="#glossaire" title="Link to this heading"></a></h2>
 <p>La documentation sur la Sarracenia utilise un certain nombre de mots d’une
 manière particulière. Ce glossaire devrait faciliter la compréhension du
 reste de la documentation.</p>

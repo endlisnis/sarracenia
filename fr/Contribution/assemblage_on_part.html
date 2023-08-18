@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -124,9 +124,9 @@
 }
 </style>
 <section id="reassemblage-de-fichiers">
-<h1>Réassemblage de fichiers<a class="headerlink" href="#reassemblage-de-fichiers" title="Permalink to this heading"></a></h1>
+<h1>Réassemblage de fichiers<a class="headerlink" href="#reassemblage-de-fichiers" title="Link to this heading"></a></h1>
 <section id="composants">
-<h2>Composants<a class="headerlink" href="#composants" title="Permalink to this heading"></a></h2>
+<h2>Composants<a class="headerlink" href="#composants" title="Link to this heading"></a></h2>
 <p><strong>sr_watch:</strong> Vous pouvez utiliser sr_watch pour surveiller un répertoire pour les fichiers
 de partition entrants (.Part) de sr_subscribe ou sr_sender, les deux ont la possibilité d’envoyer
 un fichier dans des partitions. Dans le fichier de configuration pour sr_watch les paramètres
@@ -146,7 +146,7 @@ importants à inclure sont les suivants :</p>
 <p><strong>sr_file:</strong> Contient le code de réassemblage… L’algorithme est décrit ci-dessous</p>
 </section>
 <section id="algorithme">
-<h2>Algorithme<a class="headerlink" href="#algorithme" title="Permalink to this heading"></a></h2>
+<h2>Algorithme<a class="headerlink" href="#algorithme" title="Link to this heading"></a></h2>
 <p>Après avoir été déclenché par un fichier de pièce téléchargé :</p>
 <blockquote>
 <div><ul>
@@ -190,7 +190,7 @@ importants à inclure sont les suivants :</p>
 </div></blockquote>
 </section>
 <section id="test">
-<h2>Test<a class="headerlink" href="#test" title="Permalink to this heading"></a></h2>
+<h2>Test<a class="headerlink" href="#test" title="Link to this heading"></a></h2>
 <p>Créer un fichier de configuration sr_watch selon le modèle ci-dessus.
 Démarrez le processus en tapant la commande suivante : <code class="docutils literal notranslate"><span class="pre">`sr_watch</span> <span class="pre">foreground</span> <span class="pre">path/to/config_file.cfg`</span></code></p>
 <p>Ensuite, créez un fichier de configuration d’abonné et incluez <code class="docutils literal notranslate"><span class="pre">`inplace</span> <span class="pre">off`</span></code> afin que le fichier

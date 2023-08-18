@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -135,7 +135,7 @@
 }
 </style>
 <section id="deployment-considerations">
-<h1>Deployment Considerations<a class="headerlink" href="#deployment-considerations" title="Permalink to this heading"></a></h1>
+<h1>Deployment Considerations<a class="headerlink" href="#deployment-considerations" title="Link to this heading"></a></h1>
 <p>Sarracenia data pumps are often placed in network designs near demarcation points, to provide
 an application level demarcation point to allow for security scanning and to limit visibility
 into different zones.  Pumps may either have all services incorporated on a single server,
@@ -143,7 +143,7 @@ or commonly the main broker is on a dedicated node, and the nodes that do the da
 are called <em>Transport Engines.</em>  In high performance deployments, each transport engine
 may have a local broker to deal with local transfers and transformations.</p>
 <section id="transport-engines">
-<h2>Transport Engines<a class="headerlink" href="#transport-engines" title="Permalink to this heading"></a></h2>
+<h2>Transport Engines<a class="headerlink" href="#transport-engines" title="Link to this heading"></a></h2>
 <p>Transport engines are the data servers queried by subscribers, by the end users, or other pumps.
 The subscribers read the notices and fetch the corresponding data, using the indicated protocol.
 The software to serve the data can be either SFTP or HTTP (or HTTPS.) For specifics of
@@ -151,7 +151,7 @@ configuring the servers for use, please consult the documentation of the servers
 Also note that additional protocols can be enabled through the use of do_ plugins, as
 described in the Programming Guide.</p>
 <section id="ipv6">
-<h3>IPv6<a class="headerlink" href="#ipv6" title="Permalink to this heading"></a></h3>
+<h3>IPv6<a class="headerlink" href="#ipv6" title="Link to this heading"></a></h3>
 <p>A sample pump was implemented on a small VPS with IPv6 enabled. A client
 from far away connected to the rabbitmq broker using IPv6, and the
 subscription to the apache httpd worked without issues. <em>It just works</em>. There
@@ -163,7 +163,7 @@ testing of IP addresses in URLs (in either IP version) has been done.</p>
 </section>
 </section>
 <section id="designs">
-<h2>Designs<a class="headerlink" href="#designs" title="Permalink to this heading"></a></h2>
+<h2>Designs<a class="headerlink" href="#designs" title="Link to this heading"></a></h2>
 <p>There are many different arrangements in which sarracenia can be used.</p>
 <dl class="simple">
 <dt>Dataless</dt><dd><p>where one runs just sarracenia on top of a broker with no local transfer engines.
@@ -185,7 +185,7 @@ mirror of data</p>
 </dd>
 </dl>
 <section id="dataless-or-s-0">
-<h3>Dataless or S=0<a class="headerlink" href="#dataless-or-s-0" title="Permalink to this heading"></a></h3>
+<h3>Dataless or S=0<a class="headerlink" href="#dataless-or-s-0" title="Link to this heading"></a></h3>
 <p>A configuration which includes only the AMQP broker. This configuration can be used when users
 have access to disk space on both ends and only need a mediator. This is the configuration
 of sftp.science.gc.ca, where the HPC disk space provides the storage so that the pump does
@@ -199,7 +199,7 @@ subscribers in the SPC to obtain data from either edm or dor.</p>
 clustering for high availability requirements (see rabbitmq clustering below.)</p>
 </section>
 <section id="winnowed-dataless">
-<h3>Winnowed Dataless<a class="headerlink" href="#winnowed-dataless" title="Permalink to this heading"></a></h3>
+<h3>Winnowed Dataless<a class="headerlink" href="#winnowed-dataless" title="Link to this heading"></a></h3>
 <p>Another example of a dataless pump would be to provide product selection from two upstream
 sources using sr_winnow. The sr_winnow is fed by shovels from upstream sources, and
 the local clients just connect to this local pump. sr_winnow takes
@@ -211,14 +211,14 @@ is how feeds are implemented in the Storm prediction centres of ECCC, where they
 may download data from whichever national hub produces data first.</p>
 </section>
 <section id="dataless-with-sr-poll">
-<h3>Dataless With Sr_poll<a class="headerlink" href="#dataless-with-sr-poll" title="Permalink to this heading"></a></h3>
+<h3>Dataless With Sr_poll<a class="headerlink" href="#dataless-with-sr-poll" title="Link to this heading"></a></h3>
 <p>The sr_poll program can verify if products on a remote server are ready or modified.
 For each of the product, it emits an notification message on the local pump. One could use
 sr_subscribe anywhere, listen to notification messages and get the products (provided the
 credentials to access it)</p>
 </section>
 <section id="standalone">
-<h3>Standalone<a class="headerlink" href="#standalone" title="Permalink to this heading"></a></h3>
+<h3>Standalone<a class="headerlink" href="#standalone" title="Link to this heading"></a></h3>
 <p>In a standalone configuration, there is only one node in the configuration. It runs all components
 and shares none with any other nodes. That means the Broker and data services such as sftp and
 apache are on the one node.</p>
@@ -228,7 +228,7 @@ It is just a matter of installing and configuring all a data flow engine, a brok
 itself on a single server. The <em>ddi</em> systems are generally configured this way.</p>
 </section>
 <section id="switching-routing">
-<h3>Switching/Routing<a class="headerlink" href="#switching-routing" title="Permalink to this heading"></a></h3>
+<h3>Switching/Routing<a class="headerlink" href="#switching-routing" title="Link to this heading"></a></h3>
 <p>In a switching/routing configuration, there is a pair of machines running a
 single broker for a pool of transfer engines. So each transfer engine’s view of
 the file space is local, but the queues are global to the pump.</p>
@@ -245,16 +245,16 @@ local traffic, and only publish final products to the main broker.  This is how
 </section>
 </section>
 <section id="security-considerations">
-<h2>Security Considerations<a class="headerlink" href="#security-considerations" title="Permalink to this heading"></a></h2>
+<h2>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading"></a></h2>
 <p>This section is meant to provide insight to those who need to perform a security review
 of the application prior to implementation.</p>
 <section id="client">
-<h3>Client<a class="headerlink" href="#client" title="Permalink to this heading"></a></h3>
+<h3>Client<a class="headerlink" href="#client" title="Link to this heading"></a></h3>
 <p>All credentials used by the application are stored
 in the ~/.config/sarra/credentials.conf file, and that file is forced to 600 permissions.</p>
 </section>
 <section id="server-broker">
-<h3>Server/Broker<a class="headerlink" href="#server-broker" title="Permalink to this heading"></a></h3>
+<h3>Server/Broker<a class="headerlink" href="#server-broker" title="Link to this heading"></a></h3>
 <p>Authentication used by transport engines is independent of that used for the brokers. A security
 assessment of rabbitmq brokers and the various transfer engines in use is needed to evaluate
 the overall security of a given deployment.</p>
@@ -286,7 +286,7 @@ queues to bind to it, and establish a separate usage of the broker unrelated to 
 for mis-use, and cleaning it up.</p>
 </section>
 <section id="input-validation">
-<h3>Input Validation<a class="headerlink" href="#input-validation" title="Permalink to this heading"></a></h3>
+<h3>Input Validation<a class="headerlink" href="#input-validation" title="Link to this heading"></a></h3>
 <p>Users such as Alice post their notification messages to their own exchange (xs_Alice). Processes which read from
 user exchanges have a responsibility for validation. The process that reads xs_Alice (likely an sr_sarra)
 will overwrite any <em>source</em> or <em>cluster</em> heading written into the notification message with the correct values for
@@ -318,7 +318,7 @@ constraints are a little different:</p>
 </div>
 </section>
 <section id="privileged-system-access">
-<h3>Privileged System Access<a class="headerlink" href="#privileged-system-access" title="Permalink to this heading"></a></h3>
+<h3>Privileged System Access<a class="headerlink" href="#privileged-system-access" title="Link to this heading"></a></h3>
 <p>Ordinary (sources, and subscribers) users operate sarra within their own permissions on the system,
 like an scp command. The pump administrator account also runs under a normal linux user account and,
 given requires privileges only on the AMQP broker, but nothing on the underlying operating system.
@@ -329,7 +329,7 @@ the files will belong to the pump administrator, and privileged access is not re
 </section>
 </section>
 <section id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading"></a></h2>
+<h2>Glossary<a class="headerlink" href="#glossary" title="Link to this heading"></a></h2>
 <p>Sarracenia documentation uses a number of words in a particular way.
 This glossary should make it easier to understand the rest of the documentation.</p>
 <dl>

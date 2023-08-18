@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -122,7 +122,7 @@
 </style>
 <p>Status: Pre-Draft</p>
 <section id="discussion-of-file-modification-propagation">
-<h1>Discussion of File Modification Propagation<a class="headerlink" href="#discussion-of-file-modification-propagation" title="Permalink to this heading"></a></h1>
+<h1>Discussion of File Modification Propagation<a class="headerlink" href="#discussion-of-file-modification-propagation" title="Link to this heading"></a></h1>
 <p>This was early thinking about how to deal with file updates.
 The early versions of the protocol only concerned itself with entire files.
 when the file sets are large enough, partial updates become very desirable.
@@ -143,7 +143,7 @@ discussions &amp; notes.</p>
 </dl>
 <p>the zsync algorithm is the right idea, can perhaps use it directly.</p>
 <section id="what-if-each-notification-is-for-a-block-not-a-file">
-<h2>What If Each Notification is for a Block, not a File ?<a class="headerlink" href="#what-if-each-notification-is-for-a-block-not-a-file" title="Permalink to this heading"></a></h2>
+<h2>What If Each Notification is for a Block, not a File ?<a class="headerlink" href="#what-if-each-notification-is-for-a-block-not-a-file" title="Link to this heading"></a></h2>
 <p>gedanken experiment… per block messages, rather than entire files ?
 what if the messages we send are all per block?</p>
 <p>Why is this really cool?</p>
@@ -192,7 +192,7 @@ of the file, if the current part is contiguous, it just appends (via lseek &amp;
 the data to the .sr§ file.  If not, it creates a separate .sr§&lt;blocknum&gt;</p>
 </section>
 <section id="sr-suffix">
-<h2>.sr§ suffix<a class="headerlink" href="#sr-suffix" title="Permalink to this heading"></a></h2>
+<h2>.sr§ suffix<a class="headerlink" href="#sr-suffix" title="Link to this heading"></a></h2>
 <p>but that means they advertise the parts… hmm… the names now mean something,
 We use the Section Character instead of part.  to avoid that, pick a name that
 is more unusual that .part something like .sr§partnum (using utf-8 interesting
@@ -211,7 +211,7 @@ the file they will just both write the same data multiple times (worst case.)</p
 do the file completion logic.</p>
 </section>
 <section id="how-to-select-chunksize">
-<h2>How to Select Chunksize<a class="headerlink" href="#how-to-select-chunksize" title="Permalink to this heading"></a></h2>
+<h2>How to Select Chunksize<a class="headerlink" href="#how-to-select-chunksize" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>source choice?</p></li>
@@ -243,7 +243,7 @@ but that is limited by the blocksize.
 Aesthetically, need to choose a size that dwarfs the overhead.</p>
 </section>
 <section id="if-we-do-blockwise-cksums-path-from-v00">
-<h2>if we do blockwise cksums, path from v00<a class="headerlink" href="#if-we-do-blockwise-cksums-path-from-v00" title="Permalink to this heading"></a></h2>
+<h2>if we do blockwise cksums, path from v00<a class="headerlink" href="#if-we-do-blockwise-cksums-path-from-v00" title="Link to this heading"></a></h2>
 <p>compatibility… upgrading…
 v00.notify alerts boil down to:</p>
 <p>v01.post could be:</p>
@@ -271,7 +271,7 @@ in which chase it would be:</p>
 <p>if there is validation on the blocking size, needs to be a way to deal with it.</p>
 </section>
 <section id="digression-about-zsync">
-<h2>Digression about ZSync<a class="headerlink" href="#digression-about-zsync" title="Permalink to this heading"></a></h2>
+<h2>Digression about ZSync<a class="headerlink" href="#digression-about-zsync" title="Link to this heading"></a></h2>
 <p>zsync is available in repositories  and zsync(1) is the existing download client.
 zsyncmake(1) builds the signatures, with a programmable block size.</p>
 <p>It looks ike zsync is usable as is?</p>
@@ -304,7 +304,7 @@ the new one.  The intent is not to replicate source trees, but large data sets.<
 or when the file is big enough, forking a zsync is no big deal? but mac &amp; win…</p>
 </section>
 <section id="server-protocol-considerations">
-<h2>Server/Protocol Considerations<a class="headerlink" href="#server-protocol-considerations" title="Permalink to this heading"></a></h2>
+<h2>Server/Protocol Considerations<a class="headerlink" href="#server-protocol-considerations" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>HTTP:</dt><dd><p>– uses byte range feature of HTTP.
 – FIXME: find samples from other email.</p>

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -125,7 +125,7 @@
 }
 </style>
 <section id="writing-flowcallback-plugins">
-<h1>Writing FlowCallback Plugins<a class="headerlink" href="#writing-flowcallback-plugins" title="Permalink to this heading"></a></h1>
+<h1>Writing FlowCallback Plugins<a class="headerlink" href="#writing-flowcallback-plugins" title="Link to this heading"></a></h1>
 <p>All Sarracenia components implement <em>the Flow</em> algorithm.
 Sarracenia’s main class is <em>sarracenia.flow</em> and the a great
 deal of core functionality is implemented using the class created to add
@@ -158,7 +158,7 @@ with Sarracenia, given in the
 that can be used as the basis for building custom ones.</p>
 <p>This guide describes how to build flow callback classes from scratch.</p>
 <section id="config-file-entries-to-use-flow-callbacks">
-<h2>Config File Entries to use Flow_Callbacks<a class="headerlink" href="#config-file-entries-to-use-flow-callbacks" title="Permalink to this heading"></a></h2>
+<h2>Config File Entries to use Flow_Callbacks<a class="headerlink" href="#config-file-entries-to-use-flow-callbacks" title="Link to this heading"></a></h2>
 <p>To add a callback to a a flow, a line is added to the config file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flowcb</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flowcb</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">Log</span>
 </pre></div>
@@ -189,7 +189,7 @@ argument will contain:</p>
 setting is used.</p>
 </section>
 <section id="worklists">
-<h2>Worklists<a class="headerlink" href="#worklists" title="Permalink to this heading"></a></h2>
+<h2>Worklists<a class="headerlink" href="#worklists" title="Link to this heading"></a></h2>
 <p>Besides option, the other main argument to after_accept and after_work callback
 routines is the worklist. The worklist is given to entry points occurring during notification message
 processing, and is a number of worklists of notification messages:</p>
@@ -213,7 +213,7 @@ so that they are acknowledged as received. Messages can only removed
 after the acknowledgement has been taken care of.</p>
 </section>
 <section id="logging">
-<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading"></a></h2>
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
 <p>Python has great built-in logging, and once has to just use the module
 in a normal, pythonic way, with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
@@ -247,7 +247,7 @@ include the lines:</p>
 </div>
 </section>
 <section id="initialization-and-settings">
-<h2>Initialization and Settings<a class="headerlink" href="#initialization-and-settings" title="Permalink to this heading"></a></h2>
+<h2>Initialization and Settings<a class="headerlink" href="#initialization-and-settings" title="Link to this heading"></a></h2>
 <p>The next step is declaring a class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Myclass</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
 </pre></div>
@@ -290,7 +290,7 @@ There are various <em>kinds</em> of options, where the declared type modifies th
 </div>
 </section>
 <section id="entry-points">
-<h2>Entry Points<a class="headerlink" href="#entry-points" title="Permalink to this heading"></a></h2>
+<h2>Entry Points<a class="headerlink" href="#entry-points" title="Link to this heading"></a></h2>
 <p>Other entry_points, extracted from sarracenia/flowcb/__init__.py</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">ack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">messagelist</span><span class="p">):</span>
      <span class="n">Task</span><span class="p">:</span> <span class="n">acknowledge</span> <span class="n">notification</span> <span class="n">messages</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">gather</span> <span class="n">source</span><span class="o">.</span>
@@ -367,7 +367,7 @@ There are various <em>kinds</em> of options, where the declared type modifies th
 </div>
 </section>
 <section id="new-fields">
-<h2>new_* Fields<a class="headerlink" href="#new-fields" title="Permalink to this heading"></a></h2>
+<h2>new_* Fields<a class="headerlink" href="#new-fields" title="Link to this heading"></a></h2>
 <p>During processing of notification messages, the original standard field values are generally left un-changed (as-read in.)
 To change fields of notification messages forwarded to downstream consumers, one modifies new_field instead
 of the one from the message, as the original is necessary for successful upstream retrieval:</p>
@@ -382,7 +382,7 @@ of the one from the message, as the original is necessary for successful upstrea
 </ul>
 </section>
 <section id="sample-flowcb-sub-class">
-<h2>Sample Flowcb Sub-Class<a class="headerlink" href="#sample-flowcb-sub-class" title="Permalink to this heading"></a></h2>
+<h2>Sample Flowcb Sub-Class<a class="headerlink" href="#sample-flowcb-sub-class" title="Link to this heading"></a></h2>
 <p>This is an example callback class file (gts2wis2.py) that accepts files whose
 names begin with AHL’s, and renames the directory tree to a different standard,
 the evolving one for the WMO WIS 2.0 (for more information on that module:
@@ -467,7 +467,7 @@ may occur, and the notification message is added to the failed worklist, and wil
 processed by later plugins.</p>
 </section>
 <section id="download-renaming">
-<h2>Download Renaming<a class="headerlink" href="#download-renaming" title="Permalink to this heading"></a></h2>
+<h2>Download Renaming<a class="headerlink" href="#download-renaming" title="Link to this heading"></a></h2>
 <p>Sometimes the URL used to obtain data from a server isn’t the same as the name
 one wants to assign to the downloaded result. This occurs often when polling upstream
 arbitrary web services. For such cases the message format defines the <em>retrievePath</em>, or
@@ -490,11 +490,11 @@ forwarding to downstream clients. the <em>relPath</em> needs to be adjusted.</p>
 used for simplicity.</p>
 </section>
 <section id="web-sites-with-non-standard-file-listings">
-<h2>Web Sites with non-standard file listings<a class="headerlink" href="#web-sites-with-non-standard-file-listings" title="Permalink to this heading"></a></h2>
+<h2>Web Sites with non-standard file listings<a class="headerlink" href="#web-sites-with-non-standard-file-listings" title="Link to this heading"></a></h2>
 <p>The poll/nasa_mls</p>
 </section>
 <section id="other-examples">
-<h2>Other Examples<a class="headerlink" href="#other-examples" title="Permalink to this heading"></a></h2>
+<h2>Other Examples<a class="headerlink" href="#other-examples" title="Link to this heading"></a></h2>
 <p>Subclassing of Sarracenia.flowcb is used internally to do a lot of core work.
 It’s a good idea to look at the sarracenia source code itself. For example:</p>
 <ul class="simple">
@@ -519,7 +519,7 @@ that functionality.</p></li>
 </ul>
 </section>
 <section id="modifying-files-in-flight">
-<h2>Modifying Files in Flight<a class="headerlink" href="#modifying-files-in-flight" title="Permalink to this heading"></a></h2>
+<h2>Modifying Files in Flight<a class="headerlink" href="#modifying-files-in-flight" title="Link to this heading"></a></h2>
 <p>The sarracenia.transfer class has an on_data entry point:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunk</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
 <span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
@@ -559,7 +559,7 @@ file:</p>
 custome transfer protocol.</p>
 </section>
 <section id="subclassing-flow">
-<h2>Subclassing Flow<a class="headerlink" href="#subclassing-flow" title="Permalink to this heading"></a></h2>
+<h2>Subclassing Flow<a class="headerlink" href="#subclassing-flow" title="Link to this heading"></a></h2>
 <p>If none of the built-in components ( poll, post, sarra, shovel, subscribe, watch, winnow ) have the
 behaviour desired, one can build a custom component to do the right thing by sub-classing flow.</p>
 <p>Copy one of the flow sub-classes from the source code, and modify to taste.  In the configuration

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -107,14 +107,14 @@
 }
 </style>
 <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
 <p><strong>MetPX-Sarracenia is a publication/subscription management toolkit for publication of real-time data.</strong></p>
 <p>Sarracenia adds a message queueing protocol layer of file availability notifications to file and web servers to drive workflows that transfer and transform data continuously in a real-time and mission-critical context.</p>
 <p>A main goal of the toolkit is to link together processes so that they avoid having to poll (repeatedly query, list, and then filter) servers or directories. Sarracenia can also be used to implement an initial upstream poll, which is still win because tasks beyond initial identification of the file to process can be driven by notifications, which are substantially cheaper (in i/o and processing) than polling even local directories.</p>
 <p>This management layer provides simple methods to get parallellism in file transfers, robustness in the face of failures, load balancing among steps in a workflow, and takes care of many failure modes, so application developers do not need to. Hundreds of such flows can be composed together into large data pumps and operated using common methods familiar to Linux System Administrators.</p>
 <p>Design Video from 2015: <a class="reference external" href="https://www.youtube.com/watch?v=G47DRwzwckk">Sarracenia in 10 Minutes Video</a></p>
 <section id="longer-overview">
-<h2>Longer Overview<a class="headerlink" href="#longer-overview" title="Permalink to this heading"></a></h2>
+<h2>Longer Overview<a class="headerlink" href="#longer-overview" title="Link to this heading"></a></h2>
 <p><strong>MetPX-Sarracenia</strong> is a configuration file and command line driven service to download files as they are made available. One can subscribe to a Sarracenia enabled web server (called a data pump) and select data to stream from it, using linux, Mac, or Windows. More than that:</p>
 <ul class="simple">
 <li><p>It avoids people having to poll the web server to know if their data is there yet (can be 100x less work for client and server from just this).</p></li>
@@ -150,7 +150,7 @@ while external consumers access end products. Queues between components provides
 </ul>
 </section>
 <section id="implementations">
-<h2>Implementations<a class="headerlink" href="#implementations" title="Permalink to this heading"></a></h2>
+<h2>Implementations<a class="headerlink" href="#implementations" title="Link to this heading"></a></h2>
 <p>Part of Sarracenia defines an application layer message over AMQP as a transport. Sarracenia has multiple implementations:</p>
 <ul class="simple">
 <li><p>Sarracenia itself ( <a class="reference external" href="http://github.com/MetPX/sarracenia">http://github.com/MetPX/sarracenia</a> ) a complete reference implementation in Python &gt;= 3.4. It runs on Linux, Mac, and Windows.</p></li>
@@ -162,7 +162,7 @@ while external consumers access end products. Queues between components provides
 </ul>
 <p>More implementations are welcome.</p>
 <section id="why-not-just-use-rsync">
-<h3>Why Not Just Use Rsync?<a class="headerlink" href="#why-not-just-use-rsync" title="Permalink to this heading"></a></h3>
+<h3>Why Not Just Use Rsync?<a class="headerlink" href="#why-not-just-use-rsync" title="Link to this heading"></a></h3>
 <p>There are a number of tree replication tools that are widely used, why invent another? <a class="reference external" href="https://rsync.samba.org/">RSync</a>, for example is a fabulous tool, and we
 recommend it highly for many use cases. But there are times when Sarracenia can go 72 times faster than rsync: Case Study: <a class="reference external" href="History/HPC_Mirroring_Use_Case.html">HPC Mirroring Use Case</a></p>
 <p>Rsync and other tools are comparison based (dealing with a single Source and Destination). Sarracenia, while it does not require or use multi-casting, is oriented towards delivery to multiple receivers, particularly when the source does not know who all the receivers are (pub/sub). Where rsync synchronization is typically done by walking a large tree, that means that the synchronization interval is inherently limited to the frequency at which you can do the file tree walks (in large trees, that can be a long time.) Each file tree walk reads the entire tree in order to generate signatures, so supporting larger numbers of clients causes
@@ -173,11 +173,11 @@ large overhead. Sarracenia avoids file tree walks by having writers calculate th
 <p><strong>Caveat file segmentation was dropped. FIXME</strong></p>
 </section>
 <section id="why-no-ftp">
-<h3>Why No FTP?<a class="headerlink" href="#why-no-ftp" title="Permalink to this heading"></a></h3>
+<h3>Why No FTP?<a class="headerlink" href="#why-no-ftp" title="Link to this heading"></a></h3>
 <p>The transport protocols fully supported by Sarracenia are http(s) and SFTP (SSH File Transfer Protocol). In many cases, when public data is being exchanged, <a class="reference external" href="https://tools.ietf.org/html/rfc959">FTP</a> is a lingua franca that is used. The main advantage being relatively simple programmatic access, but that advantage is obviated by the use of Sarracenia itself. Further, these days, with increased security concerns, and with cpu instructions for encryption and multiple cores something of a cpu glut, it no longer makes much sense not to encrypt traffic. Additionally, to support multi-streaming, Sarracenia makes use of byte-ranges, which are provided by SFTP and HTTP servers, but not FTP. So we cannot support file partitioning on FTP. So while FTP sort-of-works, it is not now, nor ever will be, fully supported.</p>
 </section>
 <section id="references-links">
-<h3>References &amp; Links<a class="headerlink" href="#references-links" title="Permalink to this heading"></a></h3>
+<h3>References &amp; Links<a class="headerlink" href="#references-links" title="Link to this heading"></a></h3>
 <p>Other, somewhat similar software, no endorsements or judgements should be taken from these links:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.unidata.ucar.edu/software/ldm">Local Data Manager</a> LDM includes a network protocol, and it fundamentally wishes to exchange with other LDM systems.  This package was instructive in interesting ways, in the early 2000’s there was an effort called NLDM which layered meteorological messaging over a standard TCP/IP protocol.  That effort died, however, but the inspiration of keeping the domain (weather) separate from the transport layer (TCP/IP) was an important motivation for MetPX.</p></li>

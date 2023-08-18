@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -125,12 +125,12 @@
 }
 </style>
 <section id="utilisation-de-plugins-pour-recuperer-des-donnees-hydrometriques">
-<h1>Utilisation de plugins pour récupérer des données hydrométriques<a class="headerlink" href="#utilisation-de-plugins-pour-recuperer-des-donnees-hydrometriques" title="Permalink to this heading"></a></h1>
+<h1>Utilisation de plugins pour récupérer des données hydrométriques<a class="headerlink" href="#utilisation-de-plugins-pour-recuperer-des-donnees-hydrometriques" title="Link to this heading"></a></h1>
 <p>Plusieurs sites Web de données environnementales utilisent des API pour communiquer des données. Afin de faire de la publicité pour la
 disponibilité de nouveaux fichiers et les intégrer de manière transparente dans la pile Sarracenia, quelques plugins sont
 nécessaire pour étendre la fonctionnalité de polling.</p>
 <section id="protocoles-de-polling-pris-en-charge-en-mode-natif">
-<h2>Protocoles de polling pris en charge en mode natif<a class="headerlink" href="#protocoles-de-polling-pris-en-charge-en-mode-natif" title="Permalink to this heading"></a></h2>
+<h2>Protocoles de polling pris en charge en mode natif<a class="headerlink" href="#protocoles-de-polling-pris-en-charge-en-mode-natif" title="Link to this heading"></a></h2>
 <p>Prêt à l’emploi, Sarracenia prend en charge l’interrogation des sources HTTP / HTTPS et SFTP / FTP où le nom de fichier
 est ajouté à la fin de l’URL de base. Par exemple, si vous essayez d’accéder les données de niveau de l’eau
 du réservoir du lac Ghost près de Cochrane en Alberta, auxquelles on peut accéder en naviguant jusqu’à
@@ -145,7 +145,7 @@ voir s’il a été modifié depuis votre dernier poll. À partir de là, vous d
 première partie, et le <em>new_file</em> réglé sur la seconde, et une instance sr_subscribe saurait assembler
 pour localiser le fichier et le télécharger.</p>
 <section id="extension-des-protocoles-de-poll">
-<h3>Extension des protocoles de poll<a class="headerlink" href="#extension-des-protocoles-de-poll" title="Permalink to this heading"></a></h3>
+<h3>Extension des protocoles de poll<a class="headerlink" href="#extension-des-protocoles-de-poll" title="Link to this heading"></a></h3>
 <p>Si la source de données ne respecte pas cette convention (voir <a class="reference internal" href="#api-noaa-co-ops">API NOAA CO-OPS</a> et <a class="reference internal" href="#service-web-de-valeurs-instantanees-usgs">Service Web de valeurs instantanées USGS</a>
 pour des exemples de deux sources de données qui ne le font pas), un module <strong>registered_as</strong>
 peut être inclus en bas d’un fichier plugin pour définir la liste des protocoles en cours
@@ -158,9 +158,9 @@ d’extension ou d’implémentation</p>
 </section>
 </section>
 <section id="exemples-dintegration-dapi-dans-des-plugins">
-<h2>Exemples d’intégration d’API dans des plugins<a class="headerlink" href="#exemples-dintegration-dapi-dans-des-plugins" title="Permalink to this heading"></a></h2>
+<h2>Exemples d’intégration d’API dans des plugins<a class="headerlink" href="#exemples-dintegration-dapi-dans-des-plugins" title="Link to this heading"></a></h2>
 <section id="api-noaa-co-ops">
-<h3>API NOAA CO-OPS<a class="headerlink" href="#api-noaa-co-ops" title="Permalink to this heading"></a></h3>
+<h3>API NOAA CO-OPS<a class="headerlink" href="#api-noaa-co-ops" title="Link to this heading"></a></h3>
 <p>Le département des marées et des courants de National Oceanic and Atmospheric Administration publie son
 programme coopératif données d’observations et de prédictions de stations via un service Web GET RESTful,
 disponible à l’adresse <a class="reference external" href="https://tidesandcurrents.noaa.gov/api/">the NOAA Tides et le site Web de Currents</a>.
@@ -267,7 +267,7 @@ ressemblez à quelque chose comme ceci:</p>
 <p>pour le téléchargement.</p>
 </section>
 <section id="service-web-shc-soap">
-<h3>Service Web SHC SOAP<a class="headerlink" href="#service-web-shc-soap" title="Permalink to this heading"></a></h3>
+<h3>Service Web SHC SOAP<a class="headerlink" href="#service-web-shc-soap" title="Link to this heading"></a></h3>
 <p>Un service Web SOAP (Simple Object Access Protocol) utilise un système de messagerie XML pour fournir les données demandées
 données sur un réseau. Le client peut spécifier des paramètres pour une opération prise en charge (par exemple une recherche) sur
 le service Web, noté avec une extension de fichier wdsl, et le serveur renverra une réponse SOAP au format XML.
@@ -294,7 +294,7 @@ Des exemples de configurations pour l’exécution des deux sont inclus sous <em
 <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/examples/subscribe/subsoapshc.conf">subsoapshc.conf</a>.</p>
 </section>
 <section id="service-web-de-valeurs-instantanees-usgs">
-<h3>Service Web de valeurs instantanées USGS<a class="headerlink" href="#service-web-de-valeurs-instantanees-usgs" title="Permalink to this heading"></a></h3>
+<h3>Service Web de valeurs instantanées USGS<a class="headerlink" href="#service-web-de-valeurs-instantanees-usgs" title="Link to this heading"></a></h3>
 <p>Le United States Geological Survey publie ses données sur l’eau par son Service Web des valeurs instantanées RESTful
 , qui utilise des requêtes HTTP GET pour filtrer leurs données. Il renvoie les données dans les fichiers XML une fois
 demandé, et peut prendre en charge plus d’un argument d’ID de station à la fois (téléchargement de données en bloc). Plus d’infos sur
@@ -331,7 +331,7 @@ et <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/
 </section>
 </section>
 <section id="cas-d-utilisation">
-<h2>Cas d’utilisation<a class="headerlink" href="#cas-d-utilisation" title="Permalink to this heading"></a></h2>
+<h2>Cas d’utilisation<a class="headerlink" href="#cas-d-utilisation" title="Link to this heading"></a></h2>
 <p>Les plug-ins hydrométriques ont été développés pour le cas d’utilisation canhys d’Environnement Canada, où les fichiers
 contenant les métadonnées de la station seraient utilisées comme données d’entrée pour recueillir les données
 hydrométriques. Chaque plugin fonctionne également en générant tous les identifiants de station valides de l’autorité

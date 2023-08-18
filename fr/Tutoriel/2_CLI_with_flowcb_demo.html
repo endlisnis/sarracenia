@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -378,7 +378,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Personnalisez-la-gestion-des-fichiers-avec-les-rappels.">
-<h1>Personnalisez la gestion des fichiers avec les rappels.<a class="headerlink" href="#Personnalisez-la-gestion-des-fichiers-avec-les-rappels." title="Permalink to this heading"></a></h1>
+<h1>Personnalisez la gestion des fichiers avec les rappels.<a class="headerlink" href="#Personnalisez-la-gestion-des-fichiers-avec-les-rappels." title="Link to this heading"></a></h1>
 <p>Tous les composants de Sarracenia implémentent <em>l’algorithme Flow</em>, avec différents rappels, dans le langage de programmation Python. La classe principale de Sarracenia (Python) est <a class="reference external" href="../Reference/code.html#module-sarracenia.flow">sarracenia.flow</a> et la grande partie de la fonctionnalité de base est mis en œuvre à l’aide de la classe créée pour ajouter un traitement personnalisé à un flux, le classe flowcb (rappel de flux).</p>
 <p>Pour une discussion détaillée de l’algorithme de flux lui-même, jetez un oeil dans le manuel <a class="reference external" href="../Explanation/Concepts.html">Concepts</a>. Pour tout flux, on peut ajouter un traitement personnalisé à divers moments pendant le traitement par sous-classement la classe <a class="reference external" href="../Reference/flowcb.html">sarracenia.flowcb</a>.</p>
 <p>En bref, l’algorithme comporte les étapes suivantes :</p>
@@ -593,7 +593,7 @@ flowcb/work/send_egc_les.py
 </div>
 <p>Sans le plugin, le téléchargement mettrait tous les fichiers directement dans le répertoire de réception. avec l’ajout du retour wistree, il place le fichier dans /tmp/hpfx_amis. Avec le changement, il le place dans l’arborescence des répertoires WIS et ajoute un suffixe selon le type de fichier.</p>
 <section id="Entrées-de-fichier-de-configuration-et-rappels">
-<h2>Entrées de fichier de configuration et rappels<a class="headerlink" href="#Entrées-de-fichier-de-configuration-et-rappels" title="Permalink to this heading"></a></h2>
+<h2>Entrées de fichier de configuration et rappels<a class="headerlink" href="#Entrées-de-fichier-de-configuration-et-rappels" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="../Reference/flowcb.html#module-sarracenia.flowcb.log">flowcb.log</a></p>
 <p>Pour ajouter un retour à un flux, une ligne est ajoutée au fichier de configuration du flux:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>flowcb sarracenia.flowcb.log.Log
@@ -620,7 +620,7 @@ flowcb.</p>
 <p>Au-delà de ce point, nous trouvons des conseils pour les personnes qui souhaitent écrire leurs propres retours en Python. Les rappels sont en Python ordinaire, avec quelques plis:</p>
 </section>
 <section id="Écrire-Vos-Propres-Rappels">
-<h2>Écrire Vos Propres Rappels<a class="headerlink" href="#Écrire-Vos-Propres-Rappels" title="Permalink to this heading"></a></h2>
+<h2>Écrire Vos Propres Rappels<a class="headerlink" href="#Écrire-Vos-Propres-Rappels" title="Link to this heading"></a></h2>
 <p>Un rappel de flux est une classe python construite avec des routines nommées pour indiquer quand le programmeur veut qu’elles soient appelées. Pour ce faire, créez une routine qui sous-classe <em>sarracenia.flowcb.FlowCB</em> afin que la classe ait normalement:</p>
 <p>from sarracenia.flowcb import FlowCB</p>
 <p>parmi les importations dans le haut du fichier. Dans la partie principale du fichier, il y aura les classes de rappel personnalisées:</p>
@@ -655,7 +655,7 @@ flowcb.</p>
 </div>
 </section>
 <section id="Listes-De-Travail">
-<h2>Listes De Travail<a class="headerlink" href="#Listes-De-Travail" title="Permalink to this heading"></a></h2>
+<h2>Listes De Travail<a class="headerlink" href="#Listes-De-Travail" title="Link to this heading"></a></h2>
 <p>Autre qu’ <em>options</em>, l’autre argument principal des routines de rappel after_accept et after_work est la liste de travail. La liste de travail est donnée aux points d’entrée se produisant pendant le traitement des messages et est un certain nombre de listes de travail de messages:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>worklist.incoming --&gt; messages to process (either new or retries.)
 worklist.ok       --&gt; successfully processed
@@ -674,7 +674,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 <p>Ne supprimez pas de toutes les listes, déplacez uniquement les messages entre les listes de travail. Il est nécessaire de mettre les messages rejetés dans la liste de travail appropriée afin qu’ils soient reconnus comme reçus. Les messages ne peuvent être supprimés qu’après la prise en charge de l’accusé de réception.</p>
 </section>
 <section id="Sortie-d’Exécution">
-<h2>Sortie d’Exécution<a class="headerlink" href="#Sortie-d’Exécution" title="Permalink to this heading"></a></h2>
+<h2>Sortie d’Exécution<a class="headerlink" href="#Sortie-d’Exécution" title="Link to this heading"></a></h2>
 <p>Python a une excellente journalisation intégrée et doit une fois utiliser le module de manière normale et pythonique, avec:</p>
 <p>import logging</p>
 <p>Après toutes les importations dans votre fichier source python, définissez un enregistreur pour le fichier source:</p>
@@ -684,7 +684,7 @@ worklist.directories_ok --&gt; list of directories created during processing.
 <p>Chaque message du journal sera précédé de la classe et de la routine émettant le message de journal, ainsi que de la date/heure.</p>
 </section>
 <section id="Exemple-de-sous-classe-Flowcb">
-<h2>Exemple de sous-classe Flowcb<a class="headerlink" href="#Exemple-de-sous-classe-Flowcb" title="Permalink to this heading"></a></h2>
+<h2>Exemple de sous-classe Flowcb<a class="headerlink" href="#Exemple-de-sous-classe-Flowcb" title="Link to this heading"></a></h2>
 <p>Avec les informations ci-dessus sur la gestion des options, les listes de travail et la journalisation, nous sommes prêts à comprendre le module wistree que nous venons d’utiliser. Cette classe wistree.py accepte les fichiers dont les noms commencent par AHL et renomme l’arborescence de répertoires dans un standard différent, celui en évolution pour le WMO WIS 2.0 (pour plus d’informations sur ce module: <a class="reference external" href="https://github.com/wmo-im/GTStoWIS2">https://github.com/wmo-im/GTStoWIS2</a>)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -768,7 +768,7 @@ Cell <span class="ansi-green-fg">In[6], line 3</span>
 </div>
 </section>
 <section id="Plugins-qui-changent-la-façon-dont-un-fichier-est-téléchargé">
-<h2>Plugins qui changent la façon dont un fichier est téléchargé<a class="headerlink" href="#Plugins-qui-changent-la-façon-dont-un-fichier-est-téléchargé" title="Permalink to this heading"></a></h2>
+<h2>Plugins qui changent la façon dont un fichier est téléchargé<a class="headerlink" href="#Plugins-qui-changent-la-façon-dont-un-fichier-est-téléchargé" title="Link to this heading"></a></h2>
 <p>La routine <em>after_accept</em> est l’une des deux plus couramment utilisées. Il est utilisé pour modifier le traitement avant le téléchargement ou l’envoi d’un fichier. Pour traiter le fichier après son téléchargement, le point d’entrée <em>after_work</em> est utilisé pour traiter la liste worklist.ok (fichiers qui ont été téléchargés avec succès).</p>
 <p>La routine after_accept a une boucle externe qui parcourt toute la liste des messages entrants. Il construit une nouvelle liste de messages entrants à partir de ceux qu’il accepte, tout en ajoutant tous les messages rejetés à <em>worklist.failed.</em> La liste est juste une liste de messages, où chaque message est un dictionnaire python avec tous les champs stockés dans un message au format v03. Dans le message, il y a, par exemple, les champs <em>baseURL</em> et <em>relPath</em> :</p>
 <ul class="simple">
@@ -779,7 +779,7 @@ Cell <span class="ansi-green-fg">In[6], line 3</span>
 <em>c.txt</em>.</p>
 </section>
 <section id="Plugins-qui-Traitent-un-Fichier-après-son-Téléchargement">
-<h2>Plugins qui Traitent un Fichier après son Téléchargement<a class="headerlink" href="#Plugins-qui-Traitent-un-Fichier-après-son-Téléchargement" title="Permalink to this heading"></a></h2>
+<h2>Plugins qui Traitent un Fichier après son Téléchargement<a class="headerlink" href="#Plugins-qui-Traitent-un-Fichier-après-son-Téléchargement" title="Link to this heading"></a></h2>
 <p>Un cas d’utilisation courant est pour les plugins avec un point d’entrée <em>after_work</em> pour lire le fichier après son téléchargement et le transformer en un produit dérivé avec un nom différent. Ainsi, le nouveau fichier est créé comme dans la section précédente. Le message pour le fichier téléchargé doit encore être déplacé sur une liste pour s’assurer qu’il est reconnu par le courtier. Un tel point d’entrée ressemblerait à ceci:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -804,14 +804,14 @@ Cell <span class="ansi-green-fg">In[6], line 3</span>
 </div>
 </section>
 <section id="Plugins-qui-renomment-les-fichiers">
-<h2>Plugins qui renomment les fichiers<a class="headerlink" href="#Plugins-qui-renomment-les-fichiers" title="Permalink to this heading"></a></h2>
+<h2>Plugins qui renomment les fichiers<a class="headerlink" href="#Plugins-qui-renomment-les-fichiers" title="Link to this heading"></a></h2>
 <p>Le plugin ci-dessus modifie la disposition des fichiers à télécharger, en fonction de la classe <a class="reference external" href="https://github.com/wmo-im/GTStoWIS">GTStoWIS</a>, qui prescrit une arborescence de répertoires différente en sortie. Il y a beaucoup de champs à mettre à jour lors de la modification du placement des fichiers, il est donc préférable d’utiliser:</p>
 <p>msg.updatePaths( self.o, new_dir, new_file )</p>
 <p>pour mettre à jour correctement tous les champs nécessaires dans le message. Il mettra à jour ‘new_baseURL’, ‘new_relPath’, ‘new_subtopic’ à utiliser lors de la publication.</p>
 <p>La partie try/except de la routine traite du cas où, si un fichier arrive avec un nom à partir duquel une arborescence de rubriques ne peut pas être construite, une exception python peut se produire et le message est ajouté à la liste de travail ayant échoué et ne sera pas être traitées par des plugins ultérieurs.</p>
 </section>
 <section id="Plugins-qui-Créent-de-Nouveaux-Fichiers">
-<h2>Plugins qui Créent de Nouveaux Fichiers<a class="headerlink" href="#Plugins-qui-Créent-de-Nouveaux-Fichiers" title="Permalink to this heading"></a></h2>
+<h2>Plugins qui Créent de Nouveaux Fichiers<a class="headerlink" href="#Plugins-qui-Créent-de-Nouveaux-Fichiers" title="Link to this heading"></a></h2>
 <p>La routine ci-dessus est parfaite lorsqu’un fichier vient d’être renommé. Si un plugin a besoin de créer de nouveaux fichiers vaguement dérivés du fichier d’entrée, alors vous voulez créer de nouveaux messages pour ces fichiers à partir de rien:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import sarracenia
 
@@ -833,7 +833,7 @@ fake_stat.st_size = ... again will vary by context.
 <p>Dans tous les cas, une fois que vous avez le message, il peut être ajouté à la liste entrante.</p>
 </section>
 <section id="Other-Examples">
-<h2>Other Examples<a class="headerlink" href="#Other-Examples" title="Permalink to this heading"></a></h2>
+<h2>Other Examples<a class="headerlink" href="#Other-Examples" title="Link to this heading"></a></h2>
 <p>Le sous-classement de <a class="reference external" href="../Reference/flowcb.html">Sarracenia.flowcb</a> est utilisé en interne pour faire beaucoup de travail de base. C’est une bonne idée de regarder le code source de Sarracenia lui-même. Par exemple:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/MetPX/Sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py">sarracenia.flowcb</a> jetez un oeil au fichier <strong>init</strong>.py là qui fournit ces informations sur un format plus programmatiquement succinct.</p></li>

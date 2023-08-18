@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -125,9 +125,9 @@
 }
 </style>
 <section id="notes-de-mise-en-oeuvre-mqtt">
-<h1>Notes de mise en œuvre MQTT<a class="headerlink" href="#notes-de-mise-en-oeuvre-mqtt" title="Permalink to this heading"></a></h1>
+<h1>Notes de mise en œuvre MQTT<a class="headerlink" href="#notes-de-mise-en-oeuvre-mqtt" title="Link to this heading"></a></h1>
 <section id="v3-vs-v5">
-<h2>v3 vs. v5<a class="headerlink" href="#v3-vs-v5" title="Permalink to this heading"></a></h2>
+<h2>v3 vs. v5<a class="headerlink" href="#v3-vs-v5" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>La version 3 a des renvois envoyés sur une base chronométrée, toutes les quelques secondes
 (peut-être jusqu’à 20 secondes.)
@@ -137,14 +137,14 @@ L’équilibrage de charge est plus difficile.</p></li>
 </ul>
 </section>
 <section id="abonnements-partages">
-<h2>Abonnements partagés<a class="headerlink" href="#abonnements-partages" title="Permalink to this heading"></a></h2>
+<h2>Abonnements partagés<a class="headerlink" href="#abonnements-partages" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>une fois que vous avez rejoint un groupe, vous y êtes jusqu’à ce que la session soit morte, même si vous vous déconnectez,
 Il empilera 1/n messages dans votre fil d’attente.</p></li>
 </ul>
 </section>
 <section id="contre-pression">
-<h2>Contre-pression<a class="headerlink" href="#contre-pression" title="Permalink to this heading"></a></h2>
+<h2>Contre-pression<a class="headerlink" href="#contre-pression" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Le client paho est asynchrone</p></li>
 <li><p>La meilleure pratique consiste à avoir des handlers de on_message très légers.</p></li>

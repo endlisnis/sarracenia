@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -131,7 +131,7 @@
 }
 </style>
 <section id="ecriture-de-plugins-flowcallback">
-<h1>Écriture de plugins FlowCallback<a class="headerlink" href="#ecriture-de-plugins-flowcallback" title="Permalink to this heading"></a></h1>
+<h1>Écriture de plugins FlowCallback<a class="headerlink" href="#ecriture-de-plugins-flowcallback" title="Link to this heading"></a></h1>
 <p>Tous les composants de Sarracenia implémentent l’algorithme <em>Flow</em>.
 La classe principale de Sarracenia est <em>sarracenia.flow</em> et
 la fonctionnalité de base est implémentée à l’aide de la classe créée pour ajouter un
@@ -163,7 +163,7 @@ qu’on peut voir (en anglais) dans <a class="reference external" href="../../Re
 qui peuvent servir comment modèle pour partir de nouvelles classes.</p>
 <p>Ce guide décrit les éléments nécessaire pour façonner des classes flowcb à partir de zéro.</p>
 <section id="entrees-de-fichier-de-configuration-pour-utiliser-flow-callbacks">
-<h2>Entrées de fichier de configuration pour utiliser Flow_Callbacks<a class="headerlink" href="#entrees-de-fichier-de-configuration-pour-utiliser-flow-callbacks" title="Permalink to this heading"></a></h2>
+<h2>Entrées de fichier de configuration pour utiliser Flow_Callbacks<a class="headerlink" href="#entrees-de-fichier-de-configuration-pour-utiliser-flow-callbacks" title="Link to this heading"></a></h2>
 <p>Pour ajouter un callback à un flux, une ligne est ajoutée au fichier de configuration</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flowcb</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flowcb</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">Log</span>
 </pre></div>
@@ -192,7 +192,7 @@ en tant qu’instance flowcb.</p>
 <p>Si aucune substitution spécifique au module n’est présente, le paramètre le plus global est utilisé.</p>
 </section>
 <section id="worklists">
-<h2>Worklists<a class="headerlink" href="#worklists" title="Permalink to this heading"></a></h2>
+<h2>Worklists<a class="headerlink" href="#worklists" title="Link to this heading"></a></h2>
 <p>Outre l’option, l’autre argument principal pour les routines de callbacks after_accept et after_work
 est worklist. Worklist est donnée aux points d’entrée qui se produisent pendant le traitement de message de
 notification, et est un certain nombre de worklist de messages de notification:</p>
@@ -216,7 +216,7 @@ afin qu’ils soient reconnus comme reçus. Les messages ne peuvent être suppri
 fois que l’accusé de réception a été pris en charge.</p>
 </section>
 <section id="journalisation">
-<h2>Journalisation<a class="headerlink" href="#journalisation" title="Permalink to this heading"></a></h2>
+<h2>Journalisation<a class="headerlink" href="#journalisation" title="Link to this heading"></a></h2>
 <p>Python a une excellente journalisation intégrée, et il faut simplement utiliser le module
 d’une manière normale, pythonique, avec:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
@@ -250,7 +250,7 @@ inclure les lignes:</p>
 </div>
 </section>
 <section id="initialisation-et-parametres">
-<h2>Initialisation et paramètres<a class="headerlink" href="#initialisation-et-parametres" title="Permalink to this heading"></a></h2>
+<h2>Initialisation et paramètres<a class="headerlink" href="#initialisation-et-parametres" title="Link to this heading"></a></h2>
 <p>L’étape suivante consiste à déclarer une classe</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Myclass</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
 </pre></div>
@@ -289,7 +289,7 @@ Il existe différents <em>types</em> d’options, où le type déclaré modifie 
 </div>
 </section>
 <section id="points-dentree">
-<h2>Points d’entrée<a class="headerlink" href="#points-dentree" title="Permalink to this heading"></a></h2>
+<h2>Points d’entrée<a class="headerlink" href="#points-dentree" title="Link to this heading"></a></h2>
 <p>Autres entry_points, extraits de sarracenia/flowcb/__init__.py</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">Task</span><span class="p">:</span> <span class="k">return</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">a</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">reference</span> <span class="n">purposes</span><span class="o">.</span> <span class="p">(</span><span class="n">automatically</span> <span class="n">there</span><span class="p">)</span>
@@ -349,7 +349,7 @@ Il existe différents <em>types</em> d’options, où le type déclaré modifie 
 </div>
 </section>
 <section id="exemple-de-sous-classe-flowcb">
-<h2>Exemple de sous-classe Flowcb<a class="headerlink" href="#exemple-de-sous-classe-flowcb" title="Permalink to this heading"></a></h2>
+<h2>Exemple de sous-classe Flowcb<a class="headerlink" href="#exemple-de-sous-classe-flowcb" title="Link to this heading"></a></h2>
 <p>Il s’agit d’un exemple de fichier de classe de callback (gts2wis2.py) qui accepte les fichiers dont
 les noms commencent par ceux d’AHL et renomme l’arborescence des répertoires selon une norme différente,
 celui en évolution pour le WIS 2.0 de WMO (pour plus d’informations sur ce module :
@@ -439,7 +439,7 @@ peut se produire et le message de notification est ajouté à la liste de travai
 traité par des plugins ultérieurs.</p>
 </section>
 <section id="autres-exemples">
-<h2>Autres exemples<a class="headerlink" href="#autres-exemples" title="Permalink to this heading"></a></h2>
+<h2>Autres exemples<a class="headerlink" href="#autres-exemples" title="Link to this heading"></a></h2>
 <p>La sous-classification de Sarracenia.flowcb est utilisée en interne pour effectuer beaucoup de travail de base.
 C’est une bonne idée de regarder le code source de sarracenia lui-même. Par exemple:</p>
 <ul class="simple">
@@ -461,7 +461,7 @@ pourra être réessayé. Cette classe implémente cette fonctionnalité.</p></li
 </ul>
 </section>
 <section id="modification-de-fichiers-en-transit">
-<h2>Modification de fichiers en transit<a class="headerlink" href="#modification-de-fichiers-en-transit" title="Permalink to this heading"></a></h2>
+<h2>Modification de fichiers en transit<a class="headerlink" href="#modification-de-fichiers-en-transit" title="Link to this heading"></a></h2>
 <p>La classe <em>sarracenia.transfer</em> inclu un point d’entrée <em>on_data</em> qui permet de transformer
 des données durant un transfer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunk</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
@@ -502,7 +502,7 @@ dossier:</p>
 protocole de transfert personnalisé.</p>
 </section>
 <section id="flots-modifies">
-<h2>flots modifiés<a class="headerlink" href="#flots-modifies" title="Permalink to this heading"></a></h2>
+<h2>flots modifiés<a class="headerlink" href="#flots-modifies" title="Link to this heading"></a></h2>
 <p>Si aucun des composants intégrés ( poll, post, sarra, shovel, subscribe, watch, winnow ) n’a le
 comportement souhaité, on peut créer un composant personnalisé pour faire ce qu’il faut en sous-classant le flux.</p>
 <p>Copiez l’une des sous-classes de sarracenia.flow à partir du code source et modifiez-la à votre goût. Dans la configuration

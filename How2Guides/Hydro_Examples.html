@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -124,12 +124,12 @@
 }
 </style>
 <section id="using-plugins-to-grab-hydrometric-data-v2">
-<h1>Using Plugins to Grab Hydrometric Data (v2)<a class="headerlink" href="#using-plugins-to-grab-hydrometric-data-v2" title="Permalink to this heading"></a></h1>
+<h1>Using Plugins to Grab Hydrometric Data (v2)<a class="headerlink" href="#using-plugins-to-grab-hydrometric-data-v2" title="Link to this heading"></a></h1>
 <p>Several different environmental data websites use APIs to communicate data. In order to advertise the
 availability of new files and integrate them seamlessly into the Sarracenia stack, a few plugins are
 needed to extend the polling functionality.</p>
 <section id="polling-protocols-natively-supported">
-<h2>Polling Protocols Natively Supported<a class="headerlink" href="#polling-protocols-natively-supported" title="Permalink to this heading"></a></h2>
+<h2>Polling Protocols Natively Supported<a class="headerlink" href="#polling-protocols-natively-supported" title="Link to this heading"></a></h2>
 <p>Out of the box, Sarracenia supports polling of HTTP/HTTPS and SFTP/FTP sources where the filename
 gets appended to the end of the base URL. For example, if you’re trying to access the water level
 data of Ghost Lake Reservoir near Cochrane in Alberta, which can be accessed by navigating to
@@ -141,7 +141,7 @@ see if it has been modified since you last polled. From there, you would need to
 first part, and the <em>new_file</em> set to the second, and an sr_subscribe instance would know how to assemble
 them to locate the file and download it.</p>
 <section id="extending-polling-protocols">
-<h3>Extending Polling Protocols<a class="headerlink" href="#extending-polling-protocols" title="Permalink to this heading"></a></h3>
+<h3>Extending Polling Protocols<a class="headerlink" href="#extending-polling-protocols" title="Link to this heading"></a></h3>
 <p>If the data source doesn’t abide to this convention (see <a class="reference internal" href="#noaa-co-ops-api">NOAA CO-OPS API</a> and <a class="reference internal" href="#usgs-instantaneous-values-web-service">USGS Instantaneous Values
 Web Service</a> for examples of two data sources that don’t), a module <strong>registered_as</strong> can be included at
 the bottom of a plugin file to define the list of protocols being extended or implemented:</p>
@@ -153,9 +153,9 @@ the bottom of a plugin file to define the list of protocols being extended or im
 </section>
 </section>
 <section id="examples-of-integrating-apis-into-plugins">
-<h2>Examples of Integrating APIs into Plugins<a class="headerlink" href="#examples-of-integrating-apis-into-plugins" title="Permalink to this heading"></a></h2>
+<h2>Examples of Integrating APIs into Plugins<a class="headerlink" href="#examples-of-integrating-apis-into-plugins" title="Link to this heading"></a></h2>
 <section id="noaa-co-ops-api">
-<h3>NOAA CO-OPS API<a class="headerlink" href="#noaa-co-ops-api" title="Permalink to this heading"></a></h3>
+<h3>NOAA CO-OPS API<a class="headerlink" href="#noaa-co-ops-api" title="Link to this heading"></a></h3>
 <p>The National Oceanic and Atmospheric Administration Tides and Currents Department releases their CO-OPS
 station observations and predictions data through a GET RESTful web service, available at <a class="reference external" href="https://tidesandcurrents.noaa.gov/api/">the NOAA Tides
 and Currents website</a>. For example, if you want to access the
@@ -261,7 +261,7 @@ look something like this:</p>
 <p>for the downloading.</p>
 </section>
 <section id="shc-soap-web-service">
-<h3>SHC SOAP Web Service<a class="headerlink" href="#shc-soap-web-service" title="Permalink to this heading"></a></h3>
+<h3>SHC SOAP Web Service<a class="headerlink" href="#shc-soap-web-service" title="Link to this heading"></a></h3>
 <p>A SOAP web service (Simple Object Access Protocol) uses an XML-based messaging system to supply requested
 data over a network. The client can specify parameters for a supported operation (for example a search) on
 the web service, denoted with a wdsl file extension, and the server will return an XML-formatted SOAP
@@ -287,7 +287,7 @@ Example configurations for running both are included under <em>examples</em>, na
 <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/examples/subscribe/subsoapshc.conf">subsoapshc.conf</a>.</p>
 </section>
 <section id="usgs-instantaneous-values-web-service">
-<h3>USGS Instantaneous Values Web Service<a class="headerlink" href="#usgs-instantaneous-values-web-service" title="Permalink to this heading"></a></h3>
+<h3>USGS Instantaneous Values Web Service<a class="headerlink" href="#usgs-instantaneous-values-web-service" title="Link to this heading"></a></h3>
 <p>The United States Geological Survey publishes their water data through their Instantaneous Values RESTful
 Web Service, which uses HTTP GET requests to filter their data. It returns the data in XML files once
 requested, and can support more than one station ID argument at a time (bulk data download). More info on
@@ -318,7 +318,7 @@ and <a class="reference external" href="https://github.com/MetPX/sarracenia/blob
 </section>
 </section>
 <section id="use-case">
-<h2>Use Case<a class="headerlink" href="#use-case" title="Permalink to this heading"></a></h2>
+<h2>Use Case<a class="headerlink" href="#use-case" title="Link to this heading"></a></h2>
 <p>The hydrometric plugins were developed for the Environment Canada canhys use case, where files containing
 station metadata would be used as input to gather the hydrometric data. Each plugin also works by generating
 all valid station IDs from the water authority itself and plugging those inputs in. This alternative option can be

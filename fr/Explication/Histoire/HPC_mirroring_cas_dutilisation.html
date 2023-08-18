@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -131,11 +131,11 @@
 }
 </style>
 <section id="etude-de-cas-mise-en-miroir-hpc">
-<h1>Étude de cas : Mise en miroir HPC<a class="headerlink" href="#etude-de-cas-mise-en-miroir-hpc" title="Permalink to this heading"></a></h1>
+<h1>Étude de cas : Mise en miroir HPC<a class="headerlink" href="#etude-de-cas-mise-en-miroir-hpc" title="Link to this heading"></a></h1>
 <section id="mise-en-miroir-continue-de-27-millions-darborescence-de-fichiers-tres-rapidement">
-<h2>Mise en miroir continue de 27 millions d’arborescence de fichiers très rapidement<a class="headerlink" href="#mise-en-miroir-continue-de-27-millions-darborescence-de-fichiers-tres-rapidement" title="Permalink to this heading"></a></h2>
+<h2>Mise en miroir continue de 27 millions d’arborescence de fichiers très rapidement<a class="headerlink" href="#mise-en-miroir-continue-de-27-millions-darborescence-de-fichiers-tres-rapidement" title="Link to this heading"></a></h2>
 <section id="resume">
-<h3>Résumé<a class="headerlink" href="#resume" title="Permalink to this heading"></a></h3>
+<h3>Résumé<a class="headerlink" href="#resume" title="Link to this heading"></a></h3>
 <p>Ce projet a pris plus de temps que prévu, soit plus de trois ans, car l’espace problématique a été exploré avec le
 l’aide d’un client très patient alors que l’outil pour concevoir et mettre en œuvre la solution efficace était finalement
 réglé. Le client a demandé une solution pour rendre les fichiers disponibles sur le cluster de sauvegarde dans
@@ -161,7 +161,7 @@ est programmable et évolutif, et les techniques et la topologie pour effectuer 
 contrôlé pour optimiser les transferts pour les critères jugés les plus importants.</p>
 </section>
 <section id="enonce-du-probleme">
-<h3>Énoncé du problème<a class="headerlink" href="#enonce-du-probleme" title="Permalink to this heading"></a></h3>
+<h3>Énoncé du problème<a class="headerlink" href="#enonce-du-probleme" title="Link to this heading"></a></h3>
 <p>En novembre 2016, le Service météorologique du Canada (MSC) d’Environnement et Changement climatique Canada (ECCC)
 dans le cadre du projet High Performance Computing Replacement (HPCR) a demandé un très grand répertoire
 d’arbres à refléter en temps réel. Services partagés Canada (SPC) était le principal responsable du déploiement
@@ -180,7 +180,7 @@ que les retards se répercutent et que des efforts considérables sont déployé
 maintiennent l’horaire.</p>
 </section>
 <section id="presentation-de-la-solution-hpcr">
-<h3>Présentation de la solution HPCR<a class="headerlink" href="#presentation-de-la-solution-hpcr" title="Permalink to this heading"></a></h3>
+<h3>Présentation de la solution HPCR<a class="headerlink" href="#presentation-de-la-solution-hpcr" title="Link to this heading"></a></h3>
 <a class="reference internal image-reference" href="../../../_images/HPC-XC_High_Availability.png"><img alt="../../../_images/HPC-XC_High_Availability.png" src="../../../_images/HPC-XC_High_Availability.png" style="width: 1078.44px; height: 846.7800000000001px;" /></a>
 <p>Dans le diagramme ci-dessus, si les opérations se trouvent dans le hall de données 1 (à gauche du centre)
 et qu’elles échouent, l’objectif est de reprendre les opérations rapidement à partir du Data Hall 2
@@ -191,7 +191,7 @@ sites 2. À des fins de surveillance, dans le même temps, un sous-ensemble doit
 dans la salle de données 0.</p>
 </section>
 <section id="mise-en-miroir-continue">
-<h3>Mise en miroir continue<a class="headerlink" href="#mise-en-miroir-continue" title="Permalink to this heading"></a></h3>
+<h3>Mise en miroir continue<a class="headerlink" href="#mise-en-miroir-continue" title="Link to this heading"></a></h3>
 <p>Il y a deux clusters qui exécutent ces simulations, l’un d’eux travaillant normalement principalement
 sur les opérations, et l’autre en tant que <em>rechange</em> (exécutant uniquement des charges de recherche
 et développement).  Lorsque la primaire échoue, l’intention est d’exécuter des opérations sur l’autre
@@ -233,7 +233,7 @@ n’était pas réalisable, la méthode utilisée pour obtenir la liste des fich
 implicite (effectuée sans la participation active de l’utilisateur).</p>
 </section>
 <section id="la-lecture-de-larbre-prend-trop-de-temps">
-<h3>La lecture de l’arbre prend trop de temps<a class="headerlink" href="#la-lecture-de-larbre-prend-trop-de-temps" title="Permalink to this heading"></a></h3>
+<h3>La lecture de l’arbre prend trop de temps<a class="headerlink" href="#la-lecture-de-larbre-prend-trop-de-temps" title="Link to this heading"></a></h3>
 <p>On pourrait simplement analyser à un niveau supérieur afin d’analyser un seul répertoire parent, mais la demi-douzaine
 des sous-arbres des arbres ont été choisis afin d’en avoir des plus petits qui fonctionnaient plus rapidement,
 indépendamment de la méthode utilisée pour obtenir des listes de nouveaux fichiers. Que voulons-nous dire quand
@@ -259,7 +259,7 @@ etc… serait nettement plus rapide que rsync. Nous avons besoin d’une méthod
 quels fichiers ont été modifiés afin qu’ils puissent être copiés.</p>
 </section>
 <section id="methodes-de-detection-inotify-policy-shim">
-<h3>Méthodes de détection : Inotify, Policy, SHIM<a class="headerlink" href="#methodes-de-detection-inotify-policy-shim" title="Permalink to this heading"></a></h3>
+<h3>Méthodes de détection : Inotify, Policy, SHIM<a class="headerlink" href="#methodes-de-detection-inotify-policy-shim" title="Link to this heading"></a></h3>
 <p>Il existe une fonctionnalité du noyau Linux appelée INOTIFY, qui peut déclencher un événement
 lorsqu’un fichier est modifié. En définissant un déclencheur INOTIFY sur chaque répertoire de
 l’arborescence, nous pouvons être avertis lorsqu’un fichier est modifié dans l’arbre. C’était
@@ -310,7 +310,7 @@ au cours de la dernière année, mais elles semblent ralentir à mesure que la t
 des fichiers augmente. De nombreuses optimisations ont été mises en œuvre pour obtenir des performance
 adéquates.</p>
 <section id="bibliotheque-shim">
-<h4>Bibliothèque Shim<a class="headerlink" href="#bibliotheque-shim" title="Permalink to this heading"></a></h4>
+<h4>Bibliothèque Shim<a class="headerlink" href="#bibliotheque-shim" title="Link to this heading"></a></h4>
 <p>La méthode choisie pour la notification est une <a class="reference external" href="https://en.wikipedia.org/wiki/Shim_(computing)">bibliothèque Shim</a>
 Lorsqu’une application en cours d’exécution effectue des appels aux points d’entrée d’API
 fournis par les bibliothèques ou le noyau, il existe un processus de recherche (résolu au
@@ -327,7 +327,7 @@ par l’application elle-même, sans aucune modification de l’application.</p>
 </section>
 </section>
 <section id="copie-de-fichiers">
-<h3>Copie de fichiers<a class="headerlink" href="#copie-de-fichiers" title="Permalink to this heading"></a></h3>
+<h3>Copie de fichiers<a class="headerlink" href="#copie-de-fichiers" title="Link to this heading"></a></h3>
 <p>Il est important de noter que pendant que tout ce travail progressait sur la partie “obtenir
 la liste des fichiers à copier” du problème, nous travaillions également sur la partie “copier
 les fichiers de l’autre côté” du problème. Au cours de l’été, les résultats des tests de
@@ -369,7 +369,7 @@ de l’autre côté” du problème était stable à la fin de l’été 2017, e
 du système est minimisé.</p>
 </section>
 <section id="bibliotheque-shim-necessaire">
-<h3>Bibliothèque Shim nécessaire<a class="headerlink" href="#bibliotheque-shim-necessaire" title="Permalink to this heading"></a></h3>
+<h3>Bibliothèque Shim nécessaire<a class="headerlink" href="#bibliotheque-shim-necessaire" title="Link to this heading"></a></h3>
 <p>Malheureusement, la mise en miroir entre les sites fonctionnait avec un décalage d’environ 10 minutes
 sur le système de fichiers source (environ 30 fois plus rapide qu’une approche rsync naïve), et ne
 fonctionnait qu’en principe, avec de nombreux fichiers manquants dans la pratique, elle n’était pas
@@ -398,7 +398,7 @@ une deuxième implémentation en C pour les environnements où un environnement 
 à établir, ou où l’efficacité était primordiale (le cas libsrshim).</p>
 </section>
 <section id="est-ce-que-ca-marche">
-<h3>Est-ce que ça marche?<a class="headerlink" href="#est-ce-que-ca-marche" title="Permalink to this heading"></a></h3>
+<h3>Est-ce que ça marche?<a class="headerlink" href="#est-ce-que-ca-marche" title="Link to this heading"></a></h3>
 <p>En décembre 2017, le logiciel pour l’approche libsrshim semblait prêt, il a été déployé en quelques
 petites exécutions parallèles (non opérationnelles). Les essais en parallèle ont commencé en janvier 2018.
 Il y a eu de nombreux cas limites, et les tests se sont poursuivis pendant deux ans, jusqu’à ce qu’ils
@@ -434,7 +434,7 @@ quantification de la précision de la copie. Le plugin pour cette comparaison es
 en développement.</p>
 </section>
 <section id="est-ce-rapide">
-<h3>Est-ce rapide?<a class="headerlink" href="#est-ce-rapide" title="Permalink to this heading"></a></h3>
+<h3>Est-ce rapide?<a class="headerlink" href="#est-ce-rapide" title="Link to this heading"></a></h3>
 <p>Les exécutions de la politique GPFS sont toujours la méthode utilisée sur le plan opérationnel au moment
 de la rédaction de cet article (2018/01). Les chiffres de performances indiqués dans le résumé sont extraits
 des journaux d’une journée d’exécution de stratégie GPFS.</p>
@@ -571,7 +571,7 @@ Files<span class="w"> </span>over<span class="w"> </span>600s:<span class="w"> <
 </div>
 </section>
 <section id="frais-generaux">
-<h3>Frais généraux<a class="headerlink" href="#frais-generaux" title="Permalink to this heading"></a></h3>
+<h3>Frais généraux<a class="headerlink" href="#frais-generaux" title="Link to this heading"></a></h3>
 <p>Quel est l’effet de la mise en service de la bibliothèque de Shim sur les tâches des utilisateurs?
 Lorsqu’il est utilisé dans de grands modèles avec de bons modèles d’i/o nécessaires pour des performances
 élevées, la surcharge ajoutée par la bibliothèque de Shim peut être négligeable. Cependant, une surcharge
@@ -588,7 +588,7 @@ de shim, mais l’accélération disponible en reformulant des méthodes plus ef
 des avantages beaucoup plus importants.</p>
 </section>
 <section id="contributions">
-<h3>Contributions<a class="headerlink" href="#contributions" title="Permalink to this heading"></a></h3>
+<h3>Contributions<a class="headerlink" href="#contributions" title="Link to this heading"></a></h3>
 <p><strong>Dominic Racette</strong> - ECCC CMC Operations Implementation</p>
 <blockquote>
 <div><p>Responsable client sur le projet de mise en miroir. Beaucoup d’audit et d’exécution de tests.

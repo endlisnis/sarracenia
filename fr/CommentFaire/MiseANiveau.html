@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -132,7 +132,7 @@
 }
 </style>
 <section id="guide-de-mise-a-niveau">
-<h1>GUIDE DE MISE A NIVEAU<a class="headerlink" href="#guide-de-mise-a-niveau" title="Permalink to this heading"></a></h1>
+<h1>GUIDE DE MISE A NIVEAU<a class="headerlink" href="#guide-de-mise-a-niveau" title="Link to this heading"></a></h1>
 <p>Ce dossier documente les changements de comportement afin de fournir des conseils aux personnes qui effectuent la mise à niveau
 à partir d’une version précédente. Les sections sont intitulées pour indiquer les changements nécessaires lorsqu’il y a
 une mise à niveau vers cette version. Pour effectuer une mise à niveau sur plusieurs versions, il faut démarrer
@@ -156,11 +156,11 @@ qui peut générer des messages.</p>
 </dl>
 <p>Les sections sont intitulées par les changements intervenus au niveau en question.</p>
 <section id="instructions-dinstallation">
-<h2>Instructions d’installation<a class="headerlink" href="#instructions-dinstallation" title="Permalink to this heading"></a></h2>
+<h2>Instructions d’installation<a class="headerlink" href="#instructions-dinstallation" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="../Tutorials/Install.rst">Installation Guide</a></p>
 </section>
 <section id="git">
-<h2>git<a class="headerlink" href="#git" title="Permalink to this heading"></a></h2>
+<h2>git<a class="headerlink" href="#git" title="Link to this heading"></a></h2>
 <p><em>CHANGE</em>: v03 postformat field renamded: “integrity” is now “identity”</p>
 <blockquote>
 <div><ul class="simple">
@@ -171,7 +171,7 @@ qui peut générer des messages.</p>
 </div></blockquote>
 </section>
 <section id="id1">
-<h2>3.0.40<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>3.0.40<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p><em>CHANGEMENT</em>:  l’interface de programmation (API) python a subit un changement de rupture</p>
 <blockquote>
 <div><p>pour la classe sarracenia.moth, il faut maintenant specifier l’options[‘broker’] au lieu
@@ -198,7 +198,7 @@ composantes.</p>
 </div></blockquote>
 </section>
 <section id="id2">
-<h2>3.0.26<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>3.0.26<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <dl>
 <dt><em>CHANGEMENT</em><span class="classifier">les options d’événement (logEvents et fileEvents) remplacent désormais la valeur précédente.</span></dt><dd><p>Avant ils etaient être uni (ou’d) avec la valeur précédente. Peut maintenant préfacer
 les éléments set avec + pour obtenir le comportement précédent.
@@ -210,7 +210,7 @@ les éléments set avec + pour obtenir le comportement précédent.
 </dl>
 </section>
 <section id="id3">
-<h2>3.0.25<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>3.0.25<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt><em>CHANGEMENT</em><span class="classifier">la valeur par défaut pour acceptUnmatched est maintenant True pour tous les composants.</span></dt><dd><p>avant cette version, la valeur par défaut était False dans le composant <em>subscribe</em>
 mais Vrai pour tous les autres.</p>
@@ -218,14 +218,14 @@ mais Vrai pour tous les autres.</p>
 </dl>
 </section>
 <section id="id4">
-<h2>3.0.22<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<h2>3.0.22<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p><em>CHANGEMENTMENT</em>: option <em>destination</em> dans une configuration de poll est remplacé par <em>pollUrl</em></p>
 <p><em>CHANGEMENTMENT</em>: option <em>destination</em> dans une configuration de sender est remplacé par <em>sendTo</em></p>
 <p><em>ACTION</em>: remplacer les <em>destination</em> dans les configurations affectés (traité automatiquement
 dans le cas de conversion à partir de v2.)</p>
 </section>
 <section id="id5">
-<h2>3.0.17<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>3.0.17<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt><em>CHANGEMENT</em>: La chaine de charactères “Vendor” est changé de “science.gc.ca” à “MetPX”.</dt><dd><p>Ce changement modifie le placement des fichiers sur la platteforme <em>Windows</em>.</p>
 </dd>
@@ -239,7 +239,7 @@ Le champs <em>Identity</em> est maintenant dédié au sommes de contrôle pour l
 </dl>
 </section>
 <section id="id6">
-<h2>3.0.15<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<h2>3.0.15<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt><em>NOTICE</em>: rétablir les paquets Debian et Windows en supprimant les exigences matérielles pour les modules python</dt><dd><p>qui sont difficiles à satisfaire. À partir de la version 3.0.15, les dépendances sont modulaires.</p>
 </dd>
@@ -275,7 +275,7 @@ d’activités.</p>
 </dl>
 </section>
 <section id="id7">
-<h2>3.0.14<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<h2>3.0.14<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p>bêta initiale.</p>
 <dl class="simple">
 <dt><em>NOTICE</em><span class="classifier">seuls les paquets pip fonctionnent actuellement. Pas de paquets Debian sur launchpad.net</span></dt><dd><p>ni aucun package Windows.</p>
@@ -283,7 +283,7 @@ d’activités.</p>
 </dl>
 </section>
 <section id="v2-to-sr3">
-<h2>V2 to Sr3<a class="headerlink" href="#v2-to-sr3" title="Permalink to this heading"></a></h2>
+<h2>V2 to Sr3<a class="headerlink" href="#v2-to-sr3" title="Link to this heading"></a></h2>
 <dl>
 <dt><em>NOTICE</em>: Sr3 est un refacteur très profond de Sarracenia. Pour plus de détails sur la nature</dt><dd><p>des changements, <a class="reference external" href="../Contribution/v03.html">allez ici</a> Brièvement, où v2
 est une application écrite en python qui avait une petite installation d’extension,

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -124,7 +124,7 @@
 }
 </style>
 <section id="file-detection-strategies">
-<h1>File Detection Strategies<a class="headerlink" href="#file-detection-strategies" title="Permalink to this heading"></a></h1>
+<h1>File Detection Strategies<a class="headerlink" href="#file-detection-strategies" title="Link to this heading"></a></h1>
 <p>Le travail fondamental de sr_watch est de remarquer quand les fichiers sont
 disponibles pour être transférés. La stratégie appropriée varie en fonction de:</p>
 <blockquote>
@@ -145,7 +145,7 @@ décrit dans le tableau suivant. Il décrit les approches qui seront les plus ba
 latence et en débit le plus élevé d’abord, et éventuellement l’option la moins efficace
 qui cause le plus de retard par détection.</p>
 <section id="tableau-de-strategie-de-detection-de-fichiers">
-<h2>Tableau de stratégie de détection de fichiers<a class="headerlink" href="#tableau-de-strategie-de-detection-de-fichiers" title="Permalink to this heading"></a></h2>
+<h2>Tableau de stratégie de détection de fichiers<a class="headerlink" href="#tableau-de-strategie-de-detection-de-fichiers" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>Stratégies de détection de fichiers (ordre : de la plus rapide à la plus lente)
@@ -435,7 +435,7 @@ Pour des transferts de fichiers fiables, Il est essentiel que les processus qui 
 des fichiers et sr_watch s’entendent sur la façon de représenter un fichier qui n’est pas complet.</p>
 </section>
 <section id="shim-library-usage">
-<h2>SHIM LIBRARY USAGE<a class="headerlink" href="#shim-library-usage" title="Permalink to this heading"></a></h2>
+<h2>SHIM LIBRARY USAGE<a class="headerlink" href="#shim-library-usage" title="Link to this heading"></a></h2>
 <p>Rather than invoking a sr3_post to post each file to publish, one can have processes automatically
 post the files they right by having them use a shim library intercepting certain file i/o calls to libc
 and the kernel. To activate the shim library, in the shell environment add:</p>
@@ -464,7 +464,7 @@ fi
 <p>SSH will only pass environment variables that start with LC_ (locale) so to get it
 passed with minimal effort, we use that prefix.</p>
 <section id="shim-usage-notes">
-<h3>Shim Usage Notes<a class="headerlink" href="#shim-usage-notes" title="Permalink to this heading"></a></h3>
+<h3>Shim Usage Notes<a class="headerlink" href="#shim-usage-notes" title="Link to this heading"></a></h3>
 <p>Cette méthode de notification nécessite une certaine configuration de l’environnement de l’utilisateur.
 L’environnement de l’utilisateur doit être défini sur les variables d’environnement LD_PRELOAD
 avant le lancement du processus. Il restent encore des complications qui restent qui ont été
@@ -499,7 +499,7 @@ même arbre en miroir. Voir ci-dessous pour plus de détails.</p></li>
 </ul>
 </section>
 <section id="processus-de-renommage">
-<h3>Processus de Renommage<a class="headerlink" href="#processus-de-renommage" title="Permalink to this heading"></a></h3>
+<h3>Processus de Renommage<a class="headerlink" href="#processus-de-renommage" title="Link to this heading"></a></h3>
 <p>C’est à noter que le changement de nom de fichier n’est pas aussi simple dans le cas de mise en miroir que dans le cas sous-jacent
 du système d’exploitation. Alors que l’opération est une seule opération atomique dans un système d’exploitation,
 avec l’aide de notifications, il existe des cas d’acceptation/rejet qui créent quatre effets possibles.</p>

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -137,7 +137,7 @@
 }
 </style>
 <section id="portage-des-plugins-v2-vers-sr3">
-<h1>Portage des plugins V2 vers Sr3<a class="headerlink" href="#portage-des-plugins-v2-vers-sr3" title="Permalink to this heading"></a></h1>
+<h1>Portage des plugins V2 vers Sr3<a class="headerlink" href="#portage-des-plugins-v2-vers-sr3" title="Link to this heading"></a></h1>
 <p>Ceci est un guide pour porter des plugins de Sarracenia version 2.X (metpx-sarracenia) vers
 Sarracenia version 3.x (metpx-sr3)</p>
 <div class="admonition note">
@@ -189,14 +189,14 @@ de notification ou un protocole de transport de fichier.</p></li>
 </dl>
 </div>
 <section id="placement-de-fichier">
-<h2>Placement de Fichier<a class="headerlink" href="#placement-de-fichier" title="Permalink to this heading"></a></h2>
+<h2>Placement de Fichier<a class="headerlink" href="#placement-de-fichier" title="Link to this heading"></a></h2>
 <p>v2 place les fichier de configuration sous ~/.config/sarra, et les fichiers d’état sous ~/.cache/sarra</p>
 <p>v3 place les fichier de configuration sous ~/.config/sr3, et les fichiers d’état sous ~/.cache/sr3</p>
 <p>v2 a une implémentation C de sarra appelée sarrac. L’implémentation C pour v3, est appelée sr3c,
 et est identique à celui de la v2, sauf qu’il utilise les emplacements de fichiers v3.</p>
 </section>
 <section id="difference-de-ligne-de-commande">
-<h2>Différence de ligne de commande<a class="headerlink" href="#difference-de-ligne-de-commande" title="Permalink to this heading"></a></h2>
+<h2>Différence de ligne de commande<a class="headerlink" href="#difference-de-ligne-de-commande" title="Link to this heading"></a></h2>
 <p>En bref, le point d’entrée sr3 est utilisé pour démarrer / arrêter / évaluer les choses:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">v2</span><span class="p">:</span>  <span class="n">sr_</span><span class="o">*</span><span class="n">component</span><span class="o">*</span> <span class="n">start</span> <span class="n">config</span>
 
@@ -212,7 +212,7 @@ un outil d’affichage interactif.</p>
 </div>
 </section>
 <section id="ce-qui-fonctionnera-sans-changement">
-<h2>Ce qui fonctionnera sans changement<a class="headerlink" href="#ce-qui-fonctionnera-sans-changement" title="Permalink to this heading"></a></h2>
+<h2>Ce qui fonctionnera sans changement<a class="headerlink" href="#ce-qui-fonctionnera-sans-changement" title="Link to this heading"></a></h2>
 <p>La première étape du portage d’une configuration subscribe/X vers v3, consiste simplement à copier le
 fichier de configuration de ~/.config/sarra à l’emplacement correspondant dans ~/.config/sr3 et essayez:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sr3</span> <span class="n">show</span> <span class="n">subscribe</span><span class="o">/</span><span class="n">X</span>
@@ -274,7 +274,7 @@ rapidement. Il y a un succès de performance à l’utilisation de v2wrapper.</p
 </div>
 </section>
 <section id="ce-qui-ne-fonctionnera-pas-sans-changement">
-<h2>Ce qui ne fonctionnera pas sans changement<a class="headerlink" href="#ce-qui-ne-fonctionnera-pas-sans-changement" title="Permalink to this heading"></a></h2>
+<h2>Ce qui ne fonctionnera pas sans changement<a class="headerlink" href="#ce-qui-ne-fonctionnera-pas-sans-changement" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>do_* ils sont juste fondamentalement différents dans la v3.</p></li>
 </ul>
@@ -304,7 +304,7 @@ faire les choses dans la v3. Vous déclarez des rappels et leur demandez de cont
 dans le message de notification.</p>
 </section>
 <section id="differences-de-codage-entre-les-plugins-dans-v2-vs-sr3">
-<h2>Différences de codage entre les plugins dans v2 vs Sr3<a class="headerlink" href="#differences-de-codage-entre-les-plugins-dans-v2-vs-sr3" title="Permalink to this heading"></a></h2>
+<h2>Différences de codage entre les plugins dans v2 vs Sr3<a class="headerlink" href="#differences-de-codage-entre-les-plugins-dans-v2-vs-sr3" title="Link to this heading"></a></h2>
 <p>L’API pour ajouter ou personnaliser des fonctionnalités dans sr3 est très différente de la v2.
 En général, les plugins v3:</p>
 <ul>
@@ -651,7 +651,7 @@ D’autres sous-classes telles que S3, IPFS ou webdav, seraient des ajouts excel
 </ul>
 </section>
 <section id="fichiers-de-configuration">
-<h2>Fichiers de configuration<a class="headerlink" href="#fichiers-de-configuration" title="Permalink to this heading"></a></h2>
+<h2>Fichiers de configuration<a class="headerlink" href="#fichiers-de-configuration" title="Link to this heading"></a></h2>
 <p>Dans la v2, l’option de configuration principale pour déclarer un plugin est</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plugin</span> <span class="n">X</span>
 </pre></div>
@@ -684,7 +684,7 @@ convention, on peut aussi utiliser un manière plus flexible mais plus longue:</
 qui ne correspondent pas à la convention du x.X (un fichier nommé x.py contenant une classe appelée X)</p>
 </section>
 <section id="mise-a-niveau-de-la-configuration">
-<h2>Mise à niveau de la configuration<a class="headerlink" href="#mise-a-niveau-de-la-configuration" title="Permalink to this heading"></a></h2>
+<h2>Mise à niveau de la configuration<a class="headerlink" href="#mise-a-niveau-de-la-configuration" title="Link to this heading"></a></h2>
 <p>Une fois qu’un plugin est porté, on peut également faire en sorte que l’analyseur d’options v3 reconnaisse une
 invocation de plugin de v2 et la remplace par une invocation v3. En regardant dans /sarracenia/config.py#L144,
 il existe une structure de données <em>convert_to_v3</em>.  Voici un exemple d’entrée</p>
@@ -704,7 +704,7 @@ il existe une structure de données <em>convert_to_v3</em>.  Voici un exemple d�
 </div>
 </section>
 <section id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading"></a></h2>
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
 <p>Dans la v2, on déclarerait les paramètres à utiliser par un plugin dans la routine __init__, avec
 le <em>declare_option</em>.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span><span class="o">.</span><span class="n">declare_option</span><span class="p">(</span><span class="s1">&#39;poll_usgs_stn_file&#39;</span><span class="p">)</span>
@@ -725,12 +725,12 @@ de valeur par défaut est inclus sans code supplémentaire. Il serait mentionné
 </div>
 </section>
 <section id="mappage-des-points-dentree-v2-aux-callbacks-v3">
-<h2>Mappage des points d’entrée v2 aux Callbacks v3<a class="headerlink" href="#mappage-des-points-dentree-v2-aux-callbacks-v3" title="Permalink to this heading"></a></h2>
+<h2>Mappage des points d’entrée v2 aux Callbacks v3<a class="headerlink" href="#mappage-des-points-dentree-v2-aux-callbacks-v3" title="Link to this heading"></a></h2>
 <p>Pour un aperçu complet des points d’entrée v3, jetez un coup d’œil :
 <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py</a></p>
 <p>pour plus de détails.</p>
 <section id="on-message-on-post-after-accept">
-<h3>on_message, on_post –&gt; after_accept<a class="headerlink" href="#on-message-on-post-after-accept" title="Permalink to this heading"></a></h3>
+<h3>on_message, on_post –&gt; after_accept<a class="headerlink" href="#on-message-on-post-after-accept" title="Link to this heading"></a></h3>
 <p>v2 : reçoit un message de notification, renvoie True/False</p>
 <dl class="simple">
 <dt>v3: reçoit worklist</dt><dd><p>modifie worklist.incoming
@@ -760,7 +760,7 @@ v3: flowcb/wistree.py</p>
 </dl>
 </section>
 <section id="on-file-after-work">
-<h3>on_file –&gt; after_work<a class="headerlink" href="#on-file-after-work" title="Permalink to this heading"></a></h3>
+<h3>on_file –&gt; after_work<a class="headerlink" href="#on-file-after-work" title="Link to this heading"></a></h3>
 <p>v2 : reçoit un message de notification, renvoie True/False</p>
 <dl>
 <dt>v3: reçoit worklist</dt><dd><p>modifie worklist.ok (transfer has already happenned.)
@@ -776,7 +776,7 @@ TODO: ajouter quelques exemples</p>
 </div>
 </section>
 <section id="on-heartbeat-on-housekeeping">
-<h3>on_heartbeat -&gt; on_housekeeping<a class="headerlink" href="#on-heartbeat-on-housekeeping" title="Permalink to this heading"></a></h3>
+<h3>on_heartbeat -&gt; on_housekeeping<a class="headerlink" href="#on-heartbeat-on-housekeeping" title="Link to this heading"></a></h3>
 <dl class="simple">
 <dt>v2: reçoit le parent comme argument.</dt><dd><p>fonctionnera inchangé.</p>
 </dd>
@@ -791,7 +791,7 @@ TODO: ajouter quelques exemples</p>
 </div></blockquote>
 </section>
 <section id="do-poll-poll">
-<h3>do_poll -&gt; poll<a class="headerlink" href="#do-poll-poll" title="Permalink to this heading"></a></h3>
+<h3>do_poll -&gt; poll<a class="headerlink" href="#do-poll-poll" title="Link to this heading"></a></h3>
 <p>v2: appelez do_poll à partir du plugin.</p>
 <blockquote>
 <div><ul class="simple">
@@ -859,7 +859,7 @@ détection des modifications apportées aux fichiers existants.</p>
 </div>
 </section>
 <section id="traitement-ip-virtuel-dans-le-poll">
-<h3>Traitement IP virtuel dans le poll<a class="headerlink" href="#traitement-ip-virtuel-dans-le-poll" title="Permalink to this heading"></a></h3>
+<h3>Traitement IP virtuel dans le poll<a class="headerlink" href="#traitement-ip-virtuel-dans-le-poll" title="Link to this heading"></a></h3>
 <p>Dans la v2, si vous avez une séléction de vIP, tous les nœuds participants pollent le serveur en amont
 et maintiennent la liste des fichiers actuels, ils ne publient tout simplement pas le résultat.
 Donc, si vous avez 8 serveurs partageant un vIP, les huit sont des poll, un peu triste.
@@ -876,7 +876,7 @@ pour mettre à jour leur cache recent_files.</p>
 </dl>
 </section>
 <section id="on-html-page-sous-classement-de-flowcb-poll">
-<h3>on_html_page -&gt; sous-classement de flowcb/poll<a class="headerlink" href="#on-html-page-sous-classement-de-flowcb-poll" title="Permalink to this heading"></a></h3>
+<h3>on_html_page -&gt; sous-classement de flowcb/poll<a class="headerlink" href="#on-html-page-sous-classement-de-flowcb-poll" title="Link to this heading"></a></h3>
 <p>Voici un plugin v2 nsa_mls_nrt.py:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 
@@ -1008,7 +1008,7 @@ de la classe de poll.</p>
 </section>
 </section>
 <section id="on-line-sous-classement-de-poll">
-<h2>on_line -&gt; sous-classement de poll<a class="headerlink" href="#on-line-sous-classement-de-poll" title="Permalink to this heading"></a></h2>
+<h2>on_line -&gt; sous-classement de poll<a class="headerlink" href="#on-line-sous-classement-de-poll" title="Link to this heading"></a></h2>
 <p>Comme on_html_page ci-dessus, toutes les utilisations de on_line dans la version précédente
 concernaient le reformatage des lignes pour qu’elles puissent être analysées. La routine on_line peut être
 sous-classé de la même manière pour le remplacer.  Il fallait modifier la chaîne parent.line
@@ -1019,7 +1019,7 @@ Avec l’analyse de date plus flexible dans sr3, il n’y a pas le besoin d’id
 sur lequel construire un exemple.</p>
 </section>
 <section id="do-send-send">
-<h2>do_send -&gt; send:<a class="headerlink" href="#do-send-send" title="Permalink to this heading"></a></h2>
+<h2>do_send -&gt; send:<a class="headerlink" href="#do-send-send" title="Link to this heading"></a></h2>
 <p>v2 : do_send peut être une routine autonome ou associée à un type de protocole</p>
 <ul class="simple">
 <li><p>basé sur registered_as() afin que la destination détermine si elle est utilisée ou non.</p></li>
@@ -1043,7 +1043,7 @@ Pour ajouter la prise en charge de nouveaux protocoles, il faut sous-classer sar
 </dl>
 </section>
 <section id="do-download-download">
-<h2>do_download -&gt; download:<a class="headerlink" href="#do-download-download" title="Permalink to this heading"></a></h2>
+<h2>do_download -&gt; download:<a class="headerlink" href="#do-download-download" title="Link to this heading"></a></h2>
 <p>créer une classe flowCallback avec un point d’entrée <em>download</em>.</p>
 <ul>
 <li><p>accepte un seul message de notification comme argument.</p></li>
@@ -1078,7 +1078,7 @@ plugin est requis.</p>
 </li>
 </ul>
 <section id="destfnscript">
-<h3>DESTFNSCRIPT<a class="headerlink" href="#destfnscript" title="Permalink to this heading"></a></h3>
+<h3>DESTFNSCRIPT<a class="headerlink" href="#destfnscript" title="Link to this heading"></a></h3>
 <p>DESTFNSCRIPT est refondu en tant que point d’entrée flowcb, où la directive est maintenant formatée d’une manière
 similaire au flowcallback dans la configuration</p>
 <p>configuration V2:</p>
@@ -1155,7 +1155,7 @@ Type “help”, “copyright”, “credits” or “license” for more inform
 </section>
 </section>
 <section id="v3-seulement-post-gather">
-<h2>v3 seulement: post,gather<a class="headerlink" href="#v3-seulement-post-gather" title="Permalink to this heading"></a></h2>
+<h2>v3 seulement: post,gather<a class="headerlink" href="#v3-seulement-post-gather" title="Link to this heading"></a></h2>
 <p>Le polling/posting est en fait effectuée dans des classes de rappel de flux (flowcb).
 Le statut de sortie n’a pas d’importance, toutes ces routines seront appelées dans l’ordre.</p>
 <p>Le retour d’un gather est une liste de messages de notification à ajouter à worklist.incoming</p>
@@ -1173,9 +1173,9 @@ installer une configuration pour l’utiliser avec <em>sr3 add poll/aws-nexrad.c
 </dl>
 </section>
 <section id="v3-exemples-complexes">
-<h2>v3 Exemples complexes<a class="headerlink" href="#v3-exemples-complexes" title="Permalink to this heading"></a></h2>
+<h2>v3 Exemples complexes<a class="headerlink" href="#v3-exemples-complexes" title="Link to this heading"></a></h2>
 <section id="flowcb-nodupe">
-<h3>flowcb/nodupe<a class="headerlink" href="#flowcb-nodupe" title="Permalink to this heading"></a></h3>
+<h3>flowcb/nodupe<a class="headerlink" href="#flowcb-nodupe" title="Link to this heading"></a></h3>
 <p>suppression des doublons dans la v3, a:</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -1186,7 +1186,7 @@ installer une configuration pour l’utiliser avec <em>sr3 add poll/aws-nexrad.c
 </ul>
 </section>
 <section id="flowcb-retry">
-<h3>flowcb/retry<a class="headerlink" href="#flowcb-retry" title="Permalink to this heading"></a></h3>
+<h3>flowcb/retry<a class="headerlink" href="#flowcb-retry" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>dispose d’une fonction after_accept pour ajouter des messages de notification à la
@@ -1199,7 +1199,7 @@ sur la liste des nouvelles tentatives pour un examen ultérieur.</p></li>
 </section>
 </section>
 <section id="table-of-v2-and-sr3-equivalents">
-<h2>Table of v2 and sr3 Equivalents<a class="headerlink" href="#table-of-v2-and-sr3-equivalents" title="Permalink to this heading"></a></h2>
+<h2>Table of v2 and sr3 Equivalents<a class="headerlink" href="#table-of-v2-and-sr3-equivalents" title="Link to this heading"></a></h2>
 <p>Voici un aperçu des plugins inclus dans Sarracenia,
 On peut parcourir les deux arbres, et à l’aide du tableau ci-dessous,
 peut examiner, comparer et contraster les implémentations.</p>

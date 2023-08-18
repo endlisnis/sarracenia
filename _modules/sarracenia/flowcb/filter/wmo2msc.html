@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -152,8 +152,12 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;__name__&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Wmo2msc"><a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc">[docs]</a><span class="k">class</span> <span class="nc">Wmo2msc</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
-<div class="viewcode-block" id="Wmo2msc.__init__"><a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+<div class="viewcode-block" id="Wmo2msc">
+<a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc">[docs]</a>
+<span class="k">class</span> <span class="nc">Wmo2msc</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
+<div class="viewcode-block" id="Wmo2msc.__init__">
+<a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span> <span class="s1">&#39;filter_wmo2msc_uniquify&#39;</span><span class="p">,</span> <span class="s1">&#39;str&#39;</span><span class="p">,</span> <span class="s1">&#39;hash&#39;</span> <span class="p">)</span>
@@ -172,7 +176,10 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">trimre</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot; +</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Wmo2msc.replaceChar"><a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc.replaceChar">[docs]</a>    <span class="k">def</span> <span class="nf">replaceChar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oldchar</span><span class="p">,</span> <span class="n">newchar</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Wmo2msc.replaceChar">
+<a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc.replaceChar">[docs]</a>
+    <span class="k">def</span> <span class="nf">replaceChar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oldchar</span><span class="p">,</span> <span class="n">newchar</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           replace all occurrences of oldchar by newchar in the the message byte stream.</span>
 <span class="sd">           started as a direct copy from sundew of routine with same name in bulletin.py</span>
@@ -183,7 +190,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bintxt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bintxt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">oldchar</span><span class="p">,</span> <span class="s1">&#39;latin_1&#39;</span><span class="p">),</span>
                                           <span class="nb">bytearray</span><span class="p">(</span><span class="n">newchar</span><span class="p">,</span> <span class="s1">&#39;latin_1&#39;</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="Wmo2msc.doSpecificProcessing"><a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc.doSpecificProcessing">[docs]</a>    <span class="k">def</span> <span class="nf">doSpecificProcessing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Wmo2msc.doSpecificProcessing">
+<a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.filter.wmo2msc.Wmo2msc.doSpecificProcessing">[docs]</a>
+    <span class="k">def</span> <span class="nf">doSpecificProcessing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;doSpecificProcessing()</span>
 
 <span class="sd">           Modify bulletins received from Washington via the WMO socket protocol.</span>
@@ -263,6 +273,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bintxt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trimre</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bintxt</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bintxt</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">lenb</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Trimmed </span><span class="si">%d</span><span class="s1"> trailing blanks!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lenb</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bintxt</span><span class="p">)))</span></div>
+
 
     <span class="k">def</span> <span class="nf">after_accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worklist</span><span class="p">):</span>
         <span class="n">new_incoming</span> <span class="o">=</span> <span class="p">[]</span>
@@ -394,6 +405,7 @@
             <span class="n">message</span><span class="p">[</span><span class="s1">&#39;set_notice&#39;</span><span class="p">](</span><span class="n">baseUrl</span><span class="p">,</span> <span class="n">relPath</span><span class="p">)</span>
             <span class="n">new_incoming</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
         <span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span> <span class="o">=</span> <span class="n">new_incoming</span></div>
+
 
 
 <span class="sd">&quot;&quot;&quot;</span>

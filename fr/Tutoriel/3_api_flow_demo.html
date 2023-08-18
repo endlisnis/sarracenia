@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -375,7 +375,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Exemple-d’API-de-flux">
-<h1>Exemple d’API de flux<a class="headerlink" href="#Exemple-d’API-de-flux" title="Permalink to this heading"></a></h1>
+<h1>Exemple d’API de flux<a class="headerlink" href="#Exemple-d’API-de-flux" title="Link to this heading"></a></h1>
 <p>La <a class="reference external" href="../Reference/code.html#module-sarracenia.flow">classe sarracenia.flow</a> fournit un filtrage d’acceptation/rejet intégré pour les messages, prend en charge le téléchargement intégré dans plusieurs protocoles, réessaye en cas d’échec et permet la création de rappels pour personnaliser le traitement.</p>
 <p>Vous devez fournir une configuration comme argument lors de l’instanciation d’un abonné. La <em>sarracenia.config.no_file_config()</em> renvoie une configuration vide sans consulter l’arborescence des fichiers de configuration sr3.</p>
 <p>Après avoir apporté les modifications nécessaires à la configuration, l’abonné est alors initié et exécuté.</p>
@@ -436,23 +436,23 @@ mkdir: cannot create directory ‘/tmp/flow_demo’: File exists
 </div>
 </div>
 <section id="démareurs.">
-<h2>démareurs.<a class="headerlink" href="#démareurs." title="Permalink to this heading"></a></h2>
+<h2>démareurs.<a class="headerlink" href="#démareurs." title="Link to this heading"></a></h2>
 <p>les paramètres du courtier, des liaisons et du nom de la file d’attente sont expliqués dans le bloc-notes de moth.</p>
 </section>
 <section id="cfg.download">
-<h2>cfg.download<a class="headerlink" href="#cfg.download" title="Permalink to this heading"></a></h2>
+<h2>cfg.download<a class="headerlink" href="#cfg.download" title="Link to this heading"></a></h2>
 <p>Si vous souhaitez que le flux télécharge les fichiers correspondant aux messages. Si vrai, il téléchargera les fichiers.</p>
 </section>
 <section id="cfg.batch">
-<h2>cfg.batch<a class="headerlink" href="#cfg.batch" title="Permalink to this heading"></a></h2>
+<h2>cfg.batch<a class="headerlink" href="#cfg.batch" title="Link to this heading"></a></h2>
 <p>Les messages sont traités par lots. Le nombre de messages à récupérer par appel à newMessages() est limité par le paramètre <em>batch</em>. Nous le définissons ici sur 1 afin que vous puissiez voir chaque fichier téléchargé immédiatement lorsque le message correspondant est téléchargé. vous pouvez laisser ce champ vide et la valeur par défaut est 25. Les paramètres sont une question de goût et de cas d’utilisation.</p>
 </section>
 <section id="cfg.messageCountMax">
-<h2>cfg.messageCountMax<a class="headerlink" href="#cfg.messageCountMax" title="Permalink to this heading"></a></h2>
+<h2>cfg.messageCountMax<a class="headerlink" href="#cfg.messageCountMax" title="Link to this heading"></a></h2>
 <p>Normalement, nous laissons ce paramètre à sa valeur par défaut (0) qui n’a aucun effet sur le traitement. à des fins de démonstration, nous limitons le nombre de messages que l’abonné traitera avec ce paramètre. après la réception de <em>messageCountMax</em> messages, arrêtez le traitement.</p>
 </section>
 <section id="cfg.masks">
-<h2>cfg.masks<a class="headerlink" href="#cfg.masks" title="Permalink to this heading"></a></h2>
+<h2>cfg.masks<a class="headerlink" href="#cfg.masks" title="Link to this heading"></a></h2>
 <p>Les masques sont une forme compilée de directives d’acceptation/rejet. un relPath est comparé à la regex dans le masque. Si l’expression régulière correspond et que accept est True, le message est accepté pour un traitement ultérieur. Si l’expression régulière correspond, mais accept vaut False, le traitement du message est arrêté (le message est rejeté.)</p>
 <p>les masques sont un tuple. la signification peut être recherchée dans la page de manuel sr3(1).</p>
 <ul class="simple">
@@ -468,7 +468,7 @@ mkdir: cannot create directory ‘/tmp/flow_demo’: File exists
 </ul>
 </section>
 <section id="cfg.no,-cfg.pid_filename">
-<h2>cfg.no, cfg.pid_filename<a class="headerlink" href="#cfg.no,-cfg.pid_filename" title="Permalink to this heading"></a></h2>
+<h2>cfg.no, cfg.pid_filename<a class="headerlink" href="#cfg.no,-cfg.pid_filename" title="Link to this heading"></a></h2>
 <p>Ces paramètres sont nécessaires car ils seraient normalement définis par la classe sarracenia.instance qui est normalement utilisée pour lancer des flux. Ils permettent de configurer des chemins d’exécution pour retry_queues et des fichiers d’état, afin de mémoriser les paramètres si nécessaire entre les exécutions.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -549,7 +549,7 @@ mkdir: cannot create directory ‘/tmp/flow_demo’: File exists
 </div>
 </section>
 <section id="Conclusion:">
-<h2>Conclusion:<a class="headerlink" href="#Conclusion:" title="Permalink to this heading"></a></h2>
+<h2>Conclusion:<a class="headerlink" href="#Conclusion:" title="Link to this heading"></a></h2>
 <p>Avec la classe sarracenia.flow, une méthode de fonctionnement asynchrone est prise en charge, elle peut être personnalisée à l’aide de la classe flowcb (rappel de flux) pour introduire un traitement spécifique à des moments spécifiques. C’est comme l’invocation d’une seule instance à partir de la ligne de commande, sauf que toute la configuration est effectuée dans python en définissant des champs cfg, plutôt qu’en utilisant le langage de configuration.</p>
 <p>Qu’est-ce qui est perdu par rapport à l’utilisation de l’outil de ligne de commande :</p>
 <ul class="simple">

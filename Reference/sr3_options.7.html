@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,15 +120,15 @@
 }
 </style>
 <section id="sr3-options">
-<h1>SR3 OPTIONS<a class="headerlink" href="#sr3-options" title="Permalink to this heading"></a></h1>
+<h1>SR3 OPTIONS<a class="headerlink" href="#sr3-options" title="Link to this heading"></a></h1>
 <section id="sr3-configuration-file-format">
-<h2>SR3 Configuration File Format<a class="headerlink" href="#sr3-configuration-file-format" title="Permalink to this heading"></a></h2>
+<h2>SR3 Configuration File Format<a class="headerlink" href="#sr3-configuration-file-format" title="Link to this heading"></a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">manual section<span class="colon">:</span></dt>
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -138,7 +138,7 @@
 </dd>
 </dl>
 <section id="synopsis">
-<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h3>
+<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name value
 name value for use
 name value_${substitution}
@@ -149,7 +149,7 @@ name value_${substitution}
 </div>
 </section>
 <section id="description">
-<h3>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this heading"></a></h3>
+<h3>DESCRIPTION<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
 <p>Options are placed in configuration files, one per line, in the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
 </pre></div>
@@ -220,7 +220,7 @@ interpreted in order. For thoses cases, the last declaration overrides the
 ones higher in the file..</p>
 </section>
 <section id="variables">
-<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this heading"></a></h3>
+<h3>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h3>
 <p>One can include substitutions in option values. They are represented by ${name}.
 The name can be an ordinary environment variable, or a chosen from a number of
 built-in ones. For example:</p>
@@ -263,7 +263,7 @@ by strftime, may mean it is necessary to escape precent characters them via doub
 </pre></div>
 </div>
 <section id="sundew-compatible-substituions">
-<h4>Sundew Compatible Substituions<a class="headerlink" href="#sundew-compatible-substituions" title="Permalink to this heading"></a></h4>
+<h4>Sundew Compatible Substituions<a class="headerlink" href="#sundew-compatible-substituions" title="Link to this heading"></a></h4>
 <p>In <a class="reference external" href="../Explanation/Glossary.html#sundew">MetPX Sundew</a>, there is a much more strict
 file naming standard, specialised for use with World Meteorological
 Organization (WMO) data. Note that the file naming convention predates, and
@@ -314,7 +314,7 @@ from the delivered file names.</p>
 </pre></div>
 </div>
 <section id="sr-dev-appname">
-<h5>SR_DEV_APPNAME<a class="headerlink" href="#sr-dev-appname" title="Permalink to this heading"></a></h5>
+<h5>SR_DEV_APPNAME<a class="headerlink" href="#sr-dev-appname" title="Link to this heading"></a></h5>
 <p>The SR_DEV_APPNAME environment variable can be set so that the application configuration and state directories
 are created under a different name. This is used in development to be able to have many configurations
 active at once. It enables more testing than always working with the developer´s <em>real</em> configuration.</p>
@@ -325,7 +325,7 @@ directory.</p>
 </section>
 </section>
 <section id="option-types">
-<h3>OPTION TYPES<a class="headerlink" href="#option-types" title="Permalink to this heading"></a></h3>
+<h3>OPTION TYPES<a class="headerlink" href="#option-types" title="Link to this heading"></a></h3>
 <p>sr3 options come in several types:</p>
 <dl class="simple">
 <dt>count</dt><dd><p>integer count type.</p>
@@ -349,19 +349,19 @@ all v2 plugin options are declared of type list.</p>
 </dl>
 </section>
 <section id="options">
-<h3>OPTIONS<a class="headerlink" href="#options" title="Permalink to this heading"></a></h3>
+<h3>OPTIONS<a class="headerlink" href="#options" title="Link to this heading"></a></h3>
 <p>The actual options are listed below. Note that they are case sensitive, and
 only a subset are available on the command line. Those that are available
 on the command line have the same effect as when specified in configuration
 files.</p>
 <p>The options available in configuration files:</p>
 <section id="accelthreshold-size-default-0-disabled">
-<h4>accelThreshold &lt;size&gt; default: 0 (disabled.)<a class="headerlink" href="#accelthreshold-size-default-0-disabled" title="Permalink to this heading"></a></h4>
+<h4>accelThreshold &lt;size&gt; default: 0 (disabled.)<a class="headerlink" href="#accelthreshold-size-default-0-disabled" title="Link to this heading"></a></h4>
 <p>The accelThreshold indicates the minimum size of file being transferred for
 which a binary downloader will be launched.</p>
 </section>
 <section id="accelxxxcommand">
-<h4>accelXxxCommand<a class="headerlink" href="#accelxxxcommand" title="Permalink to this heading"></a></h4>
+<h4>accelXxxCommand<a class="headerlink" href="#accelxxxcommand" title="Link to this heading"></a></h4>
 <p>Can specify alternate binaries for downloaders to tune for specific cases.</p>
 <table class="docutils align-default">
 <tbody>
@@ -392,7 +392,7 @@ file being written.  An example setting to override with:</p>
 </div>
 </section>
 <section id="accept-reject-and-acceptunmatched">
-<h4>accept, reject and acceptUnmatched<a class="headerlink" href="#accept-reject-and-acceptunmatched" title="Permalink to this heading"></a></h4>
+<h4>accept, reject and acceptUnmatched<a class="headerlink" href="#accept-reject-and-acceptunmatched" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><strong>accept     &lt;regexp pattern&gt; (optional) [&lt;keywords&gt;]</strong></p></li>
 <li><p><strong>reject     &lt;regexp pattern&gt; (optional)</strong></p></li>
@@ -474,14 +474,14 @@ accept .*(2016....).*(RAW.*GRIB).*
 <p><strong>20150813161959.854 http://this.pump.com/ relative/path/to/20160123_product_RAW_MERGER_GRIB_from_CMC</strong></p>
 </section>
 <section id="acceptsizewrong-boolean-default-false">
-<h4>acceptSizeWrong: &lt;boolean&gt; (default: False)<a class="headerlink" href="#acceptsizewrong-boolean-default-false" title="Permalink to this heading"></a></h4>
+<h4>acceptSizeWrong: &lt;boolean&gt; (default: False)<a class="headerlink" href="#acceptsizewrong-boolean-default-false" title="Link to this heading"></a></h4>
 <p>When a file is downloaded and its size does not match the one advertised, it is
 normally rejected, as a failure. This option accepts the file even with the wrong
 size. helpful when file is changing frequently, and there is some queueing, so
 the file is changed by the time it is retrieved.</p>
 </section>
 <section id="attempts-count-default-3">
-<h4>attempts &lt;count&gt; (default: 3)<a class="headerlink" href="#attempts-count-default-3" title="Permalink to this heading"></a></h4>
+<h4>attempts &lt;count&gt; (default: 3)<a class="headerlink" href="#attempts-count-default-3" title="Link to this heading"></a></h4>
 <p>The <strong>attempts</strong> option indicates how many times to
 attempt downloading the data before giving up.  The default of 3 should be appropriate
 in most cases.  When the <strong>retry</strong> option is false, the file is then dropped immediately.</p>
@@ -491,7 +491,7 @@ for later retry.  When there are no notification messages ready to consume from 
 the retry queue will be queried.</p>
 </section>
 <section id="basedir-path-default">
-<h4>baseDir &lt;path&gt; (default: /)<a class="headerlink" href="#basedir-path-default" title="Permalink to this heading"></a></h4>
+<h4>baseDir &lt;path&gt; (default: /)<a class="headerlink" href="#basedir-path-default" title="Link to this heading"></a></h4>
 <p><strong>baseDir</strong> supplies the directory path that, when combined with the relative
 one in the selected notification gives the absolute path of the file to be sent.
 The default is None which means that the path in the notification is the absolute one.</p>
@@ -505,14 +505,14 @@ to be from, to be replaced on download by either post_baseDir or the <em>directo
 in effect.</p>
 </section>
 <section id="baseurl-relpath-flag-default-off">
-<h4>baseUrl_relPath &lt;flag&gt; (default: off)<a class="headerlink" href="#baseurl-relpath-flag-default-off" title="Permalink to this heading"></a></h4>
+<h4>baseUrl_relPath &lt;flag&gt; (default: off)<a class="headerlink" href="#baseurl-relpath-flag-default-off" title="Link to this heading"></a></h4>
 <p>Normally, the relative path (baseUrl_relPath is False, appended to the base directory) for
 files which are downloaded will be set according to the relPath header included
 in the notification message. If <em>baseUrl_relPath</em> is set, however, the notification message’s relPath will
 be prepended with the sub-directories from the notification message’s baseUrl field.</p>
 </section>
 <section id="batch-count-default-100">
-<h4>batch &lt;count&gt; (default: 100)<a class="headerlink" href="#batch-count-default-100" title="Permalink to this heading"></a></h4>
+<h4>batch &lt;count&gt; (default: 100)<a class="headerlink" href="#batch-count-default-100" title="Link to this heading"></a></h4>
 <p>The <strong>batch</strong> option is used to indicate how many files should be transferred
 over a connection, before it is torn down, and re-established.  On very low
 volume transfers, where timeouts can occur between transfers, this should be
@@ -521,7 +521,7 @@ cases, one could raise it to reduce transfer overhead. It is only used for file
 transfer protocols, not HTTP ones at the moment.</p>
 </section>
 <section id="blocksize-size-default-0-auto">
-<h4>blocksize &lt;size&gt; default: 0 (auto)<a class="headerlink" href="#blocksize-size-default-0-auto" title="Permalink to this heading"></a></h4>
+<h4>blocksize &lt;size&gt; default: 0 (auto)<a class="headerlink" href="#blocksize-size-default-0-auto" title="Link to this heading"></a></h4>
 <p>NOTE: <strong>NOT IMPLEMENTEDin sr3, expected to return in future version</strong>
 This <strong>blocksize</strong> option controls the partitioning strategy used to post files.
 The value should be one of:</p>
@@ -538,7 +538,7 @@ optimized by only sending parts which have changed.</p>
 See <a class="reference external" href="sr3_cpump.1.html">sr3_cpump(1)</a> for details.</p>
 </section>
 <section id="broker">
-<h4>broker<a class="headerlink" href="#broker" title="Permalink to this heading"></a></h4>
+<h4>broker<a class="headerlink" href="#broker" title="Link to this heading"></a></h4>
 <p><strong>broker [amqp|mqtt]{s}://&lt;user&gt;:&lt;password&gt;&#64;&lt;brokerhost&gt;[:port]/&lt;vhost&gt;</strong></p>
 <p>A URI is used to configure a connection to a notification message pump, either
 an MQTT or an AMQP broker. Some Sarracenia components set a reasonable default for
@@ -558,13 +558,13 @@ The broker option tell each component which broker to contact.</p>
 to exchanges and topics to determine the notification messages of interest.</p>
 </section>
 <section id="byteratemax-size-default-0">
-<h4>byteRateMax &lt;size&gt; (default: 0)<a class="headerlink" href="#byteratemax-size-default-0" title="Permalink to this heading"></a></h4>
+<h4>byteRateMax &lt;size&gt; (default: 0)<a class="headerlink" href="#byteratemax-size-default-0" title="Link to this heading"></a></h4>
 <p><strong>byteRateMax</strong> is greater than 0, the process attempts to respect this delivery
 speed in kilobytes per second… ftp,ftps,or sftp)</p>
 <p><strong>FIXME</strong>: byteRateMax… only implemented by sender? or subscriber as well, data only, or notification messages also?</p>
 </section>
 <section id="callback-classspec">
-<h4>callback &lt;classSpec&gt;<a class="headerlink" href="#callback-classspec" title="Permalink to this heading"></a></h4>
+<h4>callback &lt;classSpec&gt;<a class="headerlink" href="#callback-classspec" title="Link to this heading"></a></h4>
 <p><strong>callback</strong> appends a flowcallback class to the list of those to be called during processing.</p>
 <p>Most customizable processing or “plugin” logic, is implemented using the flow callback class.
 At different points in notification message processing, flow callback classes define
@@ -584,12 +584,12 @@ object <em>log.Log.</em></p>
 <p>More detail here <a class="reference external" href="flowcb.html#sarracenia.flowcb.load_library">FlowCallback load_library</a></p>
 </section>
 <section id="callback-prepend-classspec">
-<h4>callback_prepend &lt;classSpec&gt;<a class="headerlink" href="#callback-prepend-classspec" title="Permalink to this heading"></a></h4>
+<h4>callback_prepend &lt;classSpec&gt;<a class="headerlink" href="#callback-prepend-classspec" title="Link to this heading"></a></h4>
 <p>identical to callback, but meant to specify functions to be executed early, that is prepended
 to the list of plugins to run.</p>
 </section>
 <section id="dangerwillrobinson-default-omitted">
-<h4>dangerWillRobinson (default: omitted)<a class="headerlink" href="#dangerwillrobinson-default-omitted" title="Permalink to this heading"></a></h4>
+<h4>dangerWillRobinson (default: omitted)<a class="headerlink" href="#dangerwillrobinson-default-omitted" title="Link to this heading"></a></h4>
 <p>This option is only recognized as a command line option. It is specified when an operation is expected
 to have irreversibly destructive or perhaps unexpected effects. for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sr3</span> <span class="n">stop</span>
@@ -606,7 +606,7 @@ destructive to flows. By default, cleanup only operates on a single configuratio
 One can specify this option to wreak greater havoc.</p>
 </section>
 <section id="declare">
-<h4>declare<a class="headerlink" href="#declare" title="Permalink to this heading"></a></h4>
+<h4>declare<a class="headerlink" href="#declare" title="Link to this heading"></a></h4>
 <dl>
 <dt>env NAME=Value</dt><dd><p>On can also reference environment variables in configuration files,
 using the <em>${ENV}</em> syntax.  If Sarracenia routines needs to make use
@@ -644,21 +644,21 @@ the broker to accept what is specified in that file, as long as the admin passwo
 already correct.</p>
 </section>
 <section id="debug">
-<h4>debug<a class="headerlink" href="#debug" title="Permalink to this heading"></a></h4>
+<h4>debug<a class="headerlink" href="#debug" title="Link to this heading"></a></h4>
 <p>Setting option debug is identical to use  <strong>logLevel debug</strong></p>
 </section>
 <section id="delete-boolean-default-off">
-<h4>delete &lt;boolean&gt; (default: off)<a class="headerlink" href="#delete-boolean-default-off" title="Permalink to this heading"></a></h4>
+<h4>delete &lt;boolean&gt; (default: off)<a class="headerlink" href="#delete-boolean-default-off" title="Link to this heading"></a></h4>
 <p>When the <strong>delete</strong> option is set, after a download has completed successfully, the subscriber
 will delete the file at the upstream source.  Default is false.</p>
 </section>
 <section id="discard-boolean-default-off">
-<h4>discard &lt;boolean&gt; (default: off)<a class="headerlink" href="#discard-boolean-default-off" title="Permalink to this heading"></a></h4>
+<h4>discard &lt;boolean&gt; (default: off)<a class="headerlink" href="#discard-boolean-default-off" title="Link to this heading"></a></h4>
 <p>The  <strong>discard</strong>  option,if set to true, deletes the file once downloaded. This option can be
 useful when debugging or testing a configuration.</p>
 </section>
 <section id="directory-path-default">
-<h4>directory &lt;path&gt; (default: .)<a class="headerlink" href="#directory-path-default" title="Permalink to this heading"></a></h4>
+<h4>directory &lt;path&gt; (default: .)<a class="headerlink" href="#directory-path-default" title="Link to this heading"></a></h4>
 <p>The <em>directory</em> option defines where to put the files on your server.
 Combined with  <strong>accept</strong> / <strong>reject</strong>  options, the user can select the
 files of interest and their directories of residence (see the  <strong>mirror</strong>
@@ -679,32 +679,32 @@ declared by the closest  <strong>directory</strong>  option above the matching  
 </div>
 </section>
 <section id="destfn-script-script-default-none">
-<h4>destfn_script &lt;script&gt; (default:None)<a class="headerlink" href="#destfn-script-script-default-none" title="Permalink to this heading"></a></h4>
+<h4>destfn_script &lt;script&gt; (default:None)<a class="headerlink" href="#destfn-script-script-default-none" title="Link to this heading"></a></h4>
 <p>This Sundew compatibility option defines a script to be run when everything is ready
 for the delivery of the product.  The script receives the sender class
 instance.  The script takes the parent as an argument, and for example, any
 modification to  <strong>parent.msg.new_file</strong>  will change the name of the file written locally.</p>
 </section>
 <section id="download-flag-default-true">
-<h4>download &lt;flag&gt; (default: True)<a class="headerlink" href="#download-flag-default-true" title="Permalink to this heading"></a></h4>
+<h4>download &lt;flag&gt; (default: True)<a class="headerlink" href="#download-flag-default-true" title="Link to this heading"></a></h4>
 <p>used to disable downloading in subscribe and/or sarra component.
 set False by default in shovel or winnow components.</p>
 </section>
 <section id="dry-run-flag-default-false">
-<h4>dry_run &lt;flag&gt; (default: False)<a class="headerlink" href="#dry-run-flag-default-false" title="Permalink to this heading"></a></h4>
+<h4>dry_run &lt;flag&gt; (default: False)<a class="headerlink" href="#dry-run-flag-default-false" title="Link to this heading"></a></h4>
 <p>Run in simulation mode with respect to file transfers. Still connects to a broker and downloads and processes
 messages, but transfers are disabled, for use when testing a sender, or a downloader, say to run in parallel
 with an existing one, and compare the logs to see if the sender is configured to send the same files as
 the old one (implemented with some other system.)</p>
 </section>
 <section id="durable-flag-default-true">
-<h4>durable &lt;flag&gt; (default: True)<a class="headerlink" href="#durable-flag-default-true" title="Permalink to this heading"></a></h4>
+<h4>durable &lt;flag&gt; (default: True)<a class="headerlink" href="#durable-flag-default-true" title="Link to this heading"></a></h4>
 <p>The AMQP <strong>durable</strong> option, on queue declarations. If set to True,
 the broker will preserve the queue across broker reboots.
 It means writes the queue is on disk if the broker is restarted.</p>
 </section>
 <section id="fileevents-event-event">
-<h4>fileEvents &lt;event,event,…&gt;<a class="headerlink" href="#fileevents-event-event" title="Permalink to this heading"></a></h4>
+<h4>fileEvents &lt;event,event,…&gt;<a class="headerlink" href="#fileevents-event-event" title="Link to this heading"></a></h4>
 <p>A comma separated list of file event types to monitor.
 Available file events:  create, delete, link, modify, mkdir, rmdir
 to only add events to the current list start the event list with a plus sign (+).
@@ -721,7 +721,7 @@ This allows subscribers to perform an actual rename, and avoid triggering a down
 </div>
 </section>
 <section id="exchange-name-default-xpublic-and-exchangesuffix">
-<h4>exchange &lt;name&gt; (default: xpublic) and exchangeSuffix<a class="headerlink" href="#exchange-name-default-xpublic-and-exchangesuffix" title="Permalink to this heading"></a></h4>
+<h4>exchange &lt;name&gt; (default: xpublic) and exchangeSuffix<a class="headerlink" href="#exchange-name-default-xpublic-and-exchangesuffix" title="Link to this heading"></a></h4>
 <p>The convention on data pumps is to use the <em>xpublic</em> exchange. Users can establish
 private data flow for their own processing. Users can declare their own exchanges
 that always begin with <em>xs_&lt;username&gt;</em>, so to save having to specify that each
@@ -731,14 +731,14 @@ These settings must appear in the configuration file before the corresponding
 <em>topicPrefix</em> and <em>subtopic</em> settings.</p>
 </section>
 <section id="exchangedeclare-flag">
-<h4>exchangeDeclare &lt;flag&gt;<a class="headerlink" href="#exchangedeclare-flag" title="Permalink to this heading"></a></h4>
+<h4>exchangeDeclare &lt;flag&gt;<a class="headerlink" href="#exchangedeclare-flag" title="Link to this heading"></a></h4>
 <p>On startup, by default, Sarracenia redeclares resources and bindings to ensure they
 are uptodate. If the exchange already exists, this flag can be set to False,
 so no attempt to exchange the queue is made, or it´s bindings.
 These options are useful on brokers that do not permit users to declare their exchanges.</p>
 </section>
 <section id="expire-duration-default-5m-five-minutes-recommend-overriding">
-<h4>expire &lt;duration&gt; (default: 5m  == five minutes. RECOMMEND OVERRIDING)<a class="headerlink" href="#expire-duration-default-5m-five-minutes-recommend-overriding" title="Permalink to this heading"></a></h4>
+<h4>expire &lt;duration&gt; (default: 5m  == five minutes. RECOMMEND OVERRIDING)<a class="headerlink" href="#expire-duration-default-5m-five-minutes-recommend-overriding" title="Link to this heading"></a></h4>
 <p>The  <strong>expire</strong>  option is expressed as a duration… it sets how long should live
 a queue without connections.</p>
 <p>A raw integer is expressed in seconds, if the suffix m,h,d,w
@@ -754,7 +754,7 @@ and in early use (when default was 1 week) brokers would often get overloaded wi
 long queues for left-over experiments.</p>
 </section>
 <section id="filename-keyword-default-whatfn">
-<h4>filename &lt;keyword&gt; (default:WHATFN)<a class="headerlink" href="#filename-keyword-default-whatfn" title="Permalink to this heading"></a></h4>
+<h4>filename &lt;keyword&gt; (default:WHATFN)<a class="headerlink" href="#filename-keyword-default-whatfn" title="Link to this heading"></a></h4>
 <p>From <strong>metpx-sundew</strong>, the support of this option give all sorts of possibilities
 for setting the remote filename. Some <strong>keywords</strong> are based on the fact that
 <strong>metpx-sundew</strong> filenames are five (to six) fields strings separated by for colons.</p>
@@ -801,7 +801,7 @@ of colon separation in files, the default in Sarracenia is WHATFN</p>
 </dl>
 </section>
 <section id="flatten-string-default">
-<h4>flatten &lt;string&gt; (default: ‘/’)<a class="headerlink" href="#flatten-string-default" title="Permalink to this heading"></a></h4>
+<h4>flatten &lt;string&gt; (default: ‘/’)<a class="headerlink" href="#flatten-string-default" title="Link to this heading"></a></h4>
 <p>The  <strong>flatten</strong>  option is use to set a separator character. The default value ( ‘/’ )
 nullifies the effect of this option.  This character replaces the ‘/’ in the url
 directory and create a “flatten” filename from its dd.weather.gc.ca path.
@@ -819,7 +819,7 @@ For example retrieving the following url, with options:</p>
 </div>
 </section>
 <section id="flowmain-default-none">
-<h4>flowMain (default: None)<a class="headerlink" href="#flowmain-default-none" title="Permalink to this heading"></a></h4>
+<h4>flowMain (default: None)<a class="headerlink" href="#flowmain-default-none" title="Link to this heading"></a></h4>
 <p>By default, a flow will run the sarracenia.flow.Flow class, which implements the Flow algorithm generically.
 The generic version does no data transfer, only creating and manipulating messages. That is appropriate for
 shovel, winnow, post &amp; watch components, but components that transfer or transform data need
@@ -834,7 +834,7 @@ One can create custom components by subclassing Flow and using the <strong>flowM
 it invoked.</p>
 </section>
 <section id="follow-symlinks-flag">
-<h4>follow_symlinks &lt;flag&gt;<a class="headerlink" href="#follow-symlinks-flag" title="Permalink to this heading"></a></h4>
+<h4>follow_symlinks &lt;flag&gt;<a class="headerlink" href="#follow-symlinks-flag" title="Link to this heading"></a></h4>
 <p>The <em>follow_symlinks</em> option causes symbolic links to be traversed.  If <em>follow_symlinks</em> is set
 and the destination of a symbolic link is a file, then that destination file should be posted as well as the link.
 If the destination of the symbolic link is a directory, then the directory should be added to those being
@@ -842,7 +842,7 @@ monitored by watch.   If <em>follow_symlinks</em> is false, then no action relat
 link is taken.</p>
 </section>
 <section id="force-polling-flag-default-false">
-<h4>force_polling &lt;flag&gt; (default: False)<a class="headerlink" href="#force-polling-flag-default-false" title="Permalink to this heading"></a></h4>
+<h4>force_polling &lt;flag&gt; (default: False)<a class="headerlink" href="#force-polling-flag-default-false" title="Link to this heading"></a></h4>
 <p>By default, watch selects an (OS dependent) optimal method to watch a
 directory.</p>
 <p>For large trees, the optimal method can be manyfold (10x or even
@@ -868,23 +868,23 @@ normally better one.</p>
 </div>
 </section>
 <section id="header-name-value">
-<h4>header &lt;name&gt;=&lt;value&gt;<a class="headerlink" href="#header-name-value" title="Permalink to this heading"></a></h4>
+<h4>header &lt;name&gt;=&lt;value&gt;<a class="headerlink" href="#header-name-value" title="Link to this heading"></a></h4>
 <p>Add a &lt;name&gt; header with the given value to a notification message. Used to pass strings as metadata in the
 notification messages to improve decision making for consumers.  Should be used sparingly. There are limits
 on how many headers can be used, and minimizing the size of messages has important performance
 impacts.</p>
 </section>
 <section id="housekeeping-interval-default-300-seconds">
-<h4>housekeeping &lt;interval&gt; (default: 300 seconds)<a class="headerlink" href="#housekeeping-interval-default-300-seconds" title="Permalink to this heading"></a></h4>
+<h4>housekeeping &lt;interval&gt; (default: 300 seconds)<a class="headerlink" href="#housekeeping-interval-default-300-seconds" title="Link to this heading"></a></h4>
 <p>The <strong>housekeeping</strong> option sets how often to execute periodic processing as determined by
 the list of on_housekeeping plugins. By default, it prints a log message every houskeeping interval.</p>
 </section>
 <section id="include-config">
-<h4>include config<a class="headerlink" href="#include-config" title="Permalink to this heading"></a></h4>
+<h4>include config<a class="headerlink" href="#include-config" title="Link to this heading"></a></h4>
 <p>include another configuration within this configuration.</p>
 </section>
 <section id="inflight-string-default-tmp-or-none-if-post-broker-set">
-<h4>inflight &lt;string&gt; (default: .tmp or NONE if post_broker set)<a class="headerlink" href="#inflight-string-default-tmp-or-none-if-post-broker-set" title="Permalink to this heading"></a></h4>
+<h4>inflight &lt;string&gt; (default: .tmp or NONE if post_broker set)<a class="headerlink" href="#inflight-string-default-tmp-or-none-if-post-broker-set" title="Link to this heading"></a></h4>
 <p>The  <strong>inflight</strong>  option sets how to ignore files when they are being transferred
 or (in mid-flight betweeen two systems). Incorrect setting of this option causes
 unreliable transfers, and care must be taken.  See <a class="reference external" href="../Explanation/FileCompletion.html">Delivery Completion</a>
@@ -920,7 +920,7 @@ other process is to be notified after delivery.</p>
 </div>
 </section>
 <section id="inline-flag-default-false">
-<h4>inline &lt;flag&gt; (default: False)<a class="headerlink" href="#inline-flag-default-false" title="Permalink to this heading"></a></h4>
+<h4>inline &lt;flag&gt; (default: False)<a class="headerlink" href="#inline-flag-default-false" title="Link to this heading"></a></h4>
 <p>When posting messages, The <strong>inline</strong> option is used to have the file content
 included in the post. This can be efficient when sending small files over high
 latency links, a number of round trips can be saved by avoiding the retrieval
@@ -931,15 +931,15 @@ If <strong>inlineOnly</strong> is set, and a file is larger than inlineByteMax, 
 will not be posted.</p>
 </section>
 <section id="inlinebytemax-size">
-<h4>inlineByteMax &lt;size&gt;<a class="headerlink" href="#inlinebytemax-size" title="Permalink to this heading"></a></h4>
+<h4>inlineByteMax &lt;size&gt;<a class="headerlink" href="#inlinebytemax-size" title="Link to this heading"></a></h4>
 <p>the maximums size of messages to inline.</p>
 </section>
 <section id="inlineonly">
-<h4>inlineOnly<a class="headerlink" href="#inlineonly" title="Permalink to this heading"></a></h4>
+<h4>inlineOnly<a class="headerlink" href="#inlineonly" title="Link to this heading"></a></h4>
 <p>discard messages if the data is not inline.</p>
 </section>
 <section id="inplace-flag-default-on">
-<h4>inplace &lt;flag&gt; (default: On)<a class="headerlink" href="#inplace-flag-default-on" title="Permalink to this heading"></a></h4>
+<h4>inplace &lt;flag&gt; (default: On)<a class="headerlink" href="#inplace-flag-default-on" title="Link to this heading"></a></h4>
 <p>Large files may be sent as a series of parts, rather than all at once.
 When downloading, if <strong>inplace</strong> is true, these parts will be appended to the file
 in an orderly fashion. Each part, after it is inserted in the file, is announced to subscribers.
@@ -950,7 +950,7 @@ Depending of <strong>inplace</strong> and if the message was a part, the path ca
 change again (adding a part suffix if necessary).</p>
 </section>
 <section id="instances">
-<h4>Instances<a class="headerlink" href="#instances" title="Permalink to this heading"></a></h4>
+<h4>Instances<a class="headerlink" href="#instances" title="Link to this heading"></a></h4>
 <p>Sometimes one instance of a component and configuration is not enough to process &amp; send all available notifications.</p>
 <p><strong>instances      &lt;integer&gt;     (default:1)</strong></p>
 <p>The instance option allows launching several instances of a component and configuration.
@@ -975,7 +975,7 @@ period will be destroyed.</p>
 </div>
 </section>
 <section id="identity-string">
-<h4>identity &lt;string&gt;<a class="headerlink" href="#identity-string" title="Permalink to this heading"></a></h4>
+<h4>identity &lt;string&gt;<a class="headerlink" href="#identity-string" title="Link to this heading"></a></h4>
 <p>All file notification messages include a checksum.  It is placed in the amqp message header will have as an
 entry <em>sum</em> with default value ‘d,md5_checksum_on_data’.
 The <em>sum</em> option tell the program how to calculate the checksum.
@@ -1005,28 +1005,28 @@ In v3, they are called Identity methods:</p>
 </aside>
 </section>
 <section id="logevents-default-after-accept-after-work-on-housekeeping">
-<h4>logEvents ( default: after_accept,after_work,on_housekeeping )<a class="headerlink" href="#logevents-default-after-accept-after-work-on-housekeeping" title="Permalink to this heading"></a></h4>
+<h4>logEvents ( default: after_accept,after_work,on_housekeeping )<a class="headerlink" href="#logevents-default-after-accept-after-work-on-housekeeping" title="Link to this heading"></a></h4>
 <p>The set of points during notification message processing to emit standard log messages.
 other values: on_start, on_stop, post, gather, … etc… It is comma separated, and
 if the list starts with a plus sign (+) then the selected events are appended to current value.
 A minus signe (-) can be used to remove events from the set.</p>
 </section>
 <section id="loglevel-default-info">
-<h4>logLevel ( default: info )<a class="headerlink" href="#loglevel-default-info" title="Permalink to this heading"></a></h4>
+<h4>logLevel ( default: info )<a class="headerlink" href="#loglevel-default-info" title="Link to this heading"></a></h4>
 <p>The level of logging as expressed by python’s logging. Possible values are :  critical, error, info, warning, debug.</p>
 </section>
 <section id="logmetrics-default-false">
-<h4>LogMetrics ( default: False )<a class="headerlink" href="#logmetrics-default-false" title="Permalink to this heading"></a></h4>
+<h4>LogMetrics ( default: False )<a class="headerlink" href="#logmetrics-default-false" title="Link to this heading"></a></h4>
 <p>Write metrics to a daily metrics file for statistics gathering. can be used to generate statistics.
 File is in the same directory as the logs, and has a date suffix.</p>
 </section>
 <section id="logreject-default-false">
-<h4>logReject ( default: False )<a class="headerlink" href="#logreject-default-false" title="Permalink to this heading"></a></h4>
+<h4>logReject ( default: False )<a class="headerlink" href="#logreject-default-false" title="Link to this heading"></a></h4>
 <p>Normally, messages rejection is done silently. When logReject is True, a log message will be generated for
 each message rejected, and indicating the basis for the rejection.</p>
 </section>
 <section id="logstdout-default-false">
-<h4>logStdout ( default: False )<a class="headerlink" href="#logstdout-default-false" title="Permalink to this heading"></a></h4>
+<h4>logStdout ( default: False )<a class="headerlink" href="#logstdout-default-false" title="Link to this heading"></a></h4>
 <p>The <em>logStdout</em> disables log management. Best used on the command line, as there is
 some risk of creating stub files before the configurations are completely parsed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sr3</span> <span class="o">--</span><span class="n">logStdout</span> <span class="n">start</span>
@@ -1041,36 +1041,36 @@ of configured instances/processes) will cause either corruption of logs, or limi
 writing to stdout.</p>
 </section>
 <section id="logrotatecount-max-logs-default-5">
-<h4>logRotateCount &lt;max_logs&gt; ( default: 5 )<a class="headerlink" href="#logrotatecount-max-logs-default-5" title="Permalink to this heading"></a></h4>
+<h4>logRotateCount &lt;max_logs&gt; ( default: 5 )<a class="headerlink" href="#logrotatecount-max-logs-default-5" title="Link to this heading"></a></h4>
 <p>Maximum number of logs archived.</p>
 </section>
 <section id="logrotateinterval-interval-time-unit-default-1d">
-<h4>logRotateInterval &lt;interval&gt;[&lt;time_unit&gt;] ( default: 1d )<a class="headerlink" href="#logrotateinterval-interval-time-unit-default-1d" title="Permalink to this heading"></a></h4>
+<h4>logRotateInterval &lt;interval&gt;[&lt;time_unit&gt;] ( default: 1d )<a class="headerlink" href="#logrotateinterval-interval-time-unit-default-1d" title="Link to this heading"></a></h4>
 <p>The duration of the interval with an optional time unit (ie 5m, 2h, 3d)</p>
 </section>
 <section id="messagecountmax-count-default-0">
-<h4>messageCountMax &lt;count&gt; (default: 0)<a class="headerlink" href="#messagecountmax-count-default-0" title="Permalink to this heading"></a></h4>
+<h4>messageCountMax &lt;count&gt; (default: 0)<a class="headerlink" href="#messagecountmax-count-default-0" title="Link to this heading"></a></h4>
 <p>If <strong>messageCountMax</strong> is greater than zero, the flow will exit after processing the given
 number of messages.  This is normally used only for debugging.</p>
 </section>
 <section id="messageratemax-float-default-0">
-<h4>messageRateMax &lt;float&gt; (default: 0)<a class="headerlink" href="#messageratemax-float-default-0" title="Permalink to this heading"></a></h4>
+<h4>messageRateMax &lt;float&gt; (default: 0)<a class="headerlink" href="#messageratemax-float-default-0" title="Link to this heading"></a></h4>
 <p>if <strong>messageRateMax</strong> is greater than zero, the flow attempts to respect this delivery
 speed in terms of messages per second. Note that the throttle is on messages obtained or generated
 per second, prior to accept/reject filtering. the flow will sleep to limit the processing rate.</p>
 </section>
 <section id="messageratemin-float-default-0">
-<h4>messageRateMin &lt;float&gt; (default: 0)<a class="headerlink" href="#messageratemin-float-default-0" title="Permalink to this heading"></a></h4>
+<h4>messageRateMin &lt;float&gt; (default: 0)<a class="headerlink" href="#messageratemin-float-default-0" title="Link to this heading"></a></h4>
 <p>if <strong>messageRateMin</strong> is greater than zero, and the flow detected is lower than this rate,
 a warning message will be produced:</p>
 </section>
 <section id="message-ttl-duration-default-none">
-<h4>message_ttl &lt;duration&gt;  (default: None)<a class="headerlink" href="#message-ttl-duration-default-none" title="Permalink to this heading"></a></h4>
+<h4>message_ttl &lt;duration&gt;  (default: None)<a class="headerlink" href="#message-ttl-duration-default-none" title="Link to this heading"></a></h4>
 <p>The  <strong>message_ttl</strong>  option set the time a message can live in the queue.
 Past that time, the message is taken out of the queue by the broker.</p>
 </section>
 <section id="mirror-flag-default-off">
-<h4>mirror &lt;flag&gt; (default: off)<a class="headerlink" href="#mirror-flag-default-off" title="Permalink to this heading"></a></h4>
+<h4>mirror &lt;flag&gt; (default: off)<a class="headerlink" href="#mirror-flag-default-off" title="Link to this heading"></a></h4>
 <p>The  <strong>mirror</strong>  option can be used to mirror the dd.weather.gc.ca tree of the files.
 If set to  <strong>True</strong>  the directory given by the  <strong>directory</strong>  option
 will be the basename of a tree. Accepted files under that directory will be
@@ -1088,7 +1088,7 @@ For example retrieving the following url, with options:</p>
 mirror settings can be changed between directory options.</p>
 </section>
 <section id="no-count">
-<h4>no &lt;count&gt;<a class="headerlink" href="#no-count" title="Permalink to this heading"></a></h4>
+<h4>no &lt;count&gt;<a class="headerlink" href="#no-count" title="Link to this heading"></a></h4>
 <p>(normally not used by humans)</p>
 <p>Present on instances started by the sr3 management interface.
 The no option is only used on the command line, and not intended for users.
@@ -1096,7 +1096,7 @@ It is an option for use by sr3 when spawning instances to inform each process
 which instance it is. e.g instance 3 will be spawned with –no 3</p>
 </section>
 <section id="nodupe-basis-data-name-path-default-path">
-<h4>nodupe_basis &lt;data|name|path&gt; (default: path)<a class="headerlink" href="#nodupe-basis-data-name-path-default-path" title="Permalink to this heading"></a></h4>
+<h4>nodupe_basis &lt;data|name|path&gt; (default: path)<a class="headerlink" href="#nodupe-basis-data-name-path-default-path" title="Link to this heading"></a></h4>
 <p>A keyword option to identify which files are compared for
 duplicate suppression purposes. Normally, the duplicate suppression uses the entire path
 to identify files which have not changed. This allows for files with identical
@@ -1116,17 +1116,17 @@ regardless of name, to be considered a duplicate if the checksum matches.</p>
 <p>More information: <a class="reference external" href="../Explanation/DuplicateSuppression.html">Duplicate Suppresion</a></p>
 </section>
 <section id="nodupe-fileagemax">
-<h4>nodupe_fileAgeMax<a class="headerlink" href="#nodupe-fileagemax" title="Permalink to this heading"></a></h4>
+<h4>nodupe_fileAgeMax<a class="headerlink" href="#nodupe-fileagemax" title="Link to this heading"></a></h4>
 <p>If files are older than this setting (default: 30d in poll, 0 in other components),
 then ignore them, they are too old to post. 0 deactivates the setting.</p>
 </section>
 <section id="nodupe-fileagemin">
-<h4>nodupe_fileAgeMin<a class="headerlink" href="#nodupe-fileagemin" title="Permalink to this heading"></a></h4>
+<h4>nodupe_fileAgeMin<a class="headerlink" href="#nodupe-fileagemin" title="Link to this heading"></a></h4>
 <p>If files are newer than this setting (default: 0), then ignore them, they are too
 old to post. 0 deactivates the setting.</p>
 </section>
 <section id="nodupe-ttl-off-on-999-smhdw">
-<h4>nodupe_ttl &lt;off|on|999[smhdw]&gt;<a class="headerlink" href="#nodupe-ttl-off-on-999-smhdw" title="Permalink to this heading"></a></h4>
+<h4>nodupe_ttl &lt;off|on|999[smhdw]&gt;<a class="headerlink" href="#nodupe-ttl-off-on-999-smhdw" title="Link to this heading"></a></h4>
 <p>When <strong>nodupe_ttl</strong> (also <strong>suppress_duplicates*, and **cache</strong> ) is set to a non-zero time
 interval, each new message is compared against ones received within that interval, to see if
 it is a duplicate. Duplicates are not processed further. What is a duplicate? A file with
@@ -1152,7 +1152,7 @@ off and output with <em>post_exchangeSplit</em>, which route notification messag
 a <strong>second layer of subscibers (winnow) whose duplicate suppression caches are active.</strong></p>
 </section>
 <section id="outlet-post-json-url-default-post">
-<h4>outlet post|json|url (default: post)<a class="headerlink" href="#outlet-post-json-url-default-post" title="Permalink to this heading"></a></h4>
+<h4>outlet post|json|url (default: post)<a class="headerlink" href="#outlet-post-json-url-default-post" title="Link to this heading"></a></h4>
 <p>The <strong>outlet</strong> option is used to allow writing of notification messages to file instead of
 posting to a broker. The valid argument values are:</p>
 <p><strong>post:</strong></p>
@@ -1180,14 +1180,14 @@ which the notifications will be posted.</p>
 been used much in the python implementation.</p>
 </section>
 <section id="overwrite-flag-default-off">
-<h4>overwrite &lt;flag&gt; (default: off)<a class="headerlink" href="#overwrite-flag-default-off" title="Permalink to this heading"></a></h4>
+<h4>overwrite &lt;flag&gt; (default: off)<a class="headerlink" href="#overwrite-flag-default-off" title="Link to this heading"></a></h4>
 <p>The  <strong>overwrite</strong>  option,if set to false, avoid unnecessary downloads under these conditions :</p>
 <p>1- the file to be downloaded is already on the user’s file system at the right place and</p>
 <p>2- the checksum of the amqp message matched the one of the file.</p>
 <p>The default is False.</p>
 </section>
 <section id="path-path">
-<h4>path &lt;path&gt;<a class="headerlink" href="#path-path" title="Permalink to this heading"></a></h4>
+<h4>path &lt;path&gt;<a class="headerlink" href="#path-path" title="Link to this heading"></a></h4>
 <p><strong>post</strong> evaluates the filesystem path from the <strong>path</strong> option
 and possibly the <strong>post_baseDir</strong> if the option is used.</p>
 <p>If a path defines a file then this file is watched.</p>
@@ -1201,7 +1201,7 @@ the <strong>url</strong> option value and the resolved paths to which were withd
 the <em>post_baseDir</em> present and needed.</p>
 </section>
 <section id="permdefault-permdirdefault-permlog-permcopy">
-<h4>permDefault, permDirDefault, permLog, permCopy<a class="headerlink" href="#permdefault-permdirdefault-permlog-permcopy" title="Permalink to this heading"></a></h4>
+<h4>permDefault, permDirDefault, permLog, permCopy<a class="headerlink" href="#permdefault-permdirdefault-permlog-permcopy" title="Link to this heading"></a></h4>
 <p>Permission bits on the destination files written are controlled by the <em>permCopy</em> directives.
 <em>permCopy</em> will apply the mode permissions posted by the source of the file.
 If no source mode is available, the <em>permDefault</em> will be applied to files, and the
@@ -1218,13 +1218,13 @@ The <strong>permDefault</strong> options specifies a mask, that is the permissio
 at least what is specified.</p>
 </section>
 <section id="pollurl-url">
-<h4>pollUrl &lt;url&gt;<a class="headerlink" href="#pollurl-url" title="Permalink to this heading"></a></h4>
+<h4>pollUrl &lt;url&gt;<a class="headerlink" href="#pollurl-url" title="Link to this heading"></a></h4>
 <p>Specification of a remote server resources to query with a poll
 See the <a class="reference external" href="../Explanation/CommandlineGuide.html#POLLING">POLLING</a>
 in the Command Line Guide.</p>
 </section>
 <section id="post-basedir-path">
-<h4>post_baseDir &lt;path&gt;<a class="headerlink" href="#post-basedir-path" title="Permalink to this heading"></a></h4>
+<h4>post_baseDir &lt;path&gt;<a class="headerlink" href="#post-basedir-path" title="Link to this heading"></a></h4>
 <p>The <em>post_baseDir</em> option supplies the directory path that, when combined (or found)
 in the given <em>path</em>, gives the local absolute path to the data file to be posted.
 The <em>post_baseDir</em> part of the path will be removed from the posted notification message.
@@ -1234,17 +1234,17 @@ For file: url’s, baseDir is usually not appropriate. To post an absolute path,
 omit the –post_baseDir setting, and just specify the complete path as an argument.</p>
 </section>
 <section id="post-baseurl-url">
-<h4>post_baseUrl &lt;url&gt;<a class="headerlink" href="#post-baseurl-url" title="Permalink to this heading"></a></h4>
+<h4>post_baseUrl &lt;url&gt;<a class="headerlink" href="#post-baseurl-url" title="Link to this heading"></a></h4>
 <p>The <strong>post_baseUrl</strong> option sets how to get the file… it defines the protocol,
 host, port, and optionally, the user. It is best practice to not include
 passwords in urls.</p>
 </section>
 <section id="post-broker-url">
-<h4>post_broker &lt;url&gt;<a class="headerlink" href="#post-broker-url" title="Permalink to this heading"></a></h4>
+<h4>post_broker &lt;url&gt;<a class="headerlink" href="#post-broker-url" title="Link to this heading"></a></h4>
 <p>the broker url to post messages to see <a class="reference external" href="#broker">broker</a> for details</p>
 </section>
 <section id="post-exchange-name-default-xpublic">
-<h4>post_exchange &lt;name&gt; (default: xpublic)<a class="headerlink" href="#post-exchange-name-default-xpublic" title="Permalink to this heading"></a></h4>
+<h4>post_exchange &lt;name&gt; (default: xpublic)<a class="headerlink" href="#post-exchange-name-default-xpublic" title="Link to this heading"></a></h4>
 <p>The <strong>post_exchange</strong> option set under which exchange the new notification
 will be posted. when publishing to a pump as an administrator, a common
 choice for post_exchange is ‘xpublic’.</p>
@@ -1253,7 +1253,7 @@ flow callback entry_points such as <strong>after_accept</strong>, and <strong>af
 to modify messages generated about files prior to posting.</p>
 </section>
 <section id="post-exchangesplit-count-default-0">
-<h4>post_exchangeSplit &lt;count&gt; (default: 0)<a class="headerlink" href="#post-exchangesplit-count-default-0" title="Permalink to this heading"></a></h4>
+<h4>post_exchangeSplit &lt;count&gt; (default: 0)<a class="headerlink" href="#post-exchangesplit-count-default-0" title="Link to this heading"></a></h4>
 <p>The <strong>post_exchangeSplit</strong> option appends a two digit suffix resulting from
 hashing the last character of the checksum to the post_exchange name,
 in order to divide the output amongst a number of exchanges.  This is currently used
@@ -1268,7 +1268,7 @@ xwinnow02, xwinnow03 and xwinnow04, where each exchange will receive only one fi
 of the total flow.</p>
 </section>
 <section id="post-format-name-default-v03">
-<h4>post_format &lt;name&gt; (default: v03)<a class="headerlink" href="#post-format-name-default-v03" title="Permalink to this heading"></a></h4>
+<h4>post_format &lt;name&gt; (default: v03)<a class="headerlink" href="#post-format-name-default-v03" title="Link to this heading"></a></h4>
 <p>Sets the message format for posted messages. the currently included values are:</p>
 <ul class="simple">
 <li><p>v02 … used by all existing data pumps for most cases.</p></li>
@@ -1278,26 +1278,26 @@ of the total flow.</p>
 <p>When provided, this value overrides whatever can be deduced from the post_topicPrefix.</p>
 </section>
 <section id="post-on-start">
-<h4>post_on_start<a class="headerlink" href="#post-on-start" title="Permalink to this heading"></a></h4>
+<h4>post_on_start<a class="headerlink" href="#post-on-start" title="Link to this heading"></a></h4>
 <p>When starting watch, one can either have the program post all the files in the directories watched
 or not. (not implemented in sr3_cpost)</p>
 </section>
 <section id="post-topic-string">
-<h4>post_topic &lt;string&gt;<a class="headerlink" href="#post-topic-string" title="Permalink to this heading"></a></h4>
+<h4>post_topic &lt;string&gt;<a class="headerlink" href="#post-topic-string" title="Link to this heading"></a></h4>
 <p>Explicitly set a posting topic string, overriding the usual
 group of settings. For sarracenia data pumps, this should never be needed,
 as the use of post_exchange, post_topicPrefix, and relpath normally builds the right
 value for topics for both posting and binding.</p>
 </section>
 <section id="post-topicprefix-default-topicprefix">
-<h4>post_topicPrefix (default: topicPrefix)<a class="headerlink" href="#post-topicprefix-default-topicprefix" title="Permalink to this heading"></a></h4>
+<h4>post_topicPrefix (default: topicPrefix)<a class="headerlink" href="#post-topicprefix-default-topicprefix" title="Link to this heading"></a></h4>
 <p>Prepended to the sub-topic to form a complete topic hierarchy.
 This option applies to publishing.  Denotes the version of messages published
 in the sub-topics. (v03 refers to <a class="reference external" href="sr3_post.7.html">sr3_post.7.html</a>) defaults to whatever
 was received.</p>
 </section>
 <section id="prefetch-n-default-1">
-<h4>prefetch &lt;N&gt; (default: 1)<a class="headerlink" href="#prefetch-n-default-1" title="Permalink to this heading"></a></h4>
+<h4>prefetch &lt;N&gt; (default: 1)<a class="headerlink" href="#prefetch-n-default-1" title="Link to this heading"></a></h4>
 <p>The <strong>prefetch</strong> option sets the number of messages to fetch at one time.
 When multiple instances are running and prefetch is 4, each instance will obtain up to four
 messages at a time.  To minimize the number of messages lost if an instance dies and have
@@ -1306,7 +1306,7 @@ haul links, it is necessary to raise this number, to hide round-trip latency, so
 of 10 or more may be needed.</p>
 </section>
 <section id="queuename-queue-queue-name-qn">
-<h4>queueName|queue|queue_name|qn<a class="headerlink" href="#queuename-queue-queue-name-qn" title="Permalink to this heading"></a></h4>
+<h4>queueName|queue|queue_name|qn<a class="headerlink" href="#queuename-queue-queue-name-qn" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>queueName &lt;name&gt;</p></li>
 </ul>
@@ -1335,14 +1335,14 @@ same queue. Some may want use the <em>queue_name</em> option as a more explicit 
 of sharing work across multiple nodes.</p>
 </section>
 <section id="queuebind">
-<h4>queueBind<a class="headerlink" href="#queuebind" title="Permalink to this heading"></a></h4>
+<h4>queueBind<a class="headerlink" href="#queuebind" title="Link to this heading"></a></h4>
 <p>On startup, by default, Sarracenia redeclares resources and bindings to ensure they
 are uptodate.  If the queue already exists, These flags can be
 set to False, so no attempt to declare the queue is made, or it´s bindings.
 These options are useful on brokers that do not permit users to declare their queues.</p>
 </section>
 <section id="queuedeclare">
-<h4>queueDeclare<a class="headerlink" href="#queuedeclare" title="Permalink to this heading"></a></h4>
+<h4>queueDeclare<a class="headerlink" href="#queuedeclare" title="Link to this heading"></a></h4>
 <p>FIXME: same as above.. is this normal?</p>
 <p>On startup, by default, Sarracenia redeclares resources and bindings to ensure they
 are uptodate.  If the queue already exists, These flags can be
@@ -1350,14 +1350,14 @@ set to False, so no attempt to declare the queue is made, or it´s bindings.
 These options are useful on brokers that do not permit users to declare their queues.</p>
 </section>
 <section id="randomize-flag">
-<h4>randomize &lt;flag&gt;<a class="headerlink" href="#randomize-flag" title="Permalink to this heading"></a></h4>
+<h4>randomize &lt;flag&gt;<a class="headerlink" href="#randomize-flag" title="Link to this heading"></a></h4>
 <p>Active if <em>-r|–randomize</em> appears in the command line… or <em>randomize</em> is set
 to True in the configuration file used. If there are several notification messages because the
 file is posted by block (the <em>blocksize</em> option was set), the block notification messages
 are randomized meaning that they will not be posted</p>
 </section>
 <section id="realpathadjust-count-experimental-default-0">
-<h4>realpathAdjust &lt;count&gt; (Experimental) (default: 0)<a class="headerlink" href="#realpathadjust-count-experimental-default-0" title="Permalink to this heading"></a></h4>
+<h4>realpathAdjust &lt;count&gt; (Experimental) (default: 0)<a class="headerlink" href="#realpathadjust-count-experimental-default-0" title="Link to this heading"></a></h4>
 <p>The realpathAdjust option adjusts how much paths are resolved with the C standard realpath
 library routine. The count indicates how many path elements should be ignored, counting
 from the beginning of the path with positive numbers, or the end with negative ones.
@@ -1365,7 +1365,7 @@ An adjustment of zero means to apply realpath to the entire path.</p>
 <p>Implemented in C, but not python currently.</p>
 </section>
 <section id="realpathfilter-flag-experimental">
-<h4>realpathFilter &lt;flag&gt; (Experimental)<a class="headerlink" href="#realpathfilter-flag-experimental" title="Permalink to this heading"></a></h4>
+<h4>realpathFilter &lt;flag&gt; (Experimental)<a class="headerlink" href="#realpathfilter-flag-experimental" title="Link to this heading"></a></h4>
 <p>the realpathFilter option resolves paths using the C standard realpath library routine,
 but only for the purpose of applying accept reject filters. This is used only during
 posting.</p>
@@ -1373,7 +1373,7 @@ posting.</p>
 <p>Implemented in C, but not python currently.</p>
 </section>
 <section id="realpathpost-flag-experimental">
-<h4>realpathPost &lt;flag&gt; (Experimental)<a class="headerlink" href="#realpathpost-flag-experimental" title="Permalink to this heading"></a></h4>
+<h4>realpathPost &lt;flag&gt; (Experimental)<a class="headerlink" href="#realpathpost-flag-experimental" title="Link to this heading"></a></h4>
 <p>The realpathPost option resolves paths given to their canonical ones, eliminating
 any indirection via symlinks. The behaviour improves the ability of watch to
 monitor trees, but the trees may have completely different paths than the arguments
@@ -1381,17 +1381,17 @@ given. This option also enforces traversing of symbolic links.</p>
 <p>This option is being used to investigate some use cases, and may disappear in future.</p>
 </section>
 <section id="sendto-url">
-<h4>sendTo &lt;url&gt;<a class="headerlink" href="#sendto-url" title="Permalink to this heading"></a></h4>
+<h4>sendTo &lt;url&gt;<a class="headerlink" href="#sendto-url" title="Link to this heading"></a></h4>
 <p>Specification of a remote resource to deliver to in a sender.</p>
 </section>
 <section id="rename-path">
-<h4>rename &lt;path&gt;<a class="headerlink" href="#rename-path" title="Permalink to this heading"></a></h4>
+<h4>rename &lt;path&gt;<a class="headerlink" href="#rename-path" title="Link to this heading"></a></h4>
 <p>With the <em>rename</em> option, the user can suggest a destination path for its files. If the given
 path ends with ‘/’ it suggests a directory path… If it doesn’t, the option specifies a file renaming.
 Often used with variable substitutions, to provide dynamic, patterned names.</p>
 </section>
 <section id="report-and-report-exchange">
-<h4>report and report_exchange<a class="headerlink" href="#report-and-report-exchange" title="Permalink to this heading"></a></h4>
+<h4>report and report_exchange<a class="headerlink" href="#report-and-report-exchange" title="Link to this heading"></a></h4>
 <p>NOTE: <strong>NOT IMPLEMENTEDin sr3, expected to return in future version</strong>
 For each download, by default, an amqp report message is sent back to the broker.
 This is done with option :</p>
@@ -1406,7 +1406,7 @@ exchanges (xs_*username*). The report daemons then copy the messages to <em>xrep
 Set this option to <strong>False</strong>, to prevent generation of reports.</p>
 </section>
 <section id="reset-flag-default-false">
-<h4>reset &lt;flag&gt; (default: False)<a class="headerlink" href="#reset-flag-default-false" title="Permalink to this heading"></a></h4>
+<h4>reset &lt;flag&gt; (default: False)<a class="headerlink" href="#reset-flag-default-false" title="Link to this heading"></a></h4>
 <p>When <strong>reset</strong> is set, and a component is (re)started, its queue is
 deleted (if it already exists) and recreated according to the component’s
 queue options.  This is when a broker option is modified, as the broker will
@@ -1418,22 +1418,22 @@ the reception cache is also discarded.</p>
 via sarracenia, because sarracenia itself picks appropriate values.</p>
 </section>
 <section id="retryemptybeforeexit-boolean-default-false">
-<h4>retryEmptyBeforeExit: &lt;boolean&gt; (default: False)<a class="headerlink" href="#retryemptybeforeexit-boolean-default-false" title="Permalink to this heading"></a></h4>
+<h4>retryEmptyBeforeExit: &lt;boolean&gt; (default: False)<a class="headerlink" href="#retryemptybeforeexit-boolean-default-false" title="Link to this heading"></a></h4>
 <p>Used for sr_insects flow tests. Prevents Sarracenia from exiting while there are messages remaining in the retry queue(s). By default, a post will cleanly exit once it has created and attempted to publish messages for all files in the specified directory. If any messages are not successfully published, they will be saved to disk to retry later. If a post is only run once, as in the flow tests, these messages will never be retried unless retryEmptyBeforeExit is set to True.</p>
 </section>
 <section id="retry-ttl-duration-default-same-as-expire">
-<h4>retry_ttl &lt;duration&gt; (default: same as expire)<a class="headerlink" href="#retry-ttl-duration-default-same-as-expire" title="Permalink to this heading"></a></h4>
+<h4>retry_ttl &lt;duration&gt; (default: same as expire)<a class="headerlink" href="#retry-ttl-duration-default-same-as-expire" title="Link to this heading"></a></h4>
 <p>The <strong>retry_ttl</strong> (retry time to live) option indicates how long to keep trying to send
 a file before it is aged out of a the queue.  Default is two days.  If a file has not
 been transferred after two days of attempts, it is discarded.</p>
 </section>
 <section id="sanity-log-dead-interval-default-1-5-housekeeping">
-<h4>sanity_log_dead &lt;interval&gt; (default: 1.5*housekeeping)<a class="headerlink" href="#sanity-log-dead-interval-default-1-5-housekeeping" title="Permalink to this heading"></a></h4>
+<h4>sanity_log_dead &lt;interval&gt; (default: 1.5*housekeeping)<a class="headerlink" href="#sanity-log-dead-interval-default-1-5-housekeeping" title="Link to this heading"></a></h4>
 <p>The <strong>sanity_log_dead</strong> option sets how long to consider too long before restarting
 a component.</p>
 </section>
 <section id="shim-defer-posting-to-exit-experimental">
-<h4>shim_defer_posting_to_exit (EXPERIMENTAL)<a class="headerlink" href="#shim-defer-posting-to-exit-experimental" title="Permalink to this heading"></a></h4>
+<h4>shim_defer_posting_to_exit (EXPERIMENTAL)<a class="headerlink" href="#shim-defer-posting-to-exit-experimental" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>(option specific to libsrshim)
 Postpones file posting until the process exits.
@@ -1442,7 +1442,7 @@ setting can avoid redundant notification messages.  (default: False)</p>
 </div></blockquote>
 </section>
 <section id="shim-post-minterval-interval-experimental">
-<h4>shim_post_minterval <em>interval</em> (EXPERIMENTAL)<a class="headerlink" href="#shim-post-minterval-interval-experimental" title="Permalink to this heading"></a></h4>
+<h4>shim_post_minterval <em>interval</em> (EXPERIMENTAL)<a class="headerlink" href="#shim-post-minterval-interval-experimental" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>(option specific to libsrshim)
 If a file is opened for writing and closed multiple times within the interval,
@@ -1457,7 +1457,7 @@ is not respected, in order to provide the most accurate final post.</p>
 </div></blockquote>
 </section>
 <section id="shim-skip-parent-open-files-experimental">
-<h4>shim_skip_parent_open_files (EXPERIMENTAL)<a class="headerlink" href="#shim-skip-parent-open-files-experimental" title="Permalink to this heading"></a></h4>
+<h4>shim_skip_parent_open_files (EXPERIMENTAL)<a class="headerlink" href="#shim-skip-parent-open-files-experimental" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>(option specific to libsrshim)
 The shim_skip_ppid_open_files option means that a process checks
@@ -1466,21 +1466,21 @@ post if that is the case. (default: True)</p>
 </div></blockquote>
 </section>
 <section id="sleep-time">
-<h4>sleep &lt;time&gt;<a class="headerlink" href="#sleep-time" title="Permalink to this heading"></a></h4>
+<h4>sleep &lt;time&gt;<a class="headerlink" href="#sleep-time" title="Link to this heading"></a></h4>
 <p>The time to wait between generating events.  When files are written frequently, it is counter productive
 to produce a post for every change, as it can produce a continuous stream of changes where the transfers
 cannot be done quickly enough to keep up.  In such circumstances, one can group all changes made to a file
 in <em>sleep</em> time, and produce a single post.</p>
 </section>
 <section id="statehost-false-true-default-false">
-<h4>statehost &lt;False|True&gt; ( default: False )<a class="headerlink" href="#statehost-false-true-default-false" title="Permalink to this heading"></a></h4>
+<h4>statehost &lt;False|True&gt; ( default: False )<a class="headerlink" href="#statehost-false-true-default-false" title="Link to this heading"></a></h4>
 <p>In large data centres, the home directory can be shared among thousands of
 nodes. Statehost adds the node name after the cache directory to make it
 unique to each node. So each node has it’s own statefiles and logs.
 example, on a node named goofy,  ~/.cache/sarra/log/ becomes ~/.cache/sarra/goofy/log.</p>
 </section>
 <section id="strip-count-regexp-default-0">
-<h4>strip &lt;count|regexp&gt; (default: 0)<a class="headerlink" href="#strip-count-regexp-default-0" title="Permalink to this heading"></a></h4>
+<h4>strip &lt;count|regexp&gt; (default: 0)<a class="headerlink" href="#strip-count-regexp-default-0" title="Link to this heading"></a></h4>
 <p>You can modify the relative mirrored directories with the <strong>strip</strong> option.
 If set to N  (an integer) the first ‘N’ directories from the relative path
 are removed. For example:</p>
@@ -1511,7 +1511,7 @@ whereas the expression: .*GIF matches the entire name.</p>
 </dl>
 </section>
 <section id="sourcefromexchange-flag-default-off">
-<h4>sourceFromExchange &lt;flag&gt; (default: off)<a class="headerlink" href="#sourcefromexchange-flag-default-off" title="Permalink to this heading"></a></h4>
+<h4>sourceFromExchange &lt;flag&gt; (default: off)<a class="headerlink" href="#sourcefromexchange-flag-default-off" title="Link to this heading"></a></h4>
 <p>The <strong>sourceFromExchange</strong> option is mainly for use by administrators.
 If messages received are posted directly from a source, the exchange used
 is ‘xs_&lt;brokerSourceUsername&gt;’. Such messages could be missing <em>source</em> and <em>from_cluster</em>
@@ -1533,7 +1533,7 @@ It is commonly combined with:</p>
 <p>To have data arrive in the standard format tree.</p>
 </section>
 <section id="subtopic-amqp-pattern-default">
-<h4>subtopic &lt;amqp pattern&gt; (default: #)<a class="headerlink" href="#subtopic-amqp-pattern-default" title="Permalink to this heading"></a></h4>
+<h4>subtopic &lt;amqp pattern&gt; (default: #)<a class="headerlink" href="#subtopic-amqp-pattern-default" title="Link to this heading"></a></h4>
 <p>Within an exchange’s postings, the subtopic setting narrows the product selection.
 To give a correct value to the subtopic,
 one has the choice of filtering using <strong>subtopic</strong> with only AMQP’s limited wildcarding and
@@ -1596,7 +1596,7 @@ One can turn off queue binding as follows:</p>
 <p>(False, or off will also work.)</p>
 </section>
 <section id="timecopy-default-on">
-<h4>timeCopy (default: on)<a class="headerlink" href="#timecopy-default-on" title="Permalink to this heading"></a></h4>
+<h4>timeCopy (default: on)<a class="headerlink" href="#timecopy-default-on" title="Link to this heading"></a></h4>
 <p>On unix-like systems, when the <em>ls</em> commend or a file browser shows modification or
 access times, it is a display of the posix <em>st_atime</em>, and <em>st_ctime</em> elements of a
 struct struct returned by stat(2) call.  When <em>timeCopy</em> is on, headers
@@ -1607,12 +1607,12 @@ this option can be turned off, and then file times on source and destination com
 headers from the messages.</p>
 </section>
 <section id="timeout-interval-default-0">
-<h4>timeout &lt;interval&gt; (default: 0)<a class="headerlink" href="#timeout-interval-default-0" title="Permalink to this heading"></a></h4>
+<h4>timeout &lt;interval&gt; (default: 0)<a class="headerlink" href="#timeout-interval-default-0" title="Link to this heading"></a></h4>
 <p>The <strong>timeout</strong> option, sets the number of seconds to wait before aborting a
 connection or download transfer (applied per buffer during transfer).</p>
 </section>
 <section id="tlsrigour-default-medium">
-<h4>tlsRigour (default: medium)<a class="headerlink" href="#tlsrigour-default-medium" title="Permalink to this heading"></a></h4>
+<h4>tlsRigour (default: medium)<a class="headerlink" href="#tlsrigour-default-medium" title="Link to this heading"></a></h4>
 <p>tlsRigour can be set to: <em>lax, medium, or strict</em>, and gives a hint to the
 application of how to configure TLS connections. TLS, or Transport Level
 Security (used to be called Secure Socket Layer (SSL)) is the wrapping of
@@ -1627,31 +1627,31 @@ it is nevertheless necessary to use it, then set tlsRigour to <em>lax</em> and
 the connection should succeed regardless.</p>
 </section>
 <section id="topic-string">
-<h4>topic &lt;string&gt;<a class="headerlink" href="#topic-string" title="Permalink to this heading"></a></h4>
+<h4>topic &lt;string&gt;<a class="headerlink" href="#topic-string" title="Link to this heading"></a></h4>
 <p>Explicitly set a subscribing topic string, overriding the value usually
 derived from a group of settings. For sarracenia data pumps, this should never be needed,
 as the use of <em>exchange</em>, <em>topicPrefix</em>, and <em>subtopic</em> normally builds the right
 value.</p>
 </section>
 <section id="topicprefix-default-v03">
-<h4>topicPrefix (default: v03)<a class="headerlink" href="#topicprefix-default-v03" title="Permalink to this heading"></a></h4>
+<h4>topicPrefix (default: v03)<a class="headerlink" href="#topicprefix-default-v03" title="Link to this heading"></a></h4>
 <p>prepended to the sub-topic to form a complete topic hierarchy.
 This option applies to subscription bindings.
 Denotes the version of messages received in the sub-topics. (v03 refers to <a class="reference external" href="sr3_post.7.html">sr3_post.7.html</a>)</p>
 </section>
 <section id="users-flag-default-false">
-<h4>users &lt;flag&gt; (default: false)<a class="headerlink" href="#users-flag-default-false" title="Permalink to this heading"></a></h4>
+<h4>users &lt;flag&gt; (default: false)<a class="headerlink" href="#users-flag-default-false" title="Link to this heading"></a></h4>
 <p>As an adjunct when the <em>declare</em> action is used, to ask sr3 to declare users
 on the broker, as well as queues and exchanges.</p>
 </section>
 <section id="v2compatrenamedoublepost-flag-default-false">
-<h4>v2compatRenameDoublePost &lt;flag&gt; ( default: false)<a class="headerlink" href="#v2compatrenamedoublepost-flag-default-false" title="Permalink to this heading"></a></h4>
+<h4>v2compatRenameDoublePost &lt;flag&gt; ( default: false)<a class="headerlink" href="#v2compatrenamedoublepost-flag-default-false" title="Link to this heading"></a></h4>
 <p>version 3 of Sarracenia features improved logic around file renaming, using a single message per rename operation.
 Version 2 required two posts.  When posting, in a mirroring situation, for consumption by v2 clients, this flag
 should be set.</p>
 </section>
 <section id="vartimeoffset-default-0">
-<h4>varTimeOffset (default: 0)<a class="headerlink" href="#vartimeoffset-default-0" title="Permalink to this heading"></a></h4>
+<h4>varTimeOffset (default: 0)<a class="headerlink" href="#vartimeoffset-default-0" title="Link to this heading"></a></h4>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">varTimeOffset</span> <span class="o">-</span><span class="mi">7</span><span class="n">m</span>
 </pre></div>
@@ -1661,7 +1661,7 @@ so in a pattern like ${YYYY}/${MM}/${DD} will be evaluated to be the
 date, evaluated seven minutes in the past.</p>
 </section>
 <section id="vip-active-passive-options">
-<h4>vip - ACTIVE/PASSIVE OPTIONS<a class="headerlink" href="#vip-active-passive-options" title="Permalink to this heading"></a></h4>
+<h4>vip - ACTIVE/PASSIVE OPTIONS<a class="headerlink" href="#vip-active-passive-options" title="Link to this heading"></a></h4>
 <p>The <strong>vip</strong> option indicates that a configuration must be active on only
 a single node in a cluster at a time, a singleton. This is typically
 required for a poll component, but it can be used in senders or other
@@ -1685,7 +1685,7 @@ If it does, it consumes and processes a message and than rechecks for the vip.</
 </section>
 </section>
 <section id="see-also">
-<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h3>
+<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="sr3.1.html">sr3(1)</a> - Sarracenia main command line interface.</p>
 <p><a class="reference external" href="sr3_post.1.html">sr3_post(1)</a> - post file notification messages (python implementation.)</p>
 <p><a class="reference external" href="sr3_cpost.1.html">sr3_cpost(1)</a> - post file announcemensts (C implementation.)</p>

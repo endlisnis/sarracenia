@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -379,7 +379,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Amdahl’s-Law-Applied">
-<h1>Amdahl’s Law Applied<a class="headerlink" href="#Amdahl’s-Law-Applied" title="Permalink to this heading"></a></h1>
+<h1>Amdahl’s Law Applied<a class="headerlink" href="#Amdahl’s-Law-Applied" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>Ideally: code on 4 cores runs 4x faster than on 1.</p></li>
 <li><p>That is rare. There is a name for it: “Embarassingly Parallel.”</p></li>
@@ -388,7 +388,7 @@ div.rendered_html tbody tr:hover {
 <li><p>When using large numbers or processes and processors, this hits <em>HARD.</em></p></li>
 </ul>
 <section id="Speedup">
-<h2>Speedup<a class="headerlink" href="#Speedup" title="Permalink to this heading"></a></h2>
+<h2>Speedup<a class="headerlink" href="#Speedup" title="Link to this heading"></a></h2>
 <p>If you have a single processor to run code, then assuming perfect parallism (the so-called “embarrasingly parallel” case) then your code will run twice as fast on two processors, four times as fast on four, etc… This is the ideal case. Much real-life code has “dependencies” that limit speedup.</p>
 <p>Speedup of a task, when adding processors is limited by how much of the code can run in parallel. If you had an infinite number of processors to apply to a problem, then performance is limited by the p the parallelizability of your code.</p>
 <p>The graph below plots the speedup available against the degree to which the code is parallelizable (from 5% to 95% in steps of 5%.) For example, if the algorithm is only 50% parallelizable, then throwing an infinite number of processors at the problem will give you a 25% speedup ( 1.25 on the plot.) so it isn’t worthwhile.</p>
@@ -436,7 +436,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="What-is-Amdahl’s-Law?">
-<h2>What is Amdahl’s Law?<a class="headerlink" href="#What-is-Amdahl’s-Law?" title="Permalink to this heading"></a></h2>
+<h2>What is Amdahl’s Law?<a class="headerlink" href="#What-is-Amdahl’s-Law?" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Speedup a program can achieve is limited by the level of parallelization of its design.</p></li>
 <li><p>If code is 95% parallelized, then 5%, or 1 part in 20, is serial… that means, no matter how many processors are put on the job, eventually you are limited by the part that isn’t parallel. It’s asymptotic speedup (that it will never reach, is 20x.)</p></li>
@@ -478,7 +478,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Large-Numbers-of-Processors-Need-High-Parallelism">
-<h2>Large Numbers of Processors Need High Parallelism<a class="headerlink" href="#Large-Numbers-of-Processors-Need-High-Parallelism" title="Permalink to this heading"></a></h2>
+<h2>Large Numbers of Processors Need High Parallelism<a class="headerlink" href="#Large-Numbers-of-Processors-Need-High-Parallelism" title="Link to this heading"></a></h2>
 <p>In the previous picture, we could see that:</p>
 <ul class="simple">
 <li><p>we could never get more than a 20 fold speedup if 5% of the code is serial.</p></li>
@@ -515,7 +515,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Serial-Example">
-<h2>Serial Example<a class="headerlink" href="#Serial-Example" title="Permalink to this heading"></a></h2>
+<h2>Serial Example<a class="headerlink" href="#Serial-Example" title="Link to this heading"></a></h2>
 <p>Below is a simple example of a python snippet that we want to accelerate. It does a math function and calculates “tot” over a range of numbers.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -725,7 +725,7 @@ Wall time: 917 ms
 </div>
 </section>
 <section id="NEWS-FLASH:-Serial-9x-Faster-than-Parallel!">
-<h2>NEWS FLASH: Serial 9x Faster than Parallel!<a class="headerlink" href="#NEWS-FLASH:-Serial-9x-Faster-than-Parallel!" title="Permalink to this heading"></a></h2>
+<h2>NEWS FLASH: Serial 9x Faster than Parallel!<a class="headerlink" href="#NEWS-FLASH:-Serial-9x-Faster-than-Parallel!" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Sometimes the thing you are trying to do is inherently serial.</p></li>
 <li><p>Do something else instead.</p></li>
@@ -735,7 +735,7 @@ Wall time: 917 ms
 </ul>
 </section>
 <section id="Summary">
-<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this heading"></a></h2>
+<h2>Summary<a class="headerlink" href="#Summary" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Application design limits speedup.</p></li>
 <li><p><strong>Perfectly Parallel</strong> is the gold standard.</p></li>
@@ -749,7 +749,7 @@ Wall time: 917 ms
 </ul>
 </section>
 <section id="Relevance?">
-<h2>Relevance?<a class="headerlink" href="#Relevance?" title="Permalink to this heading"></a></h2>
+<h2>Relevance?<a class="headerlink" href="#Relevance?" title="Link to this heading"></a></h2>
 <p>Note that on our main cluster (ddsr.cmc) the configuration is 128 processors:</p>
 <ul class="simple">
 <li><p>16 processors / node</p></li>
@@ -761,7 +761,7 @@ Wall time: 917 ms
 </ul>
 </section>
 <section id="So-Sarracenia-is-Not-a-Parallel-App!">
-<h2>So Sarracenia is Not a Parallel App!<a class="headerlink" href="#So-Sarracenia-is-Not-a-Parallel-App!" title="Permalink to this heading"></a></h2>
+<h2>So Sarracenia is Not a Parallel App!<a class="headerlink" href="#So-Sarracenia-is-Not-a-Parallel-App!" title="Link to this heading"></a></h2>
 <p>It is just an ordinary python script that launches processes. It’s not a real parallel app.</p>
 <ul class="simple">
 <li><p>it is not based on threads !</p></li>
@@ -770,11 +770,11 @@ Wall time: 917 ms
 <li><p>it is launching completely independent processes that never synchronize!</p></li>
 </ul>
 <section id="Yes,-Exactly.">
-<h3>Yes, Exactly.<a class="headerlink" href="#Yes,-Exactly." title="Permalink to this heading"></a></h3>
+<h3>Yes, Exactly.<a class="headerlink" href="#Yes,-Exactly." title="Link to this heading"></a></h3>
 </section>
 </section>
 <section id="THANKS!">
-<h2>THANKS!<a class="headerlink" href="#THANKS!" title="Permalink to this heading"></a></h2>
+<h2>THANKS!<a class="headerlink" href="#THANKS!" title="Link to this heading"></a></h2>
 <p>light reading:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Amdahl%27s_law">https://en.wikipedia.org/wiki/Amdahl%27s_law</a></p></li>

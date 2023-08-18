@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -98,7 +98,9 @@
 <span class="c1">#===========================</span>
 
 
-<div class="viewcode-block" id="exec_rabbitmqadmin"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.exec_rabbitmqadmin">[docs]</a><span class="k">def</span> <span class="nf">exec_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">simulate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="exec_rabbitmqadmin">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.exec_rabbitmqadmin">[docs]</a>
+<span class="k">def</span> <span class="nf">exec_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">simulate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       invoke rabbitmqadmin using a sub-process, with the given options.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -152,7 +154,10 @@
     <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="add_user"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.add_user">[docs]</a><span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">role</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">simulate</span><span class="p">):</span>
+
+<div class="viewcode-block" id="add_user">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.add_user">[docs]</a>
+<span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">role</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">simulate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       add the given user with the given credentials.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -201,7 +206,10 @@
         <span class="n">dummy</span> <span class="o">=</span> <span class="n">run_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">declare</span><span class="p">,</span> <span class="n">simulate</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="del_user"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.del_user">[docs]</a><span class="k">def</span> <span class="nf">del_user</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">simulate</span><span class="p">):</span>
+
+<div class="viewcode-block" id="del_user">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.del_user">[docs]</a>
+<span class="k">def</span> <span class="nf">del_user</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">simulate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        delete user from the given broker.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -210,7 +218,10 @@
     <span class="n">dummy</span> <span class="o">=</span> <span class="n">run_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">delete</span><span class="p">,</span> <span class="n">simulate</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_exchanges"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.get_exchanges">[docs]</a><span class="k">def</span> <span class="nf">get_exchanges</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_exchanges">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.get_exchanges">[docs]</a>
+<span class="k">def</span> <span class="nf">get_exchanges</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        get the list of existing exchanges.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -219,7 +230,10 @@
     <span class="k">return</span> <span class="n">run_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_queues"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.get_queues">[docs]</a><span class="k">def</span> <span class="nf">get_queues</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_queues">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.get_queues">[docs]</a>
+<span class="k">def</span> <span class="nf">get_queues</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        get the list of existing queues.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -228,7 +242,10 @@
     <span class="k">return</span> <span class="n">run_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_users"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.get_users">[docs]</a><span class="k">def</span> <span class="nf">get_users</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_users">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.get_users">[docs]</a>
+<span class="k">def</span> <span class="nf">get_users</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        get the list of existing users.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -237,13 +254,16 @@
     <span class="k">return</span> <span class="n">run_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span></div>
 
 
+
 <span class="c1">#===========================</span>
 <span class="c1"># direct access to rabbitmq management plugin</span>
 <span class="c1"># this is what rabbitmqadmin does under the cover</span>
 <span class="c1">#===========================</span>
 
 
-<div class="viewcode-block" id="broker_get_exchanges"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.broker_get_exchanges">[docs]</a><span class="k">def</span> <span class="nf">broker_get_exchanges</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">ssl_key_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssl_cert_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="broker_get_exchanges">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.broker_get_exchanges">[docs]</a>
+<span class="k">def</span> <span class="nf">broker_get_exchanges</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">ssl_key_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssl_cert_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        get the list of existing exchanges using a url query.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -284,7 +304,10 @@
     <span class="k">return</span> <span class="n">exchanges</span></div>
 
 
-<div class="viewcode-block" id="user_access"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.user_access">[docs]</a><span class="k">def</span> <span class="nf">user_access</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+
+<div class="viewcode-block" id="user_access">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.user_access">[docs]</a>
+<span class="k">def</span> <span class="nf">user_access</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">      Given an administrative URL, return a list of exchanges and queues the user can access.</span>
 
@@ -368,6 +391,7 @@
                <span class="s1">&#39;bindings&#39;</span><span class="p">:</span>  <span class="n">b</span> <span class="p">}</span> <span class="p">)</span></div>
 
 
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">exec_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;list queue names&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
@@ -386,7 +410,9 @@
     <span class="c1">#print( &quot;\n\nbindings: %s&quot; % json.loads(exec_rabbitmqadmin(url,&quot;list bindings&quot;)[1]) )</span>
 
 
-<div class="viewcode-block" id="run_rabbitmqadmin"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.run_rabbitmqadmin">[docs]</a><span class="k">def</span> <span class="nf">run_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">simulate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="run_rabbitmqadmin">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.rabbitmq_admin.run_rabbitmqadmin">[docs]</a>
+<span class="k">def</span> <span class="nf">run_rabbitmqadmin</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">simulate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      spawn a subprocess to run rabbitmqadmin with the given options.</span>
 <span class="sd">      capture result.</span>
@@ -418,6 +444,7 @@
                      <span class="n">options</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Exception details: &#39;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[]</span></div>
+
 </pre></div>
 
            </div>

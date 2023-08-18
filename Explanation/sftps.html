@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -123,7 +123,7 @@
 }
 </style>
 <section id="why-sftp-is-more-often-chosen-than-ftps">
-<h1>Why SFTP is More Often Chosen than FTPS<a class="headerlink" href="#why-sftp-is-more-often-chosen-than-ftps" title="Permalink to this heading"></a></h1>
+<h1>Why SFTP is More Often Chosen than FTPS<a class="headerlink" href="#why-sftp-is-more-often-chosen-than-ftps" title="Link to this heading"></a></h1>
 <p>There has been some discussion around where to place an S in order to
 secure file transfers. Among a variety of competing technologies, there
 are two that may appear fairly equivalent: SFTP and FTPS. Both of these
@@ -138,7 +138,7 @@ In this discussion please keep in mind:</p>
 <p>If there are some misapprehensions, then we would be pleased to learn
 about them.</p>
 <section id="ftp">
-<h2>FTP<a class="headerlink" href="#ftp" title="Permalink to this heading"></a></h2>
+<h2>FTP<a class="headerlink" href="#ftp" title="Link to this heading"></a></h2>
 <p>In the early days of the internet, before even the advent
 of the world-wide web, one of the earliest applications was
 file transfer, as first defined by the Internet Engineering Task
@@ -160,7 +160,7 @@ firewalls did not exist. Fast-forward thirty years, and the reality is
 quite different.</p>
 </section>
 <section id="product-exchangers-supporting-large-numbers-of-transfers">
-<h2>Product Exchangers: Supporting Large Numbers of Transfers<a class="headerlink" href="#product-exchangers-supporting-large-numbers-of-transfers" title="Permalink to this heading"></a></h2>
+<h2>Product Exchangers: Supporting Large Numbers of Transfers<a class="headerlink" href="#product-exchangers-supporting-large-numbers-of-transfers" title="Link to this heading"></a></h2>
 <p>In modern times, if one is transferring hundreds of thousands or millions
 of files, there will likely be a large number of network devices
 between Alice and Bob’s servers.  The following diagram is a typical
@@ -231,7 +231,7 @@ is easily inspected, there is just a bit of proxy code commonly
 implemented on network devices to cover this special case.</p>
 </section>
 <section id="ftps">
-<h2>FTPS<a class="headerlink" href="#ftps" title="Permalink to this heading"></a></h2>
+<h2>FTPS<a class="headerlink" href="#ftps" title="Link to this heading"></a></h2>
 <p>FTPS - is FTP with Transport Level Security added to it.
 The control path is now encrypted, and thus not available
 to proxies on each of the firewalls and load balancers (such
@@ -282,7 +282,7 @@ issues and will find it difficult to deploy. It is rare to
 find a peer that prefers FTPS.</p>
 </section>
 <section id="cost">
-<h2>Cost<a class="headerlink" href="#cost" title="Permalink to this heading"></a></h2>
+<h2>Cost<a class="headerlink" href="#cost" title="Link to this heading"></a></h2>
 <p>If one assumes that the control path alone can be intercepted, leaving
 the data path alone, then from the point of view of computational complexity,
 the control path, rather than simply passing packets through each NAT/PAT device
@@ -312,7 +312,7 @@ but the maintenance load will be slightly heavier (more frequent credential
 updates, need to maintain additional static maps, more firewall monitoring).</p>
 </section>
 <section id="functionality-byte-ranges">
-<h2>Functionality: Byte Ranges<a class="headerlink" href="#functionality-byte-ranges" title="Permalink to this heading"></a></h2>
+<h2>Functionality: Byte Ranges<a class="headerlink" href="#functionality-byte-ranges" title="Link to this heading"></a></h2>
 <p>In addition to the much greater complexity of firewall support for
 FTPS, and the added load on expensive firewalls, there is also reduced
 functionality available when compared to newer protocols,
@@ -324,7 +324,7 @@ by HTTP and SFTP to permit files to be transferred by multiple parallel
 streams, which is not possible with FTP or FTPS.</p>
 </section>
 <section id="security-vulnerability">
-<h2>Security/Vulnerability<a class="headerlink" href="#security-vulnerability" title="Permalink to this heading"></a></h2>
+<h2>Security/Vulnerability<a class="headerlink" href="#security-vulnerability" title="Link to this heading"></a></h2>
 <p>FTPS, like FTP, is usually authenticated using passwords which are secret.
 If the peer in an exchange suffers an intrusion, the hash of the password,
 which can be used to obtain the password itself using so-called brute
@@ -388,7 +388,7 @@ one must disable various checks:</p>
 </aside>
 </section>
 <section id="reliability-complexity">
-<h2>Reliability/Complexity<a class="headerlink" href="#reliability-complexity" title="Permalink to this heading"></a></h2>
+<h2>Reliability/Complexity<a class="headerlink" href="#reliability-complexity" title="Link to this heading"></a></h2>
 <p>There are several modes of FTP:  ascii/binary, active/passive, that create more cases to allow for.
 FTPS adds more cases: explicit/implicit to the number to allow for. Encryption can be
 enabled and disabled at various points in the control and data paths.</p>
@@ -412,7 +412,7 @@ file name flows over the control path, and the data flows over the other port. A
 were migrated to SFTP, and the symptoms disappeared.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>Either FTPS proxying is done in a fully general manner:</p>
 <ul class="simple">
 <li><p>the intervening devices must perform man-in-the-middle

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,15 +120,15 @@
 }
 </style>
 <section id="sr3-post">
-<h1>Sr3_Post<a class="headerlink" href="#sr3-post" title="Permalink to this heading"></a></h1>
+<h1>Sr3_Post<a class="headerlink" href="#sr3-post" title="Link to this heading"></a></h1>
 <section id="publish-the-availability-of-files">
-<h2>Publish the Availability of Files<a class="headerlink" href="#publish-the-availability-of-files" title="Permalink to this heading"></a></h2>
+<h2>Publish the Availability of Files<a class="headerlink" href="#publish-the-availability-of-files" title="Link to this heading"></a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Manual section<span class="colon">:</span></dt>
 <dd class="field-odd"><p>1</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -138,13 +138,13 @@
 </dd>
 </dl>
 <section id="synopsis">
-<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h3>
+<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <p><strong>sr3_post|sr3_cpost</strong> [ <em>OPTIONS</em> ][ <em>-pb|–post_broker broker</em> ][ <em>-pbu|–post_baseUrl url[,url]…*</em> ]
 [ <em>-p|–path ] path1 path2…pathN</em> ]</p>
 <p>( also <strong>libsrshim.so</strong> )</p>
 </section>
 <section id="description">
-<h3>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this heading"></a></h3>
+<h3>DESCRIPTION<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
 <p><strong>sr3_post</strong> posts the availability of a file by creating an notification message.
 In contrast to most other sarracenia components that act as daemons,
 sr3_post is a one shot invocation which posts and exits.
@@ -164,7 +164,7 @@ of <a class="reference external" href="sr3.1.html">sr3(1)</a>.</p></li>
 </ul>
 </div></blockquote>
 <section id="mandatory-settings">
-<h4>Mandatory Settings<a class="headerlink" href="#mandatory-settings" title="Permalink to this heading"></a></h4>
+<h4>Mandatory Settings<a class="headerlink" href="#mandatory-settings" title="Link to this heading"></a></h4>
 <p>The <em>post_base_url url,url,…</em> option specifies the location
 subscribers will download the file from.  There is usually one post per file.
 Format of argument to the <em>post_base_url</em> option:</p>
@@ -226,11 +226,11 @@ without authentication on dd.weather.gc.ca.</p>
 </section>
 </section>
 <section id="arguments-and-options">
-<h3>ARGUMENTS AND OPTIONS<a class="headerlink" href="#arguments-and-options" title="Permalink to this heading"></a></h3>
+<h3>ARGUMENTS AND OPTIONS<a class="headerlink" href="#arguments-and-options" title="Link to this heading"></a></h3>
 <p>Please refer to the <a class="reference external" href="sr3_options.7.html">sr3_options(7)</a> manual page for a detailed description of
 all settings, and methods of specifying them.</p>
 <section id="path-path1-path2-pathn">
-<h4>path path1 path2 … pathN<a class="headerlink" href="#path-path1-path2-pathn" title="Permalink to this heading"></a></h4>
+<h4>path path1 path2 … pathN<a class="headerlink" href="#path-path1-path2-pathn" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p><strong>sr3_post</strong> evaluates the filesystem paths from the <strong>path</strong> option
 and possibly the <strong>baseDir</strong> if the option is used.</p>
@@ -240,13 +240,13 @@ announced…</p>
 </div></blockquote>
 </section>
 <section id="post-broker-broker">
-<h4>post_broker &lt;broker&gt;<a class="headerlink" href="#post-broker-broker" title="Permalink to this heading"></a></h4>
+<h4>post_broker &lt;broker&gt;<a class="headerlink" href="#post-broker-broker" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>the broker to which the post is sent.</p>
 </div></blockquote>
 </section>
 <section id="post-basedir-path">
-<h4>post_baseDir &lt;path&gt;<a class="headerlink" href="#post-basedir-path" title="Permalink to this heading"></a></h4>
+<h4>post_baseDir &lt;path&gt;<a class="headerlink" href="#post-basedir-path" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>The <em>base_dir</em> option supplies the directory path that,
 when combined (or found) in the given <em>path</em>,
@@ -259,20 +259,20 @@ omit the -dr setting, and just specify the complete path as an argument.</p>
 </div></blockquote>
 </section>
 <section id="post-exchange-exchange">
-<h4>post_exchange &lt;exchange&gt;<a class="headerlink" href="#post-exchange-exchange" title="Permalink to this heading"></a></h4>
+<h4>post_exchange &lt;exchange&gt;<a class="headerlink" href="#post-exchange-exchange" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Sr_post publishes to an exchange named <em>xs_</em>”broker_username” by default.
 Use the <em>post_exchange</em> option to override that default.</p>
 </div></blockquote>
 </section>
 <section id="h-help">
-<h4>-h|–help<a class="headerlink" href="#h-help" title="Permalink to this heading"></a></h4>
+<h4>-h|–help<a class="headerlink" href="#h-help" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Display program options.</p>
 </div></blockquote>
 </section>
 <section id="blocksize-value">
-<h4>blocksize &lt;value&gt;<a class="headerlink" href="#blocksize-value" title="Permalink to this heading"></a></h4>
+<h4>blocksize &lt;value&gt;<a class="headerlink" href="#blocksize-value" title="Link to this heading"></a></h4>
 <p><strong>Not currently useful, will re-instate post v3</strong></p>
 <p>This option controls the partitioning strategy used to post files.
 The value should be one of:</p>
@@ -303,7 +303,7 @@ to avoid having the file split into parts, so one would specify ‘1’ to force
 as a single part.</p>
 </section>
 <section id="post-baseurl-url">
-<h4>post_baseUrl &lt;url&gt;<a class="headerlink" href="#post-baseurl-url" title="Permalink to this heading"></a></h4>
+<h4>post_baseUrl &lt;url&gt;<a class="headerlink" href="#post-baseurl-url" title="Link to this heading"></a></h4>
 <p>The <strong>url</strong> option sets the protocol, credentials, host and port under
 which the product can be fetched.</p>
 <p>The AMQP announcememet is made of the three fields, the notification message time,
@@ -313,11 +313,11 @@ if necessary.</p>
 what the subscribers will use to download the product.</p>
 </section>
 <section id="reset">
-<h4>reset<a class="headerlink" href="#reset" title="Permalink to this heading"></a></h4>
+<h4>reset<a class="headerlink" href="#reset" title="Link to this heading"></a></h4>
 <p>When one has used <strong>–suppress_duplicates|–cache</strong>, this option empties the cache.</p>
 </section>
 <section id="rename-path">
-<h4>rename &lt;path&gt;<a class="headerlink" href="#rename-path" title="Permalink to this heading"></a></h4>
+<h4>rename &lt;path&gt;<a class="headerlink" href="#rename-path" title="Link to this heading"></a></h4>
 <p>With the <em>rename</em>  option, the user can suggest a destination path to its files. If the given
 path ends with ‘/’ it suggests a directory path…  If it doesn’t, the option specifies a file renaming.</p>
 <p><em>sr_post</em>, and <em>sr_watch</em> use a file based model based on a process and a disk cache,
@@ -327,7 +327,7 @@ The shim library therefore has a purely memory-based cache, tunable with
 the following shim_ options.</p>
 </section>
 <section id="shim-defer-posting-to-exit-experimental">
-<h4>shim_defer_posting_to_exit EXPERIMENTAL<a class="headerlink" href="#shim-defer-posting-to-exit-experimental" title="Permalink to this heading"></a></h4>
+<h4>shim_defer_posting_to_exit EXPERIMENTAL<a class="headerlink" href="#shim-defer-posting-to-exit-experimental" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Postpones file posting until the process exits.
 In cases where the same file is repeatedly opened and appended to, this
@@ -335,7 +335,7 @@ setting can avoid redundant notification messages.  (default: False)</p>
 </div></blockquote>
 </section>
 <section id="shim-post-minterval-interval-experimental">
-<h4>shim_post_minterval <em>interval</em> EXPERIMENTAL<a class="headerlink" href="#shim-post-minterval-interval-experimental" title="Permalink to this heading"></a></h4>
+<h4>shim_post_minterval <em>interval</em> EXPERIMENTAL<a class="headerlink" href="#shim-post-minterval-interval-experimental" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>If a file is opened for writing and closed multiple times within the interval,
 it will only be posted once. When a file is written to many times, particularly
@@ -349,7 +349,7 @@ is not respected, in order to provide the most accurate final post.</p>
 </div></blockquote>
 </section>
 <section id="shim-skip-parent-open-files-experimental">
-<h4>shim_skip_parent_open_files EXPERIMENTAL<a class="headerlink" href="#shim-skip-parent-open-files-experimental" title="Permalink to this heading"></a></h4>
+<h4>shim_skip_parent_open_files EXPERIMENTAL<a class="headerlink" href="#shim-skip-parent-open-files-experimental" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>The shim_skip_ppid_open_files option means that a process checks
 whether the parent process has the same file open, and does not
@@ -357,7 +357,7 @@ post if that is the case. (default: True)</p>
 </div></blockquote>
 </section>
 <section id="sleep-time">
-<h4>sleep <em>time</em><a class="headerlink" href="#sleep-time" title="Permalink to this heading"></a></h4>
+<h4>sleep <em>time</em><a class="headerlink" href="#sleep-time" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p><strong>This option is only available in the c implementation (sr_cpost)</strong></p>
 <p>When the option is set, it transforms cpost into a sr_watch, with <em>sleep</em> being the time to wait between
@@ -373,13 +373,13 @@ interval should not be less than about five seconds, as it may miss posting some
 </div></blockquote>
 </section>
 <section id="subtopic-key">
-<h4>subtopic &lt;key&gt;<a class="headerlink" href="#subtopic-key" title="Permalink to this heading"></a></h4>
+<h4>subtopic &lt;key&gt;<a class="headerlink" href="#subtopic-key" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>The subtopic default can be overwritten with the <em>subtopic</em> option.</p>
 </div></blockquote>
 </section>
 <section id="nodupe-ttl-on-off-999">
-<h4>nodupe_ttl on|off|999<a class="headerlink" href="#nodupe-ttl-on-off-999" title="Permalink to this heading"></a></h4>
+<h4>nodupe_ttl on|off|999<a class="headerlink" href="#nodupe-ttl-on-off-999" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Avoid posting duplicates by comparing each file to those seen during the
 <em>suppress_duplicates</em> interval. When posting directories, will cause
@@ -393,7 +393,7 @@ and much duplicate data transfer will result.</p>
 </div></blockquote>
 </section>
 <section id="identity-method-value">
-<h4>identity &lt;method&gt;[,&lt;value&gt;]<a class="headerlink" href="#identity-method-value" title="Permalink to this heading"></a></h4>
+<h4>identity &lt;method&gt;[,&lt;value&gt;]<a class="headerlink" href="#identity-method-value" title="Link to this heading"></a></h4>
 <p>All file notification messages include a checksum. The <em>sum</em> option specifies how to calculate the it.
 It is a comma separated string. Valid Identity methods are</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cod</span><span class="p">,</span><span class="n">x</span>      <span class="o">-</span> <span class="n">Calculate</span> <span class="n">On</span> <span class="n">Download</span> <span class="n">applying</span> <span class="n">x</span>
@@ -410,19 +410,19 @@ This is necessary for the <em>arbitrary</em> method to work, since we have no me
 </div>
 </section>
 <section id="topicprefix-key">
-<h4>topicPrefix &lt;key&gt;<a class="headerlink" href="#topicprefix-key" title="Permalink to this heading"></a></h4>
+<h4>topicPrefix &lt;key&gt;<a class="headerlink" href="#topicprefix-key" title="Link to this heading"></a></h4>
 <p><em>Not usually used</em>
 By default, the topic is made of the default topicPrefix : version <em>V03</em>
 followed by the default subtopic: the file path separated with dots (dot being the topic separator for amqp).
 You can overwrite the topicPrefix by setting this option.</p>
 </section>
 <section id="header-name-value">
-<h4>header &lt;name&gt;=&lt;value&gt;<a class="headerlink" href="#header-name-value" title="Permalink to this heading"></a></h4>
+<h4>header &lt;name&gt;=&lt;value&gt;<a class="headerlink" href="#header-name-value" title="Link to this heading"></a></h4>
 <p>Add a &lt;name&gt; header with the given value to notification messages. Used to pass strings as metadata.</p>
 </section>
 </section>
 <section id="shim-library-usage">
-<h3>SHIM LIBRARY USAGE<a class="headerlink" href="#shim-library-usage" title="Permalink to this heading"></a></h3>
+<h3>SHIM LIBRARY USAGE<a class="headerlink" href="#shim-library-usage" title="Link to this heading"></a></h3>
 <p>Rather than invoking a sr_post to post each file to publish, one can have processes automatically
 post the files they right by having them use a shim library intercepting certain file i/o calls to libc
 and the kernel. To activate the shim library, in the shell environment add:</p>
@@ -451,7 +451,7 @@ fi
 <p>SSH will only pass environment variables that start with LC_ (locale) so to get it
 passed with minimal effort, we use that prefix.</p>
 <section id="shim-usage-tips">
-<h4>Shim Usage Tips<a class="headerlink" href="#shim-usage-tips" title="Permalink to this heading"></a></h4>
+<h4>Shim Usage Tips<a class="headerlink" href="#shim-usage-tips" title="Link to this heading"></a></h4>
 <p>This method of notification does require some user environment setup.
 The user environment needs to the LD_PRELOAD environment variable set
 prior to launch of the process. Complications that remain as we have
@@ -486,7 +486,7 @@ same tree mirrored. See <a class="reference internal" href="#rename-processing">
 </ul>
 </section>
 <section id="rename-processing">
-<h4>Rename Processing<a class="headerlink" href="#rename-processing" title="Permalink to this heading"></a></h4>
+<h4>Rename Processing<a class="headerlink" href="#rename-processing" title="Link to this heading"></a></h4>
 <p>It should be noted that file renaming is not as simple in the mirroring case as in the underlying
 operating system. While the operation is a single atomic one in an operating system, when
 using notifications, there are accept/reject cases that create four possible effects.</p>
@@ -524,7 +524,7 @@ in the tree, and thus is far more expensive.</p>
 </section>
 </section>
 <section id="environment-variables">
-<h3>ENVIRONMENT VARIABLES<a class="headerlink" href="#environment-variables" title="Permalink to this heading"></a></h3>
+<h3>ENVIRONMENT VARIABLES<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
 <p>In the C implementation (sr_cpost), if the SR_CONFIG_EXAMPLES variable is set, then the <em>add</em> directive can be used
 to copy examples into the user’s directory for use and/or customization.</p>
 <p>An entry in the ~/.config/sarra/default.conf (created via sr_subscribe edit default.conf )
@@ -536,7 +536,7 @@ could be used to set the variable:</p>
 implementation.</p>
 </section>
 <section id="see-also">
-<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h3>
+<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="sr3.1.html">sr3(1)</a> - Sarracenia main command line interface.</p>
 <p><a class="reference external" href="sr3_post.1.html">sr3_post(1)</a> - post file notification messages (python implementation.)</p>
 <p><a class="reference external" href="sr3_cpost.1.html">sr3_cpost(1)</a> - post file announcemensts (C implementation.)</p>

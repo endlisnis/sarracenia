@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -344,7 +344,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Sarracenia-Algorithmic-Design">
-<h1>Sarracenia Algorithmic Design<a class="headerlink" href="#Sarracenia-Algorithmic-Design" title="Permalink to this heading"></a></h1>
+<h1>Sarracenia Algorithmic Design<a class="headerlink" href="#Sarracenia-Algorithmic-Design" title="Link to this heading"></a></h1>
 <p>What were the issues with Sundew that led to Sarracenia?</p>
 <ul class="simple">
 <li><p>Problems/Weaknesses of Sundew</p></li>
@@ -356,7 +356,7 @@ div.rendered_html tbody tr:hover {
 </li>
 </ul>
 <section id="Problems/Weaknesses-of-Sundew:">
-<h2>Problems/Weaknesses of Sundew:<a class="headerlink" href="#Problems/Weaknesses-of-Sundew:" title="Permalink to this heading"></a></h2>
+<h2>Problems/Weaknesses of Sundew:<a class="headerlink" href="#Problems/Weaknesses-of-Sundew:" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>push only, required someone else to send to us for us to receive. Senders always must configure who they are sending to.</p></li>
 <li><p>limited parallelism: each receiver or sender is a single process, only a single sender for a single destination.</p></li>
@@ -365,7 +365,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </section>
 <section id="Use-Folders/Directories">
-<h2>Use Folders/Directories<a class="headerlink" href="#Use-Folders/Directories" title="Permalink to this heading"></a></h2>
+<h2>Use Folders/Directories<a class="headerlink" href="#Use-Folders/Directories" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Sundew used only the name of the file to make routing decisions.</p></li>
 <li><p>Sarracenia uses the entire path.</p>
@@ -379,7 +379,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </section>
 <section id="Add-RabbitMQ">
-<h2>Add RabbitMQ<a class="headerlink" href="#Add-RabbitMQ" title="Permalink to this heading"></a></h2>
+<h2>Add RabbitMQ<a class="headerlink" href="#Add-RabbitMQ" title="Link to this heading"></a></h2>
 <p>Introduced rabbitmq/amqp broker. After years of study of performance (it was used as a pure dissemination tool, outside of Sundew for six years prior to start of work on Sarracenia, which made a message broker central to data routine.) We needed to ensured that, as a componentm it would scale reasonably well for our loads.</p>
 <p>Using RabbitMQ, we introduced topic/based routing, as an analog to dictionary routing, but much more applicable to non-message traffic (aka files.) should improve routing decisions for files, while not hurting routing for messages too much. Product mix is much more file oriented than message oriented in recent times.</p>
 <ul class="simple">
@@ -396,7 +396,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </section>
 <section id="id1">
-<h2>Add RabbitMQ<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>Add RabbitMQ<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>topic based pre-routing.</p></li>
 <li><p>robust, high performance implementation with good internal design for multi-core.</p></li>
@@ -581,7 +581,7 @@ t total cost=125366
 </div>
 </section>
 <section id="The-Algorithmic-Cost-to-Route-1-File">
-<h2>The Algorithmic Cost to Route 1 File<a class="headerlink" href="#The-Algorithmic-Cost-to-Route-1-File" title="Permalink to this heading"></a></h2>
+<h2>The Algorithmic Cost to Route 1 File<a class="headerlink" href="#The-Algorithmic-Cost-to-Route-1-File" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Application</p></th>
@@ -659,7 +659,7 @@ t total cost=125366
 </div>
 </section>
 <section id="Overall-Server-Algorithmic-Ceiling">
-<h2>Overall Server Algorithmic Ceiling<a class="headerlink" href="#Overall-Server-Algorithmic-Ceiling" title="Permalink to this heading"></a></h2>
+<h2>Overall Server Algorithmic Ceiling<a class="headerlink" href="#Overall-Server-Algorithmic-Ceiling" title="Link to this heading"></a></h2>
 <p>Assume a 1 GIPS machine within infinite cpus, and take IP cost per route, so the number of products that can be routed by a server is going to be inverely related to cost to route each one: route/second = 1000 MIPS / cost to route from previous cell. The other contributor is the number of processes doing the routing.</p>
 <table class="docutils align-default">
 <thead>
@@ -694,7 +694,7 @@ t total cost=125366
 </section>
 </section>
 <section id="Duplicate-Suppression">
-<h1>Duplicate Suppression<a class="headerlink" href="#Duplicate-Suppression" title="Permalink to this heading"></a></h1>
+<h1>Duplicate Suppression<a class="headerlink" href="#Duplicate-Suppression" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>All message passing networks implement “Duplicate Suppression”</p></li>
 <li><p>typical:</p>
@@ -837,7 +837,7 @@ t total cost=125366
 </div>
 </div>
 <section id="Global-Duplication-Suppression">
-<h2>Global Duplication Suppression<a class="headerlink" href="#Global-Duplication-Suppression" title="Permalink to this heading"></a></h2>
+<h2>Global Duplication Suppression<a class="headerlink" href="#Global-Duplication-Suppression" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>create a service for all the processes participating in a flow to contact.</p></li>
 <li><p>ask the service if a partipant has already seen a message with this checksum.</p></li>
@@ -846,7 +846,7 @@ t total cost=125366
 </ul>
 </section>
 <section id="Distributed-Duplicate-Suppression">
-<h2>Distributed Duplicate Suppression<a class="headerlink" href="#Distributed-Duplicate-Suppression" title="Permalink to this heading"></a></h2>
+<h2>Distributed Duplicate Suppression<a class="headerlink" href="#Distributed-Duplicate-Suppression" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>hash the checksum to get a modulo N</p></li>
 <li><p>publish the message to an array of destinations modulo the checksum</p></li>
@@ -953,7 +953,7 @@ t total cost=125366
 <p>Each process has it’s own duplicate suppression (the white component within each instance.) As The number of instances grow, the duplicate suppression performance grows naturally. This meets the “embarassingly parallel” goal. but it does cost complexity for analysts to set up.</p>
 </section>
 <section id="Observations">
-<h2>Observations<a class="headerlink" href="#Observations" title="Permalink to this heading"></a></h2>
+<h2>Observations<a class="headerlink" href="#Observations" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>If you are going to use a global cache, it better be really good.</p>
 <ul>

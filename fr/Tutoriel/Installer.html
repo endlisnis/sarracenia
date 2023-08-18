@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -125,20 +125,20 @@
 }
 </style>
 <section id="installation-de-metpx-sarracenia">
-<h1>Installation de MetPX Sarracenia<a class="headerlink" href="#installation-de-metpx-sarracenia" title="Permalink to this heading"></a></h1>
+<h1>Installation de MetPX Sarracenia<a class="headerlink" href="#installation-de-metpx-sarracenia" title="Link to this heading"></a></h1>
 <section id="enregistrement-de-revision">
-<h2>Enregistrement de révision<a class="headerlink" href="#enregistrement-de-revision" title="Permalink to this heading"></a></h2>
+<h2>Enregistrement de révision<a class="headerlink" href="#enregistrement-de-revision" title="Link to this heading"></a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 </dl>
 </section>
 <section id="lavez-vous-deja">
-<h2>L’avez-vous déjà?<a class="headerlink" href="#lavez-vous-deja" title="Permalink to this heading"></a></h2>
+<h2>L’avez-vous déjà?<a class="headerlink" href="#lavez-vous-deja" title="Link to this heading"></a></h2>
 <p>Si vous êtes sur un serveur avec celui-ci déjà installé, vous pouvez l’appeler comme suit:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="n">status</span>
 <span class="n">status</span><span class="p">:</span>
@@ -185,7 +185,7 @@ permettre cette fonctionalité sont indiqué dans la troisième colonne.</p>
 pour la fonctionallité SFTP est disponible.</p>
 </section>
 <section id="installation-client">
-<h2>Installation Client<a class="headerlink" href="#installation-client" title="Permalink to this heading"></a></h2>
+<h2>Installation Client<a class="headerlink" href="#installation-client" title="Link to this heading"></a></h2>
 <p>Le package est conçu pour python version 3.6 ou supérieure. Sur les systèmes où
 ils sont disponibles, les paquets debian sont recommandés. Ceux-ci peuvent être obtenus auprès du
 référentiel launchpad. Si vous ne pouvez pas utiliser les paquets Debian, envisagez les paquets pip
@@ -197,7 +197,7 @@ peut être installé à l’échelle du système, dans l’environnement d’un 
 venv. Tant que <em>sr3 features</em> signale la fonctionnalité comme disponible, elle
 être utilisé.</p>
 <section id="ubuntu-debian-apt-dpkg-recommande">
-<h3>Ubuntu/Debian (apt/dpkg) <strong>Recommandé</strong><a class="headerlink" href="#ubuntu-debian-apt-dpkg-recommande" title="Permalink to this heading"></a></h3>
+<h3>Ubuntu/Debian (apt/dpkg) <strong>Recommandé</strong><a class="headerlink" href="#ubuntu-debian-apt-dpkg-recommande" title="Link to this heading"></a></h3>
 <p>Sur Ubuntu 22.04 et dérivés du même:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">ssc</span><span class="o">-</span><span class="n">hpc</span><span class="o">-</span><span class="n">chp</span><span class="o">-</span><span class="n">spc</span><span class="o">/</span><span class="n">metpx</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
@@ -265,7 +265,7 @@ ubuntu 18.04, il faut obtenir la bibliothèque via pip, car les paquets debian s
 </div>
 </section>
 <section id="distributions-redhat-suse-basees-sur-rpm">
-<h3>Distributions Redhat/Suse (basées sur rpm)<a class="headerlink" href="#distributions-redhat-suse-basees-sur-rpm" title="Permalink to this heading"></a></h3>
+<h3>Distributions Redhat/Suse (basées sur rpm)<a class="headerlink" href="#distributions-redhat-suse-basees-sur-rpm" title="Link to this heading"></a></h3>
 <p>Python distutils sur les distributions basées sur le gestionnaire de paquets redhat ne gère pas les dépendances
 avec l’emballage actuel, il faut donc les installer manuellement.
 Par exemple, sur fedora 28 obligatoirement:</p>
@@ -298,7 +298,7 @@ $ sudo rpm -i dist/*.noarch.rpm
 Aucune page de manuel ni aucune autre documentation n’est installée non plus.</p>
 </section>
 <section id="id1">
-<h3>PIP<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>PIP<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>Sur les distributions Windows ou Linux où les packages de système ne sont pas
 disponible, ou d’autres cas particuliers, tels que l’utilisation de python dans un virtual env, où
 il est plus pratique d’installer le paquet en utilisant pip (python install package)
@@ -331,7 +331,7 @@ de <a class="reference external" href="http://pypi.python.org/">http://pypi.pyth
 </div>
 </section>
 <section id="demarrage-et-arret-du-systeme">
-<h3>Démarrage et arrêt du système<a class="headerlink" href="#demarrage-et-arret-du-systeme" title="Permalink to this heading"></a></h3>
+<h3>Démarrage et arrêt du système<a class="headerlink" href="#demarrage-et-arret-du-systeme" title="Link to this heading"></a></h3>
 <p>Si l’intention est d’implémenter une pompe de données, il s’agit d’un serveur ayant un rôle à jouer dans la réalisation
 de grandes quantités de transferts de données, alors la convention est de créer une application <em>sarra</em>
 et de l’organiser pour qu’elle soit démarré au démarrage et arrêté à l’arrêt.</p>
@@ -359,7 +359,7 @@ pour exister, qui pourrait être créé comme ça:</p>
 le traitement périodique (voir la prochaine session) doit également être mis en œuvre.</p>
 </section>
 <section id="traitement-periodique-taches-cron">
-<h3>Traitement périodique/Tâches Cron<a class="headerlink" href="#traitement-periodique-taches-cron" title="Permalink to this heading"></a></h3>
+<h3>Traitement périodique/Tâches Cron<a class="headerlink" href="#traitement-periodique-taches-cron" title="Link to this heading"></a></h3>
 <p>Quelle que soit la façon dont il est installé, un traitement périodique supplémentaire peut être nécessaire:</p>
 <blockquote>
 <div><ul class="simple">
@@ -377,7 +377,7 @@ le traitement périodique (voir la prochaine session) doit également être mis 
 </div>
 </section>
 <section id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
 <p>Sous Windows, il existe 2 (autres) options possibles :</p>
 <dl>
 <dt><strong>Sans Python</strong></dt><dd><p>Téléchargez le fichier d’installation de Sarracenia à partir de <a class="reference external" href="https://hpfx.collab.science.gc.ca/~pas037/Sarracenia_Releases">here</a>,
@@ -394,13 +394,13 @@ L’exécution de cette commande à partir de l’invite Anaconda devrait tout i
 <p>Voir <a class="reference internal" href="Windows.html"><span class="doc">Windows user manual</span></a> pour plus d’informations sur la façon d’exécuter Sarracenia sous Windows.</p>
 </section>
 <section id="paquets">
-<h3>Paquets<a class="headerlink" href="#paquets" title="Permalink to this heading"></a></h3>
+<h3>Paquets<a class="headerlink" href="#paquets" title="Link to this heading"></a></h3>
 <p>Les paquets Debian et les roues python peuvent être téléchargés directement
 De: <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx/+packages">launchpad</a></p>
 </section>
 </section>
 <section id="source">
-<h2>Source<a class="headerlink" href="#source" title="Permalink to this heading"></a></h2>
+<h2>Source<a class="headerlink" href="#source" title="Link to this heading"></a></h2>
 <p>Le code source de chaque module est disponible <a class="reference external" href="https://github.com/MetPX">https://github.com/MetPX</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/MetPX/sarracenia sarracenia
 $ cd sarracenia
@@ -421,7 +421,7 @@ $ pip3 install dist/metpx_sarracenia-2.18.5b4-py3-none-any.whl
 </div>
 </section>
 <section id="sarrac">
-<h2>Sarrac<a class="headerlink" href="#sarrac" title="Permalink to this heading"></a></h2>
+<h2>Sarrac<a class="headerlink" href="#sarrac" title="Link to this heading"></a></h2>
 <p>Le client C est disponible dans des binaires prédéfinis dans les launchpad référentiels aux côtés des paquets python</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:ssc-hpc-chp-spc/metpx
 $ sudo apt-get update

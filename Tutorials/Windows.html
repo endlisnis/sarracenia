@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -122,14 +122,14 @@
 }
 </style>
 <section id="windows-user-manual">
-<h1>Windows user manual<a class="headerlink" href="#windows-user-manual" title="Permalink to this heading"></a></h1>
+<h1>Windows user manual<a class="headerlink" href="#windows-user-manual" title="Link to this heading"></a></h1>
 <p>This document teaches novice user with Python on Windows how they could easily run Sarracenia in various ways.
 The screenshots were taken from <em>Windows Server 2012 R2 Standard</em> edition. Feel free to create issues if
 you believe that this document could be enhanced with one (or more) important case(s).</p>
 <section id="running-sarracenia-with-a-command-prompt">
-<h2>Running Sarracenia with a Command Prompt<a class="headerlink" href="#running-sarracenia-with-a-command-prompt" title="Permalink to this heading"></a></h2>
+<h2>Running Sarracenia with a Command Prompt<a class="headerlink" href="#running-sarracenia-with-a-command-prompt" title="Link to this heading"></a></h2>
 <section id="from-the-start-menu">
-<h3>From the Start Menu:<a class="headerlink" href="#from-the-start-menu" title="Permalink to this heading"></a></h3>
+<h3>From the Start Menu:<a class="headerlink" href="#from-the-start-menu" title="Link to this heading"></a></h3>
 <p>Click on Sarracenia (it will execute <em>sr3.exe restart</em>):</p>
 <img alt="../_images/start-menu-1.png" src="../_images/start-menu-1.png" />
 <p>This will pop Sarracenia’s Command Prompt, start Sarracenia processes as instructed by your configurations and show logging information.</p>
@@ -137,7 +137,7 @@ you believe that this document could be enhanced with one (or more) important ca
 <p>Keep this window alive until you are done with Sarracenia. Closing it or typing ctrl-c will kill all Sarracenia processes. You may also want to restart Sarracenia which will stop those processes cleanly.</p>
 </section>
 <section id="from-a-windows-powershell-session">
-<h3>From a Windows Powershell session:<a class="headerlink" href="#from-a-windows-powershell-session" title="Permalink to this heading"></a></h3>
+<h3>From a Windows Powershell session:<a class="headerlink" href="#from-a-windows-powershell-session" title="Link to this heading"></a></h3>
 <p>If sr3 is not found at the command line, even after a <em>pip install metpx-sr3</em>, then it may be because
 pip does not get the entry points added to the Power Shell Path and you may need to do that manually:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">SilvaP2</span><span class="o">&gt;</span> <span class="n">sr3</span>
@@ -212,7 +212,7 @@ One must launch a new Powershell for the settings to take effect.</p>
 <p>This will stop all Sarracenia processes cleanly as would do a restart. Closing this window will also kill all processes.</p>
 </section>
 <section id="from-anaconda-prompt">
-<h3>From Anaconda Prompt:<a class="headerlink" href="#from-anaconda-prompt" title="Permalink to this heading"></a></h3>
+<h3>From Anaconda Prompt:<a class="headerlink" href="#from-anaconda-prompt" title="Link to this heading"></a></h3>
 <p>Run this command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">activate</span> <span class="n">sr3</span> <span class="o">&amp;&amp;</span> <span class="n">s3r</span> <span class="n">restart</span>
 </pre></div>
@@ -220,11 +220,11 @@ One must launch a new Powershell for the settings to take effect.</p>
 </section>
 </section>
 <section id="running-sarracenia-without-a-command-prompt">
-<h2>Running Sarracenia without a Command Prompt<a class="headerlink" href="#running-sarracenia-without-a-command-prompt" title="Permalink to this heading"></a></h2>
+<h2>Running Sarracenia without a Command Prompt<a class="headerlink" href="#running-sarracenia-without-a-command-prompt" title="Link to this heading"></a></h2>
 <p>Here is a case where someone (like a sysadmin) needs to run Sarracenia without a Command Prompt and ensure that the system starts at Windows startup.
 The obvious way of doing it would be from the Task Scheduler.</p>
 <section id="from-the-task-scheduler">
-<h3>From the Task Scheduler:<a class="headerlink" href="#from-the-task-scheduler" title="Permalink to this heading"></a></h3>
+<h3>From the Task Scheduler:<a class="headerlink" href="#from-the-task-scheduler" title="Link to this heading"></a></h3>
 <p>Open Task scheduler:</p>
 <img alt="../_images/03_task_scheduler.png" src="../_images/03_task_scheduler.png" />
 <p>Select <em>Create Basic Task…</em> from the action panel on the right:</p>

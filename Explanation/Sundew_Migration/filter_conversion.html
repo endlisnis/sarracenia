@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -126,7 +126,7 @@
 }
 </style>
 <section id="sundew-filter-migration-to-sarracenia-pxatx">
-<h1><a class="toc-backref" href="#id1" role="doc-backlink">Sundew filter migration to sarracenia (PXATX)</a><a class="headerlink" href="#sundew-filter-migration-to-sarracenia-pxatx" title="Permalink to this heading"></a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Sundew filter migration to sarracenia (PXATX)</a><a class="headerlink" href="#sundew-filter-migration-to-sarracenia-pxatx" title="Link to this heading"></a></h1>
 <dl class="field-list simple">
 <dt class="field-odd">Manual section<span class="colon">:</span></dt>
 <dd class="field-odd"><p>1</p>
@@ -156,7 +156,7 @@
 </ul>
 </nav>
 <section id="description">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">DESCRIPTION</a><a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">DESCRIPTION</a><a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>This document suppose that the reader is familiar with the concepts and usage
 of <strong>sundew</strong> and <strong>sarracenia</strong>.</p>
 <p><strong>sundew</strong> filters supports a plugin mechanism that allows processing onto
@@ -178,7 +178,7 @@ generate a resulting product and post the notification for it. It is easy to
 see that can be done using an <strong>sr-sarra</strong> process.</p>
 </section>
 <section id="one-to-one-filter">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">ONE TO ONE FILTER</a><a class="headerlink" href="#one-to-one-filter" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">ONE TO ONE FILTER</a><a class="headerlink" href="#one-to-one-filter" title="Link to this heading"></a></h2>
 <p>I will present one way that I used to implement a one to one filter.
 There could be other alternatives… but this one worked nicely for me.</p>
 <p>Lets go through the steps of making a one to one filter plugin.
@@ -312,7 +312,7 @@ task:</p>
 could be modified without having to modify all one to one filters.</p>
 </section>
 <section id="considerations-with-one-to-one-filters">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">CONSIDERATIONS WITH ONE TO ONE FILTERS</a><a class="headerlink" href="#considerations-with-one-to-one-filters" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">CONSIDERATIONS WITH ONE TO ONE FILTERS</a><a class="headerlink" href="#considerations-with-one-to-one-filters" title="Link to this heading"></a></h2>
 <p>I wrote some of the migrated filters and there are some considerations
 to be taken while implementing filters from <strong>sundew</strong>.</p>
 <p>I have tried to make the less use of the <strong>sundew-extension</strong> but when
@@ -341,7 +341,7 @@ In our example, I also have this function:</p>
 to add (or update) to the extension a datetime suffix for the new products.</p>
 </section>
 <section id="final-remarks-on-one-to-one-filter">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">FINAL REMARKS ON ONE TO ONE FILTER</a><a class="headerlink" href="#final-remarks-on-one-to-one-filter" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">FINAL REMARKS ON ONE TO ONE FILTER</a><a class="headerlink" href="#final-remarks-on-one-to-one-filter" title="Link to this heading"></a></h2>
 <p>Usually a converter, say topng, will add the extension .png to the end product.
 This was not the case in <strong>sundew</strong> where the <em>whatfn</em> was kept as is but
 part of the <em>sundew_extension</em> was modified to show the new format.</p>
@@ -360,7 +360,7 @@ is restricted to an <strong>sr_sender</strong> process.</p>
 <p>If part of this document needs to be clarified please let me know</p>
 </section>
 <section id="one-to-many-filter">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">ONE TO MANY FILTER</a><a class="headerlink" href="#one-to-many-filter" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">ONE TO MANY FILTER</a><a class="headerlink" href="#one-to-many-filter" title="Link to this heading"></a></h2>
 <p>I will present one way that I have used to implement a one to many filter.
 Most of what was said earlier in the <strong>one to one filter</strong> still holds.
 The configuration of such an <strong>sarra</strong> process follows the same rules.

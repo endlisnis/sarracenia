@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -129,7 +129,7 @@
 </style>
 <p>Status: Pre-Draft</p>
 <section id="discussion-sur-la-propagation-de-la-modification-de-fichiers">
-<h1>Discussion sur la propagation de la modification de fichiers<a class="headerlink" href="#discussion-sur-la-propagation-de-la-modification-de-fichiers" title="Permalink to this heading"></a></h1>
+<h1>Discussion sur la propagation de la modification de fichiers<a class="headerlink" href="#discussion-sur-la-propagation-de-la-modification-de-fichiers" title="Link to this heading"></a></h1>
 <p>C’était une réflexion précoce sur la façon de gérer les mises à jour de fichiers.
 Les premières versions du protocole ne concernaient que des fichiers entiers.
 Lorsque les ensembles de fichiers sont suffisamment volumineux, des mises
@@ -151,7 +151,7 @@ Ce dossier contient les premières discussions et notes.</p>
 </dl>
 <p>L’algorithme zsync est la bonne idée, peut peut-être l’utiliser directement.</p>
 <section id="que-se-passe-t-il-si-chaque-notification-concerne-un-bloc-pas-un-fichier">
-<h2>Que se passe-t-il si chaque notification concerne un bloc, pas un fichier ?<a class="headerlink" href="#que-se-passe-t-il-si-chaque-notification-concerne-un-bloc-pas-un-fichier" title="Permalink to this heading"></a></h2>
+<h2>Que se passe-t-il si chaque notification concerne un bloc, pas un fichier ?<a class="headerlink" href="#que-se-passe-t-il-si-chaque-notification-concerne-un-bloc-pas-un-fichier" title="Link to this heading"></a></h2>
 <p>Expérience de Gedanken… par messages de blocage, plutôt que par fichiers entiers ?
 Que se passe-t-il si les messages que nous envoyons sont tous par bloc?</p>
 <p>Pourquoi est-ce vraiment cool?</p>
@@ -201,7 +201,7 @@ du fichier, si la partie courante est contiguë, il suffit d’ajouter (via lsee
 les données du fichier .sr§.  Sinon, il crée un .sr§ &lt;blocknum&gt;séparé</p>
 </section>
 <section id="suffixe-sr">
-<h2>suffixe .sr§<a class="headerlink" href="#suffixe-sr" title="Permalink to this heading"></a></h2>
+<h2>suffixe .sr§<a class="headerlink" href="#suffixe-sr" title="Link to this heading"></a></h2>
 <p>Mais cela signifie qu’ils annoncent les pièces… Hmm… Les noms signifient maintenant quelque chose,
 Nous utilisons le caractère de section au lieu de partie.  Pour éviter cela, choisissez un nom qui
 est plus inhabituel que .part quelque chose comme .sr§partnum (en utilisant utf-8, intéressant
@@ -219,7 +219,7 @@ race condition de causer des ravages.  S’il y a plusieurs sr_subscribe (dd_sub
 <p>Si le dernier bloc contigu reçu inclut la fin du fichier, effectuez la logique d’achèvement du fichier.</p>
 </section>
 <section id="comment-selectionner-chunksize">
-<h2>Comment sélectionner Chunksize<a class="headerlink" href="#comment-selectionner-chunksize" title="Permalink to this heading"></a></h2>
+<h2>Comment sélectionner Chunksize<a class="headerlink" href="#comment-selectionner-chunksize" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>Choix de la source?</p></li>
@@ -253,7 +253,7 @@ Mais cela est limité par la taille du bloc.
 Esthétiquement, il faut choisir une taille qui éclipse la surcharge.</p>
 </section>
 <section id="si-nous-faisons-des-cksums-par-blocs-chemin-a-partir-de-v00">
-<h2>Si nous faisons des cksums par blocs, chemin à partir de v00<a class="headerlink" href="#si-nous-faisons-des-cksums-par-blocs-chemin-a-partir-de-v00" title="Permalink to this heading"></a></h2>
+<h2>Si nous faisons des cksums par blocs, chemin à partir de v00<a class="headerlink" href="#si-nous-faisons-des-cksums-par-blocs-chemin-a-partir-de-v00" title="Link to this heading"></a></h2>
 <p>compatibilité… amélioration…
 Les alertes v00.notify se résument à :</p>
 <p>v01.post pourrait être:</p>
@@ -279,7 +279,7 @@ dans lequel la poursuite serait:</p>
 <p>S’il y a une validation sur la taille de blocage, il doit il y avoir un moyen de le gérer.</p>
 </section>
 <section id="digression-sur-zsync">
-<h2>Digression sur ZSync<a class="headerlink" href="#digression-sur-zsync" title="Permalink to this heading"></a></h2>
+<h2>Digression sur ZSync<a class="headerlink" href="#digression-sur-zsync" title="Link to this heading"></a></h2>
 <p>zsync est disponible dans les référentiels et zsync(1) est le client de téléchargement existant.
 zsyncmake(1) construit les signatures, avec une taille de bloc programmable.</p>
 <p>Il semble que zsync est utilisable tel quel?</p>
@@ -312,7 +312,7 @@ le nouveau.  L’intention n’est pas de répliquer des arbres sources, mais de
 Ou lorsque le fichier est assez volumineux, le fork d’un zsync n’est pas un gros problème? Mais Mac &amp; Win…</p>
 </section>
 <section id="considerations-relatives-au-serveur-protocole">
-<h2>Considérations relatives au serveur/protocole<a class="headerlink" href="#considerations-relatives-au-serveur-protocole" title="Permalink to this heading"></a></h2>
+<h2>Considérations relatives au serveur/protocole<a class="headerlink" href="#considerations-relatives-au-serveur-protocole" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>HTTP :</dt><dd><p>– utilise la fonction de plage d’octets de HTTP.
 – FIXME: trouver des échantillons à partir d’autres e-mails.</p>

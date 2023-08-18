@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -123,22 +123,22 @@
 }
 </style>
 <section id="guide-de-labonne">
-<h1>Guide de l’abonné<a class="headerlink" href="#guide-de-labonne" title="Permalink to this heading"></a></h1>
+<h1>Guide de l’abonné<a class="headerlink" href="#guide-de-labonne" title="Link to this heading"></a></h1>
 <section id="reception-de-donnees-a-partir-dune-pompe-de-donnees-metpx-sarracenia">
-<h2>Réception de données à partir d’une pompe de données MetPX-Sarracenia<a class="headerlink" href="#reception-de-donnees-a-partir-dune-pompe-de-donnees-metpx-sarracenia" title="Permalink to this heading"></a></h2>
+<h2>Réception de données à partir d’une pompe de données MetPX-Sarracenia<a class="headerlink" href="#reception-de-donnees-a-partir-dune-pompe-de-donnees-metpx-sarracenia" title="Link to this heading"></a></h2>
 <section id="enregistrement-de-revision">
-<h3>Enregistrement de révision<a class="headerlink" href="#enregistrement-de-revision" title="Permalink to this heading"></a></h3>
+<h3>Enregistrement de révision<a class="headerlink" href="#enregistrement-de-revision" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 </dl>
 </section>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h3>
 <p>Une pompe de données Sarracenia est un serveur Web avec des notifications
 pour que les abonnés sachent rapidement, quand de nouvelles données sont arrivées.
 Pour savoir quelles données sont déjà disponibles sur une pompe, il faut
@@ -298,7 +298,7 @@ le modèle de subscribe/dd_amis.conf:</p>
 </ul>
 </section>
 <section id="ressources-cote-serveur-allouees-aux-abonnes">
-<h3>Ressources côté serveur allouées aux abonnés<a class="headerlink" href="#ressources-cote-serveur-allouees-aux-abonnes" title="Permalink to this heading"></a></h3>
+<h3>Ressources côté serveur allouées aux abonnés<a class="headerlink" href="#ressources-cote-serveur-allouees-aux-abonnes" title="Link to this heading"></a></h3>
 <p>Chaque configuration entraîne la déclaration des ressources correspondantes sur le broker,
 dont la durée de vie est contrôlée par le paramètre <em>expire</em>. La valeur par défaut <em>expire</em> est définie
 à 300 secondes pour éviter d’encombrer les serveurs avec de petites expér
@@ -333,7 +333,7 @@ conseillé de demander à la pompe de désaffecter les ressources lorsqu’elles
 pendant de longues périodes ou lors de l’expérimentation de différents paramètres.</p>
 </section>
 <section id="utilisation-de-plusieurs-configurations">
-<h3>Utilisation de plusieurs configurations<a class="headerlink" href="#utilisation-de-plusieurs-configurations" title="Permalink to this heading"></a></h3>
+<h3>Utilisation de plusieurs configurations<a class="headerlink" href="#utilisation-de-plusieurs-configurations" title="Link to this heading"></a></h3>
 <p>Placez tous les fichiers de configuration, avec le suffixe .conf, dans un répertoire
 standard : ~/.config/sr3/subscribe/. Par exemple, s’il y a deux fichiers dans
 ce répertoire : dd_amis.conf et hpfx_amis.conf, on pourrait alors exécuter</p>
@@ -381,7 +381,7 @@ fil d’attentes de téléchargement.</p>
 </ul>
 </section>
 <section id="livraison-hautement-prioritaire">
-<h3>Livraison hautement prioritaire<a class="headerlink" href="#livraison-hautement-prioritaire" title="Permalink to this heading"></a></h3>
+<h3>Livraison hautement prioritaire<a class="headerlink" href="#livraison-hautement-prioritaire" title="Link to this heading"></a></h3>
 <p>Bien que le protocole Sarracenia ne fournisse pas de hiérarchisation explicite, l’utilisation
 de plusieurs files d’attentes offre des avantages similaires. Résultats de chaque configuration
 dans une déclaration de fil d’attente côté serveur. Regroupez les produits à la même priorité dans
@@ -437,7 +437,7 @@ uniquement abonné aux avertissements météorologiques au format Common Alertin
 peu ou pas de fil d’attente pour ces données.</p>
 </section>
 <section id="affiner-la-selection">
-<h3>Affiner la sélection<a class="headerlink" href="#affiner-la-selection" title="Permalink to this heading"></a></h3>
+<h3>Affiner la sélection<a class="headerlink" href="#affiner-la-selection" title="Link to this heading"></a></h3>
 <p>Choisissez <em>subtopics</em> (qui sont appliquées sur le broker sans téléchargement de message de notification) pour affiner
 le nombre de messages de notification qui traversent le réseau pour accéder aux processus clients sarracenia.
 Les options <em>reject</em> et <em>accept</em> sont évaluées par les processus sr3 subscribe eux-mêmes,
@@ -516,16 +516,16 @@ clauses d’accept.</p>
 </ul>
 </section>
 <section id="perte-de-donnees">
-<h3>Perte de données<a class="headerlink" href="#perte-de-donnees" title="Permalink to this heading"></a></h3>
+<h3>Perte de données<a class="headerlink" href="#perte-de-donnees" title="Link to this heading"></a></h3>
 </section>
 <section id="panne-trop-longue">
-<h3>Panne trop longue<a class="headerlink" href="#panne-trop-longue" title="Permalink to this heading"></a></h3>
+<h3>Panne trop longue<a class="headerlink" href="#panne-trop-longue" title="Link to this heading"></a></h3>
 <p>L’<em>expire</em> détermine combien de temps la pompe de données conservera votre abonnement et file d’attente
 après une déconnexion. Le réglage doit être défini plus longtemps que la plus longue panne de votre
 flux doit survivre sans perte de données.</p>
 </section>
 <section id="file-d-attente-trop-important">
-<h3>File d´attente trop important<a class="headerlink" href="#file-d-attente-trop-important" title="Permalink to this heading"></a></h3>
+<h3>File d´attente trop important<a class="headerlink" href="#file-d-attente-trop-important" title="Link to this heading"></a></h3>
 <p>Les performances d’un flux
 est important, car, au service d’Internet, le téléchargement lent d’un client affecte tous les autres,
 et quelques clients lents peuvent submerger une pompe de données. Il existe souvent des politiques de serveur en place
@@ -587,7 +587,7 @@ en fonction de l’heure à laquelle elles ont été ajoutées au réseau par la
 augmenter de manière déraisonnable, votre abonnement a un problème de performances.</p>
 </section>
 <section id="performance">
-<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this heading"></a></h3>
+<h3>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h3>
 <p>Il y a de nombreux aspects de la performance que nous n’aborderons pas ici.</p>
 <p>plus :</p>
 <ul class="simple">
@@ -604,7 +604,7 @@ used mostly when python isn’t easy to get working.</p></li>
 <p>Mais Le but le plus courant lorsque les performances sont augmentées est d’accélérer leurs téléchargements.
 Si les transferts vont trop lentement, les étapes sont les suivantes:</p>
 <section id="optimiser-la-selection-des-fichiers-par-processus">
-<h4>Optimiser la sélection des fichiers par processus<a class="headerlink" href="#optimiser-la-selection-des-fichiers-par-processus" title="Permalink to this heading"></a></h4>
+<h4>Optimiser la sélection des fichiers par processus<a class="headerlink" href="#optimiser-la-selection-des-fichiers-par-processus" title="Link to this heading"></a></h4>
 <ul>
 <li><p>Souvent, les utilisateurs spécifient # comme subtopic, ce qui signifie que les accept/reject
 font tout le travail. Dans de nombreux cas, les utilisateurs ne sont intéressés que par une petite fraction des
@@ -650,7 +650,7 @@ Ca peut optimiser quelques cas spécifiques, tout en ralentissant le courtier da
 </ul>
 </section>
 <section id="utiliser-des-instances">
-<h4>Utiliser des instances<a class="headerlink" href="#utiliser-des-instances" title="Permalink to this heading"></a></h4>
+<h4>Utiliser des instances<a class="headerlink" href="#utiliser-des-instances" title="Link to this heading"></a></h4>
 <p>Une fois que vous avez optimisé ce qu’un seul abonné peut faire, si ce n’est pas assez rapide,
 utilisez l’option <em>instances</em> pour que davantage de processus participent au
 traitement.  Avoir 10 ou 20 instances n’est pas un problème du tout.  Le maximum
@@ -670,7 +670,7 @@ hors performance.</p>
 <p>Nous n’avons pas encore eu besoin de faire évoluer le courtier lui-même.</p>
 </section>
 <section id="suppression-des-doublons-haute-performance">
-<h4>Suppression des doublons haute performance<a class="headerlink" href="#suppression-des-doublons-haute-performance" title="Permalink to this heading"></a></h4>
+<h4>Suppression des doublons haute performance<a class="headerlink" href="#suppression-des-doublons-haute-performance" title="Link to this heading"></a></h4>
 <p>Une mise en garde à l’utilisation de <em>instances</em> est que <em>suppress_duplicates</em> est inefficace
 car les différentes occurrences d’un même fichier ne seront pas reçues par les même
 instances, et donc avec n instances, environ n-1/n doublons passeront à travers.</p>
@@ -698,7 +698,7 @@ produit, ce qui les simplifie également.</p>
 </section>
 </section>
 <section id="plugins">
-<h3>Plugins<a class="headerlink" href="#plugins" title="Permalink to this heading"></a></h3>
+<h3>Plugins<a class="headerlink" href="#plugins" title="Link to this heading"></a></h3>
 <p>Le traitement des fichiers par défaut est souvent correct, mais il existe également des personnalisations prédéfinies qui
 peuvent être utilisé pour modifier le traitement effectué par les composants. La liste des plugins prédéfinis est
 dans un répertoire ‘plugins’ où que le paquet soit installé (consultable avec <em>sr3 list</em>)
@@ -790,7 +790,7 @@ pour acceder a vos modules Python.</p></li>
 </ul>
 </section>
 <section id="file-rxpipe">
-<h3>file_rxpipe<a class="headerlink" href="#file-rxpipe" title="Permalink to this heading"></a></h3>
+<h3>file_rxpipe<a class="headerlink" href="#file-rxpipe" title="Link to this heading"></a></h3>
 <p>Le plugin file_rxpipe pour sr3 permet à toutes les instances d’écrire les noms
 des fichiers téléchargés sur un canal nommé (¨named pipe¨ ). La configuration de cette configuration nécessite deux lignes dans
 un fichier de configuration sr3</p>
@@ -815,7 +815,7 @@ accept .*
 post-traitement, son nom est écrit sur le canal linux (nommé .rxpipe.)</p>
 </section>
 <section id="analyse-d-antivirus">
-<h3>Analyse d’antivirus<a class="headerlink" href="#analyse-d-antivirus" title="Permalink to this heading"></a></h3>
+<h3>Analyse d’antivirus<a class="headerlink" href="#analyse-d-antivirus" title="Link to this heading"></a></h3>
 <p>Un autre exemple d’utilisation facile d’un plugin est de réaliser une analyse antivirus.
 En supposant que ClamAV-daemon est installé, ainsi que le python3-pyclamd
 package, alors on peut ajouter ce qui suit à un
@@ -873,7 +873,7 @@ fichier de configuration d’un abonné:</p>
 </div>
 </section>
 <section id="journalisation-et-debogage">
-<h3>Journalisation et débogage<a class="headerlink" href="#journalisation-et-debogage" title="Permalink to this heading"></a></h3>
+<h3>Journalisation et débogage<a class="headerlink" href="#journalisation-et-debogage" title="Link to this heading"></a></h3>
 <p>Comme les composants sr3 s’exécutent généralement en tant que démon (sauf s’ils sont appelés en mode <em>foreground</em>)
 on examine normalement son fichier journal pour savoir comment se déroule le traitement.  Lorsque seulement
 une seule instance est en cours d’exécution, on peut afficher le journal du processus en cours d’exécution comme suit:</p>
@@ -950,7 +950,7 @@ Par exemple, sur un nœud nommé goofy, ~/.cache/sarra/log/ devient ~/.cache/sar
 </li>
 </ul>
 <section id="reglage-du-debogage-flowcb-log-py">
-<h4>Réglage du débogage flowcb/log.py<a class="headerlink" href="#reglage-du-debogage-flowcb-log-py" title="Permalink to this heading"></a></h4>
+<h4>Réglage du débogage flowcb/log.py<a class="headerlink" href="#reglage-du-debogage-flowcb-log-py" title="Link to this heading"></a></h4>
 <p>En plus des options d’application, il existe un flowcb qui est utilisé par défaut pour la journalisation, qui
 a des options supplémentaires:</p>
 <ul class="simple">
@@ -970,7 +970,7 @@ autres valeurs : on_start, on_stop, post, gather, … etc…</p>
 </ul>
 </section>
 <section id="reglage-du-debogage-moth">
-<h4>Réglage du débogage moth<a class="headerlink" href="#reglage-du-debogage-moth" title="Permalink to this heading"></a></h4>
+<h4>Réglage du débogage moth<a class="headerlink" href="#reglage-du-debogage-moth" title="Link to this heading"></a></h4>
 <p>L’activation de logLevel pour déboguer l’ensemble de l’application entraîne souvent des fichiers journaux excessivement volumineux.
 Par défaut, la classe parent Messages Organized into Topic Hierarchies (Moth) pour les protocoles de messagerie,
 ignore l’option de débogage à l’échelle de l’application.  Pour activer le débogage de la sortie de ces classes, il y a
@@ -993,7 +993,7 @@ Parfois, lors des tests d’interopérabilité, il faut voir les messages de not
 </section>
 </section>
 <section id="metrique-housekeeping">
-<h3>Métrique Housekeeping<a class="headerlink" href="#metrique-housekeeping" title="Permalink to this heading"></a></h3>
+<h3>Métrique Housekeeping<a class="headerlink" href="#metrique-housekeeping" title="Link to this heading"></a></h3>
 <p>Les rappels de flux peuvent implémenter un point d’entrée on_housekeeping.  Ce point d’entrée est généralement
 une possibilité pour les rappels d’imprimer périodiquement des métriques.  Le journal intégré et
 les rappels de surveillance des ressources, par exemple, donnent des lignes dans le journal comme suit</p>
@@ -1012,7 +1012,7 @@ les rappels de surveillance des ressources, par exemple, donnent des lignes dans
 </ul>
 </section>
 <section id="reception-de-fichiers-redondants">
-<h3>Réception de fichiers redondants<a class="headerlink" href="#reception-de-fichiers-redondants" title="Permalink to this heading"></a></h3>
+<h3>Réception de fichiers redondants<a class="headerlink" href="#reception-de-fichiers-redondants" title="Link to this heading"></a></h3>
 <p>Dans les environnements où une grande fiabilité est requise, plusieurs serveurs
 sont souvent configurés pour fournir des services. L’approche Sarracenia pour
 la haute disponibilité est ´Active-Active´ en ce sens que toutes les sources sont en ligne
@@ -1024,7 +1024,7 @@ ou pas.</p>
 sr_winnow. Consultez le Guide de l’administrateur pour plus d’informations.</p>
 </section>
 <section id="proxys-web">
-<h3>Proxys Web<a class="headerlink" href="#proxys-web" title="Permalink to this heading"></a></h3>
+<h3>Proxys Web<a class="headerlink" href="#proxys-web" title="Link to this heading"></a></h3>
 <p>La meilleure méthode pour travailler avec des proxys Web est de mettre ce qui suit
 dans le fichier default.conf:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">declare</span> <span class="n">env</span> <span class="n">HTTP_PROXY</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">yourproxy</span><span class="o">.</span><span class="n">com</span>
@@ -1035,7 +1035,7 @@ dans le fichier default.conf:</p>
 le proxy, pas seulement une seule configuration.</p>
 </section>
 <section id="acces-au-niveau-de-l-api">
-<h3>Accès au niveau de l’API<a class="headerlink" href="#acces-au-niveau-de-l-api" title="Permalink to this heading"></a></h3>
+<h3>Accès au niveau de l’API<a class="headerlink" href="#acces-au-niveau-de-l-api" title="Link to this heading"></a></h3>
 <p>Sarracenia version 3 propose également des modules python qui peuvent être appelés
 à partir d’applications Python existantes.</p>
 <ul class="simple">
@@ -1051,7 +1051,7 @@ juste utiliser le support du protocole de message:</p>
 </ul>
 </section>
 <section id="plus-dinformations">
-<h3>Plus d’informations<a class="headerlink" href="#plus-dinformations" title="Permalink to this heading"></a></h3>
+<h3>Plus d’informations<a class="headerlink" href="#plus-dinformations" title="Link to this heading"></a></h3>
 <p>la page <a class="reference external" href="../Reference/sr3.1.html">sr3(1)</a> contient de l’informative définitive
 La page principale: <a class="reference external" href="https://metpx.github.io/sarracenia">Sarracenia Documentation</a></p>
 </section>

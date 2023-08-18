@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -123,14 +123,14 @@
 }
 </style>
 <section id="email-ingesting-with-sarracenia-v2">
-<h1>Email Ingesting with Sarracenia (v2)<a class="headerlink" href="#email-ingesting-with-sarracenia-v2" title="Permalink to this heading"></a></h1>
+<h1>Email Ingesting with Sarracenia (v2)<a class="headerlink" href="#email-ingesting-with-sarracenia-v2" title="Link to this heading"></a></h1>
 <p>Email is an easy way to route data between servers. Using the Post Office Protocol (POP3) and
 Internet Message Access Protocol (IMAP), email files can be disseminated through Sarracenia
 by extending the polling and downloading functions.</p>
 <section id="polling">
-<h2>Polling<a class="headerlink" href="#polling" title="Permalink to this heading"></a></h2>
+<h2>Polling<a class="headerlink" href="#polling" title="Link to this heading"></a></h2>
 <section id="extending-polling-protocols">
-<h3>Extending Polling Protocols<a class="headerlink" href="#extending-polling-protocols" title="Permalink to this heading"></a></h3>
+<h3>Extending Polling Protocols<a class="headerlink" href="#extending-polling-protocols" title="Link to this heading"></a></h3>
 <p>Out of the box, Sarracenia supports polling pollUrl with HTTP/HTTPS and SFTP/FTP protocols.
 Other protocols can be supported by subclassing the sarracenia.flowcb.poll.Poll class.
 Fortunately there is an existing mail poll plugin, which invokes a plugin.
@@ -179,7 +179,7 @@ fractal%
 <p>Now when the poll instance is started up with this plugin,</p>
 </section>
 <section id="implementing-pop-imap">
-<h3>Implementing POP/IMAP<a class="headerlink" href="#implementing-pop-imap" title="Permalink to this heading"></a></h3>
+<h3>Implementing POP/IMAP<a class="headerlink" href="#implementing-pop-imap" title="Link to this heading"></a></h3>
 <p>NOTE: not yet converted to v3.</p>
 <p>With Python’s <em>poplib</em> and <em>imaplib</em> modules, the pollUrl can be parsed and the email server
 connected to as per the scheme specified. Sarracenia can extract the credentials from the pollUrl
@@ -239,7 +239,7 @@ something like this:</p>
 </section>
 </section>
 <section id="downloading">
-<h2>Downloading<a class="headerlink" href="#downloading" title="Permalink to this heading"></a></h2>
+<h2>Downloading<a class="headerlink" href="#downloading" title="Link to this heading"></a></h2>
 <p>The email messages, once retrieved, are formatted in raw Multipurpose Internet Mail Extensions (MIME) 1.0 format,
 as indicated in the first header of the file. The metadata of the email is conveyed in a series of headers, one
 per line, in name:value format. This can be parsed for attachments, message bodies, encoding methods, etc. A
@@ -249,7 +249,7 @@ advertised, it can then connect to the mail server using the pollUrl and the cre
 in ~/.config/sarra/credentials.conf and retrieve the message locally. An example of a plugin that does this
 can be found under <strong>plugins</strong> as <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/plugins/download_email_ingest.py">download_email_ingest.py</a>.</p>
 <section id="decoding-contents">
-<h3>Decoding Contents<a class="headerlink" href="#decoding-contents" title="Permalink to this heading"></a></h3>
+<h3>Decoding Contents<a class="headerlink" href="#decoding-contents" title="Link to this heading"></a></h3>
 <p>Once the email message is downloaded, an <em>on_file</em> plugin can parse the MIME formatted file and extract the attachment, usually denoted by the Content-Disposition header, or the message body/subject/address fields, to be saved as a
 new file for further data refining. An example of a plugin that does this can be found under <strong>plugins</strong> as
 <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/plugins/file_email_decode.py">file_email_decode.py</a>.
@@ -300,7 +300,7 @@ terminal and run:</p>
 </section>
 </section>
 <section id="use-case">
-<h2>Use Case<a class="headerlink" href="#use-case" title="Permalink to this heading"></a></h2>
+<h2>Use Case<a class="headerlink" href="#use-case" title="Link to this heading"></a></h2>
 <p>The email ingest plugins were developed for the short burst data use case, where information would
 arrive in message attachments. Previously the emails were downloaded with a fetchmail script, and a
 cronjob would run every once in a while to detect and decode new files and their email attachments,

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -141,22 +141,22 @@
 }
 </style>
 <section id="sarracenia-programming-guide">
-<h1>Sarracenia Programming Guide<a class="headerlink" href="#sarracenia-programming-guide" title="Permalink to this heading"></a></h1>
+<h1>Sarracenia Programming Guide<a class="headerlink" href="#sarracenia-programming-guide" title="Link to this heading"></a></h1>
 <section id="working-with-plugins">
-<h2>Working with Plugins<a class="headerlink" href="#working-with-plugins" title="Permalink to this heading"></a></h2>
+<h2>Working with Plugins<a class="headerlink" href="#working-with-plugins" title="Link to this heading"></a></h2>
 <section id="revision-record">
-<h3>Revision Record<a class="headerlink" href="#revision-record" title="Permalink to this heading"></a></h3>
+<h3>Revision Record<a class="headerlink" href="#revision-record" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 </dl>
 </section>
 <section id="audience">
-<h3>Audience<a class="headerlink" href="#audience" title="Permalink to this heading"></a></h3>
+<h3>Audience<a class="headerlink" href="#audience" title="Link to this heading"></a></h3>
 <p>Readers of this manual should be comfortable with light scripting in Python version 3.
 While a great deal of v2 compatibility is included in Sarracenia version 3, wholesale
 replacement of the programming interfaces is a big part of what is in Version 3.
@@ -164,7 +164,7 @@ If working with version 2, Programmers should refer to the version 2 programmer�
 as the two are very different.</p>
 </section>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h3>
 <p>Sarracenia v3 includes a number of points where processing can be customized by
 small snippets of user provided code, known as flowCallbacks. The flowCallbacks themselves
 are expected to be concise, and an elementary knowledge of Python should suffice to
@@ -182,7 +182,7 @@ build new ones in a copy/paste manner, with many samples being available to read
 <p>That will be discussed after callbacks are dealt with.</p>
 </section>
 <section id="id1">
-<h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Introduction<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>A Sarracenia data pump is a web server with notifications for subscribers to
 know, quickly, when new data has arrived. To find out what data is already
 available on a pump, view the tree with a web browser.  For simple immediate
@@ -205,7 +205,7 @@ processing at various points in the flow.</p>
 </pre></div>
 </div>
 <section id="worklists">
-<h4>Worklists<a class="headerlink" href="#worklists" title="Permalink to this heading"></a></h4>
+<h4>Worklists<a class="headerlink" href="#worklists" title="Link to this heading"></a></h4>
 <p>The worklist data structure is a set of lists of notification messages.  There are four:</p>
 <blockquote>
 <div><ul class="simple">
@@ -218,7 +218,7 @@ processing at various points in the flow.</p>
 <p>The worklist is passed to the <em>after_accept</em> and <em>after_work</em> plugins as detailed in the next section.</p>
 </section>
 <section id="the-flow-algorithm">
-<h4>The Flow Algorithm<a class="headerlink" href="#the-flow-algorithm" title="Permalink to this heading"></a></h4>
+<h4>The Flow Algorithm<a class="headerlink" href="#the-flow-algorithm" title="Link to this heading"></a></h4>
 <p>All of the components (post, subscribe, sarra, sender, shovel, watch, winnow)
 share substantial code and differ only in default settings.  The Flow
 algorithm is:</p>
@@ -235,7 +235,7 @@ work work for a notification message fails, the notification message is moved to
 </section>
 </section>
 <section id="flow-callbacks">
-<h3>Flow Callbacks<a class="headerlink" href="#flow-callbacks" title="Permalink to this heading"></a></h3>
+<h3>Flow Callbacks<a class="headerlink" href="#flow-callbacks" title="Link to this heading"></a></h3>
 <p>The many ways to extend functionality, the most common one being adding callbacks
 to flow components. All of the Sarracenia components are implemented using
 the sarra.flow class. There is a parent class sarra.flowcb to implement them.
@@ -285,7 +285,7 @@ environment’s PYTHONPATH, and then modify it for the intended purpose.</p>
 at the end.</p>
 </section>
 <section id="settings">
-<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this heading"></a></h3>
+<h3>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h3>
 <p>Often when writing extensions through subclassing, additional options need to be set. The
 sarracenia.config class does command-line and configuration file based
 option parsing. and has a routine that can be called from new code
@@ -324,7 +324,7 @@ of the user defined options.</p></li>
 </ul>
 <p>full list here: <a class="reference external" href="https://metpx.github.io/sarracenia/Reference/code.html#sarracenia.config.Config">https://metpx.github.io/sarracenia/Reference/code.html#sarracenia.config.Config</a></p>
 <section id="hierarchical-settings">
-<h4>Hierarchical Settings<a class="headerlink" href="#hierarchical-settings" title="Permalink to this heading"></a></h4>
+<h4>Hierarchical Settings<a class="headerlink" href="#hierarchical-settings" title="Link to this heading"></a></h4>
 <p>One can also create settings specifically for individual callback classes using the _set_
 command and by identifying the exact class to which the setting applies. For example,
 sometimes turning the logLevel to debug can result in very large log files, and one would
@@ -335,7 +335,7 @@ like to only turn on debug output for select callback classes. That can be done 
 <p>The _set_ command, can also be used to set options to be passed to any plugin.</p>
 </section>
 <section id="viewing-all-settings">
-<h4>Viewing all Settings<a class="headerlink" href="#viewing-all-settings" title="Permalink to this heading"></a></h4>
+<h4>Viewing all Settings<a class="headerlink" href="#viewing-all-settings" title="Link to this heading"></a></h4>
 <p>Use the _sr3_ _show_ command to view all active settings resulting from a configuration file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="n">show</span> <span class="n">sarra</span><span class="o">/</span><span class="n">download_f20</span><span class="o">.</span><span class="n">conf</span>
 
@@ -365,11 +365,11 @@ like to only turn on debug output for select callback classes. That can be done 
 </section>
 </section>
 <section id="logging-control">
-<h3>Logging Control<a class="headerlink" href="#logging-control" title="Permalink to this heading"></a></h3>
+<h3>Logging Control<a class="headerlink" href="#logging-control" title="Link to this heading"></a></h3>
 <p>The method of understanding sr3 flow activity is by examining its logs.
 Logging can be very heavy in sr3, so there are many ways of fine tuning it.</p>
 <section id="loglevel">
-<h4>logLevel<a class="headerlink" href="#loglevel" title="Permalink to this heading"></a></h4>
+<h4>logLevel<a class="headerlink" href="#loglevel" title="Link to this heading"></a></h4>
 <p>the normal logLevel one is used to in the built-in python Log classes. It has
 levels: <em>debug, info, warning, error,</em> and <em>critical,</em>  where level indicates
 the lowest priority message to print.  Default value is <em>info</em>.</p>
@@ -381,45 +381,45 @@ some classes do not honour the global setting, and ask for explicit
 enabling:</p>
 </section>
 <section id="set-sarracenia-transfer-transfer-loglevel-debug">
-<h4>set sarracenia.transfer.Transfer.logLevel debug<a class="headerlink" href="#set-sarracenia-transfer-transfer-loglevel-debug" title="Permalink to this heading"></a></h4>
+<h4>set sarracenia.transfer.Transfer.logLevel debug<a class="headerlink" href="#set-sarracenia-transfer-transfer-loglevel-debug" title="Link to this heading"></a></h4>
 <p>Can control the logLevel used in transfer classes, to set it lower or higher
 than the rest of sr3.</p>
 </section>
 <section id="set-sarracenia-moth-amqp-amqp-loglevel-debug">
-<h4>set sarracenia.moth.amqp.AMQP.logLevel debug<a class="headerlink" href="#set-sarracenia-moth-amqp-amqp-loglevel-debug" title="Permalink to this heading"></a></h4>
+<h4>set sarracenia.moth.amqp.AMQP.logLevel debug<a class="headerlink" href="#set-sarracenia-moth-amqp-amqp-loglevel-debug" title="Link to this heading"></a></h4>
 <p>Print out debug messages specific to the AMQP message queue (sarracenia.moth.amqp.AMQP class).
 used only when debugging with the MQP itself, such as dealing with broker connectivity issues.
 interop diagnostics &amp; testing.</p>
 </section>
 <section id="set-sarracenia-moth-mqtt-mqtt-loglevel-debug">
-<h4>set sarracenia.moth.mqtt.MQTT.logLevel debug<a class="headerlink" href="#set-sarracenia-moth-mqtt-mqtt-loglevel-debug" title="Permalink to this heading"></a></h4>
+<h4>set sarracenia.moth.mqtt.MQTT.logLevel debug<a class="headerlink" href="#set-sarracenia-moth-mqtt-mqtt-loglevel-debug" title="Link to this heading"></a></h4>
 <p>Print out debug messages specific to the MQTT message queue (sarracenia.moth.mqtt.MQTT class).
 used only when debugging with the MQP itself, such as dealing with broker connectivity issues.
 interop diagnostics &amp; testing.</p>
 </section>
 <section id="logevents">
-<h4>logEvents<a class="headerlink" href="#logevents" title="Permalink to this heading"></a></h4>
+<h4>logEvents<a class="headerlink" href="#logevents" title="Link to this heading"></a></h4>
 <p>default: <em>after_accept, after_work, on_housekeeping</em>
 available: after_accept, after_work, all, gather, on_housekeeping, on_start, on_stop, post</p>
 <p>implemented by the <em>sarracenia.flowcb.log.Log</em> class, one can select which events generate log
 messages. wildcard: <em>all</em> generates log messages for every event known to the <em>Log</em> class.</p>
 </section>
 <section id="logmessagedump">
-<h4>logMessageDump<a class="headerlink" href="#logmessagedump" title="Permalink to this heading"></a></h4>
+<h4>logMessageDump<a class="headerlink" href="#logmessagedump" title="Link to this heading"></a></h4>
 <p>implemented by sarracenia.flowcb.log, at each logging event, print out the current content
 of the notification message being processed.</p>
 </section>
 <section id="logreject">
-<h4>logReject<a class="headerlink" href="#logreject" title="Permalink to this heading"></a></h4>
+<h4>logReject<a class="headerlink" href="#logreject" title="Link to this heading"></a></h4>
 <p>print out a log message for each notification message rejected (normally silently ignored.)</p>
 </section>
 <section id="messagedebugdump">
-<h4>messageDebugDump<a class="headerlink" href="#messagedebugdump" title="Permalink to this heading"></a></h4>
+<h4>messageDebugDump<a class="headerlink" href="#messagedebugdump" title="Link to this heading"></a></h4>
 <p>Implemented in moth sub-classes, prints out the bytes actually received or sent
 for the MQP protocol in use.</p>
 </section>
 <section id="debugging-in-callbacks">
-<h4>Debugging in callbacks<a class="headerlink" href="#debugging-in-callbacks" title="Permalink to this heading"></a></h4>
+<h4>Debugging in callbacks<a class="headerlink" href="#debugging-in-callbacks" title="Link to this heading"></a></h4>
 <p>Pythonic logging involves having distinct logging objects per file. So adding debugging levels
 requires setting debug up in each class where you need it.  To turn debugging on in callback,
 for example one called convert.geps_untar, in the config file place:</p>
@@ -436,7 +436,7 @@ need to add it:</p>
 </section>
 </section>
 <section id="extending-classes">
-<h3>Extending Classes<a class="headerlink" href="#extending-classes" title="Permalink to this heading"></a></h3>
+<h3>Extending Classes<a class="headerlink" href="#extending-classes" title="Link to this heading"></a></h3>
 <p>One can add additional functionality to Sarracenia by creating subclassing.</p>
 <ul class="simple">
 <li><p>sarra.moth - Messages Organized into Topic Hierarchies. (existing ones: rabbitmq-amqp)</p></li>
@@ -452,10 +452,10 @@ in the configuration files. the __init__ files in the source directories are the
 place to look for information about each class’s API.</p>
 </section>
 <section id="the-simplest-flow-callback">
-<h3>The Simplest Flow_Callback<a class="headerlink" href="#the-simplest-flow-callback" title="Permalink to this heading"></a></h3>
+<h3>The Simplest Flow_Callback<a class="headerlink" href="#the-simplest-flow-callback" title="Link to this heading"></a></h3>
 </section>
 <section id="sample-extensions">
-<h3>Sample Extensions<a class="headerlink" href="#sample-extensions" title="Permalink to this heading"></a></h3>
+<h3>Sample Extensions<a class="headerlink" href="#sample-extensions" title="Link to this heading"></a></h3>
 <p>Below is a minimal flowCallback sample class, that would be in a sample.py
 file placed in any directory in the PYTHONPATH:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
@@ -502,7 +502,7 @@ resources with bittorrent protocol.  <em>import</em> can also be used
 to import arbitrary python modules for use by callbacks.</p>
 </section>
 <section id="fields-in-messages">
-<h3>Fields in Messages<a class="headerlink" href="#fields-in-messages" title="Permalink to this heading"></a></h3>
+<h3>Fields in Messages<a class="headerlink" href="#fields-in-messages" title="Link to this heading"></a></h3>
 <p>callbacks receive the parsed sarracenia.options as a parameter.
 self is the notification message being processed. variables variables most used:</p>
 <dl>
@@ -563,7 +563,7 @@ can be viewed by the following in a configuration:</p>
 to print rawish notification messages during processing.</p>
 </section>
 <section id="accessing-options">
-<h3>Accessing Options<a class="headerlink" href="#accessing-options" title="Permalink to this heading"></a></h3>
+<h3>Accessing Options<a class="headerlink" href="#accessing-options" title="Link to this heading"></a></h3>
 <p>The settings resulting from parsing the configuration files are also readily available.
 Plugins can define their own options by calling:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FIXME</span><span class="p">:</span> <span class="n">api</span> <span class="n">incomplete</span><span class="o">.</span>
@@ -590,7 +590,7 @@ Value of 0 indicates caching is disabled.</p>
 </dl>
 </section>
 <section id="flow-callback-points">
-<h3>Flow Callback Points<a class="headerlink" href="#flow-callback-points" title="Permalink to this heading"></a></h3>
+<h3>Flow Callback Points<a class="headerlink" href="#flow-callback-points" title="Link to this heading"></a></h3>
 <p>Sarracenia will interpret the names of functions as indicating times in processing when
 a given routine should be called.</p>
 <p>View the <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py">FlowCB source</a>
@@ -691,7 +691,7 @@ return a list of notification messages.</p></td>
 </tbody>
 </table>
 <section id="destfnscripts">
-<h4>DESTFNSCRIPTS<a class="headerlink" href="#destfnscripts" title="Permalink to this heading"></a></h4>
+<h4>DESTFNSCRIPTS<a class="headerlink" href="#destfnscripts" title="Link to this heading"></a></h4>
 <p>As a compatibility layer with the ancestor MetPX Sundew, Sarracenia implements
 <em>Destination File Naming Scripts</em>, where the one can create a flowcallback
 class with a <em>destfn</em> entry point, and then use that to set the name of
@@ -712,7 +712,7 @@ as per the accept clause)</p>
 the new file name as a string.</p>
 </section>
 <section id="callbacks-that-need-python-modules">
-<h4>Callbacks that need Python Modules<a class="headerlink" href="#callbacks-that-need-python-modules" title="Permalink to this heading"></a></h4>
+<h4>Callbacks that need Python Modules<a class="headerlink" href="#callbacks-that-need-python-modules" title="Link to this heading"></a></h4>
 <p>Some callbacks need to use other python modules.  While normal imports
 are fine, one can integrate them better for sr3 users by supporting
 the <em>features</em> mechism:</p>
@@ -765,7 +765,7 @@ libraries:</p>
 <p>You can see that that clamd feature is disabled because the pyclamd python library is not installed.</p>
 </section>
 <section id="flow-callback-poll-customization">
-<h4>Flow Callback Poll Customization<a class="headerlink" href="#flow-callback-poll-customization" title="Permalink to this heading"></a></h4>
+<h4>Flow Callback Poll Customization<a class="headerlink" href="#flow-callback-poll-customization" title="Link to this heading"></a></h4>
 <p>A built-in subclass of flowcb, sarracenia.flowcb.poll.Poll implements the bulk
 of sr3 polling. There are many times different types resources to poll, and
 so many options to customize it are needed. Customization is accomplished
@@ -829,7 +829,7 @@ class is helpful</p>
 </section>
 </section>
 <section id="better-file-reception">
-<h2>Better File Reception<a class="headerlink" href="#better-file-reception" title="Permalink to this heading"></a></h2>
+<h2>Better File Reception<a class="headerlink" href="#better-file-reception" title="Link to this heading"></a></h2>
 <p>For example, rather than using the file system, sr_subscribe could indicate when each file is ready
 by writing to a named pipe:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">blacklab</span><span class="o">%</span> <span class="n">sr_subscribe</span> <span class="n">edit</span> <span class="n">dd_swob</span><span class="o">.</span><span class="n">conf</span>
@@ -865,7 +865,7 @@ may corrupt one another in the named pipe.
 We should probably verify whether this probability is negligeable or not.</p>
 </div>
 <section id="advanced-file-reception">
-<h3>Advanced File Reception<a class="headerlink" href="#advanced-file-reception" title="Permalink to this heading"></a></h3>
+<h3>Advanced File Reception<a class="headerlink" href="#advanced-file-reception" title="Link to this heading"></a></h3>
 <p>The <em>after_work</em> entry point in a <em>sarracenia.flowcb</em> class is an action to perform
 after receipt of a file (or after sending, in a sender.) The RxPipe module is an example
 provided with sarracenia:</p>
@@ -921,7 +921,7 @@ situations.</p>
 in each instance, providing very easy parallel processing built
 into sr_subscribe.</p>
 <section id="using-credentials-in-plugins">
-<h4>Using Credentials in Plugins<a class="headerlink" href="#using-credentials-in-plugins" title="Permalink to this heading"></a></h4>
+<h4>Using Credentials in Plugins<a class="headerlink" href="#using-credentials-in-plugins" title="Link to this heading"></a></h4>
 <p>To implement support of additional protocols, one often needs credentials
 value in the script with the code :</p>
 <ul class="simple">
@@ -944,7 +944,7 @@ reaches the number given by the  <strong>batch</strong>  option (default 100).</
 of the buffer used is given by the <strong>bufsize</strong> option (default 8192).</p>
 </section>
 <section id="why-v3-api-should-be-used-whenever-possible">
-<h4>Why v3 API should be used whenever possible<a class="headerlink" href="#why-v3-api-should-be-used-whenever-possible" title="Permalink to this heading"></a></h4>
+<h4>Why v3 API should be used whenever possible<a class="headerlink" href="#why-v3-api-should-be-used-whenever-possible" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>uses importlib from python, much more standard way to register plugins.
 now syntax errors will be picked up just like any other python module being imported,
@@ -979,7 +979,7 @@ would have required re-working of core code in a custom way for every addition.<
 </section>
 </section>
 <section id="file-notification-without-downloading">
-<h2>File Notification Without Downloading<a class="headerlink" href="#file-notification-without-downloading" title="Permalink to this heading"></a></h2>
+<h2>File Notification Without Downloading<a class="headerlink" href="#file-notification-without-downloading" title="Link to this heading"></a></h2>
 <p>If the data pump exists in a large shared environment, such as
 a Supercomputing Centre with a site file system,
 the file might be available without downloading.  So just
@@ -1009,7 +1009,7 @@ with an if statement in order to act on only the first part notification message
 for long files.</p>
 </div>
 <section id="extension-ideas">
-<h3>Extension Ideas<a class="headerlink" href="#extension-ideas" title="Permalink to this heading"></a></h3>
+<h3>Extension Ideas<a class="headerlink" href="#extension-ideas" title="Link to this heading"></a></h3>
 <p>Examples of things that would be fun to do with plugins:</p>
 <ul class="simple">
 <li><p>Common Alerting Protocol (CAP), is an XML format that provides a warnings
@@ -1034,7 +1034,7 @@ same report.</p></li>
 </section>
 </section>
 <section id="polling">
-<h2>Polling<a class="headerlink" href="#polling" title="Permalink to this heading"></a></h2>
+<h2>Polling<a class="headerlink" href="#polling" title="Link to this heading"></a></h2>
 <p>To implement a customized poll, declare it as a subclass of Poll
 (sarracenia.flowcb.poll.Poll), and only the needed The routine (in this case
 the html parsing “handle_data”) need be written to override the behaviour provided
@@ -1080,7 +1080,7 @@ duplicate suppression.</p>
 <p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/examples/poll/nasa-mls-nrt.conf">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/examples/poll/nasa-mls-nrt.conf</a> )</p>
 </section>
 <section id="accessing-messages-from-python">
-<h2>Accessing Messages from Python<a class="headerlink" href="#accessing-messages-from-python" title="Permalink to this heading"></a></h2>
+<h2>Accessing Messages from Python<a class="headerlink" href="#accessing-messages-from-python" title="Link to this heading"></a></h2>
 <p>So far, we have presented methods of writing customizations of Sarracenia
 processing, where one writes extensions, via either callbacks or extension
 classes to change what sarracenia flow instances do.</p>

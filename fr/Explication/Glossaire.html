@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -137,11 +137,11 @@
 }
 </style>
 <section id="glossaire">
-<h1>Glossaire<a class="headerlink" href="#glossaire" title="Permalink to this heading"></a></h1>
+<h1>Glossaire<a class="headerlink" href="#glossaire" title="Link to this heading"></a></h1>
 <p>La documentation de Sarracenia utilise un certain nombre de mots d’une manière particulière.
 Ce glossaire devrait faciliter la compréhension du reste de la documentation.</p>
 <section id="amqp">
-<h2>AMQP<a class="headerlink" href="#amqp" title="Permalink to this heading"></a></h2>
+<h2>AMQP<a class="headerlink" href="#amqp" title="Link to this heading"></a></h2>
 <p>AMQP est le Advanced Message Queuing Protocol, qui a émergé dans l’industrie du trading financier et a progressivement
 mûri. Les implémentations sont apparues pour la première fois en 2007, et il existe maintenant plusieurs implémentations open source. L’implémentation AMQP
 n’est pas la plomberie JMS. JMS standardise l’API utilisée par les programmeurs, mais pas le protocole on-the-wire. Ainsi
@@ -162,7 +162,7 @@ dans les efforts de normalisation de l’AMQP avant la version 1.0, ou ils ont �
 cette fois-là, l’application s’appuiera sur des agents de messages standard antérieurs à la version 1.0, tels que rabbitmq.</p>
 </section>
 <section id="contre-pression-anglais-back-pressure">
-<h2>Contre-Pression (anglais: Back Pressure)<a class="headerlink" href="#contre-pression-anglais-back-pressure" title="Permalink to this heading"></a></h2>
+<h2>Contre-Pression (anglais: Back Pressure)<a class="headerlink" href="#contre-pression-anglais-back-pressure" title="Link to this heading"></a></h2>
 <p>Lorsqu’un nœud de pompage de données connaît une latence élevée, il est préférable de ne pas importer plus de données
 à un rythme élevé et aggraver la surcharge. Au lieu de cela, il faut s’abstenir d’accepter des messages
 à partir du nœud afin que ceux en amont maintiennent des files d’attente, et d’autres nœuds moins occupés peuvent prendre
@@ -177,23 +177,23 @@ des messages que la bibliothèque mettra en fil d’attente pour l’application
 la bibliothèque python obtiendrait des accusés de réception contrôlés par l’application, comme la bibliothèque Java l’a déjà fait.</p>
 </section>
 <section id="pompes-sans-donnees-anglais-dataless-pumps">
-<h2>Pompes sans Données (anglais: Dataless Pumps)<a class="headerlink" href="#pompes-sans-donnees-anglais-dataless-pumps" title="Permalink to this heading"></a></h2>
+<h2>Pompes sans Données (anglais: Dataless Pumps)<a class="headerlink" href="#pompes-sans-donnees-anglais-dataless-pumps" title="Link to this heading"></a></h2>
 <p>Il y a des pompes qui n’ont pas de moteur de transport, elles ne font que servir de médiateur
 entre transferts pour d’autres serveurs, en mettant les messages à la disposition des clients et
 de serveurs dans leur zone de réseau.</p>
 </section>
 <section id="transferts-sans-donnees-dataless-transfers">
-<h2>Transferts sans Données (Dataless Transfers)<a class="headerlink" href="#transferts-sans-donnees-dataless-transfers" title="Permalink to this heading"></a></h2>
+<h2>Transferts sans Données (Dataless Transfers)<a class="headerlink" href="#transferts-sans-donnees-dataless-transfers" title="Link to this heading"></a></h2>
 <p>Parfois, les transferts à travers les pompes se font sans utiliser d’espace local sur la pompe.</p>
 </section>
 <section id="latence-anglais-latency">
-<h2>Latence (anglais: Latency)<a class="headerlink" href="#latence-anglais-latency" title="Permalink to this heading"></a></h2>
+<h2>Latence (anglais: Latency)<a class="headerlink" href="#latence-anglais-latency" title="Link to this heading"></a></h2>
 <p>Temps écoulé entre l’insertion des données dans un réseau (l’heure à laquelle le message relatif à un fichier est publié pour la première fois)
 au moment où il est mis à disposition sur un point final.  Nous voulons minimiser la latence dans les transferts,
 et une latence élevée peut indiquer des problèmes de configuration ou de capacité.</p>
 </section>
 <section id="mqtt">
-<h2>MQTT<a class="headerlink" href="#mqtt" title="Permalink to this heading"></a></h2>
+<h2>MQTT<a class="headerlink" href="#mqtt" title="Link to this heading"></a></h2>
 <p>Le Message Queue Telemetry Transport (MQTT) version 5 est un deuxième protocole de fil d’attente de messages avec toutes les fonctionnalités
 nécessaire pour soutenir les modèles d’échange de données de sarracenia.</p>
 <ul class="simple">
@@ -203,12 +203,12 @@ nécessaire pour soutenir les modèles d’échange de données de sarracenia.</
 </ul>
 </section>
 <section id="cartes-reseau-anglais-network-maps">
-<h2>Cartes Réseau (anglais: Network Maps)<a class="headerlink" href="#cartes-reseau-anglais-network-maps" title="Permalink to this heading"></a></h2>
+<h2>Cartes Réseau (anglais: Network Maps)<a class="headerlink" href="#cartes-reseau-anglais-network-maps" title="Link to this heading"></a></h2>
 <p>Chaque pompe doit fournir une carte du réseau pour informer les utilisateurs de la destination connue
 qu’ils devraient faire de la publicité pour envoyer à. <em>FIXME</em> non défini jusqu’à présent.</p>
 </section>
 <section id="poste-notice-notification-avis-annonce">
-<h2>Poste, Notice, Notification, Avis, Annonce<a class="headerlink" href="#poste-notice-notification-avis-annonce" title="Permalink to this heading"></a></h2>
+<h2>Poste, Notice, Notification, Avis, Annonce<a class="headerlink" href="#poste-notice-notification-avis-annonce" title="Link to this heading"></a></h2>
 <p>Il s’agit de messages AMQP créés par post, poll ou watch pour permettre aux utilisateurs
 de savoir qu’un fichier particulier est prêt. Le format de ces messages AMQP est
 décrit par la page de manuel <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a>. Tous ces
@@ -217,7 +217,7 @@ source d’origine de la publication, afin que les messages de rapport puissent 
 à la source.</p>
 </section>
 <section id="pompe">
-<h2>Pompe<a class="headerlink" href="#pompe" title="Permalink to this heading"></a></h2>
+<h2>Pompe<a class="headerlink" href="#pompe" title="Link to this heading"></a></h2>
 <p>Une pompe est un hôte exécutant Sarracenia, soit un serveur AMQP rabbitmq, soit un MQTT
 comme mosquitto. Le middleware de mise en fil d’attente des messages s’appelle un <em>broker</em>.
 La pompe a des utilisateurs administratifs et gère le courtier MQP
@@ -229,13 +229,13 @@ copie locale à ses pompes voisines, et les utilisateurs qui sont abonnés peuve
 obtenir les données de cette pompe.</p>
 </section>
 <section id="reseau-de-pompage-anglais-pumping-network">
-<h2>Réseau de Pompage (anglais: Pumping Network)<a class="headerlink" href="#reseau-de-pompage-anglais-pumping-network" title="Permalink to this heading"></a></h2>
+<h2>Réseau de Pompage (anglais: Pumping Network)<a class="headerlink" href="#reseau-de-pompage-anglais-pumping-network" title="Link to this heading"></a></h2>
 <p>Un certain nombre de serveurs d’interconnexion exécutant la stack sarracenia. Chaque stack
 détermine la façon dont il achemine les éléments vers le suivant, de sorte que la taille ou l’étendue entière
 du réseau peut ne pas être connu à ceux qui y mettent des données.</p>
 </section>
 <section id="messages-de-rapport-anglais-report-messages">
-<h2>Messages de Rapport (anglais: Report messages)<a class="headerlink" href="#messages-de-rapport-anglais-report-messages" title="Permalink to this heading"></a></h2>
+<h2>Messages de Rapport (anglais: Report messages)<a class="headerlink" href="#messages-de-rapport-anglais-report-messages" title="Link to this heading"></a></h2>
 <p>Il s’agit de messages AMQP (dans le format <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a>), avec le champ _report_
 inclus) construit par les consommateurs de messages, pour indiquer ce qu’une pompe de données
 ou l’abonné a décidé de faire avec un message. Ils s’écoulent conceptuellement dans le
@@ -244,7 +244,7 @@ Dans les documents de la phase de conception originale de 2015, les rapports ét
 Cela a été modifié pour réduire la confusion avec les données dans les fichiers journaux de l’application.</p>
 </section>
 <section id="source">
-<h2>Source<a class="headerlink" href="#source" title="Permalink to this heading"></a></h2>
+<h2>Source<a class="headerlink" href="#source" title="Link to this heading"></a></h2>
 <p>Quelqu’un qui veut envoyer des données à quelqu’un d’autre. Ils le font en annonçant un
 arborescences de fichiers copiés du point de départ vers une ou plusieurs pompes
 dans le réseau. Les sources publicitaires produites indiquent aux autres exactement où
@@ -256,13 +256,13 @@ données auxquelles accéder.</p>
 leurs publicités.</p>
 </section>
 <section id="abonnes-anglais-subscribers">
-<h2>Abonnés (anglais: Subscribers)<a class="headerlink" href="#abonnes-anglais-subscribers" title="Permalink to this heading"></a></h2>
+<h2>Abonnés (anglais: Subscribers)<a class="headerlink" href="#abonnes-anglais-subscribers" title="Link to this heading"></a></h2>
 <p>sont ceux qui examinent les publicités sur les fichiers disponibles, et
 téléchargent les fichiers qui les intéressent.</p>
 <p>Les abonnés utilisent <a class="reference external" href="../Reference/sr3.1.html#subscribe">subscribe(1)</a></p>
 </section>
 <section id="sundew">
-<h2>Sundew<a class="headerlink" href="#sundew" title="Permalink to this heading"></a></h2>
+<h2>Sundew<a class="headerlink" href="#sundew" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/MetPX/Sundew">MetPX Sundew</a> est l’ancêtre de Sarracenia.
 Il s’agit d’une pompe de données orientée TCP/IP WMO 386 pure. Les fichiers de configuration se ressemblent,
 mais les algorithmes et les concepts de routage sont très différents. MetPX est une push-only
@@ -271,7 +271,7 @@ d’autres technologies obsolètes. Il ne fait pas pub / sub.
 Plus d’histoire <a class="reference external" href="History/Evolution.html">here</a></p>
 </section>
 <section id="wmo">
-<h2>WMO<a class="headerlink" href="#wmo" title="Permalink to this heading"></a></h2>
+<h2>WMO<a class="headerlink" href="#wmo" title="Link to this heading"></a></h2>
 <p>L’Organisation météorologique mondiale, est une partie des Nations Unies qui fait de la surveillance, prévision et alerte
 environnementale et de temps de chaque pays en tant que membres. Depuis de nombreuses décennies, il y a
 un échange en temps réel de données météorologiques entre les pays, souvent même en temps de guerre.  Les normes

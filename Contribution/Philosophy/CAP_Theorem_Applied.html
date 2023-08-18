@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -381,12 +381,12 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="CAP-Theorem-Applied">
-<h1>CAP Theorem Applied<a class="headerlink" href="#CAP-Theorem-Applied" title="Permalink to this heading"></a></h1>
+<h1>CAP Theorem Applied<a class="headerlink" href="#CAP-Theorem-Applied" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>Peter Silva, 2023</p></li>
 </ul>
 <section id="CAP-Theorem">
-<h2>CAP Theorem<a class="headerlink" href="#CAP-Theorem" title="Permalink to this heading"></a></h2>
+<h2>CAP Theorem<a class="headerlink" href="#CAP-Theorem" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Originally proposed by Eric A. Brewer in 2000.</p></li>
 <li><p>Proved in 2002 by Gilbert &amp; Lynch.</p></li>
@@ -394,21 +394,21 @@ div.rendered_html tbody tr:hover {
 </ul>
 </section>
 <section id="Definitions">
-<h2>Definitions<a class="headerlink" href="#Definitions" title="Permalink to this heading"></a></h2>
+<h2>Definitions<a class="headerlink" href="#Definitions" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Consistency - <em>any read operation that begins after a write operation completes must return that value, or the result of a later write operation</em></p></li>
 <li><p>Availability - <em>every request received by a non-failing node in the system must result in a response</em></p></li>
 <li><p>Partition (Tolerance) - <em>the network will be allowed to lose arbitrarily many messages sent from one node to another</em></p></li>
 </ul>
 <section id="Cap-Theorem">
-<h3>Cap Theorem<a class="headerlink" href="#Cap-Theorem" title="Permalink to this heading"></a></h3>
+<h3>Cap Theorem<a class="headerlink" href="#Cap-Theorem" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>An ideal distributed system will feature all Consistency, Availability, and Partition Tolerance.</p></li>
 <li><p>In reality, the best one can do is 2 out of three.</p></li>
 </ul>
 </section>
 <section id="Proof">
-<h3>Proof<a class="headerlink" href="#Proof" title="Permalink to this heading"></a></h3>
+<h3>Proof<a class="headerlink" href="#Proof" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>walk through: Gilbert &amp; Lynch (Thanks to MWhittaker): <a class="reference external" href="https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/">https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/</a> ?</p></li>
 <li><p>Real usage of CAP theoream involves looking at what is pragmatic in real-life cases.</p></li>
@@ -417,7 +417,7 @@ div.rendered_html tbody tr:hover {
 </section>
 </section>
 <section id="Storage/State">
-<h1>Storage/State<a class="headerlink" href="#Storage/State" title="Permalink to this heading"></a></h1>
+<h1>Storage/State<a class="headerlink" href="#Storage/State" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>What is a File System? – an ordered list of writes (with a path)</p></li>
 <li><p>What is a SQL Database? – an ordered list of writes (with indices)</p></li>
@@ -538,7 +538,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 <li><p>CP: Consistency and Partition Tolerance</p></li>
 </ul>
 <section id="Choosing-CA:">
-<h2>Choosing CA:<a class="headerlink" href="#Choosing-CA:" title="Permalink to this heading"></a></h2>
+<h2>Choosing CA:<a class="headerlink" href="#Choosing-CA:" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>At best, you need a quorum system.</p></li>
 <li><p>quorum means obtaining a consensus among the existing nodes about the current state.</p></li>
@@ -548,7 +548,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </ul>
 </section>
 <section id="Quorum-and-Voting:">
-<h2>Quorum and Voting:<a class="headerlink" href="#Quorum-and-Voting:" title="Permalink to this heading"></a></h2>
+<h2>Quorum and Voting:<a class="headerlink" href="#Quorum-and-Voting:" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Multiple Algorithms:</p>
 <ul>
@@ -576,7 +576,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </ul>
 </section>
 <section id="Choosing-AP:">
-<h2>Choosing AP:<a class="headerlink" href="#Choosing-AP:" title="Permalink to this heading"></a></h2>
+<h2>Choosing AP:<a class="headerlink" href="#Choosing-AP:" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>incoming requests are routed to the nodes that remain up. They provide the data they have.</p></li>
 <li><p>you don’t need a master. nodes receive updates, and tell the others,</p></li>
@@ -585,7 +585,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </ul>
 </section>
 <section id="Voting-Failure-Modes">
-<h2>Voting Failure Modes<a class="headerlink" href="#Voting-Failure-Modes" title="Permalink to this heading"></a></h2>
+<h2>Voting Failure Modes<a class="headerlink" href="#Voting-Failure-Modes" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Number of Masters</p></th>
@@ -610,7 +610,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 <p>(LR… partitioned into left and right clusters.)</p>
 </section>
 <section id="Choosing-CP:">
-<h2>Choosing CP:<a class="headerlink" href="#Choosing-CP:" title="Permalink to this heading"></a></h2>
+<h2>Choosing CP:<a class="headerlink" href="#Choosing-CP:" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>as long as the backups can reach the primary, all can answer read requests.</p></li>
 <li><p>when a write is received, the backup passes it to the primary.</p></li>
@@ -618,14 +618,14 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 <li><p>A Manual intervention would be required to tell the backup that it is now the primary in order for availability to be restored, because there is no way to tell the difference between a primary failure and a network partition.</p></li>
 </ul>
 <section id="Bringing-Amdahl-&amp;-CAP-Together">
-<h3>Bringing Amdahl &amp; CAP Together<a class="headerlink" href="#Bringing-Amdahl-&-CAP-Together" title="Permalink to this heading"></a></h3>
+<h3>Bringing Amdahl &amp; CAP Together<a class="headerlink" href="#Bringing-Amdahl-&-CAP-Together" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Amdahl’s Law is about dealing with large numbers of processors sharing resources.</p></li>
 <li><p>CAP is about tradeoffs inherent using different methods of sharing resources.</p></li>
 </ul>
 </section>
 <section id="Almost-Coherent-File-System-or-DB-Performance">
-<h3>Almost-Coherent File System or DB Performance<a class="headerlink" href="#Almost-Coherent-File-System-or-DB-Performance" title="Permalink to this heading"></a></h3>
+<h3>Almost-Coherent File System or DB Performance<a class="headerlink" href="#Almost-Coherent-File-System-or-DB-Performance" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>A bandaid on Traditional single node</p></li>
 <li><p>a synchronized file system is going to have ordered operations, it is going to be a 1:1 connection with shared state.</p></li>
@@ -637,7 +637,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </ul>
 </section>
 <section id="Universal-Write-Scaling">
-<h3>Universal Write Scaling<a class="headerlink" href="#Universal-Write-Scaling" title="Permalink to this heading"></a></h3>
+<h3>Universal Write Scaling<a class="headerlink" href="#Universal-Write-Scaling" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>obtain delegation for a subdomain, write locally.</p>
 <ul>
@@ -651,7 +651,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </ul>
 </section>
 <section id="Non-Shared-Approaches.">
-<h3>Non-Shared Approaches.<a class="headerlink" href="#Non-Shared-Approaches." title="Permalink to this heading"></a></h3>
+<h3>Non-Shared Approaches.<a class="headerlink" href="#Non-Shared-Approaches." title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>the only thing that does scale.</p></li>
 <li><p>transfer files or objects, rather than synchronizing file systems. maximally distributed synchronization.</p>
@@ -671,11 +671,11 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </ul>
 </section>
 <section id="Examples-of-Non-Shared-Approaches">
-<h3>Examples of Non-Shared Approaches<a class="headerlink" href="#Examples-of-Non-Shared-Approaches" title="Permalink to this heading"></a></h3>
+<h3>Examples of Non-Shared Approaches<a class="headerlink" href="#Examples-of-Non-Shared-Approaches" title="Link to this heading"></a></h3>
 </section>
 </section>
 <section id="Object-Stores">
-<h2>Object Stores<a class="headerlink" href="#Object-Stores" title="Permalink to this heading"></a></h2>
+<h2>Object Stores<a class="headerlink" href="#Object-Stores" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>An object is a self-contained item that can be distributed.</p></li>
 <li><p>Every object is equivalent to a db or a file system.</p></li>
@@ -689,7 +689,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 <li><p>Source: Fotis Nikolaidis from “Tromos : a software development kit for virtual storage systems” (PhD thesis 2020/01/17)</p></li>
 </ul>
 <section id="Cloud-Solves-This!">
-<h3>Cloud Solves This!<a class="headerlink" href="#Cloud-Solves-This!" title="Permalink to this heading"></a></h3>
+<h3>Cloud Solves This!<a class="headerlink" href="#Cloud-Solves-This!" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>cloud vendors talk about “availability zones” there is no HA or synch across availabilty zones, they talk about times like 15 minutes, to do periodic synching. Object syncing takes time (and money.)</p></li>
 <li><p>2006, HP DC Consolidation project established 200 miles as the longest distance between Data Centres. So that would give them 500 IOPS or so on a synchronous store.</p></li>
@@ -706,7 +706,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </section>
 </section>
 <section id="Sarracenia:-File-Systems-Flying-in-Formation">
-<h2>Sarracenia: File Systems Flying in Formation<a class="headerlink" href="#Sarracenia:-File-Systems-Flying-in-Formation" title="Permalink to this heading"></a></h2>
+<h2>Sarracenia: File Systems Flying in Formation<a class="headerlink" href="#Sarracenia:-File-Systems-Flying-in-Formation" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Another distributed approach</p></li>
 <li><p>transfers files between file systems without synchronizing.</p></li>
@@ -721,7 +721,7 @@ distance between data centres=600, speed of light=300000 km/s,  time to travel (
 </section>
 </section>
 <section id="Thanks!">
-<h1>Thanks!<a class="headerlink" href="#Thanks!" title="Permalink to this heading"></a></h1>
+<h1>Thanks!<a class="headerlink" href="#Thanks!" title="Link to this heading"></a></h1>
 <p>Sources:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/">https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/</a> (An Illustrated Proof of the CAP Theorem, referring to Gilbert &amp; Lynch’s paper which is a dead link. )</p></li>

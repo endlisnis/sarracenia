@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -344,7 +344,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Sundew-Algorithmic-Design">
-<h1>Sundew Algorithmic Design<a class="headerlink" href="#Sundew-Algorithmic-Design" title="Permalink to this heading"></a></h1>
+<h1>Sundew Algorithmic Design<a class="headerlink" href="#Sundew-Algorithmic-Design" title="Link to this heading"></a></h1>
 <p>Sundew was built because PDS was too slow for message routing, which typically had:</p>
 <ul class="simple">
 <li><p>hundreds of thousands of different products to route (order of 300,000 products in the routing table.)</p></li>
@@ -354,7 +354,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 <p>Sundew, a replacement implementation of PDS, was eventually made to solve this problem. It made the following alrogithimic design changes:</p>
 <section id="Eliminate-Dispatcher">
-<h2>Eliminate Dispatcher<a class="headerlink" href="#Eliminate-Dispatcher" title="Permalink to this heading"></a></h2>
+<h2>Eliminate Dispatcher<a class="headerlink" href="#Eliminate-Dispatcher" title="Link to this heading"></a></h2>
 <p>Having a single process doing the routing limits scaling. Instead, have each receiver identify the outputs for files it receives. This means operating multiple routing engines in parallel, which gives the potential for name clashes in the destination directories (if two receivers choose to same names for different data)</p>
 <ul class="simple">
 <li><p>Make sure all file names chosen for routing are unique.</p></li>
@@ -363,12 +363,12 @@ div.rendered_html tbody tr:hover {
 <p>It should also be noted that while scanning directories is an i/o bound process with lots of waiting, routing is a completely cpu bound process, so combining the two doesn’t worsen the overall load of the receivers substantially.</p>
 </section>
 <section id="Eliminate-Log-Locking">
-<h2>Eliminate Log Locking<a class="headerlink" href="#Eliminate-Log-Locking" title="Permalink to this heading"></a></h2>
+<h2>Eliminate Log Locking<a class="headerlink" href="#Eliminate-Log-Locking" title="Link to this heading"></a></h2>
 <p>Contention for writing the combined log of all processes is performance limiting, and wastes a great deal of cpu on locks to serialize access. if each process writes its own log, there is no contention for the log file. Dropping the constraint of a single log file unlocks a great deal of performance potential.</p>
 <p>From an architectural perspective, this is just a pure win, there was a hard limit on absolute performance, and it is completely eliminated.</p>
 </section>
 <section id="Dictionary-Pre-Routing">
-<h2>Dictionary Pre-Routing<a class="headerlink" href="#Dictionary-Pre-Routing" title="Permalink to this heading"></a></h2>
+<h2>Dictionary Pre-Routing<a class="headerlink" href="#Dictionary-Pre-Routing" title="Link to this heading"></a></h2>
 <p>Even if we parallelize routing, the algorithm itself is quite intensive. for 10 destinations, with 10 regular expressions each, that means 100 regular expressions to evaluate (slightly less, because of shortcuts from exclusion masks (rejects) but the order of magnitude is about right.)</p>
 <p>Added the use of a python dictionary listing product keys, and a set of destinations associated with each key. So there are now two steps to routing, the first narrows down the number of destinations to a subset… say 2/10 of destinations, and then the regular expressions are only applied on that subset.</p>
 <p>The cost to route a single product through the application (take it from seeing it in a reception directory to queuing it up for sending.) can be modelled as follows: It is the regular expression comparisong that dominate the routing time, so just calculate how many regular expressions are needed, on average, to complete routing of a product.</p>
@@ -388,7 +388,7 @@ div.rendered_html tbody tr:hover {
 <p><strong>NOTE:</strong> this algorithm only benefits “message” type routing with the dictionary. for file type routing, used in PDS traditionally, we fall back on pure regexes.</p>
 </section>
 <section id="Write-it-in-Python">
-<h2>Write it in Python<a class="headerlink" href="#Write-it-in-Python" title="Permalink to this heading"></a></h2>
+<h2>Write it in Python<a class="headerlink" href="#Write-it-in-Python" title="Link to this heading"></a></h2>
 <p>Sundew was built in Python. Industry lore is that Python is much slower than C, the measurable amounts vary, but as a rule of thumb, one can attribute approximately an order of magnitude there as well. It was judged safe to use Python in this case because the application is entirely i/o bound, and thus the speed of C was not material to the problem at hand. When using python, code is much simpler to write, and much shorter. the PDS application was approximately 150,000 lines of C clode. The
 Python application is 25,0000 lines.</p>
 <p>Sundew also replaced another message router, called “Tandem Apps”, which was 450,000 lines of code in proprietary language. replacing 600,000 lines of code is a major project, writing 25,000 lines is a biggish script. So a 96% reduction in the source code size. This choice:</p>
@@ -398,7 +398,7 @@ Python application is 25,0000 lines.</p>
 </ul>
 </section>
 <section id="id1">
-<h2>Eliminate Dispatcher<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>Eliminate Dispatcher<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>replace single task routing for all receivers</p></li>
 <li><p>every receiver queues products for senders.</p></li>
@@ -406,14 +406,14 @@ Python application is 25,0000 lines.</p>
 </ul>
 </section>
 <section id="id2">
-<h2>Dictionary Pre-Routing<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<h2>Dictionary Pre-Routing<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>map bulletin names to a key, list the keys in a table (aka python dictionary) that lists senders.</p></li>
 <li><p>selects a subset of senders to which their regex’s are applied.</p></li>
 </ul>
 </section>
 <section id="Sundew-Routing-cost:">
-<h2>Sundew Routing cost:<a class="headerlink" href="#Sundew-Routing-cost:" title="Permalink to this heading"></a></h2>
+<h2>Sundew Routing cost:<a class="headerlink" href="#Sundew-Routing-cost:" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Rp = 900 = log(d) * s * (re/2)</p></li>
 <li><p>r = 10, each receiver only routing for a single receiver.</p></li>
@@ -474,7 +474,7 @@ and the rest 5000.0 falls on the senders
 </div>
 </section>
 <section id="id3">
-<h2>Write it in Python<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<h2>Write it in Python<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>made the project feasible (10x smaller)</p></li>
 <li><p>made the algorithm simpler to understand an implement.</p></li>
@@ -564,7 +564,7 @@ and the rest 5000.0 falls on the senders
 </div>
 </section>
 <section id="What-difference-did-it-make?">
-<h2>What difference did it make?<a class="headerlink" href="#What-difference-did-it-make?" title="Permalink to this heading"></a></h2>
+<h2>What difference did it make?<a class="headerlink" href="#What-difference-did-it-make?" title="Link to this heading"></a></h2>
 <p>On a given linux server used to run both applications for benchmarking purposes:</p>
 <ul class="simple">
 <li><p>The original (PDS) C-code was performing 10-20 product routings per second,</p></li>
@@ -575,7 +575,7 @@ and the rest 5000.0 falls on the senders
 <p>Note:: These tests were done in 2005, using, for example, hard disks for storage. Performance on current hardware is far superior.</p>
 </section>
 <section id="Bonus">
-<h2>Bonus<a class="headerlink" href="#Bonus" title="Permalink to this heading"></a></h2>
+<h2>Bonus<a class="headerlink" href="#Bonus" title="Link to this heading"></a></h2>
 <p>The original PDS application was surrounded by scripts and code to do many kinds of name processing, and with the original built in C, this was done with shell scripts. As a happy side-effect of implementing in Python, it became feasible to implement a plugin architecture to customize processing in a much more efficient way.</p>
 <p>Instead of forking of processes, as required by additional functionality in PDS, we could define routines that would be called from the python code. These routines could be written in Python, and thus save enormous amounts of overhead from the fork/reap pattern.</p>
 <p>While plugin architectures can be implemented in C, they are much more daunting, and having operations people writing C is a high bar to customize processing.</p>

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -115,10 +115,10 @@
 }
 </style>
 <section id="how-to-setup-a-remote-subscriber">
-<h1>How to setup a Remote Subscriber<a class="headerlink" href="#how-to-setup-a-remote-subscriber" title="Permalink to this heading"></a></h1>
+<h1>How to setup a Remote Subscriber<a class="headerlink" href="#how-to-setup-a-remote-subscriber" title="Link to this heading"></a></h1>
 <p>This example goes over how to subscribe to the swob files from the Environment Canada Weather office.</p>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h2>
 <p>Initialize the credentials storage in the <cite>~/.config/sr3/credentials.conf</cite> file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 edit credentials.conf
   amqps://anonymous:anonymous@dd.weather.gc.ca
@@ -160,7 +160,7 @@ Given how quickly they arrive, be prepared to clean up.</p>
 </div>
 </section>
 <section id="startup">
-<h2>Startup<a class="headerlink" href="#startup" title="Permalink to this heading"></a></h2>
+<h2>Startup<a class="headerlink" href="#startup" title="Link to this heading"></a></h2>
 <p>Now start up the newly created subscriber:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 start swob
   2015-12-03 06:53:35,268 [INFO] user_config = 0 ../swob.conf
@@ -218,7 +218,7 @@ After a few minutes, here is what the download directory looks like:</p>
 </div>
 </section>
 <section id="cleanup">
-<h2>Cleanup<a class="headerlink" href="#cleanup" title="Permalink to this heading"></a></h2>
+<h2>Cleanup<a class="headerlink" href="#cleanup" title="Link to this heading"></a></h2>
 <p>To not download more files, stop the subscriber:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr_subscribe stop swob
   2015-12-03 17:32:22,219 [INFO] sr_subscribe swob 01 stopped

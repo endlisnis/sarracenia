@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -124,9 +124,9 @@
 }
 </style>
 <section id="data-sources">
-<h1>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this heading"></a></h1>
+<h1>Data Sources<a class="headerlink" href="#data-sources" title="Link to this heading"></a></h1>
 <section id="injecting-data-into-a-metpx-sarracenia-pump-network">
-<h2>Injecting Data into a MetPX-Sarracenia Pump Network<a class="headerlink" href="#injecting-data-into-a-metpx-sarracenia-pump-network" title="Permalink to this heading"></a></h2>
+<h2>Injecting Data into a MetPX-Sarracenia Pump Network<a class="headerlink" href="#injecting-data-into-a-metpx-sarracenia-pump-network" title="Link to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>FIXME</strong>: Missing sections are highlighted by <strong>FIXME</strong>.
@@ -139,13 +139,13 @@ Caveat about file update strategies. Use case of a file that is constantly updat
 rather than issuing new files.)</p>
 </div>
 <section id="revision-record">
-<h3>Revision Record<a class="headerlink" href="#revision-record" title="Permalink to this heading"></a></h3>
+<h3>Revision Record<a class="headerlink" href="#revision-record" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 </dl>
 <p>A Sarracenia data pump is a web (or sftp) server with notifications for subscribers
@@ -200,7 +200,7 @@ notification message, and so are not affected by this limit.</p>
 </aside>
 </section>
 <section id="sftp-injection">
-<h3>SFTP Injection<a class="headerlink" href="#sftp-injection" title="Permalink to this heading"></a></h3>
+<h3>SFTP Injection<a class="headerlink" href="#sftp-injection" title="Link to this heading"></a></h3>
 <p>Using the sr_post(1) command directly is the most straightforward way to inject data
 into the pump network. To use sr_post, you have to know:</p>
 <ul class="simple">
@@ -302,7 +302,7 @@ then http would work, or if the data pump and the source server share a file sys
 then even a file url could work.</p>
 </section>
 <section id="http-injection">
-<h3>HTTP Injection<a class="headerlink" href="#http-injection" title="Permalink to this heading"></a></h3>
+<h3>HTTP Injection<a class="headerlink" href="#http-injection" title="Link to this heading"></a></h3>
 <p>If we take a similar case, but in this case there is some http accessible space,
 the steps are the same or even simpler if no authentication is required for the pump
 to acquire the data. One needs to install a web server of some kind.</p>
@@ -349,7 +349,7 @@ so creating real demo is deferred.</p>
 </div>
 </section>
 <section id="polling-external-sources">
-<h3>Polling External Sources<a class="headerlink" href="#polling-external-sources" title="Permalink to this heading"></a></h3>
+<h3>Polling External Sources<a class="headerlink" href="#polling-external-sources" title="Link to this heading"></a></h3>
 <p>Some sources are inherently remote, and we are unable to interest or affect them.
 One can configure sr_poll to pull in data from external sources, typically web sites.
 The sr_poll command typically runs as a singleton that tracks what is new at a source tree
@@ -365,7 +365,7 @@ to use it.</p>
 </div>
 </section>
 <section id="report-messages">
-<h3>Report Messages<a class="headerlink" href="#report-messages" title="Permalink to this heading"></a></h3>
+<h3>Report Messages<a class="headerlink" href="#report-messages" title="Link to this heading"></a></h3>
 <p>If the sr_post worked, that means the pump accepted to take a look at your file.
 To find out where your data goes to afterward, one needs to examine source
 log messages. It is also important to note that the initial pump, or any other pump
@@ -386,7 +386,7 @@ arbitrary post processing of report messages by using on_message plugin.</p>
 </div>
 </section>
 <section id="large-files">
-<h3>Large Files<a class="headerlink" href="#large-files" title="Permalink to this heading"></a></h3>
+<h3>Large Files<a class="headerlink" href="#large-files" title="Link to this heading"></a></h3>
 <p>Larger files are not sent as a single block. They are sent in parts, and each
 part is fingerprinted, so that when files are updated, unchanged portions are
 not sent again. There is a default threshold built into the sr_ commands, above
@@ -401,7 +401,7 @@ each part.  This allows senders to monitor progress of delivery of large
 files.</p>
 </section>
 <section id="reliability-and-checksums">
-<h3>Reliability and Checksums<a class="headerlink" href="#reliability-and-checksums" title="Permalink to this heading"></a></h3>
+<h3>Reliability and Checksums<a class="headerlink" href="#reliability-and-checksums" title="Link to this heading"></a></h3>
 <p>Every piece of data injected into the pumping network needs to have a unique fingerprint (or checksum).
 Data will flow if it is new, and determining if the data is new is based on the fingerprint.
 To get reliability in a sarracenia network, multiple independent sources are provisioned.
@@ -453,7 +453,7 @@ will cause the entire file to be re-sent when they are updated.</p>
 </div>
 </section>
 <section id="user-headers">
-<h3>User Headers<a class="headerlink" href="#user-headers" title="Permalink to this heading"></a></h3>
+<h3>User Headers<a class="headerlink" href="#user-headers" title="Link to this heading"></a></h3>
 <p>What if there is some piece of metadata that a data source has chosen for some reason not to
 include in the filename hierarchy? How can data consumers know that information without having
 to download the file in order to determine that it is uninteresting. An example would be
@@ -479,7 +479,7 @@ to simple cases. For this specific case, it is likely more appropriate to implem
 on_post plugin for Common Alerting Protocol files to extract the above header information and
 place it in the notification message headers for each alert.</p>
 <section id="efficiency-considerations">
-<h4>Efficiency Considerations<a class="headerlink" href="#efficiency-considerations" title="Permalink to this heading"></a></h4>
+<h4>Efficiency Considerations<a class="headerlink" href="#efficiency-considerations" title="Link to this heading"></a></h4>
 <p>It is not recommended to put overly complex logic in the plugin scripts, as they execute synchronously with
 post and receive operations. Note that the use of built-in facilities of AMQP (headers) is done to
 explicitly be as efficient as possible. As an extreme example, including encoded XML into notification messages
@@ -501,7 +501,7 @@ will affect the processing rate.</p>
 </section>
 </section>
 <section id="quickly-announcing-very-large-trees-on-linux">
-<h1>Quickly Announcing Very Large Trees On Linux<a class="headerlink" href="#quickly-announcing-very-large-trees-on-linux" title="Permalink to this heading"></a></h1>
+<h1>Quickly Announcing Very Large Trees On Linux<a class="headerlink" href="#quickly-announcing-very-large-trees-on-linux" title="Link to this heading"></a></h1>
 <p>To mirror very large trees (millions of files) in real time, it takes too long for tools like rsync
 or find to traverse and generate lists of files to copy. On Linux, one can intercept calls for
 file operations using the well known shim library technique. This technique provides virtually

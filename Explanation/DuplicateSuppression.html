@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -128,7 +128,7 @@
 }
 </style>
 <section id="duplicate-suppression">
-<h1>Duplicate Suppression<a class="headerlink" href="#duplicate-suppression" title="Permalink to this heading"></a></h1>
+<h1>Duplicate Suppression<a class="headerlink" href="#duplicate-suppression" title="Link to this heading"></a></h1>
 <p>When forwarding products in networks, one needs to avoid <em>storms</em> or loops of data transmission,
 where the same data circulates infinitely in the network, (for example: A sends a file to B, B sends it to C,
 C sends it back to A. If A sends it to B again, we have an infinite loop or <em>storm</em> if the volume is large enough. )</p>
@@ -163,14 +163,14 @@ in the config file:</p>
 <p>When supplied a number, that indicates the lifetime, in seconds of entries in the
 duplicate suppresion memory (e.g. 300 seconds == 5 minutes.)</p>
 <section id="standard-path-and-data-oriented">
-<h2>Standard (path and data oriented)<a class="headerlink" href="#standard-path-and-data-oriented" title="Permalink to this heading"></a></h2>
+<h2>Standard (path and data oriented)<a class="headerlink" href="#standard-path-and-data-oriented" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: when products have the same key and path, they are duplicates.</p>
 <p>Two routes can receive the same product, with the same relative path. In normal processing,
 the products should be identical, and <em>Identity</em> checksums for it should be the same,</p>
 <p>FIXME: the normal case when multiple intervening pumps.</p>
 </section>
 <section id="data-oriented">
-<h2>Data Oriented<a class="headerlink" href="#data-oriented" title="Permalink to this heading"></a></h2>
+<h2>Data Oriented<a class="headerlink" href="#data-oriented" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: when products the same key, they are duplicates.</p>
 <p>in the config file either:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodupe_basis</span> <span class="n">data</span>
@@ -189,7 +189,7 @@ it could be that products with unrelated purpose have identical content. scoping
 usually important when this option is applied.)</p>
 </section>
 <section id="name-oriented">
-<h2>Name Oriented<a class="headerlink" href="#name-oriented" title="Permalink to this heading"></a></h2>
+<h2>Name Oriented<a class="headerlink" href="#name-oriented" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: when products have the same file name, they are duplicates.</p>
 <p>In the config file, either:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodupe_basis</span> <span class="n">data</span>
@@ -204,7 +204,7 @@ usually important when this option is applied.)</p>
 appropriate Identity method is available, then then one needs a different approach.
 Since the two sources are not, generally, synchronized,</p>
 <section id="urp">
-<h3>URP<a class="headerlink" href="#urp" title="Permalink to this heading"></a></h3>
+<h3>URP<a class="headerlink" href="#urp" title="Link to this heading"></a></h3>
 <p>Radar production is done, in one case, on many different (6? ) operational servers producing
 “identical” products. They are identical in the sense that they are based on the same
 input, and have the same semantic meaning, but details of processing mean that none of
@@ -216,7 +216,7 @@ is correct in this case.</p>
 </section>
 </section>
 <section id="files-that-change-too-often-mdelaylatest">
-<h2>Files That Change Too Often (mdelaylatest)<a class="headerlink" href="#files-that-change-too-often-mdelaylatest" title="Permalink to this heading"></a></h2>
+<h2>Files That Change Too Often (mdelaylatest)<a class="headerlink" href="#files-that-change-too-often-mdelaylatest" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: wait until file is x seconds old before forwarding.</p>
 <p>NOTE: This is an additional filter to duplicate suppression, and the above
 methods can be used in conjunction with mdelaylatest. this filter is ideally
@@ -238,7 +238,7 @@ the time the consumer requests the file, it will be different (potentially causi
 or, if it is fast enough, copying a file that will not last more than a few seconds
 could be a waste of bandwidth and processing.</p>
 <section id="weatheroffice-citypages">
-<h3>Weatheroffice citypages<a class="headerlink" href="#weatheroffice-citypages" title="Permalink to this heading"></a></h3>
+<h3>Weatheroffice citypages<a class="headerlink" href="#weatheroffice-citypages" title="Link to this heading"></a></h3>
 <p>( <a class="reference external" href="https://hpfx.collab.science.gc.ca/YYYYMMDD/WXO-DD/citypage_weather/">https://hpfx.collab.science.gc.ca/YYYYMMDD/WXO-DD/citypage_weather/</a> )</p>
 <p>The citypages are a compound product (derived from many separate upstream products.)
 The script that creates the citypage products seems to write a header, then some records,
@@ -247,7 +247,7 @@ as <em>invalid xml</em> because the footer is missing, leaving some XML entities
 One must wait until the script has finished writing the file before creating a notification message.</p>
 </section>
 <section id="hpc-mirrorring">
-<h3>HPC mirrorring<a class="headerlink" href="#hpc-mirrorring" title="Permalink to this heading"></a></h3>
+<h3>HPC mirrorring<a class="headerlink" href="#hpc-mirrorring" title="Link to this heading"></a></h3>
 <p>In the high speed mirroring of data between high performance computing clusters,
 shell scripts often spend time appending records to files, perhaps hundreds of times per second.
 Once the script is complete, the file becomes read-only for consumers.  It is not useful
@@ -258,7 +258,7 @@ for the file to be quiescent, before posting a notification message.</p>
 </section>
 </section>
 <section id="files-that-are-too-old">
-<h2>Files That are Too Old<a class="headerlink" href="#files-that-are-too-old" title="Permalink to this heading"></a></h2>
+<h2>Files That are Too Old<a class="headerlink" href="#files-that-are-too-old" title="Link to this heading"></a></h2>
 <p><strong>method</strong>: files that are too old are dropped.</p>
 <p>in the configuration file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodupe_fileAgeMax</span> <span class="mi">600</span>
@@ -269,7 +269,7 @@ for the file to be quiescent, before posting a notification message.</p>
 server. example: a remote server has a permanent database of remote files.</p>
 </section>
 <section id="roll-your-own">
-<h2>Roll Your Own<a class="headerlink" href="#roll-your-own" title="Permalink to this heading"></a></h2>
+<h2>Roll Your Own<a class="headerlink" href="#roll-your-own" title="Link to this heading"></a></h2>
 <p>In the configuration file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">your_settings</span>
 <span class="n">flowcb_prepend</span> <span class="n">your_class</span><span class="o">.</span><span class="n">YourClass</span>

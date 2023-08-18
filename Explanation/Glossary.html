@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -130,11 +130,11 @@
 }
 </style>
 <section id="glossary">
-<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading"></a></h1>
+<h1>Glossary<a class="headerlink" href="#glossary" title="Link to this heading"></a></h1>
 <p>Sarracenia documentation uses a number of words in a particular way.
 This glossary should make it easier to understand the rest of the documentation.</p>
 <section id="amqp">
-<h2>AMQP<a class="headerlink" href="#amqp" title="Permalink to this heading"></a></h2>
+<h2>AMQP<a class="headerlink" href="#amqp" title="Link to this heading"></a></h2>
 <p>AMQP is the Advanced Message Queuing Protocol, which emerged from the financial trading industry and has gradually
 matured. Implementations first appeared in 2007, and there are now several open source ones. AMQP implementations
 are not JMS plumbing. JMS standardizes the API programmers use, but not the on-the-wire protocol. So
@@ -155,7 +155,7 @@ to version 1.0, at which point they were removed. It is hoped that these concept
 that time, the application will rely on pre-1.0 standard message brokers, such as rabbitmq.</p>
 </section>
 <section id="back-pressure">
-<h2>Back Pressure<a class="headerlink" href="#back-pressure" title="Permalink to this heading"></a></h2>
+<h2>Back Pressure<a class="headerlink" href="#back-pressure" title="Link to this heading"></a></h2>
 <p>When a data pumping node is experiencing high latency, it is best not bring in more data
 at high rate and worsen the overload. Instead, one should refrain from accepting messages
 from the node so that upstream ones maintain queues, and other, less busy nodes can take
@@ -170,23 +170,23 @@ of messages the library will queue up for the application, but ideally, the pyth
 library would get application controlled acknowledgements, as the java library already has.</p>
 </section>
 <section id="dataless-pumps">
-<h2>Dataless Pumps<a class="headerlink" href="#dataless-pumps" title="Permalink to this heading"></a></h2>
+<h2>Dataless Pumps<a class="headerlink" href="#dataless-pumps" title="Link to this heading"></a></h2>
 <p>There are some pumps that have no transport engine, they just mediate
 transfers for other servers, by making notification messages available to clients and
 servers in their network area.</p>
 </section>
 <section id="dataless-transfers">
-<h2>Dataless Transfers<a class="headerlink" href="#dataless-transfers" title="Permalink to this heading"></a></h2>
+<h2>Dataless Transfers<a class="headerlink" href="#dataless-transfers" title="Link to this heading"></a></h2>
 <p>Sometimes transfers through pumps are done without using local space on the pump.</p>
 </section>
 <section id="latency">
-<h2>Latency<a class="headerlink" href="#latency" title="Permalink to this heading"></a></h2>
+<h2>Latency<a class="headerlink" href="#latency" title="Link to this heading"></a></h2>
 <p>Time from the insertion of data into a network (the time the notification message about a file is first published)
 to the time it is made available on an end point.  We want to minimize latency in transfers,
 and high latency can indicate configuration or capacity issues.</p>
 </section>
 <section id="mqtt">
-<h2>MQTT<a class="headerlink" href="#mqtt" title="Permalink to this heading"></a></h2>
+<h2>MQTT<a class="headerlink" href="#mqtt" title="Link to this heading"></a></h2>
 <p>The Message Queue Telemetry Transport (MQTT) version 5 is a second Message Queueing protocol with all the features
 necessary to support sarracenia’s data exchange patterns.</p>
 <ul class="simple">
@@ -196,12 +196,12 @@ necessary to support sarracenia’s data exchange patterns.</p>
 </ul>
 </section>
 <section id="network-maps">
-<h2>Network Maps<a class="headerlink" href="#network-maps" title="Permalink to this heading"></a></h2>
+<h2>Network Maps<a class="headerlink" href="#network-maps" title="Link to this heading"></a></h2>
 <p>Each pump should provide a network map to advise users of the known destination
 that they should advertise to send to. <em>FIXME</em> undefined so far.</p>
 </section>
 <section id="post-notice-notification-advertisement-announcement">
-<h2>Post, Notice, Notification, Advertisement, Announcement<a class="headerlink" href="#post-notice-notification-advertisement-announcement" title="Permalink to this heading"></a></h2>
+<h2>Post, Notice, Notification, Advertisement, Announcement<a class="headerlink" href="#post-notice-notification-advertisement-announcement" title="Link to this heading"></a></h2>
 <p>These are AMQP messages build by sr_post, sr_poll, or sr_watch to let users
 know that a particular file is ready. The format of these AMQP messages is
 described by the <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a> manual page. All of these
@@ -210,7 +210,7 @@ original source of the posting, so that report messages can be routed back
 to the source.</p>
 </section>
 <section id="pump">
-<h2>Pump<a class="headerlink" href="#pump" title="Permalink to this heading"></a></h2>
+<h2>Pump<a class="headerlink" href="#pump" title="Link to this heading"></a></h2>
 <p>A pump is a host running Sarracenia, either a rabbitmq AMQP server or an MQTTT
 one such as mosquitto. The notification message queueing middleware is called a <em>broker.</em>
 The pump has administrative users and manage the MQP broker
@@ -230,13 +230,13 @@ two words are not always the same.</p>
 </div>
 </section>
 <section id="pumping-network">
-<h2>Pumping Network<a class="headerlink" href="#pumping-network" title="Permalink to this heading"></a></h2>
+<h2>Pumping Network<a class="headerlink" href="#pumping-network" title="Link to this heading"></a></h2>
 <p>A number of interconnects servers running the sarracenia stack. Each stack
 determines how it routes items to the next hop, so the entire size or extent
 of the network may not be known to those who put data into it.</p>
 </section>
 <section id="report-messages">
-<h2>Report messages<a class="headerlink" href="#report-messages" title="Permalink to this heading"></a></h2>
+<h2>Report messages<a class="headerlink" href="#report-messages" title="Link to this heading"></a></h2>
 <p>These are AMQP messages (in <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a> format, with _report_
 field included) built by consumers of messages, to indicate what a given pump
 or subscriber decided to do with a message. They conceptually flow in the
@@ -245,7 +245,7 @@ in materials from the original 2015 design phase, reports were called <em>log me
 This was changed to reduce confusing them with data in application log files.</p>
 </section>
 <section id="source">
-<h2>Source<a class="headerlink" href="#source" title="Permalink to this heading"></a></h2>
+<h2>Source<a class="headerlink" href="#source" title="Link to this heading"></a></h2>
 <p>Someone who wants to ship data to someone else. They do that by advertising a
 trees of files that are copied from the starting point to one or more pumps
 in the network. The notification message sources produced tell others exactly where
@@ -257,13 +257,13 @@ data to go to.</p>
 their notification messages.</p>
 </section>
 <section id="subscribers">
-<h2>Subscribers<a class="headerlink" href="#subscribers" title="Permalink to this heading"></a></h2>
+<h2>Subscribers<a class="headerlink" href="#subscribers" title="Link to this heading"></a></h2>
 <p>are those who examine notification messages about files that are available, and
 download the files they are interested in.</p>
 <p>Subscribers use <a class="reference external" href="../Reference/sr3.1.html#subscribe">subscribe(1)</a></p>
 </section>
 <section id="sundew">
-<h2>Sundew<a class="headerlink" href="#sundew" title="Permalink to this heading"></a></h2>
+<h2>Sundew<a class="headerlink" href="#sundew" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/MetPX/Sundew">MetPX Sundew</a> is the ancestor of Sarracenia.
 It is a pure TCP/IP WMO 386 oriented data pump. The configuration files look similar,
 but the routing algorithms and concepts are quite different. MetPX is a push-only
@@ -272,7 +272,7 @@ other obsolete technologies. It does not do pub/sub.
 <a class="reference external" href="History/Evolution.html">More History</a></p>
 </section>
 <section id="wmo">
-<h2>WMO<a class="headerlink" href="#wmo" title="Permalink to this heading"></a></h2>
+<h2>WMO<a class="headerlink" href="#wmo" title="Link to this heading"></a></h2>
 <p>The World Meteorological Organization, is a part of the United Nations that has the weather and environmental
 monitoring, prediction, and alerting services of each country as members. For many decades, there has
 been a real-time exchange of weather data between countries, often even in times of war.  The standards

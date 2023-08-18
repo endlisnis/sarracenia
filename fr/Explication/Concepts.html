@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -127,7 +127,7 @@
 }
 </style>
 <section id="concepts-generaux-de-sarracenia">
-<h1>Concepts généraux de Sarracenia<a class="headerlink" href="#concepts-generaux-de-sarracenia" title="Permalink to this heading"></a></h1>
+<h1>Concepts généraux de Sarracenia<a class="headerlink" href="#concepts-generaux-de-sarracenia" title="Link to this heading"></a></h1>
 <p>Les pompes Sarracenia forment un réseau. Le réseau utilise
 des courtiers amqp ( <em>broker</em> )  <a class="reference external" href="https://en.wikipedia.org/wiki/Message_queue">Message Queueing Protocol (MQP)</a>
 pour modéré les transferts de fichiers entre les pompes. On
@@ -168,7 +168,7 @@ sont tout simplement pas testés.</p>
 Voir <cite>Options de déploiement &lt;ConsiderationDeployments.rst&gt;</cite> pour plus de détails. À l´intérieur d´une pompe, les conceptes décrites
 dans les sections suivantes s’appliquent.</p>
 <section id="l-algorithme-de-flux">
-<h2>L’algorithme de Flux<a class="headerlink" href="#l-algorithme-de-flux" title="Permalink to this heading"></a></h2>
+<h2>L’algorithme de Flux<a class="headerlink" href="#l-algorithme-de-flux" title="Link to this heading"></a></h2>
 <p>Tous les composants qui s’abonnent (subscribe, sarra, sarra, sender, shovel, winnow)
 partagent un code substantiel et ne diffèrent que par leur reglages de défaut.
 Chaque composant suit le même algorithme général, l’algorithme de Flux.
@@ -181,7 +181,7 @@ Les étapes de l’algorithme Flux sont les suivantes :</p>
 </ul>
 <p>En plus de detail:</p>
 <table class="docutils align-center" id="id1">
-<caption><span class="caption-text"><strong>Tableau 1 : Algorithme pour tous les composants</strong></span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<caption><span class="caption-text"><strong>Tableau 1 : Algorithme pour tous les composants</strong></span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p>PHASE</p></td>
 <td><p>DESCRIPTION</p></td>
@@ -221,7 +221,7 @@ où un traitement personnalisé peut être inséré (à l’aide de flowCallback
 dériver des classes de flux, d’intégrité ou de transfert.</p>
 <p>Les composants ont juste des paramètres par défaut différents:</p>
 <table class="docutils align-center" id="id2">
-<caption><span class="caption-text"><strong>Tableau 2 : Utilisation de l’algorithme de flux par chaque composant</strong></span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<caption><span class="caption-text"><strong>Tableau 2 : Utilisation de l’algorithme de flux par chaque composant</strong></span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Composant</p></td>
 <td><p>Utilisation de l’algorithme</p></td>
@@ -359,7 +359,7 @@ des réseaux élégants de communiquer des processus séquentiels. (CSP dans
 le sens <a class="reference external" href="http://dl.acm.org/citation.cfm?doid=359576.359585">Hoare</a> )</p>
 </section>
 <section id="multiple-processes-instances-singletons-and-vip">
-<h2>Multiple processes: Instances, Singletons and VIP<a class="headerlink" href="#multiple-processes-instances-singletons-and-vip" title="Permalink to this heading"></a></h2>
+<h2>Multiple processes: Instances, Singletons and VIP<a class="headerlink" href="#multiple-processes-instances-singletons-and-vip" title="Link to this heading"></a></h2>
 <p>L’algorithme de flux ne se limite pas à un seul processus. De nombreux processus
 peuvent exécuter la même configuration de flux. Pour les composants sarra, sender, shovel
 et subscribe, on définit le paramètre <em>instance</em> au nombre de processus à exécuter
@@ -391,7 +391,7 @@ participants qui ont le vip publient et met à jour sa cache à partir des messa
 même liste de fichiers.</p>
 </section>
 <section id="correspondance-des-concepts-amqp-avec-sarracenia">
-<h2>Corréspondance des concepts AMQP avec Sarracenia<a class="headerlink" href="#correspondance-des-concepts-amqp-avec-sarracenia" title="Permalink to this heading"></a></h2>
+<h2>Corréspondance des concepts AMQP avec Sarracenia<a class="headerlink" href="#correspondance-des-concepts-amqp-avec-sarracenia" title="Link to this heading"></a></h2>
 <p>Une chose que l’on peut dire sans risque est qu’il faut comprendre un peu l’AMQP
 pour travailler avec Sarracenia. L’AMQP est un sujet vaste et intéressant en
 soi. On ne tente pas de toute expliquer ici. Cette section fournit juste
@@ -444,7 +444,7 @@ les fonctions de gestion diffèrent d’une implémentation à l’autre.</p>
 </dd>
 </dl>
 <section id="amqp-v09-rabbitmq-settings">
-<h3>AMQP v09 (Rabbitmq) Settings<a class="headerlink" href="#amqp-v09-rabbitmq-settings" title="Permalink to this heading"></a></h3>
+<h3>AMQP v09 (Rabbitmq) Settings<a class="headerlink" href="#amqp-v09-rabbitmq-settings" title="Link to this heading"></a></h3>
 <p>MetPX-Sarracenia n’est qu’un léger revêtement autour des protocoles de
 fil d’attente des messages. Pour ceux qui sont familiers avec
 les protocoles sous-jacents, voici les mappages:</p>
@@ -489,7 +489,7 @@ Si quelqu’un connaît l’AMQP, il comprend. Si ce n’est pas le cas, ils peu
 </ul>
 </section>
 <section id="mqtt-version-5-parametres">
-<h3>MQTT (version =5) Paramètres<a class="headerlink" href="#mqtt-version-5-parametres" title="Permalink to this heading"></a></h3>
+<h3>MQTT (version =5) Paramètres<a class="headerlink" href="#mqtt-version-5-parametres" title="Link to this heading"></a></h3>
 <p>MQTT est en fait un meilleur match à Sarracenia que AMQP, car il est
 entièrement basé sur des thèmes hiérarchiques. Alors que les sujets
 ne sont qu’un parmi une variété de choix pour les méthodes de routage dans AMQP.</p>
@@ -516,7 +516,7 @@ de ne s’assurer qu’une seule fois.</p></li>
 </section>
 </section>
 <section id="le-flux-a-travers-des-pompes">
-<h2>Le flux à travers des Pompes<a class="headerlink" href="#le-flux-a-travers-des-pompes" title="Permalink to this heading"></a></h2>
+<h2>Le flux à travers des Pompes<a class="headerlink" href="#le-flux-a-travers-des-pompes" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../../_images/sr3_exemple_de_flux.svg"><img alt="../../_images/sr3_exemple_de_flux.svg" class="align-center" height="793" src="../../_images/sr3_exemple_de_flux.svg" width="1122" /></a>
 <p>Une description du flux conventionnel de messages par le biais d’échanges sur une pompe :</p>
 <ul class="simple">
@@ -540,7 +540,7 @@ de l’utilisateur sur ce cluster. Cela empêche certains types de spoofing d’
 ne peuvent être publiés que par les propriétaires appropriés.</p>
 </section>
 <section id="utilisateurs-et-roles">
-<h2>Utilisateurs et rôles<a class="headerlink" href="#utilisateurs-et-roles" title="Permalink to this heading"></a></h2>
+<h2>Utilisateurs et rôles<a class="headerlink" href="#utilisateurs-et-roles" title="Link to this heading"></a></h2>
 <p>Les noms d’utilisateur pour l’authentification des pompes sont significatifs
 dans la mesure où ils sont visibles par tous. Ils sont utilisés dans le chemin
 du répertoire sur les arbres publics, ainsi que pour authentifier le courtier.

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -371,7 +371,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Téléchargement-en-utilisant-la-console">
-<h1>Téléchargement en utilisant la console<a class="headerlink" href="#Téléchargement-en-utilisant-la-console" title="Permalink to this heading"></a></h1>
+<h1>Téléchargement en utilisant la console<a class="headerlink" href="#Téléchargement-en-utilisant-la-console" title="Link to this heading"></a></h1>
 <p>Ce <a class="reference external" href="https://jupyter.org">bloc-notes jupyter</a> présente l’utilisation de <a class="reference external" href="https://metpx.github.io/sarracenia">Sarracenia version 3</a> à partir de la ligne de commande (principalement avec Linux, mais devrait être similaire avec Windows et Mac, la principale différence étant des conventions différentes pour l’emplacement de stockage des préférences et des sorties d’éxécution. C’est probablement la façon la plus simple de travailler avec Sarracenia. Vous configurez un flux pour télécharger des
 fichiers dans un répertoire, et vous pouvez lire le répertoire pour y traiter les fichiers.</p>
 <div class="nbinput nblast docutils container">
@@ -386,12 +386,12 @@ fichiers dans un répertoire, et vous pouvez lire le répertoire pour y traiter 
 </div>
 </div>
 <section id="Prérequis">
-<h2>Prérequis<a class="headerlink" href="#Prérequis" title="Permalink to this heading"></a></h2>
+<h2>Prérequis<a class="headerlink" href="#Prérequis" title="Link to this heading"></a></h2>
 <p>Ce code qui précède n’est qu’un moyen d’obtenir des bloc-notes jupyter pour installer metpx-sr3 sur un serveur. Créer des répertoires au cas où les gens utiliseraient l’accès à l’API sans exécuter les choses via l’API. Le prérequis de base est d’avoir installé metpx-sr3 d’une manière ou d’une autre, soit en tant que package .deb, soit en utilisant pip (ou pip3) disponible pour l’environnement utilisé par jupyter.</p>
 <p>Le reste de ce bloc-notes suppose que <a class="reference external" href="https://metpx.github.io/sarracenia">metpx-sr3</a> est installé.</p>
 </section>
 <section id="SR3">
-<h2>SR3<a class="headerlink" href="#SR3" title="Permalink to this heading"></a></h2>
+<h2>SR3<a class="headerlink" href="#SR3" title="Link to this heading"></a></h2>
 <p>L’interface de ligne de commande s’appelle <a class="reference external" href="../Reference/sr3.1.html">sr3</a> (abréviation de Sarracenia version 3). On définit les flux à exécuter à l’aide de fichiers de configuration dans un format simple : format <em>keyword</em> <em>value</em> (mot clé, valeur). Voici des exemples de configurations pour vous aider à démarrer:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -628,7 +628,7 @@ subscribe/hpfx_amis                      stopped        0     0     0     0
 <p>Voilà, une introduction à l’exécution des configurations dans Sarracenia à partir de la ligne de commande.</p>
 </section>
 <section id="Conclusion">
-<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this heading"></a></h2>
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading"></a></h2>
 <p>Si tout ce que vous voulez faire est d’obtenir des données à partir d’une pompe de données en temps réel, utiliser l’interface de ligne de commande pour contrôler certains processus qui s’exécutent tout le temps, afin qu’ils vident les fichiers dans un certain répertoire est la méthode la plus simple.</p>
 <p>Ce n’est pas très efficace cependant. Lorsque vous avez un grand nombre de fichiers sur lesquels travailler et que vous souhaitez un traitement à grande vitesse, il est préférable, dans le sens d’une charge CPU et d’E/S (I/O) réduite et en termes de vitesse de traitement d’avoir votre propre application informée de l’arrivée des fichiers, plutôt que de scanner un répertoire.</p>
 <p>La façon la plus simple de le faire est d’ajouter des rappels à vos flux. Nous couvrirons cela ensuite.</p>

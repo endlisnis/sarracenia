@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -133,22 +133,22 @@
 }
 </style>
 <section id="subscriber-guide">
-<h1>Subscriber Guide<a class="headerlink" href="#subscriber-guide" title="Permalink to this heading"></a></h1>
+<h1>Subscriber Guide<a class="headerlink" href="#subscriber-guide" title="Link to this heading"></a></h1>
 <section id="receiving-data-from-a-metpx-sarracenia-data-pump">
-<h2>Receiving Data from a MetPX-Sarracenia Data Pump<a class="headerlink" href="#receiving-data-from-a-metpx-sarracenia-data-pump" title="Permalink to this heading"></a></h2>
+<h2>Receiving Data from a MetPX-Sarracenia Data Pump<a class="headerlink" href="#receiving-data-from-a-metpx-sarracenia-data-pump" title="Link to this heading"></a></h2>
 <section id="revision-record">
-<h3>Revision Record<a class="headerlink" href="#revision-record" title="Permalink to this heading"></a></h3>
+<h3>Revision Record<a class="headerlink" href="#revision-record" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 </dl>
 </section>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h3>
 <p>A Sarracenia data pump is a web server with notifications
 for subscribers to know, quickly, when new data has arrived.
 To find out what data is already available on a pump,
@@ -304,7 +304,7 @@ dd.weather.gc.ca into the local machine’s /tmp/dd_amis directory.</p>
 </ul>
 </section>
 <section id="server-side-resources-allocated-for-subscribers">
-<h3>Server Side Resources Allocated for Subscribers<a class="headerlink" href="#server-side-resources-allocated-for-subscribers" title="Permalink to this heading"></a></h3>
+<h3>Server Side Resources Allocated for Subscribers<a class="headerlink" href="#server-side-resources-allocated-for-subscribers" title="Link to this heading"></a></h3>
 <p>Every configuration results in corresponding resources being declared on the broker,
 whose lifetime is controlled by the <em>expire</em> setting. The default <em>expire</em> is set
 to 300 seconds to avoid cluttering up servers with small experiments.  Set <em>expire</em>
@@ -338,7 +338,7 @@ advisable to have the pump de-allocate resources when they will not be needed
 for an extended periods, or when experimenting with different settings.</p>
 </section>
 <section id="working-with-multiple-configurations">
-<h3>Working with Multiple Configurations<a class="headerlink" href="#working-with-multiple-configurations" title="Permalink to this heading"></a></h3>
+<h3>Working with Multiple Configurations<a class="headerlink" href="#working-with-multiple-configurations" title="Link to this heading"></a></h3>
 <p>Place all configuration files, with the .conf suffix, in a standard
 directory: ~/.config/sr3/subscribe/ For example, if there are two files in
 that directory: dd_amis.conf and hpfx_amis.conf, one could then run:</p>
@@ -386,7 +386,7 @@ download queue.</p>
 </ul>
 </section>
 <section id="high-priority-delivery">
-<h3>High Priority Delivery<a class="headerlink" href="#high-priority-delivery" title="Permalink to this heading"></a></h3>
+<h3>High Priority Delivery<a class="headerlink" href="#high-priority-delivery" title="Link to this heading"></a></h3>
 <p>While the Sarracenia protocol does not provide explicit prioritization, the use
 of multiple queues provides similar benefits. Each configuration results
 in a queue declaration on the server side. Group products at like priority into
@@ -446,7 +446,7 @@ only subscribed to weather warnings in Common Alerting Protocol format, so there
 little to no queueing for that data.</p>
 </section>
 <section id="refining-selection">
-<h3>Refining Selection<a class="headerlink" href="#refining-selection" title="Permalink to this heading"></a></h3>
+<h3>Refining Selection<a class="headerlink" href="#refining-selection" title="Link to this heading"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>FIXME</strong>: Make a picture, with a:</p>
@@ -567,15 +567,15 @@ clause, where it means match any string.</p>
 </ul>
 </section>
 <section id="data-loss">
-<h3>Data Loss<a class="headerlink" href="#data-loss" title="Permalink to this heading"></a></h3>
+<h3>Data Loss<a class="headerlink" href="#data-loss" title="Link to this heading"></a></h3>
 <section id="outage">
-<h4>Outage<a class="headerlink" href="#outage" title="Permalink to this heading"></a></h4>
+<h4>Outage<a class="headerlink" href="#outage" title="Link to this heading"></a></h4>
 <p>The <em>expire</em> determines how long the data pump will hold onto your queued subscription,
 after a disconnection. The setting needs to be set longer than the longest outage your
 feed needs to survive without data loss.</p>
 </section>
 <section id="too-slow-queue-too-large">
-<h4>Too slow, Queue Too Large<a class="headerlink" href="#too-slow-queue-too-large" title="Permalink to this heading"></a></h4>
+<h4>Too slow, Queue Too Large<a class="headerlink" href="#too-slow-queue-too-large" title="Link to this heading"></a></h4>
 <p>The performance of a feed
 is important, as, serving the internet, a one client´s slow download affects all the other ones,
 and a few slow clients can overwhelm a data pump.  Often there are server policies in place
@@ -662,7 +662,7 @@ by the source. If you see that lag grow unreasonably, your subscription has a pe
 </section>
 </section>
 <section id="performance">
-<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this heading"></a></h3>
+<h3>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h3>
 <p>There are many aspects of Performance that we won’t go into here.</p>
 <p>more:</p>
 <p>Minimizing the time after a file has been delivered, and before it is picked up by the next hop:</p>
@@ -679,7 +679,7 @@ used mostly when python isn’t easy to get working.</p></li>
 <p>The most common desire when performance is raised is speed up their downloads.
 the steps are as follows:</p>
 <section id="optimize-file-selection-per-process">
-<h4>Optimize File Selection per Process<a class="headerlink" href="#optimize-file-selection-per-process" title="Permalink to this heading"></a></h4>
+<h4>Optimize File Selection per Process<a class="headerlink" href="#optimize-file-selection-per-process" title="Link to this heading"></a></h4>
 <ul>
 <li><p>Often users specif # as their subtopic, meaning the accept/rejects do all the work. In many cases, users are only interested in a small fraction of the files being published.  For best performance, <strong>Make *subtopic* as specific as possible</strong> to have minimize sending notification messages that are send by the broker and arrive on the subscriber only to be rejected. (use <em>log_reject</em> option to find such products.)</p></li>
 <li><p><strong>Place *reject* statements as early as possible in the configuration</strong>. As rejection saves processing of any later regex’s in the configuration.</p></li>
@@ -720,7 +720,7 @@ It may optimize a few specific cases, while slowing the broker down overall.</p>
 </ul>
 </section>
 <section id="use-instances">
-<h4>Use Instances<a class="headerlink" href="#use-instances" title="Permalink to this heading"></a></h4>
+<h4>Use Instances<a class="headerlink" href="#use-instances" title="Link to this heading"></a></h4>
 <p>Once you have optimized what a single subscriber can do, if it is not fast enough,
 then use the <em>instances</em> option to have more processes participate in the
 processing.  Having 10 or 20 instances is not a problem at all.  The maximum
@@ -740,7 +740,7 @@ out of performance.</p>
 <p>We haven’t needed to scale the broker itself yet.</p>
 </section>
 <section id="high-performance-duplicate-suppression">
-<h4>High Performance Duplicate Suppression<a class="headerlink" href="#high-performance-duplicate-suppression" title="Permalink to this heading"></a></h4>
+<h4>High Performance Duplicate Suppression<a class="headerlink" href="#high-performance-duplicate-suppression" title="Link to this heading"></a></h4>
 <p>One caveat to the use of <em>instances</em> is that <em>suppress_duplicates</em> is ineffective
 as the different occurrences of the same file will not be received by the same
 instance, and so with n instances, roughly n-1/n duplicates will slip through.</p>
@@ -769,7 +769,7 @@ products, which simplifies them as well.</p>
 </section>
 </section>
 <section id="plugins">
-<h3>Plugins<a class="headerlink" href="#plugins" title="Permalink to this heading"></a></h3>
+<h3>Plugins<a class="headerlink" href="#plugins" title="Link to this heading"></a></h3>
 <p>Default file processing is often fine, but there are also pre-built customizations that
 can be used to change processing done by components. The list of pre-built plugins is
 in a ‘plugins’ directory wherever the package is installed (viewable with <em>sr_subscribe list</em>)
@@ -863,7 +863,7 @@ put them in ~/.config/sr3/plugins, or anythere in your python environment’s se
 * <a class="reference internal" href="FlowCallbacks.html"><span class="doc">Writing Flow Callbacks</span></a></p>
 </section>
 <section id="file-rxpipe">
-<h3>file_rxpipe<a class="headerlink" href="#file-rxpipe" title="Permalink to this heading"></a></h3>
+<h3>file_rxpipe<a class="headerlink" href="#file-rxpipe" title="Link to this heading"></a></h3>
 <p>The file_rxpipe plugin that writes the names of files downloaded to a named pipe.
 Setting this up required two lines in an flow configuration file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mknod /home/peter/test/.rxpipe p
@@ -892,7 +892,7 @@ may corrupt one another in the named pipe.</p>
 </div>
 </section>
 <section id="anti-virus-scanning">
-<h3>Anti-Virus Scanning<a class="headerlink" href="#anti-virus-scanning" title="Permalink to this heading"></a></h3>
+<h3>Anti-Virus Scanning<a class="headerlink" href="#anti-virus-scanning" title="Link to this heading"></a></h3>
 <p>Another example of easy use of a plugin is to achieve anti-virus scanning.
 Assuming that ClamAV-daemon is installed, as well as the python3-pyclamd
 package, then one can add the following to a subscriber
@@ -951,7 +951,7 @@ configuration file:</p>
 </div>
 </section>
 <section id="logging-and-debugging">
-<h3>Logging and Debugging<a class="headerlink" href="#logging-and-debugging" title="Permalink to this heading"></a></h3>
+<h3>Logging and Debugging<a class="headerlink" href="#logging-and-debugging" title="Link to this heading"></a></h3>
 <p>As sr3 components usually run as a daemon (unless invoked in <em>foreground</em> mode)
 one normally examines its log file to find out how processing is going.  When only
 a single instance is running, one can view the log of the running process like so:</p>
@@ -1028,7 +1028,7 @@ example, on a node named goofy,  ~/.cache/sarra/log/ becomes ~/.cache/sarra/goof
 </li>
 </ul>
 <section id="flowcb-log-py-debug-tuning">
-<h4>flowcb/log.py Debug Tuning<a class="headerlink" href="#flowcb-log-py-debug-tuning" title="Permalink to this heading"></a></h4>
+<h4>flowcb/log.py Debug Tuning<a class="headerlink" href="#flowcb-log-py-debug-tuning" title="Link to this heading"></a></h4>
 <p>In addition to application-options, there is a flowcb that is used by default for logging, which
 has additional options:</p>
 <ul class="simple">
@@ -1048,7 +1048,7 @@ other values: on_start, on_stop, post, gather, … etc…</p>
 </ul>
 </section>
 <section id="moth-debug-tuning">
-<h4>moth Debug Tuning<a class="headerlink" href="#moth-debug-tuning" title="Permalink to this heading"></a></h4>
+<h4>moth Debug Tuning<a class="headerlink" href="#moth-debug-tuning" title="Link to this heading"></a></h4>
 <p>Turning on logLevel to debug on the entire application often results in inordinately large log files.
 By default the Messages Organized into Topic Hierarchies (Moth) parent class for the messaging protocols,
 ignores the application-wide debug option.  To enable debugging output from these classes, there
@@ -1071,7 +1071,7 @@ Sometimes during interoperability testing, one must see the raw notification mes
 </section>
 </section>
 <section id="housekeeping-metrics">
-<h3>Housekeeping Metrics<a class="headerlink" href="#housekeeping-metrics" title="Permalink to this heading"></a></h3>
+<h3>Housekeeping Metrics<a class="headerlink" href="#housekeeping-metrics" title="Link to this heading"></a></h3>
 <p>Flow Callbacks can implement a on_housekeeping entry point.  This entry point is usually
 an opportunity for callbacks to print metrics periodically.  The builtin log and
 resource monitoring callbacks, for example, give lines in the log like so:</p>
@@ -1090,7 +1090,7 @@ resource monitoring callbacks, for example, give lines in the log like so:</p>
 </ul>
 </section>
 <section id="redundant-file-reception">
-<h3>Redundant File Reception<a class="headerlink" href="#redundant-file-reception" title="Permalink to this heading"></a></h3>
+<h3>Redundant File Reception<a class="headerlink" href="#redundant-file-reception" title="Link to this heading"></a></h3>
 <p>In environments where high reliability is required, multiple servers
 are often configured to provide services. The Sarracenia approach to
 high availability is ´Active-Active´ in that all sources are online
@@ -1106,7 +1106,7 @@ sr_winnow. See the Administrator Guide for more information.</p>
 </ul>
 </section>
 <section id="web-proxies">
-<h3>Web Proxies<a class="headerlink" href="#web-proxies" title="Permalink to this heading"></a></h3>
+<h3>Web Proxies<a class="headerlink" href="#web-proxies" title="Link to this heading"></a></h3>
 <p>The best method of working with web proxies is to put the following
 in the default.conf:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">declare</span> <span class="n">env</span> <span class="n">HTTP_PROXY</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">yourproxy</span><span class="o">.</span><span class="n">com</span>
@@ -1117,7 +1117,7 @@ in the default.conf:</p>
 the proxy, not just a single configuration.</p>
 </section>
 <section id="api-level-access">
-<h3>API Level Access<a class="headerlink" href="#api-level-access" title="Permalink to this heading"></a></h3>
+<h3>API Level Access<a class="headerlink" href="#api-level-access" title="Link to this heading"></a></h3>
 <p>Sarracenia version 3 also offers python modules that can be called
 from existing python applications.</p>
 <ul class="simple">
@@ -1134,7 +1134,7 @@ that:</p>
 </ul>
 </section>
 <section id="more-information">
-<h3>More Information<a class="headerlink" href="#more-information" title="Permalink to this heading"></a></h3>
+<h3>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The <a class="reference external" href="../Reference/sr3.1.html">sr3(1)</a> is the definitive source of reference
 information for configuration options. For additional information,</p></li>

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -128,16 +128,16 @@
 }
 </style>
 <section id="administration-de-rabbitmq-adddendum">
-<h1>Administration de Rabbitmq Adddendum<a class="headerlink" href="#administration-de-rabbitmq-adddendum" title="Permalink to this heading"></a></h1>
+<h1>Administration de Rabbitmq Adddendum<a class="headerlink" href="#administration-de-rabbitmq-adddendum" title="Link to this heading"></a></h1>
 <p>Les anciennes modifications que les gens voulaient garder?</p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>AMQP signifie Advanced Message Queuing Protocol.
 C’est la définition d’un protocole qui vient de la nécessité de standardiser un système de changement de message asynchrone.
 Dans le jargon de l’AMQP, nous parlerons des producteurs de messages, des consommateurs de messages et des courtiers.</p>
 </section>
 <section id="installation-rabbitmq-server">
-<h2>installation RABBITMQ-SERVER<a class="headerlink" href="#installation-rabbitmq-server" title="Permalink to this heading"></a></h2>
+<h2>installation RABBITMQ-SERVER<a class="headerlink" href="#installation-rabbitmq-server" title="Link to this heading"></a></h2>
 <p>Sur nos machines qui doivent traiter les messages AMQP,
 nous installons le broker, en installant le paquet rabbitmq-server_3.3.5-1_all.deb.
 L’installation de base se fait comme suit sur toutes nos machines</p>
@@ -186,7 +186,7 @@ L’installation de base se fait comme suit sur toutes nos machines</p>
 </div>
 </section>
 <section id="installation-d-un-rabbitmq-server">
-<h2>Installation d’un RABBITMQ-SERVER<a class="headerlink" href="#installation-d-un-rabbitmq-server" title="Permalink to this heading"></a></h2>
+<h2>Installation d’un RABBITMQ-SERVER<a class="headerlink" href="#installation-d-un-rabbitmq-server" title="Link to this heading"></a></h2>
 <p>Sur le bunny, nous avons opté pour une installation en cluster.
 Pour ce faire, nous suivons les instructions suivantes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Stop</span> <span class="n">rabbitmq</span><span class="o">-</span><span class="n">server</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">nodes</span><span class="o">....</span>
@@ -211,7 +211,7 @@ Pour ce faire, nous suivons les instructions suivantes:</p>
 </div>
 </section>
 <section id="installation-ldap-rabbitmq-server">
-<h2>installation ldap RABBITMQ-SERVER<a class="headerlink" href="#installation-ldap-rabbitmq-server" title="Permalink to this heading"></a></h2>
+<h2>installation ldap RABBITMQ-SERVER<a class="headerlink" href="#installation-ldap-rabbitmq-server" title="Link to this heading"></a></h2>
 <p>Sur les serveurs où nous voulons avoir une authentification en utilisant les instructions suivantes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rabbitmq</span><span class="o">-</span><span class="n">plugins</span> <span class="n">enable</span> <span class="n">rabbitmq_auth_backend_ldap</span>
 
@@ -256,7 +256,7 @@ Pour ce faire, nous suivons les instructions suivantes:</p>
 </div>
 </section>
 <section id="utilisation-de-lamqp-sur-dd-ddi-dd-beta">
-<h2>Utilisation de l’AMQP sur DD (DDI, DD.BETA)<a class="headerlink" href="#utilisation-de-lamqp-sur-dd-ddi-dd-beta" title="Permalink to this heading"></a></h2>
+<h2>Utilisation de l’AMQP sur DD (DDI, DD.BETA)<a class="headerlink" href="#utilisation-de-lamqp-sur-dd-ddi-dd-beta" title="Link to this heading"></a></h2>
 <p>Nous (Peter) voulions faire une implémentation d’AMQP dans METPX.
 Pour ce faire, nous utilisons la bibliothèque python-amqplib qui implémente les fonctionnalités
 nécessaires d’AMQP en python.
@@ -273,7 +273,7 @@ nous avons également joint le nom du fichier d’où provient le message.
 Ainsi, dans notre pxReceiver, nous pouvons assurer le contenu du message dans le nom de fichier correspondant.
 Cette astuce n’est inutile que pour les changements amqp entre un expéditeur et un récepteur amqp…</p>
 <section id="notifications-pour-dd">
-<h3>Notifications pour DD<a class="headerlink" href="#notifications-pour-dd" title="Permalink to this heading"></a></h3>
+<h3>Notifications pour DD<a class="headerlink" href="#notifications-pour-dd" title="Link to this heading"></a></h3>
 <p>Nous avons trouvé dans AMQP une opportunité d’annoncer des produits lorsqu’ils arrivent sur DD.
 Donc un utilisateur, au lieu de vérifier constamment si un produit est présent sur DD.
 Pour le modifier, il pouvait s’abonner (topic AMQP) pour recevoir un message (l’url du produit)
@@ -350,7 +350,7 @@ Par exemple, voici une ligne de journal de dd-notify-wxo-b1.log:</p>
 </table>
 </section>
 <section id="utilitaires-installes-sur-les-serveurs-dd">
-<h3>Utilitaires installés sur les serveurs DD<a class="headerlink" href="#utilitaires-installes-sur-les-serveurs-dd" title="Permalink to this heading"></a></h3>
+<h3>Utilitaires installés sur les serveurs DD<a class="headerlink" href="#utilitaires-installes-sur-les-serveurs-dd" title="Link to this heading"></a></h3>
 <p>Lorsqu’un client se connecte au broker (rabbitmq-server), il doit créer une file
 d’attente et l’attacher à un échange. Nous pouvons donner à cette fil d’attente
 l’option qu’elle s’autodétruit lorsqu’elle n’est plus utilisée ou qu’elle est
@@ -380,13 +380,13 @@ Ainsi, tous les produits du datamart sont couverts par l’envoi de message.</p>
 </section>
 </section>
 <section id="utilisation-damqp-avec-urp-bunny-pds-op">
-<h2>Utilisation d’AMQP avec URP, BUNNY, PDS-OP<a class="headerlink" href="#utilisation-damqp-avec-urp-bunny-pds-op" title="Permalink to this heading"></a></h2>
+<h2>Utilisation d’AMQP avec URP, BUNNY, PDS-OP<a class="headerlink" href="#utilisation-damqp-avec-urp-bunny-pds-op" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>s’applique également au développement…</p>
 </div>
 <section id="de-urp-1-2-annoncer-a-bunny-op-quun-produit-est-pret">
-<h3>De URP-1/2 annoncer à BUNNY-OP qu’un produit est prêt<a class="headerlink" href="#de-urp-1-2-annoncer-a-bunny-op-quun-produit-est-pret" title="Permalink to this heading"></a></h3>
+<h3>De URP-1/2 annoncer à BUNNY-OP qu’un produit est prêt<a class="headerlink" href="#de-urp-1-2-annoncer-a-bunny-op-quun-produit-est-pret" title="Link to this heading"></a></h3>
 <p>Sur urp-1/2 un metpx roule l’expéditeur amqp_expose_db.conf qui annonce qu’un produit
 vient d’arriver dans la db de metpx avec un message de la forme</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Md5sum</span> <span class="n">of</span> <span class="n">product</span> <span class="n">name</span>           <span class="n">file</span><span class="o">-</span><span class="n">size</span>  <span class="n">url</span>                        <span class="n">dbname</span>
@@ -402,7 +402,7 @@ metpx et est visible à partir de l’URL du message.</p>
 </div>
 </section>
 <section id="bunny-op-et-dd-dispatcher-py">
-<h3>BUNNY-OP et dd_dispatcher.py<a class="headerlink" href="#bunny-op-et-dd-dispatcher-py" title="Permalink to this heading"></a></h3>
+<h3>BUNNY-OP et dd_dispatcher.py<a class="headerlink" href="#bunny-op-et-dd-dispatcher-py" title="Link to this heading"></a></h3>
 <p>bunny-op est un vip qui vit sur bunny1-op ou bunny2-op.
 C’est avec keepalived que nous nous assurons que ce vip réside sur l’un des bunny-op.
 Nous testons également que rabbitmq-server fonctionne sur le même serveur.
@@ -452,7 +452,7 @@ de sorte que les produits annoncés à partir de la clé d’échange <code clas
 sont uniques et représentent la première arrivée des 2 URP opérationnels.</p>
 </section>
 <section id="receptions-pds-op-de-messages-de-notification-de-repartition-wget-de-produits-radar">
-<h3>Réceptions PDS-OP de messages de notification de répartition, wget de produits radar<a class="headerlink" href="#receptions-pds-op-de-messages-de-notification-de-repartition-wget-de-produits-radar" title="Permalink to this heading"></a></h3>
+<h3>Réceptions PDS-OP de messages de notification de répartition, wget de produits radar<a class="headerlink" href="#receptions-pds-op-de-messages-de-notification-de-repartition-wget-de-produits-radar" title="Link to this heading"></a></h3>
 <p>Sur pds-op, un récepteur pull_urp, exécutez le fx_script pull_amqp_wget.py.
 Dans ce script, la commande suivante</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># shared queue : each pull receive 1 message (prefetch_count=1)</span>
@@ -469,7 +469,7 @@ Pour chaque message du formulaire</p>
 et placé dans la fil d’attente du récepteur qui est ensuite ignoré / acheminé de manière ordinaire.</p>
 </section>
 <section id="verification-depannage">
-<h3>Vérification / Dépannage<a class="headerlink" href="#verification-depannage" title="Permalink to this heading"></a></h3>
+<h3>Vérification / Dépannage<a class="headerlink" href="#verification-depannage" title="Link to this heading"></a></h3>
 <p>Dans l’ordre de production</p>
 <ol class="arabic simple">
 <li><dl class="simple">

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -137,9 +137,9 @@
 }
 </style>
 <section id="refactorisation-de-la-version-3">
-<h1>Refactorisation de la version 3<a class="headerlink" href="#refactorisation-de-la-version-3" title="Permalink to this heading"></a></h1>
+<h1>Refactorisation de la version 3<a class="headerlink" href="#refactorisation-de-la-version-3" title="Link to this heading"></a></h1>
 <section id="resume">
-<h2>Résumé<a class="headerlink" href="#resume" title="Permalink to this heading"></a></h2>
+<h2>Résumé<a class="headerlink" href="#resume" title="Link to this heading"></a></h2>
 <p>Ce document s’adresse aux développeurs qui ont besoin de travailler à la fois avec du code v2 et
 le refactor qui s’appelait à l’origine v3, mais qui s’appelait finalement sr3.
 Pour les développeurs familiers avec la v2, le document peut servir un peu de carte
@@ -162,7 +162,7 @@ code pythonique plus lisible, élégant.
 faciliter l’entretien.</p></li>
 </ul>
 <section id="objectifs-dopportunite">
-<h3>objectifs d’opportunité<a class="headerlink" href="#objectifs-dopportunite" title="Permalink to this heading"></a></h3>
+<h3>objectifs d’opportunité<a class="headerlink" href="#objectifs-dopportunite" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>ajouter des choses pour le faire fonctionner comme une API?</p></li>
@@ -177,7 +177,7 @@ faciliter l’entretien.</p></li>
 </div></blockquote>
 </section>
 <section id="etat-du-code">
-<h3>État du Code<a class="headerlink" href="#etat-du-code" title="Permalink to this heading"></a></h3>
+<h3>État du Code<a class="headerlink" href="#etat-du-code" title="Link to this heading"></a></h3>
 <p>À partir du 24/08/2021, le code sr3 réussit tous les mêmes tests de flux que la v2
 sur un ordinateur portable (sauf dynamique dans sr3 #407). Il exécute ces mêmes tests en utilisant les mêmes configurations, donc la compatibilité
 objectif est atteint. Sr3 accepte les URL du courtier mqtt et un problème est créé #389 pour amqp v1.
@@ -291,7 +291,7 @@ naturel avec plusieurs niveaux d’API qui peuvent être appris en consultant de
 </section>
 </section>
 <section id="v02-plugin-points-douloureux">
-<h2>V02 Plugin Points douloureux<a class="headerlink" href="#v02-plugin-points-douloureux" title="Permalink to this heading"></a></h2>
+<h2>V02 Plugin Points douloureux<a class="headerlink" href="#v02-plugin-points-douloureux" title="Link to this heading"></a></h2>
 <p>L’écriture de plugins devrait être une activité simple pour les personnes ayant une connaissance rudimentaire
 de Python et compréhension de la tâche à accomplir. Dans la version 2,
 écrire des plugins est beaucoup plus difficile qu’il ne devrait l’être.</p>
@@ -318,7 +318,7 @@ ou parce qu’une option a été définie par un client… s’agit-il d’un pa
 <li><p>apporter des modifications aux messages de notification est un peu compliqué, car ils ont évolué sur différents formats de message.</p></li>
 </ul>
 <section id="modifications-apportees-pour-resoudre-les-problemes">
-<h3>Modifications apportées pour résoudre les problèmes<a class="headerlink" href="#modifications-apportees-pour-resoudre-les-problemes" title="Permalink to this heading"></a></h3>
+<h3>Modifications apportées pour résoudre les problèmes<a class="headerlink" href="#modifications-apportees-pour-resoudre-les-problemes" title="Link to this heading"></a></h3>
 <ul>
 <li><p>utilisez importlib à partir de python, moyen beaucoup plus standard d’enregistrer des plugins.
 maintenant les erreurs de syntaxe seront détectées comme n’importe quel autre module python importé,
@@ -362,7 +362,7 @@ exemples : Bon : –config, et -c, BAD : -config –c .</p></li>
 </section>
 </section>
 <section id="navire-de-thesee">
-<h2>Navire de Thésée<a class="headerlink" href="#navire-de-thesee" title="Permalink to this heading"></a></h2>
+<h2>Navire de Thésée<a class="headerlink" href="#navire-de-thesee" title="Link to this heading"></a></h2>
 <p>Il se peut que la refactorisation inhérent à v03 aboutisse à un
 Vaisseau de Thésée, où il fonctionne de la même manière que v02, mais toutes
 les pièces sont différentes… évidemment une préoccupation/un risque…
@@ -371,7 +371,7 @@ pourrait être une fonctionnalité.</p>
 mappage des transcriptions de code source entre
 les deux versions, est clair:</p>
 <section id="mappages">
-<h3>Mappages<a class="headerlink" href="#mappages" title="Permalink to this heading"></a></h3>
+<h3>Mappages<a class="headerlink" href="#mappages" title="Link to this heading"></a></h3>
 <p>v2-&gt;sr3 variables d’instance:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">user_cache_dir</span> <span class="o">--&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">cfg_run_dir</span>
 </pre></div>
@@ -382,7 +382,7 @@ les deux versions, est clair:</p>
 </div>
 </section>
 <section id="dictionnaires-ou-membres-pour-les-proprietes">
-<h3>Dictionnaires ou membres pour les propriétés ?<a class="headerlink" href="#dictionnaires-ou-membres-pour-les-proprietes" title="Permalink to this heading"></a></h3>
+<h3>Dictionnaires ou membres pour les propriétés ?<a class="headerlink" href="#dictionnaires-ou-membres-pour-les-proprietes" title="Link to this heading"></a></h3>
 <p>Il semble y avoir une tension entre l’utilisation les membres de classe et les dictionnaires
 pour les paramètres. Les membres semblent plus pratiques, mais plus difficiles à manipuler,
 bien que nous ayons des idiomes équivalents. Argparse renvoie les options comme leurs propre
@@ -407,7 +407,7 @@ les rappels sont appelés, mais peuvent utiliser des propriétés ailleurs, si v
 </section>
 </section>
 <section id="problemes-connus-resolus-dans-sr3">
-<h2>Problèmes connus (résolus dans sr3)<a class="headerlink" href="#problemes-connus-resolus-dans-sr3" title="Permalink to this heading"></a></h2>
+<h2>Problèmes connus (résolus dans sr3)<a class="headerlink" href="#problemes-connus-resolus-dans-sr3" title="Link to this heading"></a></h2>
 <ul>
 <li><p>le passage des messages de journal est vraiment étrange. Nous n’avons pas compris ce que
 les objets de journalisation python étaient. Besoin de les utiliser de la manière normale.
@@ -429,7 +429,7 @@ refactorisez le fonctionnement du mécanisme du plug-in de somme de contrôle, p
 <p>totalement remanié maintenant. La classe d’intégrité est normale et distincte de flowcb.</p>
 </section>
 <section id="plan-concret-fait">
-<h2>Plan concret (Fait)<a class="headerlink" href="#plan-concret-fait" title="Permalink to this heading"></a></h2>
+<h2>Plan concret (Fait)<a class="headerlink" href="#plan-concret-fait" title="Link to this heading"></a></h2>
 <p>Remplacez sarra/sr_config par sarra/sr_cfg2. La nouvelle sr_cfg2 utilise argparse
 et un modèle plus simple pour l’analyse des fichiers de configuration. C’est devenu config.py</p>
 <p>faire sr.py accepter des opérations sur des sous-ensembles, de sorte qu’il deviennent le point d’entrée unique.
@@ -450,7 +450,7 @@ il faudra examiner dynamic_flow.</p>
 afin que les tâches puissent être déléguées avec un espoir raisonnable de succès.</p>
 </section>
 <section id="fait">
-<h2>Fait<a class="headerlink" href="#fait" title="Permalink to this heading"></a></h2>
+<h2>Fait<a class="headerlink" href="#fait" title="Link to this heading"></a></h2>
 <p>La fonctionnalité de sr_amqp.py est entièrement reproduite dans moth/amqp.py
 Toute la logique importante est préservée, mais elle est transcrite dans de nouvelles classes.
 Devrait avoir un comportement de récupération en cas d’échec identique. Mais ce n’est pas le cas. Nous avons le
@@ -509,7 +509,7 @@ reste au format yapf3.</p>
 <p>Ont également une limitation du débit de messages écrits dans le noyau, donc maintenant on a message_rate_min, et message_rate_max
 comme paramètres qui remplacent/déprécient le plugin v2 post_rate_limit.</p>
 <section id="inquietudes-abordees">
-<h3>Inquiétudes abordées<a class="headerlink" href="#inquietudes-abordees" title="Permalink to this heading"></a></h3>
+<h3>Inquiétudes abordées<a class="headerlink" href="#inquietudes-abordees" title="Link to this heading"></a></h3>
 <p>Cette section contient des problèmes qui ont été résolus.  Ils ont été gênants pendant un certain temps,
 donc en notant quelle était la solution.</p>
 <ul>
@@ -534,7 +534,7 @@ supprimer le sous-répertoire sum. sr_util.py</p></li>
 </ul>
 </section>
 <section id="revision-de-laccel">
-<h3>Révision de l’Accel<a class="headerlink" href="#revision-de-laccel" title="Permalink to this heading"></a></h3>
+<h3>Révision de l’Accel<a class="headerlink" href="#revision-de-laccel" title="Link to this heading"></a></h3>
 <p>la compatibilité des plugins est à l’étude… on a décidé de réécrire les plugins accel_* pour sr3, et
 changer l’API car celle de la v2 présente des lacunes fondamentales :</p>
 <ul class="simple">
@@ -557,7 +557,7 @@ sera déclenché par accel_threshold. Les accélérateurs https et sftp/scp sont
 </section>
 </section>
 <section id="todo">
-<h2>ToDo<a class="headerlink" href="#todo" title="Permalink to this heading"></a></h2>
+<h2>ToDo<a class="headerlink" href="#todo" title="Link to this heading"></a></h2>
 <p>Éléments de la liste todo qui ont été traités.</p>
 <ul class="simple">
 <li><p>migrer sr_xattr.py vers sarra/xattr.py (maintenant appelé sarracenia/filemetadata.py)</p></li>
@@ -590,14 +590,14 @@ CORRIGÉ 2021/02.</p></li>
 </ul>
 </section>
 <section id="bugs-preoccupations-problemes">
-<h2>BUGS/Préoccupations/Problèmes<a class="headerlink" href="#bugs-preoccupations-problemes" title="Permalink to this heading"></a></h2>
+<h2>BUGS/Préoccupations/Problèmes<a class="headerlink" href="#bugs-preoccupations-problemes" title="Link to this heading"></a></h2>
 <p>migré vers github issues avec la balise de v3only.</p>
 </section>
 <section id="apres-la-parite-de-vraies-ameliorations">
-<h2>Après la parité : de vraies améliorations<a class="headerlink" href="#apres-la-parite-de-vraies-ameliorations" title="Permalink to this heading"></a></h2>
+<h2>Après la parité : de vraies améliorations<a class="headerlink" href="#apres-la-parite-de-vraies-ameliorations" title="Link to this heading"></a></h2>
 </section>
 <section id="id1">
-<h2>TODO<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>TODO<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p>À ce stade, je suis en mesure de signaler les problèmes existants en tant que problèmes avec la balise v03only.
 voici donc les choses restantes après la refactorisation:</p>
 <ul class="simple">
@@ -631,7 +631,7 @@ de sorte qu’il ne nous reste presque plus de v2.</p></li>
 </ul>
 </section>
 <section id="pas-cuit-a-penser">
-<h2>Pas cuit / À penser<a class="headerlink" href="#pas-cuit-a-penser" title="Permalink to this heading"></a></h2>
+<h2>Pas cuit / À penser<a class="headerlink" href="#pas-cuit-a-penser" title="Link to this heading"></a></h2>
 <p>Les choses du code structurel qui ne sont pas réglées peuvent changer.
 Probablement besoin d’être réglé avant que quelqu’un d’autre ne plonge.</p>
 <ul class="simple">
@@ -663,7 +663,7 @@ où l’échec représente un échec permanent. et l’autre représente
 </ul>
 </section>
 <section id="fixme-differe">
-<h2>FIXME/Différé<a class="headerlink" href="#fixme-differe" title="Permalink to this heading"></a></h2>
+<h2>FIXME/Différé<a class="headerlink" href="#fixme-differe" title="Link to this heading"></a></h2>
 <p>Le but du travail principal de sr3 est d’obtenir un refactorisation au point où
 le code est compréhensible pour les nouveaux codeurs, de sorte que les tâches peuvent être attribuées.
 Cette section comprend un mélange de tâches qui, espérons-le, peuvent être assignées,</p>
@@ -692,7 +692,7 @@ version ultérieure.</p></li>
 </ul>
 </section>
 <section id="transition">
-<h2>Transition<a class="headerlink" href="#transition" title="Permalink to this heading"></a></h2>
+<h2>Transition<a class="headerlink" href="#transition" title="Link to this heading"></a></h2>
 <p>Je ne sais pas si une mise à niveau simple (de remplacement) est une bonne approche. Sera-t-il possible de tester sarra
 suffisamment pour que des mises à niveau de pompes entières soient possibles? ou des mises à niveau incrémentielles
 (parallèles) soit requis?</p>
@@ -701,7 +701,7 @@ que nous savons va se produira avec les plugins do_*. Si cela est suffisamment b
 traité, alors ce n’est peut-être pas un problème. D’autre part, s’il y a des subtilités,
 alors une approche parallèle pourrait être nécessaire.</p>
 <section id="remplacement">
-<h3>Remplacement<a class="headerlink" href="#remplacement" title="Permalink to this heading"></a></h3>
+<h3>Remplacement<a class="headerlink" href="#remplacement" title="Link to this heading"></a></h3>
 <p>Le paquet a le même nom que ceux de la v2 (metpx-sarracenia) qui différent que par le numéro de version.
 L’installation du nouveau remplace complètement l’ancien. Cela nécessite que la nouvelle version soit égale
 ou mieux que l’ancien dans tous les aspects, ou que l’installation soit limitée aux machines d’essai
@@ -710,7 +710,7 @@ jusqu’à ce que ce point soit atteint.</p>
 lorsque vous avez terminé.)</p>
 </section>
 <section id="parallel">
-<h3>Parallel<a class="headerlink" href="#parallel" title="Permalink to this heading"></a></h3>
+<h3>Parallel<a class="headerlink" href="#parallel" title="Link to this heading"></a></h3>
 <p>Nommez le paquet metpx-sarra3 et demandez au répertoire de classe python d’être sarra3 (au lieu de sarra.)
 (aussi ~/.config/sr3 et ~/.cache/sr3. Les fichiers .cache doivent probablement être différents car
 les fichiers de nouvelle tentative ont des formats différents? valider. ) On peut donc copier des configurations de l’ancien vers
@@ -725,14 +725,14 @@ avec une version ou l’autre sans avoir l’installation ou l’utilisation d�
 ce qui facilite la vérification de la compatibilité.</p>
 </section>
 <section id="conclusion">
-<h3>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h3>
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h3>
 <p>Avoir implémenté le modèle parallèle, avec APPNAME=sr3 ( ~/.config/sr3, ~/.cache/sr3 )
 le préfixe sr3_ remplace sr_ pour toutes les commandes et change la classe Python sarra au
 nom complet de sarracenia pour éviter les conflits entre les classes de python.</p>
 </section>
 </section>
 <section id="incompatibilites">
-<h2>Incompatibilités<a class="headerlink" href="#incompatibilites" title="Permalink to this heading"></a></h2>
+<h2>Incompatibilités<a class="headerlink" href="#incompatibilites" title="Link to this heading"></a></h2>
 <p>Il n’est pas censé y en avoir. Il s’agit d’une liste en cours d’exécution de choses à corriger ou à documenter.
 gros changements:</p>
 <ul>
@@ -792,7 +792,7 @@ cela pourrait être corrigé, si nous décidons que l’ancien comportement est 
 </ul>
 </section>
 <section id="fonctionnalites">
-<h2>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Permalink to this heading"></a></h2>
+<h2>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Tous les composants sont maintenant dérivés de la classe <em>flow</em> et exécutent déjà l’algorithme général
 conçu comme la base de la v2, mais jamais implémenté en tant que tel.</p></li>

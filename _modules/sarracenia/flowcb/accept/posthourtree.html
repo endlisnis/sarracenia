@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -91,7 +91,9 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Posthourtree"><a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.accept.posthourtree.Posthourtree">[docs]</a><span class="k">class</span> <span class="nc">Posthourtree</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
+<div class="viewcode-block" id="Posthourtree">
+<a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.accept.posthourtree.Posthourtree">[docs]</a>
+<span class="k">class</span> <span class="nc">Posthourtree</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">after_accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worklist</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span><span class="p">:</span>
@@ -99,6 +101,7 @@
             <span class="c1"># insert the hour into the rename header of the message to be posted.</span>
             <span class="n">message</span><span class="p">[</span><span class="s1">&#39;new_dir&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">datestr</span> 
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>  <span class="sa">f</span><span class="s2">&quot;post_hour_tree: new_dir: </span><span class="si">{</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;new_dir&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span></div>
+
 </pre></div>
 
            </div>

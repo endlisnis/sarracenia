@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -125,14 +125,14 @@
 }
 </style>
 <section id="ingestion-par-e-mail-avec-sarracenia">
-<h1>Ingestion par e-mail avec Sarracenia<a class="headerlink" href="#ingestion-par-e-mail-avec-sarracenia" title="Permalink to this heading"></a></h1>
+<h1>Ingestion par e-mail avec Sarracenia<a class="headerlink" href="#ingestion-par-e-mail-avec-sarracenia" title="Link to this heading"></a></h1>
 <p>Le courrier électronique est un moyen facile d’acheminer les données entre les serveurs. Utilisation du protocole POP3 (Post Office Protocol) et
 Protocole IMAP (Internet Message Access Protocol), les fichiers e-mail peuvent être diffusés via Sarracenia
 en étendant les fonctions du poll et de téléchargement.</p>
 <section id="polling">
-<h2>Polling<a class="headerlink" href="#polling" title="Permalink to this heading"></a></h2>
+<h2>Polling<a class="headerlink" href="#polling" title="Link to this heading"></a></h2>
 <section id="extending-polling-protocols">
-<h3>Extending Polling Protocols<a class="headerlink" href="#extending-polling-protocols" title="Permalink to this heading"></a></h3>
+<h3>Extending Polling Protocols<a class="headerlink" href="#extending-polling-protocols" title="Link to this heading"></a></h3>
 <p>De série, Sarracenia support les pollUrl pour sonder des serveurs avec les protocoles HTTP/HTTPS et SFTP/FTP.
 D’autres protocoles peuvent être pris en charge en sous-classant la classe sarracenia.flowcb.poll.Poll.
 Heureusement, il existe un plugin de poll par courrier, qui invoque un plugin.
@@ -181,7 +181,7 @@ fractal%
 <p>Maintenant, lorsque l’instance de poll est démarrée avec ce plugin,</p>
 </section>
 <section id="mise-en-oeuvre-de-pop-imap">
-<h3>Mise en œuvre de POP/IMAP<a class="headerlink" href="#mise-en-oeuvre-de-pop-imap" title="Permalink to this heading"></a></h3>
+<h3>Mise en œuvre de POP/IMAP<a class="headerlink" href="#mise-en-oeuvre-de-pop-imap" title="Link to this heading"></a></h3>
 <p>Avec les modules <em>poplib</em> et <em>imaplib</em> de Python, la pollUrl peut être analysée et le serveur de messagerie
 peut être connecté selon le schéma spécifié. Sarracenia peut extraire les informations d’identification de la pollUrl
 grâce à ses classes intégrées, aucun mot de passe n’a donc besoin d’être stocké dans le fichier de configuration pour se connecter. Pop3
@@ -241,7 +241,7 @@ config pour travailler, ouvrir un nouveau terminal et exécuter</p>
 </section>
 </section>
 <section id="telechargement">
-<h2>Téléchargement<a class="headerlink" href="#telechargement" title="Permalink to this heading"></a></h2>
+<h2>Téléchargement<a class="headerlink" href="#telechargement" title="Link to this heading"></a></h2>
 <p>Les messages électroniques, une fois récupérés, sont formatés au format MIME (Multipurpose Internet Mail Extensions) 1.0 brut,
 comme indiqué dans le premier en-tête du fichier. Les métadonnées de l’e-mail sont transmises dans une série d’en-têtes, dont une
 par ligne, dans le format nom:valeur. Cela peut être analysé pour les pièces jointes, les corps de message, les méthodes de codage, etc. Un
@@ -252,7 +252,7 @@ dans ~/.config/sarra/credentials.conf et récupére le message localement. Un ex
 peut être trouvé sous <strong>plugins</strong> comme
 <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v2_stable/sarra/plugins/download_email_ingest.py">download_email_ingest.py</a>.</p>
 <section id="decodage-du-contenu">
-<h3>Décodage du contenu<a class="headerlink" href="#decodage-du-contenu" title="Permalink to this heading"></a></h3>
+<h3>Décodage du contenu<a class="headerlink" href="#decodage-du-contenu" title="Link to this heading"></a></h3>
 <p>Une fois le message électronique téléchargé, un plug-in <em>on_file</em> peut analyser le fichier au format MIME et extraire
 la pièce jointe, généralement indiquée par l’en-tête Content-Disposition ou les champs corps/objet/adresse du message, à enregistrer en tant que
 nouveau fichier pour affiner davantage les données. Un exemple de plugin qui fait cela peut être trouvé sous <strong>plugins</strong> comme
@@ -304,7 +304,7 @@ terminal et exécutez:</p>
 </section>
 </section>
 <section id="cas-d-utilisation">
-<h2>Cas d’utilisation<a class="headerlink" href="#cas-d-utilisation" title="Permalink to this heading"></a></h2>
+<h2>Cas d’utilisation<a class="headerlink" href="#cas-d-utilisation" title="Link to this heading"></a></h2>
 <p>Les plugins d’ingestion d’e-mails ont été développés pour le cas d’utilisation des données en rafale courte, où l’information
 arrive dans les pièces jointes des messages. Auparavant, les e-mails étaient téléchargés avec un script fetchmail et un
 cronjob s’exécuterait de temps en temps pour détecter et décoder les nouveaux fichiers et leurs pièces jointes,

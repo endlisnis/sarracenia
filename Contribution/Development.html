@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -173,17 +173,17 @@
 }
 </style>
 <section id="metpx-sarracenia-developer-s-guide">
-<h1>MetPX-Sarracenia Developer’s Guide<a class="headerlink" href="#metpx-sarracenia-developer-s-guide" title="Permalink to this heading"></a></h1>
+<h1>MetPX-Sarracenia Developer’s Guide<a class="headerlink" href="#metpx-sarracenia-developer-s-guide" title="Link to this heading"></a></h1>
 <dl class="field-list simple">
 <dt class="field-odd">version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 </dl>
 <section id="tools-you-need">
-<h2>Tools you Need<a class="headerlink" href="#tools-you-need" title="Permalink to this heading"></a></h2>
+<h2>Tools you Need<a class="headerlink" href="#tools-you-need" title="Link to this heading"></a></h2>
 <p>To hack on the Sarracenia source, you need:</p>
 <ul class="simple">
 <li><p>A linux development environment, either a workstation, or a VM of some kind.
@@ -213,25 +213,25 @@ The flow test creates and destroys exchanges and will disrupt any active flows o
 <p>The rest of the Guide takes the above for granted.</p>
 </section>
 <section id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h2>
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="Documentation.html"><span class="doc">Documentation Standards</span></a> exist in /docs/Contribution/Documentation.rst
 process for locally building the docs are there, as well as live web-site maintenance
 methods.</p>
 <section id="where-to-put-options">
-<h3>Where to Put Options<a class="headerlink" href="#where-to-put-options" title="Permalink to this heading"></a></h3>
+<h3>Where to Put Options<a class="headerlink" href="#where-to-put-options" title="Link to this heading"></a></h3>
 <p>Options are documented in sr3_options(7) dictionary style in alphabetic order.
 Should it be worthwhile, examples of use could be added to other guides.</p>
 </section>
 </section>
 <section id="development">
-<h2>Development<a class="headerlink" href="#development" title="Permalink to this heading"></a></h2>
+<h2>Development<a class="headerlink" href="#development" title="Link to this heading"></a></h2>
 <p>In general, the development workflow is to get a laptop or a VM where one can run
 the flow_tests (available from <a class="reference external" href="http://github.com/MetPX/sr_insects">http://github.com/MetPX/sr_insects</a> ) The first step
 in configuring a development environment is ensuring that the sr_insects flow tests
 work, as they function as a gate for commits to important branches.</p>
 <p>Development is most commonly done on Ubuntu &gt;=18.04 platform.</p>
 <section id="v2-workflow">
-<h3>v2 Workflow<a class="headerlink" href="#v2-workflow" title="Permalink to this heading"></a></h3>
+<h3>v2 Workflow<a class="headerlink" href="#v2-workflow" title="Link to this heading"></a></h3>
 <p>Finished development work for version 2 is committed to on the v2_dev branch, which is used
 to produce daily snapshots. One should not normally commit changes to the v2_dev branch,
 but rather merge them from a working branch.</p>
@@ -256,7 +256,7 @@ on Launchpad.net:</p>
 </div></blockquote>
 </section>
 <section id="v3-workflow">
-<h3>v3 Workflow<a class="headerlink" href="#v3-workflow" title="Permalink to this heading"></a></h3>
+<h3>v3 Workflow<a class="headerlink" href="#v3-workflow" title="Link to this heading"></a></h3>
 <p>The upcoming version of Sarracenia is developed in the v03_wip (work in progress) branch.
 As the major refactor is substantially complete, the remaining work is now entirely constructive
 and all development is co-ordinated through issues exactly as v2 is. Issues unique to v3, be
@@ -277,14 +277,14 @@ A gate for merging to v03_wip is for a second developer to run the flow_tests.
 </div></blockquote>
 </section>
 <section id="sr-insects">
-<h3>sr_insects<a class="headerlink" href="#sr-insects" title="Permalink to this heading"></a></h3>
+<h3>sr_insects<a class="headerlink" href="#sr-insects" title="Link to this heading"></a></h3>
 <p>The sr_insects repository has it’s own issues DB, and work on sr_insects is encouraged.
 Both v2 and v3 are supported on the main branch of sr_insects.  That branch should be
 used to support all development in both versions….</p>
 </section>
 </section>
 <section id="local-installation">
-<h2>Local Installation<a class="headerlink" href="#local-installation" title="Permalink to this heading"></a></h2>
+<h2>Local Installation<a class="headerlink" href="#local-installation" title="Link to this heading"></a></h2>
 <p>There are many different ways to install python packages on a computer. Different developers
 will prefer different methods, and all the methods need to be tested prior to each release.
 Sarracenia can work with either mqtt or amqp (most mature and stable) message passing libraries.
@@ -301,7 +301,7 @@ one could also pull in all possible dependencies with <strong>pip install metpx-
 and not what is in the development tree.  It is necessary to install the package on
 the system in order to have it run the sr_insects tests.</p>
 <section id="prepare-a-vanilla-vm">
-<h3>Prepare a Vanilla VM<a class="headerlink" href="#prepare-a-vanilla-vm" title="Permalink to this heading"></a></h3>
+<h3>Prepare a Vanilla VM<a class="headerlink" href="#prepare-a-vanilla-vm" title="Link to this heading"></a></h3>
 <p>This section describes creating a test environment for use in a virtual machine. One way to build
 a virtual machine is to use multipass (<a class="reference external" href="https://multipass.run">https://multipass.run</a>) Assuming it is installed, one can
 create a vm with:</p>
@@ -411,7 +411,7 @@ ubuntu@flow:~/sr_insects$
 <p>Then one can run flow_tests from this shell normally.</p>
 </section>
 <section id="python-wheel">
-<h3>Python Wheel<a class="headerlink" href="#python-wheel" title="Permalink to this heading"></a></h3>
+<h3>Python Wheel<a class="headerlink" href="#python-wheel" title="Link to this heading"></a></h3>
 <p>If you have not used add_sr3.sh (which builds a debian package), then one can use this procedure
 for local installation on a computer with a python wheel for testing and development:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
@@ -428,7 +428,7 @@ then as root install that new package:</p>
 </div>
 </section>
 <section id="local-pip-install">
-<h3>Local Pip install<a class="headerlink" href="#local-pip-install" title="Permalink to this heading"></a></h3>
+<h3>Local Pip install<a class="headerlink" href="#local-pip-install" title="Link to this heading"></a></h3>
 <p>For local installation on a computer, using a pip
 For testing and development:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pip3 install -e .
@@ -440,7 +440,7 @@ The above will install the package in ~/.local/bin… so need to ensure the path
 that directory.</p>
 </section>
 <section id="debian-ubuntu">
-<h3>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Permalink to this heading"></a></h3>
+<h3>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Link to this heading"></a></h3>
 <p>For local installation on a computer, using a debian package.
 This process builds a local .deb in the parent directory using standard debian mechanisms.
 - Check the <strong>build-depends</strong> line in <em>debian/control</em> for dependencies that might be needed to build from source.
@@ -455,7 +455,7 @@ This process builds a local .deb in the parent directory using standard debian m
 The options are detailed below:</p>
 </section>
 <section id="committing-code">
-<h3>Committing Code<a class="headerlink" href="#committing-code" title="Permalink to this heading"></a></h3>
+<h3>Committing Code<a class="headerlink" href="#committing-code" title="Link to this heading"></a></h3>
 <p>What should be done prior to committing to the main branch?
 Checklist:</p>
 <ul class="simple">
@@ -471,7 +471,7 @@ to issue a pull request. Eventually, we get to <a class="reference internal" hre
 </section>
 </section>
 <section id="sr-insects-tests-description">
-<h2>sr_insects Tests Description<a class="headerlink" href="#sr-insects-tests-description" title="Permalink to this heading"></a></h2>
+<h2>sr_insects Tests Description<a class="headerlink" href="#sr-insects-tests-description" title="Link to this heading"></a></h2>
 <p>Before committing code to the main branch, as a Quality Assurance measure, one should run
 all available self-tests. It is assumed that the specific changes in the code have already been unit
 tested. Please add self-tests as appropriate to this process to reflect the new ones.
@@ -508,27 +508,27 @@ git commit -a  # on the branch...
 </pre></div>
 </div>
 <section id="unit">
-<h3>Unit<a class="headerlink" href="#unit" title="Permalink to this heading"></a></h3>
+<h3>Unit<a class="headerlink" href="#unit" title="Link to this heading"></a></h3>
 <p>The <em>unit</em> test in sr_insects is the shortest one taking a minute or so, and not requiring
 much configuration at all. They are sanity tests of code behaviour. Generally takes a minute
 or two on a laptop.</p>
 </section>
 <section id="static-flow">
-<h3>Static Flow<a class="headerlink" href="#static-flow" title="Permalink to this heading"></a></h3>
+<h3>Static Flow<a class="headerlink" href="#static-flow" title="Link to this heading"></a></h3>
 <p>The <em>static_flow</em> tests are a bit more complicated, testing more components, using single
 threaded components in a linear way (all data moves uniformly forward.) It should be
 more straight-forward to identify issues as there is no deletion and so it lends itself well
 to repeating subset tests to identify individual issues. It takes about two minutes on a laptop.</p>
 </section>
 <section id="flakey-broker">
-<h3>Flakey Broker<a class="headerlink" href="#flakey-broker" title="Permalink to this heading"></a></h3>
+<h3>Flakey Broker<a class="headerlink" href="#flakey-broker" title="Link to this heading"></a></h3>
 <p>The <em>flakey_broker</em> tests are the same as the <em>static_flow</em>, but slowed down so that they last
 a few minutes, and the broker is shutdown and restarted while the posting is happenning.
 Note that post_log prints before a notification message is posted (because post_log is an on_post plugin, and
 that action, allows one to modify the notification message, so it needs to be before the post actually happens.)</p>
 </section>
 <section id="dynamic-flow">
-<h3>Dynamic Flow<a class="headerlink" href="#dynamic-flow" title="Permalink to this heading"></a></h3>
+<h3>Dynamic Flow<a class="headerlink" href="#dynamic-flow" title="Link to this heading"></a></h3>
 <p>The <em>dynamic_flow</em> test add advanced features:  multi-instances, the winnow component, retry logic testing,
 and includes file removals as well. Most of the documentation here refers to runnig the
 dynamic_flow test, as it is the most complicated one, and the ancestor of the others.  The unit
@@ -700,7 +700,7 @@ flows defined:</p>
 <img alt="../_images/cFlow_test.svg" src="../_images/cFlow_test.svg" /></section>
 </section>
 <section id="running-flow-tests">
-<h2>Running Flow Tests<a class="headerlink" href="#running-flow-tests" title="Permalink to this heading"></a></h2>
+<h2>Running Flow Tests<a class="headerlink" href="#running-flow-tests" title="Link to this heading"></a></h2>
 <p>This section documents these steps in much more detail.
 Before one can run the sr_insects tests, some pre-requisites must be taken care of.
 Note that there is Github Actions integration for at least the main branch
@@ -716,7 +716,7 @@ a bit unreliable, typically it may take a few retries for it to work completely
 perhaps 1 or two will be left, and on the third pass the last one passes.)</p>
 </div>
 <section id="install-servers-on-workstation">
-<h3>Install Servers on Workstation<a class="headerlink" href="#install-servers-on-workstation" title="Permalink to this heading"></a></h3>
+<h3>Install Servers on Workstation<a class="headerlink" href="#install-servers-on-workstation" title="Link to this heading"></a></h3>
 <p>To prepare a computer to run the flow test, one must install some server
 software and configurations. This same work is done by travis/flow_autoconfig.sh
 which is run in <a class="reference internal" href="#prepare-a-vanilla-vm">Prepare a Vanilla VM</a> but if you need to configure it
@@ -786,7 +786,7 @@ suite.</p>
 </div>
 </section>
 <section id="setup-flow-test-environment">
-<h3>Setup Flow Test Environment<a class="headerlink" href="#setup-flow-test-environment" title="Permalink to this heading"></a></h3>
+<h3>Setup Flow Test Environment<a class="headerlink" href="#setup-flow-test-environment" title="Link to this heading"></a></h3>
 <p>Once the server environment is established, the flow tests use sftp transfers to localhost.</p>
 <p>It is also required that passwordless ssh access is configured on the test host
 for the system user that will run the flow test. This can be done by creating
@@ -901,7 +901,7 @@ blacklab%
 Only proceed to the flow_check tests if all the tests in flow_setup.sh pass.</p>
 </section>
 <section id="run-a-flow-test">
-<h3>Run A Flow Test<a class="headerlink" href="#run-a-flow-test" title="Permalink to this heading"></a></h3>
+<h3>Run A Flow Test<a class="headerlink" href="#run-a-flow-test" title="Link to this heading"></a></h3>
 <p>The flow_check.sh script reads the log files of all the components started, and compares the number
 of notification messages, looking for a correspondence within +- 10%   It takes a few minutes for the
 configuration to run before there is enough data to do the proper measurements:</p>
@@ -970,7 +970,7 @@ that only a few minutes worth of disk space is used at a given time, and allows 
 memory usage over time, and the housekeeping functions of on_heartbeat processing.</p>
 </section>
 <section id="flow-cleanup">
-<h3>Flow Cleanup<a class="headerlink" href="#flow-cleanup" title="Permalink to this heading"></a></h3>
+<h3>Flow Cleanup<a class="headerlink" href="#flow-cleanup" title="Link to this heading"></a></h3>
 <p>When done testing, run the ./flow_cleanup.sh script, which will kill the
 running servers and daemons, and delete all configuration files installed for
 the flow test, all queues, exchanges, and logs. This also needs to be done
@@ -1086,7 +1086,7 @@ Done!
 transform_flow, and dynamic_flow.</p>
 </section>
 <section id="dynamic-flow-test-length">
-<h3>Dynamic Flow Test Length<a class="headerlink" href="#dynamic-flow-test-length" title="Permalink to this heading"></a></h3>
+<h3>Dynamic Flow Test Length<a class="headerlink" href="#dynamic-flow-test-length" title="Link to this heading"></a></h3>
 <p>While most tests have a fixed duration, the dynamic flow test queries a remote
 server and can run for any length desired. The dynamic flow_test length defaults
 to 1000 files being flowed through the test cases. When in rapid development,
@@ -1179,10 +1179,10 @@ blacklab%
 <p>This test was fired up at the end of the day, as it takes several hours, and results examined the next morning.</p>
 </section>
 <section id="high-volume-sample">
-<h3>High volume sample<a class="headerlink" href="#high-volume-sample" title="Permalink to this heading"></a></h3>
+<h3>High volume sample<a class="headerlink" href="#high-volume-sample" title="Link to this heading"></a></h3>
 <p>Trying the flow test with higher volume of notification messages (ie. 100 000) is one step closer to the goal of having a flow test running continously. This is motivated by our testing purposes.</p>
 <section id="limitation">
-<h4>Limitation<a class="headerlink" href="#limitation" title="Permalink to this heading"></a></h4>
+<h4>Limitation<a class="headerlink" href="#limitation" title="Link to this heading"></a></h4>
 <p>Ubuntu have a limitation that tops inotify watches and that we encountered in <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/204">#204</a> . We can overcome this by setting the related sysctl variable. First, check what is the limit of your system:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sysctl fs.inotify.max_user_watches
 fs.inotify.max_user_watches = 8196
@@ -1199,7 +1199,7 @@ fs.inotify.max_user_watches = 8196
 <p>Then excute <code class="docutils literal notranslate"><span class="pre">sysctl</span> <span class="pre">-p</span></code> and the system should now support high volume of inotify events.</p>
 </section>
 <section id="flow-test-stuck">
-<h4>Flow Test Stuck<a class="headerlink" href="#flow-test-stuck" title="Permalink to this heading"></a></h4>
+<h4>Flow Test Stuck<a class="headerlink" href="#flow-test-stuck" title="Link to this heading"></a></h4>
 <p>Sometimes flow tests (especially for large numbers) get stuck because of problems with the data stream (where multiple files get the same name) and so earlier versions remove later versions and then retries will always fail. Eventually, we will succeed in cleaning up the dd.weather.gc.ca stream, but for now sometimes a flow_check gets stuck ‘Retrying.’ The test has run all the notification messages required, and is at a phase of emptying out retries, but just keeps retrying forever with a variable number of items that never drops to zero.</p>
 <p>To recover from this state without discarding the results of a long test, do:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>^C to interrupt the flow_check.sh 100000
@@ -1288,7 +1288,7 @@ would indicate it.</p>
 </section>
 </section>
 <section id="flow-tests-with-mqtt">
-<h3>Flow tests with MQTT<a class="headerlink" href="#flow-tests-with-mqtt" title="Permalink to this heading"></a></h3>
+<h3>Flow tests with MQTT<a class="headerlink" href="#flow-tests-with-mqtt" title="Link to this heading"></a></h3>
 <p>Flow tests can be run where certain components use the MQTT protocol, instead of AMQP.</p>
 <p>FIXME: steps missing, more clarity required.</p>
 <ul class="simple">
@@ -1301,7 +1301,7 @@ would indicate it.</p>
 </section>
 </section>
 <section id="commits-to-the-main-branch">
-<h2>Commits to the Main Branch<a class="headerlink" href="#commits-to-the-main-branch" title="Permalink to this heading"></a></h2>
+<h2>Commits to the Main Branch<a class="headerlink" href="#commits-to-the-main-branch" title="Link to this heading"></a></h2>
 <p>Aside from typos, language fixups in the documentation, and incrementing
 the version, developers are not expected to commit to main. All work
 happens on development branches, and all testing is expected to pass before
@@ -1329,7 +1329,7 @@ the tests in their own development environment. If it passes in the local develo
 environment one can approve a merge in spite of Github Actions’ complaints.</p>
 </section>
 <section id="main-branches">
-<h2>Main Branches<a class="headerlink" href="#main-branches" title="Permalink to this heading"></a></h2>
+<h2>Main Branches<a class="headerlink" href="#main-branches" title="Link to this heading"></a></h2>
 <p>There is a long running discussion about <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/139">Which Version is stable</a>
 The current set up is that there are four main branches:</p>
 <ul class="simple">
@@ -1346,7 +1346,7 @@ as many systems as possible. used to build packages on the stable: <a class="ref
 </ul>
 </section>
 <section id="repositories">
-<h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this heading"></a></h2>
+<h2>Repositories<a class="headerlink" href="#repositories" title="Link to this heading"></a></h2>
 <p>For Ubuntu operating systems, the launchpad.net site is the best way to provide packages that are fully integrated
 ( built against current patch levels of all dependencies (software components that Sarracenia relies
 on to provide full functionality.)) Ideally, when running a server, a one should use one of the repositories,
@@ -1365,7 +1365,7 @@ merge from v2_dev branch into v2_stable one, and manually trigger a build.</p></
 <p>for more discussion see <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/139">Which Version is stable</a></p>
 </section>
 <section id="building-a-release">
-<h2>Building a Release<a class="headerlink" href="#building-a-release" title="Permalink to this heading"></a></h2>
+<h2>Building a Release<a class="headerlink" href="#building-a-release" title="Link to this heading"></a></h2>
 <p>MetPX-Sarracenia is distributed in a few different ways, and each has it’s own build process.
 Packaged releases are always preferable to one off builds, because they are reproducible.</p>
 <p>When development requires testing across a wide range of servers, it is preferred to make
@@ -1382,7 +1382,7 @@ using the repository succeeds.</p></li>
 <li><p>increment the version for future commits to v2_dev or v03_wip.</p></li>
 </ul>
 <section id="versioning-scheme">
-<h3>Versioning Scheme<a class="headerlink" href="#versioning-scheme" title="Permalink to this heading"></a></h3>
+<h3>Versioning Scheme<a class="headerlink" href="#versioning-scheme" title="Link to this heading"></a></h3>
 <p>Each release will be versioned as <code class="docutils literal notranslate"><span class="pre">&lt;protocol</span> <span class="pre">version&gt;.&lt;YY&gt;.&lt;MM&gt;</span> <span class="pre">&lt;segment&gt;</span></code></p>
 <p>Where:</p>
 <ul class="simple">
@@ -1449,7 +1449,7 @@ This has a major impact on processes…</p>
 <p>The first alpha release in January 2016 would be versioned as <code class="docutils literal notranslate"><span class="pre">metpx-sarracenia-2.16.01a01</span></code></p>
 </section>
 <section id="set-the-version">
-<h3>Set the Version<a class="headerlink" href="#set-the-version" title="Permalink to this heading"></a></h3>
+<h3>Set the Version<a class="headerlink" href="#set-the-version" title="Link to this heading"></a></h3>
 <p>This is done to <em>start</em> development on a version.</p>
 <ul class="simple">
 <li><p>git checkout v03_wip</p></li>
@@ -1465,7 +1465,7 @@ cycle begins in August, the version in main will be 3.19.08b1… but if developm
 continues into September, one should use this procedure the change the version to 3.19.09b1.</p>
 </section>
 <section id="releasing">
-<h3>Releasing<a class="headerlink" href="#releasing" title="Permalink to this heading"></a></h3>
+<h3>Releasing<a class="headerlink" href="#releasing" title="Link to this heading"></a></h3>
 <p>When development for a version is complete. The following should occur:</p>
 <p>A tag should be created to identify the end of the cycle:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">v03_wip</span>
@@ -1487,7 +1487,7 @@ in v03_wip to the next logical increment to ensure no further development
 occurs that is identified as the released version.</p>
 </section>
 <section id="pypi">
-<h3>PyPi<a class="headerlink" href="#pypi" title="Permalink to this heading"></a></h3>
+<h3>PyPi<a class="headerlink" href="#pypi" title="Link to this heading"></a></h3>
 <p>Pypi Credentials go in ~/.pypirc.  Sample Content:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">pypi</span><span class="p">]</span>
 <span class="n">username</span><span class="p">:</span> <span class="n">SupercomputingGCCA</span>
@@ -1520,9 +1520,9 @@ For seamless upgrade, early testers need to do supply the <code class="docutils 
 </div>
 </section>
 <section id="launchpad">
-<h3>Launchpad<a class="headerlink" href="#launchpad" title="Permalink to this heading"></a></h3>
+<h3>Launchpad<a class="headerlink" href="#launchpad" title="Link to this heading"></a></h3>
 <section id="automated-build">
-<h4>Automated Build<a class="headerlink" href="#automated-build" title="Permalink to this heading"></a></h4>
+<h4>Automated Build<a class="headerlink" href="#automated-build" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Ensure the code mirror is updated by checking the <strong>Import details</strong> by checking <a class="reference external" href="https://code.launchpad.net/~ssc-hpc-chp-spc/metpx-sarracenia/+git/trunk">this page for sarracenia</a></p></li>
 <li><p>if the code is out of date, do <strong>Import Now</strong> , and wait a few minutes while it is updated.</p></li>
@@ -1535,7 +1535,7 @@ For seamless upgrade, early testers need to do supply the <code class="docutils 
 </ul>
 </section>
 <section id="building-a-windows-installer">
-<h4>Building a Windows Installer<a class="headerlink" href="#building-a-windows-installer" title="Permalink to this heading"></a></h4>
+<h4>Building a Windows Installer<a class="headerlink" href="#building-a-windows-installer" title="Link to this heading"></a></h4>
 <p>One can also build a Windows installer with that
 <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/main/generate-win-installer.sh">script</a>.
 It needs to be run from a Linux OS (preferably Ubuntu 18) in the root directory of Sarracenia’s git.
@@ -1560,7 +1560,7 @@ Then, from the shell, run:</p>
 <p>The final package will be generated into build/nsis directory.</p>
 </section>
 <section id="daily-builds">
-<h4>Daily Builds<a class="headerlink" href="#daily-builds" title="Permalink to this heading"></a></h4>
+<h4>Daily Builds<a class="headerlink" href="#daily-builds" title="Link to this heading"></a></h4>
 <p>Daily builds are configured
 using <a class="reference external" href="https://code.launchpad.net/~ssc-hpc-chp-spc/+recipe/sarracenia-daily">this recipe for python</a>
 and <a class="reference external" href="https://code.launchpad.net/~ssc-hpc-chp-spc/+recipe/metpx-sarrac-daily">this recipe for C</a> and
@@ -1568,7 +1568,7 @@ are run once per day when changes to the repository occur. These packages are st
 One can also <strong>Request build(s)</strong> on demand if desired.</p>
 </section>
 <section id="manual-process">
-<h4>Manual Process<a class="headerlink" href="#manual-process" title="Permalink to this heading"></a></h4>
+<h4>Manual Process<a class="headerlink" href="#manual-process" title="Link to this heading"></a></h4>
 <p>The process for manually publishing packages to Launchpad ( <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc">https://launchpad.net/~ssc-hpc-chp-spc</a> )
 involves a more complex set of steps, and so the convenient script <code class="docutils literal notranslate"><span class="pre">publish-to-launchpad.sh</span></code> will
 be the easiest way to do that. Currently the only supported releases are <strong>trusty</strong> and <strong>xenial</strong>.
@@ -1599,14 +1599,14 @@ So the command used is:</p>
 in order to do the last two steps.</p>
 </section>
 <section id="backporting-a-dependency">
-<h4>Backporting a Dependency<a class="headerlink" href="#backporting-a-dependency" title="Permalink to this heading"></a></h4>
+<h4>Backporting a Dependency<a class="headerlink" href="#backporting-a-dependency" title="Link to this heading"></a></h4>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backportpackage</span> <span class="o">-</span><span class="n">k</span><span class="o">&lt;</span><span class="n">key</span> <span class="nb">id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">s</span> <span class="n">bionic</span> <span class="o">-</span><span class="n">d</span> <span class="n">xenial</span> <span class="o">-</span><span class="n">u</span> <span class="n">ppa</span><span class="p">:</span><span class="n">ssc</span><span class="o">-</span><span class="n">hpc</span><span class="o">-</span><span class="n">chp</span><span class="o">-</span><span class="n">spc</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">metpx</span><span class="o">-</span><span class="n">daily</span> <span class="n">librabbitmq</span>
 </pre></div>
 </div>
 </section>
 <section id="building-an-rpm">
-<h4>Building an RPM<a class="headerlink" href="#building-an-rpm" title="Permalink to this heading"></a></h4>
+<h4>Building an RPM<a class="headerlink" href="#building-an-rpm" title="Link to this heading"></a></h4>
 <p>This process is currently a bit clumsy, but it can provide usable RPM packages.
 Example of creating a multipass image for fedora to build with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">multipass</span> <span class="n">launch</span> <span class="o">-</span><span class="n">m</span> <span class="mi">8</span><span class="n">g</span> <span class="o">--</span><span class="n">name</span> <span class="n">fed34</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirror</span><span class="o">.</span><span class="n">csclub</span><span class="o">.</span><span class="n">uwaterloo</span><span class="o">.</span><span class="n">ca</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="mi">34</span><span class="o">/</span><span class="n">Cloud</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">Fedora</span><span class="o">-</span><span class="n">Cloud</span><span class="o">-</span><span class="n">Base</span><span class="o">-</span><span class="mi">34</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="n">x86_64</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">xz</span>
@@ -1684,7 +1684,7 @@ as all versions are new enough.  Such a package should install well.</p>
 </section>
 </section>
 <section id="github">
-<h2>github<a class="headerlink" href="#github" title="Permalink to this heading"></a></h2>
+<h2>github<a class="headerlink" href="#github" title="Link to this heading"></a></h2>
 <p>Click on Releases, Edit the release:</p>
 <ul class="simple">
 <li><p>should we have release names?</p></li>
@@ -1697,9 +1697,9 @@ drag and drop into the release.</p></li>
 launchpad.net doesn’t seem to keep old versions around.</p>
 </section>
 <section id="development-environment">
-<h2>Development Environment<a class="headerlink" href="#development-environment" title="Permalink to this heading"></a></h2>
+<h2>Development Environment<a class="headerlink" href="#development-environment" title="Link to this heading"></a></h2>
 <section id="local-python">
-<h3>Local Python<a class="headerlink" href="#local-python" title="Permalink to this heading"></a></h3>
+<h3>Local Python<a class="headerlink" href="#local-python" title="Link to this heading"></a></h3>
 <p>Working with a non-packaged version:</p>
 <p>notes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
@@ -1707,16 +1707,16 @@ launchpad.net doesn’t seem to keep old versions around.</p>
 </div>
 </section>
 <section id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
 <p>Install winpython from github.io version 3.5 or higher.  Then use pip to install from PyPI.</p>
 </section>
 </section>
 <section id="conventions">
-<h2>Conventions<a class="headerlink" href="#conventions" title="Permalink to this heading"></a></h2>
+<h2>Conventions<a class="headerlink" href="#conventions" title="Link to this heading"></a></h2>
 <p>Below are some coding practices that are meant to guide developers when contributing to sarracenia.
 They are not hard and fast rules, just guidance.</p>
 <section id="when-to-report">
-<h3>When to Report<a class="headerlink" href="#when-to-report" title="Permalink to this heading"></a></h3>
+<h3>When to Report<a class="headerlink" href="#when-to-report" title="Link to this heading"></a></h3>
 <p>sr_report(7) notification messages should be emitted to indicate final disposition of the data itself, not
 any notifications or report messages (don’t report report messages, it becomes an infinite loop!)
 For debugging and other information, the local log file is used.  For example, sr_shovel does
@@ -1724,7 +1724,7 @@ not emit any sr_report(7) messages, because no data is transferred, only message
 </section>
 </section>
 <section id="adding-a-new-dependency">
-<h2>Adding a New Dependency<a class="headerlink" href="#adding-a-new-dependency" title="Permalink to this heading"></a></h2>
+<h2>Adding a New Dependency<a class="headerlink" href="#adding-a-new-dependency" title="Link to this heading"></a></h2>
 <p>Dependency Management is a complicated topic, because python has many different installation methods into disparate environments, and Sarracenia is multi-platform.  Standard python practice for dependencies is to make
 them <em>required</em> by listing them in requirements.txt or setup.py, and require all users to install them.
 In most python applications, if a dependency is missing, it just crashes with a import failure message

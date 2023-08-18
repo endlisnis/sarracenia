@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -150,9 +150,9 @@
 }
 </style>
 <section id="version-3-refactor">
-<h1>Version 3 Refactor<a class="headerlink" href="#version-3-refactor" title="Permalink to this heading"></a></h1>
+<h1>Version 3 Refactor<a class="headerlink" href="#version-3-refactor" title="Link to this heading"></a></h1>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>This document is aimed at developers who need to work with both v2 code and
 the refactor that was originally called v3, but eventually was called sr3.
 For developers familiar with v2, the document can serve as a bit of a map
@@ -175,7 +175,7 @@ more readable, elegant, pythonic code.
 make maintenance easier.</p></li>
 </ul>
 <section id="goals-of-opportunity">
-<h3>goals of opportunity<a class="headerlink" href="#goals-of-opportunity" title="Permalink to this heading"></a></h3>
+<h3>goals of opportunity<a class="headerlink" href="#goals-of-opportunity" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>add stuff to make it work as an API?</p></li>
@@ -190,7 +190,7 @@ make maintenance easier.</p></li>
 </div></blockquote>
 </section>
 <section id="state-of-the-code">
-<h3>State of the Code<a class="headerlink" href="#state-of-the-code" title="Permalink to this heading"></a></h3>
+<h3>State of the Code<a class="headerlink" href="#state-of-the-code" title="Link to this heading"></a></h3>
 <p>As of 2021/08/24, the sr3 code passes all the same flow tests that v2 does
 on one laptop (except dynamic in sr3 #407). It runs those same tests using the same configurations, so compatibiliy
 goal is achieved. Sr3 accept mqtt broker urls, and an issue is created #389 for amqp v1.
@@ -305,7 +305,7 @@ natural to work with multiple API levels that can be learned by consulting jupyt
 </section>
 </section>
 <section id="v02-plugin-pain-points">
-<h2>V02 Plugin Pain Points<a class="headerlink" href="#v02-plugin-pain-points" title="Permalink to this heading"></a></h2>
+<h2>V02 Plugin Pain Points<a class="headerlink" href="#v02-plugin-pain-points" title="Link to this heading"></a></h2>
 <p>Writing plugins should be a straight-forward activity for people with a rudimentary
 knowledge of Python, and some understanding of the task at hand. In version 2,
 writing plugins is a lot harder than it should be.</p>
@@ -332,7 +332,7 @@ or because an option was set by a client… is it a setting or a variable?</p></
 <li><p>making changes to notification messages is a bit complicated, because they evolved over different message formats.</p></li>
 </ul>
 <section id="changes-done-to-address-pain-points">
-<h3>Changes Done to Address Pain Points<a class="headerlink" href="#changes-done-to-address-pain-points" title="Permalink to this heading"></a></h3>
+<h3>Changes Done to Address Pain Points<a class="headerlink" href="#changes-done-to-address-pain-points" title="Link to this heading"></a></h3>
 <ul>
 <li><p>use importlib from python, much more standard way to register plugins.
 now syntax errors will be picked up just like any other python module being imported,
@@ -371,7 +371,7 @@ examples:  Good: –config, and -c, BAD: -config –c .</p></li>
 </section>
 </section>
 <section id="ship-of-theseus">
-<h2>Ship of Theseus<a class="headerlink" href="#ship-of-theseus" title="Permalink to this heading"></a></h2>
+<h2>Ship of Theseus<a class="headerlink" href="#ship-of-theseus" title="Link to this heading"></a></h2>
 <p>It might be that the re-factoring inherent in v03 results in a
 Ship of Theseus, where it works the same way as v02, but all
 the parts are different… obviously a concern/risk…
@@ -480,7 +480,7 @@ sr.py as single one.</p>
 </tbody>
 </table>
 <section id="mappings">
-<h3>Mappings<a class="headerlink" href="#mappings" title="Permalink to this heading"></a></h3>
+<h3>Mappings<a class="headerlink" href="#mappings" title="Link to this heading"></a></h3>
 <p>v2-&gt;sr3 instance variables:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">user_cache_dir</span> <span class="o">--&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">cfg_run_dir</span>
 </pre></div>
@@ -491,7 +491,7 @@ sr.py as single one.</p>
 </div>
 </section>
 <section id="dictionaries-or-members-for-properties">
-<h3>Dictionaries or Members for Properties?<a class="headerlink" href="#dictionaries-or-members-for-properties" title="Permalink to this heading"></a></h3>
+<h3>Dictionaries or Members for Properties?<a class="headerlink" href="#dictionaries-or-members-for-properties" title="Link to this heading"></a></h3>
 <p>There seems to be a tension between using class members and dictionaries
 for settings. Members seem more convenient, but harder to manipulate,
 though we have equivalent idioms. Argparse returns options as their own
@@ -516,7 +516,7 @@ callbacks are called, but can use properties elsewhere, if desired.</p>
 </section>
 </section>
 <section id="known-problems-solved-in-sr3">
-<h2>Known Problems (Solved in sr3)<a class="headerlink" href="#known-problems-solved-in-sr3" title="Permalink to this heading"></a></h2>
+<h2>Known Problems (Solved in sr3)<a class="headerlink" href="#known-problems-solved-in-sr3" title="Link to this heading"></a></h2>
 <ul>
 <li><p>passing of logs around is really odd. We didn’t understand what
 python logging objects were. Need to use them in the normal way.
@@ -539,7 +539,7 @@ refactor how checksum plugin mechanism works then try again.</p>
 </ul>
 </section>
 <section id="concrete-plan-done">
-<h2>Concrete Plan (Done)<a class="headerlink" href="#concrete-plan-done" title="Permalink to this heading"></a></h2>
+<h2>Concrete Plan (Done)<a class="headerlink" href="#concrete-plan-done" title="Link to this heading"></a></h2>
 <p>Replace sarra/sr_config with sarra/sr_cfg2. The new sr_cfg2 uses argparse
 and a simpler model for config file parsing. This became config.py</p>
 <p>make sr.py accept operations on subsets, so it becomes the unique entry point.
@@ -560,7 +560,7 @@ then will look at dynamic_flow.</p>
 appropriate structure so that tasks can be delegated with reasonable hope of success.</p>
 </section>
 <section id="done">
-<h2>Done<a class="headerlink" href="#done" title="Permalink to this heading"></a></h2>
+<h2>Done<a class="headerlink" href="#done" title="Link to this heading"></a></h2>
 <p>The functionality of sr_amqp.py is completely reproduced in moth/amqp.py
 All the important logic is preserved, but it is transcribed into new classes.
 Should have identical failure recovery behaviour. But it doesn’t. We have
@@ -624,7 +624,7 @@ remains yapf3 formatted.</p>
 <p>Also have written message rate limiting into core, so now have message_rate_min, and message_rate_max
 settings that replace/deprecate v2 post_rate_limit plugin.</p>
 <section id="worries-addressed">
-<h3>Worries Addressed<a class="headerlink" href="#worries-addressed" title="Permalink to this heading"></a></h3>
+<h3>Worries Addressed<a class="headerlink" href="#worries-addressed" title="Link to this heading"></a></h3>
 <p>This section contains issues that were taken care of.  They were a bother for a while,
 so noting down what the solution was.</p>
 <ul>
@@ -649,7 +649,7 @@ remove sum sub-directory. sr_util.py</p></li>
 </ul>
 </section>
 <section id="accel-overhaul">
-<h3>Accel Overhaul<a class="headerlink" href="#accel-overhaul" title="Permalink to this heading"></a></h3>
+<h3>Accel Overhaul<a class="headerlink" href="#accel-overhaul" title="Link to this heading"></a></h3>
 <p>plugin compatiblity under review… decided to re-write the accel_* plugins for sr3, and
 change the API because the v2 one has fundamental deficiencies:</p>
 <ul class="simple">
@@ -672,7 +672,7 @@ will be triggered by accel_threshold. https and sftp/scp accelerators are implem
 </section>
 </section>
 <section id="donetodo">
-<h2>DoneTodo<a class="headerlink" href="#donetodo" title="Permalink to this heading"></a></h2>
+<h2>DoneTodo<a class="headerlink" href="#donetodo" title="Link to this heading"></a></h2>
 <p>Items from the TODO list that have been addressed.</p>
 <ul class="simple">
 <li><p>migrate sr_xattr.py to sarra/xattr.py (now called sarracenia/filemetadata.py)</p></li>
@@ -705,14 +705,14 @@ FIXED 2021/02.</p></li>
 </ul>
 </section>
 <section id="bugs-concerns-issues">
-<h2>BUGS/Concerns/Issues<a class="headerlink" href="#bugs-concerns-issues" title="Permalink to this heading"></a></h2>
+<h2>BUGS/Concerns/Issues<a class="headerlink" href="#bugs-concerns-issues" title="Link to this heading"></a></h2>
 <p>migrated to github issues with v3only tag.</p>
 </section>
 <section id="after-parity-true-improvements">
-<h2>After Parity: True Improvements<a class="headerlink" href="#after-parity-true-improvements" title="Permalink to this heading"></a></h2>
+<h2>After Parity: True Improvements<a class="headerlink" href="#after-parity-true-improvements" title="Link to this heading"></a></h2>
 </section>
 <section id="todo">
-<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this heading"></a></h2>
+<h2>TODO<a class="headerlink" href="#todo" title="Link to this heading"></a></h2>
 <p>At this point am able to report existing problems as issues with the v03only tag.
 so below is the things leftover after refactor:</p>
 <ul class="simple">
@@ -746,7 +746,7 @@ so that we have barely any v2’s left.</p></li>
 </ul>
 </section>
 <section id="not-baked-thinking">
-<h2>Not Baked/Thinking<a class="headerlink" href="#not-baked-thinking" title="Permalink to this heading"></a></h2>
+<h2>Not Baked/Thinking<a class="headerlink" href="#not-baked-thinking" title="Link to this heading"></a></h2>
 <p>Structural code things that are not settled, may change.
 Probably need to be settled before having anyone else dive in.</p>
 <ul class="simple">
@@ -777,7 +777,7 @@ to be retried later.</p></li>
 </ul>
 </section>
 <section id="fixme-deferred">
-<h2>FIXME/Deferred<a class="headerlink" href="#fixme-deferred" title="Permalink to this heading"></a></h2>
+<h2>FIXME/Deferred<a class="headerlink" href="#fixme-deferred" title="Link to this heading"></a></h2>
 <p>The point of the main sr3 work is to get a re-factor done to the point where
 the code is understandable to new coders, so that tasks can be assigned.
 This section includes a mix of tasks that can hopefully be assigned,</p>
@@ -806,7 +806,7 @@ later version.</p></li>
 </ul>
 </section>
 <section id="transition">
-<h2>Transition<a class="headerlink" href="#transition" title="Permalink to this heading"></a></h2>
+<h2>Transition<a class="headerlink" href="#transition" title="Link to this heading"></a></h2>
 <p>Do not know if straightforward (Replacement) upgrade is a good approach. Will it be possible to test sarra
 sufficiently such that upgrades of entire pumps are possible? or will incremental (parallel) upgrades
 be required?</p>
@@ -815,7 +815,7 @@ we know will happen with do_* plugins. If that is sufficiently well documented a
 dealt with, then it might not be a problem. On the other hand, if there are subtle
 problems, then a parallel approach might be needed.</p>
 <section id="replacement">
-<h3>Replacement<a class="headerlink" href="#replacement" title="Permalink to this heading"></a></h3>
+<h3>Replacement<a class="headerlink" href="#replacement" title="Link to this heading"></a></h3>
 <p>The package has the same name as v2 ones (metpx-sarracenia) differing only in version number.
 Installing the new replaces the old completely. This requires that the new version be equal
 or better than the old in all aspects, or that installation be confined to test machines
@@ -824,7 +824,7 @@ until that point is reached.</p>
 when you are done.)</p>
 </section>
 <section id="parallel">
-<h3>Parallel<a class="headerlink" href="#parallel" title="Permalink to this heading"></a></h3>
+<h3>Parallel<a class="headerlink" href="#parallel" title="Link to this heading"></a></h3>
 <p>Name the package metpx-sarra3 and have the python class directory be sarra3 (instead of sarra.)
 (also ~/.config/sr3 and ~/.cache/sr3. likely the .cache files must be different because
 retry files have different formats? validate. ) So one can copy configurations from old to
@@ -839,14 +839,14 @@ with one version or the other without having the install or use a different mach
 facilitating verification of compatibility.</p>
 </section>
 <section id="conclusion">
-<h3>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h3>
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h3>
 <p>Have implemented Parallel model, with APPNAME=sr3 ( ~/.config/sr3, ~/.cache/sr3 )
 sr3_ prefix replacing sr_ for all commands, and changing the sarra Python class to
 the full sarracenia name to avoid clashing python classes.</p>
 </section>
 </section>
 <section id="incompatibilities">
-<h2>Incompatibilities<a class="headerlink" href="#incompatibilities" title="Permalink to this heading"></a></h2>
+<h2>Incompatibilities<a class="headerlink" href="#incompatibilities" title="Link to this heading"></a></h2>
 <p>There are not supposed to be any. This is a running list of things to fix or document.
 breaking changes:</p>
 <ul>
@@ -900,7 +900,7 @@ it could be fixed, if we decide the old behaviour is right.</p></li>
 </ul>
 </section>
 <section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>All the components are now derived from the <em>flow</em> class, and run the general algorithm already
 designed as the basis of v2, but never implemented as such.</p></li>

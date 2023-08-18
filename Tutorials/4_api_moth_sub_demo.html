@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -369,7 +369,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="A-first-Example-using-Sarracenia-Moth-API">
-<h1>A first Example using Sarracenia Moth API<a class="headerlink" href="#A-first-Example-using-Sarracenia-Moth-API" title="Permalink to this heading"></a></h1>
+<h1>A first Example using Sarracenia Moth API<a class="headerlink" href="#A-first-Example-using-Sarracenia-Moth-API" title="Link to this heading"></a></h1>
 <p>Sarracenia is a package built to announce the availability of new data, usually as files. We put files on standard servers, making them available via web or sftp, and tell users that they have arrived using messages.</p>
 <p>Sarracenia uses existing standard message passing protocols, like rabbitmq/AMQP to transport the messages, and in message passing circles, as server that distributes messages is called a <em>broker</em>.</p>
 <p>We call the combination of a message broker, and a file server (which can be a single server, or a large cluster) a <strong>data pump</strong>.</p>
@@ -433,7 +433,7 @@ options: {&#39;acceptUnmatched&#39;: True, &#39;batch&#39;: 25, &#39;bindings&#3
 <li><p>subtopic: what subset of topic_prefix messages do we want to subscribe to.</p></li>
 </ul>
 <section id="Bindings">
-<h2>Bindings<a class="headerlink" href="#Bindings" title="Permalink to this heading"></a></h2>
+<h2>Bindings<a class="headerlink" href="#Bindings" title="Link to this heading"></a></h2>
 <p>The bindings option sets out the three values above. in the example, The bindings are:</p>
 <ul class="simple">
 <li><p>topic_prefix: v02.post (get v02 messages.)</p></li>
@@ -443,7 +443,7 @@ options: {&#39;acceptUnmatched&#39;: True, &#39;batch&#39;: 25, &#39;bindings&#3
 <p>we connect to the</p>
 <p>amqp://hpfx.collab.science.gc.ca broker, on the <em>xpublic</em> exchange, and the we will be interested in all messages matching the v02.post.# topic specification… (which is all v02 messages available.)</p>
 <section id="subtopic">
-<h3>subtopic<a class="headerlink" href="#subtopic" title="Permalink to this heading"></a></h3>
+<h3>subtopic<a class="headerlink" href="#subtopic" title="Link to this heading"></a></h3>
 <p>The subtopic here ( <strong>#</strong> ) is matches everything produced on the server. The wider the subtopic, the more messages have to be sent, and the more processing done. It is better to make it narrower. Taking the example above, if we are interested in swob, a subtopic like:</p>
 <ul class="simple">
 <li><p>*.WXO-DD.observations.swob-ml.#</p></li>
@@ -452,7 +452,7 @@ options: {&#39;acceptUnmatched&#39;: True, &#39;batch&#39;: 25, &#39;bindings&#3
 </section>
 </section>
 <section id="queueName">
-<h2>queueName<a class="headerlink" href="#queueName" title="Permalink to this heading"></a></h2>
+<h2>queueName<a class="headerlink" href="#queueName" title="Link to this heading"></a></h2>
 <p>By convention in brokers administered by Sarracenia, users can only create queues that start with q_ followed by their user name. we connected as anonymous, and so q_anonymous must be used. After that, the rest can be whatever you want, but there are a few considerations:</p>
 <ul class="simple">
 <li><p>If you want to start up multiple python processes to share a data feed, they all specify the same queue_name, and they will share the flow of messages. It scales well for a few dozen co-operating downloaders, but does not scale infinitely, do not expect more than 99 or so processes to be able to effectively share a load from a single queue. To scale beyond that with AMQP, multiple selections are better.</p></li>
@@ -460,12 +460,12 @@ options: {&#39;acceptUnmatched&#39;: True, &#39;batch&#39;: 25, &#39;bindings&#3
 </ul>
 </section>
 <section id="Messages">
-<h2>Messages<a class="headerlink" href="#Messages" title="Permalink to this heading"></a></h2>
+<h2>Messages<a class="headerlink" href="#Messages" title="Link to this heading"></a></h2>
 <p>Different messaging protocols have different storage structures and conventions. the MoTH class returns messages as python dictionaries regardless of what protocol is used to obtain them or, if forwarding them, to transmit them. One can add fields for programmatic use to the messages just by adding elements to the dictionary. If they are only for internal use, then add the name of the dictionary element to the special ‘_deleteOnPost’ key, so that the dictionary element will be dropped when
 forwarding the message.</p>
 </section>
 <section id="Ack">
-<h2>Ack<a class="headerlink" href="#Ack" title="Permalink to this heading"></a></h2>
+<h2>Ack<a class="headerlink" href="#Ack" title="Link to this heading"></a></h2>
 <p>Messages are marked in transit by the broker, and if you do not acknowledge them, the data pump will hold onto them, and eventually re-dispatch them. keeping pending messages in memory will also slow down processing of all messages. One should acknowledge receipt of messages as soon as practicable, but not so soon that you will lose data if the the program is interrupted. In the example, we acknowledge after we have done our work of printing the message.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -656,12 +656,12 @@ obtained 10 product temperatures
 </div>
 </section>
 <section id="Downloading-Data-with-Python">
-<h2>Downloading Data with Python<a class="headerlink" href="#Downloading-Data-with-Python" title="Permalink to this heading"></a></h2>
+<h2>Downloading Data with Python<a class="headerlink" href="#Downloading-Data-with-Python" title="Link to this heading"></a></h2>
 <p>You can use the urllib python library to download data, and then parse it. In this example, the data is an XML structure per message downloaded and read into memory. Some station data is then printed.</p>
 <p>This works well with urllib for hyper-test transport protocol resources, but other resources may be announced using other protocols, such as sftp, or ftp. The python code will need to be expanded to deal with other protocols, as well as error conditions, such as temporary failures.</p>
 </section>
 <section id="Conclusion">
-<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this heading"></a></h2>
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="../Reference/code.html#module-sarracenia.moth">Sarracenia.moth.amqp</a> is the lightest-weight way to add consumption of Sarracenia messages to your existing python stack. You explicitly ask for new messages when ready to use them.</p>
 <p>Things this type of integration does not provide:</p>
 <ul class="simple">

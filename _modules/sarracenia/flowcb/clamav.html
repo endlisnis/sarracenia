@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -115,7 +115,9 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Clamav"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.clamav.Clamav">[docs]</a><span class="k">class</span> <span class="nc">Clamav</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
+<div class="viewcode-block" id="Clamav">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.clamav.Clamav">[docs]</a>
+<span class="k">class</span> <span class="nc">Clamav</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       Invoke ClamAV anti-virus scanning on files as they pass through a data pump.</span>
 <span class="sd">       when it is invoked depends on the component it is used from.</span>
@@ -127,7 +129,9 @@
 <span class="sd">       after downloading.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Clamav.__init__"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.clamav.Clamav.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Clamav.__init__">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.clamav.Clamav.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
 
@@ -138,6 +142,7 @@
             <span class="kn">import</span> <span class="nn">pyclamd</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">av</span> <span class="o">=</span> <span class="n">pyclamd</span><span class="o">.</span><span class="n">ClamdAgnostic</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;clam_scan on_part plugin initialized&quot;</span><span class="p">)</span></div>
+
 
     <span class="k">def</span> <span class="nf">avscan_hit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scanfn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 
@@ -187,6 +192,7 @@
             <span class="sa">f</span><span class="s1">&#39;files scanned </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_scanned</span><span class="si">}</span><span class="s1">, hits: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_hits</span><span class="si">}</span><span class="s1"> &#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metric_scanned</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metric_hits</span> <span class="o">=</span> <span class="mi">0</span></div>
+
 </pre></div>
 
            </div>

@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -119,15 +119,15 @@
 }
 </style>
 <section id="sr-post">
-<h1>SR_post<a class="headerlink" href="#sr-post" title="Permalink to this heading"></a></h1>
+<h1>SR_post<a class="headerlink" href="#sr-post" title="Link to this heading"></a></h1>
 <section id="format-protocole-de-messages-d-annonce-sarracenia">
-<h2>Format/Protocole de messages d’annonce Sarracenia<a class="headerlink" href="#format-protocole-de-messages-d-annonce-sarracenia" title="Permalink to this heading"></a></h2>
+<h2>Format/Protocole de messages d’annonce Sarracenia<a class="headerlink" href="#format-protocole-de-messages-d-annonce-sarracenia" title="Link to this heading"></a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Manual section<span class="colon">:</span></dt>
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aug 16, 2023</p>
+<dd class="field-even"><p>Aug 18, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -137,7 +137,7 @@
 </dd>
 </dl>
 <section id="status-stable-default">
-<h3>STATUS: Stable/Default<a class="headerlink" href="#status-stable-default" title="Permalink to this heading"></a></h3>
+<h3>STATUS: Stable/Default<a class="headerlink" href="#status-stable-default" title="Link to this heading"></a></h3>
 <p>Les messages de Sarracenia version 2 sont la format précédente, utilisée pour des transferts
 de téraoctets et de millions de fichiers par jour. La version 3 propose une prochaine
 itération du format des messages d’annonces Sarracenia.</p>
@@ -156,11 +156,11 @@ Voir <a class="reference external" href=".../Explications/History/messages_v03.h
 </div>
 </section>
 <section id="synopsis">
-<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h3>
+<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <p>Version 03 du format des annonces de modification d’un fichier pour sr_post.</p>
 <p>Un message sr_post se compose d’un sujet et du <em>BODY</em></p>
 <section id="amqp-topic-version-dir">
-<h4><strong>AMQP Topic:</strong> <em>&lt;version&gt;.{&lt;dir&gt;.}</em><a class="headerlink" href="#amqp-topic-version-dir" title="Permalink to this heading"></a></h4>
+<h4><strong>AMQP Topic:</strong> <em>&lt;version&gt;.{&lt;dir&gt;.}</em><a class="headerlink" href="#amqp-topic-version-dir" title="Link to this heading"></a></h4>
 <dl class="simple">
 <dt>::</dt><dd><p>&lt;version&gt; = « v03 » la version du protocole ou du format.
 « post » = le type de message dans le protocole.
@@ -169,7 +169,7 @@ Voir <a class="reference external" href=".../Explications/History/messages_v03.h
 </dl>
 </section>
 <section id="body-en-tete-json-encoding">
-<h4><strong>BODY:</strong> <em>{ &lt;en-tête&gt; }</em> (JSON encoding.)<a class="headerlink" href="#body-en-tete-json-encoding" title="Permalink to this heading"></a></h4>
+<h4><strong>BODY:</strong> <em>{ &lt;en-tête&gt; }</em> (JSON encoding.)<a class="headerlink" href="#body-en-tete-json-encoding" title="Link to this heading"></a></h4>
 <p>Les en-têtes sont un tableau de paires nom:valeur:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OBLIGATOIRE:
 
@@ -257,7 +257,7 @@ mais il n’y a pas eu de conclusion.</p>
 </section>
 </section>
 <section id="description">
-<h3>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this heading"></a></h3>
+<h3>DESCRIPTION<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
 <p>Les sources créent des messages d´annonce en format <em>sr_post</em> pour annoncer les modifications apportées aux fichiers.
 Les abonnés lisent le message pour décider si un téléchargement du contenu annoncé est justifié.  Cette page
 de manuel décrit entièrement le format de ces messages d´annonce.  Les messages d´annonce sont des charges utiles
@@ -314,7 +314,7 @@ Plusieurs flux peuvent fournir une optimisation efficace sur les liens longs.</p
 </dl>
 </section>
 <section id="theme-topic">
-<h3>THÈME (TOPIC)<a class="headerlink" href="#theme-topic" title="Permalink to this heading"></a></h3>
+<h3>THÈME (TOPIC)<a class="headerlink" href="#theme-topic" title="Link to this heading"></a></h3>
 <p>Dans les échanges basé par thèmes dans AMQP, chaque message d´annonce a un en-tête de thème. AMQP définit le caractère ‘.’
 en tant que séparateur hiérarchique (comme ‘' dans un nom de chemin Windows, ou ‘/’ dans Linux), il existe également une
 paire de caractères génériques définis par la norme : ‘*’ correspond à un seul thème, ‘#’ correspond au reste de
@@ -343,7 +343,7 @@ dans la structure en mémoire, il serait donc très imprudent de définir l’en
 dans une application même si elle n’est pas visible dans la charge utile sur fil.</p>
 </div>
 <section id="mappage-vers-mqtt">
-<h4>Mappage vers MQTT<a class="headerlink" href="#mappage-vers-mqtt" title="Permalink to this heading"></a></h4>
+<h4>Mappage vers MQTT<a class="headerlink" href="#mappage-vers-mqtt" title="Link to this heading"></a></h4>
 <p>L’un des objectifs du format v03 est d’avoir un format de charge utile qui fonctionne avec plus que l’AMQP.
 Message Queing Telemetry Transport (MQTT v3.11) est une norme iso ( <a class="reference external" href="https://www.iso.org/standard/69466.html">https://www.iso.org/standard/69466.html</a>
 un protocole qui peut facilement prendre en charge le même modèle de messagerie publication/abonnement, avec quelques détails
@@ -361,7 +361,7 @@ de l’échange à la racine de l’hiérarchie des thèmes pour obtenir le mêm
 </section>
 </section>
 <section id="les-en-tetes-fixes">
-<h3>LES EN-TÊTES FIXES<a class="headerlink" href="#les-en-tetes-fixes" title="Permalink to this heading"></a></h3>
+<h3>LES EN-TÊTES FIXES<a class="headerlink" href="#les-en-tetes-fixes" title="Link to this heading"></a></h3>
 <p>Le message d´annonce est un tableau encodé en JSON unique, avec un ensemble obligatoire de champs, tout en permettant
 l’utilisation d’autres champs arbitraires.  Les champs obligatoires doivent être présents dans chaque message:</p>
 <blockquote>
@@ -380,18 +380,18 @@ l’utilisation d’autres champs arbitraires.  Les champs obligatoires doivent 
 </div>
 <p>Champs supplémentaires :</p>
 <section id="from-cluster-nom-du-cluster">
-<h4><strong>from_cluster=&lt;nom_du_cluster&gt;</strong><a class="headerlink" href="#from-cluster-nom-du-cluster" title="Permalink to this heading"></a></h4>
+<h4><strong>from_cluster=&lt;nom_du_cluster&gt;</strong><a class="headerlink" href="#from-cluster-nom-du-cluster" title="Link to this heading"></a></h4>
 <p>L’en-tête from_cluster définit le nom du cluster source où
 les données ont été introduites dans le réseau. Cela est utilisé pour renvoyer les journaux
 au cluster chaque fois que ses produits sont utilisés.</p>
 </section>
 <section id="fileop-link-valeur-du-lien-symbolique">
-<h4><strong>fileOp { “link”: “&lt;valeur du lien symbolique&gt;” }</strong><a class="headerlink" href="#fileop-link-valeur-du-lien-symbolique" title="Permalink to this heading"></a></h4>
+<h4><strong>fileOp { “link”: “&lt;valeur du lien symbolique&gt;” }</strong><a class="headerlink" href="#fileop-link-valeur-du-lien-symbolique" title="Link to this heading"></a></h4>
 <p>Lorsque le fichier à transférer est un lien symbolique, l’en-tête ‘fileOp’ est créé avec
 le sous-entête “link” pour contenir sa valeur.</p>
 </section>
 <section id="size-and-blocks">
-<h4><strong>size and blocks</strong><a class="headerlink" href="#size-and-blocks" title="Permalink to this heading"></a></h4>
+<h4><strong>size and blocks</strong><a class="headerlink" href="#size-and-blocks" title="Link to this heading"></a></h4>
 <blockquote id="parts">
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">sz</span><span class="o">&gt;</span> <span class="p">,</span>
 
@@ -460,11 +460,11 @@ normalement 0, pour le dernier bloc, octets restants dans le fichier
 0 origine, le numéro de bloc couvert par cette publication.</p>
 </section>
 <section id="rename-relpath">
-<h4><strong>rename=&lt;relpath&gt;</strong><a class="headerlink" href="#rename-relpath" title="Permalink to this heading"></a></h4>
+<h4><strong>rename=&lt;relpath&gt;</strong><a class="headerlink" href="#rename-relpath" title="Link to this heading"></a></h4>
 <p>Chemin d’accès relatif du répertoire actif dans lequel placer le fichier.</p>
 </section>
 <section id="fileop-rename-oldpath">
-<h4><strong>fileOp { ‘rename’:&lt;oldpath&gt; … }</strong><a class="headerlink" href="#fileop-rename-oldpath" title="Permalink to this heading"></a></h4>
+<h4><strong>fileOp { ‘rename’:&lt;oldpath&gt; … }</strong><a class="headerlink" href="#fileop-rename-oldpath" title="Link to this heading"></a></h4>
 <p>lorsqu’un fichier est renommé à la source, pour l’envoyer aux abonnés, il va y avoir deux posts: un message
 est annoncé avec le nouveau nom comme base_url, et l’en-tête <em>FileOp</em> va inclure la valeur de l’ancien nom du fichier,
 dans un sous-champs appellé ‘rename’.</p>
@@ -473,7 +473,7 @@ Les changements de noms de liens symboliques et répertoires sont representés p
 (répertoire) et “link”  (lien) dans le champs “fileOp” qui contient également un <em>rename</em>.</p>
 </section>
 <section id="identity">
-<h4><strong>identity</strong><a class="headerlink" href="#identity" title="Permalink to this heading"></a></h4>
+<h4><strong>identity</strong><a class="headerlink" href="#identity" title="Link to this heading"></a></h4>
 <p>Le champ d’intégrité donne une somme de contrôle qui est utile pour identifier le contenu
 d’un fichier:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;identity&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;method&quot;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">méthode</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">valeur</span><span class="o">&gt;</span> <span class="p">}</span>
@@ -534,7 +534,7 @@ l&#39;équilibrage de charge basé sur la somme de contrôle.
 </section>
 </section>
 <section id="report-messages">
-<h3>Report Messages<a class="headerlink" href="#report-messages" title="Permalink to this heading"></a></h3>
+<h3>Report Messages<a class="headerlink" href="#report-messages" title="Link to this heading"></a></h3>
 <p>Certains clients peuvent renvoyer la télémétrie à l’origine des données téléchargées à des fins de dépannage
 et à des fins de statistiques. Ces messages d´annonce ont le thème <em>v03.report</em> et ont un en-tête <em>report</em>
 qui est un <em>object</em> JSON avec quatre champs :</p>
@@ -549,7 +549,7 @@ qui est un <em>object</em> JSON avec quatre champs :</p>
 </div></blockquote>
 <p>Les messages de rapport ne doivent jamais inclure l’en-tête <em>content</em> (aucun fichier incorporé dans les rapports).</p>
 <section id="report-code">
-<h4>Report_Code<a class="headerlink" href="#report-code" title="Permalink to this heading"></a></h4>
+<h4>Report_Code<a class="headerlink" href="#report-code" title="Link to this heading"></a></h4>
 <p>Le code de rapport est un code d’état à trois chiffres, adopté à partir du protocole HTTP (w3.org/IETF RFC 2616)
 encodé sous forme de texte.  Conformément à la RFC, tout code renvoyé doit être interprété comme suit :</p>
 <blockquote>
@@ -623,15 +623,15 @@ pendant le transfert). Cela ne se produit que lors des transferts en plusieurs p
 <p>FIXME: will 3 error codes that are the same cause confusion?</p>
 </section>
 <section id="autres-champs-de-rapport">
-<h4>Autres champs de rapport<a class="headerlink" href="#autres-champs-de-rapport" title="Permalink to this heading"></a></h4>
+<h4>Autres champs de rapport<a class="headerlink" href="#autres-champs-de-rapport" title="Link to this heading"></a></h4>
 <p><em>&lt;report_message&gt;</em> une chaine de caractères.</p>
 </section>
 </section>
 <section id="en-tetes-facultatives">
-<h3>En-têtes facultatives<a class="headerlink" href="#en-tetes-facultatives" title="Permalink to this heading"></a></h3>
+<h3>En-têtes facultatives<a class="headerlink" href="#en-tetes-facultatives" title="Link to this heading"></a></h3>
 <p>pour le cas d’utilisation de la mise en miroir de fichiers, des en-têtes supplémentaires seront présents :</p>
 <section id="atime-mtime-mode">
-<h4><strong>atime,mtime,mode</strong><a class="headerlink" href="#atime-mtime-mode" title="Permalink to this heading"></a></h4>
+<h4><strong>atime,mtime,mode</strong><a class="headerlink" href="#atime-mtime-mode" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>man 2 stat - les métadonnées du fichier standard linux/unix :
 temps d’accès, temps de modification et autorisation (bits de mode)
@@ -658,7 +658,7 @@ mais ils ne devraient pas être dépouillés, car certains consommateurs peuvent
 </section>
 </section>
 <section id="exemple">
-<h3>EXEMPLE<a class="headerlink" href="#exemple" title="Permalink to this heading"></a></h3>
+<h3>EXEMPLE<a class="headerlink" href="#exemple" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AMQP</span> <span class="n">TOPIC</span><span class="p">:</span> <span class="n">v03</span><span class="o">.</span><span class="n">NRDPS</span><span class="o">.</span><span class="n">GIF</span>
 <span class="n">MQTT</span> <span class="n">TOPIC</span><span class="p">:</span> <span class="n">exchange</span><span class="o">/</span><span class="n">v03</span><span class="o">/</span><span class="n">NRDPS</span><span class="o">/</span><span class="n">GIF</span><span class="o">/</span>
 <span class="n">Body</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;pubTime&quot;</span><span class="p">:</span> <span class="s2">&quot;201506011357.345&quot;</span><span class="p">,</span> <span class="s2">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;sftp://afsiext@cmcdataserver&quot;</span><span class="p">,</span> <span class="s2">&quot;relPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/data/NRPDS/outputs/NRDPS_HiRes_000.gif&quot;</span><span class="p">,</span>
@@ -687,7 +687,7 @@ mais ils ne devraient pas être dépouillés, car certains consommateurs peuvent
 </div>
 </section>
 <section id="un-autre-exemple">
-<h3>Un Autre Exemple<a class="headerlink" href="#un-autre-exemple" title="Permalink to this heading"></a></h3>
+<h3>Un Autre Exemple<a class="headerlink" href="#un-autre-exemple" title="Link to this heading"></a></h3>
 <p>Le post résultant de la commande de sr_watch suivante, a noter la création du fichier ‘foo’:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sr_watch</span> <span class="o">-</span><span class="n">pbu</span> <span class="n">sftp</span><span class="p">:</span><span class="o">//</span><span class="n">stanley</span><span class="nd">@mysftpserver</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="o">-</span><span class="n">path</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">foo</span> <span class="o">-</span><span class="n">pb</span> <span class="n">amqp</span><span class="p">:</span><span class="o">//</span><span class="n">broker</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -715,7 +715,7 @@ le nombre de blocs de cette taille <em>1</em>, les octets restants <em>0</em>, l
 bloc actuel <em>0</em>, un indicateur <em>d</em> signifiant que la somme de contrôle md5 est
 effectuée sur les données, et la somme de contrôle <em>25d231ec0ae3c569ba27ab7a74dd72ce</em>.</p>
 <section id="possibilites-doptimisation">
-<h4>Possibilités d’optimisation<a class="headerlink" href="#possibilites-doptimisation" title="Permalink to this heading"></a></h4>
+<h4>Possibilités d’optimisation<a class="headerlink" href="#possibilites-doptimisation" title="Link to this heading"></a></h4>
 <p>L’objectif d’optimisation est la lisibilité et la facilité de mise en œuvre, beaucoup plus
 que l’efficacité ou la performance. Il existe de nombreuses optimisations pour réduire les
 frais généraux de plusieur aspects, ce qui augmente la complexité de l’implémentation.
@@ -728,7 +728,7 @@ tous les changements augmentent la complexité, et ca rends les messages d’ann
 </section>
 </section>
 <section id="standards">
-<h3>Standards<a class="headerlink" href="#standards" title="Permalink to this heading"></a></h3>
+<h3>Standards<a class="headerlink" href="#standards" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>Sarracenia s’appuie sur <a class="reference external" href="https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf">AMQP pre 1.0</a>
@@ -752,7 +752,7 @@ quand approprié.</p></li>
 </div></blockquote>
 </section>
 <section id="voir-aussi">
-<h3>VOIR AUSSI<a class="headerlink" href="#voir-aussi" title="Permalink to this heading"></a></h3>
+<h3>VOIR AUSSI<a class="headerlink" href="#voir-aussi" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="sr3.1.html">sr3(1)</a> - rracenia ligne de commande principale.</p>
 <p><a class="reference external" href="sr3_post.1.html">sr3_post(1)</a> - poste des annoncements de fichiers (implémentation en Python.)</p>
 <p><a class="reference external" href="sr3_cpost.1.html">sr3_cpost(1)</a> - poste des annoncements de fichiers (implémentation en C.)</p>

@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -85,7 +85,9 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="PClean"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean">[docs]</a><span class="k">class</span> <span class="nc">PClean</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
+<div class="viewcode-block" id="PClean">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean">[docs]</a>
+<span class="k">class</span> <span class="nc">PClean</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Base plugin class that is used in shovel pclean_f9x:</span>
 
 <span class="sd">     - it checks if the propagation was ok.</span>
@@ -97,7 +99,9 @@
 
 <span class="sd">    The posted message contains a tag in the header for the test performed which is the extension used for the test</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="PClean.__init__"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+<div class="viewcode-block" id="PClean.__init__">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_extension_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.slink&#39;</span><span class="p">,</span> <span class="s1">&#39;.hlink&#39;</span><span class="p">,</span> <span class="s1">&#39;.moved&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ext_key</span> <span class="o">=</span> <span class="s1">&#39;pclean_ext&#39;</span>
@@ -115,7 +119,10 @@
             <span class="s1">&#39;recd_by_srpoll_test1&#39;</span>
         <span class="p">]</span>  <span class="c1"># subscribe q_f71</span></div>
 
-<div class="viewcode-block" id="PClean.build_path_dict"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean.build_path_dict">[docs]</a>    <span class="k">def</span> <span class="nf">build_path_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fxx_dirs</span><span class="p">,</span> <span class="n">relpath</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PClean.build_path_dict">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean.build_path_dict">[docs]</a>
+    <span class="k">def</span> <span class="nf">build_path_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fxx_dirs</span><span class="p">,</span> <span class="n">relpath</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This build paths necessary to pclean tests</span>
 
 <span class="sd">        It is a subset of all flow test path based on fxx download directory provided.</span>
@@ -132,7 +139,10 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">all_fxx_dirs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fxx_dir</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">results</span></div>
 
-<div class="viewcode-block" id="PClean.get_extension"><a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean.get_extension">[docs]</a>    <span class="k">def</span> <span class="nf">get_extension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">relpath</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PClean.get_extension">
+<a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.pclean.PClean.get_extension">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_extension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">relpath</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Check whether the extension is in the header</span>
 
 <span class="sd">        :param msg: the msg used for the test</span>
@@ -140,7 +150,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">relpath</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span></div></div>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">relpath</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span></div>
+</div>
+
 </pre></div>
 
            </div>

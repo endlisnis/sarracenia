@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -374,7 +374,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Un-premier-exemple-utilisant-l’API-Sarracenia-Moth">
-<h1>Un premier exemple utilisant l’API Sarracenia Moth<a class="headerlink" href="#Un-premier-exemple-utilisant-l’API-Sarracenia-Moth" title="Permalink to this heading"></a></h1>
+<h1>Un premier exemple utilisant l’API Sarracenia Moth<a class="headerlink" href="#Un-premier-exemple-utilisant-l’API-Sarracenia-Moth" title="Link to this heading"></a></h1>
 <p>Sarracenia est un package conçu pour annoncer la disponibilité de nouvelles données, généralement sous forme de fichiers. Nous plaçons les fichiers sur des serveurs standard, les rendons disponibles via le Web ou sftp, et informons les utilisateurs qu’ils sont arrivés à l’aide de messages.</p>
 <p>Sarracenia utilise des protocoles de transmission de messages standard existants, comme rabbitmq/AMQP pour transporter les messages, et dans les cercles de transmission de messages, car le serveur qui distribue les messages est appelé un <em>courtier</em> (broker).</p>
 <p>Nous appelons la combinaison d’un courtier de messages et d’un serveur de fichiers (qui peut être un serveur unique ou un grand cluster) une <strong>pompe de données</strong> (data pump).</p>
@@ -435,7 +435,7 @@ de message un élément “sujet”(topic) dans les dictionnaires. En voici un e
 <li><p>subtopic: à quel sous-ensemble de messages topic_prefix voulons-nous nous abonner.</p></li>
 </ul>
 <section id="Liaisons">
-<h2>Liaisons<a class="headerlink" href="#Liaisons" title="Permalink to this heading"></a></h2>
+<h2>Liaisons<a class="headerlink" href="#Liaisons" title="Link to this heading"></a></h2>
 <p>L’option de liaisons définit les trois valeurs ci-dessus. dans l’exemple, les liaisons sont :</p>
 <ul class="simple">
 <li><p>topic_prefix: v02.post (obtenir des messages v02.)</p></li>
@@ -445,7 +445,7 @@ de message un élément “sujet”(topic) dans les dictionnaires. En voici un e
 <p>on se connecte au courtier</p>
 <p>amqp://hpfx.collab.science.gc.ca, sur l’échange <em>xpublic</em>, et nous serons intéressés par tous les messages correspondant à la spécification de sujet v02.post.#… (c’est-à-dire tous les messages v02 disponibles .)</p>
 <section id="sous-thème">
-<h3>sous-thème<a class="headerlink" href="#sous-thème" title="Permalink to this heading"></a></h3>
+<h3>sous-thème<a class="headerlink" href="#sous-thème" title="Link to this heading"></a></h3>
 <p>Le sous-thème ici ( <strong>#</strong> ) correspond à tout ce qui est produit sur le serveur. Plus le sous-thème est large, plus il y a de messages à envoyer et plus le traitement est important. Il est préférable de le rendre plus étroit. En prenant l’exemple ci-dessus, si nous sommes intéressés par swob, un sous-thème comme:</p>
 <ul class="simple">
 <li><p>*.WXO-DD.observations.swob-ml.#</p></li>
@@ -454,7 +454,7 @@ de message un élément “sujet”(topic) dans les dictionnaires. En voici un e
 </section>
 </section>
 <section id="queue_name">
-<h2>queue_name<a class="headerlink" href="#queue_name" title="Permalink to this heading"></a></h2>
+<h2>queue_name<a class="headerlink" href="#queue_name" title="Link to this heading"></a></h2>
 <p>Par convention, dans les courtiers administrés par Sarracenia, les utilisateurs ne peuvent créer que des files d’attente commençant par q_ suivi de leur nom d’utilisateur. nous nous sommes connectés en tant qu’anonymes, et donc q_anonymous doit être utilisé. Après cela, le reste peut être ce que vous voulez, mais il y a quelques considérations :</p>
 <ul class="simple">
 <li><p>Si vous souhaitez démarrer plusieurs processus Python pour partager un flux de données, ils spécifient tous le même nom de file d’attente et ils partageront le flux de messages. Il s’adapte bien à quelques dizaines de téléchargeurs coopérants, mais ne s’adapte pas à l’infini, ne vous attendez pas à plus d’environ 99 processus pour pouvoir partager efficacement une charge à partir d’une seule file d’attente. Pour évoluer au-delà de cela avec AMQP, plusieurs sélections sont préférables.</p></li>
@@ -462,12 +462,12 @@ de message un élément “sujet”(topic) dans les dictionnaires. En voici un e
 </ul>
 </section>
 <section id="Messages">
-<h2>Messages<a class="headerlink" href="#Messages" title="Permalink to this heading"></a></h2>
+<h2>Messages<a class="headerlink" href="#Messages" title="Link to this heading"></a></h2>
 <p>Différents protocoles de messagerie ont différentes structures et conventions de stockage. la classe MoTH renvoie les messages sous forme de dictionnaires python, quel que soit le protocole utilisé pour les obtenir ou, en cas de transfert, pour les transmettre. On peut ajouter des champs pour une utilisation programmatique aux messages simplement en ajoutant des éléments au dictionnaire. S’ils sont uniquement destinés à un usage interne, ajoutez le nom de l’élément du dictionnaire à la clé
 spéciale ‘_deleteOnPost’, afin que l’élément du dictionnaire soit supprimé lors du transfert du message.</p>
 </section>
 <section id="Ack">
-<h2>Ack<a class="headerlink" href="#Ack" title="Permalink to this heading"></a></h2>
+<h2>Ack<a class="headerlink" href="#Ack" title="Link to this heading"></a></h2>
 <p>Les messages sont marqués en transit par le courtier, et si vous ne les reconnaissez pas, la pompe de données les conservera et les réexpédiera éventuellement. conserver les messages en attente en mémoire ralentira également le traitement de tous les messages. Il faut accuser réception des messages dès que possible, mais pas si tôt que vous perdrez des données si le programme est interrompu. Dans l’exemple, nous reconnaissons après avoir fait notre travail d’impression du message.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -660,12 +660,12 @@ obtained 10 product temperatures
 </div>
 </section>
 <section id="Télécharger-des-données-avec-Python">
-<h2>Télécharger des données avec Python<a class="headerlink" href="#Télécharger-des-données-avec-Python" title="Permalink to this heading"></a></h2>
+<h2>Télécharger des données avec Python<a class="headerlink" href="#Télécharger-des-données-avec-Python" title="Link to this heading"></a></h2>
 <p>Vous pouvez utiliser la bibliothèque python urllib pour télécharger des données, puis les analyser. Dans cet exemple, les données sont une structure XML par message téléchargé et lu en mémoire. Certaines données de station sont ensuite imprimées.</p>
 <p>Cela fonctionne bien avec urllib pour les ressources de protocole de transport hyper-test, mais d’autres ressources peuvent être annoncées à l’aide d’autres protocoles, tels que sftp ou ftp. Le code python devra être étendu pour traiter avec d’autres protocoles, ainsi que des conditions d’erreur, telles que des pannes temporaires.</p>
 </section>
 <section id="Conclusion">
-<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this heading"></a></h2>
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="../Reference/code.html#module-sarracenia.moth">Sarracenia.moth.amqp</a> est le moyen le plus léger d’ajouter la consommation de messages Sarracenia à votre pile python existante. Vous demandez explicitement de nouveaux messages lorsque vous êtes prêt à les utiliser.</p>
 <p>Ce type d’intégration ne fournit pas:</p>
 <ul class="simple">

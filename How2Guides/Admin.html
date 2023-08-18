@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -158,26 +158,26 @@
 }
 </style>
 <section id="administering-amqp-data-pumps">
-<h1>Administering AMQP Data Pumps<a class="headerlink" href="#administering-amqp-data-pumps" title="Permalink to this heading"></a></h1>
+<h1>Administering AMQP Data Pumps<a class="headerlink" href="#administering-amqp-data-pumps" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>FIXME</strong>: Missing sections are highlighted by <strong>FIXME</strong>. What is here is accurate.</p>
 </div>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>Describes setup and operations of a MetPX-Sarracenia Data Pump using
 Rabbitmq as the message queueing protocol broker. For administration,
 most tasks are different, depending on the broker used. If using
 another broker, there needs to be another admin guide.</p>
 </section>
 <section id="pre-requisites">
-<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading"></a></h2>
+<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading"></a></h2>
 <p>Ideally, one should be familiar with user-level access to existing pumps
 as either a <a class="reference internal" href="subscriber.html"><span class="doc">subscriber</span></a> or a <a class="reference internal" href="source.html"><span class="doc">source</span></a>  before proceeding to administration.
 This manual aims to be prescriptive, rather than explanatory.  For the reasons why things are
 built as they are see <a class="reference internal" href="../Explanation/Concepts.html"><span class="doc">Concepts.rst</span></a></p>
 <section id="minimum-requirements">
-<h3>Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Permalink to this heading"></a></h3>
+<h3>Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Link to this heading"></a></h3>
 <p>The AMQP broker is extremely light on today’s servers. The examples in
 this manual were implemented on a commercial virtual private server (VPS)
 with 256 MB of RAM, and 700MB of swap taken from a 20 GByte disk. Such
@@ -202,7 +202,7 @@ activities should be ample for many useful cases.</p>
 </section>
 </section>
 <section id="operations">
-<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this heading"></a></h2>
+<h2>Operations<a class="headerlink" href="#operations" title="Link to this heading"></a></h2>
 <p>To operate a pump, there needs to be a user designated as the pump administrator.
 The administrator is different from the others mostly in the permission granted
 to create arbitrary exchanges, and the ability to run processes that address the common
@@ -242,7 +242,7 @@ user, from data flow tasks, such as pulling and posting data, performed by the f
 Normally one would place credentials in ~/.config/sarra/credentials.conf
 for each account, and the various configuration files would use the appropriate account.</p>
 <section id="housekeeping-sr-audit">
-<h3>Housekeeping - sr_audit<a class="headerlink" href="#housekeeping-sr-audit" title="Permalink to this heading"></a></h3>
+<h3>Housekeeping - sr_audit<a class="headerlink" href="#housekeeping-sr-audit" title="Link to this heading"></a></h3>
 <p>When a client connects to a broker, it creates a queue which is then bound to an exchange. The user
 can choose to have the client self-destruct when disconnected (<em>auto-delete</em>), or it can make
 it <em>durable</em> which means it should remain, waiting for the client to connect again, even across
@@ -253,7 +253,7 @@ Currently, the default is set that any unused queue having more than 25000 notif
 One can change this limit by having option <em>max_queue_size 50000</em> in default.conf.</p>
 </section>
 <section id="excess-queueing-performance">
-<h3>Excess Queueing/Performance<a class="headerlink" href="#excess-queueing-performance" title="Permalink to this heading"></a></h3>
+<h3>Excess Queueing/Performance<a class="headerlink" href="#excess-queueing-performance" title="Link to this heading"></a></h3>
 <p>When rabbitmq has hundreds of thousands of notification messages queued, broker performance can suffer. Such
 accumulations can occur when the destination of a sender is down for a prolonged period, or a
 subscriber is unavailable for some reason. In many cases, one can simply shutdown the sender,
@@ -282,7 +282,7 @@ a <strong>second layer of subscribers (sr_winnow) whose duplicate suppression ca
 </section>
 </section>
 <section id="routing">
-<h2>Routing<a class="headerlink" href="#routing" title="Permalink to this heading"></a></h2>
+<h2>Routing<a class="headerlink" href="#routing" title="Link to this heading"></a></h2>
 <p>The inter-connection of multiple pumps is done, on the data side, by daisy-chaining
 sr_sarra and/or sr_sender configurations from one pump to the next.</p>
 <p>The <em>to_clusters</em>, and <em>source</em>  headers are used for routing decisions
@@ -298,7 +298,7 @@ configurations created by sr_audit.</p>
 manually configured shovels. See the <a class="reference internal" href="#reports">Reports</a> section for more details.</p>
 </section>
 <section id="what-is-going-on">
-<h2>What is Going On?<a class="headerlink" href="#what-is-going-on" title="Permalink to this heading"></a></h2>
+<h2>What is Going On?<a class="headerlink" href="#what-is-going-on" title="Link to this heading"></a></h2>
 <p>The sr_report command can be invoked to bind to ‘xreport’ instead of the
 default user exchange to get report information for an entire broker.</p>
 <p>Canned sr_report configuration with an <em>on_message</em> action can be configured to
@@ -312,7 +312,7 @@ before operations, we need to figure out how Nagios will monitor it.</p>
 <p>Is any of this needed, or is the rabbit GUI enough on it’s own?</p>
 </div>
 <section id="init-integration">
-<h3>Init Integration<a class="headerlink" href="#init-integration" title="Permalink to this heading"></a></h3>
+<h3>Init Integration<a class="headerlink" href="#init-integration" title="Link to this heading"></a></h3>
 <p>By default, when sarracenia is installed, it is done as a user tool and not a system-wide resource.
 The tools/ sub-directory directory allows for integration with tools for different usage scenarios.</p>
 <div class="admonition note">
@@ -343,12 +343,12 @@ Users can also run their personal configuration in sessions via:</p>
 </section>
 </section>
 <section id="rabbitmq-setup">
-<h2>Rabbitmq Setup<a class="headerlink" href="#rabbitmq-setup" title="Permalink to this heading"></a></h2>
+<h2>Rabbitmq Setup<a class="headerlink" href="#rabbitmq-setup" title="Link to this heading"></a></h2>
 <p>Sample information on setting up a rabbitmq broker for sarracenia to use. The broker does not have to
 be on the same host as anything else, but there has to be one reachable from at least one of the
 transport engines.</p>
 <section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
 <p>Generally speaking, we want to stay above 3.x version.</p>
 <p><a class="reference external" href="https://www.rabbitmq.com/install-debian.html">https://www.rabbitmq.com/install-debian.html</a></p>
 <p>Briefly:</p>
@@ -360,7 +360,7 @@ transport engines.</p>
 <p>In upto-date distros, you likely can just take the distro version.</p>
 </section>
 <section id="webui">
-<h3>WebUI<a class="headerlink" href="#webui" title="Permalink to this heading"></a></h3>
+<h3>WebUI<a class="headerlink" href="#webui" title="Link to this heading"></a></h3>
 <p>Basically, from a root shell one must:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rabbitmq</span><span class="o">-</span><span class="n">plugins</span> <span class="n">enable</span> <span class="n">rabbitmq_management</span>
 </pre></div>
@@ -370,7 +370,7 @@ interface for undesirables, use of firewalls, or listening only to localhost
 interface for the management ui is suggested.</p>
 </section>
 <section id="tls">
-<h3>TLS<a class="headerlink" href="#tls" title="Permalink to this heading"></a></h3>
+<h3>TLS<a class="headerlink" href="#tls" title="Link to this heading"></a></h3>
 <p>One should encrypt broker traffic. Obtaining certificates is outside the scope
 of these instructions, so it is not discussed in detail. For the purposes of
 the example, one method is to obtain certificates from <a class="reference external" href="http://www.letsencrypt.org">letsencrypt</a></p>
@@ -453,7 +453,7 @@ port will break sr_audit. <strong>FIXME</strong>.</p>
 </div>
 </section>
 <section id="change-defaults">
-<h3>Change Defaults<a class="headerlink" href="#change-defaults" title="Permalink to this heading"></a></h3>
+<h3>Change Defaults<a class="headerlink" href="#change-defaults" title="Link to this heading"></a></h3>
 <p>In order to perform any configuration changes the broker needs to be running.
 One needs to start up the rabbitmq broker. On older ubuntu systems, that would be done by:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">rabbitmq</span><span class="o">-</span><span class="n">server</span> <span class="n">start</span>
@@ -543,7 +543,7 @@ With that, the entire system can be administered without system administrative a
 </div>
 </section>
 <section id="managing-users-on-a-pump-using-sr-audit">
-<h3>Managing Users on a Pump Using Sr_audit<a class="headerlink" href="#managing-users-on-a-pump-using-sr-audit" title="Permalink to this heading"></a></h3>
+<h3>Managing Users on a Pump Using Sr_audit<a class="headerlink" href="#managing-users-on-a-pump-using-sr-audit" title="Link to this heading"></a></h3>
 <p>To set up a pump, one needs a broker administrative user (in the examples: sarra)
 and a feeder user (in the examples: feeder). Management of other users is done with
 the sr3 program.</p>
@@ -683,7 +683,7 @@ then run:</p>
 The creation is automated because the read/write/configure patterns are cumbersome to do manually.</p>
 </section>
 <section id="first-subscribe">
-<h3>First Subscribe<a class="headerlink" href="#first-subscribe" title="Permalink to this heading"></a></h3>
+<h3>First Subscribe<a class="headerlink" href="#first-subscribe" title="Link to this heading"></a></h3>
 <p>When setting up a pump, normally the purpose is to connect it to some other pump. To set
 the parameters setting up a subscription helps us set parameters for sarra later. So first
 try a subscription to an upstream pump:</p>
@@ -742,7 +742,7 @@ want the server to discard the queue:</p>
 <p>and turn to a sarra set up.</p>
 </section>
 <section id="sarra-from-another-pump">
-<h3>Sarra from Another Pump<a class="headerlink" href="#sarra-from-another-pump" title="Permalink to this heading"></a></h3>
+<h3>Sarra from Another Pump<a class="headerlink" href="#sarra-from-another-pump" title="Link to this heading"></a></h3>
 <p>Sarra works by having a downstream pump re-advertise products from an upstream one. Sarra needs all the configuration of a subscription,
 but also needs the configuration to post to the downstream broker. The feeder account on the broker is used for this sort
 of work, and is a semi-administrative user, able to publish data to any exchange. Assume apache is set up (not covered here) with a
@@ -826,7 +826,7 @@ sarra@boule:~/.config/sarra/sarra$
 </div>
 </section>
 <section id="reports">
-<h3>Reports<a class="headerlink" href="#reports" title="Permalink to this heading"></a></h3>
+<h3>Reports<a class="headerlink" href="#reports" title="Link to this heading"></a></h3>
 <p>Now that data is flowing, we need to take a look at the flow of report messages, which essentially are used by each pump to tell
 upstream that data has been downloaded. Sr_audit helps with routing by creating the following configurations:</p>
 <blockquote>
@@ -928,7 +928,7 @@ post_exchangeSplit where appropriate.</p>
 of intra-cluster report routing.</p>
 </section>
 <section id="sarra-from-a-source">
-<h3>Sarra From a Source<a class="headerlink" href="#sarra-from-a-source" title="Permalink to this heading"></a></h3>
+<h3>Sarra From a Source<a class="headerlink" href="#sarra-from-a-source" title="Link to this heading"></a></h3>
 <p>When reading posts directly from a source, one needs to turn on validation.
 FIXME: example of how user posts are handled.</p>
 <blockquote>
@@ -941,7 +941,7 @@ FIXME: example of how user posts are handled.</p>
 <p>anything else?</p>
 </section>
 <section id="cleanup">
-<h3>Cleanup<a class="headerlink" href="#cleanup" title="Permalink to this heading"></a></h3>
+<h3>Cleanup<a class="headerlink" href="#cleanup" title="Link to this heading"></a></h3>
 <p>These are examples, the implementation of cleanup is not covered by
 sarracenia. Given a reasonably small tree as given above, it can be
 practical to scan the tree and prune the old files from it. A cron
@@ -974,7 +974,7 @@ remove at midnight if you have always use the same default config since the firs
 It can be shorten to a single retention by adding <em>logRotate 1d</em> to default.conf.</p>
 </section>
 <section id="ensuring-things-are-up">
-<h3>Ensuring Things are Up<a class="headerlink" href="#ensuring-things-are-up" title="Permalink to this heading"></a></h3>
+<h3>Ensuring Things are Up<a class="headerlink" href="#ensuring-things-are-up" title="Link to this heading"></a></h3>
 <p>Processes can crash. One can have automated restart by running <em>sr3 sanity</em> periodically:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@boule</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">d</span><span class="c1"># more sanity</span>
 <span class="c1"># remove files one hour after they show up.</span>
@@ -985,26 +985,26 @@ It can be shorten to a single retention by adding <em>logRotate 1d</em> to defau
 </div>
 </section>
 <section id="startup">
-<h3>Startup<a class="headerlink" href="#startup" title="Permalink to this heading"></a></h3>
+<h3>Startup<a class="headerlink" href="#startup" title="Link to this heading"></a></h3>
 <p>The Debian package installs a systemd unit, but python3 installation does not take
 care of that.</p>
 </section>
 <section id="sr-poll">
-<h3>Sr_Poll<a class="headerlink" href="#sr-poll" title="Permalink to this heading"></a></h3>
+<h3>Sr_Poll<a class="headerlink" href="#sr-poll" title="Link to this heading"></a></h3>
 <p>FIXME: feed the sarra from source configured with an sr_poll. set up.</p>
 </section>
 <section id="sr-winnow">
-<h3>Sr_winnow<a class="headerlink" href="#sr-winnow" title="Permalink to this heading"></a></h3>
+<h3>Sr_winnow<a class="headerlink" href="#sr-winnow" title="Link to this heading"></a></h3>
 <p>FIXME: sample sr_winnow configuration explained, with some shovels also.</p>
 </section>
 <section id="sr-sender">
-<h3>Sr_sender<a class="headerlink" href="#sr-sender" title="Permalink to this heading"></a></h3>
+<h3>Sr_sender<a class="headerlink" href="#sr-sender" title="Link to this heading"></a></h3>
 <p>Where firewalls prevent use of sarra to pull from a pump like a subscriber would, one can reverse the feed by having the
 upstream pump explicitly feed the downstream one.</p>
 <p>FIXME: elaborate sample sr_sender configuration.</p>
 </section>
 <section id="manually-adding-users">
-<h3>Manually Adding Users<a class="headerlink" href="#manually-adding-users" title="Permalink to this heading"></a></h3>
+<h3>Manually Adding Users<a class="headerlink" href="#manually-adding-users" title="Link to this heading"></a></h3>
 <p>To avoid the use of sr_admin, or work around issues, one can adjust user settings manually:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span>
 <span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">boule</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">15671</span><span class="o">/</span><span class="n">cli</span><span class="o">/</span><span class="n">rabbitmqadmin</span>
@@ -1032,7 +1032,7 @@ is managed separately.</p>
 </section>
 </section>
 <section id="advanced-installations">
-<h2>Advanced Installations<a class="headerlink" href="#advanced-installations" title="Permalink to this heading"></a></h2>
+<h2>Advanced Installations<a class="headerlink" href="#advanced-installations" title="Link to this heading"></a></h2>
 <p>On some configurations (we usually call them <em>bunny</em>), we use a clustered rabbitmq, like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">/.</span><span class="n">erlang</span><span class="o">.</span><span class="n">cookie</span>  <span class="n">same</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">nodes</span>
 
@@ -1053,7 +1053,7 @@ is managed separately.</p>
 </pre></div>
 </div>
 <section id="clustered-broker-keepalived-setup">
-<h3>Clustered Broker Keepalived Setup<a class="headerlink" href="#clustered-broker-keepalived-setup" title="Permalink to this heading"></a></h3>
+<h3>Clustered Broker Keepalived Setup<a class="headerlink" href="#clustered-broker-keepalived-setup" title="Link to this heading"></a></h3>
 <p>In this example, bunny-op is a vip that migrates between bunny1-op and bunny2-op.
 Keepalived moves the vip between the two:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#=============================================</span>
@@ -1091,7 +1091,7 @@ Keepalived moves the vip between the two:</p>
 </div>
 </section>
 <section id="ldap-integration">
-<h3>LDAP Integration<a class="headerlink" href="#ldap-integration" title="Permalink to this heading"></a></h3>
+<h3>LDAP Integration<a class="headerlink" href="#ldap-integration" title="Link to this heading"></a></h3>
 <p>To enable LDAP authentication for rabbitmq:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rabbitmq</span><span class="o">-</span><span class="n">plugins</span> <span class="n">enable</span> <span class="n">rabbitmq_auth_backend_ldap</span>
 
@@ -1134,7 +1134,7 @@ Keepalived moves the vip between the two:</p>
 </div>
 </section>
 <section id="requires-rabbitmq-3-3-x">
-<h3>Requires RABBITMQ &gt; 3.3.x<a class="headerlink" href="#requires-rabbitmq-3-3-x" title="Permalink to this heading"></a></h3>
+<h3>Requires RABBITMQ &gt; 3.3.x<a class="headerlink" href="#requires-rabbitmq-3-3-x" title="Link to this heading"></a></h3>
 <p>Was searching on how to use LDAP strictly for password authentication
 The answer I got from the Rabbitmq gurus</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>On 07/08/14 20:51, michel.grenier@ec.gc.ca wrote:
@@ -1166,7 +1166,7 @@ Cheers, Simon
 </div>
 </section>
 <section id="support">
-<h3>Support<a class="headerlink" href="#support" title="Permalink to this heading"></a></h3>
+<h3>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h3>
 <p>It is now possible to enable MQTT in Sarracenia through the RabbitMQ MQTT plugin. Here is a minimal howto guide for our RabbitMQTT support:</p>
 <ul>
 <li><p>After any other MQTT service listening to port 1883 got disabled, enable RabbitMQ MQTT plugin.:</p>
@@ -1236,7 +1236,7 @@ map the source exchange and could be useful if we map multiple exchanges to mqtt
 </section>
 </section>
 <section id="hooks-from-sundew">
-<h2>Hooks from Sundew<a class="headerlink" href="#hooks-from-sundew" title="Permalink to this heading"></a></h2>
+<h2>Hooks from Sundew<a class="headerlink" href="#hooks-from-sundew" title="Link to this heading"></a></h2>
 <p>This information is very likely irrelevant to almost all users. Sundew is another module of MetPX which is essentially being
 replaced by Sarracenia. This information is only useful to those with an installed based of Sundew wishing to bridge
 to sarracenia. The early work on Sarracenia used only the subscribe client as a downloader, and the existing WMO switch module
@@ -1245,7 +1245,7 @@ and routing tool. This section describes the kinds of <em>glue</em> used to feed
 It assumes a deep understanding of MetPX-Sundew. Currently, the dd_notify.py script creates notification messages for the
 protocol exp., v00. and v02 (latest sarracenia protocol version).</p>
 <section id="notifications-on-dd">
-<h3>Notifications on DD<a class="headerlink" href="#notifications-on-dd" title="Permalink to this heading"></a></h3>
+<h3>Notifications on DD<a class="headerlink" href="#notifications-on-dd" title="Link to this heading"></a></h3>
 <p>As a higher performance replacement for Atom/RSS feeds which tell subscribers when new data is available, we put a broker
 on our data dissemination server (dd.weather.gc.ca). Clients can subscribe to it. To create the notifications, we have
 one Sundew Sender (named wxo-b1-oper-dd.conf) with a send script:</p>

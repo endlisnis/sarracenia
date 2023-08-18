@@ -7,9 +7,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -140,7 +140,9 @@
     <span class="kn">import</span> <span class="nn">netifaces</span>
 
 
-<div class="viewcode-block" id="Flow"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow">[docs]</a><span class="k">class</span> <span class="nc">Flow</span><span class="p">:</span>
+<div class="viewcode-block" id="Flow">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow">[docs]</a>
+<span class="k">class</span> <span class="nc">Flow</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Implement the General Algorithm from the Concepts Guide.</span>
 
@@ -200,7 +202,9 @@
             <span class="k">return</span> <span class="n">Flow</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="Flow.__init__"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Flow.__init__">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       The cfg is should be an sarra/config object.</span>
 <span class="sd">       &quot;&quot;&quot;</span>
@@ -281,6 +285,7 @@
         <span class="c1"># metrics - dictionary with names of plugins as the keys</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metricsFlowReset</span><span class="p">()</span></div>
 
+
     <span class="k">def</span> <span class="nf">metricsFlowReset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;flow&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;stop_requested&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;last_housekeeping&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  
               <span class="s1">&#39;transferConnected&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;transferConnectStart&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;transferConnectTime&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> 
@@ -351,7 +356,9 @@
                     <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;flowCallback plugin </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">entry_point</span><span class="si">}</span><span class="s1"> crashed: </span><span class="si">{</span><span class="n">ex</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
                     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span> <span class="s2">&quot;details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
 
-<div class="viewcode-block" id="Flow._runCallbackMetrics"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow._runCallbackMetrics">[docs]</a>    <span class="k">def</span> <span class="nf">_runCallbackMetrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Flow._runCallbackMetrics">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow._runCallbackMetrics">[docs]</a>
+    <span class="k">def</span> <span class="nf">_runCallbackMetrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Collect metrics from plugins with a ``metricsReport`` entry point.</span>
 
 <span class="sd">        Expects the plugin to return a dictionary containing metrics, which is saved to ``self.metrics[plugin_name]``.</span>
@@ -384,6 +391,7 @@
                     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span> <span class="s2">&quot;details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span></div>
 
 
+
     <span class="k">def</span> <span class="nf">has_vip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;vip&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span> <span class="k">return</span> <span class="kc">True</span>
@@ -408,12 +416,15 @@
 
         <span class="k">return</span> <span class="kc">False</span>
 
-<div class="viewcode-block" id="Flow.reject"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.reject">[docs]</a>    <span class="k">def</span> <span class="nf">reject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Flow.reject">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.reject">[docs]</a>
+    <span class="k">def</span> <span class="nf">reject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            reject a message.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">rejected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
         <span class="n">m</span><span class="o">.</span><span class="n">setReport</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span></div>
+
 
     <span class="k">def</span> <span class="nf">please_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
@@ -445,7 +456,9 @@
                         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;flowCallback plugin </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">/ack crashed: </span><span class="si">{</span><span class="n">ex</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
                         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span> <span class="s2">&quot;details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
 
-<div class="viewcode-block" id="Flow.run"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Flow.run">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">          This is the core routine of the algorithm, with most important data driven</span>
 <span class="sd">          loop in it. This implements the General Algorithm (as described in the Concepts Explanation Guide) </span>
@@ -717,7 +730,10 @@
                 <span class="n">last_time</span> <span class="o">=</span> <span class="n">now</span></div>
 
 
-<div class="viewcode-block" id="Flow.sundew_getDestInfos"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.sundew_getDestInfos">[docs]</a>    <span class="k">def</span> <span class="nf">sundew_getDestInfos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">currentFileOption</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Flow.sundew_getDestInfos">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.sundew_getDestInfos">[docs]</a>
+    <span class="k">def</span> <span class="nf">sundew_getDestInfos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">currentFileOption</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        modified from sundew client</span>
 
@@ -810,12 +826,15 @@
         <span class="k">return</span> <span class="n">destFileName</span> <span class="o">+</span> <span class="n">satnet</span> <span class="o">+</span> <span class="n">timeSuffix</span></div>
 
 
+
     <span class="c1"># ==============================================</span>
     <span class="c1"># how will the download file land on this server</span>
     <span class="c1"># with all options, this is really tricky</span>
     <span class="c1"># ==============================================</span>
 
-<div class="viewcode-block" id="Flow.updateFieldsAccepted"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.updateFieldsAccepted">[docs]</a>    <span class="k">def</span> <span class="nf">updateFieldsAccepted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">urlstr</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">maskDir</span><span class="p">,</span>
+<div class="viewcode-block" id="Flow.updateFieldsAccepted">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.updateFieldsAccepted">[docs]</a>
+    <span class="k">def</span> <span class="nf">updateFieldsAccepted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">urlstr</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">maskDir</span><span class="p">,</span>
                              <span class="n">maskFileOption</span><span class="p">,</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">path_strip_count</span><span class="p">,</span> <span class="n">pstrip</span><span class="p">,</span> <span class="n">flatten</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           Set new message fields according to values when the message is accepted.</span>
@@ -972,6 +991,7 @@
 
 
 
+
     <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
@@ -1097,7 +1117,9 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_incoming</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_incoming</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Flow.do"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.do">[docs]</a>    <span class="k">def</span> <span class="nf">do</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Flow.do">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.do">[docs]</a>
+    <span class="k">def</span> <span class="nf">do</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            stub to do the work: does nothing, marking everything done.</span>
 <span class="sd">            to be replaced in child classes that do transforms or transfers.</span>
@@ -1108,6 +1130,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;processing </span><span class="si">%d</span><span class="s1"> messages worked! (stop requested: </span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span>
                      <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">ok</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop_requested</span><span class="p">))</span></div>
+
 
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s2">&quot;post&quot;</span><span class="p">]:</span>
@@ -1122,7 +1145,9 @@
         <span class="c1"># apply on_report plugins</span>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="Flow.write_inline_file"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.write_inline_file">[docs]</a>    <span class="k">def</span> <span class="nf">write_inline_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Flow.write_inline_file">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.write_inline_file">[docs]</a>
+    <span class="k">def</span> <span class="nf">write_inline_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           write local file based on a message with inlined content.</span>
 
@@ -1221,6 +1246,7 @@
 
         <span class="k">return</span> <span class="kc">True</span></div>
 
+
     <span class="k">def</span> <span class="nf">compute_local_checksum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="k">if</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">filemetadata</span><span class="o">.</span><span class="n">supports_extended_attributes</span><span class="p">:</span>
@@ -1257,7 +1283,9 @@
         <span class="p">}</span>
         <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;local_identity&#39;</span><span class="p">])</span>
 
-<div class="viewcode-block" id="Flow.file_should_be_downloaded"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.file_should_be_downloaded">[docs]</a>    <span class="k">def</span> <span class="nf">file_should_be_downloaded</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Flow.file_should_be_downloaded">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.file_should_be_downloaded">[docs]</a>
+    <span class="k">def</span> <span class="nf">file_should_be_downloaded</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">          determine whether a comparison of local_file and message metadata indicates that it is new enough</span>
 <span class="sd">          that writing the file locally is warranted.</span>
@@ -1350,7 +1378,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Flow.removeOneFile"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.removeOneFile">[docs]</a>    <span class="k">def</span> <span class="nf">removeOneFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Flow.removeOneFile">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.removeOneFile">[docs]</a>
+    <span class="k">def</span> <span class="nf">removeOneFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">          process an unlink event, returning boolean success.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1370,7 +1401,10 @@
 
         <span class="k">return</span> <span class="n">ok</span></div>
 
-<div class="viewcode-block" id="Flow.renameOneItem"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.renameOneItem">[docs]</a>    <span class="k">def</span> <span class="nf">renameOneItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Flow.renameOneItem">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.renameOneItem">[docs]</a>
+    <span class="k">def</span> <span class="nf">renameOneItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            for messages with an rename file operation, it is to rename a file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1401,7 +1435,10 @@
             <span class="n">ok</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">ok</span></div>
 
-<div class="viewcode-block" id="Flow.mkdir"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.mkdir">[docs]</a>    <span class="k">def</span> <span class="nf">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Flow.mkdir">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.mkdir">[docs]</a>
+    <span class="k">def</span> <span class="nf">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            perform an mkdir.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1437,7 +1474,10 @@
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Exception details:&#39;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ok</span></div>
 
-<div class="viewcode-block" id="Flow.link1file"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.link1file">[docs]</a>    <span class="k">def</span> <span class="nf">link1file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Flow.link1file">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.link1file">[docs]</a>
+    <span class="k">def</span> <span class="nf">link1file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">symbolic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;        </span>
 <span class="sd">          perform a link of a single file, based on a message, returning boolean success</span>
 <span class="sd">          if it&#39;s Symbolic, then do that. else do a hard link.</span>
@@ -1484,7 +1524,10 @@
 
         <span class="k">return</span> <span class="n">ok</span></div>
 
-<div class="viewcode-block" id="Flow.do_download"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.do_download">[docs]</a>    <span class="k">def</span> <span class="nf">do_download</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Flow.do_download">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.do_download">[docs]</a>
+    <span class="k">def</span> <span class="nf">do_download</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           do download work for self.worklist.incoming, placing files:</span>
 <span class="sd">                successfully downloaded in worklist.ok</span>
@@ -1683,10 +1726,13 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span> <span class="o">=</span> <span class="p">[]</span></div>
 
+
     <span class="c1"># v2 sr_util.py ... generic sr_transport imported here...</span>
 
     <span class="c1"># generalized download...</span>
-<div class="viewcode-block" id="Flow.download"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.download">[docs]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Flow.download">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.download">[docs]</a>
+    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           download/transfer one file based on message, return True if successful, otherwise False.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2014,6 +2060,7 @@
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
+
 
     <span class="c1"># generalized send...</span>
     <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
@@ -2356,7 +2403,9 @@
             <span class="k">return</span> <span class="kc">False</span>
 
     <span class="c1"># set_local_file_attributes</span>
-<div class="viewcode-block" id="Flow.set_local_file_attributes"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.set_local_file_attributes">[docs]</a>    <span class="k">def</span> <span class="nf">set_local_file_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">local_file</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<div class="viewcode-block" id="Flow.set_local_file_attributes">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.set_local_file_attributes">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_local_file_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">local_file</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           after a file has been written, restore permissions and ownership if necessary.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2398,6 +2447,7 @@
                 <span class="n">atime</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">timestr2flt</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;atime&#39;</span><span class="p">])</span>
             <span class="n">os</span><span class="o">.</span><span class="n">utime</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="p">(</span><span class="n">atime</span><span class="p">,</span> <span class="n">mtime</span><span class="p">))</span></div>
 
+
     <span class="c1"># set_remote_file_attributes</span>
     <span class="k">def</span> <span class="nf">set_remote_file_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">remote_file</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="c1">#logger.debug(&quot;sr_transport set_remote_file_attributes %s&quot; % remote_file)</span>
@@ -2436,7 +2486,9 @@
 
     <span class="c1"># imported from v2: sr_sender/doit_send</span>
 
-<div class="viewcode-block" id="Flow.do_send"><a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.do_send">[docs]</a>    <span class="k">def</span> <span class="nf">do_send</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Flow.do_send">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.do_send">[docs]</a>
+    <span class="k">def</span> <span class="nf">do_send</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">download</span><span class="p">:</span>
@@ -2465,7 +2517,9 @@
                 <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">ok</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span> <span class="o">=</span> <span class="p">[]</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span> <span class="o">=</span> <span class="p">[]</span></div>
+</div>
+
 
 
 <span class="kn">import</span> <span class="nn">sarracenia.flow.poll</span>

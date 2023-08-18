@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -118,9 +118,9 @@
 }
 </style>
 <section id="mqtt-implementation-notes">
-<h1>MQTT Implementation Notes<a class="headerlink" href="#mqtt-implementation-notes" title="Permalink to this heading"></a></h1>
+<h1>MQTT Implementation Notes<a class="headerlink" href="#mqtt-implementation-notes" title="Link to this heading"></a></h1>
 <section id="v3-vs-v5">
-<h2>v3 vs. v5<a class="headerlink" href="#v3-vs-v5" title="Permalink to this heading"></a></h2>
+<h2>v3 vs. v5<a class="headerlink" href="#v3-vs-v5" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>version 3 has resends sent on a timed basis, every few seconds (perhaps as much as 20 seconds.)
 If you ever have a backlog, these retransmits will be a storm of ever increasing traffic.</p></li>
@@ -129,14 +129,14 @@ load balancing more difficult.</p></li>
 </ul>
 </section>
 <section id="shared-subscriptions">
-<h2>Shared Subscriptions<a class="headerlink" href="#shared-subscriptions" title="Permalink to this heading"></a></h2>
+<h2>Shared Subscriptions<a class="headerlink" href="#shared-subscriptions" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>once you join a group, you are there until the session is dead, even if you disconnect,
 it will pile 1/n messages in your queue.</p></li>
 </ul>
 </section>
 <section id="back-pressure">
-<h2>Back Pressure<a class="headerlink" href="#back-pressure" title="Permalink to this heading"></a></h2>
+<h2>Back Pressure<a class="headerlink" href="#back-pressure" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>paho client is async,</p></li>
 <li><p>best practice is to have very light-weight on_message handlers.</p></li>

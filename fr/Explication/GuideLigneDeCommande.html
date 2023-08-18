@@ -8,9 +8,9 @@
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=88a95e73"></script>
+        <script src="../../_static/documentation_options.js?v=dfb9cee5"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -132,9 +132,9 @@
 }
 </style>
 <section id="guide-de-ligne-de-commande">
-<h1>Guide De Ligne De Commande<a class="headerlink" href="#guide-de-ligne-de-commande" title="Permalink to this heading"></a></h1>
+<h1>Guide De Ligne De Commande<a class="headerlink" href="#guide-de-ligne-de-commande" title="Link to this heading"></a></h1>
 <section id="sr3-tout">
-<h2>SR3 - Tout<a class="headerlink" href="#sr3-tout" title="Permalink to this heading"></a></h2>
+<h2>SR3 - Tout<a class="headerlink" href="#sr3-tout" title="Link to this heading"></a></h2>
 <p><strong>sr3</strong> est un outil de ligne de commande pour gérer les configurations
 <a class="reference external" href="https://github.com/MetPX/sarracenia">Sarracenia</a> individuellement ou en groupe. Pour l’utilisateur actuel,
 il lit sur tous les fichiers de configuration, des fichiers d’état et consulte la table de processus pour déterminer
@@ -237,9 +237,9 @@ placé dans le réportoire <em>~/.config/sarra/composant/v2_config.conf</em> et 
 dans le répertoire <em>~/.config/sr3/composant/v3_config.conf</em>. Pas exemple, cette action serais invoqué avec
 <em>sr3 convert composant/config</em>.</p>
 <section id="actions">
-<h3>ACTIONS<a class="headerlink" href="#actions" title="Permalink to this heading"></a></h3>
+<h3>ACTIONS<a class="headerlink" href="#actions" title="Link to this heading"></a></h3>
 <section id="declare-setup">
-<h4>declare|setup<a class="headerlink" href="#declare-setup" title="Permalink to this heading"></a></h4>
+<h4>declare|setup<a class="headerlink" href="#declare-setup" title="Link to this heading"></a></h4>
 <p>Appeler la fonction correspondante pour chacune des configurations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 declare
   declare: 2020-09-06 23:22:18,043 [INFO] root declare looking at cpost/pelle_dd1_f04
@@ -267,7 +267,7 @@ On peut également l’appeler avec –users, afin qu’il déclare les utilisat
 </div>
 </section>
 <section id="dump">
-<h4>dump<a class="headerlink" href="#dump" title="Permalink to this heading"></a></h4>
+<h4>dump<a class="headerlink" href="#dump" title="Link to this heading"></a></h4>
 <p>imprimer les trois structures de données utilisées par sr.  Il existe trois listes :</p>
 <ul class="simple">
 <li><p>processus considérés comme liés à sr.</p></li>
@@ -313,7 +313,7 @@ on peut utiliser dump pour obtenir plus de détails:</p>
 </div>
 </section>
 <section id="foreground">
-<h4>foreground<a class="headerlink" href="#foreground" title="Permalink to this heading"></a></h4>
+<h4>foreground<a class="headerlink" href="#foreground" title="Link to this heading"></a></h4>
 <p>exécuter une seule instance d’une configuration unique en tant que processus interactif de journalisation à la sortie stderr/terminal actuelle.
 pour le débogage.</p>
 <p><strong>list</strong></p>
@@ -366,7 +366,7 @@ on peut travailler sur une configuration particulière.  Un <em>disabled</em> me
 les actions <strong>start</strong>, <strong>foreground</strong> ou <strong>restart</strong>.</p>
 </section>
 <section id="show">
-<h4>show<a class="headerlink" href="#show" title="Permalink to this heading"></a></h4>
+<h4>show<a class="headerlink" href="#show" title="Link to this heading"></a></h4>
 <p>Afficher tous les paramètres de configuration (le résultat de toutes les analyses… ce que les composants du flux voient réellement)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">sr3</span> <span class="n">show</span> <span class="n">subscribe</span><span class="o">/</span><span class="n">q_f71</span>
 <span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">20</span> <span class="mi">15</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">507</span> <span class="mi">1084652</span> <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">config</span> <span class="n">parse_fil</span> <span class="n">download_f20</span><span class="o">.</span><span class="n">conf</span><span class="p">:</span><span class="mi">35</span> <span class="n">obsolete</span> <span class="n">v2</span><span class="p">:</span><span class="s2">&quot;on_message msg_log&quot;</span> <span class="n">converted</span> <span class="n">to</span> <span class="n">sr3</span><span class="p">:</span><span class="s2">&quot;logEvents after_accept&quot;</span>
@@ -496,7 +496,7 @@ les actions <strong>start</strong>, <strong>foreground</strong> ou <strong>resta
 </div>
 </section>
 <section id="convert">
-<h4>convert<a class="headerlink" href="#convert" title="Permalink to this heading"></a></h4>
+<h4>convert<a class="headerlink" href="#convert" title="Link to this heading"></a></h4>
 <p>Conversion d’une configuration : les deux formats sont acceptés, ainsi que les fichiers d’inclusion (.inc)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 convert poll/sftp_f62
   2022-06-14 15:00:00,762 1093345 [INFO] root convert converting poll/sftp_f62 from v2 to v3
@@ -510,7 +510,7 @@ $ sr3 convert shovel/no_trouble_f00.inc
 </div>
 </section>
 <section id="start">
-<h4>start<a class="headerlink" href="#start" title="Permalink to this heading"></a></h4>
+<h4>start<a class="headerlink" href="#start" title="Link to this heading"></a></h4>
 <p>lancer tous les composants configurés:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 start
   gathering global state: procs, configs, state files, logs, analysis - Done.
@@ -519,7 +519,7 @@ $ sr3 convert shovel/no_trouble_f00.inc
 </div>
 </section>
 <section id="stop">
-<h4>stop<a class="headerlink" href="#stop" title="Permalink to this heading"></a></h4>
+<h4>stop<a class="headerlink" href="#stop" title="Link to this heading"></a></h4>
 <p>arrêter tous les processus:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 stop
   gathering global state: procs, configs, state files, logs, analysis - Done.
@@ -530,7 +530,7 @@ $ sr3 convert shovel/no_trouble_f00.inc
 </div>
 </section>
 <section id="status">
-<h4>status<a class="headerlink" href="#status" title="Permalink to this heading"></a></h4>
+<h4>status<a class="headerlink" href="#status" title="Link to this heading"></a></h4>
 <p>Exemple d’état OK (sr3 est en cours d’exécution)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="n">status</span>
 <span class="n">status</span><span class="p">:</span>
@@ -732,7 +732,7 @@ Expected liste combien de processus devraient être exécutés à partir d’une
 </section>
 </section>
 <section id="la-ceuillette-de-messages">
-<h2>La ceuillette de messages<a class="headerlink" href="#la-ceuillette-de-messages" title="Permalink to this heading"></a></h2>
+<h2>La ceuillette de messages<a class="headerlink" href="#la-ceuillette-de-messages" title="Link to this heading"></a></h2>
 <p>La plupart des composants Metpx Sarracenia boucle sur la ceuillette et/ou
 réception de messages AMQP. Habituellement, les messages d’intérêt sont
 dans le format d´une <em>avis</em> <a class="reference external" href="../Reference/sr_post.7.html">sr_post(7)</a>, annonçant la disponibilité
@@ -755,7 +755,7 @@ message est rejeté. Si c’est vrai, le traitement du message se poursuit.</p>
 <p>Les sections suivantes expliquent toutes les options pour régler cette
 partie “consommateur” de les programmes de Sarracenia.</p>
 <section id="reglage-de-broker">
-<h3>Réglage de Broker<a class="headerlink" href="#reglage-de-broker" title="Permalink to this heading"></a></h3>
+<h3>Réglage de Broker<a class="headerlink" href="#reglage-de-broker" title="Link to this heading"></a></h3>
 <p><strong>broker [amqp|mqtt]{s}://&lt;user&gt;:&lt;password&gt;&#64;&lt;brokerhost&gt;[:port]/&lt;vhost&gt;</strong></p>
 <p>Un URI AMQP est utilisé pour configurer une connexion à une pompe à messages
 (AMQP broker). Certains composants de Sarracenia définissent une valeur par
@@ -776,7 +776,7 @@ L’option courtier indique à chaque composante quel courtier contacter.</p>
 à l´*exchange* et aux thèmes (<em>topics</em>) pour déterminer les messages intérêsseants.</p>
 </section>
 <section id="configuration-de-fil-d-attente">
-<h3>Configuration de fil d´attente<a class="headerlink" href="#configuration-de-fil-d-attente" title="Permalink to this heading"></a></h3>
+<h3>Configuration de fil d´attente<a class="headerlink" href="#configuration-de-fil-d-attente" title="Link to this heading"></a></h3>
 <p>Une fois connecté à un courtier AMQP, l’utilisateur doit créer une fil d’attente.</p>
 <p>Mise en fil d’attente sur broker :</p>
 <ul class="simple">
@@ -791,7 +791,7 @@ les cas moins habituels, l’utilisateur peut avoir besoin a remplacer les valeu
 par défaut. La fil d’attente est l’endroit où les avis sont conservés
 sur le serveur pour chaque abonné.</p>
 <section id="queue-queue-name-qn-name">
-<h4>[ queue|queue_name|qn &lt;name&gt;]<a class="headerlink" href="#queue-queue-name-qn-name" title="Permalink to this heading"></a></h4>
+<h4>[ queue|queue_name|qn &lt;name&gt;]<a class="headerlink" href="#queue-queue-name-qn-name" title="Link to this heading"></a></h4>
 <p>Par défaut, les composants créent un nom de fil d’attente qui doit être unique. Le
 queue_name par défaut créé par les composants et suit la convention suivante :</p>
 <blockquote>
@@ -818,7 +818,7 @@ de partager le travail sur plusieurs nœuds.</p>
 </section>
 </section>
 <section id="amqp-queue-bindings">
-<h3>AMQP QUEUE BINDINGS<a class="headerlink" href="#amqp-queue-bindings" title="Permalink to this heading"></a></h3>
+<h3>AMQP QUEUE BINDINGS<a class="headerlink" href="#amqp-queue-bindings" title="Link to this heading"></a></h3>
 <p>Une fois qu’on a une fil d’attente, elle doit être liée à un échange (exchange.)
 Les utilisateurs ont presque toujours besoin de définir ces options. Une
 fois qu’une fil d’attente existe sur le courtier, il doit être lié (<em>bound</em>) à
@@ -837,7 +837,7 @@ option.)</p>
 </ul>
 </div></blockquote>
 <section id="subtopic-amqp-pattern-default">
-<h4>subtopic &lt;amqp pattern&gt; (default: #)<a class="headerlink" href="#subtopic-amqp-pattern-default" title="Permalink to this heading"></a></h4>
+<h4>subtopic &lt;amqp pattern&gt; (default: #)<a class="headerlink" href="#subtopic-amqp-pattern-default" title="Link to this heading"></a></h4>
 <p>Dans les publications d’un échange, le paramètre de sous-thème restreint la sélection de produits.
 Pour donner une valeur correcte au sous-thème, on a le choix de filtrer en utilisant <strong>subtopic</strong>
 avec seulement le wildcard limité d’AMQP et à longueur limitée à 255 octets codés, ou l’expression
@@ -889,14 +889,14 @@ On peut désactiver la liaison de fil d’attente comme cela:</p>
 </section>
 </section>
 <section id="client-side-filtering">
-<h3>Client-side Filtering<a class="headerlink" href="#client-side-filtering" title="Permalink to this heading"></a></h3>
+<h3>Client-side Filtering<a class="headerlink" href="#client-side-filtering" title="Link to this heading"></a></h3>
 <p>Nous avons sélectionné nos messages via <strong>exchange</strong>, <strong>subtopic</strong> et <strong>subtopic</strong>.
 Le courtier met les messages correspondants dans notre fil d’attente (<em>queue</em>).
 Le composant télécharge ces messages.</p>
 <p>Les clients Sarracenia implémentent un filtrage plus flexible côté client
 en utilisant les expressions régulières.</p>
 <section id="brief-introduction-to-regular-expressions">
-<h4>Brief Introduction to Regular Expressions<a class="headerlink" href="#brief-introduction-to-regular-expressions" title="Permalink to this heading"></a></h4>
+<h4>Brief Introduction to Regular Expressions<a class="headerlink" href="#brief-introduction-to-regular-expressions" title="Link to this heading"></a></h4>
 <p>Les expressions régulières sont un moyen très puissant d’exprimer les correspondances de motifs.
 Ils offrent une flexibilité extrême, mais dans ces exemples, nous utiliserons seulement un
 petit sous-ensemble : Le point (.) est un joker qui correspond à n’importe quel caractère
@@ -926,7 +926,7 @@ ne seront pas interpretés pareilles par les outils implanté en C: sr_cpost, sr
 </div></blockquote>
 </section>
 <section id="accept-reject-and-accept-unmatch">
-<h4>accept, reject and accept_unmatch<a class="headerlink" href="#accept-reject-and-accept-unmatch" title="Permalink to this heading"></a></h4>
+<h4>accept, reject and accept_unmatch<a class="headerlink" href="#accept-reject-and-accept-unmatch" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><strong>accept    &lt;expression régulière (regexp)&gt;  (facultatif)</strong></p></li>
 <li><p><strong>reject    &lt;expression régulière (regexp)&gt;  (facultatif)</strong></p></li>
@@ -973,7 +973,7 @@ dans le message. Toutefois, si <em>baseUrl_relPath</em> est défini, le relPath 
 </section>
 </section>
 <section id="convention-d-appellation-de-files-d-attente">
-<h3>Convention d´appellation de files d´attente<a class="headerlink" href="#convention-d-appellation-de-files-d-attente" title="Permalink to this heading"></a></h3>
+<h3>Convention d´appellation de files d´attente<a class="headerlink" href="#convention-d-appellation-de-files-d-attente" title="Link to this heading"></a></h3>
 <p>Alors que dans la plupart des cas, une bonne valeur de nom de fil d´attente (en anglais: queue) est
 générée par l’application, dans certains cas, c´est nécessaire de remplacer ces choix par une
 spécification utilisateur explicite. Pour ce faire, il faut connaître les règles de nommage des files d’attente :</p>
@@ -987,7 +987,7 @@ spécification utilisateur explicite. Pour ce faire, il faut connaître les règ
 </section>
 </section>
 <section id="publication-post">
-<h2>PUBLICATION (POST)<a class="headerlink" href="#publication-post" title="Permalink to this heading"></a></h2>
+<h2>PUBLICATION (POST)<a class="headerlink" href="#publication-post" title="Link to this heading"></a></h2>
 <p>Comme de nombreux composants consomment un flux de messages, de nombreux composants
 (souvent les mêmes) produisent également un flux de sortie de messages.  Pour créer des fichiers
 disponible pour les abonnés, une affiche publie les annonces à un AMQP ou
@@ -1005,7 +1005,7 @@ courtier au saut suivant, l’utilisateur définit ces options :</p>
 </ul>
 <p>FIXME : Des exemples de ce à quoi ils servent, de ce qu’ils font…</p>
 <section id="convention-d-appellation-des-exchanges">
-<h3>Convention d´appellation des EXCHANGES<a class="headerlink" href="#convention-d-appellation-des-exchanges" title="Permalink to this heading"></a></h3>
+<h3>Convention d´appellation des EXCHANGES<a class="headerlink" href="#convention-d-appellation-des-exchanges" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Les noms d’échange commencent par x</p></li>
 <li><p>Les échanges qui se terminent par <em>public</em> sont accessibles (pour lecture) par tout utilisateur authentifié.</p></li>
@@ -1032,7 +1032,7 @@ en le ré-annonçant sur l’échange xpublic.</p>
 </section>
 </section>
 <section id="sondage-polling">
-<h2>SONDAGE (POLLING)<a class="headerlink" href="#sondage-polling" title="Permalink to this heading"></a></h2>
+<h2>SONDAGE (POLLING)<a class="headerlink" href="#sondage-polling" title="Link to this heading"></a></h2>
 <p>On peut faire le même travail que post, sauf que les fichiers sont sur un serveur distant.
 Dans le cas d’un sondage (en anglais: poll), l’URL de la publication sera générée à partir de l´option <em>pollUrl</em>,
 avec le chemin d’accès du produit (<em>directory</em>/« fichier correspondant »).  Il y en a une publication
@@ -1113,7 +1113,7 @@ option de durée, les unités sont en secondes par défaut, mais il est possible
 en utilisant des minutes, heures, jours ou des semaines. Dans la composante de poll, nodupe_fileAgeMax
 est défini à 30 jours par défaut.</p>
 <section id="sondage-avance-advanced-polling">
-<h3>Sondage avancé (Advanced Polling)<a class="headerlink" href="#sondage-avance-advanced-polling" title="Permalink to this heading"></a></h3>
+<h3>Sondage avancé (Advanced Polling)<a class="headerlink" href="#sondage-avance-advanced-polling" title="Link to this heading"></a></h3>
 <p>Le poll intégré liste les répertoires distants et analyse les lignes renvoyées par les structures
 paramiko.SFTPAttributes (similaires à os.stat) pour chaque fichier répertorié.
 Il existe une grande variété de personnalisations disponibles car les ressources à poller
@@ -1138,14 +1138,14 @@ après <em>gather</em> dans l’algorithme.</p>
 </section>
 </section>
 <section id="composants">
-<h2>COMPOSANTS<a class="headerlink" href="#composants" title="Permalink to this heading"></a></h2>
+<h2>COMPOSANTS<a class="headerlink" href="#composants" title="Link to this heading"></a></h2>
 <p>Tous les composants effectuent une combinaison de poll, de consommation et de publication.
 avec des variations qui permettent soit la transmission d’annonces, ou soit aux
 transferts de données. Les composants appliquent tous le seul même algorithme,
 il suffit de commencer à partir de différents paramètres par défaut pour correspondre
 à un cas d’utilisation commun.</p>
 <section id="cpump">
-<h3>CPUMP<a class="headerlink" href="#cpump" title="Permalink to this heading"></a></h3>
+<h3>CPUMP<a class="headerlink" href="#cpump" title="Link to this heading"></a></h3>
 <p><em>cpump*</em> est une implémentation du composant <a class="reference internal" href="#shovel">shovel</a> en C.
 Sur une base individuelle, il devrait être plus rapide qu’un seul téléchargeur python,
 avec certaines limitations.</p>
@@ -1171,14 +1171,14 @@ trouvé, le fichier est déjà passé, de sorte que la notification est ignorée
 le fichier est nouveau, et la <strong>sum</strong> est ajoutée à la cache et la notification est publiée.</p>
 </section>
 <section id="flow">
-<h3>FLOW<a class="headerlink" href="#flow" title="Permalink to this heading"></a></h3>
+<h3>FLOW<a class="headerlink" href="#flow" title="Link to this heading"></a></h3>
 <p>Flow est la classe parent à partir de laquelle tous les autres composants, à l’exception de cpost et cpump, sont construits.
 Flow n’a pas de comportement intégré. Les paramètres peuvent le faire agir comme n’importe quel autre composant python,
 ou il peut être utilisé pour créer des composants définis par l’utilisateur. Généralement utilisé avec l’option <em>flowMain</em>
 pour exécuter une sous-classe de flux définie par l’utilisateur.</p>
 </section>
 <section id="poll">
-<h3>POLL<a class="headerlink" href="#poll" title="Permalink to this heading"></a></h3>
+<h3>POLL<a class="headerlink" href="#poll" title="Link to this heading"></a></h3>
 <p><strong>poll</strong> est un composant qui se connecte à un serveur distant pour
 vérifier divers répertoires pour certains fichiers. Lorsqu’un fichier est
 présent, modifié, ou créé dans le répertoire distant, le programme
@@ -1210,7 +1210,7 @@ dans messages sr3_post produits.</p>
 La méthode gather intégrée utilise les protocoles sarracenia.transfer. Actuellement sftp, ftp et http
 sont implémentés.</p>
 <section id="scans-repetes-et-vip">
-<h4>Scans répétés et VIP<a class="headerlink" href="#scans-repetes-et-vip" title="Permalink to this heading"></a></h4>
+<h4>Scans répétés et VIP<a class="headerlink" href="#scans-repetes-et-vip" title="Link to this heading"></a></h4>
 <p>Lorsque plusieurs serveurs coopèrent pour polller un serveur distant,
 le paramètre <em>vip</em> est utilisé pour décider quel serveur il faut réellement poller.
 Tous les serveurs participants s’abonnent à l’endroit où <strong>poll</strong> est publié,
@@ -1220,7 +1220,7 @@ de ce qui a été affiché.</p>
 </section>
 </section>
 <section id="post-or-watch">
-<h3>POST or WATCH<a class="headerlink" href="#post-or-watch" title="Permalink to this heading"></a></h3>
+<h3>POST or WATCH<a class="headerlink" href="#post-or-watch" title="Link to this heading"></a></h3>
 <p><strong>sr3_post</strong> affiche la disponibilité d’un fichier en créant une annonce.
 Contrairement à la plupart des autres composants de sarracenia qui agissent comme des démons,
 sr3_post est une invocation qui poste et se termine en une seul fois.
@@ -1301,13 +1301,13 @@ et calcule sa somme de contrôle. Il crée ensuite un message de publication, se
 <p>Un abonné peut télécharger le fichier <a class="reference external" href="http://dd.weather.gc.ca/bulletins/alphanumeric/SACN32_CWAO_123456">http://dd.weather.gc.ca/bulletins/alphanumeric/SACN32_CWAO_123456</a> à l’aide de http
 sans authentification sur dd.weather.gc.ca.</p>
 <section id="partitionnement-de-fichiers">
-<h4>Partitionnement de fichiers<a class="headerlink" href="#partitionnement-de-fichiers" title="Permalink to this heading"></a></h4>
+<h4>Partitionnement de fichiers<a class="headerlink" href="#partitionnement-de-fichiers" title="Link to this heading"></a></h4>
 <p>l’utilisation de l’option <em>blocksize</em> n’a aucun effet dans sr3.  Il est utilisé pour faire le partitionnement de fichiers,
 et il redeviendra efficace à l’avenir, avec la même sémantique.</p>
 </section>
 </section>
 <section id="sarra">
-<h3>SARRA<a class="headerlink" href="#sarra" title="Permalink to this heading"></a></h3>
+<h3>SARRA<a class="headerlink" href="#sarra" title="Link to this heading"></a></h3>
 <p><strong>sarra</strong> est un programme qui s’abonne aux notifications de fichiers,
 acquiert les fichiers, et les réannonce à leurs nouveaux emplacements.
 Le protocole de notification est défini ici <a class="reference external" href="../Reference/sr3_post.7.html">sr3_post(7)</a></p>
@@ -1323,7 +1323,7 @@ qui annoncent ses produits.</p>
 </pre></div>
 </div>
 <section id="exigences-specifiques-de-consommation">
-<h4>Exigences spécifiques de consommation<a class="headerlink" href="#exigences-specifiques-de-consommation" title="Permalink to this heading"></a></h4>
+<h4>Exigences spécifiques de consommation<a class="headerlink" href="#exigences-specifiques-de-consommation" title="Link to this heading"></a></h4>
 <p>Si les messages sont postés directement à partir d’une source  l’échange utilisé est ‘xs_&lt;brokerSourceUsername&gt;’.
 Pour se protéger contre les utilisateurs malveillants, les administrateurs doivent définir <em>sourceFromExchange</em> à <strong>True</strong>.
 Ces messages ne peuvent pas contenir un champ cluster ou source d’origine
@@ -1341,7 +1341,7 @@ doit toujours être utilisé lors de l’ingestion de données provenant d’un
 </section>
 </section>
 <section id="sender">
-<h3>SENDER<a class="headerlink" href="#sender" title="Permalink to this heading"></a></h3>
+<h3>SENDER<a class="headerlink" href="#sender" title="Link to this heading"></a></h3>
 <p><strong>sender</strong> est un composant dérivé de <a class="reference internal" href="#subscribe">subscribe</a>
 utilisé pour envoyer des fichiers locaux à un serveur distant à l’aide d’un protocole de transfert de fichiers, principalement SFTP.
 <strong>sender</strong> est un consommateur standard, utilisant tous les paramètres AMQP normaux pour les courtiers, les échanges,
@@ -1360,7 +1360,7 @@ doit encore spécifier baseDir pour qu’il fonctionne.</p>
 par l’option <strong>to</strong> si elle se trouve dans l’un des clusters de destination du message.
 Si ce n’est pas le cas, le message est ignoré.</p>
 <section id="configuration-1-replication-pompe-a-pompe">
-<h4>CONFIGURATION 1 : RÉPLICATION POMPE À POMPE<a class="headerlink" href="#configuration-1-replication-pompe-a-pompe" title="Permalink to this heading"></a></h4>
+<h4>CONFIGURATION 1 : RÉPLICATION POMPE À POMPE<a class="headerlink" href="#configuration-1-replication-pompe-a-pompe" title="Link to this heading"></a></h4>
 <p>Pour la réplication de la pompe, <strong>mirror</strong> est défini sur True (valeur par défaut).</p>
 <p><strong>baseDir</strong> fournit le chemin d’accès au répertoire qui, lorsqu’il est combiné avec le chemin relatif
 dans la notification sélectionnée, donne le chemin absolu du fichier à envoyer.
@@ -1400,7 +1400,7 @@ publié. Si la valeur est True, le programme poursuivra le traitement à partir 
 <p>FIXME : Exemple de configuration manquant.</p>
 </section>
 <section id="configuration-de-destination-2-diffusion-de-type-metpx-sundew">
-<h4>CONFIGURATION DE DESTINATION 2 : DIFFUSION DE TYPE METPX-SUNDEW<a class="headerlink" href="#configuration-de-destination-2-diffusion-de-type-metpx-sundew" title="Permalink to this heading"></a></h4>
+<h4>CONFIGURATION DE DESTINATION 2 : DIFFUSION DE TYPE METPX-SUNDEW<a class="headerlink" href="#configuration-de-destination-2-diffusion-de-type-metpx-sundew" title="Link to this heading"></a></h4>
 <p>Dans ce type d’utilisation, nous n’aurions généralement pas reposté… mais si le
 <strong>post_broker</strong> et <strong>post_exchange</strong> (<strong>url</strong>,**on_post**) sont définis,
 le produit sera annoncé (avec son éventuel nouvel emplacement et son nouveau nom).
@@ -1439,7 +1439,7 @@ Mais si <strong>post_broker</strong> and <strong>post_exchange</strong> sont fou
 </section>
 </section>
 <section id="shovel">
-<h3>SHOVEL<a class="headerlink" href="#shovel" title="Permalink to this heading"></a></h3>
+<h3>SHOVEL<a class="headerlink" href="#shovel" title="Link to this heading"></a></h3>
 <p>shovel copie les messages sur un courtier (donné par l’option <em>broker</em>) à
 un autre (donné par l’option <em>post_broker</em>) soumis au filtrage
 par (<em>exchange</em>, <em>subtopic</em>, et éventuellement, <em>accept</em>/<em>reject</em>.)</p>
@@ -1456,12 +1456,12 @@ suppress_duplicates off</p>
 </div></blockquote>
 </section>
 <section id="subscribe">
-<h3>SUBSCRIBE<a class="headerlink" href="#subscribe" title="Permalink to this heading"></a></h3>
+<h3>SUBSCRIBE<a class="headerlink" href="#subscribe" title="Link to this heading"></a></h3>
 <p>Subscribe est le composant de flux de téléchargement normal, qui se connectera à un courtier, télécharger
 les fichiers configurés, puis transférer les messages avec une baseUrl modifiée.</p>
 </section>
 <section id="watch">
-<h3>WATCH<a class="headerlink" href="#watch" title="Permalink to this heading"></a></h3>
+<h3>WATCH<a class="headerlink" href="#watch" title="Link to this heading"></a></h3>
 <p>Surveille un répertoire et publie des messages lorsque les fichiers dans le répertoire changent.
 Ses arguments sont très similaires à <a class="reference external" href="../Reference/sr_post.1.html">sr_post &lt;sr_post</a>.
 Dans la suite MetPX-Sarracenia, l’objectif principal est d’afficher la disponibilité et modifications
@@ -1538,7 +1538,7 @@ Il construit ensuite un message, se connecte à broker.com en tant qu’utilisat
 sans authentification sur dd.weather.gc.ca.</p>
 </section>
 <section id="winnow">
-<h3>WINNOW<a class="headerlink" href="#winnow" title="Permalink to this heading"></a></h3>
+<h3>WINNOW<a class="headerlink" href="#winnow" title="Link to this heading"></a></h3>
 <p><strong>winnow</strong> est un programme qui s’abonne aux notifications de fichiers,
 et réenregistre les notifications, en supprimant les notifications redondantes.</p>
 <p>La méthode de décider quels messages d´annonce sont redondants varient selon le cas d´usage.
@@ -1571,7 +1571,7 @@ source qui les a publié.</p>
 </section>
 </section>
 <section id="configurations">
-<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this heading"></a></h2>
+<h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
 <p>Si on a une configuration prête à l’emploi appelée <em>q_f71.conf</em>, elle peut être
 ajoutée à la liste des noms connus avec</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subscribe</span> <span class="n">add</span> <span class="n">q_f71</span><span class="o">.</span><span class="n">conf</span>
@@ -1691,7 +1691,7 @@ right hand side to be evaluated, surrounded by ${..} The built-in variables are:
 </div></blockquote>
 </section>
 <section id="flowcallbacks">
-<h2>flowCallbacks<a class="headerlink" href="#flowcallbacks" title="Permalink to this heading"></a></h2>
+<h2>flowCallbacks<a class="headerlink" href="#flowcallbacks" title="Link to this heading"></a></h2>
 <p>Sarracenia utilise largement de petits extraits de code python qui personnalisent le
 traitement appelé <em>flowCallback</em>. Flow_callbacks définit et utiliser des paramètres supplémentaires</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flowCallback</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flowcb</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">Log</span>
@@ -1726,7 +1726,7 @@ et faites-le inclure des points d’entrée.</p>
 <p>Il existe également <em>flowCallbackPrepend</em> qui ajoute une classe flowCallback à l’avant
 de la liste (qui détermine l’ordre d’exécution relatif entre les classes flowCallback.)</p>
 <section id="options-callback">
-<h3>Options callback<a class="headerlink" href="#options-callback" title="Permalink to this heading"></a></h3>
+<h3>Options callback<a class="headerlink" href="#options-callback" title="Link to this heading"></a></h3>
 <p>les rappels livrés avec metpx-sr3 suivent la convention suivante :</p>
 <ul class="simple">
 <li><p>ils sont placés dans l’arborescence du répertoire sarracenia/flowcb.</p></li>
@@ -1739,7 +1739,7 @@ de la liste (qui détermine l’ordre d’exécution relatif entre les classes f
 <p>Il y a de même un <em>callback_prepend</em> à remplir.</p>
 </section>
 <section id="importation-dextensions">
-<h3>Importation d’extensions<a class="headerlink" href="#importation-dextensions" title="Permalink to this heading"></a></h3>
+<h3>Importation d’extensions<a class="headerlink" href="#importation-dextensions" title="Link to this heading"></a></h3>
 <p>L’option <em>import</em> fonctionne d’une manière familière aux développeurs Python,
 qui les rends disponibles pour une utilisation par le noyau Sarracenia, ou flowCallback.
 Les développeurs peuvent ajouter des protocoles supplémentaires pour les messages ou
@@ -1766,7 +1766,7 @@ ressemblerait à ceci</p>
 <a class="reference external" href="../Explanation/SarraPluginDev.html">Programmer’s Guide</a></p>
 </section>
 <section id="plugins-v2-obsoletes">
-<h3>Plugins v2 Obsolètes<a class="headerlink" href="#plugins-v2-obsoletes" title="Permalink to this heading"></a></h3>
+<h3>Plugins v2 Obsolètes<a class="headerlink" href="#plugins-v2-obsoletes" title="Link to this heading"></a></h3>
 <p>Il existe également un style de plugins plus ancien (v2). Qui sont généralement
 précédé du nom du plugin</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msg_to_clusters</span> <span class="n">DDI</span>
@@ -1797,7 +1797,7 @@ sur des groupes de messages, plutôt que sur des messages individuels.</p></li>
 </ul>
 </section>
 <section id="environment-variables">
-<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this heading"></a></h3>
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
 <p>On peut aussi utiliser des variables d´environnement avec la syntax
 <em>${ENV}</em> ou <em>ENV</em> est le nom d´une variable d´environnement. S´il faut
 définir une variable d´environnement pour une utilisation par Sarracenia,
@@ -1807,7 +1807,7 @@ on peut l´indiquer dans un fichier de configuration:</p>
 </div>
 </section>
 <section id="fichiers-journal-et-suivi">
-<h3>Fichiers journal et Suivi<a class="headerlink" href="#fichiers-journal-et-suivi" title="Permalink to this heading"></a></h3>
+<h3>Fichiers journal et Suivi<a class="headerlink" href="#fichiers-journal-et-suivi" title="Link to this heading"></a></h3>
 <ul>
 <li><dl class="simple">
 <dt>debug</dt><dd><p>L’option de déboggage <strong>debug</strong> est identique à l’utilisation de <strong>loglevel debug</strong>.</p>
@@ -1882,7 +1882,7 @@ Par exemple, sur un nœud nommé goofy, ~/.cache/sarra/log/ devient ~/.cache/sar
 options de journalisations et de techniques.</p>
 </section>
 <section id="identification-credentials">
-<h3>IDENTIFICATION (CREDENTIALS)<a class="headerlink" href="#identification-credentials" title="Permalink to this heading"></a></h3>
+<h3>IDENTIFICATION (CREDENTIALS)<a class="headerlink" href="#identification-credentials" title="Link to this heading"></a></h3>
 <p>Normalement, on ne spécifie pas de mots de passe dans les fichiers de
 configuration. Ils sont plutôt placés dans le fichier d´information d´identifcation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edit</span> <span class="o">~/.</span><span class="n">config</span><span class="o">/</span><span class="n">sr3</span><span class="o">/</span><span class="n">credentials</span><span class="o">.</span><span class="n">conf</span>
@@ -1917,7 +1917,7 @@ et le courtier ainsi que les paramètres requis par les composants.  Une entrée
 n’inclut pas le mot de passe ou spécification de clé.  L’url donné dans les
 autres fichiers est utilisé comme clé de recherche pour credentials.conf.</p>
 <section id="details-d-identifiants">
-<h4>Details d’Identifiants<a class="headerlink" href="#details-d-identifiants" title="Permalink to this heading"></a></h4>
+<h4>Details d’Identifiants<a class="headerlink" href="#details-d-identifiants" title="Link to this heading"></a></h4>
 <p>Vous devrez peut-être spécifier des options supplémentaires pour des entrées d’informations d’identification spécifiques.
 Ces détails peuvent être ajoutés après la fin de l’URL, avec plusieurs détails séparés par des virgules (voir les exemples ci-dessus).</p>
 <p>Détails pris en charge</p>
@@ -1946,7 +1946,7 @@ L’avant-dernier mot de passe est : <strong>De:olonize</strong>. ( %3a étant l
 </section>
 </section>
 <section id="traitement-periodique">
-<h2>TRAITEMENT PÉRIODIQUE<a class="headerlink" href="#traitement-periodique" title="Permalink to this heading"></a></h2>
+<h2>TRAITEMENT PÉRIODIQUE<a class="headerlink" href="#traitement-periodique" title="Link to this heading"></a></h2>
 <p>La plupart des traitements ont lieu à la réception d’un message, mais il y a une maintenance périodique
 qui se produit à chaque intervalle <em>housekeeping</em> (la valeur par défaut est de 5 minutes.)  À chaque <em>housekeeping</em> tous les
 les plugins <em>on_housekeeping</em> configurés sont exécutés. Par défaut, trois sont présents :</p>
@@ -1959,17 +1959,17 @@ les plugins <em>on_housekeeping</em> configurés sont exécutés. Par défaut, t
 si un traitement périodique supplémentaire est nécessaire, l’utilisateur peut configurer d’autres
 plugins à exécuter avec l’option <em>on_housekeeping</em>.</p>
 <section id="sanity-log-dead-interval-defaut-1-5-housekeeping">
-<h3>sanity_log_dead &lt;interval&gt; (défaut: 1.5*housekeeping)<a class="headerlink" href="#sanity-log-dead-interval-defaut-1-5-housekeeping" title="Permalink to this heading"></a></h3>
+<h3>sanity_log_dead &lt;interval&gt; (défaut: 1.5*housekeeping)<a class="headerlink" href="#sanity-log-dead-interval-defaut-1-5-housekeeping" title="Link to this heading"></a></h3>
 <p>L’option <strong>sanity_log_dead</strong> définit la durée à prendre en compte avant de redémarrer
 un composant.</p>
 </section>
 <section id="nodup-ttl-off-on-999-defaut-off">
-<h3>nodup_ttl &lt;off|on|999&gt; (défaut: off)<a class="headerlink" href="#nodup-ttl-off-on-999-defaut-off" title="Permalink to this heading"></a></h3>
+<h3>nodup_ttl &lt;off|on|999&gt; (défaut: off)<a class="headerlink" href="#nodup-ttl-off-on-999-defaut-off" title="Link to this heading"></a></h3>
 <p>Le nettoyage des éléments expirés dans la store de suppression des doublons se produit à chaque housekeeping.</p>
 </section>
 </section>
 <section id="recuperation-derreur">
-<h2>RÉCUPÉRATION D’ERREUR<a class="headerlink" href="#recuperation-derreur" title="Permalink to this heading"></a></h2>
+<h2>RÉCUPÉRATION D’ERREUR<a class="headerlink" href="#recuperation-derreur" title="Link to this heading"></a></h2>
 <p>Les outils sont conçus pour fonctionner bien sans surveillance, et donc lorsque des erreurs transitoires se produisent, ils
 essayent de récupérer élégamment.  Il y a des délais d’attente sur toutes les opérations, et en cas de défaillance
 détectée, le problème est noté pour une nouvelle tentative.  Des erreurs peuvent se produire à plusieurs reprises :</p>
@@ -1999,7 +1999,7 @@ ou deux. Une fois que le serveur recommence à répondre normalement, les progra
 vitesse normale de traitement.</p>
 </section>
 <section id="exemples">
-<h2>EXEMPLES<a class="headerlink" href="#exemples" title="Permalink to this heading"></a></h2>
+<h2>EXEMPLES<a class="headerlink" href="#exemples" title="Link to this heading"></a></h2>
 <p>Voici un court exemple complet de fichier de configuration</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">broker</span> <span class="n">amqps</span><span class="p">:</span><span class="o">//</span><span class="n">dd</span><span class="o">.</span><span class="n">weather</span><span class="o">.</span><span class="n">gc</span><span class="o">.</span><span class="n">ca</span><span class="o">/</span>
 
@@ -2018,7 +2018,7 @@ a été spécifié.)</p>
 <div><p><a class="reference external" href="https://github.com/MetPX/sarracenia/tree/main/sarra/examples">https://github.com/MetPX/sarracenia/tree/main/sarra/examples</a></p>
 </div></blockquote>
 <section id="queues-and-multiple-streams">
-<h3>QUEUES and MULTIPLE STREAMS<a class="headerlink" href="#queues-and-multiple-streams" title="Permalink to this heading"></a></h3>
+<h3>QUEUES and MULTIPLE STREAMS<a class="headerlink" href="#queues-and-multiple-streams" title="Link to this heading"></a></h3>
 <p>Lorsqu’il est exécuté, <strong>subscribe</strong> choisit un nom de fil d’attente, ou il écrit
 à un fichier nommé d’après le fichier de configuration donné comme argument pour <strong>subscribe</strong>
 avec un suffixe .queue ( .”configfile”.queue).
@@ -2043,7 +2043,7 @@ perte de notifications.</p>
 </div>
 </section>
 <section id="report-et-report-exchange">
-<h3>report et report_exchange<a class="headerlink" href="#report-et-report-exchange" title="Permalink to this heading"></a></h3>
+<h3>report et report_exchange<a class="headerlink" href="#report-et-report-exchange" title="Link to this heading"></a></h3>
 <p>Pour chaque téléchargement, par défaut, un message de rapport amqp est renvoyé au broker.
 Cela se fait avec l’option :</p>
 <ul class="simple">
@@ -2057,7 +2057,7 @@ publient directement sur <em>xreport</em>, tandis que les composants d’utilisa
 Définissez cette option sur <strong>False</strong>, pour empêcher la génération de rapports.</p>
 </section>
 <section id="instances">
-<h3>INSTANCES<a class="headerlink" href="#instances" title="Permalink to this heading"></a></h3>
+<h3>INSTANCES<a class="headerlink" href="#instances" title="Link to this heading"></a></h3>
 <p>Parfois, une instance d’un composant et d’une configuration ne suffit pas pour traiter et envoyer toutes les notifications disponibles.</p>
 <p><strong>instances      &lt;integer&gt;     (défaut:1)</strong></p>
 <p>L’option d’instance permet de lancer plusieurs instances d’un composant et d’une configuration.
@@ -2091,7 +2091,7 @@ perte de notifications.  Une fil d’attente à laquelle on n’accède pas pend
 sera détruite.</p>
 </div>
 <section id="vip-active-passive-options">
-<h4>vip - ACTIVE/PASSIVE OPTIONS<a class="headerlink" href="#vip-active-passive-options" title="Permalink to this heading"></a></h4>
+<h4>vip - ACTIVE/PASSIVE OPTIONS<a class="headerlink" href="#vip-active-passive-options" title="Link to this heading"></a></h4>
 <p><strong>sr3</strong> peut être utilisé sur un seul nœud de serveur ou sur plusieurs nœuds.
 pourrait partager la responsabilité. D’autres, configurés séparément, haute disponibilité
 présente un <strong>vip</strong> (ip virtuel) sur le serveur actif. Si
@@ -2112,7 +2112,7 @@ vip en mouvement.</p>
 S´il possède le vip, il consomme et traite un message, puis revérifie le vip.</p>
 </section>
 <section id="blocksize-value-default-0-auto">
-<h4>[–blocksize &lt;value&gt;] (default: 0 (auto))<a class="headerlink" href="#blocksize-value-default-0-auto" title="Permalink to this heading"></a></h4>
+<h4>[–blocksize &lt;value&gt;] (default: 0 (auto))<a class="headerlink" href="#blocksize-value-default-0-auto" title="Link to this heading"></a></h4>
 <p>This <strong>blocksize</strong> option controls the partitioning strategy used to post files.
 The value should be one of:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">-</span> <span class="n">calcul</span> <span class="n">automatique</span> <span class="n">d</span><span class="s1">&#39;une stratégie de partitionnement appropriée (par défaut)</span>
@@ -2129,7 +2129,7 @@ optimisé en n’envoyant que des portions qui ont changé.</p>
 Voir <a class="reference external" href="sr3_cpump.1.html">sr3_cpump(1)</a> pour plus de détails.</p>
 </section>
 <section id="pbd-post-basedir-path-facultatif">
-<h4>[-pbd|–post_baseDir &lt;path&gt;] (facultatif)<a class="headerlink" href="#pbd-post-basedir-path-facultatif" title="Permalink to this heading"></a></h4>
+<h4>[-pbd|–post_baseDir &lt;path&gt;] (facultatif)<a class="headerlink" href="#pbd-post-basedir-path-facultatif" title="Link to this heading"></a></h4>
 <p>L’option <em>post_baseDir</em> fournit le chemin du répertoire qui, lorsqu’il est
 combiné (ou trouvé) dans le chemin d’accès donné, donne le chemin absolu local
 vers le fichier de données à enregistrer. La <em>post_baseDir</em> du chemin sera
@@ -2141,13 +2141,13 @@ un chemin absolu, omettez le paramètre -pbd, et spécifiez simplement le chemin
 complet en argument.</p>
 </section>
 <section id="post-baseurl-url-obligatoire">
-<h4>post_baseUrl &lt;url&gt; (OBLIGATOIRE)<a class="headerlink" href="#post-baseurl-url-obligatoire" title="Permalink to this heading"></a></h4>
+<h4>post_baseUrl &lt;url&gt; (OBLIGATOIRE)<a class="headerlink" href="#post-baseurl-url-obligatoire" title="Link to this heading"></a></h4>
 <p>L’option <strong>post_baseUrl</strong> définit comment obtenir le fichier…. il définit
 le protocole, hôte, port, et optionnellement, l’utilisateur.  C’est une
 bonne pratique de ne pas inclure les mots de passe dans l´URL.</p>
 </section>
 <section id="post-exchange-name-default-xpublic">
-<h4>post_exchange &lt;name&gt; (default: xpublic)<a class="headerlink" href="#post-exchange-name-default-xpublic" title="Permalink to this heading"></a></h4>
+<h4>post_exchange &lt;name&gt; (default: xpublic)<a class="headerlink" href="#post-exchange-name-default-xpublic" title="Link to this heading"></a></h4>
 <p>L’option <strong>post_exchange</strong>, qui permet d’échanger la nouvelle notification.
 sera publié.  Dans la plupart des cas, il s’agit d’un’xpublic’.</p>
 <p>Chaque fois qu’une avis se produit pour un produit, un utilisateur peut
@@ -2155,7 +2155,7 @@ définir de déclencher un script. L’option <strong>on_post</strong> serait ut
 une telle configuration.</p>
 </section>
 <section id="post-exchangesplit-number-defaut-0">
-<h4>post_exchangeSplit   &lt;number&gt;   (défaut: 0)<a class="headerlink" href="#post-exchangesplit-number-defaut-0" title="Permalink to this heading"></a></h4>
+<h4>post_exchangeSplit   &lt;number&gt;   (défaut: 0)<a class="headerlink" href="#post-exchangesplit-number-defaut-0" title="Link to this heading"></a></h4>
 <p>L’option <strong>post_exchangeSplit</strong> ajoute un suffixe à deux chiffres résultant d’une
 division entière du dernier digit de la somme de contrôle, afin de répartir les
 avis entre un certain nombre d’échanges, selon la valeur de leur somme de contrôle.
@@ -2172,7 +2172,7 @@ est 1.</p>
 </section>
 </section>
 <section id="remote-configurations">
-<h3>Remote Configurations<a class="headerlink" href="#remote-configurations" title="Permalink to this heading"></a></h3>
+<h3>Remote Configurations<a class="headerlink" href="#remote-configurations" title="Link to this heading"></a></h3>
 <p>On peut spécifier des URI comme fichiers de configuration, plutôt que des fichiers locaux. Exemple :</p>
 <blockquote>
 <div><ul class="simple">
@@ -2195,7 +2195,7 @@ et la ligne remote_config_url_config_url y sera pré-pendue, de façon à ce qu�
 pour se mettre à jour à l’avenir.</p>
 </section>
 <section id="extensions">
-<h3>Extensions<a class="headerlink" href="#extensions" title="Permalink to this heading"></a></h3>
+<h3>Extensions<a class="headerlink" href="#extensions" title="Link to this heading"></a></h3>
 <p>On peut remplacer ou ajouter des fonctionnalités avec des scripts python.</p>
 <p>Sarracenia est livré avec une variété d’exemples de plugins, et en utilise certains pour implémenter des fonctionnalités de base,
 tels que la journalisation (implémentée par défaut en utilisant des plugins msg_log, file_log post_log):</p>
@@ -2212,7 +2212,7 @@ $
 <p>Les utilisateurs peuvent placer leurs propres scripts dans le sous-répertoire de script dans leur répertoire de configuration
 ( sur Linux, le ~/.config/sarra/plugins).</p>
 <section id="flowcallback-et-flowcallbackprepend-class">
-<h4>flowCallback et flowCallbackPrepend &lt;class&gt;<a class="headerlink" href="#flowcallback-et-flowcallbackprepend-class" title="Permalink to this heading"></a></h4>
+<h4>flowCallback et flowCallbackPrepend &lt;class&gt;<a class="headerlink" href="#flowcallback-et-flowcallbackprepend-class" title="Link to this heading"></a></h4>
 <p>La directive flowCallback prend une classe à charger et peut analyser les points d’entrée comme argument</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flowCallback</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">flowcb</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">Log</span>
 </pre></div>
@@ -2290,12 +2290,12 @@ le répertoire sera vérifié pour les nouveaux fichiers.  Voici une partie de l
 </section>
 </section>
 <section id="identity">
-<h3>Identity<a class="headerlink" href="#identity" title="Permalink to this heading"></a></h3>
+<h3>Identity<a class="headerlink" href="#identity" title="Link to this heading"></a></h3>
 <p>On peut utiliser la directive <em>import</em> pour ajouter de nouveaux algorithmes de somme de contrôle en sous-classant
 sarracenia.identity.Identity.</p>
 </section>
 <section id="transfer">
-<h3>Transfer<a class="headerlink" href="#transfer" title="Permalink to this heading"></a></h3>
+<h3>Transfer<a class="headerlink" href="#transfer" title="Link to this heading"></a></h3>
 <p>On peut ajouter la prise en charge de méthodes supplémentaires de téléchargement de données par sous-classification
 sarracenia.transfer.Transfer.</p>
 <p>Les scripts de protocole de transfert doivent être déclarés à l’aide de l’option <strong>import</strong>.
@@ -2308,7 +2308,7 @@ une liste des protocoles fournis par ces fonctions.  Exemple:</p>
 <p>Voir le <a class="reference external" href="../Explanation/SarraPluginDev.html">Programming Guide</a> pour plus d’informations sur le développement d’extensions.</p>
 </section>
 <section id="roles-feeder-admin-declare">
-<h3>ROLES - feeder/admin/declare<a class="headerlink" href="#roles-feeder-admin-declare" title="Permalink to this heading"></a></h3>
+<h3>ROLES - feeder/admin/declare<a class="headerlink" href="#roles-feeder-admin-declare" title="Link to this heading"></a></h3>
 <p><em>d’intérêt que pour les administrateurs</em></p>
 <p>Les options d’administration sont définies à l’aide de:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edit</span> <span class="o">~/.</span><span class="n">config</span><span class="o">/</span><span class="n">sr3</span><span class="o">/</span><span class="n">admin</span><span class="o">.</span><span class="n">conf</span>
@@ -2325,7 +2325,7 @@ manière.</p>
 <li><p><strong>declare &lt;role&gt; &lt;name&gt;   (pas de défaut)</strong></p></li>
 </ul>
 <section id="subscriber">
-<h4>subscriber<a class="headerlink" href="#subscriber" title="Permalink to this heading"></a></h4>
+<h4>subscriber<a class="headerlink" href="#subscriber" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Un <em>subscriber</em> (abonné) est un utilisateur qui ne peut s’abonner qu’aux données
 et renvoyer des messages de rapport. Les abonnés ne sont pas autorisés à injecter des données.
@@ -2337,7 +2337,7 @@ permettre l’abonnement sans un compte spécifique.</p>
 </div></blockquote>
 </section>
 <section id="source">
-<h4>source<a class="headerlink" href="#source" title="Permalink to this heading"></a></h4>
+<h4>source<a class="headerlink" href="#source" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Un utilisateur autorisé à s’abonner ou à générer des données. Une source ne représente pas nécessairement
 une personne ou un type de données, mais plutôt une organisation responsable des données produites.
@@ -2351,7 +2351,7 @@ consommateurs seront envoyés.</p>
 </div></blockquote>
 </section>
 <section id="feeder">
-<h4>feeder<a class="headerlink" href="#feeder" title="Permalink to this heading"></a></h4>
+<h4>feeder<a class="headerlink" href="#feeder" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Un utilisateur autorisé à écrire à n’importe quel échange. Une sorte d’utilisateur de flux administratif, destiné à pomper
 des messages lorsque aucune source ou abonné ordinaire n’est approprié pour le faire. Doit être utilisé de
@@ -2363,7 +2363,7 @@ mot de passe de l’administrateur est déjà correct.</p>
 </section>
 </section>
 <section id="fichiers-de-configuration">
-<h3>FICHIERS DE CONFIGURATION<a class="headerlink" href="#fichiers-de-configuration" title="Permalink to this heading"></a></h3>
+<h3>FICHIERS DE CONFIGURATION<a class="headerlink" href="#fichiers-de-configuration" title="Link to this heading"></a></h3>
 <p>Alors qu’on peut gérer les fichiers de configuration à l’aide de la fonction <em>add</em>, <em>remove</em>,
 <em>list</em>, <em>edit</em>, <em>disable</em>, et <em>enable</em> actions, on peut aussi tout faire.
 des mêmes activités manuellement en manipulant les fichiers dans les paramètres.
@@ -2403,17 +2403,17 @@ utilisateurs, puis dans le site, puis dans le paquet sarracenia lui-même,
 et finalement il regardera à distance.</p>
 </section>
 <section id="options-de-compatibilite-sundew">
-<h3>OPTIONS DE COMPATIBILITÉ SUNDEW<a class="headerlink" href="#options-de-compatibilite-sundew" title="Permalink to this heading"></a></h3>
+<h3>OPTIONS DE COMPATIBILITÉ SUNDEW<a class="headerlink" href="#options-de-compatibilite-sundew" title="Link to this heading"></a></h3>
 <p>Pour la compatibilité avec Sundew, il existe des options de livraison supplémentaires qui peuvent être spécifiées.</p>
 <section id="destfn-script-script-defaut-none">
-<h4>destfn_script &lt;script&gt; (défaut:None)<a class="headerlink" href="#destfn-script-script-defaut-none" title="Permalink to this heading"></a></h4>
+<h4>destfn_script &lt;script&gt; (défaut:None)<a class="headerlink" href="#destfn-script-script-defaut-none" title="Link to this heading"></a></h4>
 <p>Cette option définit un script à exécuter lorsque tout est prêt
 pour la livraison du produit. Le script reçoit une instance de la classe sender.
 Le script prends le parent comme argument, et par exemple, une
 modification de <strong>parent.msg.new_file</strong> changera le nom du fichier écrit localement.</p>
 </section>
 <section id="filename-mots-cle-defaut-whatfn">
-<h4>filename &lt;mots-clé&gt; (défaut:WHATFN)<a class="headerlink" href="#filename-mots-cle-defaut-whatfn" title="Permalink to this heading"></a></h4>
+<h4>filename &lt;mots-clé&gt; (défaut:WHATFN)<a class="headerlink" href="#filename-mots-cle-defaut-whatfn" title="Link to this heading"></a></h4>
 <p>De <strong>MetPX Sundew</strong>, le support de cette option donne toutes sortes de possibilités
 pour définir le nom de fichier distant. Certains <strong>keywords</strong> sont basés sur le fait que
 les noms de fichiers <strong>MetPX Sundew</strong> ont cinq (à six) champs de chaîne de caractères séparés par des deux-points.</p>
@@ -2493,7 +2493,7 @@ accept .*(2016....).*(RAW.*GRIB).*
 <p><strong>20150813161959.854 http://this.pump.com/ relative/path/to/20160123_product_RAW_MERGER_GRIB_from_CMC</strong></p>
 </section>
 <section id="field-replacements">
-<h4>Field Replacements<a class="headerlink" href="#field-replacements" title="Permalink to this heading"></a></h4>
+<h4>Field Replacements<a class="headerlink" href="#field-replacements" title="Link to this heading"></a></h4>
 <p>Dans MetPX Sundew, le format de la nomination de fichier est beaucoup plus
 stricte, et est spécialisée pour une utilisation aves les données du World Meteorological Organization (WMO).
 Notez que la convention du format des fichiers est antérieure, et n’a aucun rapport avec la convention de

@@ -402,7 +402,9 @@
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;filter_wmo2msc relPath </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">relPath</span><span class="p">)</span>
 
             <span class="n">message</span><span class="p">[</span><span class="s1">&#39;set_topic&#39;</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">topic_prefix</span><span class="p">,</span> <span class="n">relPath</span><span class="p">)</span>
-            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;set_notice&#39;</span><span class="p">](</span><span class="n">baseUrl</span><span class="p">,</span> <span class="n">relPath</span><span class="p">)</span>
+            <span class="c1">#message[&#39;set_notice&#39;](baseUrl, relPath)</span>
+            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;baseUrl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">baseUrl</span>
+            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;relPath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">relPath</span>
             <span class="n">new_incoming</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
         <span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span> <span class="o">=</span> <span class="n">new_incoming</span></div>
 

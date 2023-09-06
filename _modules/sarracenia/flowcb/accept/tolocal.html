@@ -86,19 +86,19 @@
 
 <span class="sd">    flowcb sarracenia.flowcb.accept.tolocal.ToLocal   # converts web URL to file URL</span>
 
-<span class="sd">               http://localhost/ --&gt; file://var/www/html/</span>
-<span class="sd">               url is now file://var/www/html/&lt;date&gt;/&lt;src&gt;/input/file.txt</span>
-<span class="sd">               m.savedurl = http://localhost/</span>
+<span class="sd">            http://localhost/ --&gt; file://var/www/html/</span>
+<span class="sd">            url is now file://var/www/html/&lt;date&gt;/&lt;src&gt;/input/file.txt</span>
+<span class="sd">            m.savedurl = http://localhost/</span>
 
 <span class="sd">    flowcb sarracenia.flowcb.accept.&lt;some converter that works on local files.&gt;</span>
 
-<span class="sd">               A new file is created in another directory.</span>
-<span class="sd">               url is now file://var/www/&lt;date&gt;/&lt;src&gt;/output/file.txt</span>
+<span class="sd">            A new file is created in another directory.</span>
+<span class="sd">            url is now file://var/www/&lt;date&gt;/&lt;src&gt;/output/file.txt</span>
 
 <span class="sd">    flowcb sarracenia.flowcb.accept.tohttp.ToHttp     # turns the file URL back into a web one.</span>
 
-<span class="sd">               file://var/www/html/ --&gt; http:///localhost/</span>
-<span class="sd">               url is now:   http://localhost/&lt;date&gt;/&lt;src&gt;/output/file.txt</span>
+<span class="sd">            file://var/www/html/ --&gt; http:///localhost/</span>
+<span class="sd">            url is now:   http://localhost/&lt;date&gt;/&lt;src&gt;/output/file.txt</span>
 
 
 <span class="sd">    The regular expression used to find the web url matches either http or https</span>
@@ -132,32 +132,32 @@
 <a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.accept.tolocal.ToLocal.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;baseDir&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">ldocroot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">baseDir</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ldocroot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">baseDir</span>
 
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;toLocalRoot&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">ldocroot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">toLocalRoot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s1">&#39;toLocalRoot&#39;</span><span class="p">,</span> <span class="s1">&#39;str&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">toLocalRoot</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ldocroot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">toLocalRoot</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">lurlre</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(http[s]{0,1}://[^/]+/)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lurlre</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(http[s]{0,1}://[^/]+/)&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;toLocalUrl&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">lurlre</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">toLocalUrl</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s1">&#39;toLocalUrl&#39;</span><span class="p">,</span> <span class="s1">&#39;str&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">toLocalUrl</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lurlre</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">toLocalUrl</span><span class="p">)</span></div>
 
 
     <span class="k">def</span> <span class="nf">after_accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worklist</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span><span class="p">:</span>
             <span class="c1"># TODO should all these be logger.error? should we append</span>
             <span class="c1">#  to worklist.rejected or worklist.failed at some point?</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;input: urlstr: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">])</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;input: urlstr: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">])</span>
 
-            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;savedurl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">lurlre</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
-                <span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;file:/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">lurlre</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">ldocroot</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">])</span>
+            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;savedurl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lurlre</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;file:/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lurlre</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ldocroot</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">])</span>
 
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;doc_root=</span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">baseDir</span><span class="p">))</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;output: urlstr: </span><span class="si">%s</span><span class="s2"> saved url: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-                         <span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;urlstr&#39;</span><span class="p">],</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;savedurl&#39;</span><span class="p">]))</span></div>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;doc_root=</span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">baseDir</span><span class="p">))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;output: savedurl: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;savedurl&#39;</span><span class="p">]))</span></div>
 
 </pre></div>
 

@@ -95,11 +95,16 @@
 <div class="viewcode-block" id="LongFlow">
 <a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.accept.longflow.LongFlow">[docs]</a>
 <span class="k">class</span> <span class="nc">LongFlow</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
+<div class="viewcode-block" id="LongFlow.__init__">
+<a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.accept.longflow.LongFlow.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
 
     <span class="k">def</span> <span class="nf">after_accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worklist</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;setting toolong header&#39;</span><span class="p">)</span>
-            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;headers&#39;</span><span class="p">][</span><span class="s1">&#39;toolong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1234567890ßñç&#39;</span> <span class="o">*</span> <span class="mi">26</span></div>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;setting toolong message key&#39;</span><span class="p">)</span>
+            <span class="n">message</span><span class="p">[</span><span class="s1">&#39;toolong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1234567890ßñç&#39;</span> <span class="o">*</span> <span class="mi">26</span></div>
 
 </pre></div>
 

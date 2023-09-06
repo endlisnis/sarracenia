@@ -79,7 +79,7 @@
 <span class="sd">    prints a simple notice. # FIXME is this doc accurate? seems it is also modifying a message.</span>
 
 <span class="sd">Usage:</span>
-<span class="sd">    flowcb sarracenia.flowcb.accept.downloadbaseurl.DownloadBaseUrl</span>
+<span class="sd">    flowcb sarracenia.flowcb.accept.delete.Delete</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -87,10 +87,14 @@
 <span class="kn">from</span> <span class="nn">sarracenia.flowcb</span> <span class="kn">import</span> <span class="n">FlowCB</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-
 <div class="viewcode-block" id="Delete">
 <a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.accept.delete.Delete">[docs]</a>
 <span class="k">class</span> <span class="nc">Delete</span><span class="p">(</span><span class="n">FlowCB</span><span class="p">):</span>
+<div class="viewcode-block" id="Delete.__init__">
+<a class="viewcode-back" href="../../../../Reference/flowcb.html#sarracenia.flowcb.accept.delete.Delete.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span></div>
+
 
     <span class="k">def</span> <span class="nf">after_accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worklist</span><span class="p">):</span>
         <span class="n">new_incoming</span> <span class="o">=</span> <span class="p">[]</span>
@@ -100,14 +104,14 @@
                 <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/cfr/&#39;</span><span class="p">,</span> <span class="s1">&#39;/cfile/&#39;</span><span class="p">))</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;deleted: </span><span class="si">%s</span><span class="s2"> and the cfile version.&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+                <span class="n">new_incoming</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;could not unlink </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Exception details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">sleep_now</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">sleep_min</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">msg_to_retry</span><span class="p">()</span>
                 <span class="n">worklist</span><span class="o">.</span><span class="n">rejected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-
-            <span class="n">new_incoming</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        
         <span class="n">worklist</span><span class="o">.</span><span class="n">incoming</span> <span class="o">=</span> <span class="n">new_incoming</span></div>
 
 </pre></div>

@@ -1934,38 +1934,32 @@ at scheduled times.</p>
 </ul>
 <p>Scheduled_interval takes precedence over the others, making it
 easier to specify an interval for testing/debugging purposes.</p>
-<p>currently: when using scheduled_hour, only one minute can be given within the hour.
-if only using scheduled_minute, then repeated values are fine.</p>
 <p>use in code (for subclassing):</p>
 <p>from sarracenia.scheduled import Scheduled</p>
-<dl>
-<dt>class hoho(Scheduled):</dt><dd><dl>
-<dt>in the routine…</dt><dd><p>self.wait_until_next()  # comment out for just every hour.</p>
 <dl class="simple">
-<dt>if self.stop_requested:</dt><dd><p>return []</p>
+<dt>class hoho(Scheduled):</dt><dd><p>replace the gather() routine…
+keep the top lines “until time to run”
+replace whatever is below.
+will only run when it should.</p>
 </dd>
 </dl>
-<p># this code works if only invoked at scheduled times…</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>would there be a more pythonic way of doing this?</p>
-<blockquote>
-<div><p><a class="reference external" href="https://schedule.readthedocs.io/en/stable/">https://schedule.readthedocs.io/en/stable/</a></p>
-</div></blockquote>
-<p>would probably be dead easy to do multiple minute within hour,
-just haven’t thought about it. opportunity for improvement.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.flowcb.scheduled.Scheduled.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/flowcb/scheduled.html#Scheduled.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.scheduled.Scheduled.__init__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sarracenia.flowcb.scheduled.Scheduled.update_appointments">
+<span class="sig-name descname"><span class="pre">update_appointments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">when</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/flowcb/scheduled.html#Scheduled.update_appointments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.scheduled.Scheduled.update_appointments" title="Link to this definition"></a></dt>
+<dd><p># make a flat list from values where comma separated on a single or multiple lines.</p>
+<p>set self.appointments to a list of when something needs to be run during the current day.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sarracenia.flowcb.scheduled.Scheduled.wait_seconds">
 <span class="sig-name descname"><span class="pre">wait_seconds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sleepfor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sarracenia/flowcb/scheduled.html#Scheduled.wait_seconds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.flowcb.scheduled.Scheduled.wait_seconds" title="Link to this definition"></a></dt>
 <dd><p>sleep for the given number of seconds, like time.sleep() but broken into
-shorter naps to be able to honour stop_requested.</p>
+shorter naps to be able to honour stop_requested, or when housekeeping is needed.</p>
 </dd></dl>
 
 </dd></dl>

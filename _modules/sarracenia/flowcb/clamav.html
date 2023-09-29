@@ -93,13 +93,14 @@
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">from</span> <span class="nn">sarracenia</span> <span class="kn">import</span> <span class="n">nowflt</span>
-<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
 <span class="kn">import</span> <span class="nn">sarracenia</span>
 <span class="kn">from</span> <span class="nn">sarracenia.flowcb</span> <span class="kn">import</span> <span class="n">FlowCB</span>
 
 <span class="c1">#</span>
 <span class="c1"># Support for features inventory mechanism.</span>
 <span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">sarracenia.featuredetection</span> <span class="kn">import</span> <span class="n">features</span>
+
 <span class="n">features</span><span class="p">[</span><span class="s1">&#39;clamd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;modules_needed&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;pyclamd&#39;</span> <span class="p">],</span> <span class="s1">&#39;Needed&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="s1">&#39;lament&#39;</span> <span class="p">:</span> <span class="s1">&#39;cannot use clamd to av scan files transferred&#39;</span><span class="p">,</span>
         <span class="s1">&#39;rejoice&#39;</span> <span class="p">:</span> <span class="s1">&#39;can use clamd to av scan files transferred&#39;</span> <span class="p">}</span>

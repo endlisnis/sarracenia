@@ -147,7 +147,7 @@
 
 <div class="viewcode-block" id="Scheduled.__init__">
 <a class="viewcode-back" href="../../../Reference/flowcb.html#sarracenia.flowcb.scheduled.Scheduled.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">options</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">logger</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span> <span class="s1">&#39;scheduled_interval&#39;</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span> <span class="s1">&#39;scheduled_hour&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="p">[]</span> <span class="p">)</span>
@@ -252,7 +252,7 @@
     <span class="k">def</span> <span class="nf">wait_until_next</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">scheduled_interval</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">wait_seconds</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">scheduled_interval</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wait_seconds</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">scheduled_interval</span><span class="p">))</span>
             <span class="k">return</span>
 
         <span class="k">if</span> <span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">scheduled_hour</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">scheduled_minute</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">):</span>

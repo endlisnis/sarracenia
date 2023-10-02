@@ -731,14 +731,26 @@
         <span class="k">if</span> <span class="n">headers</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;txByteCount&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">headers</span><span class="p">)))</span>
 
+        <span class="c1"># timeout option is a float and default is 0.0. basic_publish wants int or None for no timeout</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">]:</span>
+                <span class="n">pub_timeout</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pub_timeout</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Set pub_timeout to None. Exception details: &#39;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">pub_timeout</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="n">body</span><span class="o">=</span><span class="n">raw_body</span>
         <span class="n">ebo</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">basic_publish</span><span class="p">(</span><span class="n">AMQP_Message</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">topic</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;trying to publish body: </span><span class="si">{}</span><span class="s2"> headers: </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2"> under: </span><span class="si">{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                          <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">topic</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">basic_publish</span><span class="p">(</span><span class="n">AMQP_Message</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">topic</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">pub_timeout</span><span class="p">)</span>
+            <span class="c1"># Issue #732: tx_commit can get stuck forever</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">tx_commit</span><span class="p">()</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
-                <span class="s2">&quot;published body: </span><span class="si">{}</span><span class="s2"> headers: </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2"> under: </span><span class="si">{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">topic</span><span class="p">))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;published body: </span><span class="si">{}</span><span class="s2"> headers: </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2"> under: </span><span class="si">{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                          <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">topic</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;txGoodCount&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># no failure == success :-)</span>
 

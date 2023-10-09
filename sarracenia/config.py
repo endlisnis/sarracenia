@@ -71,6 +71,7 @@ default_options = {
     'batch' : 100,
     'baseDir': None,
     'baseUrl_relPath': False,
+    'block_reassemble': True,
     'delete': False,
     'documentRoot': None,
     'download': False,
@@ -95,7 +96,6 @@ default_options = {
     'post_baseUrl': None,
     'post_format': 'v03',
     'realpathPost': False,
-    'reassemble': True,
     'recursive' : True,
     'report': False,
     'retryEmptyBeforeExit': False,
@@ -111,11 +111,11 @@ count_options = [
 ]
 
 # all the boolean settings.
-flag_options = [ 'acceptSizeWrong', 'acceptUnmatched', 'baseUrl_relPath', 'debug', \
+flag_options = [ 'acceptSizeWrong', 'acceptUnmatched', 'baseUrl_relPath', 'block_reassemble', 'debug', \
     'delete', 'discard', 'download', 'dry_run', 'durable', 'exchangeDeclare', 'exchangeSplit', 'logReject', 'realpathFilter', \
     'follow_symlinks', 'force_polling', 'inline', 'inlineOnly', 'inplace', 'logMetrics', 'logStdout', 'logReject', 'restore', \
     'messageDebugDump', 'mirror', 'timeCopy', 'notify_only', 'overwrite', 'post_on_start', \
-    'permCopy', 'queueBind', 'queueDeclare', 'randomize', 'recursive', 'realpathPost', 'reassemble', \
+    'permCopy', 'queueBind', 'queueDeclare', 'randomize', 'recursive', 'realpathPost', \
     'reconnect', 'report', 'reset', 'retryEmptyBeforeExit', 'save', 'sourceFromExchange', \
     'statehost', 'users', 'v2compatRenameDoublePost'
                 ]

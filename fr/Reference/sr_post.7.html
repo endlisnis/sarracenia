@@ -173,7 +173,7 @@ Voir <a class="reference external" href=".../Explications/History/messages_v03.h
 <p>Les en-têtes sont un tableau de paires nom:valeur:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OBLIGATOIRE:
 
-        &quot;pubTime&quot;       - YYYYMMDDTHHMMSS.ss - UTC date/horodatage.
+        &quot;pubTime&quot;       - &quot;YYYYMMDDTHHMMSS.ss&quot; - UTC date/horodatage.
         &quot;baseUrl&quot;       - racine de l’URL à télécharger.
         &quot;relPath&quot;       - Le chemin relatif peut être concaténé à &lt;base_url&gt;
 
@@ -239,6 +239,7 @@ FACULTATIF:
         Pour le messages de thème &quot;v03.report&quot;, les en-têtes additionnelles qui suivent seront présents:
 
         &quot;report&quot; { &quot;code&quot;: 999  - Code de réponse de style HTTP.
+                   &quot;timeCompleted&quot;: &quot;YYYYMMDDTHHMMSS.ss&quot; - UTC date/horodatage.
                    &quot;message&quot; :  - message de rapport d’état documenté dans `Report Messages`_
                  }
 

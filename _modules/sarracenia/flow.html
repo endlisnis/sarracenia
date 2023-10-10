@@ -630,8 +630,7 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">()</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_runCallbacksWorklist</span><span class="p">(</span><span class="s1">&#39;after_post&#39;</span><span class="p">)</span>
 
-                    <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_runCallbacksWorklist</span><span class="p">(</span><span class="s1">&#39;report&#39;</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_runCallbackMetrics</span><span class="p">()</span>
 
                     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;metricsFilename&#39;</span> <span class="p">):</span>
@@ -1154,11 +1153,6 @@
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;flowCallback plugin </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1"> crashed: </span><span class="si">{</span><span class="n">ex</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span> <span class="s2">&quot;details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># post reports</span>
-        <span class="c1"># apply on_report plugins</span>
-        <span class="k">pass</span>
 
 <div class="viewcode-block" id="Flow.write_inline_file">
 <a class="viewcode-back" href="../../Reference/code.html#sarracenia.flow.Flow.write_inline_file">[docs]</a>

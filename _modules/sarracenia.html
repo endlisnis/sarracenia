@@ -284,7 +284,7 @@
 
 <span class="sd">     * beginning of epoch is platform dependent, and conversion to actual date is fraught (leap seconds, etc...)</span>
 
-<span class="sd">     * Entire SR\_* formats are text, no floats are sent over the protocol </span>
+<span class="sd">     * Entire SR_* formats are text, no floats are sent over the protocol </span>
 <span class="sd">       (avoids byte order issues, null byte / encoding issues, and enhances readability.) </span>
 
 <span class="sd">     * str format: YYYYMMDDHHMMSS.msec goal of this representation is that a naive </span>
@@ -827,17 +827,16 @@
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;overriding initial report: </span><span class="si">%d</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
                            <span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
 
-        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;timeCompleted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nowstr</span><span class="p">()</span>
-        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="n">text</span><span class="p">}</span>
-        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;report&#39;</span><span class="p">,</span><span class="s1">&#39;timeCompleted&#39;</span><span class="p">])</span></div>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span> <span class="s1">&#39;timeCompleted&#39;</span><span class="p">:</span> <span class="n">nowstr</span><span class="p">(),</span> <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="n">text</span><span class="p">}</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;report&#39;</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="Message.updatePaths">
 <a class="viewcode-back" href="../api-documentation.html#sarracenia.Message.updatePaths">[docs]</a>
     <span class="k">def</span> <span class="nf">updatePaths</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">new_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">new_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        set the new\\\_ fields in the message based on changed file placement.</span>
-<span class="sd">        if new_ options are ommitted updaste the rest of the fields in </span>
+<span class="sd">        set the new_* fields in the message based on changed file placement.</span>
+<span class="sd">        if new_* options are ommitted updaste the rest of the fields in </span>
 <span class="sd">        the message based on their current values.</span>
 
 <span class="sd">        If you change file placement in a flow callback, for example.</span>

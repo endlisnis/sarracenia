@@ -1450,12 +1450,14 @@ This has a major impact on processes…</p>
 </section>
 <section id="set-the-version">
 <h3>Set the Version<a class="headerlink" href="#set-the-version" title="Link to this heading"></a></h3>
-<p>This is done to <em>start</em> development on a version.</p>
+<p>This is done to <em>start</em> development on a version. It should be done on v03_wip
+after every release.</p>
 <ul class="simple">
 <li><p>git checkout v03_wip</p></li>
 <li><p>Edit <code class="docutils literal notranslate"><span class="pre">sarracenia/_version.py</span></code> manually and set the version number.</p></li>
 <li><p>Edit CHANGES.rst to add a section for the version.</p></li>
-<li><p>run dch to start the changelog for the current version.</p></li>
+<li><p>run dch to start the changelog for the current version.
+* change <em>unstable</em> to <em>UNRELEASED</em> (maybe done automatically by dch.)</p></li>
 <li><p>git commit -a</p></li>
 <li><p>git push</p></li>
 </ul>
@@ -1463,6 +1465,18 @@ This has a major impact on processes…</p>
 the version needs to be set to again (or overwritten).  For example, a development
 cycle begins in August, the version in main will be 3.19.08b1… but if development
 continues into September, one should use this procedure the change the version to 3.19.09b1.</p>
+<p>note on Debian terminology:</p>
+<ul class="simple">
+<li><p>unstable … new software brought into the OS stablization tree.</p></li>
+<li><p>testing … software considered stable enough to be included in the next “stable” release.</p></li>
+<li><p>stable … part of a stable Debian release: frozen software that will not be patched except
+for security issues.</p></li>
+</ul>
+<p>for Metpx-Sr3, we have not yet approached the longevity of versions implied by Debian <em>stable</em>.
+The labels don’t refer to how stable the software itself is, merely to how often the software
+changes (increments versions.)  More info: <a href="#id6"><span class="problematic" id="id7">`https://en.wikipedia.org/wiki/Debian_version_history`_</span></a>
+so when performing releases, the changelog is changed from UNRELEASED to unstable, and
+back to UNRELEASED when working between releases, as per Debian custom.</p>
 </section>
 <section id="releasing">
 <h3>Releasing<a class="headerlink" href="#releasing" title="Link to this heading"></a></h3>

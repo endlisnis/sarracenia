@@ -231,7 +231,7 @@ class Block_reassembly(FlowCB):
                 """
                 with sarracenia.blockmanifest.BlockManifest(root_file) as rfm:
                     rfm.set(old_blocks)
-                m.setReport( 206, f"file block subset {m['blocks']['number']} received and reassembled ok. waiting for {(len(old_blocks['waiting']))} more blocks." )
+                m.setReport( 206, "file block subset received and reassembled ok. Not forwarding." )
                 worklist.rejected.append(m)
             else:
                 # FIXME: for inflight.  now rename the file to the real name.

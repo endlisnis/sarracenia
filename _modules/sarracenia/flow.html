@@ -822,7 +822,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Don&#39;t understand this DESTFN parameter: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
                              <span class="n">spec</span><span class="p">)</span>
-                <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">filename</span>
         <span class="k">return</span> <span class="n">destFileName</span> <span class="o">+</span> <span class="n">satnet</span> <span class="o">+</span> <span class="n">timeSuffix</span></div>
 
 
@@ -960,18 +960,6 @@
                     <span class="k">if</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">]:</span>
                         <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">][</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">flatten</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">][</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span>
                             
-        <span class="k">if</span> <span class="n">maskFileOption</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sundew_getDestInfos</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">maskFileOption</span><span class="p">,</span>
-                                                       <span class="n">filename</span><span class="p">)</span>
-            <span class="n">token</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
-
-        <span class="c1"># not mirroring</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">mirror</span><span class="p">:</span>
-            <span class="n">token</span> <span class="o">=</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span>
-
-        <span class="c1"># uses current dir</span>
-
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">baseDir</span><span class="p">:</span>
             <span class="c1"># remove baseDir from relPath if present.</span>
             <span class="n">token_baseDir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">baseDir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
@@ -1006,8 +994,6 @@
                             <span class="n">toclimb</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
                             <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">][</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../&#39;</span><span class="o">*</span><span class="p">(</span><span class="n">toclimb</span><span class="p">)</span> <span class="o">+</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">][</span><span class="n">f</span><span class="p">]</span>
                             
-        <span class="c1"># add relPath to the base directory established above.</span>
-
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">new_dir</span> <span class="o">=</span> <span class="n">new_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
@@ -1017,7 +1003,16 @@
         <span class="n">tfname</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="c1"># when sr_sender did not derived from sr_subscribe it was always called</span>
         <span class="n">new_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">sundew_dirPattern</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">urlstr</span><span class="p">,</span> <span class="n">tfname</span><span class="p">,</span> <span class="n">new_dir</span><span class="p">)</span>
-        <span class="n">msg</span><span class="o">.</span><span class="n">updatePaths</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="n">new_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+        <span class="n">msg</span><span class="o">.</span><span class="n">updatePaths</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="n">new_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">maskFileOption</span><span class="p">:</span>
+            <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sundew_getDestInfos</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">maskFileOption</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot; dir_list: </span><span class="si">{</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_relPath&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> .. filename </span><span class="si">{</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_file&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="p">)</span>
+            <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_relPath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>  <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_relPath&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_file&#39;</span><span class="p">]</span> <span class="p">]</span>  <span class="p">)</span>
+        <span class="c1"># not mirroring</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">mirror</span><span class="p">:</span>
+            <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_relPath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_file&#39;</span><span class="p">]</span></div>
 
 
 

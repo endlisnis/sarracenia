@@ -17,7 +17,7 @@ import urllib.parse
 import sarracenia
 
 import sarracenia.filemetadata
-import sarracenia.blockmanifest
+
 
 # for v2 subscriber routines...
 import json, os, sys, time
@@ -30,6 +30,9 @@ from mimetypes import guess_type
 # end v2 subscriber
 
 from sarracenia.featuredetection import features
+
+if features['reassembly']['present']:
+    import sarracenia.blockmanifest
 
 from sarracenia import nowflt
 
@@ -2329,7 +2332,7 @@ class Flow:
         # if the file is not partitioned, the the onfly_checksum is for the whole file.
         # cache it here, along with the mtime.
 
-        if 'blocks' in msg:
+        if ('blocks' in msg) and sarracenia.features['reassembly']['present']:
             with sarracenia.blockmanifest.BlockManifest(local_file) as y:
                 y.set( msg['blocks'] )
 

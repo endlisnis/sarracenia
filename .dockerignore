@@ -1,0 +1,15 @@
+cache
+.github
+.pytest_cache
+.vscode
+data
+debian
+!debian/changelog
+docker
+docs
+obsolete
+s3-publisher
+tests
+tools
+travis
+vagrant

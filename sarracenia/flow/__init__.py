@@ -779,7 +779,7 @@ class Flow:
 
             if source:
                 msg['source'] = source
-                m['_deleteOnPost'] |= set(['source'])
+                msg['_deleteOnPost'] |= set(['source'])
 
         # relative path by default mirror
 

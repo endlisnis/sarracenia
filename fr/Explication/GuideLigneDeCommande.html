@@ -432,7 +432,7 @@ les actions <strong>start</strong>, <strong>foreground</strong> ou <strong>resta
  <span class="s1">&#39;logLevel&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span>
  <span class="s1">&#39;logReject&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
  <span class="s1">&#39;logRotateCount&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
- <span class="s1">&#39;logRotateInterval&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;logRotateInterval&#39;</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span>
  <span class="s1">&#39;logStdout&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
  <span class="s1">&#39;log_flowcb_needed&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
  <span class="s1">&#39;masks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;accept .* into //home/peter/sarra_devdocroot/recd_by_srpoll_test1 with mirror:True strip:.*sent_by_tsource2send/&#39;</span><span class="p">],</span>
@@ -1863,12 +1863,12 @@ Par exemple, sur un nœud nommé goofy, ~/.cache/sarra/log/ devient ~/.cache/sar
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate &lt;max_logs&gt; ( défaut: 5 )</dt><dd><p>Nombre maximal de journaux archivés.</p>
+<dt>logRotateCount &lt;max_logs&gt; ( défaut: 5 )</dt><dd><p>Nombre maximal de journaux archivés.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate_interval &lt;duration&gt;[&lt;time_unit&gt;] ( défaut: 1 )</dt><dd><p>La durée de l’intervalle avec une unité de temps optionnelle (c’est-à-dire 5m, 2h, 3d)</p>
+<dt>logRotateInterval &lt;duration&gt;[&lt;time_unit&gt;] ( défaut: 1 jour == 86,400 secondes )</dt><dd><p>La durée de l’intervalle avec une unité de temps optionnelle (c’est-à-dire 5m, 2h, 3d)</p>
 </dd>
 </dl>
 </li>

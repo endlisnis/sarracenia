@@ -475,7 +475,7 @@ the <strong>start</strong>, <strong>foreground</strong>, or <strong>restart</str
  <span class="s1">&#39;logLevel&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span>
  <span class="s1">&#39;logReject&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
  <span class="s1">&#39;logRotateCount&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
- <span class="s1">&#39;logRotateInterval&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;logRotateInterval&#39;</span><span class="p">:</span> <span class="mf">86400.0</span><span class="p">,</span>
  <span class="s1">&#39;logStdout&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
  <span class="s1">&#39;log_flowcb_needed&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
  <span class="s1">&#39;masks&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;accept .* into //home/peter/sarra_devdocroot/recd_by_srpoll_test1 with mirror:True strip:.*sent_by_tsource2send/&#39;</span><span class="p">],</span>
@@ -1903,12 +1903,12 @@ example, on a node named goofy,  ~/.cache/sarra/log/ becomes ~/.cache/sarra/goof
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate &lt;max_logs&gt; ( default: 5 )</dt><dd><p>Maximum number of logs archived.</p>
+<dt>logRotateCount &lt;max_logs&gt; ( default: 5 )</dt><dd><p>Maximum number of logs archived.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate_interval &lt;duration&gt;[&lt;time_unit&gt;] ( default: 1 )</dt><dd><p>The duration of the interval with an optional time unit (ie 5m, 2h, 3d)</p>
+<dt>logRotateInterval &lt;duration&gt;[&lt;time_unit&gt;] ( default: 1d = 86,400s )</dt><dd><p>The duration of the interval with an optional time unit (ie 5m, 2h, 3d)</p>
 </dd>
 </dl>
 </li>

@@ -618,8 +618,11 @@
                             <span class="n">m</span><span class="p">[</span><span class="s1">&#39;old_format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;_format&#39;</span><span class="p">]</span>
                             <span class="n">m</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;old_format&#39;</span><span class="p">])</span>
                         <span class="n">m</span><span class="p">[</span><span class="s1">&#39;_format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;post_format&#39;</span><span class="p">]</span>
-                        
 
+                        <span class="c1"># restore adjustment to fileOp</span>
+                        <span class="k">if</span> <span class="s1">&#39;post_fileOp&#39;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+                            <span class="n">m</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;post_fileOp&#39;</span><span class="p">]</span>
+                        
                     <span class="bp">self</span><span class="o">.</span><span class="n">_runCallbacksWorklist</span><span class="p">(</span><span class="s1">&#39;after_work&#39;</span><span class="p">)</span>
 
                     <span class="bp">self</span><span class="o">.</span><span class="n">ack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">rejected</span><span class="p">)</span>
@@ -900,6 +903,14 @@
                 <span class="n">d</span> <span class="o">=</span> <span class="n">new_dir</span>
             <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">post_baseDir</span><span class="p">:</span>
                 <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">variableExpansion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">post_baseDir</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+
+        <span class="c1"># to get locally resolvable links and renames, need to mangle the pathnames.</span>
+        <span class="c1"># to get something to restore for downstream consumers, need to put the original</span>
+        <span class="c1"># names back.</span>
+
+        <span class="k">if</span> <span class="s1">&#39;fileOp&#39;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;post_fileOp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">])</span>
+            <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">(</span> <span class="p">[</span> <span class="s1">&#39;post_fileOp&#39;</span> <span class="p">]</span> <span class="p">)</span>
 
         <span class="c1"># if provided, strip (integer) ... strip N heading directories</span>
         <span class="c1">#         or  pstrip (pattern str) strip regexp pattern from relPath</span>

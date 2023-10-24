@@ -824,7 +824,7 @@ code. it would be referred to in other routines like so:</p>
 <section id="mapping-v2-entry-points-to-v3-callbacks">
 <h2><a class="toc-backref" href="#id11" role="doc-backlink">Mapping v2 Entry Points to v3 Callbacks</a><a class="headerlink" href="#mapping-v2-entry-points-to-v3-callbacks" title="Link to this heading"></a></h2>
 <p>for a comprehensive look at the v3 entry points, have a look at:</p>
-<p><a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py</a></p>
+<p><a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/__init__.py">https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/__init__.py</a></p>
 <p>for details.</p>
 <section id="on-message-on-post-after-accept">
 <h3><a class="toc-backref" href="#id12" role="doc-backlink">on_message, on_post –&gt; after_accept</a><a class="headerlink" href="#on-message-on-post-after-accept" title="Link to this heading"></a></h3>
@@ -1102,9 +1102,9 @@ sr3 version of same plugin (nasa_mls_nrt.py):</p>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">myfname</span> <span class="o">==</span> <span class="n">data</span> <span class="p">:</span> <span class="k">return</span>
 </pre></div>
 </div>
-<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/nasa_mls_nrt.py">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/nasa_mls_nrt.py</a> )
+<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/nasa_mls_nrt.py">https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/nasa_mls_nrt.py</a> )
 and matching config file provided here:
-( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/examples/poll/nasa-mls-nrt.conf">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/examples/poll/nasa-mls-nrt.conf</a> )</p>
+( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/examples/poll/nasa-mls-nrt.conf">https://github.com/MetPX/sarracenia/blob/development/sarracenia/examples/poll/nasa-mls-nrt.conf</a> )</p>
 <p>The new class is declared as a subclass of Poll, and only the needed
 The HTML routine (handle_data) need be written to override the behaviour
 provided by the parent class.</p>
@@ -1175,7 +1175,7 @@ can be used to eliminate the need for download plugins.  Example:</p>
 <p>is ported to sr3:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/noaa_hydrometric.py">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/noaa_hydrometric.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/noaa_hydrometric.py">https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/noaa_hydrometric.py</a></p></li>
 </ul>
 </div></blockquote>
 <p>The ported result sets the new field <em>retrievePath</em> ( retrieval path ) instead of new_dir and new_file
@@ -1309,7 +1309,7 @@ One can browse the two trees, and using the table below,
 can review, compare and contrast the implementations.</p>
 <ul class="simple">
 <li><p>V2 plugins are under: <a class="reference external" href="https://github.com/MetPX/sarracenia/tree/v2_stable/sarra/plugins">https://github.com/MetPX/sarracenia/tree/v2_stable/sarra/plugins</a></p></li>
-<li><p>Sr3 plugins are under: <a class="reference external" href="https://github.com/MetPX/sarracenia/tree/v03_wip/sarracenia/flowcb">https://github.com/MetPX/sarracenia/tree/v03_wip/sarracenia/flowcb</a></p></li>
+<li><p>Sr3 plugins are under: <a class="reference external" href="https://github.com/MetPX/sarracenia/tree/development/sarracenia/flowcb">https://github.com/MetPX/sarracenia/tree/development/sarracenia/flowcb</a></p></li>
 </ul>
 <p>The naming also gives an example of the name convention mapping… e.g. plugins whos v2 name start with:</p>
 <ul class="simple">

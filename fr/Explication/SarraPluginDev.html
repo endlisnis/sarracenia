@@ -176,12 +176,12 @@ processus qui regarde un fichier dans un répertoire, on peut insérer un
 traitement personnalisé à différents points du flux.</p>
 <p>Des exemples sont disponibles à l’aide de la commande list</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">sr3</span> <span class="nb">list</span> <span class="n">fcb</span>
-<span class="n">Provided</span> <span class="n">plugins</span><span class="p">:</span> <span class="p">(</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/</span><span class="n">Sarracenia</span><span class="o">/</span><span class="n">v03_wip</span><span class="o">/</span><span class="n">sarra</span> <span class="p">)</span>
+<span class="n">Provided</span> <span class="n">plugins</span><span class="p">:</span> <span class="p">(</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/</span><span class="n">Sarracenia</span><span class="o">/</span><span class="n">development</span><span class="o">/</span><span class="n">sarra</span> <span class="p">)</span>
 <span class="n">flowcb</span><span class="o">/</span><span class="n">gather</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">py</span>            <span class="n">flowcb</span><span class="o">/</span><span class="n">gather</span><span class="o">/</span><span class="n">message</span><span class="o">.</span><span class="n">py</span>         <span class="n">flowcb</span><span class="o">/</span><span class="n">line_log</span><span class="o">.</span><span class="n">py</span>               <span class="n">flowcb</span><span class="o">/</span><span class="n">line_mode</span><span class="o">.</span><span class="n">py</span>
 <span class="n">flowcb</span><span class="o">/</span><span class="nb">filter</span><span class="o">/</span><span class="n">deleteflowfiles</span><span class="o">.</span><span class="n">py</span> <span class="n">flowcb</span><span class="o">/</span><span class="nb">filter</span><span class="o">/</span><span class="n">fdelay</span><span class="o">.</span><span class="n">py</span>          <span class="n">flowcb</span><span class="o">/</span><span class="nb">filter</span><span class="o">/</span><span class="n">log</span><span class="o">.</span><span class="n">py</span>             <span class="n">flowcb</span><span class="o">/</span><span class="n">nodupe</span><span class="o">.</span><span class="n">py</span>
 <span class="n">flowcb</span><span class="o">/</span><span class="n">post</span><span class="o">/</span><span class="n">log</span><span class="o">.</span><span class="n">py</span>               <span class="n">flowcb</span><span class="o">/</span><span class="n">post</span><span class="o">/</span><span class="n">message</span><span class="o">.</span><span class="n">py</span>           <span class="n">flowcb</span><span class="o">/</span><span class="n">retry</span><span class="o">.</span><span class="n">py</span>                  <span class="n">flowcb</span><span class="o">/</span><span class="n">v2wrapper</span><span class="o">.</span><span class="n">py</span>
 <span class="n">fractal</span><span class="o">%</span>
-<span class="n">fractal</span><span class="o">%</span> <span class="n">fcbdir</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/</span><span class="n">Sarracenia</span><span class="o">/</span><span class="n">v03_wip</span><span class="o">/</span><span class="n">sarra</span>
+<span class="n">fractal</span><span class="o">%</span> <span class="n">fcbdir</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">peter</span><span class="o">/</span><span class="n">Sarracenia</span><span class="o">/</span><span class="n">development</span><span class="o">/</span><span class="n">sarra</span>
 </pre></div>
 </div>
 <section id="listes-de-travail-worklist">
@@ -559,7 +559,7 @@ La valeur 0 indique que la mise en cache est désactivée.</p>
 <h3>Points de rappel de flux<a class="headerlink" href="#points-de-rappel-de-flux" title="Link to this heading"></a></h3>
 <p>Sarracenia interprétera les noms des fonctions comme des heures d’indication dans le de traitement lorsque
 une routine donnée devrait être appelée.</p>
-<p>Voir le <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/__init__.py">FlowCB source</a>
+<p>Voir le <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/__init__.py">FlowCB source</a>
 pour des informations détaillées sur les signatures d’appel et les valeurs de retour, etc.</p>
 <table class="docutils align-default">
 <thead>
@@ -700,7 +700,7 @@ retourner True pour continuer</p>
 </tr>
 </tbody>
 </table>
-<p>Voir les classes intégrés <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/__init__.py">flowcb Poll</a>
+<p>Voir les classes intégrés <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/__init__.py">flowcb Poll</a>
 est utile.</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id2" role="doc-footnote">
@@ -988,7 +988,7 @@ même rapport.</p></li>
 (sarracenia.flowcb.poll.Poll), et seulement la routine nécessaire (dans ce cas
 l’analyse html « handle_data ») doit être écrite pour remplacer le comportement fourni
 par la classe parente.</p>
-<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/__init__.py">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/__init__.py</a> )</p>
+<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/__init__.py">https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/__init__.py</a> )</p>
 <p>Le plugin a une routine principale « parse », qui appelle la classe html.parser, dans laquelle
 le data_handler est appelé pour chaque ligne, construisant progressivement les self.entries
 dictionnaire où chaque entrée à une structure SFTPAttributes décrivant un fichier en cours d’interrogation.</p>
@@ -1024,9 +1024,9 @@ suppression des doublons.</p>
 </pre></div>
 </div>
 <p>Le fichier est ici:</p>
-<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/nasa_mls_nrt.py">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/flowcb/poll/nasa_mls_nrt.py</a> )</p>
+<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/nasa_mls_nrt.py">https://github.com/MetPX/sarracenia/blob/development/sarracenia/flowcb/poll/nasa_mls_nrt.py</a> )</p>
 <p>et le fichier de configuration correspondant fourni ici :</p>
-<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/examples/poll/nasa-mls-nrt.conf">https://github.com/MetPX/sarracenia/blob/v03_wip/sarracenia/examples/poll/nasa-mls-nrt.conf</a> )</p>
+<p>( <a class="reference external" href="https://github.com/MetPX/sarracenia/blob/development/sarracenia/examples/poll/nasa-mls-nrt.conf">https://github.com/MetPX/sarracenia/blob/development/sarracenia/examples/poll/nasa-mls-nrt.conf</a> )</p>
 </section>
 <section id="acces-aux-messages-a-partir-de-python">
 <h2>Accès aux messages à partir de Python<a class="headerlink" href="#acces-aux-messages-a-partir-de-python" title="Link to this heading"></a></h2>

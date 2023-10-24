@@ -169,7 +169,7 @@ Ceci est installé par des outils automatisés pour configurer l’environnement
 Le test de flux crée et détruit les échanges et perturbera tous les flux actifs sur le courtier.</p></li>
 </ul>
 <p>après avoir cloné le code source:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">v03_wip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">development</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">v03</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarrac</span> <span class="n">sr3c</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sr_insects</span> <span class="n">insects</span>
 <span class="n">cd</span> <span class="n">sr3</span>
@@ -221,20 +221,20 @@ sur Launchpad.net :</p>
 </section>
 <section id="flux-de-travail-v3">
 <h3>Flux de travail v3<a class="headerlink" href="#flux-de-travail-v3" title="Link to this heading"></a></h3>
-<p>La prochaine version de Sarracenia est développée dans la branche v03_wip (travail en cours).
+<p>La prochaine version de Sarracenia est développée dans la branche development (travail en cours).
 Comme la refactorisation majeure est pratiquement terminée, le travail restant est maintenant entièrement constructif
 et tout le développement est coordonné par des issues exactement comme l’est la V2. Les problèmes propres à la v3
 sont les régressions ou améliorations qui n’ont pas de sens à ajouter à v2, ont la balise <em>v3only</em>.
 Les problèmes communs entre les versions sont marqués <em>v3</em>.</p>
 <p>Le flux de travail avec v3 est similaire à v2 mais avec des branches différentes. De nouveaux travaux de
 développement devraient avoir un préfixe v03_, tel que v03_issue401. Avoir tous les tests de flux
-complétés avec assez de succès est l’un des critères d’acceptation dans v03_wip.</p>
-<p>Pour exécuter les tests sr_insects, le référentiel doit être cloné avec la branche v03_wip.
-Une porte pour la fusion à v03_wip est pour un deuxième développeur d’exécuter le flow_tests.
+complétés avec assez de succès est l’un des critères d’acceptation dans development.</p>
+<p>Pour exécuter les tests sr_insects, le référentiel doit être cloné avec la branche development.
+Une porte pour la fusion à development est pour un deuxième développeur d’exécuter le flow_tests.
 <strong>Pour la v03, ces tests doivent exécuter : static_flow, flakey_broker, dynamic_flow, transform_flow</strong></p>
 <p>Prévu d’ici le 11/04/2022 :</p>
 <ul class="simple">
-<li><p>Main sera fusionné à partir de v03_wip, donc la branche par défaut pour les nouveaux arrivants sera SR3.</p></li>
+<li><p>Main sera fusionné à partir de development, donc la branche par défaut pour les nouveaux arrivants sera SR3.</p></li>
 <li><p>Launchpad aura de nouvelles recettes pour produire des paquets SR3 à partir de la branche principale.</p></li>
 </ul>
 </section>
@@ -351,7 +351,7 @@ ubuntu@flow:~$
 </pre></div>
 </div>
 <p>Cela fournira un shell dans une machine virtuelle initialisée.  Pour le configurer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">v03_wip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">development</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
 <span class="n">cd</span> <span class="n">sr3</span>
 </pre></div>
 </div>
@@ -476,7 +476,7 @@ debuild -uc -us
 sudo dpkg -i ../*.deb
 cd ..
 
-git clone -b v03_wip https://github.com/MetPX/sr_insects
+git clone -b development https://github.com/MetPX/sr_insects
 cd sr_insects
 sr3 status  # make sure there are no components configured before you start.
             # test results will likely be skewed otherwise.
@@ -1357,14 +1357,14 @@ on peut approuver une fusion malgré les plaintes de Github Actions.</p>
 <p>Il y a une longue discussion sur <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/139">Quelle version est stable</a>
 La configuration actuelle est qu’il y a quatre branches principales:</p>
 <ul class="simple">
-<li><p>La branche principale est la version finale de SR3, fusionnant à partir de v03_wip. Utilisé pour créer des
+<li><p>La branche principale est la version finale de SR3, fusionnant à partir de development. Utilisé pour créer des
 packages SR3 dans le référentiel <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx">MetPX</a>.</p></li>
-<li><p>v03_wip … La <a class="reference internal" href="v03.html"><span class="doc">version 3</span></a> La branche de travail en cours (WIP) est une prochaine version de Sarracenia
-en développement. La branche v03_wip est utilisée pour créer des packages sr3 pour le
+<li><p>development … La <a class="reference internal" href="v03.html"><span class="doc">version 3</span></a> La branche de travail en cours (WIP) est une prochaine version de Sarracenia
+en développement. La branche development est utilisée pour créer des packages sr3 pour le
 <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-daily">Quotidien</a>
 et les référentiels <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-pre-release">Pre-Release</a>
 sur launchpad.net.</p></li>
-<li><p>Les branches de issue à fusionner avec v03_wip, devraient s’appeler v3_issueXXX</p></li>
+<li><p>Les branches de issue à fusionner avec development, devraient s’appeler v3_issueXXX</p></li>
 <li><p>v2_dev … La branche d’intégration pour la maintenance v2 utilisée avant la promotion à v2_stable.</p></li>
 <li><p>v2_stable … Généralement, cette branche obtient du code via des fusions à partir de v2_dev, après
 que la pré-version a été testée sur autant de systèmes que possible. Utilisé pour construire des
@@ -1382,9 +1382,9 @@ automatisés pour les mettre à niveau selon les besoins.</p>
 <p>Référentiels:</p>
 <ul class="simple">
 <li><p>Quotidien <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-daily">https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-daily</a> (Vivre sur le fil du rasoir… )
-La construction quotidienne automatisée des paquets SR3 se fait à partir de la branche <em>v03_wip</em>.</p></li>
+La construction quotidienne automatisée des paquets SR3 se fait à partir de la branche <em>development</em>.</p></li>
 <li><p>Pré-release <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-pre-release">https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-pre-release</a> (pour les fonctionnalités
-les plus récentes.) De la branche <em>v03_wip</em>. Les développeurs déclenchent manuellement les builds ici lorsque
+les plus récentes.) De la branche <em>development</em>. Les développeurs déclenchent manuellement les builds ici lorsque
 cela semble approprié (tester du code prêt à être publié.)</p></li>
 <li><p>Release <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx">https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx</a> (pour une stabilité maximale)
 de la branche <em>v2_stable</em>.  Après avoir testé dans des systèmes souscrits à des versions préliminaires,
@@ -1407,7 +1407,7 @@ les référentiels publics pertinents.</p>
 <li><p>Télécharger la version sur launchpad.net, afin que l’installation des paquets Debian
 qui utilise le référentiel réussisse.</p></li>
 <li><p>Télécharger les notes de version et les fichiers binaires sur github.com.</p></li>
-<li><p>incrémenter la version pour les futurs engagements à v2_dev ou v03_wip.</p></li>
+<li><p>incrémenter la version pour les futurs engagements à v2_dev ou development.</p></li>
 </ul>
 <section id="schema-de-controle-de-version">
 <h3>Schéma de contrôle de version<a class="headerlink" href="#schema-de-controle-de-version" title="Link to this heading"></a></h3>
@@ -1438,7 +1438,7 @@ Les versions sont actuellement 3.00.iibj où:</p>
 reprenions la convention année/mois, espérons-le 3.22.</p>
 <p>Les rejets sont classés comme suit :</p>
 <dl class="simple">
-<dt>Alpha</dt><dd><p>Versions instantanées prises directement à partir de v03_wip, sans autres garanties qualitatives.
+<dt>Alpha</dt><dd><p>Versions instantanées prises directement à partir de development, sans autres garanties qualitatives.
 Aucune garantie de fonctionnalité, certains composants peuvent être partiellement mis en œuvre,
 certaines bris peuvent survenir. Pas de corrections de bugs, problèmes résolus par la version ultérieure.
 Souvent utilisé pour les premiers tests de bout en bout (plutôt que d’installer une forme personnalisé
@@ -1479,7 +1479,7 @@ Cela a un impact majeur sur les processus…</p>
 <p>Ceci est fait pour <em>démarrer</em> le développement d’une version. D´habitude, on fais cela immédiatement
 après que la version précedente a été relachée.</p>
 <ul>
-<li><p>git checkout v03_wip</p></li>
+<li><p>git checkout development</p></li>
 <li><p>Modifier <code class="docutils literal notranslate"><span class="pre">sarracenia/_version.py</span></code> manuellement et définissez le numéro de version.</p></li>
 <li><p>Modifier CHANGES.rst pour ajouter une section pour la version.</p></li>
 <li><p>Exécuter dch pour démarrer le journal des modifications de la version actuelle.
@@ -1510,22 +1510,22 @@ années pour l´instant.</p>
 <h3>Releasing<a class="headerlink" href="#releasing" title="Link to this heading"></a></h3>
 <p>Lorsque le développement d’une version est terminé. Les événements suivants doivent se produire :</p>
 <p>Une balise doit être créée pour identifier la fin du cycle</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">v03_wip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">development</span>
 <span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">sarra</span><span class="o">-</span><span class="n">v3</span><span class="mf">.16.01</span><span class="n">a01</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;release 3.16.01a01&quot;</span>
 <span class="n">git</span> <span class="n">push</span>
 <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">sarra</span><span class="o">-</span><span class="n">v3</span><span class="mf">.16.01</span><span class="n">a01</span>
 </pre></div>
 </div>
-<p>Une fois que la balise est là dans la branche v03_wip, il faut promouvoir sur main:</p>
+<p>Une fois que la balise est là dans la branche development, il faut promouvoir sur main:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="n">v03_wip</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">development</span>
 <span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
 <p>Une fois en main, les images docker seront automatiquement mises à niveau, mais nous devons ensuite mettre à jour
 les différentes méthodes de distribution: <a class="reference internal" href="#pypi">PyPI</a>, et <a class="reference internal" href="#launchpad">Launchpad</a></p>
 <p>Une fois la génération du package terminée, il faut <a href="#id4"><span class="problematic" id="id5">`Création d´une version`_</span></a>
-dans v03_wip à l’incrément logique suivant pour s’assurer qu’aucun autre développement
+dans development à l’incrément logique suivant pour s’assurer qu’aucun autre développement
 identifié comme la version publiée ne se produit.</p>
 </section>
 <section id="pypi">
@@ -1582,10 +1582,10 @@ Pour une mise à niveau transparente, les premiers testeurs doivent fournir le <
 <h4>Ubuntu 18.04<a class="headerlink" href="#ubuntu-18-04" title="Link to this heading"></a></h4>
 <p>Pour ubuntu 18.04 (bionique), il y a quelques problèmes. La recette s’appelle: metpx-sr3-daily-bionic, et il
 prend la source à partir d’une branche différente : <em>v03_launchpad</em>. Pour chaque version, cette branche
-doit être rebasée à partir de <em>v03_wip</em></p>
+doit être rebasée à partir de <em>development</em></p>
 <ul class="simple">
 <li><p>git checkout v03_launchpad</p></li>
-<li><p>git rebase v03_wip</p></li>
+<li><p>git rebase development</p></li>
 <li><p>git push</p></li>
 <li><p>import souce</p></li>
 <li><p>Request build from <em>metpx-sr3-daily-bionic</em> Recipe.</p></li>
@@ -1687,7 +1687,7 @@ Exemple de création d’une image multipasse pour fedora à construire avec:</p
 </div>
 <p>Basé sur <a class="reference external" href="https://www.redhat.com/sysadmin/create-rpm-package">https://www.redhat.com/sysadmin/create-rpm-package</a> …  installer les dépendances de build:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rpmdevtools</span> <span class="n">rpmlint</span> <span class="n">git</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">v03_wip</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">development</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
 </pre></div>
 </div>
 <p>On peut construire un type très limité de paquet rpm sur une distribution basée sur rpm

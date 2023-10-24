@@ -83,7 +83,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#flow-tests-with-mqtt">Flow tests with MQTT</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#commits-to-the-main-branch">Commits to the Main Branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commits-to-the-development-branch">Commits to the Development Branch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#main-branches">Main Branches</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#repositories">Repositories</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-a-release">Building a Release</a><ul>
@@ -262,8 +262,9 @@ As the major refactor is substantially complete, the remaining work is now entir
 and all development is co-ordinated through issues exactly as v2 is. Issues unique to v3, be
 they regressions or enhancements that don’t make sense to add to v2, have the tag <em>v3only</em>.
 Issues that are common between the releases are tagged <em>v3</em>.</p>
-<p>The workflow with v3 is similar to v2 but with different branches. New development work should
-have a v03_ prefix, such as v03_issue401. Having all the flow tests complete fairly successfully
+<p>The workflow with v3 is similar to v2 but with different branches.  branches are assumed
+to be branched from the <em>development</em> branch, so v3 is assumed unless v2_ is present.
+Having all the flow tests complete fairly successfully
 is one criterion for acceptance into development.</p>
 <p>To run the sr_insects tests, the repository must be cloned with the development branch.
 A gate for merging to development is for a second developer to run the flow_tests.
@@ -467,7 +468,7 @@ there may be issue240_2 for a second attempt. There may also be feature branches
 <li><p><strong>update doc/</strong> manual pages should get their updates ideally at the same time as the code.</p></li>
 </ul>
 <p>Usually there will be many such cycles on a development branch before one is ready
-to issue a pull request. Eventually, we get to <a class="reference internal" href="#commits-to-the-main-branch">Commits to the Main Branch</a></p>
+to issue a pull request. Eventually, we get to <a href="#id6"><span class="problematic" id="id7">`Commits to the Main Branch`_</span></a></p>
 </section>
 </section>
 <section id="sr-insects-tests-description">
@@ -1300,8 +1301,8 @@ would indicate it.</p>
 <p>Most components will use MQTT instead of amqp and can be run normally.</p>
 </section>
 </section>
-<section id="commits-to-the-main-branch">
-<h2>Commits to the Main Branch<a class="headerlink" href="#commits-to-the-main-branch" title="Link to this heading"></a></h2>
+<section id="commits-to-the-development-branch">
+<h2>Commits to the Development Branch<a class="headerlink" href="#commits-to-the-development-branch" title="Link to this heading"></a></h2>
 <p>Aside from typos, language fixups in the documentation, and incrementing
 the version, developers are not expected to commit to main. All work
 happens on development branches, and all testing is expected to pass before
@@ -1309,7 +1310,7 @@ one considers affecting main. Once the branch development is complete,
 or a unit of work-in-progress is felt to be worth merging to main, one
 must summarize the changes from the branch for the debian change log,
 request on github.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">issueXXX</span>  <span class="c1"># v03_issueXXX for v3 work.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">issueXXX</span>  <span class="c1"># v02_issueXXX for v2 work., github suggested branch names are fine also.</span>
 <span class="n">vi</span> <span class="n">CHANGES</span><span class="o">.</span><span class="n">rst</span> <span class="c1"># summarize the changes in Restructured Text</span>
 <span class="n">dch</span> <span class="c1"># copy/paste from CHANGES.rst, inserting one leading space.</span>
 <span class="n">vi</span> <span class="n">doc</span><span class="o">/</span><span class="n">UPGRADING</span><span class="o">.</span><span class="n">rst</span> <span class="c1"># rarely, if code has user impact.</span>
@@ -1338,11 +1339,11 @@ The current set up is that there are four main branches:</p>
 <li><p>development … The <a class="reference internal" href="v03.html"><span class="doc">version 3</span></a> work in progress branch is a next version of sarracenia in development.
 the development branch is used to build sr3 packages for the <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-daily">Daily</a>
 and <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-pre-release">Pre-Release</a> repositories on launchpad.net.</p></li>
-<li><p>issue branches to be merged to development, it should be called v3_issueXXX</p></li>
+<li><p>issue branches to be merged to development, it should be start with issueXXX or suggested branch names from github are ok also.</p></li>
+<li><p>sometimes, multiple branches are needed for a single issue, say for variations of a fix, eg. issueXXX_2_do_it_this_way .</p></li>
 <li><p>v2_dev … the integration branch for v2 maintenance used prior to promotion to v2_stable.</p></li>
 <li><p>v2_stable … generally this branch gets code via merges from v2_dev, after the pre-release has been tested on a
 as many systems as possible. used to build packages on the stable: <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx">MetPX</a></p></li>
-<li><p>issue branches to be merged to main should be called issueXXX.</p></li>
 </ul>
 </section>
 <section id="repositories">
@@ -1474,7 +1475,7 @@ for security issues.</p></li>
 </ul>
 <p>for Metpx-Sr3, we have not yet approached the longevity of versions implied by Debian <em>stable</em>.
 The labels don’t refer to how stable the software itself is, merely to how often the software
-changes (increments versions.)  More info: <a href="#id6"><span class="problematic" id="id7">`https://en.wikipedia.org/wiki/Debian_version_history`_</span></a>
+changes (increments versions.)  More info: <a href="#id8"><span class="problematic" id="id9">`https://en.wikipedia.org/wiki/Debian_version_history`_</span></a>
 so when performing releases, the changelog is changed from UNRELEASED to unstable, and
 back to UNRELEASED when working between releases, as per Debian custom.</p>
 </section>

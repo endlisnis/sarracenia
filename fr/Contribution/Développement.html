@@ -170,7 +170,7 @@ Le test de flux crée et détruit les échanges et perturbera tous les flux acti
 </ul>
 <p>après avoir cloné le code source:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">development</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">v03</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarrac</span> <span class="n">sr3c</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">development</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarrac</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3c</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sr_insects</span> <span class="n">insects</span>
 <span class="n">cd</span> <span class="n">sr3</span>
 </pre></div>
@@ -226,9 +226,9 @@ Comme la refactorisation majeure est pratiquement terminée, le travail restant 
 et tout le développement est coordonné par des issues exactement comme l’est la V2. Les problèmes propres à la v3
 sont les régressions ou améliorations qui n’ont pas de sens à ajouter à v2, ont la balise <em>v3only</em>.
 Les problèmes communs entre les versions sont marqués <em>v3</em>.</p>
-<p>Le flux de travail avec v3 est similaire à v2 mais avec des branches différentes. De nouveaux travaux de
-développement devraient avoir un préfixe v03_, tel que v03_issue401. Avoir tous les tests de flux
-complétés avec assez de succès est l’un des critères d’acceptation dans development.</p>
+<p>Le flux de travail avec v3 est similaire à v2 mais avec des branches différentes.
+Avoir tous les tests de flux
+complétés avec assez de succès est un des critères d’acceptation dans development.</p>
 <p>Pour exécuter les tests sr_insects, le référentiel doit être cloné avec la branche development.
 Une porte pour la fusion à development est pour un deuxième développeur d’exécuter le flow_tests.
 <strong>Pour la v03, ces tests doivent exécuter : static_flow, flakey_broker, dynamic_flow, transform_flow</strong></p>
@@ -1333,14 +1333,13 @@ de considerer d’affecter Main. Une fois le développement de la branche termin
 ou qu’une unité de travaux en cours est jugée utile de fusionner avec la branche principale, on
 doit résumer les modifications de la branche pour le journal des modifications de Debian,
 demande sur GitHub.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">issueXXX</span>  <span class="c1"># v03_issueXXX for v3 work.</span>
-<span class="n">vi</span> <span class="n">CHANGES</span><span class="o">.</span><span class="n">rst</span> <span class="c1"># summarize the changes in Restructured Text</span>
-<span class="n">dch</span> <span class="c1"># copy/paste from CHANGES.rst, inserting one leading space.</span>
-<span class="n">vi</span> <span class="n">doc</span><span class="o">/</span><span class="n">UPGRADING</span><span class="o">.</span><span class="n">rst</span> <span class="c1"># rarely, if code has user impact.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">issueXXX</span>  <span class="c1"># v02_issueXXX  pour du travaille sur l´ancienne version.</span>
+<span class="n">dch</span> <span class="c1"># résumer les changement dans changelog.</span>
+<span class="n">vi</span> <span class="n">doc</span><span class="o">/</span><span class="n">UPGRADING</span><span class="o">.</span><span class="n">rst</span> <span class="c1"># rarement en cas de changement visible dont l´usager doit prendre connaissance.</span>
 <span class="n">vi</span> <span class="n">doc</span><span class="o">/</span><span class="n">fr</span><span class="o">/</span><span class="n">UPGRADING</span><span class="o">.</span><span class="n">rst</span> <span class="c1"># bon... ceci est visible aux usagers, donc...</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">a</span>
 <span class="n">git</span> <span class="n">push</span>
-<span class="c1"># issue a pull request on github.com.</span>
+<span class="c1"># déclencher un *pull request* chez github.com</span>
 </pre></div>
 </div>
 <p>Un deuxième développeur examinera la demande d’extraction et le réviseur décidera si
@@ -1585,15 +1584,15 @@ prend la source à partir d’une branche différente : <em>v03_launchpad</em>. 
 doit être rebasée à partir de <em>development</em></p>
 <ul class="simple">
 <li><p>git checkout v03_launchpad</p></li>
-<li><p>git rebase development</p></li>
+<li><p>git rebase -i development</p></li>
 <li><p>git push</p></li>
-<li><p>import souce</p></li>
+<li><p>import source</p></li>
 <li><p>Request build from <em>metpx-sr3-daily-bionic</em> Recipe.</p></li>
 </ul>
 <p>En quoi cette branche <em>v03_launchpad</em> est-elle différente ? Elle:</p>
 <ul>
-<li><p>Supprime la dépendance sur python3-paho-mqtt car la version dans les référentiels est trop ancienne.</p></li>
-<li><p>Suppression de la dépendance sur python3-dateparser, car ce paquet n’est pas disponible dans le référentiel.</p></li>
+<li><p>Supprime la dépendance sur python3-paho-mqtt car la version dans le <em>repository</em> d´ubuntu est trop ancienne.</p></li>
+<li><p>Suppression de la dépendance sur python3-dateparser, car ce paquet n’est pas disponible dans le <em>repository</em> d´ubuntu.</p></li>
 <li><p>remplacer la cible de test dans debian/rules, parce que tester sans les dépendances échoue</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">override_dh_auto_test</span><span class="p">:</span>
    <span class="n">echo</span> <span class="s2">&quot;disable on 18.04... some deps must come from pip&quot;</span>

@@ -1483,7 +1483,8 @@ class Flow:
             if 'fileOp' in msg :
                 if 'rename' in msg['fileOp']:
                     if ('rename' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing renames {msg['new_file']} " )
+                        msg.setReport(202, f"not doing renames {msg['new_file']} " )
+                        self.worklist.ok.append(msg)
                         continue
 
                     if 'renameUnlink' in msg:
@@ -1505,7 +1506,8 @@ class Flow:
 
                 elif ('directory' in msg['fileOp']): 
                     if ('rmdir' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing rmdirs {msg['new_file']} " )
+                        msg.setReport( 202, f"not doing rmdirs {msg['new_file']} " )
+                        self.worklist.ok.append(msg)
                         continue
 
                     if self.removeOneFile(new_path):
@@ -1521,7 +1523,8 @@ class Flow:
 
                 elif ('remove' in msg['fileOp']):
                     if ('delete' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing file removals {msg['new_file']} " )
+                        msg.setReport( 202, f"not doing file removals {msg['new_file']} " )
+                        self.worklist.ok.append(msg)
                         continue
 
                     if self.removeOneFile(new_path):
@@ -1540,7 +1543,8 @@ class Flow:
                 if ('directory' in msg['fileOp']):
 
                     if ('mkdir' not in self.o.fileEvents): 
-                        self.reject(msg, 202, f"not doing mkdirs {msg['new_file']} " )
+                        msg.setReport( 202, f"not doing mkdirs {msg['new_file']} " )
+                        self.worklist.ok.append(msg)
                         continue
 
                     if self.mkdir(msg):
@@ -1555,7 +1559,8 @@ class Flow:
                 elif 'link' in msg['fileOp'] or 'hlink' in msg['fileOp']: 
 
                     if ('link' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing links {msg['new_file']} " )
+                        msg.setReport( 202, f"not doing links {msg['new_file']} " )
+                        self.worklist.ok.append(msg)
                         continue
 
                     if self.link1file(msg):
@@ -2122,10 +2127,6 @@ class Flow:
 
             if 'fileOp' in msg:
                 if 'remove' in msg['fileOp'] :
-                    if ('delete' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing file removals {msg['new_file']} " )
-                        return True
-
                     if hasattr(self.proto[self.scheme], 'delete'):
                         logger.debug("message is to remove %s" % new_file)
                         if not self.o.dry_run:
@@ -2139,10 +2140,6 @@ class Flow:
                     return False
 
                 if 'rename' in msg['fileOp'] :
-                    if ('rename' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing file renames {msg['new_file']} " )
-                        return True
-
                     if hasattr(self.proto[self.scheme], 'delete'):
                         logger.debug( f"message is to rename {msg['fileOp']['rename']} to {new_file}" )
                         if not self.o.dry_run:
@@ -2153,16 +2150,12 @@ class Flow:
                     return False
 
                 if 'directory' in msg['fileOp']: 
-                    if ('mkdir' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing mkdirs {msg['new_file']} " )
-                        return True
-
                     if 'contentType' not in msg:
                         msg['contentType'] = 'text/directory'
                     if hasattr(self.proto[self.scheme], 'delete'):
-                        logger.debug( f"message is to rmdir {new_file}")
+                        logger.debug( f"message is to mkdir {new_file}")
                         if not self.o.dry_run:
-                            self.proto[self.scheme].rmdir(new_file)
+                            self.proto[self.scheme].mkdir(new_file)
                         self.metrics['flow']['transferTxFiles'] += 1
                         return True
                     logger.error("%s, delete not supported" % self.scheme)
@@ -2174,10 +2167,6 @@ class Flow:
                 #=================================
 
                 if 'hlink' in msg['fileOp']:
-                    if ('link' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing hlinks {msg['new_file']} " )
-                        return True
-
                     if 'contentType' not in msg:
                         msg['contentType'] = 'text/link'
                     if hasattr(self.proto[self.scheme], 'link'):
@@ -2187,11 +2176,8 @@ class Flow:
                         return True
                     logger.error("%s, hardlinks not supported" % self.scheme)
                     return False
-                elif 'link' in msg['fileOp']:
-                    if ('link' not in self.o.fileEvents):
-                        self.reject(msg, 202, f"not doing links {msg['new_file']} " )
-                        return True
 
+                elif 'link' in msg['fileOp']:
                     if 'contentType' not in msg:
                         msg['contentType'] = 'text/link'
                     if hasattr(self.proto[self.scheme], 'symlink'):
@@ -2451,6 +2437,36 @@ class Flow:
             return
 
         for msg in self.worklist.incoming:
+
+            if 'fileOp' in msg: # skil fileOps that we are not doing.
+                if ('remove' in msg['fileOp']) and ('delete' not in self.o.fileEvents):
+                    msg.setReport(202, 'skipping unlink %s' % msg['fileOp']['rename'])                        
+                    self.worklist.ok.append(msg)
+                    continue
+
+                if ('delete' in msg['fileOp']) and ('directory' in msg['fileOp'] ) and ('rmdir' not in self.o.fileEvents):
+                    msg.setReport(202, 'skipping rmdir %s' % msg['fileOp']['rename'])                        
+                    self.worklist.ok.append(msg)
+                    continue
+
+                if ('directory' in msg['fileOp']) and ('mkdir' not in self.o.fileEvents):
+                    msg.setReport(202, f"not doing mkdirs {msg['new_file']} " )
+                    continue
+
+                if ('rename' in msg['fileOp']) and ('rename' not in self.o.fileEvents):
+                    msg.setReport( 202, f"not doing file renames {msg['new_file']} " )
+                    self.worklist.ok.append(msg)
+                    continue
+
+                if ('hlink' in msg['fileOp']) and ('link' not in self.o.fileEvents):
+                    msg.setReport(202, f"not doing hlinks {msg['new_file']} " )
+                    self.worklist.ok.append(msg)
+                    continue
+
+                if ('link' in msg['fileOp']) and ('link' not in self.o.fileEvents):
+                    msg.setReport(202, f"not doing links {msg['new_file']} " )
+                    self.worklist.ok.append(msg)
+                    continue
 
             #=================================
             # proceed to send :  has to work

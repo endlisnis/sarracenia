@@ -134,7 +134,7 @@ set_options = [ 'logEvents', 'fileEvents' ]
 
 set_choices = { 
     'logEvents' : sarracenia.flowcb.entry_points + [ 'reject' ],
-    'fileEvents' : set( [ 'create', 'delete', 'link', 'mkdir', 'modify', 'rmdir' ] )
+    'fileEvents' : set( [ 'create', 'delete', 'link', 'rename', 'mkdir', 'modify', 'rmdir' ] )
  }
 # FIXME: doesn't work... wonder why?
 #    'fileEvents': sarracenia.flow.allFileEvents
@@ -1628,6 +1628,10 @@ class Config:
                         self.nodupe_ttl, default=300)
         else:
             self.nodupe_ttl = 0
+
+        # when not transfers are flat, omit mkdir/rmdir
+        if (not self.mirror) or (self.flatten != '/'):
+            self.fileEvents -= set( [ 'mkdir', 'rmdir' ] )
 
         if self.debug:
             self.logLevel = 'debug'

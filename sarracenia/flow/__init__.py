@@ -912,7 +912,7 @@ class Flow:
                             toclimb=len(token)-1
                             msg['fileOp'][f] = '../'*(toclimb) + msg['fileOp'][f]
                             
-        if self.o.mirror and len(token) > 1:
+        if mirror and len(token) > 1:
             new_dir = new_dir + '/' + '/'.join(token[:-1])
 
         new_dir = self.o.variableExpansion(new_dir, msg)
@@ -920,12 +920,14 @@ class Flow:
 
         tfname = filename
         # when sr_sender did not derived from sr_subscribe it was always called
+
         new_dir = self.o.sundew_dirPattern(pattern, urlstr, tfname, new_dir)
         msg.updatePaths(self.o, new_dir, filename)
 
         if maskFileOption:
             msg['new_file'] = self.sundew_getDestInfos(msg, maskFileOption, filename)
             msg['new_relPath'] = '/'.join(  msg['new_relPath'].split('/')[0:-1] + [ msg['new_file'] ]  )
+
         # not mirroring
 
         if not mirror:
@@ -1455,6 +1457,7 @@ class Flow:
             return
 
         for msg in self.worklist.incoming:
+            logger.critical( f" FIXME: ! mirror: {self.o.mirror} relPath: {msg['relPath']} new_dir:{msg['new_dir']}" )
 
             if 'newname' in msg:
                 """
@@ -1479,6 +1482,10 @@ class Flow:
 
             if 'fileOp' in msg :
                 if 'rename' in msg['fileOp']:
+                    if ('rename' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing renames {msg['new_file']} " )
+                        continue
+
                     if 'renameUnlink' in msg:
                         self.removeOneFile(msg['fileOp']['rename'])
                         msg.setReport(201, 'old unlinked %s' % msg['fileOp']['rename'])
@@ -1496,7 +1503,11 @@ class Flow:
                             msg.setReport(201, 'renamed')
                             continue
 
-                elif ('directory' in msg['fileOp']) and ('remove' in msg['fileOp'] ) and ( 'rmdir' in self.o.fileEvents):
+                elif ('directory' in msg['fileOp']): 
+                    if ('rmdir' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing rmdirs {msg['new_file']} " )
+                        continue
+
                     if self.removeOneFile(new_path):
                         msg.setReport(201, 'rmdired')
                         self.worklist.ok.append(msg)
@@ -1508,7 +1519,11 @@ class Flow:
                         self.reject(msg, 500, "rmdir %s failed" % new_path)
                     continue
 
-                elif ('remove' in msg['fileOp']) and ('delete' in self.o.fileEvents):
+                elif ('remove' in msg['fileOp']):
+                    if ('delete' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing file removals {msg['new_file']} " )
+                        continue
+
                     if self.removeOneFile(new_path):
                         msg.setReport(201, 'removed')
                         self.worklist.ok.append(msg)
@@ -1522,7 +1537,12 @@ class Flow:
 
                 # no elif because if rename fails and operation is an mkdir or a symlink..
                 # need to retry as ordinary creation, similar to normal file copy case.
-                if ('directory' in msg['fileOp']) and ('mkdir' in self.o.fileEvents):
+                if ('directory' in msg['fileOp']):
+
+                    if ('mkdir' not in self.o.fileEvents): 
+                        self.reject(msg, 202, f"not doing mkdirs {msg['new_file']} " )
+                        continue
+
                     if self.mkdir(msg):
                         msg.setReport(201, 'made directory')
                         self.worklist.ok.append(msg)
@@ -1532,7 +1552,12 @@ class Flow:
                         self.reject(msg, 500, "mkdir %s failed" % msg['new_file'])
                     continue
 
-                elif 'link' in msg['fileOp'] or 'hlink' in msg['fileOp'] and ('link' in self.o.fileEvents):
+                elif 'link' in msg['fileOp'] or 'hlink' in msg['fileOp']: 
+
+                    if ('link' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing links {msg['new_file']} " )
+                        continue
+
                     if self.link1file(msg):
                         msg.setReport(201, 'linked')
                         self.worklist.ok.append(msg)
@@ -2097,6 +2122,10 @@ class Flow:
 
             if 'fileOp' in msg:
                 if 'remove' in msg['fileOp'] :
+                    if ('delete' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing file removals {msg['new_file']} " )
+                        return True
+
                     if hasattr(self.proto[self.scheme], 'delete'):
                         logger.debug("message is to remove %s" % new_file)
                         if not self.o.dry_run:
@@ -2110,6 +2139,10 @@ class Flow:
                     return False
 
                 if 'rename' in msg['fileOp'] :
+                    if ('rename' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing file renames {msg['new_file']} " )
+                        return True
+
                     if hasattr(self.proto[self.scheme], 'delete'):
                         logger.debug( f"message is to rename {msg['fileOp']['rename']} to {new_file}" )
                         if not self.o.dry_run:
@@ -2119,13 +2152,17 @@ class Flow:
                     logger.error("%s, delete not supported" % self.scheme)
                     return False
 
-                if 'directory' in msg['fileOp'] :
+                if 'directory' in msg['fileOp']: 
+                    if ('mkdir' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing mkdirs {msg['new_file']} " )
+                        return True
+
                     if 'contentType' not in msg:
                         msg['contentType'] = 'text/directory'
                     if hasattr(self.proto[self.scheme], 'delete'):
-                        logger.debug( f"message is to mkdir {new_file}")
+                        logger.debug( f"message is to rmdir {new_file}")
                         if not self.o.dry_run:
-                            self.proto[self.scheme].mkdir(new_file)
+                            self.proto[self.scheme].rmdir(new_file)
                         self.metrics['flow']['transferTxFiles'] += 1
                         return True
                     logger.error("%s, delete not supported" % self.scheme)
@@ -2137,6 +2174,10 @@ class Flow:
                 #=================================
 
                 if 'hlink' in msg['fileOp']:
+                    if ('link' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing hlinks {msg['new_file']} " )
+                        return True
+
                     if 'contentType' not in msg:
                         msg['contentType'] = 'text/link'
                     if hasattr(self.proto[self.scheme], 'link'):
@@ -2147,6 +2188,10 @@ class Flow:
                     logger.error("%s, hardlinks not supported" % self.scheme)
                     return False
                 elif 'link' in msg['fileOp']:
+                    if ('link' not in self.o.fileEvents):
+                        self.reject(msg, 202, f"not doing links {msg['new_file']} " )
+                        return True
+
                     if 'contentType' not in msg:
                         msg['contentType'] = 'text/link'
                     if hasattr(self.proto[self.scheme], 'symlink'):
@@ -2394,6 +2439,11 @@ class Flow:
 
     def do_send(self):
         """
+           worklist should be adjusted:
+               worklist.ok should contain files successfully processed.
+               worklist.failed should contain failed file transfers.
+               worklist.reject should contain operations which were not done?
+
         """
         if not self.o.download:
             self.worklist.ok = self.worklist.incoming
@@ -2415,7 +2465,8 @@ class Flow:
 
                 ok = self.send(msg, self.o)
                 if ok:
-                    self.worklist.ok.append(msg)
+                    if not 'report' in msg:
+                        self.worklist.ok.append(msg)
                     break
 
                 i = i + 1

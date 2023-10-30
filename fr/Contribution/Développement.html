@@ -142,7 +142,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Oct 27, 2023</p>
+<dd class="field-even"><p>Oct 30, 2023</p>
 </dd>
 </dl>
 <section id="outillage">
@@ -210,7 +210,7 @@ sr_insects ont été exécutés avec succès : au moins static_flow, flakey_brok
 <p>Lorsqu’un PR est généré, le deuxième développeur peut l’examiner pour détecter des préoccupations.
 Une fois satisfait de la nature du correctif, le deuxième développeur doit retirer la branche
 et exécutez à nouveau les tests de flux (les trois mêmes) pour confirmer.  Seulement après que les tests de flux
-ont été exécutés sur plusieurs machines qu’on peut ensuite fusionner avec main.</p>
+ont été exécutés sur plusieurs machines qu’on peut ensuite fusionner avec stable.</p>
 <p>Les problèmes propres à la v2 doivent être étiquetés <em>v2only</em>.
 sur Launchpad.net :</p>
 <ul class="simple">
@@ -527,7 +527,7 @@ antérieurs soient sont bons avant de passer aux tests suivant.</p>
 <p>Notez que le système de développement doit être configuré pour que les tests sr_insects s’exécutent correctement.
 Voir la suite pour les instructions de configuration. Pour le développement avec une nouvelle installation du
 système d’exploitation, les étapes de configuration ont été automatisées et peuvent être appliquées avec le
-flow_autoconfig.sh dans sr_insects (<a class="reference external" href="https://github.com/MetPX/sr_insects/blob/main/flow_autoconfig.sh">https://github.com/MetPX/sr_insects/blob/main/flow_autoconfig.sh</a>).
+flow_autoconfig.sh dans sr_insects (<a class="reference external" href="https://github.com/MetPX/sr_insects/blob/stable/flow_autoconfig.sh">https://github.com/MetPX/sr_insects/blob/stable/flow_autoconfig.sh</a>).
 L’exécution à l’aveugle de ce script sur un système fonctionnel peut entraîner des effets secondaires
 indésirables; vous êtes prévenus !</p>
 <p>La configuration que l’on essaie de répliquer :</p>
@@ -1368,7 +1368,7 @@ sur launchpad.net.</p></li>
 <li><p>v2_stable … Généralement, cette branche obtient du code via des fusions à partir de v2_dev, après
 que la pré-version a été testée sur autant de systèmes que possible. Utilisé pour construire des
 paquets sur la version stable: <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx">MetPX</a></p></li>
-<li><p>les branches issues à fusionner avec main doivent être appelées issueXXX.</p></li>
+<li><p>les branches issues à fusionner avec stable doivent être appelées issueXXX.</p></li>
 </ul>
 </section>
 <section id="referentiels">
@@ -1515,13 +1515,13 @@ années pour l´instant.</p>
 <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">sarra</span><span class="o">-</span><span class="n">v3</span><span class="mf">.16.01</span><span class="n">a01</span>
 </pre></div>
 </div>
-<p>Une fois que la balise est là dans la branche development, il faut promouvoir sur main:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<p>Une fois que la balise est là dans la branche development, il faut promouvoir sur stable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">stable</span>
 <span class="n">git</span> <span class="n">merge</span> <span class="n">development</span>
 <span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
-<p>Une fois en main, les images docker seront automatiquement mises à niveau, mais nous devons ensuite mettre à jour
+<p>Une fois en stable, les images docker seront automatiquement mises à niveau, mais nous devons ensuite mettre à jour
 les différentes méthodes de distribution: <a class="reference internal" href="#pypi">PyPI</a>, et <a class="reference internal" href="#launchpad">Launchpad</a></p>
 <p>Une fois la génération du package terminée, il faut <a href="#id4"><span class="problematic" id="id5">`Création d´une version`_</span></a>
 dans development à l’incrément logique suivant pour s’assurer qu’aucun autre développement
@@ -1605,7 +1605,7 @@ doit être rebasée à partir de <em>development</em></p>
 <section id="creation-dun-programme-dinstallation-windows">
 <h4>Création d’un programme d’installation Windows<a class="headerlink" href="#creation-dun-programme-dinstallation-windows" title="Link to this heading"></a></h4>
 <p>On peut également construire un programme d’installation Windows avec cela
-<a class="reference external" href="https://github.com/MetPX/sarracenia/blob/main/generate-win-installer.sh">script</a>.
+<a class="reference external" href="https://github.com/MetPX/sarracenia/blob/stable/generate-win-installer.sh">script</a>.
 Il doit être exécuté à partir d’un système d’exploitation Linux (de préférence Ubuntu 18)
 dans le répertoire racine de git de Sarracenia.</p>
 <p>déterminer la version de python:</p>

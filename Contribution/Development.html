@@ -84,7 +84,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#commits-to-the-development-branch">Commits to the Development Branch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#main-branches">Main Branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-branches">Key Branches</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#repositories">Repositories</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-a-release">Building a Release</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#versioning-scheme">Versioning Scheme</a></li>
@@ -179,7 +179,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Oct 27, 2023</p>
+<dd class="field-even"><p>Oct 30, 2023</p>
 </dd>
 </dl>
 <section id="tools-you-need">
@@ -244,7 +244,7 @@ sr_insects have been run successfully:  at least static_flow, flakey_broker, and
 <p>When a PR is generated, the second developer can look it over for concerns.
 Once satisfied with the nature of the patch, the second developer should pull the branch
 and run the flow tests again (the same three) to confirm.  Only after the flow tests
-have been run on multiple machines should a change be merged to main.</p>
+have been run on multiple machines should a change be merged to stable.</p>
 <p>issues unique to v2 should be tagged <em>v2only</em>.
 on Launchpad.net:</p>
 <blockquote>
@@ -272,15 +272,15 @@ A gate for merging to development is for a second developer to run the flow_test
 <p>Planned by 2022/04/11:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>main will be merged from (version 3) development, so the default version for new work is sr3.</p></li>
-<li><p>launchpad has recipes to produce metpx-sr3 packages from the main branch.</p></li>
+<li><p>stable will be merged from (version 3) development, so the default version for new work is sr3.</p></li>
+<li><p>launchpad has recipes to produce metpx-sr3 packages from the stable branch.</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="sr-insects">
 <h3>sr_insects<a class="headerlink" href="#sr-insects" title="Link to this heading"></a></h3>
 <p>The sr_insects repository has it’s own issues DB, and work on sr_insects is encouraged.
-Both v2 and v3 are supported on the main branch of sr_insects.  That branch should be
+Both v2 and v3 are supported on the stable branch of sr_insects.  That branch should be
 used to support all development in both versions….</p>
 </section>
 </section>
@@ -457,13 +457,13 @@ The options are detailed below:</p>
 </section>
 <section id="committing-code">
 <h3>Committing Code<a class="headerlink" href="#committing-code" title="Link to this heading"></a></h3>
-<p>What should be done prior to committing to the main branch?
+<p>What should be done prior to committing to the stable branch?
 Checklist:</p>
 <ul class="simple">
 <li><p>do development on some other branch. Usually the branch will be named after the issue being
 addressed. Example: issue240, if we give up on an initial approach and start another one,
 there may be issue240_2 for a second attempt. There may also be feature branches, such as v03.</p></li>
-<li><p><strong>sr_insects tests works</strong> (See Testing) The main branch should always be functional, do not commit code if the sr_insects tests are not working.</p></li>
+<li><p><strong>sr_insects tests works</strong> (See Testing) The stable branch should always be functional, do not commit code if the sr_insects tests are not working.</p></li>
 <li><p>Natural consequence: if the code changes means tests need to change, include the test change in the commit.</p></li>
 <li><p><strong>update doc/</strong> manual pages should get their updates ideally at the same time as the code.</p></li>
 </ul>
@@ -473,7 +473,7 @@ to issue a pull request. Eventually, we get to <a href="#id6"><span class="probl
 </section>
 <section id="sr-insects-tests-description">
 <h2>sr_insects Tests Description<a class="headerlink" href="#sr-insects-tests-description" title="Link to this heading"></a></h2>
-<p>Before committing code to the main branch, as a Quality Assurance measure, one should run
+<p>Before committing code to the stable branch, as a Quality Assurance measure, one should run
 all available self-tests. It is assumed that the specific changes in the code have already been unit
 tested. Please add self-tests as appropriate to this process to reflect the new ones.
 Generally speaking one should solve problems at the first test that fails as each test
@@ -540,7 +540,7 @@ tests are good before proceeding to the next test.</p>
 <p>Note that the development system must be configured for the sr_insects tests to run successfully. See the next
 section for configuration instructions. For development with a fresh OS installation,
 the configuration steps have been automated and can be applied with the flow_autoconfig.sh
-script in sr_insects (<a class="reference external" href="https://github.com/MetPX/sr_insects/blob/main/flow_autoconfig.sh">https://github.com/MetPX/sr_insects/blob/main/flow_autoconfig.sh</a>). Blind
+script in sr_insects (<a class="reference external" href="https://github.com/MetPX/sr_insects/blob/stable/flow_autoconfig.sh">https://github.com/MetPX/sr_insects/blob/stable/flow_autoconfig.sh</a>). Blind
 execution of this script on a working system may lead to undesirable side effects; you have been warned!</p>
 <p>The configuration one is trying to replicate:</p>
 <img alt="../_images/Flow_test.svg" src="../_images/Flow_test.svg" /><p>Following table describes what each element of the dynamic flow test does, and the test coverage
@@ -704,7 +704,7 @@ flows defined:</p>
 <h2>Running Flow Tests<a class="headerlink" href="#running-flow-tests" title="Link to this heading"></a></h2>
 <p>This section documents these steps in much more detail.
 Before one can run the sr_insects tests, some pre-requisites must be taken care of.
-Note that there is Github Actions integration for at least the main branch
+Note that there is Github Actions integration for at least the stable branch
 to verify functionality on a variety of python version.  Consult:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span><span class="o">/</span><span class="n">actions</span>
 </pre></div>
@@ -954,7 +954,7 @@ blacklab%
 </div>
 <p>If the flow_check.sh passes, then one has a reasonable confidence in the overall functionality of the
 python application, but the test coverage is not exhaustive. This is the lowest gate for committing
-changes to thy python code into the main branch. It is more qualitative sampling of the most
+changes to thy python code into the stable branch. It is more qualitative sampling of the most
 common use cases rather than a thorough examination of all functionality. While not
 thorough, it is good to know the flows are working.</p>
 <p>Note that the <em>fclean</em> subscriber looks at files in and keeps files around long enough for them to go through all the other
@@ -1304,10 +1304,10 @@ would indicate it.</p>
 <section id="commits-to-the-development-branch">
 <h2>Commits to the Development Branch<a class="headerlink" href="#commits-to-the-development-branch" title="Link to this heading"></a></h2>
 <p>Aside from typos, language fixups in the documentation, and incrementing
-the version, developers are not expected to commit to main. All work
+the version, developers are not expected to commit to stable. All work
 happens on development branches, and all testing is expected to pass before
-one considers affecting main. Once the branch development is complete,
-or a unit of work-in-progress is felt to be worth merging to main, one
+one considers affecting stable. Once the branch development is complete,
+or a unit of work-in-progress is felt to be worth merging to stable, one
 must summarize the changes from the branch for the debian change log,
 request on github.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">issueXXX</span>  <span class="c1"># v02_issueXXX for v2 work., github suggested branch names are fine also.</span>
@@ -1329,12 +1329,12 @@ fragile at the moment, so if they fail, it would be ideal for the reviewer to ru
 the tests in their own development environment. If it passes in the local developer
 environment one can approve a merge in spite of Github Actions’ complaints.</p>
 </section>
-<section id="main-branches">
-<h2>Main Branches<a class="headerlink" href="#main-branches" title="Link to this heading"></a></h2>
+<section id="key-branches">
+<h2>Key Branches<a class="headerlink" href="#key-branches" title="Link to this heading"></a></h2>
 <p>There is a long running discussion about <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/139">Which Version is stable</a>
-The current set up is that there are four main branches:</p>
+The current set up is that there are four principal branches:</p>
 <ul class="simple">
-<li><p>main branch is the release version of sr3, merging from development. used to build sr3 packages in the
+<li><p>stable branch is the release version of sr3, merging from development. used to build sr3 packages in the
 <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx">MetPX</a> repository.</p></li>
 <li><p>development … The <a class="reference internal" href="v03.html"><span class="doc">version 3</span></a> work in progress branch is a next version of sarracenia in development.
 the development branch is used to build sr3 packages for the <a class="reference external" href="https://launchpad.net/~ssc-hpc-chp-spc/+archive/ubuntu/metpx-daily">Daily</a>
@@ -1464,7 +1464,7 @@ after every release.</p>
 </ul>
 <p>If development continues and the time passes without the release occurring, then
 the version needs to be set to again (or overwritten).  For example, a development
-cycle begins in August, the version in main will be 3.19.08b1… but if development
+cycle begins in August, the version in stable will be 3.19.08b1… but if development
 continues into September, one should use this procedure the change the version to 3.19.09b1.</p>
 <p>note on Debian terminology:</p>
 <ul class="simple">
@@ -1489,13 +1489,13 @@ back to UNRELEASED when working between releases, as per Debian custom.</p>
 <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">sarra</span><span class="o">-</span><span class="n">v3</span><span class="mf">.16.01</span><span class="n">a01</span>
 </pre></div>
 </div>
-<p>Once the tag is in the development branch, promote it to main:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<p>Once the tag is in the development branch, promote it to stable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">stable</span>
 <span class="n">git</span> <span class="n">merge</span> <span class="n">development</span>
 <span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
-<p>Once main is updated on github, the docker images will be automatically upgraded, but
+<p>Once stable is updated on github, the docker images will be automatically upgraded, but
 we then need to update the various distribution methods: <a class="reference internal" href="#pypi">PyPI</a>, and <a class="reference internal" href="#launchpad">Launchpad</a></p>
 <p>Once package generation is complete, one should <a class="reference internal" href="#set-the-version">Set the Version</a>
 in development to the next logical increment to ensure no further development
@@ -1552,7 +1552,7 @@ For seamless upgrade, early testers need to do supply the <code class="docutils 
 <section id="building-a-windows-installer">
 <h4>Building a Windows Installer<a class="headerlink" href="#building-a-windows-installer" title="Link to this heading"></a></h4>
 <p>One can also build a Windows installer with that
-<a class="reference external" href="https://github.com/MetPX/sarracenia/blob/main/generate-win-installer.sh">script</a>.
+<a class="reference external" href="https://github.com/MetPX/sarracenia/blob/stable/generate-win-installer.sh">script</a>.
 It needs to be run from a Linux OS (preferably Ubuntu 18) in the root directory of Sarracenia’s git.
 find the python version in use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fractal</span><span class="o">%</span> <span class="n">python</span> <span class="o">-</span><span class="n">V</span>

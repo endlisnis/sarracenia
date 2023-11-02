@@ -443,6 +443,24 @@
     <span class="k">return</span> <span class="n">logdir</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">component</span> <span class="o">+</span> <span class="n">configuration</span> <span class="o">+</span> <span class="s1">&#39;_</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">no</span> <span class="o">+</span> <span class="s1">&#39;.log&#39;</span></div>
 
 
+<div class="viewcode-block" id="get_metrics_filename">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.config.get_metrics_filename">[docs]</a>
+<span class="k">def</span> <span class="nf">get_metrics_filename</span><span class="p">(</span><span class="n">hostdir</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">no</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      return the name of a single logfile for a single instance.</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+    <span class="n">metricsdir</span> <span class="o">=</span> <span class="n">get_user_cache_dir</span><span class="p">(</span><span class="n">hostdir</span><span class="p">)</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="s1">&#39;metrics&#39;</span>
+
+    <span class="k">if</span> <span class="n">configuration</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">configuration</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">configuration</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">configuration</span>
+
+    <span class="k">if</span> <span class="n">configuration</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.conf&#39;</span><span class="p">:</span>
+        <span class="n">configuration</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">metricsdir</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">component</span> <span class="o">+</span> <span class="n">configuration</span> <span class="o">+</span> <span class="s1">&#39;_</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">no</span> <span class="o">+</span> <span class="s1">&#39;.json&#39;</span></div>
+
 
 <span class="k">def</span> <span class="nf">wget_config</span><span class="p">(</span><span class="n">urlstr</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">remote_config_url</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;wget_config </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">urlstr</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
@@ -1970,10 +1988,9 @@
                 <span class="n">hostdir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hostdir</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">hostdir</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pid_filename</span> <span class="o">=</span> <span class="n">get_pid_filename</span><span class="p">(</span><span class="n">hostdir</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span>
-                                                 <span class="bp">self</span><span class="o">.</span><span class="n">no</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">metricsFilename</span> <span class="o">=</span> <span class="n">get_metrics_filename</span><span class="p">(</span><span class="n">hostdir</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">no</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pid_filename</span> <span class="o">=</span> <span class="n">get_pid_filename</span><span class="p">(</span><span class="n">hostdir</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">no</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">retry_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid_filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.pid&#39;</span><span class="p">,</span> <span class="s1">&#39;.retry&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">metricsFilename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid_filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.pid&#39;</span><span class="p">,</span> <span class="s1">&#39;.metrics&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">novipFilename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid_filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.pid&#39;</span><span class="p">,</span> <span class="s1">&#39;.noVip&#39;</span><span class="p">)</span>
 
 
@@ -2748,10 +2765,24 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">hostdir</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="n">logfilename</span> <span class="o">=</span> <span class="n">get_log_filename</span><span class="p">(</span>
-            <span class="n">hostdir</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">child_inst</span><span class="p">)</span>
+        <span class="n">metricsfilename</span> <span class="o">=</span> <span class="n">get_metrics_filename</span><span class="p">(</span> <span class="n">hostdir</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">child_inst</span><span class="p">)</span>
 
-        <span class="c1">#print(&#39;logfilename= %s&#39; % logfilename )</span>
+        <span class="n">dir_not_there</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">metricsfilename</span><span class="p">))</span>
+        <span class="k">while</span> <span class="n">dir_not_there</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">metricsfilename</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">dir_not_there</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+                <span class="n">dir_not_there</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="s2">&quot;makedirs </span><span class="si">{}</span><span class="s2"> failed err=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">metricsfilename</span><span class="p">),</span><span class="n">ex</span><span class="p">))</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Exception details:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">cfg_preparse</span><span class="o">.</span><span class="n">metricsFilename</span> <span class="o">=</span> <span class="n">metricsfilename</span>
+
+        <span class="n">logfilename</span> <span class="o">=</span> <span class="n">get_log_filename</span><span class="p">(</span> <span class="n">hostdir</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">child_inst</span><span class="p">)</span>
+
         <span class="n">dir_not_there</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">logfilename</span><span class="p">))</span>
         <span class="k">while</span> <span class="n">dir_not_there</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>

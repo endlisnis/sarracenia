@@ -118,3 +118,9 @@ sr3 --users declare
 echo "dir: +${PWD}+"
 git clone https://github.com/MetPX/sr_insects
 
+for d in ${HOME}/.cache ${HOME}/.cache/sr3 ${HOME}/.cache/sr3/log  ${HOME}/.cache/sr3/metrics ; do
+	if [ ! -d $d ]; then
+		mkdir $d
+	fi
+done
+

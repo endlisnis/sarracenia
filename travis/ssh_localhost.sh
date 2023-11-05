@@ -4,7 +4,7 @@ if [[ $(($check_wsl == "init" )) ]]; then
 	sudo service ssh start
 fi
 
-ssh localhost /bin/true
+ssh -f -q -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null localhost /bin/true
 ssh_works=$?
 if [ ${ssh_works} -gt 0 ]; then
     echo "no ssh to localhost... must fix..."

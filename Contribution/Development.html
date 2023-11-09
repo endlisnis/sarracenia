@@ -179,7 +179,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Nov 08, 2023</p>
+<dd class="field-even"><p>Nov 09, 2023</p>
 </dd>
 </dl>
 <section id="tools-you-need">
@@ -1636,9 +1636,14 @@ Example of creating a multipass image for fedora to build with:</p>
 </div>
 <p>One can build a very limited sort of rpm package on an rpm based distro by
 using the python distutils:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove last three lines of dependencies in setup.py</span>
+<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span>
 </pre></div>
 </div>
+<p>When doing this on the redhat 8, edit the setup.py to remove the last three lines of dependencies
+because there are no OS packages for: paramiko, watchdog, xattr, &amp; magic. One can supplement
+with pip packages, but if these dependencies are included when building the RPM sr3 package
+will fail when invoked.</p>
 <p>This will fail trying to open a non-existent CHANGES.txt… a strange incompatibility. So</p>
 <blockquote>
 <div><p><strong>comment out the two lines in setup.py used to set the long_description</strong>,</p>

@@ -70,6 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.config.get_user_cache_dir"><code class="docutils literal notranslate"><span class="pre">get_user_cache_dir()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.config.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.config.no_file_config"><code class="docutils literal notranslate"><span class="pre">no_file_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sarracenia.config.octal_number"><code class="docutils literal notranslate"><span class="pre">octal_number</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.config.one_config"><code class="docutils literal notranslate"><span class="pre">one_config()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sarracenia.config.str_options"><code class="docutils literal notranslate"><span class="pre">str_options</span></code></a></li>
 </ul>
@@ -708,6 +709,7 @@ the added necessary authentication details from sarracenia.Credentials.</p>
 <dd><p>options can be declared in any plugin. There are various <em>kind</em> of options, where the declared type modifies the parsing.</p>
 <ul class="simple">
 <li><p>‘count’      integer count type.</p></li>
+<li><p>‘octal’      base-8 (octal) integer type.</p></li>
 <li><dl class="simple">
 <dt>‘duration’   a floating point number indicating a quantity of seconds (0.001 is 1 milisecond)</dt><dd><p>modified by a unit suffix ( m-minute, h-hour, w-week )</p>
 </dd>
@@ -889,6 +891,24 @@ for not just hard coded as a class variable appdir_stuff</p>
 <dd><p>initialize a config that will not use Sarracenia configuration files at all.
 meant for use by people writing independent programs to start up instances
 with python API calls.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sarracenia.config.octal_number">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sarracenia.config.</span></span><span class="sig-name descname"><span class="pre">octal_number</span></span><a class="reference internal" href="../_modules/sarracenia/config.html#octal_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.octal_number" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sarracenia.config.octal_number.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/sarracenia/config.html#octal_number.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.octal_number.__repr__" title="Link to this definition"></a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sarracenia.config.octal_number.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/sarracenia/config.html#octal_number.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sarracenia.config.octal_number.__str__" title="Link to this definition"></a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">

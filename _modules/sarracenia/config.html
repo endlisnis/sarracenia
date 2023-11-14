@@ -138,6 +138,25 @@
 <span class="kn">import</span> <span class="nn">sarracenia.identity</span>
 <span class="kn">import</span> <span class="nn">sarracenia.instance</span>
 
+
+<div class="viewcode-block" id="octal_number">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.config.octal_number">[docs]</a>
+<span class="k">class</span> <span class="nc">octal_number</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
+
+<div class="viewcode-block" id="octal_number.__str__">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.config.octal_number.__str__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;0o</span><span class="si">{</span><span class="bp">self</span><span class="si">:</span><span class="s2">o</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+
+<div class="viewcode-block" id="octal_number.__repr__">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.config.octal_number.__repr__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;0o</span><span class="si">{</span><span class="bp">self</span><span class="si">:</span><span class="s2">o</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
 <span class="n">default_options</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;acceptSizeWrong&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;acceptUnmatched&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
@@ -161,9 +180,9 @@
     <span class="s1">&#39;nodupe_ttl&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s1">&#39;overwrite&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="s1">&#39;permDefault&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s1">&#39;permDirDefault&#39;</span><span class="p">:</span> <span class="mo">0o775</span><span class="p">,</span>
-    <span class="s1">&#39;permLog&#39;</span><span class="p">:</span> <span class="mo">0o600</span><span class="p">,</span>
+    <span class="s1">&#39;permDefault&#39;</span> <span class="p">:</span> <span class="n">octal_number</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;permDirDefault&#39;</span> <span class="p">:</span> <span class="n">octal_number</span><span class="p">(</span><span class="mo">0o775</span><span class="p">),</span>
+    <span class="s1">&#39;permLog&#39;</span><span class="p">:</span> <span class="n">octal_number</span><span class="p">(</span><span class="mo">0o600</span><span class="p">),</span>
     <span class="s1">&#39;post_documentRoot&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
     <span class="s1">&#39;post_baseDir&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
     <span class="s1">&#39;post_baseUrl&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
@@ -183,6 +202,7 @@
     <span class="s1">&#39;post_exchangeSplit&#39;</span><span class="p">,</span> <span class="s1">&#39;prefetch&#39;</span><span class="p">,</span> <span class="s1">&#39;messageCountMax&#39;</span><span class="p">,</span> <span class="s1">&#39;messageRateMax&#39;</span><span class="p">,</span> 
     <span class="s1">&#39;messageRateMin&#39;</span>
 <span class="p">]</span>
+
 
 <span class="c1"># all the boolean settings.</span>
 <span class="n">flag_options</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;acceptSizeWrong&#39;</span><span class="p">,</span> <span class="s1">&#39;acceptUnmatched&#39;</span><span class="p">,</span> <span class="s1">&#39;baseUrl_relPath&#39;</span><span class="p">,</span> <span class="s1">&#39;debug&#39;</span><span class="p">,</span> \
@@ -1003,7 +1023,7 @@
 
         <span class="k">if</span> <span class="n">word</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">word</span>
-        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">octal_number</span><span class="p">]:</span>
             <span class="k">return</span> <span class="n">word</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="s1">&#39;$&#39;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">word</span>
@@ -1100,6 +1120,7 @@
 <span class="sd">           </span>
 <span class="sd">           * &#39;count&#39;      integer count type. </span>
 
+<span class="sd">           * &#39;octal&#39;      base-8 (octal) integer type.</span>
 <span class="sd">           * &#39;duration&#39;   a floating point number indicating a quantity of seconds (0.001 is 1 milisecond)</span>
 <span class="sd">                          modified by a unit suffix ( m-minute, h-hour, w-week ) </span>
 
@@ -1157,6 +1178,10 @@
                     <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="p">[</span><span class="n">v</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;octal&#39;</span><span class="p">:</span>
+            <span class="n">perm_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">octal_number</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">octal_number</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="mi">8</span><span class="p">)))</span>
         <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;set&#39;</span><span class="p">:</span>  
             <span class="n">set_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
             <span class="n">sv</span><span class="o">=</span><span class="nb">set</span><span class="p">()</span>
@@ -1696,7 +1721,7 @@
                     <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ignored &quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&quot;: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">perm_options</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">octal_number</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">8</span><span class="p">)))</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> setting to </span><span class="si">%s</span><span class="s1"> ignored: only numberic modes supported&#39;</span> <span class="o">%</span> <span class="p">(</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="p">)</span> <span class="p">)</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">size_options</span><span class="p">:</span>

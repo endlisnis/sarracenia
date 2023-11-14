@@ -139,7 +139,7 @@
 <section id="synopsis">
 <h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <p><strong>sr_cpump</strong> foreground|start|stop|restart|reload|status configfile
-<strong>sr_cpump</strong> cleanup|declare|setup configfile</p>
+<strong>sr_cpump</strong> cleanup|declare configfile</p>
 </section>
 <section id="description">
 <h3>DESCRIPTION<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
@@ -180,12 +180,9 @@ suivi d’un fichier de configuration.</p>
 exécuter le programme et son fichier de configuration de manière interactive… L’instance <strong>foreground</strong>
 n’est pas concerné par d’autres actions. L’utilisateur cesserait d’utiliser l’instance <strong>foreground</strong>
 en simplement &lt;ctrl-c&gt; sous linux ou utilisez d’autres moyens pour envoyer SIGINT ou SIGTERM au processus.</p>
-<p>Les actions <strong>cleanup</strong>, <strong>declare</strong>, <strong>setup</strong> peuvent être utilisées pour gérer les ressources sur
+<p>Les actions <strong>cleanup</strong>, <strong>declare</strong>, peuvent être utilisées pour gérer les ressources sur
 le serveur rabbitmq. Les ressources sont soit des files d’attente, soit des échanges. <strong>déclarer</strong> crée
-les ressources. <strong>setup</strong> crée et met en place les liaisons des files d’attente.</p>
-<p>The actions <strong>cleanup</strong>, <strong>declare</strong>, <strong>setup</strong> can be used to manage resources on
-the rabbitmq server. The resources are either queues or exchanges. <strong>declare</strong> creates
-the resources. <strong>setup</strong> creates and additionally does the bindings of queues.</p>
+les ressources.</p>
 <p>Les actions <strong>ajouter</strong>, <strong>supprimer</strong>, <strong>modifier</strong>, <strong>lister</strong>, <strong>activer</strong>, <strong>désactiver</strong> agissent
 sur les configurations.</p>
 </section>

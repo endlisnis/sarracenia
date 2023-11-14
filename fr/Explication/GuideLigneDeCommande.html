@@ -192,7 +192,6 @@ le courtier ou pour gérer les configurations.</p>
 <div><ul class="simple">
 <li><p>cleanup:       supprime les ressources du composant sur le serveur</p></li>
 <li><p>declare:       crée les ressources du composant sur le serveur.</p></li>
-<li><p>setup:         comme declare, fait en plus des liaisons de fil d’attente.</p></li>
 <li><p>add:           copie une configuration à la liste des configurations disponibles.</p></li>
 <li><p>list:          Énumérer toutes les configurations disponibles.</p></li>
 <li><p>list plugins:  Énumérer toutes les <em>plugins</em> disponibles.</p></li>
@@ -221,10 +220,9 @@ peut être contrôlé de la même manière à l’aide de la commande <a class="
 <a class="reference external" href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a> , comme décrit dans
 <a class="reference external" href="../How2Guides/Admin.html">Admin Guide</a> . Sur Windows, il est possible de configurer un service,
 comme décrit dans <a class="reference external" href="../Tutorials/Windows.html">Windows user manual</a></p>
-<p>Les actions <strong>cleanup</strong>, <strong>declare</strong>, <strong>setup</strong> peuvent être utilisées pour gérer les
+<p>Les actions <strong>cleanup</strong>, <strong>declare</strong>, peuvent être utilisées pour gérer les
 ressources sur le courtier rabbitmq. Les ressources sont soit des files d’attente,
-soit des échanges. <strong>declare</strong> crée les ressources. <strong>setup</strong> crée les files
-d’attente et les liaisons.</p>
+soit des échanges. <strong>declare</strong> crée les ressources.</p>
 <p>Les actions <strong>add, remove, list, edit, enable &amp; disable</strong> sont utilisées pour gérer la liste
 de configurations et <em>plugins</em>. On peut voir toutes les configurations disponibles en utilisant l´action <strong>list</strong>.
 et les <em>plugins</em> disponibles avec <strong>list plugins</strong>.
@@ -238,8 +236,8 @@ dans le répertoire <em>~/.config/sr3/composant/v3_config.conf</em>. Pas exemple
 <em>sr3 convert composant/config</em>.</p>
 <section id="actions">
 <h3>ACTIONS<a class="headerlink" href="#actions" title="Link to this heading"></a></h3>
-<section id="declare-setup">
-<h4>declare|setup<a class="headerlink" href="#declare-setup" title="Link to this heading"></a></h4>
+<section id="declare">
+<h4>declare<a class="headerlink" href="#declare" title="Link to this heading"></a></h4>
 <p>Appeler la fonction correspondante pour chacune des configurations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 declare
   declare: 2020-09-06 23:22:18,043 [INFO] root declare looking at cpost/pelle_dd1_f04

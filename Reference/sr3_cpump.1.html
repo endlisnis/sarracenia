@@ -139,7 +139,7 @@
 <section id="synopsis">
 <h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <p><strong>sr_cpump</strong> foreground|start|stop|restart|reload|status configfile
-<strong>sr_cpump</strong> cleanup|declare|setup configfile</p>
+<strong>sr_cpump</strong> cleanup|declare configfile</p>
 </section>
 <section id="description">
 <h3>DESCRIPTION<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
@@ -180,9 +180,9 @@ followed by a configuration file.</p>
 run the program and its configfile interactively…   The <strong>foreground</strong> instance
 is not concerned by other actions.  The user would stop using the <strong>foreground</strong> instance
 by simply &lt;ctrl-c&gt; on linux or use other means to send SIGINT or SIGTERM to the process.</p>
-<p>The actions <strong>cleanup</strong>, <strong>declare</strong>, <strong>setup</strong> can be used to manage resources on
+<p>The actions <strong>cleanup</strong>, <strong>declare</strong>, can be used to manage resources on
 the rabbitmq server. The resources are either queues or exchanges. <strong>declare</strong> creates
-the resources. <strong>setup</strong> creates and additionally does the bindings of queues.</p>
+the resources. creates and additionally does the bindings of queues.</p>
 <p>The actions <strong>add</strong>, <strong>remove</strong>, <strong>edit</strong>, <strong>list</strong>, <strong>enable</strong>, <strong>disable</strong> act
 on configurations.</p>
 </section>

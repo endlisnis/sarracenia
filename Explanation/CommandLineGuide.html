@@ -237,7 +237,6 @@ the broker, or manage the configurations.</p>
 <div><ul class="simple">
 <li><p>cleanup:       deletes the component’s resources on the server.</p></li>
 <li><p>declare:       creates the component’s resources on the server.</p></li>
-<li><p>setup:         like declare, additionally does queue bindings.</p></li>
 <li><p>add:           copy to the list of available configurations.</p></li>
 <li><p>list:          list all the configurations available.</p></li>
 <li><p>list plugins:  list all the plugins available.</p></li>
@@ -264,9 +263,9 @@ can be similarly controlled using the <a class="reference external" href="../Ref
 <p>To have components run all the time, on Linux one can use <a class="reference external" href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a> integration,
 as described in the <a class="reference internal" href="../How2Guides/Admin.html"><span class="doc">Admin Guide</span></a> On Windows, one can configure a service,
 as described in the <a class="reference external" href="../Tutorials/Windows.html">Windows user manual</a></p>
-<p>The actions <strong>cleanup</strong>, <strong>declare</strong>, <strong>setup</strong> can be used to manage resources on
+<p>The actions <strong>cleanup</strong>, <strong>declare</strong>, can be used to manage resources on
 the rabbitmq server. The resources are either queues or exchanges. <strong>declare</strong> creates
-the resources. <strong>setup</strong> creates and additionally binds the queues.</p>
+the resources.</p>
 <p>The <strong>add, remove, list, edit, enable &amp; disable</strong> actions are used to manage the list
 of configurations.  One can see all of the configurations available using the <strong>list</strong>
 action.   to view available plugins use <strong>list plugins</strong>.  Using the <strong>edit</strong> option,
@@ -281,8 +280,8 @@ the <em>~/.config/sr3/component/v3_config.conf</em> directory. For example, one 
 with <em>sr3 convert component/config</em>.</p>
 <section id="actions">
 <h3>ACTIONS<a class="headerlink" href="#actions" title="Link to this heading"></a></h3>
-<section id="declare-setup">
-<h4>declare|setup<a class="headerlink" href="#declare-setup" title="Link to this heading"></a></h4>
+<section id="declare">
+<h4>declare<a class="headerlink" href="#declare" title="Link to this heading"></a></h4>
 <p>Call the corresponding function for each configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 declare
   declare: 2020-09-06 23:22:18,043 [INFO] root declare looking at cpost/pelle_dd1_f04

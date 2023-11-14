@@ -295,8 +295,15 @@
            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;unknown broker scheme/protocol specified&#39;</span><span class="p">)</span>
            <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">Moth</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">Moth</span><span class="o">.</span><span class="n">findAllSubclasses</span><span class="p">(</span><span class="n">Moth</span><span class="p">):</span>
             <span class="n">driver</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="c1"># when amqp_consumer option is True, use the moth.AMQPConsumer class, not normal moth.AMQP</span>
+            <span class="k">if</span> <span class="s2">&quot;amqp_consumer&quot;</span> <span class="ow">in</span> <span class="n">props</span> <span class="ow">and</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;amqp_consumer&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">driver</span> <span class="o">==</span> <span class="s1">&#39;amqp&#39;</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">driver</span> <span class="o">==</span> <span class="s1">&#39;amqpconsumer&#39;</span><span class="p">:</span>
+                    <span class="c1"># driver needs to be amqp to match with the broker URL&#39;s scheme</span>
+                    <span class="n">driver</span> <span class="o">=</span> <span class="s1">&#39;amqp&#39;</span>
             <span class="n">scheme</span><span class="o">=</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;broker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">scheme</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">scheme</span> <span class="o">==</span> <span class="n">driver</span><span class="p">)</span> <span class="ow">or</span> \
                <span class="p">(</span> <span class="p">(</span><span class="n">scheme</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">driver</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">scheme</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span> <span class="p">]))</span> <span class="ow">or</span> \
@@ -330,6 +337,18 @@
         <span class="c1"># ProtocolPresent test should ensure that we never get here...</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;broker intialization failure&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
+    
+<div class="viewcode-block" id="Moth.findAllSubclasses">
+<a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.findAllSubclasses">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">findAllSubclasses</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recursively finds all subclasses of a class. __subclasses__() only gives direct subclasses.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cls_subclasses</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">cls_subclasses</span><span class="p">:</span>
+            <span class="n">cls_subclasses</span> <span class="o">=</span> <span class="n">cls_subclasses</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">Moth</span><span class="o">.</span><span class="n">findAllSubclasses</span><span class="p">(</span><span class="n">sc</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">cls_subclasses</span></div>
+
 
 <div class="viewcode-block" id="Moth.__init__">
 <a class="viewcode-back" href="../../api-documentation.html#sarracenia.moth.Moth.__init__">[docs]</a>
@@ -492,6 +511,7 @@
 
 <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;amqp&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
     <span class="kn">import</span> <span class="nn">sarracenia.moth.amqp</span>
+    <span class="kn">import</span> <span class="nn">sarracenia.moth.amqpconsumer</span>
 
 <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;mqtt&#39;</span><span class="p">][</span><span class="s1">&#39;present&#39;</span><span class="p">]:</span>
     <span class="kn">import</span> <span class="nn">sarracenia.moth.mqtt</span>

@@ -990,16 +990,21 @@ logLevel, and logReject:</p>
 </ul>
 <p>At the end of the day (at midnight), these logs are rotated automatically by
 the components, and the old log gets a date suffix. The directory in which
-the logs are stored can be overridden by the <strong>log</strong> option, the number of
-rotated logs to keep are set by the <strong>logRotate</strong> parameter. The oldest log
-file is deleted when the maximum number of logs has been reach and this
-continues for each rotation. An interval takes a duration of the interval and
-it may takes a time unit suffix, such as ‘d|D’ for days, ‘h|H’ for hours,
-or ‘m|M’ for minutes. If no unit is provided logs will rotate at midnight.
+the logs and metrics are stored can be overridden by the <strong>log</strong> option, the
+number of rotated logs to keep are set by the <strong>logRotate</strong> parameter. The
+oldest log file is deleted when the maximum number of logs and metrics has been
+reached and this continues for each rotation. An interval takes a duration of
+the interval and it may takes a time unit suffix, such as ‘d|D’ for days, ‘h|H’
+for hours, or ‘m|M’ for minutes. If no unit is provided logs will rotate at midnight.
 Here are some settings for log file management:</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>log &lt;dir&gt; ( default: ~/.cache/sarra/log ) (on Linux)</dt><dd><p>The directory to store log files in.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>logMetrics ( default: True )</dt><dd><p>whether to accumulate multiple metrics files at all.</p>
 </dd>
 </dl>
 </li>
@@ -1012,12 +1017,12 @@ example, on a node named goofy,  ~/.cache/sarra/log/ becomes ~/.cache/sarra/goof
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate &lt;max_logs&gt; ( default: 5 , alias: lr_backupCount)</dt><dd><p>Maximum number of logs archived.</p>
+<dt>logRotateCount &lt;max_logs&gt; ( default: 5 , alias: lr_backupCount)</dt><dd><p>Maximum number of logs archived.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate_interval &lt;duration&gt;[&lt;time_unit&gt;] ( default: 1, alias: lr_interval)</dt><dd><p>The duration of the interval with an optional time unit (ie 5m, 2h, 3d)</p>
+<dt>logRotateInterval &lt;duration&gt;[&lt;time_unit&gt;] ( default: 1, alias: lr_interval)</dt><dd><p>The duration of the interval with an optional time unit (ie 5m, 2h, 3d)</p>
 </dd>
 </dl>
 </li>

@@ -913,9 +913,9 @@ logLevel et logReject :</p>
 <p>À la fin de la journée (à minuit), ces fichiers de journalisations sont pivotées automatiquement par
 les composants, et l’ancien journal obtient un suffixe de date. Le répertoire dans lequel
 les journaux sont stockés peut être remplacé par l’option <strong>log</strong>, le nombre
-de journaux pivotés à conserver sont définis par le paramètre <strong>logRotate</strong>. Le journal le plus ancien
-est supprimé lorsque le nombre maximal de journaux a été atteint et que cela
-poursuit pour chaque rotation. Un intervalle prend une durée de l’intervalle et
+de journaux pivotés à conserver sont définis par le paramètre <strong>logRotate</strong>. Le journal (et metriques)
+le plus ancien est supprimé lorsque le nombre maximal de journaux (en messages et statistiques) a été
+atteint et que cela poursuit pour chaque rotation. Un intervalle prend une durée de l’intervalle et
 cela peut prendre un suffixe d’unité de temps, tel que ‘d|D’ pour les jours, ‘h|H’ pour les heures,
 ou ‘m|M’ pour les minutes. Si aucune unité n’est fournie, les journaux tourneront à minuit.
 Voici quelques paramètres pour la gestion des fichiers journaux :</p>
@@ -934,12 +934,12 @@ Par exemple, sur un nœud nommé goofy, ~/.cache/sarra/log/ devient ~/.cache/sar
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate &lt;max_logs&gt; ( par défaut: 5 , alias: lr_backupCount)</dt><dd><p>Nombre maximal de journaux archivés.</p>
+<dt>logRotateCount &lt;max_logs&gt; ( par défaut: 5 , alias: lr_backupCount)</dt><dd><p>Nombre maximal de journaux archivés.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>logRotate_interval &lt;duration&gt;[&lt;time_unit&gt;] ( par défaut: 1, alias: lr_interval)</dt><dd><p>La durée de l’intervalle avec une unité de temps optionnelle (ex. 5m, 2h, 3d)</p>
+<dt>logRotateInterval &lt;duration&gt;[&lt;time_unit&gt;] ( par défaut: 1, alias: lr_interval)</dt><dd><p>La durée de l’intervalle avec une unité de temps optionnelle (ex. 5m, 2h, 3d)</p>
 </dd>
 </dl>
 </li>

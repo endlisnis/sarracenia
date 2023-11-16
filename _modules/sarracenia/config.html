@@ -143,6 +143,16 @@
 <a class="viewcode-back" href="../../api-documentation.html#sarracenia.config.octal_number">[docs]</a>
 <span class="k">class</span> <span class="nc">octal_number</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
 
+<div class="viewcode-block" id="octal_number.__new__">
+<a class="viewcode-back" href="../../Reference/code.html#sarracenia.config.octal_number.__new__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="bp">self</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="bp">self</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
 <div class="viewcode-block" id="octal_number.__str__">
 <a class="viewcode-back" href="../../Reference/code.html#sarracenia.config.octal_number.__str__">[docs]</a>
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>

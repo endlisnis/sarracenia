@@ -127,7 +127,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Nov 19, 2023</p>
+<dd class="field-even"><p>Nov 20, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -227,16 +227,22 @@ intégrés:</p>
 directory /monrépertoirelocal/${%Y%m%d_%Hh%m:%S.%f}/mydailies
 accept    .*observations.*
 
-rename lala_${%Y%m%d%H%m%S.%f-1h}
+rename lala_${%o-1h%Y%m%d%H%m%S.%f}
 </pre></div>
 </div>
 <p>Il est possible les substitution de date et heure, avec des décalage, dans le premier cas avec varTimeOffset,
 un décalage de 5 minutes dans le passé, dans le deuxième cas, c’est une heure dans le passé.
 Il est également possible de spécifier des substitutions de variables sur les arguments du paramètre du <em>directory</em>
 en utilisant la notation <a href="#id1"><span class="problematic" id="id2">*</span></a>${..} * :</p>
-<ul class="simple">
-<li><p>%…     - un patron tel qu’accepté par <a class="reference external" href="https://docs.python.org/fr/3/library/datetime.html#datetime.date.strftime">datetime.strftime()</a> avec l’ajout du décalage avec +- et une durée.
-exemple:  ${%Y/%m/%d_%Hh%M:%S.%f} –&gt; 2022/12/04_17h36:34.123479</p></li>
+<ul>
+<li><p>%…     - un patron tel qu’accepté par <a class="reference external" href="https://docs.python.org/fr/3/library/datetime.html#datetime.date.strftime">datetime.strftime()</a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>avec l’ajout du décalage avec o+- et une durée.</p></li>
+<li><p>exemple:  ${%Y/%m/%d_%Hh%M:%S.%f} –&gt; 2022/12/04_17h36:34.123479</p></li>
+</ul>
+</div></blockquote>
+</li>
 <li><p>SOURCE   - l’utilisateur amqp qui a injecté des données (extraites du message d’annonce).</p></li>
 <li><p>BD       - le répertoire de base.</p></li>
 <li><p>BUP      - le composant du chemin de baseUrl (ou : baseUrlPath).</p></li>

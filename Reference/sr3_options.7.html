@@ -128,7 +128,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Nov 19, 2023</p>
+<dd class="field-even"><p>Nov 20, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -228,7 +228,7 @@ built-in ones. For example:</p>
 directory /mylocaldirectory/${%Y%m%d}/mydailies
 accept    .*observations.*
 
-rename hoho.${%Y%m%d_%H%M%S.%f-1h}.csv
+rename hoho.${%o-1h%Y%m%d_%H%M%S.%f}.csv
 </pre></div>
 </div>
 <p>In the last example above, the <em>varTimeOffset</em> will modify the evaluation of YYYYMMDD to be 5m in the past.
@@ -236,8 +236,13 @@ In the rename option, the time to be substituted is one hour in the past.
 One can also specify variable substitutions to be performed on arguments to the directory
 option, with the use of <em>${..}</em> notation:</p>
 <ul class="simple">
-<li><p>%…     - a <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date.strftime">datetime.strftime()</a> compatible date/time formatting string augmented by an offset duration suffix (- for in the past, + for in the future)
-example:  ${%Y/%m/%d_%Hh%M:%S.%f} –&gt; 2022/12/04_17h36:34.014412</p></li>
+<li><p>%…     - a <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date.strftime">datetime.strftime()</a></p>
+<ul>
+<li><p>compatible date/time formatting string augmented by an offset duration suffix (o- for in the past, o+ for in the future)</p></li>
+<li><p>example:  ${%o-1h%Y/%m/%d_%Hh%M:%S.%f} –&gt; 2022/12/04_17h36:34.014412</p></li>
+</ul>
+</li>
+<li><p>time offset begin a strtime pattern with %o for an offset +-1(s/m/h/d/w) units.</p></li>
 <li><p>SOURCE   - the amqp user that injected data (taken from the notification message.)</p></li>
 <li><p>BD       - the base directory</p></li>
 <li><p>BUP      - the path component of the baseUrl (or: baseUrlPath)</p></li>

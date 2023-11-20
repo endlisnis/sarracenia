@@ -239,7 +239,8 @@ option, with the use of <em>${..}</em> notation:</p>
 <li><p>%…     - a <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date.strftime">datetime.strftime()</a></p>
 <ul>
 <li><p>compatible date/time formatting string augmented by an offset duration suffix (o- for in the past, o+ for in the future)</p></li>
-<li><p>example:  ${%o-1h%Y/%m/%d_%Hh%M:%S.%f} –&gt; 2022/12/04_17h36:34.014412</p></li>
+<li><p>example (complex date):  ${%Y/%m/%d_%Hh%M:%S.%f} –&gt; 2022/12/04_17h36:34.014412</p></li>
+<li><p>example (add offset):  ${%o-1h%Y/%m/%d_%Hh%M:%S.%f} –&gt; 2022/12/04_16h36:34.014412</p></li>
 </ul>
 </li>
 <li><p>time offset begin a strtime pattern with %o for an offset +-1(s/m/h/d/w) units.</p></li>
@@ -759,8 +760,8 @@ The default is set low because it defines how long resources on the broker will 
 and in early use (when default was 1 week) brokers would often get overloaded with very
 long queues for left-over experiments.</p>
 </section>
-<section id="filename-keyword-default-whatfn">
-<h4>filename &lt;keyword&gt; (default:WHATFN)<a class="headerlink" href="#filename-keyword-default-whatfn" title="Link to this heading"></a></h4>
+<section id="filename-keyword-default-none">
+<h4>filename &lt;keyword&gt; (default:None)<a class="headerlink" href="#filename-keyword-default-none" title="Link to this heading"></a></h4>
 <p>From <strong>metpx-sundew</strong>, the support of this option give all sorts of possibilities
 for setting the remote filename. Some <strong>keywords</strong> are based on the fact that
 <strong>metpx-sundew</strong> filenames are five (to six) fields strings separated by for colons.</p>

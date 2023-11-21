@@ -164,6 +164,9 @@ may generate notification messages.</p>
 <p><em>CHANGE</em>: config option, strftime options, offset grammar changed:
 in v2 you had ${YYYYMMDD-70m}, in sr3 it should be ${%o-70m%Y%m%d}
 in 3.0.47, moved the time offset parsing to the beginning of the pattern.</p>
+<p><em>CHANGE</em>: default value of <em>filename</em> setting is now <em>None</em> instead of
+‘WHATFN’, which reduces compatibility with Sundew, but makes behaviour
+less surprising when not using/familiar with Sundew.</p>
 </section>
 <section id="id2">
 <h2>3.0.45<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>

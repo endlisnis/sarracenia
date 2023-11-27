@@ -1814,17 +1814,13 @@
             <span class="n">u</span> <span class="o">=</span> <span class="n">sarracenia</span><span class="o">.</span><span class="n">baseUrlParse</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;baseUrl&#39;</span><span class="p">])</span> 
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;baseUrl.path= </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">remote_path</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span> <span class="ow">and</span> <span class="n">remote_path</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">remote_path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
-                        <span class="n">remote_path</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="n">remote_path</span>
-                    <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">:</span> 
+                    <span class="k">if</span> <span class="p">(</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span> <span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">remote_path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span> <span class="p">)</span> <span class="p">:</span>
                         <span class="n">remote_path</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">remote_path</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">remote_path</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="n">remote_path</span>
 
-                <span class="c1"># relPath does not contain a prefix / , add it for cdir</span>
-                <span class="k">if</span> <span class="n">remote_path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
-                    <span class="n">cdir</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">remote_path</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">cdir</span> <span class="o">=</span> <span class="n">remote_path</span>
+                <span class="n">cdir</span> <span class="o">=</span> <span class="n">remote_path</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
                     <span class="n">cdir</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">path</span>

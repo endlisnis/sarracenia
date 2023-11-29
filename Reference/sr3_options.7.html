@@ -128,7 +128,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Nov 27, 2023</p>
+<dd class="field-even"><p>Nov 29, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -1606,6 +1606,29 @@ One can turn off queue binding as follows:</p>
 </pre></div>
 </div>
 <p>(False, or off will also work.)</p>
+</section>
+<section id="sundew-compat-regex-first-match-is-zero-default-off">
+<h4>sundew_compat_regex_first_match_is_zero (default: off)<a class="headerlink" href="#sundew-compat-regex-first-match-is-zero-default-off" title="Link to this heading"></a></h4>
+<p>When numbering groups in match patterns, Sundew groups start from 0.
+Python regular expressions use the zeroth group to represent the entire string, and each match
+group starts from 1. It is considered less surprising to conform to Python conventions,
+but doing so unilaterally would break compatbility.  So here is a switch to use
+when bridging between Sundew, sarra v2 and sr3.  Eventually, this should always be off.
+Examples:</p>
+<ul class="simple">
+<li><p>sundew_compat_regex_first_match_is_zero: True</p></li>
+<li><p>input url:  <a class="reference external" href="https://hpfx.collab.science.gc.ca/20231127/WXO-DD/meteocode/que/cmml/TRANSMIT.FPCN71.11.27.1000Z.xml">https://hpfx.collab.science.gc.ca/20231127/WXO-DD/meteocode/que/cmml/TRANSMIT.FPCN71.11.27.1000Z.xml</a></p></li>
+<li><p>accept pattern: .*/WXO-DD/meteocode/(atl|ont|pnr|pyr|que)/.*/TRANSMIT.FP([A-Z][A-Z]).*([0-2][0-9][0-6][0-9]Z).*</p></li>
+<li><p>directory setting: /tmp/meteocode/${2}/${0}/${1}</p></li>
+<li><p>resulting directory:  /tmp/meteocode/1000Z/que/CN</p></li>
+</ul>
+<p>in contrast, to get the same result:</p>
+<ul class="simple">
+<li><p>sundew_compat_regex_first_match_is_zero: False</p></li>
+<li><p>directory setting: /tmp/meteocode/${3}/${1}/${2}</p></li>
+<li><p>to get the same result.</p></li>
+</ul>
+<p>folks who research python re will normally produce the latter version first.</p>
 </section>
 <section id="timecopy-default-on">
 <h4>timeCopy (default: on)<a class="headerlink" href="#timecopy-default-on" title="Link to this heading"></a></h4>

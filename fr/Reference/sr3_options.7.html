@@ -127,7 +127,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Nov 27, 2023</p>
+<dd class="field-even"><p>Nov 29, 2023</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -1596,6 +1596,29 @@ On peut désactiver la liaison de fil d’attente comme cela:</p>
 </pre></div>
 </div>
 <p>(False, ou off marchera aussi.)</p>
+</section>
+<section id="sundew-compat-regex-first-match-is-zero-default-faux">
+<h4>sundew_compat_regex_first_match_is_zero (default: Faux)<a class="headerlink" href="#sundew-compat-regex-first-match-is-zero-default-faux" title="Link to this heading"></a></h4>
+<p>Lors de la numérotation des groupes dans les modèles de correspondance, les groupes Sundew commencent à 0.
+Les expressions régulières Python utilisent le groupe zéro pour représenter la chaîne entière et chaque correspondance
+le groupe commence à 1. Il est considéré comme moins surprenant de se conformer aux conventions Python,
+mais le faire unilatéralement romprait la compatibilité. Voici donc un switch à utiliser
+lors du pontage entre Sundew, sarra v2 et sr3. Finalement, cela devrait toujours être désactivé.
+Exemples:</p>
+<ul class="simple">
+<li><p>sundew_compat_regex_first_match_is_zero: True</p></li>
+<li><p>url du message:  <a class="reference external" href="https://hpfx.collab.science.gc.ca/20231127/WXO-DD/meteocode/que/cmml/TRANSMIT.FPCN71.11.27.1000Z.xml">https://hpfx.collab.science.gc.ca/20231127/WXO-DD/meteocode/que/cmml/TRANSMIT.FPCN71.11.27.1000Z.xml</a></p></li>
+<li><p>argument <em>accept</em>: .*/WXO-DD/meteocode/(atl|ont|pnr|pyr|que)/.*/TRANSMIT.FP([A-Z][A-Z]).*([0-2][0-9][0-6][0-9]Z).*</p></li>
+<li><p><em>directory</em> corréspondant: /tmp/meteocode/${2}/${0}/${1}</p></li>
+<li><p>répertoire évalué:  /tmp/meteocode/1000Z/que/CN</p></li>
+</ul>
+<p>Pour obtenir le même résultat lorsque le option est faux:</p>
+<ul class="simple">
+<li><p>sundew_compat_regex_first_match_is_zero: False</p></li>
+<li><p><em>directory</em> corréspondant: /tmp/meteocode/${3}/${1}/${2}</p></li>
+</ul>
+<p>Le monde qui fouille sur les ressources sur les expressions régulière de python
+seront moins surpris par cette dernière convention.</p>
 </section>
 <section id="timecopy-defaut-on">
 <h4>timeCopy (défaut: on)<a class="headerlink" href="#timecopy-defaut-on" title="Link to this heading"></a></h4>

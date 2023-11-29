@@ -203,6 +203,7 @@
     <span class="s1">&#39;report&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;retryEmptyBeforeExit&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;sanity_log_dead&#39;</span><span class="p">:</span> <span class="mi">9999</span><span class="p">,</span>
+    <span class="s1">&#39;sundew_compat_regex_first_match_is_zero&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;sourceFromExchange&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;v2compatRenameDoublePost&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s1">&#39;varTimeOffset&#39;</span><span class="p">:</span> <span class="mi">0</span>
@@ -221,8 +222,8 @@
     <span class="s1">&#39;follow_symlinks&#39;</span><span class="p">,</span> <span class="s1">&#39;force_polling&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">,</span> <span class="s1">&#39;inlineOnly&#39;</span><span class="p">,</span> <span class="s1">&#39;inplace&#39;</span><span class="p">,</span> <span class="s1">&#39;logMetrics&#39;</span><span class="p">,</span> <span class="s1">&#39;logStdout&#39;</span><span class="p">,</span> <span class="s1">&#39;logReject&#39;</span><span class="p">,</span> <span class="s1">&#39;restore&#39;</span><span class="p">,</span> \
     <span class="s1">&#39;messageDebugDump&#39;</span><span class="p">,</span> <span class="s1">&#39;mirror&#39;</span><span class="p">,</span> <span class="s1">&#39;timeCopy&#39;</span><span class="p">,</span> <span class="s1">&#39;notify_only&#39;</span><span class="p">,</span> <span class="s1">&#39;overwrite&#39;</span><span class="p">,</span> <span class="s1">&#39;post_on_start&#39;</span><span class="p">,</span> \
     <span class="s1">&#39;permCopy&#39;</span><span class="p">,</span> <span class="s1">&#39;queueBind&#39;</span><span class="p">,</span> <span class="s1">&#39;queueDeclare&#39;</span><span class="p">,</span> <span class="s1">&#39;randomize&#39;</span><span class="p">,</span> <span class="s1">&#39;recursive&#39;</span><span class="p">,</span> <span class="s1">&#39;realpathPost&#39;</span><span class="p">,</span> <span class="s1">&#39;reconnect&#39;</span><span class="p">,</span> \
-    <span class="s1">&#39;report&#39;</span><span class="p">,</span> <span class="s1">&#39;reset&#39;</span><span class="p">,</span> <span class="s1">&#39;retryEmptyBeforeExit&#39;</span><span class="p">,</span> <span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="s1">&#39;sourceFromExchange&#39;</span><span class="p">,</span> \
-    <span class="s1">&#39;statehost&#39;</span><span class="p">,</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="s1">&#39;v2compatRenameDoublePost&#39;</span>
+    <span class="s1">&#39;report&#39;</span><span class="p">,</span> <span class="s1">&#39;reset&#39;</span><span class="p">,</span> <span class="s1">&#39;retryEmptyBeforeExit&#39;</span><span class="p">,</span> <span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="s1">&#39;sundew_compat_regex_first_match_is_zero&#39;</span> \
+    <span class="s1">&#39;sourceFromExchange&#39;</span><span class="p">,</span> <span class="s1">&#39;statehost&#39;</span><span class="p">,</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="s1">&#39;v2compatRenameDoublePost&#39;</span>
                 <span class="p">]</span>
 
 <span class="n">float_options</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
@@ -391,6 +392,8 @@
    <span class="s1">&#39;${JJJ&#39;</span><span class="p">:</span> <span class="s1">&#39;${%j&#39;</span><span class="p">,</span>
    <span class="s1">&#39;${HH&#39;</span><span class="p">:</span> <span class="s1">&#39;${%H&#39;</span><span class="p">,</span>
    <span class="s1">&#39;${DD&#39;</span><span class="p">:</span> <span class="s1">&#39;${</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;${MM&#39;</span><span class="p">:</span> <span class="s1">&#39;${%m&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;${SS&#39;</span><span class="p">:</span> <span class="s1">&#39;${%S&#39;</span><span class="p">,</span>
 
 <span class="p">}</span>
 
@@ -2304,34 +2307,36 @@
             <span class="n">JJJ</span> <span class="o">=</span> <span class="n">whenStamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%j&quot;</span><span class="p">)</span>
             <span class="n">new_dir</span> <span class="o">=</span> <span class="n">new_dir</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{JJJ}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">JJJ</span><span class="p">)</span>
 
+
         <span class="c1"># strftime compatible patterns.</span>
-        <span class="n">fragment_list</span><span class="o">=</span><span class="p">[]</span>
-        <span class="k">for</span> <span class="n">fragment</span> <span class="ow">in</span> <span class="n">new_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="s1">&#39;${%&#39;</span> <span class="p">):</span>
-            <span class="n">close_brace</span> <span class="o">=</span> <span class="n">fragment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;}&#39;</span><span class="p">)</span>
-            <span class="n">frag_start</span><span class="o">=</span><span class="mi">0</span>
-            <span class="n">seconds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">varTimeOffset</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="s1">&#39;${%&#39;</span> <span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">fragment_list</span><span class="o">=</span><span class="p">[]</span>
+            <span class="k">for</span> <span class="n">fragment</span> <span class="ow">in</span> <span class="n">new_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="s1">&#39;${%&#39;</span> <span class="p">):</span>
+                <span class="n">close_brace</span> <span class="o">=</span> <span class="n">fragment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;}&#39;</span><span class="p">)</span>
+                <span class="n">frag_start</span><span class="o">=</span><span class="mi">0</span>
+                <span class="n">seconds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">varTimeOffset</span>
 
-            <span class="c1"># only support %o time offsets at the beginning of the string.</span>
-            <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;+&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span>  <span class="s1">&#39;9&#39;</span> <span class="p">]:</span>
-                <span class="n">end_of_offset</span><span class="o">=</span><span class="n">fragment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;o&#39;</span><span class="p">:</span>
-                    <span class="n">s</span><span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;+&#39;</span> <span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">s</span><span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;+&#39;</span> <span class="p">]</span> <span class="k">else</span> <span class="mi">0</span>
-                <span class="n">seconds</span> <span class="o">=</span> <span class="n">durationToSeconds</span><span class="p">(</span><span class="n">fragment</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">end_of_offset</span><span class="p">])</span>
-                <span class="n">frag_start</span><span class="o">=</span><span class="n">end_of_offset</span><span class="o">+</span><span class="mi">1</span>
-                <span class="k">if</span> <span class="s1">&#39;-&#39;</span> <span class="ow">in</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]:</span> 
-                    <span class="n">seconds</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">seconds</span>
+                <span class="c1"># only support %o time offsets at the beginning of the string.</span>
+                <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span>  <span class="p">]:</span>
+                    <span class="n">end_of_offset</span><span class="o">=</span><span class="n">fragment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;o&#39;</span><span class="p">:</span>
+                        <span class="n">s</span><span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;+&#39;</span> <span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">s</span><span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;+&#39;</span> <span class="p">]</span> <span class="k">else</span> <span class="mi">0</span>
+                    <span class="n">seconds</span> <span class="o">=</span> <span class="n">durationToSeconds</span><span class="p">(</span><span class="n">fragment</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">end_of_offset</span><span class="p">])</span>
+                    <span class="n">frag_start</span><span class="o">=</span><span class="n">end_of_offset</span><span class="o">+</span><span class="mi">1</span>
+                    <span class="k">if</span> <span class="s1">&#39;-&#39;</span> <span class="ow">in</span> <span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]:</span> 
+                        <span class="n">seconds</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">seconds</span>
 
-            <span class="n">whenStamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">+</span><span class="n">seconds</span> <span class="p">)</span>
+                <span class="n">whenStamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">+</span><span class="n">seconds</span> <span class="p">)</span>
         
-            <span class="k">if</span> <span class="n">close_brace</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">time_str</span><span class="o">=</span><span class="n">whenStamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span> <span class="s2">&quot;%&quot;</span><span class="o">+</span><span class="n">fragment</span><span class="p">[</span><span class="n">frag_start</span><span class="p">:</span><span class="n">close_brace</span><span class="p">]</span> <span class="p">)</span>
-                <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_str</span><span class="p">)</span>
-                <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fragment</span><span class="p">[</span><span class="n">close_brace</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
-        <span class="n">new_dir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fragment_list</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">close_brace</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">time_str</span><span class="o">=</span><span class="n">whenStamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span> <span class="s2">&quot;%&quot;</span><span class="o">+</span><span class="n">fragment</span><span class="p">[</span><span class="n">frag_start</span><span class="p">:</span><span class="n">close_brace</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_str</span><span class="p">)</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fragment</span><span class="p">[</span><span class="n">close_brace</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
+            <span class="n">new_dir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fragment_list</span><span class="p">)</span>
         
         <span class="c1"># Parsing cdir to subtract time from it in the following formats</span>
         <span class="c1"># time unit can be: sec/mins/hours/days/weeks</span>
@@ -2382,7 +2387,38 @@
 
         <span class="n">new_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varsub</span><span class="p">(</span><span class="n">new_dir</span><span class="p">)</span>
 
+        <span class="c1"># substitute positional fields from the regex accept (0,1,2,3...)</span>
+        <span class="k">if</span> <span class="s1">&#39;_matches&#39;</span> <span class="ow">in</span> <span class="n">message</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="s1">&#39;${&#39;</span> <span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">fragment_list</span><span class="o">=</span><span class="p">[]</span>
+            <span class="k">for</span> <span class="n">fragment</span> <span class="ow">in</span> <span class="n">new_dir</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="s1">&#39;${&#39;</span> <span class="p">):</span>
+                <span class="n">close_brace</span> <span class="o">=</span> <span class="n">fragment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;}&#39;</span><span class="p">)</span>
+                <span class="n">frag_start</span><span class="o">=</span><span class="mi">0</span>
+                <span class="k">if</span> <span class="n">close_brace</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
+                    <span class="k">continue</span>
+
+                <span class="n">match_field</span><span class="o">=</span><span class="n">fragment</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">close_brace</span><span class="p">]</span>
+                <span class="n">matches</span><span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;^[0-9]+$&#39;</span><span class="p">,</span> <span class="n">match_field</span><span class="p">)</span>
+                <span class="c1"># non-numeric thing... variable or something.</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">matches</span><span class="p">:</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
+                    <span class="k">continue</span>
+                <span class="n">field</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">match_field</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sundew_compat_regex_first_match_is_zero</span><span class="p">:</span>
+                    <span class="n">field</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;_matches&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span> <span class="o">&gt;=</span> <span class="n">field</span><span class="p">:</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;_matches&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">field</span><span class="p">))</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fragment</span><span class="p">[</span><span class="n">close_brace</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;only </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;_matches&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span><span class="si">}</span><span class="s2"> groups in regex, group number too high: $</span><span class="se">{{</span><span class="si">{</span><span class="n">fragment</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+                    <span class="n">fragment_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;${&#39;</span> <span class="o">+</span><span class="n">fragment</span><span class="p">)</span>
+
+            <span class="n">new_dir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fragment_list</span><span class="p">)</span>
+
+            <span class="c1">#del message[&#39;_matches&#39;]</span>
+            <span class="c1">#message[&#39;_deleteOnPost&#39;] -= set([&#39;_matches&#39;])</span>
         <span class="k">return</span> <span class="n">new_dir</span></div>
+
 
 
 

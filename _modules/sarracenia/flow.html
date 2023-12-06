@@ -1071,13 +1071,15 @@
                 <span class="n">oldname_matched</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">masks</span><span class="p">:</span>
                     <span class="n">pattern</span><span class="p">,</span> <span class="n">maskDir</span><span class="p">,</span> <span class="n">maskFileOption</span><span class="p">,</span> <span class="n">mask_regexp</span><span class="p">,</span> <span class="n">accepting</span><span class="p">,</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">strip</span><span class="p">,</span> <span class="n">pstrip</span><span class="p">,</span> <span class="n">flatten</span> <span class="o">=</span> <span class="n">mask</span>
-                    <span class="n">matches</span> <span class="o">=</span> <span class="n">mask_regexp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">urlToMatch</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">pattern</span> <span class="o">==</span> <span class="s1">&#39;.*&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">matches</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
-                            <span class="n">m</span><span class="p">[</span> <span class="s1">&#39;_matches&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matches</span>
-                            <span class="n">m</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;_matches&#39;</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">pattern</span> <span class="o">==</span> <span class="s1">&#39;.*&#39;</span><span class="p">):</span>
                         <span class="n">oldname_matched</span> <span class="o">=</span> <span class="n">accepting</span>
                         <span class="k">break</span>
+                    <span class="n">matches</span> <span class="o">=</span> <span class="n">mask_regexp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">urlToMatch</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
+                            <span class="n">m</span><span class="p">[</span> <span class="s1">&#39;_matches&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matches</span>
+                            <span class="n">m</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;_matches&#39;</span><span class="p">])</span>
+                            <span class="n">oldname_matched</span> <span class="o">=</span> <span class="n">accepting</span>
+                    <span class="k">break</span>
 
             <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">variableExpansion</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;baseUrl&#39;</span><span class="p">],</span> <span class="n">m</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;baseUrl&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;relPath&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;relPath&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">)):</span>
@@ -1098,12 +1100,13 @@
             <span class="n">matched</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">masks</span><span class="p">:</span>
                 <span class="n">pattern</span><span class="p">,</span> <span class="n">maskDir</span><span class="p">,</span> <span class="n">maskFileOption</span><span class="p">,</span> <span class="n">mask_regexp</span><span class="p">,</span> <span class="n">accepting</span><span class="p">,</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">strip</span><span class="p">,</span> <span class="n">pstrip</span><span class="p">,</span> <span class="n">flatten</span> <span class="o">=</span> <span class="n">mask</span>
-                <span class="n">matches</span> <span class="o">=</span> <span class="n">mask_regexp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">urlToMatch</span><span class="p">)</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">pattern</span> <span class="o">==</span> <span class="s1">&#39;.*&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">matches</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">pattern</span> <span class="o">!=</span> <span class="s1">&#39;.*&#39;</span><span class="p">)</span> <span class="p">:</span>
+                    <span class="n">matches</span> <span class="o">=</span> <span class="n">mask_regexp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">urlToMatch</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
                         <span class="n">m</span><span class="p">[</span> <span class="s1">&#39;_matches&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matches</span>
                         <span class="n">m</span><span class="p">[</span><span class="s1">&#39;_deleteOnPost&#39;</span><span class="p">]</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;_matches&#39;</span><span class="p">])</span>
 
+                <span class="k">if</span> <span class="p">(</span><span class="n">pattern</span> <span class="o">==</span> <span class="s1">&#39;.*&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">matches</span><span class="p">:</span>
                     <span class="n">matched</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="k">if</span> <span class="ow">not</span> <span class="n">accepting</span><span class="p">:</span>
                         <span class="k">if</span> <span class="s1">&#39;fileOp&#39;</span> <span class="ow">in</span> <span class="n">m</span> <span class="ow">and</span> <span class="s1">&#39;rename&#39;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;fileOp&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">oldname_matched</span><span class="p">:</span>
@@ -1185,6 +1188,14 @@
 
 
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="c1"># work-around for python3.5 not being able to copy re.match issue: </span>
+        <span class="c1"># https://github.com/MetPX/sarracenia/issues/857 </span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;_matches&#39;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;_matches&#39;</span><span class="p">]</span>
+
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s2">&quot;post&quot;</span><span class="p">]:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">p</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="p">)</span>

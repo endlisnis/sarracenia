@@ -144,7 +144,7 @@ $ sr3 status subscribe/swob
 (it does in fact, not create a file)
 See issue <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/251">#251</a> for more info or to complain.
 In the interim instead use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p .config/sarra/subscribe
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p .config/sr3/subscribe
 $ touch $_/swob.conf
 $ sr3 edit swob.conf
 </pre></div>
@@ -168,7 +168,7 @@ Given how quickly they arrive, be prepared to clean up.</p>
   2015-12-03 06:53:35,270 [INFO] sr subscribe swob 0001 started
 </pre></div>
 </div>
-<p>Activity can be monitored via log files in <code class="docutils literal notranslate"><span class="pre">~/.cache/sarra/log/</span></code> or with the <em>log</em> command:</p>
+<p>Activity can be monitored via log files in <code class="docutils literal notranslate"><span class="pre">~/.cache/sr3/log/</span></code> or with the <em>log</em> command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sr3 log swob
 
   2015-12-03 06:53:35,635 [INFO] Binding queue q_anonymous.sr_subscribe.swob.21096474.62787751 with key v02.post.observations.swob-ml.# to exchange xpublic on broker amqps://anonymous@dd.weather.gc.ca/

@@ -300,7 +300,7 @@ $ sudo dnf install python3-paho-mqtt # optionally support mqtt brokers
 $ sudo dnf install python3-setuptools # needed to build rpm package.
 </pre></div>
 </div>
-<p>If packages are not available, the one can substitute by using python install package (pip)</p>
+<p>If packages are not available, the one can substitute by using python install package (pip/pip3)</p>
 <p>Once the dependencies are in place, one can build an RPM file using <code class="docutils literal notranslate"><span class="pre">setuptools</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/MetPX/sarracenia
 $ cd sarracenia
@@ -311,6 +311,17 @@ $ sudo rpm -i dist/*.noarch.rpm
 </div>
 <p>This procedure installs only the python application (not the C one.)
 No man pages nor other documentation is installed either.</p>
+<p>The RPM file does not include systemd integration, which must currently be taken
+care of manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">groupadd</span> <span class="n">sarra</span>
+<span class="n">useradd</span> <span class="o">-</span><span class="n">g</span> <span class="n">sarra</span> <span class="n">sarra</span>
+<span class="n">wget</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">development</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">service</span>
+<span class="n">cp</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">service</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span>
+<span class="n">cp</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">service</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span>
+</pre></div>
+</div>
+<p>After this it can be enabled as per any other systemd unit.</p>
+<p>(yes this is sad, more information here: <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/863">https://github.com/MetPX/sarracenia/issues/863</a> )</p>
 </section>
 <section id="id1">
 <h3>PIP<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>

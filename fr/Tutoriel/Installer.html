@@ -296,6 +296,17 @@ $ sudo rpm -i dist/*.noarch.rpm
 </div>
 <p>Cette procédure installe uniquement l’application python (pas celle en C).
 Aucune page de manuel ni aucune autre documentation n’est installée non plus.</p>
+<p>The paquet RPM n’inclut pas non plus l’intégration avec Systemd (pour rouler sarra
+comme une service.) Il faut faire cette installation manuellement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">groupadd</span> <span class="n">sarra</span>
+<span class="n">useradd</span> <span class="o">-</span><span class="n">g</span> <span class="n">sarra</span> <span class="n">sarra</span>
+<span class="n">wget</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">development</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">service</span>
+<span class="n">cp</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">service</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span>
+<span class="n">cp</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">service</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span>
+</pre></div>
+</div>
+<p>Après cette intervention, on peut utiliser les commandes de SystemD normalement.</p>
+<p>(Oui, on est d´accord que ceci est triste, plus d´informations: <a class="reference external" href="https://github.com/MetPX/sarracenia/issues/863">https://github.com/MetPX/sarracenia/issues/863</a> )</p>
 </section>
 <section id="id1">
 <h3>PIP<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>

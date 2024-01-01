@@ -531,7 +531,7 @@ the <strong>start</strong>, <strong>foreground</strong>, or <strong>restart</str
  <span class="s1">&#39;v2plugin_options&#39;</span><span class="p">:</span> <span class="p">[],</span>
  <span class="s1">&#39;v2plugins&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;plugin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;msg_total_save&#39;</span><span class="p">,</span> <span class="s1">&#39;file_total_save&#39;</span><span class="p">]},</span>
  <span class="s1">&#39;vhost&#39;</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
- <span class="s1">&#39;vip&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+ <span class="s1">&#39;vip&#39;</span><span class="p">:</span> <span class="p">[]}</span>
 
 <span class="o">%</span>
 </pre></div>
@@ -2160,7 +2160,9 @@ and sr3 will run in ‘standalone mode’.</p>
 moving vip.</p>
 <p><strong>vip 153.14.126.3</strong></p>
 <p>When <strong>sr3</strong> does not find the vip, it sleeps for 5 seconds and retries.
-If it does, it consumes and processes a notification message and than rechecks for the vip.</p>
+If it does find the vip, it consumes and processes a notification message and than rechecks for the vip.
+if multiple vips are specified, then posession of any of the vips is sufficient
+to be declared active.</p>
 </section>
 <section id="blocksize-value-default-0-auto">
 <h4>[–blocksize &lt;value&gt;] (default: 0 (auto))<a class="headerlink" href="#blocksize-value-default-0-auto" title="Link to this heading"></a></h4>

@@ -128,7 +128,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dec 29, 2023</p>
+<dd class="field-even"><p>Jan 01, 2024</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -1707,7 +1707,7 @@ software presents a <strong>vip</strong> (virtual ip) on the active server. Shou
 the server go down, the <strong>vip</strong> is moved on another server, and processing
 then happens using the new server that now has the vip active.
 Both servers would run an <strong>sr3 instance</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">**</span><span class="n">vip</span>          <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>          <span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">**</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">**</span><span class="n">vip</span>          <span class="o">&lt;</span><span class="nb">list</span><span class="o">&gt;</span>          <span class="p">[]</span><span class="o">**</span>
 </pre></div>
 </div>
 <p>When you run only one <strong>sr3 instance</strong> on one server, these options are not set,
@@ -1716,7 +1716,8 @@ and subscribe will run in ‘standalone mode’.</p>
 moving vip.</p>
 <p><strong>vip 153.14.126.3</strong></p>
 <p>When an <strong>sr3 instance</strong> does not find the vip, it sleeps for 5 seconds and retries.
-If it does, it consumes and processes a message and than rechecks for the vip.</p>
+If it does, it consumes and processes a message and than rechecks for the vip.
+Multiple vips form a list, where any individual address being active is enough.</p>
 </section>
 </section>
 <section id="see-also">

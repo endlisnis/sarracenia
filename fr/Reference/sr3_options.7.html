@@ -127,7 +127,7 @@
 <dd class="field-odd"><p>7</p>
 </dd>
 <dt class="field-even">Date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dec 29, 2023</p>
+<dd class="field-even"><p>Jan 01, 2024</p>
 </dd>
 <dt class="field-odd">Version<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UNKNOWN</p>
@@ -1695,7 +1695,7 @@ présente un <strong>vip</strong> (ip virtuelle) sur le serveur actif. Si jamais
 le serveur tombe en panne, le <strong>vip</strong> est déplacé sur un autre serveur et le traitement
 se produit en utilisant le nouveau serveur qui a maintenant le VIP actif.
 Les deux serveurs exécuteraient une instance <strong>sr3</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">**</span><span class="n">vip</span>          <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>          <span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">**</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">**</span><span class="n">vip</span>          <span class="o">&lt;</span><span class="nb">list</span><span class="o">&gt;</span>          <span class="p">[]</span><span class="o">**</span>
 </pre></div>
 </div>
 <p>Lorsqu’une seule instance <strong>sr3</strong> est exécutée  sur un serveur, ces options ne sont pas définies,
@@ -1704,7 +1704,8 @@ et l’abonnement fonctionnera en « mode autonome » (standalone mode).</p>
 vip qui change.</p>
 <p><strong>vip 153.14.126.3</strong></p>
 <p>Lorsqu’une <strong>instance sr3</strong> ne trouve pas l’adresse IP, elle se met en veille pendant 5 secondes et tente à nouveau.
-Si c’est le cas, elle consomme et traite un message d’annonce et revérifie pour le vip.</p>
+Si c’est le cas, elle consomme et traite un message d’annonce et revérifie pour le vip.
+lorsque plus qu’un vip est spécifié, n´importe lequel des addresses IP dans la liste est suffisant.</p>
 </section>
 </section>
 <section id="see-also">

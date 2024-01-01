@@ -487,7 +487,7 @@ les actions <strong>start</strong>, <strong>foreground</strong> ou <strong>resta
  <span class="s1">&#39;v2plugin_options&#39;</span><span class="p">:</span> <span class="p">[],</span>
  <span class="s1">&#39;v2plugins&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;plugin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;msg_total_save&#39;</span><span class="p">,</span> <span class="s1">&#39;file_total_save&#39;</span><span class="p">]},</span>
  <span class="s1">&#39;vhost&#39;</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
- <span class="s1">&#39;vip&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+ <span class="s1">&#39;vip&#39;</span><span class="p">:</span> <span class="p">[]}</span>
 
 <span class="o">%</span>
 </pre></div>
@@ -2118,7 +2118,9 @@ sont pas définies et sr3 fonctionnera en mode ‘standalone’.</p>
 vip en mouvement.</p>
 <p><strong>vip 153.14.126.3</strong></p>
 <p>Lorsque <strong>sr3</strong> ne trouve pas le vip, il dort pendant 5 secondes et réessaie.
-S´il possède le vip, il consomme et traite un message, puis revérifie le vip.</p>
+S´il possède le vip, il consomme et traite un message, puis revérifie le vip.
+lorque plus qu´une addresse est setté commen vip, la possesion de n´importe laquelle
+dans la liste est suffisante.</p>
 </section>
 <section id="blocksize-value-default-0-auto">
 <h4>[–blocksize &lt;value&gt;] (default: 0 (auto))<a class="headerlink" href="#blocksize-value-default-0-auto" title="Link to this heading"></a></h4>

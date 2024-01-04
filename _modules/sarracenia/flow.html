@@ -1750,11 +1750,19 @@
             <span class="c1"># assert new_inflight_path is set.</span>
 
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_inflight_path&#39;</span><span class="p">]):</span>
+
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">inflight</span><span class="p">:</span>
+                    <span class="n">how_old</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_inflight_path&#39;</span><span class="p">])</span>
                     <span class="c1">#FIXME: if mtime &gt; 5 minutes, perhaps rm it, and continue? what if transfer crashed?</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                        <span class="s1">&#39;inflight file already exists. race condition, deferring transfer of </span><span class="si">%s</span><span class="s1">&#39;</span>
-                        <span class="o">%</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_path&#39;</span><span class="p">])</span>
+                    <span class="c1">#       Added this with fixed value, should it be a setting?</span>
+                    <span class="k">if</span> <span class="n">how_old</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">:</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_inflight_path&#39;</span><span class="p">]</span> <span class="p">)</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;inflight file is </span><span class="si">{</span><span class="n">how_old</span><span class="si">}</span><span class="s2">s old. Removed previous attempt </span><span class="si">{</span><span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                            <span class="s1">&#39;inflight file already exists. race condition, deferring transfer of </span><span class="si">%s</span><span class="s1">&#39;</span>
+                            <span class="o">%</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;new_path&#39;</span><span class="p">])</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">worklist</span><span class="o">.</span><span class="n">failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                     <span class="k">continue</span>
                 <span class="c1"># overwriting existing file.</span>
@@ -2049,6 +2057,8 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">proto</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">update_file</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">len_written</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;failed to download </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">new_file</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">inflight</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">block_length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -2070,6 +2080,8 @@
                             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;download more </span><span class="si">{</span><span class="n">len_written</span><span class="si">}</span><span class="s1"> than expected </span><span class="si">{</span><span class="n">block_length</span><span class="si">}</span><span class="s1"> bytes for </span><span class="si">{</span><span class="n">new_inflight_path</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
                             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;incomplete download only </span><span class="si">{</span><span class="n">len_written</span><span class="si">}</span><span class="s1"> of expected </span><span class="si">{</span><span class="n">block_length</span><span class="si">}</span><span class="s1"> bytes for </span><span class="si">{</span><span class="n">new_inflight_path</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">inflight</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">):</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">new_inflight_path</span><span class="p">)</span>
                         <span class="k">return</span> <span class="kc">False</span>
                 <span class="c1"># when len_written is different than block_length</span>
                 <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">len_written</span>

@@ -142,7 +142,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Jan 04, 2024</p>
+<dd class="field-even"><p>Jan 08, 2024</p>
 </dd>
 </dl>
 <section id="outillage">
@@ -1687,61 +1687,49 @@ Exemple de création d’une image multipasse pour fedora à construire avec:</p
 <p>Basé sur <a class="reference external" href="https://www.redhat.com/sysadmin/create-rpm-package">https://www.redhat.com/sysadmin/create-rpm-package</a> …  installer les dépendances de build:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rpmdevtools</span> <span class="n">rpmlint</span> <span class="n">git</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">development</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
+<span class="n">cd</span> <span class="n">sr3</span>
 </pre></div>
 </div>
-<p>On peut construire un type très limité de paquet rpm sur une distribution basée sur rpm
-en utilisant les distutils python:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span>
+<p>Les noms du package pour les données magiques de fichiers (pour déterminer les types de fichiers) ont des noms différents sur
+Ubuntu contre RedHat. Les trois dernières lignes de <strong>dépendances</strong> dans pyproject.toml concernent
+“python-magic”, mais sur Redhat, il doit plutôt être “file-magic” :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vi</span> <span class="n">pyproject</span><span class="o">.</span><span class="n">toml</span>
 </pre></div>
 </div>
-<p>Cela échouera en essayant d’ouvrir un CHANGES.txt qui n’existe pas … Une étrange incompatibilité. Alors,</p>
-<blockquote>
-<div><p><strong>Commentez les deux lignes de setup.py utilisées pour définir le long_description</strong>,</p>
-</div></blockquote>
-<p>Ces lignes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#long_description=(read(&#39;README.rst&#39;) + &#39;\n\n&#39; + read(&#39;CHANGES.rst&#39;) +</span>
-<span class="c1">#                   &#39;\n\n&#39; + read(&#39;AUTHORS.rst&#39;)),</span>
+<p>On peut construire paquet rpm sur une distribution de Linux approprié, avec la commande <em>rpmbuild</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpmbuild</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">place</span> <span class="o">-</span><span class="n">bb</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">spec</span>
 </pre></div>
 </div>
-<p>Et puis la génération RPM se terminera. Malheureusement, il n’ajoute pas de dépendances appropriées,
-on peut donc les installer manuellement.</p>
-<p>Une façon de résoudre le problème de dépendance est de décoder les options de debian/control</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed34 sr3]$ grep Recommends debian/control | sed &#39;s/Recommends: //;s/ //g&#39;
-ncftp,wget
-[ubuntu@fed34 sr3]$
-</pre></div>
-</div>
-<p>et répétez avec le fichier setup.py…  (Note: setup.py ne veut pas d’espaces autour des versions
-pour les paquets python, mais l’option bdist_rpm les nécessite, alors corrigez cela… ):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed34 sr3]$ tail -4 setup.py |  egrep -v &#39;\[&#39; | egrep -v &#39;]&#39; | tr &#39;\n&#39; &#39; &#39; | sed &#39;s/ *//g;s/&gt;=/ &gt;= /g;s/^&quot;/&quot;python3-/;s/,&quot;/,&quot;python3-/g&#39;
-&quot;python3-amqp&quot;,&quot;python3-appdirs&quot;,&quot;python3-watchdog&quot;,&quot;python3-netifaces&quot;,&quot;python3-humanize&quot;,&quot;python3-jsonpickle&quot;,&quot;python3-paho-mqtt &gt;= 1.5.1&quot;,&quot;python3-paramiko&quot;,&quot;python3-psutil &gt;= 5.3.0&quot;
-[ubuntu@fed34 sr3]$
-</pre></div>
-</div>
-<p>Ensuite, copiez/collez les dépendances dans la ligne de construction RPM:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span> <span class="o">--</span><span class="n">requires</span><span class="o">=</span><span class="n">ncftp</span><span class="p">,</span><span class="n">wget</span><span class="p">,</span><span class="s2">&quot;python3-amqp&quot;</span><span class="p">,</span><span class="s2">&quot;python3-appdirs&quot;</span><span class="p">,</span><span class="s2">&quot;python3-watchdog&quot;</span><span class="p">,</span><span class="s2">&quot;python3-netifaces&quot;</span><span class="p">,</span><span class="s2">&quot;python3-humanize&quot;</span><span class="p">,</span><span class="s2">&quot;python3-jsonpickle&quot;</span><span class="p">,</span><span class="s2">&quot;python3-paho-mqtt &gt;= 1.5.1&quot;</span><span class="p">,</span><span class="s2">&quot;python3-paramiko&quot;</span><span class="p">,</span><span class="s2">&quot;python3-psutil &gt;= 5.3.0&quot;</span>
-</pre></div>
-</div>
+<p>Cela marche tel quel sur fedora 39, mais ca se peut qu´il faut editer metpx-sr3.spec afin d´enlever
+des paquets listé comme <em>dependencies</em>, faute de disponibilité en format RPM dans les anciennes
+versions de Redhat. Eventuellement, on aura enlevé assez de dépendences pour que le .rpm se construit.</p>
 <p>On peut vérifier si les dépendances sont là comme ça:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed34 sr3]$ rpm -qp dist/metpx-sr3-3.0.6-1.noarch.rpm --requires
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed39 sr3]$ rpm -qR /home/ubuntu/rpmbuild/RPMS/noarch/metpx-sr3-3.00.47-0.fc39.noarch.rpm
+
 /usr/bin/python3
-ncftp
-python3-amqp
+python(abi) = 3.12
 python3-appdirs
+python3-humanfriendly
 python3-humanize
 python3-jsonpickle
-python3-netifaces
-python3-paho-mqtt &gt;= 1.5.1
 python3-paramiko
-python3-psutil &gt;= 5.3.0
-python3-watchdog
+python3-psutil
+python3-xattr
+python3.12dist(appdirs)
+python3.12dist(humanfriendly)
+python3.12dist(humanize)
+python3.12dist(jsonpickle)
+python3.12dist(paramiko)
+python3.12dist(psutil) &gt;= 5.3
+python3.12dist(watchdog)
+python3.12dist(xattr)
 rpmlib(CompressedFileNames) &lt;= 3.0.4-1
 rpmlib(FileDigests) &lt;= 4.6.0-1
 rpmlib(PartialHardlinkSets) &lt;= 4.0.4-1
 rpmlib(PayloadFilesHavePrefix) &lt;= 4.0-1
 rpmlib(PayloadIsZstd) &lt;= 5.4.18-1
-wget
-[ubuntu@fed34 sr3]$
+
+[ubuntu@fed39 sr3]$
 </pre></div>
 </div>
 <p>Vous pouvez voir toutes les dépendances python3 préfixées requises, ainsi que les paquets d’accellerator

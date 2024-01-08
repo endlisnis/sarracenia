@@ -181,7 +181,7 @@
 <dd class="field-odd"><p>UNKNOWN</p>
 </dd>
 <dt class="field-even">date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Jan 04, 2024</p>
+<dd class="field-even"><p>Jan 08, 2024</p>
 </dd>
 </dl>
 <section id="tools-you-need">
@@ -1565,10 +1565,11 @@ occurs that is identified as the released version.</p>
 </div>
 <p>on older systems, or on newer ones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">build</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">isolation</span>
-<span class="n">twine</span> <span class="n">upload</span> <span class="n">dist</span><span class="o">/</span><span class="n">metpx_sarracenia</span><span class="o">-</span><span class="mf">2.22.6</span><span class="o">-</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span>
+<span class="n">twine</span> <span class="n">upload</span> <span class="n">dist</span><span class="o">/</span><span class="n">metpx_sarracenia</span><span class="o">-</span><span class="mf">2.22.6</span><span class="o">-</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span> <span class="n">dist</span><span class="o">/</span><span class="n">metpx_sarracenia</span><span class="o">-</span><span class="mf">2.22.6</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>Note that the CHANGES.rst file is in restructured text and is parsed by pypi.python.org
+<p>Should always include source (the .tar.gz file)
+Note that the CHANGES.rst file is in restructured text and is parsed by pypi.python.org
 on upload.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1682,73 +1683,71 @@ Example of creating a multipass image for fedora to build with:</p>
 <p>Based on <a class="reference external" href="https://www.redhat.com/sysadmin/create-rpm-package">https://www.redhat.com/sysadmin/create-rpm-package</a> …  install build-dependencies:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rpmdevtools</span> <span class="n">rpmlint</span> <span class="n">git</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">b</span> <span class="n">development</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MetPX</span><span class="o">/</span><span class="n">sarracenia</span> <span class="n">sr3</span>
+<span class="n">cd</span> <span class="n">sr3</span>
 </pre></div>
 </div>
 <p>One can build a very limited sort of rpm package on an rpm based distro by
-using the python distutils:</p>
+The names of the package for file magic data (to determin file types) has different names on
+ubuntu vs. redhat.  The last three lines of <strong>dependencies</strong> in pyproject.toml are about
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+“python-magic”, but on redhat/fedora &gt;= 9, it needs to be “file-magic” instead:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove last three lines of dependencies in setup.py</span>
-<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span>
+
+<span class="o">*</span> <span class="n">on</span> <span class="n">redhat</span> <span class="o">&lt;=</span><span class="mi">8</span><span class="p">:</span> <span class="n">vi</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="p">;</span>  <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span>
+
+<span class="c1"># might work, but might need some removals also.</span>
+<span class="o">*</span> <span class="n">on</span> <span class="n">redhat</span> <span class="o">&gt;=</span><span class="mi">9</span><span class="p">:</span> <span class="n">vi</span> <span class="n">pyproject</span><span class="o">.</span><span class="n">toml</span><span class="p">;</span>  <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">build</span>
 </pre></div>
 </div>
-<p>When doing this on the redhat 8, edit the setup.py to remove the last three lines of dependencies
-because there are no OS packages for: paramiko, watchdog, xattr, &amp; magic. One can supplement
-with pip packages, but if these dependencies are included when building the RPM sr3 package
-will fail when invoked.</p>
-<p>This will fail trying to open a non-existent CHANGES.txt… a strange incompatibility. So</p>
-<blockquote>
-<div><p><strong>comment out the two lines in setup.py used to set the long_description</strong>,</p>
-</div></blockquote>
-<dl class="simple">
-<dt>these lines::</dt><dd><p>#long_description=(read(‘README.rst’) + ‘nn’ + read(‘CHANGES.rst’) +
-#                   ‘nn’ + read(‘AUTHORS.rst’)),</p>
-</dd>
-</dl>
-<p>and then the rpm build will complete. Unfortunately, it doesn’t add proper dependencies, so
-one can install those manually.</p>
-<p>A way of addressing the dependency problem  is to decode the options from the debian/control:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed34 sr3]$ grep Recommends debian/control | sed &#39;s/Recommends: //;s/ //g&#39;
-ncftp,wget
-[ubuntu@fed34 sr3]$
+<p>“python-magic”, but on redhat, it needs to be “file-magic” instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vi</span> <span class="n">pyproject</span><span class="o">.</span><span class="n">toml</span>
 </pre></div>
 </div>
-<p>and repeat with the setup.py file…  (note: setup.py does not want spaces around versions for
-python packages, but bdist_rpm option requires them, so fix that… ):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed34 sr3]$ tail -4 setup.py |  egrep -v &#39;\[&#39; | egrep -v &#39;]&#39; | tr &#39;\n&#39; &#39; &#39; | sed &#39;s/ *//g;s/&gt;=/ &gt;= /g;s/^&quot;/&quot;python3-/;s/,&quot;/,&quot;python3-/g&#39;
-&quot;python3-amqp&quot;,&quot;python3-appdirs&quot;,&quot;python3-watchdog&quot;,&quot;python3-netifaces&quot;,&quot;python3-humanize&quot;,&quot;python3-jsonpickle&quot;,&quot;python3-paho-mqtt &gt;= 1.5.1&quot;,&quot;python3-paramiko&quot;,&quot;python3-psutil &gt;= 5.3.0&quot;
-[ubuntu@fed34 sr3]$
+<p>using the normal (for Redhat) rpmbuild tool:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rpmbuild</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">place</span> <span class="o">-</span><span class="n">bb</span> <span class="n">metpx</span><span class="o">-</span><span class="n">sr3</span><span class="o">.</span><span class="n">spec</span>
 </pre></div>
 </div>
-<p>then copy/paste the dependencies into the rpm building line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span> <span class="o">--</span><span class="n">requires</span><span class="o">=</span><span class="n">ncftp</span><span class="p">,</span><span class="n">wget</span><span class="p">,</span><span class="s2">&quot;python3-amqp&quot;</span><span class="p">,</span><span class="s2">&quot;python3-appdirs&quot;</span><span class="p">,</span><span class="s2">&quot;python3-watchdog&quot;</span><span class="p">,</span><span class="s2">&quot;python3-netifaces&quot;</span><span class="p">,</span><span class="s2">&quot;python3-humanize&quot;</span><span class="p">,</span><span class="s2">&quot;python3-jsonpickle&quot;</span><span class="p">,</span><span class="s2">&quot;python3-paho-mqtt &gt;= 1.5.1&quot;</span><span class="p">,</span><span class="s2">&quot;python3-paramiko&quot;</span><span class="p">,</span><span class="s2">&quot;python3-psutil &gt;= 5.3.0&quot;</span>
-</pre></div>
-</div>
+<p>When doing this on the redhat 8, edit the metpx-sr3.spec and potentially pyproject.toml
+to remove the other dependencies because there are no OS packages for: paramiko,
+watchdog, xattr, &amp; magic. Eventually, one will have removed enough that the rpm file
+will be built.</p>
 <p>One can check if the dependencies are there like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed34 sr3]$ rpm -qp dist/metpx-sr3-3.0.6-1.noarch.rpm --requires
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ubuntu@fed39 sr3]$ rpm -qR /home/ubuntu/rpmbuild/RPMS/noarch/metpx-sr3-3.00.47-0.fc39.noarch.rpm
+
 /usr/bin/python3
-ncftp
-python3-amqp
+python(abi) = 3.12
 python3-appdirs
+python3-humanfriendly
 python3-humanize
 python3-jsonpickle
-python3-netifaces
-python3-paho-mqtt &gt;= 1.5.1
 python3-paramiko
-python3-psutil &gt;= 5.3.0
-python3-watchdog
+python3-psutil
+python3-xattr
+python3.12dist(appdirs)
+python3.12dist(humanfriendly)
+python3.12dist(humanize)
+python3.12dist(jsonpickle)
+python3.12dist(paramiko)
+python3.12dist(psutil) &gt;= 5.3
+python3.12dist(watchdog)
+python3.12dist(xattr)
 rpmlib(CompressedFileNames) &lt;= 3.0.4-1
 rpmlib(FileDigests) &lt;= 4.6.0-1
 rpmlib(PartialHardlinkSets) &lt;= 4.0.4-1
 rpmlib(PayloadFilesHavePrefix) &lt;= 4.0-1
 rpmlib(PayloadIsZstd) &lt;= 5.4.18-1
-wget
-[ubuntu@fed34 sr3]$
+
+[ubuntu@fed39 sr3]$
 </pre></div>
 </div>
 <p>You can see all of the prefixed python3 dependencies required, as well as the recommended binary accellerator packages
 are listed. Then if you install with dnf install, it will pull them all in.  Unfortunately, this method does not allow
 the specification of version of the python dependencies which are stripped out. on Fedora 34, this is not a problem,
 as all versions are new enough.  Such a package should install well.</p>
-<p>a bit inelegant, and not sure if it will work with older versions:
+<p>After installation, one can supplement, installing missing dependencies using pip (or pip3.)
+Can check how much sr3 is working using <em>sr3 features</em> and use pip to add more features
+after the RPM is installed.</p>
+<p>Certainly a bit clumsy, and not sure if it will work with older versions:
 <a class="reference external" href="https://github.com/MetPX/sarracenia/issues57">Help Wanted</a></p>
 </section>
 </section>
